@@ -191,6 +191,7 @@ const Transmission = () => {
                   poster={reel.poster}
                   autoPlay
                   muted
+                  loop
                   playsInline
                   preload="metadata"
                   onEnded={() => setReelIdx((i) => (i + 1) % REELS.length)}
