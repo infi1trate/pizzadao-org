@@ -1,0 +1,358 @@
+const VALUE_PROPS = [
+  {
+    n: "01",
+    k: "Trusted Local Distribution",
+    v: "Hundreds of pizzerias. Real neighborhoods. Your brand shows up where people already are.",
+  },
+  {
+    n: "02",
+    k: "Founder + Builder Access",
+    v: "Direct access to founders, developers, and operators shaping the next wave of culture.",
+  },
+  {
+    n: "03",
+    k: "Cultural Relevance",
+    v: "Programs designed to feel native, not inserted. Built with the community, not around it.",
+  },
+  {
+    n: "04",
+    k: "Earned Media",
+    v: "Moments people talk about. Content that spreads without forcing it.",
+  },
+  {
+    n: "05",
+    k: "Global Activation, No Ops",
+    v: "We handle the coordination, logistics, and playbook. You provide the brief.",
+  },
+];
+
+const ACTIVATIONS = [
+  {
+    tag: "Annual",
+    partner: "Bitcoin Pizza Day, 2024",
+    headline: "300 cities. One weekend. One ribbon.",
+    note: "Co-branded activation across the global chapter network, local execution, unified creative.",
+  },
+  {
+    tag: "Limited Run",
+    partner: "Independent Pizzeria Fund",
+    headline: "$250K routed to neighborhood operators.",
+    note: "Sponsor-funded grants distributed through verified PizzaDAO chapters in 14 countries.",
+  },
+  {
+    tag: "Cultural",
+    partner: "Art × Hospitality Residency",
+    headline: "12 artists. 6 cities. One menu.",
+    note: "A traveling residency that placed commissioned work inside partner pizzerias for a season.",
+  },
+];
+
+const PROOF: { k: string; v: string; num?: number; prefix?: string; suffix?: string }[] = [
+  { k: "Partner Satisfaction", v: "92%", num: 92, suffix: "%" },
+  { k: "Activations Delivered", v: "200+", num: 200, suffix: "+" },
+  { k: "Brand Collaborations", v: "60+", num: 60, suffix: "+" },
+  { k: "Global Reach", v: "Multi-market" },
+];
+
+import { useEffect, useRef, useState } from "react";
+
+const CountUp = ({ value, suffix = "", fallback }: { value?: number; suffix?: string; fallback: string }) => {
+  const [n, setN] = useState(0);
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (value === undefined) return;
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && !started) {
+            setStarted(true);
+            const duration = 1400;
+            const start = performance.now();
+            const tick = (t: number) => {
+              const p = Math.min(1, (t - start) / duration);
+              const eased = 1 - Math.pow(1 - p, 3);
+              setN(Math.round(value * eased));
+              if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [value, started]);
+
+  if (value === undefined) return <span ref={ref}>{fallback}</span>;
+  return (
+    <span ref={ref}>
+      {n.toLocaleString()}
+      {suffix}
+    </span>
+  );
+};
+
+const Sponsorship = () => {
+  return (
+    <section
+      id="partner-with-us"
+      className="relative bg-butter/30 pt-20 text-ink md:pt-32"
+    >
+      {/* Masthead */}
+      <div className="container">
+        <div className="border-t-2 border-ink pt-8 md:pt-10">
+          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
+            <div className="col-span-12 md:col-span-7">
+              <p className="overline text-tomato">§ 06, Partnership</p>
+              <h2 className="font-display mt-4 text-display-1 font-extrabold leading-[0.92] tracking-[0.005em] text-ink">
+                Why brands
+                <br />
+                <span className="text-ink-soft">partner with PizzaDAO.</span>
+              </h2>
+            </div>
+            <div className="col-span-12 md:col-span-5 md:pl-8">
+              <p className="text-lg leading-relaxed text-ink/80 md:text-xl">
+                Five years of building unforgettable moments with brands who get it.
+              </p>
+              <p className="mt-5 text-base leading-relaxed text-ink/65">
+                A community institution with operators on every continent.
+                We build programs that put brands inside culture, not on top
+                of it.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Proof ledger, bright, optimistic */}
+        <div className="mt-12 rounded-2xl border-2 border-ink bg-cream p-4 shadow-[0_24px_60px_-30px_hsl(var(--ink)/0.35)] md:mt-16 md:p-6">
+          <dl className="grid grid-cols-2 md:grid-cols-4">
+            {PROOF.map((p, i) => (
+              <div
+                key={p.k}
+                className={`px-6 py-9 md:px-9 md:py-12 ${
+                  i > 0 ? "md:border-l md:border-ink/15" : ""
+                } ${i === 1 ? "border-l border-ink/15" : ""} ${
+                  i >= 2 ? "border-t border-ink/15 md:border-t-0" : ""
+                }`}
+              >
+                <dt className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-tomato">
+                  {p.k}
+                </dt>
+                <dd className="font-display mt-3 text-[clamp(2.25rem,5.5vw,4.25rem)] font-extrabold leading-[0.86] tracking-[-0.01em]">
+                  <CountUp value={p.num} suffix={p.suffix} fallback={p.v} />
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+
+      {/* Value props, editorial 2-column grid */}
+      <div className="container mt-20 md:mt-28">
+        <div className="grid grid-cols-12 gap-x-6 gap-y-10">
+          <div className="col-span-12 md:col-span-4">
+            <p className="overline text-tomato">What you receive</p>
+            <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.95] tracking-[0.005em] text-ink">
+              Five things
+              <br />
+              <span className="text-ink-soft">we deliver.</span>
+            </h3>
+            <p className="mt-6 text-base leading-relaxed text-ink/65">
+              Our partnership model is bespoke, not menu-driven. The list below
+              is what every program is built on.
+            </p>
+          </div>
+
+          <ol className="col-span-12 md:col-span-8 md:pl-8">
+            <div className="border-t border-ink/15">
+              {VALUE_PROPS.map((vp) => (
+                <li
+                  key={vp.n}
+                  className="group grid grid-cols-12 gap-x-6 gap-y-3 border-b border-ink/15 py-12 md:py-16"
+                >
+                  <div className="col-span-2 md:col-span-1">
+                    <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-tomato">
+                      {vp.n}
+                    </span>
+                  </div>
+                  <div className="col-span-10 md:col-span-5">
+                    <h4 className="font-display text-3xl font-extrabold leading-tight md:text-4xl">
+                      {vp.k}
+                    </h4>
+                  </div>
+                  <div className="col-span-12 md:col-span-6">
+                    <p className="max-w-md text-base leading-relaxed text-ink/75">
+                      {vp.v}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </div>
+          </ol>
+        </div>
+      </div>
+
+      {/* What we build together */}
+      <div className="mt-24 bg-cream-warm py-20 md:mt-32 md:py-28">
+        <div className="container">
+          <div className="border-t-2 border-ink pt-8 md:pt-10">
+            <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
+              <div className="col-span-12 md:col-span-8">
+                <p className="overline text-tomato">§ 07, Possibilities</p>
+                <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92] tracking-[0.005em]">
+                  What we build
+                  <br />
+                  <span className="text-ink-soft">together.</span>
+                </h3>
+              </div>
+              <div className="col-span-12 md:col-span-4 md:pl-8">
+                <p className="text-base leading-relaxed text-ink/70 md:text-lg">
+                  Five formats we know how to run, and a hundred more we'd love to invent with you.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 gap-5 md:mt-16 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              { k: "Global Moments", v: "Large-scale activations across hundreds of cities, built to create shared global experiences." },
+              { k: "Local Takeovers", v: "City-by-city brand presence through trusted neighborhood pizzerias." },
+              { k: "Builder Collaborations", v: "Hackathons, product integrations, and experimental launches with founders and developers." },
+              { k: "Cultural Programming", v: "Artist residencies, food and culture crossovers, and community-led events." },
+              { k: "Experimental Activations", v: "NFC pizza boxes, AR experiences, AI-generated menus, and unexpected formats." },
+            ].map((b, i) => (
+              <article
+                key={b.k}
+                className="group rounded-2xl border border-ink/15 bg-cream p-7 transition-all duration-300 hover:-translate-y-1 hover:border-tomato hover:shadow-[0_18px_50px_-24px_hsl(var(--ink)/0.3)] md:p-8"
+              >
+                <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-tomato">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h4 className="font-display mt-4 text-2xl font-extrabold leading-tight transition-colors group-hover:text-tomato md:text-3xl">
+                  {b.k}
+                </h4>
+                <div className="mt-5 border-t border-ink/15" />
+                <p className="mt-4 text-base leading-relaxed text-ink/75">
+                  {b.v}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* What we've built */}
+      <div className="container mt-24 md:mt-32">
+        <div className="border-t-2 border-ink pt-8 md:pt-10">
+          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
+            <div className="col-span-12 md:col-span-8">
+              <p className="overline text-tomato">§ 08, Proof</p>
+              <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92] tracking-[0.005em]">
+                What we've
+                <br />
+                <span className="text-ink-soft">built.</span>
+              </h3>
+            </div>
+            <div className="col-span-12 md:col-span-4 md:pl-8">
+              <p className="text-base leading-relaxed text-ink/70 md:text-lg">
+                A few programs we're proud of. Each one community-led, partner-supported, and built to last beyond the launch.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
+          {[
+            {
+              partner: "Bitcoin Pizza Day",
+              headline: "300 cities. One day. One shared moment.",
+              points: [
+                "Global activation across 100+ countries",
+                "20K+ attendees",
+                "Earned media + community reach",
+              ],
+            },
+            {
+              partner: "Independent Pizzeria Fund",
+              headline: "$250K routed directly to neighborhood operators.",
+              points: [
+                "Direct economic impact",
+                "Community trust",
+                "Local distribution",
+              ],
+            },
+            {
+              partner: "Arts Residency",
+              headline: "12 artists. 6 cities. One network.",
+              points: [
+                "Cultural programming",
+                "Creator-led engagement",
+                "Long-tail content",
+              ],
+            },
+          ].map((c) => (
+            <article
+              key={c.partner}
+              className="rounded-2xl bg-cream p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-28px_hsl(var(--ink)/0.3)] md:p-10"
+            >
+              <div className="ui text-[11px] font-semibold uppercase tracking-[0.18em] text-tomato">
+                {c.partner}
+              </div>
+              <h4 className="font-display mt-4 text-2xl font-extrabold leading-tight md:text-3xl">
+                {c.headline}
+              </h4>
+              <ul className="mt-6 space-y-2">
+                {c.points.map((p) => (
+                  <li key={p} className="flex gap-3 text-sm leading-relaxed text-ink/75">
+                    <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-tomato" />
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      {/* CTA band, warm butter */}
+      <div className="mt-20 bg-butter pb-20 md:mt-28 md:pb-32">
+        <div className="container pt-16 md:pt-20">
+          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
+            <div className="col-span-12 md:col-span-8">
+              <p className="overline text-tomato">Bespoke programs</p>
+              <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.95]">
+                Let's build something
+                <br />
+                <span className="text-tomato">people actually show up to.</span>
+              </h3>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-ink/75 md:text-lg">
+                Tell us what you're trying to do. We'll help shape it into something worth showing up for.
+              </p>
+            </div>
+            <div className="col-span-12 flex flex-col gap-3 md:col-span-4 md:items-end">
+              <a
+                href="mailto:partnerships@pizzadao.org"
+                className="btn-pill-lg bg-tomato text-cream shadow-[0_14px_40px_-16px_hsl(var(--tomato)/0.7)] hover:bg-ink"
+              >
+                Start a partnership brief →
+              </a>
+              <a
+                href="#"
+                className="btn-pill-lg border border-ink/60 text-ink hover:bg-ink hover:text-cream"
+              >
+                Download partner deck
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Sponsorship;
