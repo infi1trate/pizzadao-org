@@ -121,7 +121,7 @@ const Transmission = () => {
               Discord
             </a>
             <a
-              href="https://x.com/pizzadao"
+              href="https://x.com/pizza_dao"
               target="_blank"
               rel="noreferrer"
               className="ui text-sm text-ink/80 transition-colors hover:text-tomato"
@@ -300,7 +300,7 @@ const Transmission = () => {
               Discord
             </a>
             <a
-              href="https://x.com/pizzadao"
+              href="https://x.com/pizza_dao"
               target="_blank"
               rel="noreferrer"
               className="hover:text-tomato"
