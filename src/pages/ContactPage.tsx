@@ -19,7 +19,7 @@ const CHANNELS: { k: string; v: string; href: string; note: string }[] = [
   {
     k: "Discord",
     v: "Walk into the kitchen",
-    href: "https://discord.gg/QX8BPj5m3S",
+    href: "https://discord.pizzadao.xyz/",
     note: "The fastest way to meet the crew. Open chats, open doors.",
   },
   {
