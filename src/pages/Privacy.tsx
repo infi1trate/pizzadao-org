@@ -125,6 +125,60 @@ const sections: LegalSection[] = [
     ),
   },
   {
+    id: "sms-mms",
+    title: "SMS & MMS communications",
+    body: (
+      <>
+        <p>
+          PizzaDAO operates the "Share Your Slice" messaging experience as
+          part of Global Pizza Party and related community programs. You may
+          voluntarily opt in to receive SMS/MMS communications from
+          PizzaDAO by texting our publicly advertised phone number, or by
+          voluntarily submitting pizza photos to that number via SMS/MMS.
+        </p>
+        <p>Messages you receive from us may include:</p>
+        <ul className="list-disc space-y-2 pl-6 marker:text-tomato">
+          <li>Submission confirmations.</li>
+          <li>Moderation notifications about your submitted content.</li>
+          <li>Participation-related updates.</li>
+          <li>Livestream and community interaction notifications.</li>
+          <li>Global Pizza Party related communications.</li>
+        </ul>
+        <p>
+          Message frequency varies. Message and data rates may apply. You
+          may reply <strong className="text-ink">STOP</strong> at any time
+          to unsubscribe, or reply{" "}
+          <strong className="text-ink">HELP</strong> for assistance.
+        </p>
+        <p>
+          Your mobile information — including your phone number and the
+          fact that you opted in — will not be shared with third parties or
+          affiliates for marketing or promotional purposes. SMS consent is
+          not transferred, sold, or shared with third parties. PizzaDAO only
+          uses submitted phone numbers to operate the intended messaging
+          experience described above and the related{" "}
+          <a
+            href="/terms"
+            className="border-b border-ink/40 text-ink hover:border-tomato hover:text-tomato"
+          >
+            Terms of Use
+          </a>
+          .
+        </p>
+        <p>
+          For SMS support or assistance, email{" "}
+          <a
+            href="mailto:hello@pizzadao.org"
+            className="border-b border-ink/40 text-ink hover:border-tomato hover:text-tomato"
+          >
+            hello@pizzadao.org
+          </a>
+          .
+        </p>
+      </>
+    ),
+  },
+  {
     id: "your-rights",
     title: "Your rights",
     body: (
