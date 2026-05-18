@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Check, Copy, RefreshCw, Search, Sparkles, X } from "lucide-react";
 import logoDark from "@/assets/logo-dark.svg";
 import { MAFIA_FILMS, PIZZA_TOPPINGS, TOPPING_EMOJI, type MafiaFilm } from "@/data/mafia-films";
+import { TOPPING_IMAGE } from "@/data/topping-images";
 import FilmPoster from "@/components/FilmPoster";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
@@ -313,16 +314,34 @@ const MafiaNamePage = () => {
             </div>
 
             <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-              {filteredToppings.map((t) => (
-                <button
-                  key={t}
-                  onClick={() => handleSelectTopping(t)}
-                  className="group flex flex-col items-start gap-3 rounded-2xl border border-ink/15 bg-card p-5 text-left transition-all hover:-translate-y-0.5 hover:border-tomato hover:shadow-[0_14px_30px_-18px_hsl(0_93%_60%/0.4)]"
-                >
-                  <span className="text-3xl leading-none">{TOPPING_EMOJI[t] ?? "🍕"}</span>
-                  <span className="font-display text-lg font-black leading-tight">{t}</span>
-                </button>
-              ))}
+              {filteredToppings.map((t) => {
+                const img = TOPPING_IMAGE[t];
+                return (
+                  <button
+                    key={t}
+                    onClick={() => handleSelectTopping(t)}
+                    className="group flex flex-col items-stretch gap-3 overflow-hidden rounded-2xl border border-ink/15 bg-card p-3 text-left transition-all hover:-translate-y-0.5 hover:border-tomato hover:shadow-[0_14px_30px_-18px_hsl(0_93%_60%/0.4)]"
+                  >
+                    <div className="relative aspect-square overflow-hidden rounded-xl bg-ink/5">
+                      {img ? (
+                        <img
+                          src={img}
+                          alt={t}
+                          loading="lazy"
+                          width={512}
+                          height={512}
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center text-4xl">
+                          {TOPPING_EMOJI[t] ?? "🍕"}
+                        </div>
+                      )}
+                    </div>
+                    <span className="px-2 pb-1 font-display text-base font-black leading-tight">{t}</span>
+                  </button>
+                );
+              })}
 
               {toppingQuery.trim() && !PIZZA_TOPPINGS.some((t) => t.toLowerCase() === toppingQuery.trim().toLowerCase()) && (
                 <button
