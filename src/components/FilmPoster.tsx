@@ -1,4 +1,5 @@
 import { type MafiaFilm } from "@/data/mafia-films";
+import { useFilmPoster } from "@/hooks/use-film-poster";
 
 // Pick a tone-driven palette so each "poster" feels distinct without external assets.
 const PALETTES: Array<{ keys: string[]; from: string; via: string; to: string; accent: string; ink: string }> = [
@@ -53,6 +54,8 @@ export const FilmPoster = ({ film, index }: Props) => {
   const words = film.title.replace(/^The\s+/i, "").split(/\s+/);
   const stacked = words.length >= 2 && film.title.length <= 28;
 
+  const { src: posterSrc, loaded, onLoaded } = useFilmPoster(film.id);
+
   return (
     <div
       aria-hidden
@@ -61,6 +64,23 @@ export const FilmPoster = ({ film, index }: Props) => {
         backgroundImage: `linear-gradient(${angle}deg, ${p.from}, ${p.via} 55%, ${p.to})`,
       }}
     >
+      {posterSrc && (
+        <img
+          src={posterSrc}
+          alt=""
+          loading="lazy"
+          onLoad={onLoaded}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
+        />
+      )}
+      {posterSrc && loaded && (
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `linear-gradient(180deg, ${p.from}00 35%, ${p.from}cc 100%)`,
+          }}
+        />
+      )}
       {/* Soft glow */}
       <div
         className="absolute inset-0"
