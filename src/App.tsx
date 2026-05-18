@@ -11,6 +11,8 @@ import CommunityPage from "./pages/CommunityPage.tsx";
 import BrandSystemPage from "./pages/BrandSystemPage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
 import Transmission from "./pages/Transmission.tsx";
+import TransmissionDemo from "./pages/TransmissionDemo.tsx";
+import MafiaNamePage from "./pages/MafiaNamePage.tsx";
 import Privacy from "./pages/Privacy.tsx";
 import Terms from "./pages/Terms.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -34,6 +36,8 @@ const App = () => (
           <Route path="/" element={<Navigate to="/pre-launch" replace />} />
 
           {/* Everything else is gated */}
+          <Route path="/pre-launch-demo" element={<PasswordGate><TransmissionDemo /></PasswordGate>} />
+          <Route path="/get-your-mafia-name" element={<PasswordGate><MafiaNamePage /></PasswordGate>} />
           <Route path="/home" element={<PasswordGate><Index /></PasswordGate>} />
           <Route path="/about" element={<PasswordGate><About /></PasswordGate>} />
           <Route path="/partners" element={<PasswordGate><PartnersPage /></PasswordGate>} />

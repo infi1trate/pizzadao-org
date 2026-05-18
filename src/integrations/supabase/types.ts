@@ -134,6 +134,42 @@ export type Database = {
         }
         Relationships: []
       }
+      mafia_name_claims: {
+        Row: {
+          contact_handle: string | null
+          created_at: string
+          generated_names: Json
+          id: string
+          selected_explanation: string | null
+          selected_movie_id: string | null
+          selected_movie_title: string
+          selected_name: string
+          selected_topping: string
+        }
+        Insert: {
+          contact_handle?: string | null
+          created_at?: string
+          generated_names?: Json
+          id?: string
+          selected_explanation?: string | null
+          selected_movie_id?: string | null
+          selected_movie_title: string
+          selected_name: string
+          selected_topping: string
+        }
+        Update: {
+          contact_handle?: string | null
+          created_at?: string
+          generated_names?: Json
+          id?: string
+          selected_explanation?: string | null
+          selected_movie_id?: string | null
+          selected_movie_title?: string
+          selected_name?: string
+          selected_topping?: string
+        }
+        Relationships: []
+      }
       suppressed_emails: {
         Row: {
           created_at: string
