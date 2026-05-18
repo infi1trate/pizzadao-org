@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Check, Copy, RefreshCw, Search, Sparkles, X } from "lucide-react";
 import logoDark from "@/assets/logo-dark.svg";
 import { MAFIA_FILMS, PIZZA_TOPPINGS, TOPPING_EMOJI, type MafiaFilm } from "@/data/mafia-films";
+import FilmPoster from "@/components/FilmPoster";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 
@@ -242,29 +243,10 @@ const MafiaNamePage = () => {
                 <button
                   key={f.id}
                   onClick={() => handleSelectFilm(f)}
-                  className="group relative flex aspect-[2/3] flex-col justify-between overflow-hidden rounded-2xl border border-ink/10 bg-ink p-4 text-left text-cream transition-all hover:border-tomato hover:shadow-[0_18px_40px_-20px_hsl(0_93%_60%/0.5)]"
+                  className="group relative flex aspect-[2/3] overflow-hidden rounded-2xl border border-ink/10 bg-ink text-left text-cream transition-all hover:-translate-y-0.5 hover:border-tomato hover:shadow-[0_18px_40px_-20px_hsl(0_93%_60%/0.5)]"
                 >
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 opacity-50 transition-opacity group-hover:opacity-70"
-                    style={{
-                      background:
-                        "radial-gradient(120% 80% at 0% 0%, hsl(46 100% 62% / 0.18), transparent 60%), radial-gradient(100% 80% at 100% 100%, hsl(0 93% 60% / 0.25), transparent 65%)",
-                    }}
-                  />
-                  <div className="relative">
-                    <p className="ui text-[10px] uppercase tracking-[0.25em] text-cream/55">
-                      § {String(MAFIA_FILMS.indexOf(f) + 1).padStart(2, "0")}
-                    </p>
-                  </div>
-                  <div className="relative">
-                    <h3 className="font-display text-[clamp(1.1rem,1.6vw,1.5rem)] font-black leading-[0.95] tracking-tight">
-                      {f.title}
-                    </h3>
-                    <p className="ui mt-2 text-[11px] uppercase tracking-[0.22em] text-cream/60">
-                      {f.year} · {f.country}
-                    </p>
-                  </div>
+                  <FilmPoster film={f} index={MAFIA_FILMS.indexOf(f)} />
+                  <span className="pointer-events-none absolute inset-0 ring-0 ring-tomato/0 transition group-hover:ring-2 group-hover:ring-tomato/60 rounded-2xl" />
                 </button>
               ))}
 
