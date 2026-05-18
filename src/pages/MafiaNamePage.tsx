@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Check, Copy, RefreshCw, Search, Sparkles, X } from "lucide-react";
 import logoDark from "@/assets/logo-dark.svg";
 import { MAFIA_FILMS, PIZZA_TOPPINGS, TOPPING_EMOJI, type MafiaFilm } from "@/data/mafia-films";
+import FilmPoster from "@/components/FilmPoster";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 
