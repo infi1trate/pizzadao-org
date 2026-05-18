@@ -185,7 +185,7 @@ const sections: LegalSection[] = [
         </a>{" "}
         or find us in the{" "}
         <a
-          href="https://discord.gg/pizzadao"
+          href="https://discord.pizzadao.xyz/"
           target="_blank"
           rel="noreferrer"
           className="border-b border-ink/40 text-ink hover:border-tomato hover:text-tomato"

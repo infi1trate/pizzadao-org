@@ -352,7 +352,7 @@ const LegalLayout = ({
                     hello@pizzadao.org
                   </a>
                   <a
-                    href="https://discord.gg/pizzadao"
+                    href="https://discord.pizzadao.xyz/"
                     target="_blank"
                     rel="noreferrer"
                     className="btn-pill justify-center border border-ink/20 bg-transparent text-ink hover:border-tomato hover:text-tomato sm:justify-start"

@@ -113,7 +113,7 @@ const Transmission = () => {
           </Link>
           <nav className="flex items-center gap-6 md:gap-8">
             <a
-              href="https://discord.gg/pizzadao"
+              href="https://discord.pizzadao.xyz/"
               target="_blank"
               rel="noreferrer"
               className="ui text-sm text-ink/80 transition-colors hover:text-tomato"
@@ -153,7 +153,7 @@ const Transmission = () => {
 
             <div className="mt-8 flex flex-col gap-3">
               <a
-                href="https://discord.gg/pizzadao"
+                href="https://discord.pizzadao.xyz/"
                 target="_blank"
                 rel="noreferrer"
                 className="btn-pill-lg group bg-ink text-cream shadow-[0_8px_24px_-12px_hsl(0_0%_4%/0.4)] hover:bg-tomato"
@@ -272,7 +272,7 @@ const Transmission = () => {
           </div>
           <div className="col-span-12 flex items-end md:col-span-5 md:justify-end">
             <a
-              href="https://discord.gg/pizzadao"
+              href="https://discord.pizzadao.xyz/"
               target="_blank"
               rel="noreferrer"
               className="btn-pill-lg group bg-ink text-cream hover:bg-tomato"
@@ -292,7 +292,7 @@ const Transmission = () => {
           </span>
           <div className="ui flex items-center gap-6 text-[11px] uppercase tracking-[0.22em]">
             <a
-              href="https://discord.gg/pizzadao"
+              href="https://discord.pizzadao.xyz/"
               target="_blank"
               rel="noreferrer"
               className="hover:text-tomato"
