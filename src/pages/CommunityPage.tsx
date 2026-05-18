@@ -558,7 +558,7 @@ const CommunityPage = () => {
           <div className="aspect-[4/3] w-full">
             <iframe
               title="PizzaDAO Google Calendar"
-              src="https://calendar.google.com/calendar/embed?src=en.usa%23holiday%40group.v.calendar.google.com&ctz=UTC"
+              src="https://calendar.google.com/calendar/embed?src=lolibebt0pv7da9lv35dviqasg%40group.calendar.google.com&ctz=UTC"
               className="h-full w-full border-0"
               loading="lazy"
             />
