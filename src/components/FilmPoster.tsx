@@ -1,4 +1,5 @@
 import { type MafiaFilm } from "@/data/mafia-films";
+import { useFilmPoster } from "@/hooks/use-film-poster";
 
 // Pick a tone-driven palette so each "poster" feels distinct without external assets.
 const PALETTES: Array<{ keys: string[]; from: string; via: string; to: string; accent: string; ink: string }> = [
