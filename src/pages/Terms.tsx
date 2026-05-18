@@ -112,6 +112,66 @@ const sections: LegalSection[] = [
     ),
   },
   {
+    id: "sms-mms",
+    title: "SMS & MMS terms",
+    body: (
+      <>
+        <p>
+          The "Share Your Slice" messaging experience lets you participate
+          in Global Pizza Party and related PizzaDAO programs by text
+          message. Participation is entirely voluntary. By texting the
+          publicly advertised PizzaDAO phone number, you consent to receive
+          automated SMS/MMS communications from PizzaDAO related to your
+          participation, as further described in our{" "}
+          <a
+            href="/privacy"
+            className="border-b border-ink/40 text-ink hover:border-tomato hover:text-tomato"
+          >
+            Privacy Policy
+          </a>
+          .
+        </p>
+        <p>
+          Pizza photos, captions, usernames, city names, and related content
+          you submit by SMS/MMS may appear in:
+        </p>
+        <ul className="list-disc space-y-2 pl-6 marker:text-tomato">
+          <li>Livestreams and livestream overlays.</li>
+          <li>Moderation dashboards used by PizzaDAO contributors.</li>
+          <li>Community galleries on PizzaDAO surfaces.</li>
+          <li>PizzaDAO social content.</li>
+          <li>Global Pizza Party experiences, online and in person.</li>
+        </ul>
+        <p>
+          You retain ownership of the content you submit. By submitting it,
+          you grant PizzaDAO a non-exclusive, worldwide, royalty-free right
+          to display, reproduce, and distribute that content in connection
+          with Global Pizza Party and PizzaDAO community experiences.
+        </p>
+        <p>
+          PizzaDAO reserves the right to moderate, reject, or remove any
+          submission at its discretion. Submissions containing illegal,
+          hateful, abusive, explicit, spam, fraudulent, or non-pizza-related
+          content may be rejected or removed, and repeated violations may
+          result in the sender being blocked from the experience.
+        </p>
+        <p>
+          Message frequency varies. Message and data rates may apply. Reply{" "}
+          <strong className="text-ink">STOP</strong> at any time to
+          unsubscribe, or reply <strong className="text-ink">HELP</strong>{" "}
+          for assistance. For support, email{" "}
+          <a
+            href="mailto:hello@pizzadao.org"
+            className="border-b border-ink/40 text-ink hover:border-tomato hover:text-tomato"
+          >
+            hello@pizzadao.org
+          </a>
+          .
+        </p>
+      </>
+    ),
+  },
+  {
     id: "third-party",
     title: "Third-party links and tools",
     body: (
