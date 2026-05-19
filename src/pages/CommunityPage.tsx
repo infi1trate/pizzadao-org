@@ -145,25 +145,28 @@ const CommunityPage = () => {
             <div className="col-span-12 md:col-span-5">
               <p className="overline text-butter">Manifesto</p>
               <h2 className="font-display mt-5 text-[clamp(2.75rem,7vw,5.5rem)] font-extrabold leading-[0.88] tracking-[-0.01em]">
-                Show up.
+                A community
                 <br />
-                <span className="text-tomato">Make something.</span>
+                that <span className="text-tomato handwritten text-[0.78em] align-middle">actually</span>
                 <br />
-                Feed someone.
+                does stuff.
               </h2>
             </div>
             <div className="col-span-12 md:col-span-6 md:col-start-7">
               <p className="text-lg leading-relaxed text-cream/85 md:text-xl">
-                There is no application form. No tier system. No premium tier.
-                The Mafia is whoever decides to do the work this week. Some
-                members ship code. Some ship pizza. Most do both.
+                A DAO is a group of people coordinating around shared ownership,
+                creativity, and action — without waiting for permission. PizzaDAO
+                pools resources from its members and partners, then funds
+                experiments, events, tools, and public goods proposed by the
+                community itself. The "work" is whatever members decide to build
+                together this week.
               </p>
               <ul className="mt-10 space-y-4 border-t border-cream/20 pt-8">
                 {[
-                  "Anyone can propose a project.",
-                  "Anyone can run a chapter.",
-                  "Money flows to whoever does the work.",
-                  "Credit goes to the city, not the founder.",
+                  "Anyone can propose an experiment.",
+                  "Anyone can open a chapter in their city.",
+                  "Funding follows ideas the community backs.",
+                  "Tools, art, and events stay open and remixable.",
                 ].map((r, i) => (
                   <li
                     key={r}
@@ -191,13 +194,13 @@ const CommunityPage = () => {
               {[
                 "60+ chapters",
                 "3,000+ members",
-                "12 events this week",
-                "47 open projects",
+                "Events every week",
+                "Open experiments",
                 "No fees",
                 "No tiers",
                 "Anyone can host",
-                "Money flows to the work",
-                "Credit to the city",
+                "Anyone can propose",
+                "Funding follows ideas",
               ].map((t) => (
                 <span
                   key={`${k}-${t}`}
@@ -212,24 +215,24 @@ const CommunityPage = () => {
         </div>
       </div>
 
-      {/* WAYS IN, participatory grid */}
+      {/* WAYS TO PARTICIPATE, participatory grid */}
       <section id="ways-in" className="bg-cream py-16 md:py-24">
         <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
               <div className="col-span-12 md:col-span-7">
-                <p className="overline text-tomato">§ C.01, What members actually do</p>
+                <p className="overline text-tomato">§ C.01, Ways to participate</p>
                 <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
-                  Six things.
+                  Find your lane.
                   <br />
-                  Start with one.
+                  <span className="handwritten text-tomato text-[0.55em] align-middle">show up</span> however fits.
                 </h2>
               </div>
               <div className="col-span-12 md:col-span-5 md:pl-8">
                 <p className="text-base leading-relaxed text-ink/75 md:text-lg">
-                  No ambiguity. No tier system. No application form. These are
-                  the six things members are doing right now, in cities all over
-                  the world. Pick the one you can start this week.
+                  No application form. No tier system. Pick a lane that fits the
+                  time and energy you have this week. Most members end up doing
+                  more than one.
                 </p>
               </div>
             </div>
@@ -241,41 +244,32 @@ const CommunityPage = () => {
               return (
                 <article
                   key={w.title}
-                  className="group relative flex flex-col bg-cream p-8 transition-all duration-300 hover:-translate-y-1 hover:bg-butter hover:shadow-[0_24px_60px_-20px_hsl(var(--ink)/0.35)] md:p-10"
+                  className="group relative flex flex-col bg-cream p-7 transition-all duration-300 hover:-translate-y-1 hover:bg-butter hover:shadow-[0_24px_60px_-20px_hsl(var(--ink)/0.35)] md:p-9"
                 >
                   <div className="ui flex items-baseline justify-between text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/55">
                     <span className="rounded-full bg-tomato px-2.5 py-1 text-cream">
                       {w.tag}
                     </span>
                     <span className="tabular-nums">
-                      {String(i + 1).padStart(2, "0")} / 06
+                      {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <div className="mt-8 flex h-14 w-14 items-center justify-center rounded-full border-2 border-ink bg-butter transition-colors group-hover:bg-cream">
-                    <Icon className="h-6 w-6 text-ink" strokeWidth={2.25} />
+                  <div className="mt-7 flex h-12 w-12 items-center justify-center rounded-full border-2 border-ink bg-butter transition-colors group-hover:bg-cream">
+                    <Icon className="h-5 w-5 text-ink" strokeWidth={2.25} />
                   </div>
-                  <h3 className="font-display mt-6 text-2xl font-extrabold leading-[1] md:text-[28px]">
+                  <h3 className="font-display mt-5 text-[22px] font-extrabold leading-[1.05] md:text-2xl">
                     {w.title}
                   </h3>
+                  <p className="mt-3 text-[15px] leading-snug text-ink/75">
+                    {w.one}
+                  </p>
 
-                  <dl className="mt-7 flex-1 space-y-5">
-                    {[
-                      { k: "What it looks like", v: w.looksLike },
-                      { k: "What you actually do", v: w.youDo },
-                      { k: "Why people enjoy it", v: w.whyEnjoy },
-                    ].map((row) => (
-                      <div key={row.k}>
-                        <dt className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
-                          {row.k}
-                        </dt>
-                        <dd className="mt-1.5 text-[15px] leading-relaxed text-ink/80">
-                          {row.v}
-                        </dd>
-                      </div>
-                    ))}
-                  </dl>
+                  {/* Hover reveal */}
+                  <div className="mt-4 max-h-0 overflow-hidden text-[14px] leading-relaxed text-ink/70 opacity-0 transition-all duration-300 group-hover:max-h-32 group-hover:opacity-100">
+                    {w.more}
+                  </div>
 
-                  <div className="mt-9 flex items-center justify-end border-t border-ink/15 pt-5">
+                  <div className="mt-6 flex items-center justify-end border-t border-ink/15 pt-4">
                     <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
                 </article>
@@ -284,6 +278,7 @@ const CommunityPage = () => {
           </div>
         </div>
       </section>
+
 
 
       {/* THIS WEEK, stylized weekly calendar + featured events */}
