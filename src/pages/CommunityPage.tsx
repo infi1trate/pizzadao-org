@@ -148,7 +148,7 @@ const CommunityPage = () => {
               <h2 className="font-display mt-5 text-[clamp(2.75rem,7vw,5.5rem)] font-extrabold leading-[0.88] tracking-[-0.01em]">
                 A community
                 <br />
-                that <span className="text-tomato handwritten text-[0.78em] align-middle">actually</span>
+                that <span className="handwritten relative inline-block text-tomato text-[1.05em] leading-[0.75] -mr-1 translate-y-[0.08em] -rotate-[4deg] align-baseline">actually</span>
                 <br />
                 does stuff.
               </h2>
