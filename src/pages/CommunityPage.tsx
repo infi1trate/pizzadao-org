@@ -1173,7 +1173,21 @@ type CalEvent = {
   title: string;
   location: string;
   description: string;
+  recurring?: boolean;
 };
+
+const eventTags = (ev: CalEvent): string[] => {
+  const loc = (ev.location || "").toLowerCase();
+  const desc = (ev.description || "").toLowerCase();
+  const onlineHints = ["http", "zoom", "meet.google", "google meet", "online", "discord", "twitch", "x.com", "youtube", "stream"];
+  const isOnline = onlineHints.some((h) => loc.includes(h) || desc.includes(h));
+  const tags: string[] = [];
+  if (isOnline) tags.push("online");
+  else if (ev.location?.trim()) tags.push("IRL");
+  if (ev.recurring) tags.push("recurring");
+  return tags;
+};
+
 
 const DAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
