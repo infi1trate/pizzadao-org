@@ -745,45 +745,6 @@ const CommunityPage = () => {
       </section>
 
 
-      {/* WEEKLY RHYTHM, structured ledger */}
-      <section className="bg-ink py-16 text-cream md:py-24">
-        <div className="container">
-          <div className="grid grid-cols-12 gap-x-6 gap-y-10">
-            <div className="col-span-12 md:col-span-5">
-              <p className="overline text-butter">§ C.07, Weekly rhythm</p>
-              <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
-                The week,
-                <br />
-                <span className="text-butter">on repeat.</span>
-              </h2>
-              <p className="mt-6 max-w-sm text-base leading-relaxed text-cream/80 md:text-lg">
-                Most of the work happens in public. These are the four moments
-                you can count on every week, in every timezone.
-              </p>
-            </div>
-            <div className="col-span-12 md:col-span-7 md:pl-8">
-              <ul className="border-t border-cream/20">
-                {RITUALS.map((r, i) => (
-                  <li
-                    key={r.k}
-                    className="grid grid-cols-12 items-baseline gap-x-6 border-b border-cream/15 py-6 md:py-8"
-                  >
-                    <span className="ui col-span-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-butter md:col-span-2">
-                      {r.k}
-                    </span>
-                    <span className="font-display col-span-9 text-xl font-extrabold leading-snug md:col-span-9 md:text-2xl">
-                      {r.v}
-                    </span>
-                    <span className="ui col-span-1 text-right text-[10px] tabular-nums text-cream/40">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* OPEN CALLS, participatory needs */}
       <section className="bg-cream py-16 md:py-24">
