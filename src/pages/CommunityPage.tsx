@@ -1415,135 +1415,182 @@ const formatDayTime = (iso: string) => {
   return `${day} · ${time}`;
 };
 
-const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => (
-  <section className="relative overflow-hidden bg-cream py-16 md:py-24">
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0"
-      style={{
-        background:
-          "radial-gradient(50% 60% at 15% 0%, hsl(var(--butter) / 0.45), transparent 70%)",
-      }}
-    />
-    <div className="grain pointer-events-none absolute inset-0" aria-hidden />
+const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => {
+  const { events, loading } = useCalendarEvents();
+  const week = useMemo(() => buildWeek(events), [events]);
+  const featured = events.slice(0, 3);
 
-    <div className="container relative">
-      <div className="border-t-2 border-ink pt-8 md:pt-10">
-        <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
-          <div className="col-span-12 md:col-span-8">
-            <p className="overline text-tomato">§ C.04, This week in PizzaDAO</p>
-            <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
-              This week
-              <br />
-              <span className="text-tomato">in PizzaDAO.</span>
-            </h2>
-          </div>
-          <div className="col-span-12 md:col-span-4 md:pl-8">
-            <p className="text-base leading-relaxed text-ink/75 md:text-lg">
-              Open calls, chapter syncs, long tables. The shared rhythm
-              that holds the Mafia together — pinned for the next seven days.
-            </p>
-          </div>
-        </div>
-      </div>
+  const today = new Date();
+  const monthLabel = today.toLocaleDateString([], { month: "short" });
+  const weekStart = today.getDate();
+  const weekEndDate = new Date(today);
+  weekEndDate.setDate(today.getDate() + 6);
+  const weekEnd = weekEndDate.getDate();
 
-      <div className="mt-12 grid grid-cols-12 gap-6 md:mt-16 md:gap-8">
-        {/* Calendar — printed poster aesthetic */}
-        <div className="col-span-12 md:col-span-5">
-          <div
-            className="relative rounded-2xl bg-cream-warm p-6 shadow-[0_24px_60px_-30px_hsl(var(--ink)/0.35)] md:p-8"
-            style={{ transform: "rotate(-0.6deg)" }}
-          >
-            <div className="flex items-baseline justify-between">
-              <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/55">
-                Week 19 · May
-              </p>
-              <p className="ui text-[10px] tabular-nums text-ink/40">06 — 12</p>
+  return (
+    <section className="relative overflow-hidden bg-cream py-16 md:py-24">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(50% 60% at 15% 0%, hsl(var(--butter) / 0.45), transparent 70%)",
+        }}
+      />
+      <div className="grain pointer-events-none absolute inset-0" aria-hidden />
+
+      <div className="container relative">
+        <div className="border-t-2 border-ink pt-8 md:pt-10">
+          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
+            <div className="col-span-12 md:col-span-8">
+              <p className="overline text-tomato">§ C.04, This week in PizzaDAO</p>
+              <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
+                This week
+                <br />
+                <span className="text-tomato">in PizzaDAO.</span>
+              </h2>
             </div>
-            <h3 className="font-display mt-3 text-3xl font-extrabold leading-[0.95] md:text-4xl">
-              The shared
-              <br />
-              calendar.
-            </h3>
-
-            <ul className="mt-7 space-y-2">
-              {WEEK_DAYS.map((d) => (
-                <li
-                  key={d.d}
-                  className={`flex items-center gap-4 rounded-xl px-4 py-3 transition-all ${
-                    d.active
-                      ? "bg-butter shadow-[0_8px_24px_-12px_hsl(var(--butter)/0.9)]"
-                      : "bg-cream"
-                  }`}
-                >
-                  <div className="ui w-12 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
-                    {d.d}
-                  </div>
-                  <div className="font-display w-8 text-2xl font-extrabold tabular-nums leading-none">
-                    {d.date}
-                  </div>
-                  <div className="flex-1 text-sm leading-snug text-ink/85">
-                    {d.label || <span className="text-ink/30">—</span>}
-                  </div>
-                  {d.active && (
-                    <span className="h-2 w-2 rounded-full bg-tomato" aria-hidden />
-                  )}
-                </li>
-              ))}
-            </ul>
-
-            <button
-              onClick={onOpenCalendar}
-              className="ui mt-7 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/70 hover:text-tomato"
-            >
-              <CalendarDays className="h-4 w-4" />
-              View full calendar →
-            </button>
+            <div className="col-span-12 md:col-span-4 md:pl-8">
+              <p className="text-base leading-relaxed text-ink/75 md:text-lg">
+                Open calls, chapter syncs, long tables. The shared rhythm
+                that holds the Mafia together — pinned for the next seven days.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Featured events */}
-        <div className="col-span-12 md:col-span-7">
-          <div className="space-y-5">
-            {FEATURED_EVENTS.map((ev, i) => (
-              <article
-                key={ev.title}
-                className="group relative rounded-2xl bg-cream-warm p-6 shadow-[0_18px_40px_-24px_hsl(var(--ink)/0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-22px_hsl(var(--tomato)/0.35)] md:p-8"
-                style={{ transform: `rotate(${(i % 2 === 0 ? 0.4 : -0.5)}deg)` }}
-              >
-                <div className="flex items-baseline justify-between">
-                  <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-tomato">
-                    {ev.day}
-                  </p>
-                  <p className="ui text-[10px] tabular-nums text-ink/40">
-                    Event {String(i + 1).padStart(2, "0")}
-                  </p>
-                </div>
-                <h3 className="font-display mt-4 text-[clamp(1.75rem,2.4vw,2.25rem)] font-extrabold leading-[1] tracking-[-0.005em]">
-                  {ev.title}
-                </h3>
-                <p className="ui mt-2 text-[11px] uppercase tracking-[0.2em] text-ink/55">
-                  {ev.city}
-                </p>
-                <p className="mt-4 text-base leading-relaxed text-ink/80">
-                  {ev.desc}
-                </p>
-                <ArrowUpRight className="absolute right-6 top-6 h-5 w-5 text-ink/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-tomato" />
-              </article>
-            ))}
-
-            <button
-              onClick={onOpenCalendar}
-              className="btn-pill-lg w-full bg-ink text-cream hover:bg-tomato"
+        <div className="mt-12 grid grid-cols-12 gap-6 md:mt-16 md:gap-8">
+          {/* Calendar — printed poster aesthetic */}
+          <div className="col-span-12 md:col-span-5">
+            <div
+              className="relative rounded-2xl bg-cream-warm p-6 shadow-[0_24px_60px_-30px_hsl(var(--ink)/0.35)] md:p-8"
+              style={{ transform: "rotate(-0.6deg)" }}
             >
-              View full calendar
-              <ArrowUpRight className="h-4 w-4" />
-            </button>
+              <div className="flex items-baseline justify-between">
+                <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/55">
+                  Next 7 days · {monthLabel}
+                </p>
+                <p className="ui text-[10px] tabular-nums text-ink/40">
+                  {String(weekStart).padStart(2, "0")} — {String(weekEnd).padStart(2, "0")}
+                </p>
+              </div>
+              <h3 className="font-display mt-3 text-3xl font-extrabold leading-[0.95] md:text-4xl">
+                The shared
+                <br />
+                calendar.
+              </h3>
+
+              {loading ? (
+                <p className="ui mt-7 text-sm text-ink/55">Loading community calendar…</p>
+              ) : (
+                <ul className="mt-7 space-y-2">
+                  {week.map((d, idx) => {
+                    const first = d.events[0];
+                    const more = d.events.length - 1;
+                    const active = d.events.length > 0;
+                    return (
+                      <li
+                        key={`${d.d}-${idx}`}
+                        className={`flex items-center gap-4 rounded-xl px-4 py-3 transition-all ${
+                          active
+                            ? "bg-butter shadow-[0_8px_24px_-12px_hsl(var(--butter)/0.9)]"
+                            : "bg-cream"
+                        }`}
+                      >
+                        <div className="ui w-12 shrink-0 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
+                          {d.d}
+                        </div>
+                        <div className="font-display w-8 shrink-0 text-2xl font-extrabold tabular-nums leading-none">
+                          {d.date}
+                        </div>
+                        <div className="min-w-0 flex-1 text-sm leading-snug text-ink/85">
+                          {first ? (
+                            <span className="block truncate">
+                              {first.title}
+                              {more > 0 && (
+                                <span className="ml-2 text-[11px] text-ink/55">+{more} more</span>
+                              )}
+                            </span>
+                          ) : (
+                            <span className="text-ink/30">—</span>
+                          )}
+                        </div>
+                        {active && (
+                          <span className="h-2 w-2 shrink-0 rounded-full bg-tomato" aria-hidden />
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+
+              <button
+                onClick={onOpenCalendar}
+                className="ui mt-7 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/70 hover:text-tomato"
+              >
+                <CalendarDays className="h-4 w-4" />
+                View full calendar →
+              </button>
+            </div>
+          </div>
+
+          {/* Featured events */}
+          <div className="col-span-12 md:col-span-7">
+            <div className="space-y-5">
+              {loading ? (
+                <div className="rounded-2xl bg-cream-warm p-8 text-ink/55">
+                  Loading community calendar…
+                </div>
+              ) : featured.length === 0 ? (
+                <div className="rounded-2xl bg-cream-warm p-8 text-ink/70">
+                  No upcoming events yet. Check the full calendar.
+                </div>
+              ) : (
+                featured.map((ev, i) => (
+                  <article
+                    key={`${ev.start}-${ev.title}`}
+                    className="group relative rounded-2xl bg-cream-warm p-6 shadow-[0_18px_40px_-24px_hsl(var(--ink)/0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-22px_hsl(var(--tomato)/0.35)] md:p-8"
+                    style={{ transform: `rotate(${(i % 2 === 0 ? 0.4 : -0.5)}deg)` }}
+                  >
+                    <div className="flex items-baseline justify-between">
+                      <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-tomato">
+                        {formatDayTime(ev.start)}
+                      </p>
+                      <p className="ui text-[10px] tabular-nums text-ink/40">
+                        Event {String(i + 1).padStart(2, "0")}
+                      </p>
+                    </div>
+                    <h3 className="font-display mt-4 break-words text-[clamp(1.5rem,2.4vw,2.25rem)] font-extrabold leading-[1.05] tracking-[-0.005em]">
+                      {ev.title}
+                    </h3>
+                    <p className="ui mt-2 text-[11px] uppercase tracking-[0.2em] text-ink/55">
+                      {ev.location?.trim() || "Location TBD"}
+                    </p>
+                    <p className="mt-4 text-base leading-relaxed text-ink/80">
+                      {ev.description?.trim()
+                        ? ev.description.trim().slice(0, 180) +
+                          (ev.description.trim().length > 180 ? "…" : "")
+                        : "Details coming soon."}
+                    </p>
+                    <ArrowUpRight className="absolute right-6 top-6 h-5 w-5 text-ink/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-tomato" />
+                  </article>
+                ))
+              )}
+
+              <button
+                onClick={onOpenCalendar}
+                className="btn-pill-lg w-full bg-ink text-cream hover:bg-tomato"
+              >
+                View full calendar
+                <ArrowUpRight className="h-4 w-4" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
+
 
 export default CommunityPage;
