@@ -749,76 +749,187 @@ const CommunityPage = () => {
               </div>
               <div className="col-span-12 md:col-span-4 md:pl-8">
                 <p className="text-base leading-relaxed text-cream/80 md:text-lg">
-                  A working sample of what the community is building together —
-                  arcade hardware, payroll tools for hospitality workers,
-                  cryptography experiments, and the event infrastructure that
-                  ran Global Pizza Party 2026.
+                  PizzaDAO is quietly becoming infrastructure for pizza
+                  culture — event tooling, payroll experiments, cryptography
+                  research, and the arcade hardware that travels between
+                  chapters.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-5 md:mt-14 md:grid-cols-2 md:gap-6">
-            {BUILDS.map((b, i) => (
-              <article
-                key={b.name}
-                className="group relative flex flex-col overflow-hidden rounded-2xl bg-cream text-ink transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-22px_hsl(var(--tomato)/0.45)]"
-              >
-                {b.img ? (
-                  <div className="relative aspect-[16/10] overflow-hidden bg-ink">
-                    <img
-                      src={b.img}
-                      alt={b.name}
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                    />
-                    <span className="ui absolute left-4 top-4 rounded-full bg-cream/95 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink">
-                      {b.tag}
-                    </span>
-                  </div>
-                ) : (
-                  <div className="relative flex aspect-[16/10] items-end justify-between bg-ink p-7 text-cream">
-                    <span className="font-display text-[clamp(2rem,4vw,3rem)] font-extrabold leading-[0.9] text-butter">
-                      {b.name}
-                    </span>
-                    <span className="ui absolute left-4 top-4 rounded-full bg-butter px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink">
-                      {b.tag}
-                    </span>
-                  </div>
-                )}
+          {(() => {
+            const featured = BUILDS.find((b) => b.featured)!;
+            const featuredIndex = BUILDS.indexOf(featured);
+            const supporting = BUILDS.filter((b) => !b.featured);
+            const tagTone: Record<Build["tag"], string> = {
+              "Live-tested": "bg-tomato text-cream",
+              Hackathon: "bg-butter text-ink",
+              Experiment: "bg-cream text-ink",
+              Arcade: "bg-cream text-ink",
+            };
 
-                <div className="flex flex-1 flex-col p-7 md:p-8">
-                  <div className="ui flex items-baseline justify-between text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/50">
-                    <span className="tabular-nums">
-                      Project {String(i + 1).padStart(2, "0")} / 0{BUILDS.length}
-                    </span>
-                  </div>
-                  <h3 className="font-display mt-3 text-2xl font-extrabold leading-[1.05] md:text-[28px]">
-                    {b.name}
-                  </h3>
-                  <p className="font-display mt-3 text-[17px] font-medium leading-snug text-ink/85">
-                    {b.mission}
-                  </p>
-                  <p className="mt-3 flex-1 text-[15px] leading-relaxed text-ink/70">
-                    {b.context}
-                  </p>
+            return (
+              <>
+                {/* FEATURED PROJECT */}
+                <article className="group relative mt-10 overflow-hidden rounded-3xl bg-cream text-ink shadow-[0_40px_80px_-30px_hsl(var(--tomato)/0.55)] md:mt-14">
+                  <div className="grid grid-cols-1 md:grid-cols-12">
+                    <div className="relative md:col-span-7">
+                      <div className="relative aspect-[16/10] overflow-hidden bg-ink md:aspect-auto md:h-full md:min-h-[420px]">
+                        {featured.img && (
+                          <img
+                            src={featured.img}
+                            alt={featured.name}
+                            loading="lazy"
+                            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                          />
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-ink/55 via-ink/0 to-ink/0" />
+                        <div className="absolute left-5 top-5 flex items-center gap-2">
+                          <span className={`ui rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] ${tagTone[featured.tag]}`}>
+                            {featured.tag}
+                          </span>
+                          <span className="ui rounded-full bg-ink/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-cream backdrop-blur-sm">
+                            Featured project
+                          </span>
+                        </div>
+                      </div>
+                    </div>
 
-                  <button
-                    type="button"
-                    onClick={() => setActiveBuild(i)}
-                    className="mt-6 flex items-center justify-between gap-3 border-t border-ink/15 pt-4 text-left"
-                  >
-                    <span className="ui text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/70 group-hover:text-tomato">
-                      Read more
-                    </span>
-                    <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </button>
+                    <div className="flex flex-col justify-between p-7 md:col-span-5 md:p-10">
+                      <div>
+                        <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-tomato">
+                          Infrastructure · {String(featuredIndex + 1).padStart(2, "0")} / 0{BUILDS.length}
+                        </p>
+                        <h3 className="font-display mt-3 text-[clamp(2rem,3.6vw,2.75rem)] font-extrabold leading-[1] tracking-[-0.01em]">
+                          {featured.name}
+                        </h3>
+                        <p className="font-display mt-4 text-lg font-medium leading-snug text-ink/85 md:text-xl">
+                          {featured.hook}
+                        </p>
+                        <p className="mt-4 text-[15px] leading-relaxed text-ink/70">
+                          {featured.context}
+                        </p>
+
+                        {featured.metric && (
+                          <dl className="mt-6 grid grid-cols-3 gap-4 border-t border-ink/15 pt-5">
+                            {featured.metric.map((m) => (
+                              <div key={m.k}>
+                                <dt className="font-display text-xl font-extrabold leading-none tracking-[-0.01em] text-tomato md:text-2xl">
+                                  {m.k}
+                                </dt>
+                                <dd className="ui mt-2 text-[10px] uppercase leading-snug tracking-[0.18em] text-ink/55">
+                                  {m.v}
+                                </dd>
+                              </div>
+                            ))}
+                          </dl>
+                        )}
+                      </div>
+
+                      <div className="mt-7 flex flex-wrap items-center gap-3">
+                        {featured.demo && (
+                          <a
+                            href={featured.demo}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="ui inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-cream transition-colors hover:bg-tomato"
+                          >
+                            View demo
+                            <ArrowUpRight className="h-4 w-4" />
+                          </a>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => setActiveBuild(featuredIndex)}
+                          className="ui inline-flex items-center gap-2 rounded-full border border-ink/25 px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/80 transition-colors hover:border-ink hover:text-ink"
+                        >
+                          Learn more
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                {/* SUPPORTING PROJECTS */}
+                <div className="mt-6 grid grid-cols-1 gap-5 md:mt-8 md:grid-cols-3 md:gap-6">
+                  {supporting.map((b) => {
+                    const i = BUILDS.indexOf(b);
+                    return (
+                      <article
+                        key={b.name}
+                        className="group relative flex flex-col overflow-hidden rounded-2xl bg-cream text-ink transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-22px_hsl(var(--tomato)/0.45)]"
+                      >
+                        {b.img ? (
+                          <div className="relative aspect-[16/10] overflow-hidden bg-ink">
+                            <img
+                              src={b.img}
+                              alt={b.name}
+                              loading="lazy"
+                              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                            />
+                            <span className={`ui absolute left-4 top-4 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] ${tagTone[b.tag]}`}>
+                              {b.tag}
+                            </span>
+                          </div>
+                        ) : (
+                          <div className="relative flex aspect-[16/10] items-end justify-between bg-ink p-6 text-cream">
+                            <span className="font-display text-[clamp(1.6rem,3vw,2.25rem)] font-extrabold leading-[0.9] text-butter">
+                              {b.name}
+                            </span>
+                            <span className={`ui absolute left-4 top-4 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] ${tagTone[b.tag]}`}>
+                              {b.tag}
+                            </span>
+                          </div>
+                        )}
+
+                        <div className="flex flex-1 flex-col p-6 md:p-7">
+                          <p className="ui text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/50 tabular-nums">
+                            Project {String(i + 1).padStart(2, "0")} / 0{BUILDS.length}
+                          </p>
+                          <h3 className="font-display mt-3 text-xl font-extrabold leading-[1.05] md:text-[22px]">
+                            {b.name}
+                          </h3>
+                          <p className="font-display mt-2 text-[15px] font-medium leading-snug text-ink/85">
+                            {b.hook}
+                          </p>
+                          <p className="mt-3 flex-1 text-[14px] leading-relaxed text-ink/70">
+                            {b.context}
+                          </p>
+
+                          <div className="mt-5 flex items-center justify-between gap-3 border-t border-ink/15 pt-4">
+                            {b.demo ? (
+                              <a
+                                href={b.demo}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="ui inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink transition-colors hover:text-tomato"
+                              >
+                                View demo
+                                <ArrowUpRight className="h-4 w-4" />
+                              </a>
+                            ) : (
+                              <button
+                                type="button"
+                                onClick={() => setActiveBuild(i)}
+                                className="ui inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/75 transition-colors hover:text-tomato"
+                              >
+                                Learn more
+                                <ArrowUpRight className="h-4 w-4" />
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      </article>
+                    );
+                  })}
                 </div>
-              </article>
-            ))}
-          </div>
+              </>
+            );
+          })()}
         </div>
       </section>
+
 
       {/* Project deep-dive modal */}
       <Dialog open={activeBuild !== null} onOpenChange={(o) => !o && setActiveBuild(null)}>
