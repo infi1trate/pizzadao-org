@@ -148,7 +148,7 @@ const CommunityPage = () => {
               <h2 className="font-display mt-5 text-[clamp(2.75rem,7vw,5.5rem)] font-extrabold leading-[0.88] tracking-[-0.01em]">
                 A community
                 <br />
-                that <span className="text-tomato handwritten text-[0.78em] align-middle">actually</span>
+                that <span className="handwritten relative inline-block text-tomato text-[1.05em] leading-[0.75] -mr-1 translate-y-[0.08em] -rotate-[4deg] align-baseline">actually</span>
                 <br />
                 does stuff.
               </h2>
@@ -224,9 +224,9 @@ const CommunityPage = () => {
               <div className="col-span-12 md:col-span-7">
                 <p className="overline text-tomato">§ C.01, Ways to participate</p>
                 <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
-                  Find your lane.
+                  <span className="handwritten relative inline-block text-tomato text-[1.1em] leading-[0.75] -ml-1 translate-y-[0.05em] -rotate-[3deg] align-baseline">find your lane.</span>
                   <br />
-                  <span className="handwritten text-tomato text-[0.55em] align-middle">show up</span> however fits.
+                  Show up however fits.
                 </h2>
               </div>
               <div className="col-span-12 md:col-span-5 md:pl-8">
@@ -393,7 +393,7 @@ const CommunityPage = () => {
                 <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
                   Real projects.
                   <br />
-                  <span className="text-butter handwritten text-[0.55em] align-middle">made by members.</span>
+                  <span className="handwritten relative inline-block text-butter text-[1.05em] leading-[0.75] -ml-1 translate-y-[0.08em] -rotate-[3deg] align-baseline">made by members.</span>
                 </h2>
               </div>
               <div className="col-span-12 md:col-span-4 md:pl-8">
@@ -516,7 +516,7 @@ const CommunityPage = () => {
               <h2 className="font-display mt-3 text-[clamp(1.75rem,3.5vw,2.75rem)] font-extrabold leading-[0.95]">
                 The community,
                 <br />
-                <span className="handwritten text-tomato text-[0.6em]">unedited.</span>
+                <span className="handwritten relative inline-block text-tomato text-[1.15em] leading-[0.75] -ml-0.5 translate-y-[0.08em] -rotate-[3deg] align-baseline">unedited.</span>
               </h2>
             </div>
             <a
@@ -837,7 +837,7 @@ const CommunityPage = () => {
               <div>
                 <p className="overline text-tomato">§ C.09, First step</p>
                 <h2 className="font-display mt-3 text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-[0.95]">
-                  Start <span className="handwritten text-tomato text-[0.7em] align-middle">somewhere.</span>
+                  Start <span className="handwritten relative inline-block text-tomato text-[1.15em] leading-[0.75] -ml-1 translate-y-[0.08em] -rotate-[4deg] align-baseline">somewhere.</span>
                 </h2>
                 <p className="mt-3 max-w-md text-base leading-relaxed text-ink/70">
                   Three low-friction ways in. Pick the one you can do today.
@@ -1043,7 +1043,7 @@ const HeroSection = () => {
                 The Pizza Mafia
                 <br />
                 is built{" "}
-                <span className="handwritten text-tomato text-[0.7em] align-middle">by you.</span>
+                <span className="handwritten relative inline-block text-tomato text-[0.95em] leading-[0.8] -ml-1 -mr-2 translate-y-[0.05em] -rotate-[3deg] align-baseline">by you.</span>
               </h1>
               <p className="font-display mt-6 max-w-2xl text-xl font-medium leading-snug text-ink/75 md:text-2xl">
                 Some people show up for pizza. Some stay and build something bigger.
@@ -1052,7 +1052,7 @@ const HeroSection = () => {
             <div className="col-span-12 md:col-span-4 md:pl-8">
               <p className="text-lg leading-relaxed text-ink/80 md:text-xl">
                 People don't just join PizzaDAO. They host. Build. Create.
-                Feed. Organize. <span className="handwritten text-tomato">show up.</span>
+                Feed. Organize. <span className="handwritten inline-block text-tomato text-[1.25em] leading-none -rotate-[3deg] translate-y-[0.05em]">show up.</span>
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row md:flex-col">
                 <a href="/join" className="btn-pill-lg bg-tomato text-cream hover:bg-ink">
