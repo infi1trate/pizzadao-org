@@ -1537,6 +1537,22 @@ const eventTags = (ev: CalEvent): string[] => {
   return tags;
 };
 
+const stripHtml = (input: string): string => {
+  if (!input) return "";
+  const decoded = input
+    .replace(/<br\s*\/?>(\s*)/gi, "\n")
+    .replace(/<\/p>/gi, "\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
+  return decoded.replace(/\n{3,}/g, "\n\n").trim();
+};
+
+const isUrlish = (s: string) => /^https?:\/\//i.test(s.trim());
 
 const DAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
