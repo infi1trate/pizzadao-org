@@ -219,6 +219,8 @@ const BUILDS: Build[] = [
 const CommunityPage = () => {
   const [calOpen, setCalOpen] = useState(false);
   const [activeBuild, setActiveBuild] = useState<number | null>(null);
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [galleryIndex, setGalleryIndex] = useState(0);
   useEffect(() => {
     document.title = "Community, PizzaDAO";
   }, []);
@@ -969,76 +971,154 @@ const CommunityPage = () => {
         </DialogContent>
       </Dialog>
 
-      {/* COMMUNITY GALLERY, masonry strip */}
-      <section className="bg-cream py-12 md:py-16">
-        <div className="container">
-          <div className="flex items-end justify-between gap-6">
-            <div>
-              <p className="overline text-tomato">§ C.06, From the camera roll</p>
-              <h2 className="font-display mt-3 text-[clamp(1.75rem,3.5vw,2.75rem)] font-extrabold leading-[0.95]">
-                The community,
-                <br />
-                <span className="handwritten relative inline-block text-tomato text-[1.15em] leading-[0.75] -ml-0.5 translate-y-[0.08em] -rotate-[3deg] align-baseline">unedited.</span>
-              </h2>
-            </div>
-            <a
-              href="#"
-              className="ui hidden shrink-0 items-center gap-2 border-b border-ink pb-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/80 transition-colors hover:border-tomato hover:text-tomato md:inline-flex"
-            >
-              Open community gallery
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
+      {/* COMMUNITY GALLERY, masonry strip + MVP modal */}
+      {(() => {
+        const GALLERY = [
+          { img: hands,     cap: "Lagos · open kitchen",       meta: "Apr · @marina_l",   ratio: "4/5", rot: -1.2 },
+          { img: party,     cap: "Berlin · long table",        meta: "Mar · @capo",       ratio: "3/4", rot: 0.8 },
+          { img: hackathon, cap: "Tokyo · demo night",         meta: "Feb · @hiro.eth",   ratio: "1/1", rot: -0.6 },
+          { img: slice,     cap: "Lisbon · slice club, vol.47", meta: "Apr · chapter",    ratio: "5/4", rot: 1.4 },
+          { img: pizzeria,  cap: "Naples · the oven, 03:00",   meta: "Jan · @margherita", ratio: "3/4", rot: -1.8 },
+          { img: community, cap: "CDMX · block party",         meta: "Mar · @donmami",    ratio: "4/5", rot: 0.6 },
+          { img: party,     cap: "Quito · global pizza party", meta: "Sep · chapter",     ratio: "1/1", rot: -1.0 },
+          { img: hackathon, cap: "Amsterdam · the crew",       meta: "Feb · @nlcrew",     ratio: "4/5", rot: 1.1 },
+        ];
+        const openAt = (idx: number) => {
+          setGalleryIndex(idx);
+          setGalleryOpen(true);
+        };
 
-        {/* Masonry strip — varied crops, slight stagger */}
-        <div className="container mt-8 md:mt-10">
-          <div className="columns-2 gap-3 md:columns-4 md:gap-4">
-            {[
-              { img: hands,     cap: "Lagos · open kitchen",    ratio: "4/5",   rot: -1.2 },
-              { img: party,     cap: "Berlin · long table",     ratio: "3/4",   rot: 0.8 },
-              { img: hackathon, cap: "Tokyo · demo night",      ratio: "1/1",   rot: -0.6 },
-              { img: slice,     cap: "Lisbon · slice club",     ratio: "5/4",   rot: 1.4 },
-              { img: pizzeria,  cap: "Naples · the oven, 03:00", ratio: "3/4",  rot: -1.8 },
-              { img: community, cap: "CDMX · block party",      ratio: "4/5",   rot: 0.6 },
-              { img: party,     cap: "Quito · global party",    ratio: "1/1",   rot: -1.0 },
-              { img: hackathon, cap: "Amsterdam · the crew",    ratio: "4/5",   rot: 1.1 },
-            ].map((p, i) => (
-              <figure
-                key={i}
-                className="group mb-3 break-inside-avoid md:mb-4"
-                style={{ transform: `rotate(${p.rot}deg)` }}
-              >
-                <div
-                  className="relative overflow-hidden rounded-xl bg-ink shadow-[0_14px_36px_-22px_hsl(var(--ink)/0.4)] transition-all duration-500 group-hover:z-10 group-hover:scale-[1.06] group-hover:rotate-0 group-hover:shadow-[0_24px_55px_-20px_hsl(var(--tomato)/0.4)]"
-                  style={{ aspectRatio: p.ratio }}
-                >
-                  <img
-                    src={p.img}
-                    alt={p.cap}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                    style={{ objectPosition: i % 2 === 0 ? "30% 40%" : "65% 55%" }}
-                  />
+        return (
+          <section className="bg-cream py-12 md:py-16">
+            <div className="container">
+              <div className="flex items-end justify-between gap-6">
+                <div>
+                  <p className="overline text-tomato">§ C.06, From the camera roll</p>
+                  <h2 className="font-display mt-3 text-[clamp(1.75rem,3.5vw,2.75rem)] font-extrabold leading-[0.95]">
+                    The community,
+                    <br />
+                    <span className="handwritten relative inline-block text-tomato text-[1.15em] leading-[0.75] -ml-0.5 translate-y-[0.08em] -rotate-[3deg] align-baseline">unedited.</span>
+                  </h2>
                 </div>
-                <figcaption className="ui mt-2 text-[10px] uppercase tracking-[0.2em] text-ink/55">
-                  {p.cap}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+                <button
+                  type="button"
+                  onClick={() => openAt(0)}
+                  className="ui hidden shrink-0 items-center gap-2 border-b border-ink pb-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/80 transition-colors hover:border-tomato hover:text-tomato md:inline-flex"
+                >
+                  Open community gallery
+                  <ArrowUpRight className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
 
-          <div className="mt-6 flex justify-center md:hidden">
-            <a
-              href="#"
-              className="ui inline-flex items-center gap-2 border-b border-ink pb-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/80"
-            >
-              Open community gallery
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-      </section>
+            {/* Masonry strip — varied crops, slight stagger */}
+            <div className="container mt-8 md:mt-10">
+              <div className="columns-2 gap-3 md:columns-4 md:gap-4">
+                {GALLERY.map((p, i) => (
+                  <figure
+                    key={i}
+                    className="group mb-3 break-inside-avoid md:mb-4"
+                    style={{ transform: `rotate(${p.rot}deg)` }}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => openAt(i)}
+                      className="block w-full text-left"
+                      aria-label={`Open ${p.cap}`}
+                    >
+                      <div
+                        className="relative overflow-hidden rounded-xl bg-ink shadow-[0_14px_36px_-22px_hsl(var(--ink)/0.4)] transition-all duration-500 group-hover:z-10 group-hover:scale-[1.06] group-hover:rotate-0 group-hover:shadow-[0_24px_55px_-20px_hsl(var(--tomato)/0.4)]"
+                        style={{ aspectRatio: p.ratio }}
+                      >
+                        <img
+                          src={p.img}
+                          alt={p.cap}
+                          loading="lazy"
+                          className="h-full w-full object-cover"
+                          style={{ objectPosition: i % 2 === 0 ? "30% 40%" : "65% 55%" }}
+                        />
+                      </div>
+                      <figcaption className="mt-2 flex items-baseline justify-between gap-3">
+                        <span className="ui text-[10px] uppercase tracking-[0.2em] text-ink/55">
+                          {p.cap}
+                        </span>
+                        <span className="ui hidden text-[10px] uppercase tracking-[0.2em] text-ink/35 md:inline">
+                          {p.meta}
+                        </span>
+                      </figcaption>
+                    </button>
+                  </figure>
+                ))}
+              </div>
+
+              <div className="mt-6 flex justify-center md:hidden">
+                <button
+                  type="button"
+                  onClick={() => openAt(0)}
+                  className="ui inline-flex items-center gap-2 border-b border-ink pb-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/80"
+                >
+                  Open community gallery
+                  <ArrowUpRight className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* MVP gallery modal — large versions + thumbnails */}
+            <Dialog open={galleryOpen} onOpenChange={setGalleryOpen}>
+              <DialogContent className="max-w-5xl bg-ink p-0 text-cream">
+                <DialogHeader className="border-b border-cream/15 px-6 py-4">
+                  <DialogTitle className="font-display text-xl font-extrabold text-cream md:text-2xl">
+                    Community gallery · preview
+                  </DialogTitle>
+                  <p className="ui mt-1 text-[10px] uppercase tracking-[0.22em] text-cream/55">
+                    MVP · full archive coming soon
+                  </p>
+                </DialogHeader>
+                <div className="relative bg-ink">
+                  <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden bg-ink">
+                    <img
+                      src={GALLERY[galleryIndex].img}
+                      alt={GALLERY[galleryIndex].cap}
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </div>
+                  <div className="flex items-baseline justify-between gap-4 px-6 py-4">
+                    <div>
+                      <div className="font-display text-lg font-extrabold leading-tight text-cream md:text-xl">
+                        {GALLERY[galleryIndex].cap}
+                      </div>
+                      <div className="ui mt-1 text-[10px] uppercase tracking-[0.2em] text-cream/55">
+                        {GALLERY[galleryIndex].meta}
+                      </div>
+                    </div>
+                    <div className="ui tabular-nums text-[10px] uppercase tracking-[0.22em] text-cream/50">
+                      {String(galleryIndex + 1).padStart(2, "0")} / {String(GALLERY.length).padStart(2, "0")}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-2 overflow-x-auto border-t border-cream/15 px-4 py-4">
+                  {GALLERY.map((p, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => setGalleryIndex(i)}
+                      className={`relative h-16 w-20 shrink-0 overflow-hidden rounded-md transition-all ${
+                        i === galleryIndex
+                          ? "ring-2 ring-tomato"
+                          : "opacity-60 hover:opacity-100"
+                      }`}
+                      aria-label={`Show ${p.cap}`}
+                    >
+                      <img src={p.img} alt="" className="h-full w-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+              </DialogContent>
+            </Dialog>
+          </section>
+        );
+      })()}
+
 
 
 
