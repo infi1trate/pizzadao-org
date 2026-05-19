@@ -222,9 +222,21 @@ const CommunityPage = () => {
         </div>
       </div>
 
-      {/* WAYS TO PARTICIPATE, participatory grid */}
-      <section id="ways-in" className="bg-cream py-16 md:py-24">
-        <div className="container">
+      {/* WAYS TO PARTICIPATE, workshop board */}
+      <section id="ways-in" className="relative overflow-hidden bg-cream py-16 md:py-24">
+        {/* FigJam-style dotted board background */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.35]"
+          style={{
+            backgroundImage:
+              "radial-gradient(hsl(var(--ink) / 0.18) 1px, transparent 1px)",
+            backgroundSize: "22px 22px",
+            maskImage:
+              "linear-gradient(to bottom, transparent, black 12%, black 88%, transparent)",
+          }}
+        />
+        <div className="container relative">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
               <div className="col-span-12 md:col-span-7">
@@ -241,43 +253,77 @@ const CommunityPage = () => {
                   time and energy you have this week. Most members end up doing
                   more than one.
                 </p>
+                <p className="handwritten mt-4 text-tomato text-[15px] md:text-base">
+                  ↘ pick a track, start contributing
+                </p>
               </div>
             </div>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border-2 border-ink bg-ink/15 md:mt-14 md:grid-cols-2 lg:grid-cols-3">
+          {/* Board grid — sticky-note cards, slight rotation on desktop only */}
+          <div className="mt-12 grid grid-cols-1 gap-5 md:mt-16 md:grid-cols-2 md:gap-7 lg:grid-cols-3">
             {WAYS_IN.map((w, i) => {
-              const Icon = w.icon;
+              // Alternate note tones, kept within the design system
+              const tones = [
+                "bg-cream",
+                "bg-butter/55",
+                "bg-cream-warm",
+                "bg-butter/40",
+                "bg-cream",
+                "bg-butter/55",
+              ];
+              const dotTones = [
+                "bg-tomato",
+                "bg-ink",
+                "bg-tomato",
+                "bg-ink",
+                "bg-tomato",
+                "bg-ink",
+              ];
+              // Subtle per-card rotation on md+ only, none on mobile
+              const rots = ["md:-rotate-[1.4deg]", "md:rotate-[0.8deg]", "md:-rotate-[0.6deg]", "md:rotate-[1.2deg]", "md:-rotate-[1deg]", "md:rotate-[0.5deg]"];
+              // Tiny vertical offset for a hand-pinned feel
+              const offsets = ["md:translate-y-1", "md:-translate-y-1", "md:translate-y-2", "md:-translate-y-2", "md:translate-y-0", "md:-translate-y-1"];
+
               return (
                 <article
                   key={w.title}
-                  className="group relative flex flex-col bg-cream p-7 transition-all duration-300 hover:-translate-y-1 hover:bg-butter hover:shadow-[0_24px_60px_-20px_hsl(var(--ink)/0.35)] md:p-9"
+                  className={`group relative flex flex-col rounded-[14px] ${tones[i % tones.length]} ${rots[i % rots.length]} ${offsets[i % offsets.length]} p-6 md:p-7 shadow-[0_1px_0_hsl(var(--ink)/0.08),0_18px_30px_-22px_hsl(var(--ink)/0.35)] ring-1 ring-ink/8 transition-all duration-300 hover:-translate-y-1 hover:rotate-0 hover:shadow-[0_2px_0_hsl(var(--ink)/0.1),0_30px_50px_-22px_hsl(var(--ink)/0.4)]`}
                 >
-                  <div className="ui flex items-baseline justify-between text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/55">
-                    <span className="rounded-full bg-tomato px-2.5 py-1 text-cream">
-                      {w.tag}
-                    </span>
-                    <span className="tabular-nums">
+                  {/* sticky-note pin tab */}
+                  <span
+                    aria-hidden
+                    className="absolute -top-2 left-6 h-3 w-10 rounded-full bg-ink/80"
+                  />
+
+                  {/* track marker row */}
+                  <div className="flex items-center justify-between">
+                    <div className="ui flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/70">
+                      <span className={`h-2 w-2 rounded-full ${dotTones[i % dotTones.length]}`} />
+                      Track {String(i + 1).padStart(2, "0")} · {w.tag}
+                    </div>
+                    <span className="handwritten text-[18px] leading-none text-tomato md:text-[20px]">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <div className="mt-7 flex h-12 w-12 items-center justify-center rounded-full border-2 border-ink bg-butter transition-colors group-hover:bg-cream">
-                    <Icon className="h-5 w-5 text-ink" strokeWidth={2.25} />
-                  </div>
-                  <h3 className="font-display mt-5 text-[22px] font-extrabold leading-[1.05] md:text-2xl">
+
+                  <h3 className="font-display mt-5 text-[22px] font-extrabold leading-[1.05] md:text-[26px]">
                     {w.title}
                   </h3>
                   <p className="mt-3 text-[15px] leading-snug text-ink/75">
                     {w.one}
                   </p>
 
-                  {/* Hover reveal */}
-                  <div className="mt-4 max-h-0 overflow-hidden text-[14px] leading-relaxed text-ink/70 opacity-0 transition-all duration-300 group-hover:max-h-32 group-hover:opacity-100">
-                    {w.more}
+                  <div className="mt-5 flex items-baseline justify-between gap-4 border-t border-ink/15 pt-4">
+                    <p className="ui text-[10px] uppercase tracking-[0.2em] text-ink/55">
+                      Best for · {w.tag.toLowerCase()}s
+                    </p>
+                    <ArrowUpRight className="h-4 w-4 text-ink/70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
 
-                  <div className="mt-6 flex items-center justify-end border-t border-ink/15 pt-4">
-                    <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  {/* Hover reveal */}
+                  <div className="mt-2 max-h-0 overflow-hidden text-[13px] leading-relaxed text-ink/65 opacity-0 transition-all duration-300 group-hover:max-h-32 group-hover:opacity-100">
+                    {w.more}
                   </div>
                 </article>
               );
@@ -285,6 +331,7 @@ const CommunityPage = () => {
           </div>
         </div>
       </section>
+
 
 
 
