@@ -1173,7 +1173,21 @@ type CalEvent = {
   title: string;
   location: string;
   description: string;
+  recurring?: boolean;
 };
+
+const eventTags = (ev: CalEvent): string[] => {
+  const loc = (ev.location || "").toLowerCase();
+  const desc = (ev.description || "").toLowerCase();
+  const onlineHints = ["http", "zoom", "meet.google", "google meet", "online", "discord", "twitch", "x.com", "youtube", "stream"];
+  const isOnline = onlineHints.some((h) => loc.includes(h) || desc.includes(h));
+  const tags: string[] = [];
+  if (isOnline) tags.push("online");
+  else if (ev.location?.trim()) tags.push("IRL");
+  if (ev.recurring) tags.push("recurring");
+  return tags;
+};
+
 
 const DAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -1255,7 +1269,13 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
         <div className="border-t-2 border-ink pt-8 md:pt-10">
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
             <div className="col-span-12 md:col-span-8">
-              <p className="overline text-tomato">§ C.04, This week in PizzaDAO</p>
+              <p className="overline inline-flex items-center gap-2 text-tomato">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-tomato opacity-60" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-tomato" />
+                </span>
+                § C.04, Live this week
+              </p>
               <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
                 This week
                 <br />
@@ -1299,7 +1319,7 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                 if (activeDays.length === 0) {
                   return (
                     <p className="ui mt-7 text-sm text-ink/55">
-                      No community events in the next 7 days. Check the full calendar.
+                      No upcoming events yet. Check the full calendar.
                     </p>
                   );
                 }
@@ -1308,32 +1328,46 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                     {activeDays.map((d, idx) => {
                       const first = d.events[0];
                       const more = d.events.length - 1;
+                      const tags = eventTags(first);
                       return (
                         <li
                           key={`${d.d}-${idx}`}
-                          className="flex items-center gap-4 rounded-xl bg-butter px-4 py-3 shadow-[0_8px_24px_-12px_hsl(var(--butter)/0.9)] transition-all"
+                          className="group flex items-start gap-4 rounded-xl bg-butter px-4 py-3 shadow-[0_8px_24px_-12px_hsl(var(--butter)/0.9)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-12px_hsl(var(--ink)/0.25)]"
                         >
-                          <div className="ui w-12 shrink-0 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
+                          <div className="ui w-10 shrink-0 pt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
                             {d.d}
                           </div>
-                          <div className="font-display w-8 shrink-0 text-2xl font-extrabold tabular-nums leading-none">
+                          <div className="font-display w-8 shrink-0 pt-0.5 text-2xl font-extrabold tabular-nums leading-none">
                             {d.date}
                           </div>
                           <div className="min-w-0 flex-1 text-sm leading-snug text-ink/85">
-                            <span className="block truncate">
+                            <span className="block break-words">
                               {first.title}
                               {more > 0 && (
                                 <span className="ml-2 text-[11px] text-ink/55">+{more} more</span>
                               )}
                             </span>
+                            {tags.length > 0 && (
+                              <div className="mt-1.5 flex flex-wrap gap-1">
+                                {tags.map((t) => (
+                                  <span
+                                    key={t}
+                                    className="ui rounded-full bg-ink/8 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/65"
+                                  >
+                                    {t}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
                           </div>
-                          <span className="h-2 w-2 shrink-0 rounded-full bg-tomato" aria-hidden />
+                          <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-tomato transition-transform group-hover:scale-125" aria-hidden />
                         </li>
                       );
                     })}
                   </ul>
                 );
               })()}
+
 
 
               <button
@@ -1375,9 +1409,19 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                     <h3 className="font-display mt-4 break-words text-[clamp(1.5rem,2.4vw,2.25rem)] font-extrabold leading-[1.05] tracking-[-0.005em]">
                       {ev.title}
                     </h3>
-                    <p className="ui mt-2 text-[11px] uppercase tracking-[0.2em] text-ink/55">
-                      {ev.location?.trim() || "Location TBD"}
-                    </p>
+                    <div className="mt-2 flex flex-wrap items-center gap-2">
+                      <p className="ui text-[11px] uppercase tracking-[0.2em] text-ink/55">
+                        {ev.location?.trim() || "Location TBD"}
+                      </p>
+                      {eventTags(ev).map((t) => (
+                        <span
+                          key={t}
+                          className="ui rounded-full bg-ink/8 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/70"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                     <p className="mt-4 text-base leading-relaxed text-ink/80">
                       {ev.description?.trim()
                         ? ev.description.trim().slice(0, 180) +
