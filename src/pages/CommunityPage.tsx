@@ -997,12 +997,14 @@ const HERO_IMAGES: HeroTile[] = [
 // Layout for collage tiles, percentages relative to collage box.
 // Intentionally imperfect overlap. Two tiles allowed to break the row.
 const TILE_LAYOUTS = [
-  { top: "2%",  left: "-2%",  w: "34%", aspect: "4/5",   rot: -5,  z: 2, delay: 80 },   // breaks left edge
-  { top: "0%",  left: "34%",  w: "32%", aspect: "1/1",   rot: 2.5, z: 4, delay: 220 },
-  { top: "10%", left: "70%",  w: "32%", aspect: "4/5",   rot: 4,   z: 3, delay: 360 },  // breaks right edge
-  { top: "56%", left: "10%",  w: "30%", aspect: "5/4",   rot: -3,  z: 5, delay: 500 },
-  { top: "50%", left: "48%",  w: "38%", aspect: "16/10", rot: 5,   z: 3, delay: 640 },
+  { top: "0%",  left: "-3%",  w: "36%", aspect: "4/5",   rot: -6,   z: 2, delay: 80  }, // breaks left edge, slightly larger
+  { top: "4%",  left: "33%",  w: "30%", aspect: "1/1",   rot: 1.5,  z: 5, delay: 220 },
+  { top: "8%",  left: "68%",  w: "34%", aspect: "4/5",   rot: 5,    z: 3, delay: 360 }, // breaks right edge
+  { top: "54%", left: "6%",   w: "28%", aspect: "5/4",   rot: -4,   z: 6, delay: 500 },
+  { top: "48%", left: "42%",  w: "40%", aspect: "16/10", rot: 3.5,  z: 3, delay: 640 }, // biggest, anchors lower half
+  { top: "62%", left: "82%",  w: "20%", aspect: "3/4",   rot: -2,   z: 7, delay: 820 }, // small accent, breaks right
 ];
+
 
 const HeroSection = () => {
   // Slight randomization per refresh
