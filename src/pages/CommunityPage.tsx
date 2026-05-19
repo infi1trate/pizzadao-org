@@ -837,7 +837,7 @@ const CommunityPage = () => {
               <div>
                 <p className="overline text-tomato">§ C.09, First step</p>
                 <h2 className="font-display mt-3 text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-[0.95]">
-                  Start <span className="handwritten text-tomato text-[0.7em] align-middle">somewhere.</span>
+                  Start <span className="handwritten relative inline-block text-tomato text-[1.15em] leading-[0.75] -ml-1 translate-y-[0.08em] -rotate-[4deg] align-baseline">somewhere.</span>
                 </h2>
                 <p className="mt-3 max-w-md text-base leading-relaxed text-ink/70">
                   Three low-friction ways in. Pick the one you can do today.
