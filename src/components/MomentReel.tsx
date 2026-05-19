@@ -74,9 +74,15 @@ const MomentReel = () => {
                   <div className="relative aspect-[9/19.5] w-[260px] overflow-hidden rounded-[2.25rem] bg-ink md:w-[300px] lg:w-[320px]">
                     {/* Notch */}
                     <div className="absolute left-1/2 top-2 z-10 h-5 w-24 -translate-x-1/2 rounded-full bg-ink/95" />
-                    <img
-                      src={party}
-                      alt="PizzaDAO moments"
+                    <video
+                      src="https://www.dropbox.com/scl/fi/c2zu0k44nsh753zaaseri/Video-Apr-26-2023-1-18-01-AM.mov?rlkey=bqnbkqjqxdm2nze2xeqgdcjnx&raw=1"
+                      poster={party}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      aria-label="PizzaDAO moments"
                       className="h-full w-full object-cover"
                     />
                   </div>
