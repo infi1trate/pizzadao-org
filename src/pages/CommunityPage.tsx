@@ -997,12 +997,14 @@ const HERO_IMAGES: HeroTile[] = [
 // Layout for collage tiles, percentages relative to collage box.
 // Intentionally imperfect overlap. Two tiles allowed to break the row.
 const TILE_LAYOUTS = [
-  { top: "2%",  left: "-2%",  w: "34%", aspect: "4/5",   rot: -5,  z: 2, delay: 80 },   // breaks left edge
-  { top: "0%",  left: "34%",  w: "32%", aspect: "1/1",   rot: 2.5, z: 4, delay: 220 },
-  { top: "10%", left: "70%",  w: "32%", aspect: "4/5",   rot: 4,   z: 3, delay: 360 },  // breaks right edge
-  { top: "56%", left: "10%",  w: "30%", aspect: "5/4",   rot: -3,  z: 5, delay: 500 },
-  { top: "50%", left: "48%",  w: "38%", aspect: "16/10", rot: 5,   z: 3, delay: 640 },
+  { top: "0%",  left: "-3%",  w: "36%", aspect: "4/5",   rot: -6,   z: 2, delay: 80  }, // breaks left edge, slightly larger
+  { top: "4%",  left: "33%",  w: "30%", aspect: "1/1",   rot: 1.5,  z: 5, delay: 220 },
+  { top: "8%",  left: "68%",  w: "34%", aspect: "4/5",   rot: 5,    z: 3, delay: 360 }, // breaks right edge
+  { top: "54%", left: "6%",   w: "28%", aspect: "5/4",   rot: -4,   z: 6, delay: 500 },
+  { top: "48%", left: "42%",  w: "40%", aspect: "16/10", rot: 3.5,  z: 3, delay: 640 }, // biggest, anchors lower half
+  { top: "62%", left: "82%",  w: "20%", aspect: "3/4",   rot: -2,   z: 7, delay: 820 }, // small accent, breaks right
 ];
+
 
 const HeroSection = () => {
   // Slight randomization per refresh
@@ -1042,8 +1044,12 @@ const HeroSection = () => {
               <h1 className="font-display text-[clamp(3rem,9.5vw,8.25rem)] font-extrabold leading-[0.84] tracking-[-0.015em]">
                 The Pizza Mafia
                 <br />
-                is built{" "}
-                <span className="handwritten relative inline-block text-tomato text-[0.95em] leading-[0.8] -ml-1 -mr-2 translate-y-[0.05em] -rotate-[3deg] align-baseline">by you.</span>
+                <span className="relative inline-block align-baseline">
+                  is built{" "}
+                  <span className="handwritten relative z-10 inline-block text-tomato text-[1.05em] sm:text-[1.15em] md:text-[1.25em] leading-[0.7] -ml-0.5 sm:-ml-1 -mr-1 sm:-mr-3 -translate-y-[0.02em] sm:translate-y-[0.04em] -rotate-[4deg] [text-shadow:0_1px_0_hsl(var(--cream))]">
+                    by you.
+                  </span>
+                </span>
               </h1>
               <p className="font-display mt-6 max-w-2xl text-xl font-medium leading-snug text-ink/75 md:text-2xl">
                 Some people show up for pizza. Some stay and build something bigger.
@@ -1066,22 +1072,28 @@ const HeroSection = () => {
           </div>
 
           {/* Organic collage */}
-          <div className="relative mt-14 h-[480px] w-full md:mt-20 md:h-[620px]">
+          <div className="relative mt-14 h-[480px] w-full md:mt-20 md:h-[660px]">
             {tiles.map((t, i) => (
               <figure
                 key={i}
-                className="group absolute opacity-0 transition-all duration-500 ease-out hover:z-50 hover:!rotate-0 hover:scale-[1.04]"
+                className="group absolute opacity-0 transition-[transform,box-shadow] duration-500 ease-out hover:z-50"
                 style={{
                   top: t.top,
                   left: t.left,
                   width: t.w,
                   zIndex: t.z,
                   transform: `rotate(${t.rot}deg)`,
-                  animation: `fadeUp 0.9s cubic-bezier(0.2,0.7,0.2,1) ${t.delay}ms forwards`,
+                  animation: `fadeUp 1s cubic-bezier(0.2,0.7,0.2,1) ${t.delay}ms forwards`,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = `rotate(${t.rot * 0.15}deg) translateY(-6px) scale(1.035)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = `rotate(${t.rot}deg)`;
                 }}
               >
                 <div
-                  className="relative overflow-hidden rounded-2xl shadow-[0_22px_60px_-20px_hsl(var(--ink)/0.35)] transition-shadow duration-500 group-hover:shadow-[0_30px_80px_-20px_hsl(var(--tomato)/0.45)]"
+                  className="relative overflow-hidden rounded-2xl shadow-[0_2px_4px_-2px_hsl(var(--ink)/0.25),0_18px_40px_-18px_hsl(var(--ink)/0.35),0_40px_80px_-30px_hsl(var(--ink)/0.25)] ring-1 ring-ink/5 transition-shadow duration-500 group-hover:shadow-[0_4px_8px_-2px_hsl(var(--ink)/0.3),0_30px_70px_-20px_hsl(var(--tomato)/0.4),0_60px_120px_-40px_hsl(var(--butter)/0.35)]"
                   style={{ aspectRatio: t.aspect }}
                 >
                   {t.video ? (
