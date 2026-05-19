@@ -994,13 +994,14 @@ const HERO_IMAGES: HeroTile[] = [
   { img: "/media/community-pizza-robots.jpg", caption: "NYC · Pizza Robots" },
 ];
 
-// Layout for collage tiles, percentages relative to collage box
+// Layout for collage tiles, percentages relative to collage box.
+// Intentionally imperfect overlap. Two tiles allowed to break the row.
 const TILE_LAYOUTS = [
-  { top: "4%",  left: "2%",  w: "34%", aspect: "4/5",  rot: -4, z: 2, delay: 80 },
-  { top: "0%",  left: "36%", w: "32%", aspect: "1/1",  rot: 2,  z: 4, delay: 220 },
-  { top: "8%",  left: "68%", w: "30%", aspect: "4/5",  rot: 3,  z: 3, delay: 360 },
-  { top: "55%", left: "12%", w: "30%", aspect: "5/4",  rot: -2, z: 5, delay: 500 },
-  { top: "52%", left: "52%", w: "36%", aspect: "16/10",rot: 4,  z: 3, delay: 640 },
+  { top: "2%",  left: "-2%",  w: "34%", aspect: "4/5",   rot: -5,  z: 2, delay: 80 },   // breaks left edge
+  { top: "0%",  left: "34%",  w: "32%", aspect: "1/1",   rot: 2.5, z: 4, delay: 220 },
+  { top: "10%", left: "70%",  w: "32%", aspect: "4/5",   rot: 4,   z: 3, delay: 360 },  // breaks right edge
+  { top: "56%", left: "10%",  w: "30%", aspect: "5/4",   rot: -3,  z: 5, delay: 500 },
+  { top: "50%", left: "48%",  w: "38%", aspect: "16/10", rot: 5,   z: 3, delay: 640 },
 ];
 
 const HeroSection = () => {
@@ -1012,13 +1013,13 @@ const HeroSection = () => {
 
   return (
     <section className="relative overflow-hidden bg-cream pt-24 md:pt-32">
-      {/* Warm radial gradient */}
+      {/* Warm radial gradient — slightly stronger for warmth */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(60% 55% at 65% 35%, hsl(var(--butter) / 0.55), transparent 70%), radial-gradient(45% 40% at 25% 70%, hsl(var(--tomato) / 0.18), transparent 75%)",
+            "radial-gradient(65% 60% at 65% 30%, hsl(var(--butter) / 0.7), transparent 72%), radial-gradient(50% 45% at 20% 75%, hsl(var(--tomato) / 0.22), transparent 78%)",
         }}
       />
       {/* Film grain overlay */}
@@ -1035,11 +1036,14 @@ const HeroSection = () => {
 
           <div className="mt-8 grid grid-cols-12 items-end gap-x-6 gap-y-10 md:mt-12">
             <div className="col-span-12 md:col-span-8">
+              <p className="handwritten mb-4 text-[15px] text-tomato md:text-base">
+                ↘ this part is important
+              </p>
               <h1 className="font-display text-[clamp(3rem,9.5vw,8.25rem)] font-extrabold leading-[0.84] tracking-[-0.015em]">
                 The Pizza Mafia
                 <br />
                 is built{" "}
-                <span className="italic font-normal text-tomato">by you.</span>
+                <span className="handwritten text-tomato text-[0.7em] align-middle">by you.</span>
               </h1>
               <p className="font-display mt-6 max-w-2xl text-xl font-medium leading-snug text-ink/75 md:text-2xl">
                 Some people show up for pizza. Some stay and build something bigger.
@@ -1048,7 +1052,7 @@ const HeroSection = () => {
             <div className="col-span-12 md:col-span-4 md:pl-8">
               <p className="text-lg leading-relaxed text-ink/80 md:text-xl">
                 People don't just join PizzaDAO. They host. Build. Create.
-                Feed. Organize. Show up.
+                Feed. Organize. <span className="handwritten text-tomato">show up.</span>
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row md:flex-col">
                 <a href="/join" className="btn-pill-lg bg-tomato text-cream hover:bg-ink">
