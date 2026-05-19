@@ -1201,7 +1201,11 @@ type HeroTile = {
 };
 
 const HERO_IMAGES: HeroTile[] = [
-  { img: "/media/nyc-rp-teaser-poster.jpg", caption: "New York City · RP Reveal" },
+  {
+    video: "https://www.dropbox.com/scl/fi/wfok0d7b9qn1xnj7ren78/NYC-RP-Reveal-Teaser_v.4.mov?rlkey=kuy6lxzvgpffq66wfvyeo5ied&raw=1",
+    poster: "/media/nyc-rp-teaser-poster.jpg",
+    caption: "New York City · RP Reveal",
+  },
   {
     video: "https://www.dropbox.com/scl/fi/c2zu0k44nsh753zaaseri/Video-Apr-26-2023-1-18-01-AM.mov?rlkey=bqnbkqjqxdm2nze2xeqgdcjnx&raw=1",
     poster: "/media/wen-pizza-nyc-poster.jpg",
