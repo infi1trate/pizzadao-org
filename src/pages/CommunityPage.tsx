@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { ArrowUpRight, Sparkles, Pizza, Wrench, Palette, Users, Code2, MapPin, CalendarDays } from "lucide-react";
+import { ArrowUpRight, Sparkles, Pizza, Wrench, Palette, Users, Code2, MapPin, CalendarDays, X } from "lucide-react";
 import SiteNav from "@/components/SiteNav";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import Footer from "@/components/Footer";
@@ -14,56 +14,44 @@ const WAYS_IN = [
   {
     icon: Pizza,
     tag: "Host",
-    title: "Host local pizza parties",
-    note: "Pick a date, pick a pizzeria, we wire the budget and the playbook. You bring the neighborhood.",
-    looksLike: "A packed pizzeria on a Saturday, your neighbors meeting for the first time.",
-    youDo: "Pick the date, pick the spot, send the invites. We handle budget and logistics.",
-    whyEnjoy: "You become the reason people in your city know each other.",
+    title: "Throw a pizza party",
+    one: "Pick a date. Pick a pizzeria. We back it.",
+    more: "Budget, playbook, and chapter support handled. You bring the neighborhood.",
   },
   {
     icon: Wrench,
     tag: "Build",
-    title: "Build tools + projects",
-    note: "RSVP systems, photo dumps, on-chain receipts, chapter dashboards. Open repos, real users, shipped fast.",
-    looksLike: "Open repos used by 60+ chapters within weeks of shipping.",
-    youDo: "Pick up an issue, ship a feature, support a chapter that needs it.",
-    whyEnjoy: "Your code shows up at parties on the other side of the world.",
+    title: "Ship tools + projects",
+    one: "Open repos, real users, shipped fast.",
+    more: "RSVP systems, on-chain receipts, chapter dashboards. Pick up an issue or pitch your own.",
   },
   {
     icon: Palette,
     tag: "Create",
-    title: "Create art + culture",
-    note: "Posters, zines, mixtapes, merch, films. Every chapter ships its own visual language.",
-    looksLike: "Posters on walls, zines on tables, mixtapes playing through the speakers.",
-    youDo: "Make the work. Submit to the pool. Watch chapters print and remix it.",
-    whyEnjoy: "Your art lives in real rooms, not just on feeds.",
+    title: "Make the art + culture",
+    one: "Posters, zines, mixtapes, films, merch.",
+    more: "Every chapter ships its own visual language. Submit to the pool, watch it travel.",
   },
   {
     icon: Users,
     tag: "Gather",
-    title: "Run meetups + gatherings",
-    note: "Long tables, slice clubs, coworking nights. Recurring rituals that hold a city together.",
-    looksLike: "A long table that fills up every week, no agenda, no slides.",
-    youDo: "Hold the date, hold the room, keep showing up.",
-    whyEnjoy: "Strangers become regulars. Regulars become friends.",
+    title: "Hold the room",
+    one: "Long tables, slice clubs, coworking nights.",
+    more: "Recurring rituals that turn strangers into regulars and regulars into friends.",
   },
   {
     icon: Code2,
-    tag: "Organize",
-    title: "Organize hackathons",
-    note: "Weekend builds with pizzaiolos, designers, and devs in the same room. Prizes paid in slices and grants.",
-    looksLike: "Devs, designers and pizzaiolos in the same room for 72 hours.",
-    youDo: "Set the prompt, find the venue, line up the pizza, judge the demos.",
-    whyEnjoy: "You ship more in one weekend than most teams ship in a quarter.",
+    tag: "Experiment",
+    title: "Run a hackathon",
+    one: "Devs, designers and pizzaiolos, one weekend.",
+    more: "Set the prompt, line up the pizza, judge the demos. Prizes paid in slices and grants.",
   },
   {
     icon: MapPin,
     tag: "Grow",
-    title: "Grow chapters",
-    note: "Open a city. Onboard organizers. Hand off the keys. New chapters launched by members, not HQ.",
-    looksLike: "A new pin on the map, started by people who used to just attend.",
-    youDo: "Open a city, onboard the next organizers, then hand them the keys.",
-    whyEnjoy: "You leave a chapter behind that outlives your involvement.",
+    title: "Open a city",
+    one: "Start a chapter where there isn't one yet.",
+    more: "Onboard the next organizers, then hand them the keys. New chapters launched by members, not HQ.",
   },
 ];
 
@@ -103,87 +91,42 @@ const RITUALS = [
 
 const BUILDS = [
   {
-    type: "Hackathon",
-    name: "Slice Hack '25",
+    name: "PizzaDAO Arcade",
+    tag: "Experiment",
+    mission: "Community-built pizza games and arcade cabinet experiments.",
+    context: "A roving cabinet, an open game jam, and a growing library of pizza-themed games made by members. Hardware, code, and pixel art, shipped together.",
+    detail: "Started as a one-night build at a chapter meetup and grew into an ongoing collaboration between hardware tinkerers, indie devs, and visual artists. The cabinet travels to events; the game catalog is open for any chapter to install or remix.",
     img: hackathon,
-    what: "A 72-hour, multi-city build sprint. One brief, one weekend, every chapter shipping in parallel.",
-    who: "Led by Tokyo + Brooklyn chapters, 240 builders across 14 cities.",
-    outcome: "31 projects shipped. 9 funded with chapter grants. 4 still in production today.",
   },
   {
-    type: "Tool",
-    name: "Open RSVP",
-    img: null,
-    what: "A no-account RSVP system built specifically for chapter parties — no logins, no marketing list.",
-    who: "Built by @lina.eth and 6 contributors over three working weekends.",
-    outcome: "Used by 60+ chapters. 40k RSVPs and counting. Forked into 3 sibling tools.",
-  },
-  {
-    type: "Experiment",
-    name: "On-chain receipts",
-    img: null,
-    what: "Every party logs an on-chain proof of attendance. Members collect them, sponsors verify them.",
-    who: "Prototyped at Slice Hack '24 by a five-person crew from CDMX, Berlin, and Lagos.",
-    outcome: "12,000+ receipts minted. Now the default check-in for chapter events.",
-  },
-  {
-    type: "Partner build",
-    name: "Poster Pool Vol. III",
-    img: party,
-    what: "Open-call poster series, co-funded with a print partner. Free for any chapter to use.",
-    who: "Curated by @capo.crust with 84 submissions from 23 countries.",
-    outcome: "Printed and shipped to every active chapter. Three designers picked up paid commissions.",
-  },
-  {
-    type: "Tool",
-    name: "Chapter Atlas",
+    name: "HourPay",
+    tag: "Public good",
+    mission: "Streaming payroll for hospitality workers — paid by the hour, not the pay cycle.",
+    context: "A working experiment aimed at reducing reliance on payday loans for restaurant and pizzeria staff. Wages stream in real time as the shift happens.",
+    detail: "Built by member-operators who watched their own teams struggle between paydays. Currently in pilot with a small group of independent pizzerias, with the goal of making predatory short-term lending unnecessary for the people who keep kitchens running.",
     img: pizzeria,
-    what: "Live map of every active chapter, organizer, and upcoming event. Open data, public API.",
-    who: "Maintained by the Atlas working group — 4 contributors on rotation.",
-    outcome: "Now the canonical source. Used by sponsors, journalists, and new organizers opening cities.",
-  },
-];
-
-const ROLES = [
-  {
-    code: "R.01",
-    name: "Host",
-    desc: "You open the door. You pick the date, the pizzeria, the playlist. You make strangers feel like neighbors.",
-    cta: "Host a party",
-    href: "/join",
   },
   {
-    code: "R.02",
-    name: "Builder",
-    desc: "You ship the tools the chapters run on. RSVP, receipts, dashboards, anything that removes friction.",
-    cta: "Pick up an issue",
-    href: "/join",
+    name: "Secret Pineapple",
+    tag: "Hackathon winner",
+    mission: "Cryptographically anonymized, itemized receipts.",
+    context: "A hackathon-winning prototype exploring how to prove what was purchased without revealing who bought it — useful for sponsorships, reimbursements, and public-goods accounting.",
+    detail: "Born at a PizzaDAO hackathon, now an active research thread. Combines zero-knowledge proofs with itemized receipt schemas so chapters can transparently report spending without doxxing members or vendors.",
+    img: null,
   },
   {
-    code: "R.03",
-    name: "Creative",
-    desc: "You make the work look like itself. Posters, zines, films, mixtapes, merch. Visual language for a movement.",
-    cta: "Submit to the pool",
-    href: "/join",
-  },
-  {
-    code: "R.04",
-    name: "Connector",
-    desc: "You introduce people. You bring the pizzaiolo to the dev, the artist to the organizer. You hold the room.",
-    cta: "Open a chapter",
-    href: "/join",
-  },
-  {
-    code: "R.05",
-    name: "Supporter",
-    desc: "You back the work, with funding, with reach, with hands. You don't need a stage. You move things forward.",
-    cta: "Sponsor a chapter",
-    href: "/partners",
+    name: "Plan.xyz · rsv.pizza",
+    tag: "Infrastructure",
+    mission: "Event infrastructure built for global, decentralized gatherings.",
+    context: "Tested live during Global Pizza Party 2026 across ~30k attendees worldwide. Open RSVPs, chapter dashboards, and proof-of-attendance in one stack.",
+    detail: "Stress-tested across hundreds of simultaneous parties in dozens of cities. Now the default RSVP and check-in layer for chapter events, with public APIs so any community — pizza or otherwise — can use it.",
+    img: party,
   },
 ];
 
 const CommunityPage = () => {
   const [calOpen, setCalOpen] = useState(false);
+  const [activeBuild, setActiveBuild] = useState<number | null>(null);
   useEffect(() => {
     document.title = "Community, PizzaDAO";
   }, []);
@@ -203,25 +146,28 @@ const CommunityPage = () => {
             <div className="col-span-12 md:col-span-5">
               <p className="overline text-butter">Manifesto</p>
               <h2 className="font-display mt-5 text-[clamp(2.75rem,7vw,5.5rem)] font-extrabold leading-[0.88] tracking-[-0.01em]">
-                Show up.
+                A community
                 <br />
-                <span className="text-tomato">Make something.</span>
+                that <span className="text-tomato handwritten text-[0.78em] align-middle">actually</span>
                 <br />
-                Feed someone.
+                does stuff.
               </h2>
             </div>
             <div className="col-span-12 md:col-span-6 md:col-start-7">
               <p className="text-lg leading-relaxed text-cream/85 md:text-xl">
-                There is no application form. No tier system. No premium tier.
-                The Mafia is whoever decides to do the work this week. Some
-                members ship code. Some ship pizza. Most do both.
+                A DAO is a group of people coordinating around shared ownership,
+                creativity, and action — without waiting for permission. PizzaDAO
+                pools resources from its members and partners, then funds
+                experiments, events, tools, and public goods proposed by the
+                community itself. The "work" is whatever members decide to build
+                together this week.
               </p>
               <ul className="mt-10 space-y-4 border-t border-cream/20 pt-8">
                 {[
-                  "Anyone can propose a project.",
-                  "Anyone can run a chapter.",
-                  "Money flows to whoever does the work.",
-                  "Credit goes to the city, not the founder.",
+                  "Anyone can propose an experiment.",
+                  "Anyone can open a chapter in their city.",
+                  "Funding follows ideas the community backs.",
+                  "Tools, art, and events stay open and remixable.",
                 ].map((r, i) => (
                   <li
                     key={r}
@@ -249,13 +195,13 @@ const CommunityPage = () => {
               {[
                 "60+ chapters",
                 "3,000+ members",
-                "12 events this week",
-                "47 open projects",
+                "Events every week",
+                "Open experiments",
                 "No fees",
                 "No tiers",
                 "Anyone can host",
-                "Money flows to the work",
-                "Credit to the city",
+                "Anyone can propose",
+                "Funding follows ideas",
               ].map((t) => (
                 <span
                   key={`${k}-${t}`}
@@ -270,24 +216,24 @@ const CommunityPage = () => {
         </div>
       </div>
 
-      {/* WAYS IN, participatory grid */}
+      {/* WAYS TO PARTICIPATE, participatory grid */}
       <section id="ways-in" className="bg-cream py-16 md:py-24">
         <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
               <div className="col-span-12 md:col-span-7">
-                <p className="overline text-tomato">§ C.01, What members actually do</p>
+                <p className="overline text-tomato">§ C.01, Ways to participate</p>
                 <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
-                  Six things.
+                  Find your lane.
                   <br />
-                  Start with one.
+                  <span className="handwritten text-tomato text-[0.55em] align-middle">show up</span> however fits.
                 </h2>
               </div>
               <div className="col-span-12 md:col-span-5 md:pl-8">
                 <p className="text-base leading-relaxed text-ink/75 md:text-lg">
-                  No ambiguity. No tier system. No application form. These are
-                  the six things members are doing right now, in cities all over
-                  the world. Pick the one you can start this week.
+                  No application form. No tier system. Pick a lane that fits the
+                  time and energy you have this week. Most members end up doing
+                  more than one.
                 </p>
               </div>
             </div>
@@ -299,41 +245,32 @@ const CommunityPage = () => {
               return (
                 <article
                   key={w.title}
-                  className="group relative flex flex-col bg-cream p-8 transition-all duration-300 hover:-translate-y-1 hover:bg-butter hover:shadow-[0_24px_60px_-20px_hsl(var(--ink)/0.35)] md:p-10"
+                  className="group relative flex flex-col bg-cream p-7 transition-all duration-300 hover:-translate-y-1 hover:bg-butter hover:shadow-[0_24px_60px_-20px_hsl(var(--ink)/0.35)] md:p-9"
                 >
                   <div className="ui flex items-baseline justify-between text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/55">
                     <span className="rounded-full bg-tomato px-2.5 py-1 text-cream">
                       {w.tag}
                     </span>
                     <span className="tabular-nums">
-                      {String(i + 1).padStart(2, "0")} / 06
+                      {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
-                  <div className="mt-8 flex h-14 w-14 items-center justify-center rounded-full border-2 border-ink bg-butter transition-colors group-hover:bg-cream">
-                    <Icon className="h-6 w-6 text-ink" strokeWidth={2.25} />
+                  <div className="mt-7 flex h-12 w-12 items-center justify-center rounded-full border-2 border-ink bg-butter transition-colors group-hover:bg-cream">
+                    <Icon className="h-5 w-5 text-ink" strokeWidth={2.25} />
                   </div>
-                  <h3 className="font-display mt-6 text-2xl font-extrabold leading-[1] md:text-[28px]">
+                  <h3 className="font-display mt-5 text-[22px] font-extrabold leading-[1.05] md:text-2xl">
                     {w.title}
                   </h3>
+                  <p className="mt-3 text-[15px] leading-snug text-ink/75">
+                    {w.one}
+                  </p>
 
-                  <dl className="mt-7 flex-1 space-y-5">
-                    {[
-                      { k: "What it looks like", v: w.looksLike },
-                      { k: "What you actually do", v: w.youDo },
-                      { k: "Why people enjoy it", v: w.whyEnjoy },
-                    ].map((row) => (
-                      <div key={row.k}>
-                        <dt className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
-                          {row.k}
-                        </dt>
-                        <dd className="mt-1.5 text-[15px] leading-relaxed text-ink/80">
-                          {row.v}
-                        </dd>
-                      </div>
-                    ))}
-                  </dl>
+                  {/* Hover reveal */}
+                  <div className="mt-4 max-h-0 overflow-hidden text-[14px] leading-relaxed text-ink/70 opacity-0 transition-all duration-300 group-hover:max-h-32 group-hover:opacity-100">
+                    {w.more}
+                  </div>
 
-                  <div className="mt-9 flex items-center justify-end border-t border-ink/15 pt-5">
+                  <div className="mt-6 flex items-center justify-end border-t border-ink/15 pt-4">
                     <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
                 </article>
@@ -342,6 +279,7 @@ const CommunityPage = () => {
           </div>
         </div>
       </section>
+
 
 
       {/* THIS WEEK, stylized weekly calendar + featured events */}
@@ -451,18 +389,19 @@ const CommunityPage = () => {
           <div className="border-t-2 border-cream/25 pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
               <div className="col-span-12 md:col-span-8">
-                <p className="overline text-butter">§ C.05, The workshop</p>
+                <p className="overline text-butter">§ C.05, In the workshop</p>
                 <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
-                  This isn't just a community.
+                  Real projects.
                   <br />
-                  <span className="text-butter">It's a workshop.</span>
+                  <span className="text-butter handwritten text-[0.55em] align-middle">made by members.</span>
                 </h2>
               </div>
               <div className="col-span-12 md:col-span-4 md:pl-8">
                 <p className="text-base leading-relaxed text-cream/80 md:text-lg">
-                  Members don't just show up — they prototype, ship, and remix
-                  in the open. Hackathons, tools, experiments, and partner
-                  builds, made together and given back to the network.
+                  A working sample of what the community is building together —
+                  arcade hardware, payroll tools for hospitality workers,
+                  cryptography experiments, and the event infrastructure that
+                  ran Global Pizza Party 2026.
                 </p>
               </div>
             </div>
@@ -472,63 +411,57 @@ const CommunityPage = () => {
             {BUILDS.map((b, i) => (
               <article
                 key={b.name}
-                className={`group relative flex flex-col overflow-hidden rounded-2xl bg-cream text-ink transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-22px_hsl(var(--tomato)/0.45)] ${
-                  i === 0 ? "md:col-span-2" : ""
-                }`}
+                className="group relative flex flex-col overflow-hidden rounded-2xl bg-cream text-ink transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-22px_hsl(var(--tomato)/0.45)]"
               >
                 {b.img ? (
-                  <div className={`relative overflow-hidden bg-ink ${i === 0 ? "aspect-[21/9]" : "aspect-[16/10]"}`}>
+                  <div className="relative aspect-[16/10] overflow-hidden bg-ink">
                     <img
                       src={b.img}
                       alt={b.name}
                       loading="lazy"
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                     />
+                    <span className="ui absolute left-4 top-4 rounded-full bg-cream/95 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink">
+                      {b.tag}
+                    </span>
                   </div>
                 ) : (
-                  <div className={`flex items-end justify-between bg-ink p-7 text-cream ${i === 0 ? "aspect-[21/9]" : "aspect-[16/10]"}`}>
-                    <span className="font-display text-[clamp(2rem,4vw,3.5rem)] font-extrabold leading-[0.9] text-butter">
+                  <div className="relative flex aspect-[16/10] items-end justify-between bg-ink p-7 text-cream">
+                    <span className="font-display text-[clamp(2rem,4vw,3rem)] font-extrabold leading-[0.9] text-butter">
                       {b.name}
                     </span>
-                    <span className="ui text-[10px] uppercase tracking-[0.22em] text-cream/55">
-                      In the workshop
+                    <span className="ui absolute left-4 top-4 rounded-full bg-butter px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink">
+                      {b.tag}
                     </span>
                   </div>
                 )}
 
                 <div className="flex flex-1 flex-col p-7 md:p-8">
-                  <div className="ui flex items-baseline justify-between text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/55">
-                    <span className="rounded-full bg-tomato px-2.5 py-1 text-cream">
-                      {b.type}
-                    </span>
+                  <div className="ui flex items-baseline justify-between text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/50">
                     <span className="tabular-nums">
-                      {String(i + 1).padStart(2, "0")} / 0{BUILDS.length}
+                      Project {String(i + 1).padStart(2, "0")} / 0{BUILDS.length}
                     </span>
                   </div>
-                  <h3 className="font-display mt-5 text-2xl font-extrabold leading-[1.05] md:text-[28px]">
+                  <h3 className="font-display mt-3 text-2xl font-extrabold leading-[1.05] md:text-[28px]">
                     {b.name}
                   </h3>
+                  <p className="font-display mt-3 text-[17px] font-medium leading-snug text-ink/85">
+                    {b.mission}
+                  </p>
+                  <p className="mt-3 flex-1 text-[15px] leading-relaxed text-ink/70">
+                    {b.context}
+                  </p>
 
-                  <dl className="mt-5 flex-1 space-y-4">
-                    {[
-                      { k: "What it is", v: b.what },
-                      { k: "Who made it", v: b.who },
-                      { k: "What came out of it", v: b.outcome },
-                    ].map((row) => (
-                      <div key={row.k}>
-                        <dt className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
-                          {row.k}
-                        </dt>
-                        <dd className="mt-1.5 text-[15px] leading-relaxed text-ink/80">
-                          {row.v}
-                        </dd>
-                      </div>
-                    ))}
-                  </dl>
-
-                  <div className="mt-7 flex items-center justify-end border-t border-ink/15 pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setActiveBuild(i)}
+                    className="mt-6 flex items-center justify-between gap-3 border-t border-ink/15 pt-4 text-left"
+                  >
+                    <span className="ui text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/70 group-hover:text-tomato">
+                      Read more
+                    </span>
                     <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </div>
+                  </button>
                 </div>
               </article>
             ))}
@@ -536,34 +469,86 @@ const CommunityPage = () => {
         </div>
       </section>
 
-      {/* RAW STRIP, behind-the-scenes scrolling images */}
+      {/* Project deep-dive modal */}
+      <Dialog open={activeBuild !== null} onOpenChange={(o) => !o && setActiveBuild(null)}>
+        <DialogContent className="max-w-2xl bg-cream p-0">
+          {activeBuild !== null && (
+            <>
+              {BUILDS[activeBuild].img && (
+                <div className="aspect-[16/9] overflow-hidden bg-ink">
+                  <img
+                    src={BUILDS[activeBuild].img as string}
+                    alt={BUILDS[activeBuild].name}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              )}
+              <div className="p-6 md:p-8">
+                <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-tomato">
+                  {BUILDS[activeBuild].tag}
+                </p>
+                <DialogHeader>
+                  <DialogTitle className="font-display mt-2 text-3xl font-extrabold leading-[1.05] md:text-4xl">
+                    {BUILDS[activeBuild].name}
+                  </DialogTitle>
+                </DialogHeader>
+                <p className="font-display mt-4 text-lg font-medium leading-snug text-ink/85">
+                  {BUILDS[activeBuild].mission}
+                </p>
+                <p className="mt-4 text-[15px] leading-relaxed text-ink/75">
+                  {BUILDS[activeBuild].context}
+                </p>
+                <p className="mt-3 text-[15px] leading-relaxed text-ink/70">
+                  {BUILDS[activeBuild].detail}
+                </p>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* COMMUNITY GALLERY, masonry strip */}
       <section className="bg-cream py-12 md:py-16">
         <div className="container">
-          <div className="flex items-baseline justify-between gap-6">
-            <p className="overline text-tomato">From the camera roll</p>
-            <p className="ui hidden text-[10px] uppercase tracking-[0.22em] text-ink/45 md:block">
-              Unedited · last 30 days
-            </p>
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <p className="overline text-tomato">§ C.06, From the camera roll</p>
+              <h2 className="font-display mt-3 text-[clamp(1.75rem,3.5vw,2.75rem)] font-extrabold leading-[0.95]">
+                The community,
+                <br />
+                <span className="handwritten text-tomato text-[0.6em]">unedited.</span>
+              </h2>
+            </div>
+            <a
+              href="#"
+              className="ui hidden shrink-0 items-center gap-2 border-b border-ink pb-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/80 transition-colors hover:border-tomato hover:text-tomato md:inline-flex"
+            >
+              Open community gallery
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
           </div>
         </div>
 
-        <div className="mt-6 -mx-5 md:mt-8 md:-mx-8 lg:-mx-10">
-          <div className="flex snap-x gap-4 overflow-x-auto px-5 pb-4 md:gap-5 md:px-8 lg:px-10">
+        {/* Masonry strip — varied crops, slight stagger */}
+        <div className="container mt-8 md:mt-10">
+          <div className="columns-2 gap-3 md:columns-4 md:gap-4">
             {[
-              { img: hands,     cap: "Lagos · open kitchen, 22:14",      ratio: "4/5",   rot: -1.2, w: "w-[60%] sm:w-[280px] md:w-[320px]" },
-              { img: party,     cap: "Berlin · long table, vol. 47",      ratio: "16/10", rot: 0.8,  w: "w-[78%] sm:w-[420px] md:w-[480px]" },
-              { img: hackathon, cap: "Tokyo · slice hack, demo night",   ratio: "1/1",   rot: -0.6, w: "w-[60%] sm:w-[300px] md:w-[340px]" },
-              { img: slice,     cap: "Lisbon · sunday slice club",        ratio: "5/4",  rot: 1.4,  w: "w-[68%] sm:w-[360px] md:w-[400px]" },
-              { img: pizzeria,  cap: "Naples · the oven, 03:00",          ratio: "3/4",   rot: -1.8, w: "w-[58%] sm:w-[270px] md:w-[300px]" },
-              { img: community, cap: "CDMX · sunday block party",         ratio: "16/10", rot: 0.6,  w: "w-[78%] sm:w-[440px] md:w-[500px]" },
+              { img: hands,     cap: "Lagos · open kitchen",    ratio: "4/5",   rot: -1.2 },
+              { img: party,     cap: "Berlin · long table",     ratio: "3/4",   rot: 0.8 },
+              { img: hackathon, cap: "Tokyo · demo night",      ratio: "1/1",   rot: -0.6 },
+              { img: slice,     cap: "Lisbon · slice club",     ratio: "5/4",   rot: 1.4 },
+              { img: pizzeria,  cap: "Naples · the oven, 03:00", ratio: "3/4",  rot: -1.8 },
+              { img: community, cap: "CDMX · block party",      ratio: "4/5",   rot: 0.6 },
+              { img: party,     cap: "Quito · global party",    ratio: "1/1",   rot: -1.0 },
+              { img: hackathon, cap: "Amsterdam · the crew",    ratio: "4/5",   rot: 1.1 },
             ].map((p, i) => (
               <figure
                 key={i}
-                className={`group shrink-0 snap-start ${p.w}`}
+                className="group mb-3 break-inside-avoid md:mb-4"
                 style={{ transform: `rotate(${p.rot}deg)` }}
               >
                 <div
-                  className="relative overflow-hidden rounded-xl bg-ink shadow-[0_18px_40px_-22px_hsl(var(--ink)/0.4)] transition-all duration-500 group-hover:scale-[1.03] group-hover:brightness-110 group-hover:shadow-[0_24px_55px_-20px_hsl(var(--tomato)/0.4)]"
+                  className="relative overflow-hidden rounded-xl bg-ink shadow-[0_14px_36px_-22px_hsl(var(--ink)/0.4)] transition-all duration-500 group-hover:z-10 group-hover:scale-[1.06] group-hover:rotate-0 group-hover:shadow-[0_24px_55px_-20px_hsl(var(--tomato)/0.4)]"
                   style={{ aspectRatio: p.ratio }}
                 >
                   <img
@@ -579,10 +564,20 @@ const CommunityPage = () => {
                 </figcaption>
               </figure>
             ))}
-            <div className="w-2 shrink-0" aria-hidden />
+          </div>
+
+          <div className="mt-6 flex justify-center md:hidden">
+            <a
+              href="#"
+              className="ui inline-flex items-center gap-2 border-b border-ink pb-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/80"
+            >
+              Open community gallery
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
           </div>
         </div>
       </section>
+
 
 
 
@@ -592,21 +587,21 @@ const CommunityPage = () => {
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
               <div className="col-span-12 lg:col-span-5">
-                <p className="overline text-tomato">§ C.07b, Open calls</p>
+                <p className="overline text-tomato">§ C.07, Come help shape it</p>
                 <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
                   Open calls.
                 </h2>
                 <p className="ui mt-4 text-sm italic text-ink/55 md:text-base">
-                  Choose your role. Or invent a new one.
+                  Bring what you have. We'll figure out the rest together.
                 </p>
               </div>
               <div className="col-span-12 lg:col-span-4 lg:col-start-6">
                 <p className="text-left text-base leading-[1.6] text-ink/75 md:text-lg">
                   PizzaDAO grows through people who start things.
                   <br />
-                  Some arrive with expertise. Others with curiosity.
+                  Some arrive with expertise. Some with curiosity.
                   <br />
-                  We build together.
+                  Both end up shaping what we build next.
                 </p>
               </div>
             </div>
@@ -617,27 +612,27 @@ const CommunityPage = () => {
               {
                 tags: ["Global", "BD", "Partnerships"],
                 title: "Superconnectors & partnership leads",
-                note: "Connect brands, communities, and ideas. Help grow the PizzaDAO network through partnerships, introductions, and cultural collaborations.",
+                note: "Come help bridge brands, communities, and ideas. Grow the network through partnerships, introductions, and cultural collaborations.",
               },
               {
                 tags: ["Pizza", "Operations", "Hospitality"],
                 title: "Pizzaiolos, operators & pizza builders",
-                note: "Run a shop? Obsessed with dough, systems, or hospitality? Bring the challenges. We'll bring builders and experimentation.",
+                note: "Running a shop or obsessed with dough and hospitality? Come share the real problems — we'll bring builders and experimentation alongside you.",
               },
               {
                 tags: ["Remote", "AI", "Product"],
                 title: "AI-native builders, engineers & designers",
-                note: "Help build world-class AI tools and digital experiences for pizza shops, communities, and small businesses.",
+                note: "Come help shape tools and digital experiences for pizza shops, communities, and small businesses worldwide.",
               },
               {
                 tags: ["Media", "Creator", "Culture"],
                 title: "Creators, streamers & storytellers",
-                note: "Help expand the reach and mythology of PizzaDAO through content, media, internet culture, and emerging platforms.",
+                note: "Come help carry the story further. Content, media, internet culture, and emerging platforms welcome.",
               },
               {
                 tags: ["Events", "Community", "IRL"],
                 title: "Community organizers & event architects",
-                note: "Create unforgettable pizza experiences. Meetups, hackathons, dinners, workshops, art shows, and everything in between.",
+                note: "Come help host the kinds of pizza experiences worth remembering. Meetups, hackathons, dinners, workshops, art shows — all of it.",
               },
             ].map((c, i) => (
               <li key={c.title}>
@@ -834,6 +829,56 @@ const CommunityPage = () => {
         </div>
       </section>
 
+      {/* START SOMEWHERE — lightweight onboarding strip */}
+      <section className="bg-cream py-12 md:py-16">
+        <div className="container">
+          <div className="rounded-2xl border-2 border-ink bg-cream-warm p-6 md:p-10">
+            <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="overline text-tomato">§ C.09, First step</p>
+                <h2 className="font-display mt-3 text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-[0.95]">
+                  Start <span className="handwritten text-tomato text-[0.7em] align-middle">somewhere.</span>
+                </h2>
+                <p className="mt-3 max-w-md text-base leading-relaxed text-ink/70">
+                  Three low-friction ways in. Pick the one you can do today.
+                </p>
+              </div>
+              <span className="ui hidden text-[10px] uppercase tracking-[0.22em] text-ink/45 md:block">
+                Pick one · do it today
+              </span>
+            </div>
+
+            <div className="mt-8 grid grid-cols-1 gap-3 md:mt-10 md:grid-cols-3 md:gap-4">
+              {[
+                { n: "01", title: "Join Discord", note: "Open the door. Say hi.", href: "/join" },
+                { n: "02", title: "Attend an event", note: "Show up to one nearby.", href: "#ways-in" },
+                { n: "03", title: "Start a project", note: "Pitch the experiment.", href: "/join" },
+              ].map((s) => (
+                <a
+                  key={s.n}
+                  href={s.href}
+                  className="group flex items-center justify-between gap-4 rounded-xl border-2 border-ink bg-cream p-5 transition-all hover:-translate-y-0.5 hover:bg-butter"
+                >
+                  <div>
+                    <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+                      {s.n}
+                    </p>
+                    <p className="font-display mt-1 text-xl font-extrabold leading-tight">
+                      {s.title}
+                    </p>
+                    <p className="mt-1 text-[13px] leading-snug text-ink/65">
+                      {s.note}
+                    </p>
+                  </div>
+                  <ArrowUpRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+
       {/* CTA */}
       <section className="bg-tomato py-16 text-cream md:py-24">
         <div className="container">
@@ -949,13 +994,14 @@ const HERO_IMAGES: HeroTile[] = [
   { img: "/media/community-pizza-robots.jpg", caption: "NYC · Pizza Robots" },
 ];
 
-// Layout for collage tiles, percentages relative to collage box
+// Layout for collage tiles, percentages relative to collage box.
+// Intentionally imperfect overlap. Two tiles allowed to break the row.
 const TILE_LAYOUTS = [
-  { top: "4%",  left: "2%",  w: "34%", aspect: "4/5",  rot: -4, z: 2, delay: 80 },
-  { top: "0%",  left: "36%", w: "32%", aspect: "1/1",  rot: 2,  z: 4, delay: 220 },
-  { top: "8%",  left: "68%", w: "30%", aspect: "4/5",  rot: 3,  z: 3, delay: 360 },
-  { top: "55%", left: "12%", w: "30%", aspect: "5/4",  rot: -2, z: 5, delay: 500 },
-  { top: "52%", left: "52%", w: "36%", aspect: "16/10",rot: 4,  z: 3, delay: 640 },
+  { top: "2%",  left: "-2%",  w: "34%", aspect: "4/5",   rot: -5,  z: 2, delay: 80 },   // breaks left edge
+  { top: "0%",  left: "34%",  w: "32%", aspect: "1/1",   rot: 2.5, z: 4, delay: 220 },
+  { top: "10%", left: "70%",  w: "32%", aspect: "4/5",   rot: 4,   z: 3, delay: 360 },  // breaks right edge
+  { top: "56%", left: "10%",  w: "30%", aspect: "5/4",   rot: -3,  z: 5, delay: 500 },
+  { top: "50%", left: "48%",  w: "38%", aspect: "16/10", rot: 5,   z: 3, delay: 640 },
 ];
 
 const HeroSection = () => {
@@ -967,13 +1013,13 @@ const HeroSection = () => {
 
   return (
     <section className="relative overflow-hidden bg-cream pt-24 md:pt-32">
-      {/* Warm radial gradient */}
+      {/* Warm radial gradient — slightly stronger for warmth */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(60% 55% at 65% 35%, hsl(var(--butter) / 0.55), transparent 70%), radial-gradient(45% 40% at 25% 70%, hsl(var(--tomato) / 0.18), transparent 75%)",
+            "radial-gradient(65% 60% at 65% 30%, hsl(var(--butter) / 0.7), transparent 72%), radial-gradient(50% 45% at 20% 75%, hsl(var(--tomato) / 0.22), transparent 78%)",
         }}
       />
       {/* Film grain overlay */}
@@ -990,11 +1036,14 @@ const HeroSection = () => {
 
           <div className="mt-8 grid grid-cols-12 items-end gap-x-6 gap-y-10 md:mt-12">
             <div className="col-span-12 md:col-span-8">
+              <p className="handwritten mb-4 text-[15px] text-tomato md:text-base">
+                ↘ this part is important
+              </p>
               <h1 className="font-display text-[clamp(3rem,9.5vw,8.25rem)] font-extrabold leading-[0.84] tracking-[-0.015em]">
                 The Pizza Mafia
                 <br />
                 is built{" "}
-                <span className="italic font-normal text-tomato">by you.</span>
+                <span className="handwritten text-tomato text-[0.7em] align-middle">by you.</span>
               </h1>
               <p className="font-display mt-6 max-w-2xl text-xl font-medium leading-snug text-ink/75 md:text-2xl">
                 Some people show up for pizza. Some stay and build something bigger.
@@ -1003,7 +1052,7 @@ const HeroSection = () => {
             <div className="col-span-12 md:col-span-4 md:pl-8">
               <p className="text-lg leading-relaxed text-ink/80 md:text-xl">
                 People don't just join PizzaDAO. They host. Build. Create.
-                Feed. Organize. Show up.
+                Feed. Organize. <span className="handwritten text-tomato">show up.</span>
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row md:flex-col">
                 <a href="/join" className="btn-pill-lg bg-tomato text-cream hover:bg-ink">
@@ -1069,7 +1118,7 @@ const HeroSection = () => {
             {[
               { k: "Active members", v: "3,000+" },
               { k: "Chapters", v: "60+" },
-              { k: "Open projects", v: "47" },
+              { k: "Open experiments", v: "Always" },
               { k: "This week", v: "12 events" },
             ].map((m) => (
               <div key={m.k} className="px-1">
