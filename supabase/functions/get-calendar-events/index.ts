@@ -21,12 +21,14 @@ Deno.serve(async (req) => {
       title: string;
       location: string;
       description: string;
+      recurring: boolean;
     }> = [];
 
     for (const k of Object.keys(parsed)) {
       const ev: any = parsed[k];
       if (!ev || ev.type !== 'VEVENT') continue;
 
+      const isRecurring = !!ev.rrule;
       const pushEv = (start: Date, end: Date | null) => {
         events.push({
           start: start.toISOString(),
@@ -34,6 +36,7 @@ Deno.serve(async (req) => {
           title: (ev.summary || '').toString(),
           location: (ev.location || '').toString(),
           description: (ev.description || '').toString(),
+          recurring: isRecurring,
         });
       };
 
