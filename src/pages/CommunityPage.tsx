@@ -126,6 +126,7 @@ const BUILDS = [
 
 const CommunityPage = () => {
   const [calOpen, setCalOpen] = useState(false);
+  const [activeBuild, setActiveBuild] = useState<number | null>(null);
   useEffect(() => {
     document.title = "Community, PizzaDAO";
   }, []);
