@@ -1269,7 +1269,13 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
         <div className="border-t-2 border-ink pt-8 md:pt-10">
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
             <div className="col-span-12 md:col-span-8">
-              <p className="overline text-tomato">§ C.04, This week in PizzaDAO</p>
+              <p className="overline inline-flex items-center gap-2 text-tomato">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-tomato opacity-60" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-tomato" />
+                </span>
+                § C.04, Live this week
+              </p>
               <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
                 This week
                 <br />
