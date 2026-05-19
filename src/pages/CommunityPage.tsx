@@ -829,6 +829,56 @@ const CommunityPage = () => {
         </div>
       </section>
 
+      {/* START SOMEWHERE — lightweight onboarding strip */}
+      <section className="bg-cream py-12 md:py-16">
+        <div className="container">
+          <div className="rounded-2xl border-2 border-ink bg-cream-warm p-6 md:p-10">
+            <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+              <div>
+                <p className="overline text-tomato">§ C.09, First step</p>
+                <h2 className="font-display mt-3 text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-[0.95]">
+                  Start <span className="handwritten text-tomato text-[0.7em] align-middle">somewhere.</span>
+                </h2>
+                <p className="mt-3 max-w-md text-base leading-relaxed text-ink/70">
+                  Three low-friction ways in. Pick the one you can do today.
+                </p>
+              </div>
+              <span className="ui hidden text-[10px] uppercase tracking-[0.22em] text-ink/45 md:block">
+                Pick one · do it today
+              </span>
+            </div>
+
+            <div className="mt-8 grid grid-cols-1 gap-3 md:mt-10 md:grid-cols-3 md:gap-4">
+              {[
+                { n: "01", title: "Join Discord", note: "Open the door. Say hi.", href: "/join" },
+                { n: "02", title: "Attend an event", note: "Show up to one nearby.", href: "#ways-in" },
+                { n: "03", title: "Start a project", note: "Pitch the experiment.", href: "/join" },
+              ].map((s) => (
+                <a
+                  key={s.n}
+                  href={s.href}
+                  className="group flex items-center justify-between gap-4 rounded-xl border-2 border-ink bg-cream p-5 transition-all hover:-translate-y-0.5 hover:bg-butter"
+                >
+                  <div>
+                    <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+                      {s.n}
+                    </p>
+                    <p className="font-display mt-1 text-xl font-extrabold leading-tight">
+                      {s.title}
+                    </p>
+                    <p className="mt-1 text-[13px] leading-snug text-ink/65">
+                      {s.note}
+                    </p>
+                  </div>
+                  <ArrowUpRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+
       {/* CTA */}
       <section className="bg-tomato py-16 text-cream md:py-24">
         <div className="container">
