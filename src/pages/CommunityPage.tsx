@@ -1052,7 +1052,7 @@ const HeroSection = () => {
             <div className="col-span-12 md:col-span-4 md:pl-8">
               <p className="text-lg leading-relaxed text-ink/80 md:text-xl">
                 People don't just join PizzaDAO. They host. Build. Create.
-                Feed. Organize. <span className="handwritten text-tomato">show up.</span>
+                Feed. Organize. <span className="handwritten inline-block text-tomato text-[1.25em] leading-none -rotate-[3deg] translate-y-[0.05em]">show up.</span>
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row md:flex-col">
                 <a href="/join" className="btn-pill-lg bg-tomato text-cream hover:bg-ink">
