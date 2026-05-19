@@ -198,17 +198,17 @@ const Journal = () => {
               <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92]">
                 One issue.
                 <br />
-                <span className="text-ink/65">Every Sunday.</span>
+                <span className="text-ink/65">When it's ready.</span>
               </h3>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-ink/70 md:text-lg">
-                A weekly dispatch, the best new writing, dispatches from
+                An occasional dispatch — the best new writing, dispatches from
                 chapters, and one thing about pizza you didn't know yesterday.
-                Free. No tracking.
+                No fixed schedule. No tracking. Unsubscribe anytime.
               </p>
             </div>
             <form
               className="col-span-12 md:col-span-5"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleSubscribe}
             >
               <div className="flex flex-col gap-3 sm:flex-row">
                 <label className="sr-only" htmlFor="journal-email">Email</label>
@@ -216,20 +216,25 @@ const Journal = () => {
                   id="journal-email"
                   type="email"
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={status === "loading"}
                   placeholder="your@email.com"
-                  className="ui w-full rounded-full border border-ink bg-cream px-5 py-3.5 text-base text-ink placeholder:text-ink/40 focus:border-tomato focus:outline-none sm:text-sm"
+                  className="ui w-full rounded-full border border-ink bg-cream px-5 py-3.5 text-base text-ink placeholder:text-ink/40 focus:border-tomato focus:outline-none disabled:opacity-60 sm:text-sm"
                 />
                 <button
                   type="submit"
-                  className="btn-pill-lg bg-ink text-cream hover:bg-tomato"
+                  disabled={status === "loading"}
+                  className="btn-pill-lg bg-ink text-cream hover:bg-tomato disabled:opacity-60"
                 >
-                  Subscribe →
+                  {status === "loading" ? "Subscribing…" : status === "success" ? "Subscribed ✓" : "Subscribe →"}
                 </button>
               </div>
               <p className="ui mt-3 text-[10px] uppercase tracking-[0.18em] text-ink/50">
-                Powered by Substack · 12,000+ readers
+                Join 12,000+ readers · Unsubscribe anytime
               </p>
             </form>
+
           </div>
         </div>
       </div>
