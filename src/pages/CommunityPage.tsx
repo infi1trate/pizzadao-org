@@ -154,14 +154,20 @@ const CommunityPage = () => {
               </h2>
             </div>
             <div className="col-span-12 md:col-span-6 md:col-start-7">
-              <p className="text-lg leading-relaxed text-cream/85 md:text-xl">
-                A DAO is a group of people coordinating around shared ownership,
-                creativity, and action — without waiting for permission. PizzaDAO
-                pools resources from its members and partners, then funds
-                experiments, events, tools, and public goods proposed by the
-                community itself. The "work" is whatever members decide to build
-                together this week.
-              </p>
+              <div className="space-y-6 border-l-2 border-butter/60 pl-6 md:pl-8">
+                <p className="font-display text-2xl font-extrabold leading-snug text-cream md:text-3xl">
+                  A DAO is a community{" "}
+                  <span className="text-butter">coordinating resources, decisions, and action</span>{" "}
+                  around shared purpose.
+                </p>
+                <p className="text-lg leading-relaxed text-cream/80 md:text-xl">
+                  PizzaDAO funds <span className="text-cream">experiments, events, tools, and cultural initiatives</span> through community participation and governance.
+                </p>
+                <p className="text-lg leading-relaxed text-cream/70 md:text-xl">
+                  The work is whatever members decide to build together this week.
+                </p>
+              </div>
+
               <ul className="mt-10 space-y-4 border-t border-cream/20 pt-8">
                 {[
                   "Anyone can propose an experiment.",
