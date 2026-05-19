@@ -971,8 +971,7 @@ const CommunityPage = () => {
         </DialogContent>
       </Dialog>
 
-      {/* COMMUNITY GALLERY, masonry strip */}
-      <section className="bg-cream py-12 md:py-16">
+      {/* COMMUNITY GALLERY, masonry strip + MVP modal */}
       {(() => {
         const GALLERY = [
           { img: hands,     cap: "Lagos · open kitchen",       meta: "Apr · @marina_l",   ratio: "4/5", rot: -1.2 },
