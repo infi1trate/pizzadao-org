@@ -157,38 +157,62 @@ const RITUALS = [
   { k: "Sun", v: "Slice club, long table, no agenda." },
 ];
 
-const BUILDS = [
+type Build = {
+  name: string;
+  tag: "Experiment" | "Hackathon" | "Live-tested" | "Arcade";
+  hook: string;
+  mission: string;
+  context: string;
+  detail: string;
+  img: string | null;
+  demo?: string;
+  featured?: boolean;
+  metric?: { k: string; v: string }[];
+};
+
+const BUILDS: Build[] = [
+  {
+    name: "Plan.xyz · rsv.pizza",
+    tag: "Live-tested",
+    hook: "Event infrastructure for global, decentralized gatherings.",
+    mission: "Open RSVPs, chapter dashboards, and proof-of-attendance in one stack.",
+    context: "Tested live during Global Pizza Party 2026 across ~30k attendees worldwide, running hundreds of simultaneous parties in dozens of cities.",
+    detail: "Now the default RSVP and check-in layer for chapter events, with public APIs so any community — pizza or otherwise — can use it.",
+    img: party,
+    demo: "https://rsv.pizza",
+    featured: true,
+    metric: [
+      { k: "~30k", v: "attendees routed" },
+      { k: "Global Pizza Party 2026", v: "stress-tested live" },
+      { k: "Open APIs", v: "any chapter can self-host" },
+    ],
+  },
   {
     name: "PizzaDAO Arcade",
-    tag: "Experiment",
-    mission: "Community-built pizza games and arcade cabinet experiments.",
-    context: "A roving cabinet, an open game jam, and a growing library of pizza-themed games made by members. Hardware, code, and pixel art, shipped together.",
-    detail: "Started as a one-night build at a chapter meetup and grew into an ongoing collaboration between hardware tinkerers, indie devs, and visual artists. The cabinet travels to events; the game catalog is open for any chapter to install or remix.",
+    tag: "Arcade",
+    hook: "Pizza games, built and shipped by members.",
+    mission: "Community-built pizza games and a roving arcade cabinet.",
+    context: "A traveling cabinet, an open game jam, and a growing library of pizza-themed games made by members — hardware, code, and pixel art, shipped together.",
+    detail: "Started as a one-night build at a chapter meetup and grew into an ongoing collab between hardware tinkerers, indie devs, and visual artists. The catalog is open for any chapter to install or remix.",
     img: hackathon,
   },
   {
     name: "HourPay",
-    tag: "Public good",
-    mission: "Streaming payroll for hospitality workers — paid by the hour, not the pay cycle.",
-    context: "A working experiment aimed at reducing reliance on payday loans for restaurant and pizzeria staff. Wages stream in real time as the shift happens.",
-    detail: "Built by member-operators who watched their own teams struggle between paydays. Currently in pilot with a small group of independent pizzerias, with the goal of making predatory short-term lending unnecessary for the people who keep kitchens running.",
+    tag: "Hackathon",
+    hook: "Streaming payroll for the people who keep kitchens running.",
+    mission: "Paid by the hour, not the pay cycle.",
+    context: "A working experiment aimed at reducing reliance on payday loans for pizzeria and hospitality staff. Wages stream in real time as the shift happens.",
+    detail: "Built by member-operators who watched their own teams struggle between paydays. In pilot with a small group of independent pizzerias.",
     img: pizzeria,
   },
   {
     name: "Secret Pineapple",
-    tag: "Hackathon winner",
+    tag: "Hackathon",
+    hook: "Anonymous receipts, itemized and verifiable.",
     mission: "Cryptographically anonymized, itemized receipts.",
     context: "A hackathon-winning prototype exploring how to prove what was purchased without revealing who bought it — useful for sponsorships, reimbursements, and public-goods accounting.",
-    detail: "Born at a PizzaDAO hackathon, now an active research thread. Combines zero-knowledge proofs with itemized receipt schemas so chapters can transparently report spending without doxxing members or vendors.",
+    detail: "Combines zero-knowledge proofs with itemized receipt schemas so chapters can transparently report spending without doxxing members or vendors.",
     img: null,
-  },
-  {
-    name: "Plan.xyz · rsv.pizza",
-    tag: "Infrastructure",
-    mission: "Event infrastructure built for global, decentralized gatherings.",
-    context: "Tested live during Global Pizza Party 2026 across ~30k attendees worldwide. Open RSVPs, chapter dashboards, and proof-of-attendance in one stack.",
-    detail: "Stress-tested across hundreds of simultaneous parties in dozens of cities. Now the default RSVP and check-in layer for chapter events, with public APIs so any community — pizza or otherwise — can use it.",
-    img: party,
   },
 ];
 
