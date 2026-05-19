@@ -332,6 +332,115 @@ const CommunityPage = () => {
         </div>
       </section>
 
+      {/* OPEN CALLS — current ways to jump in (extension of Find your lane) */}
+      <section className="bg-cream pb-16 pt-4 md:pb-24 md:pt-6">
+        <div className="container">
+          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-4">
+            <div className="col-span-12 lg:col-span-6">
+              <p className="overline text-tomato">§ C.02, Jump in</p>
+              <h3 className="font-display mt-4 text-[clamp(1.75rem,3.5vw,2.75rem)] font-extrabold leading-[0.95]">
+                Current ways to jump in.
+              </h3>
+            </div>
+            <div className="col-span-12 lg:col-span-5 lg:col-start-8">
+              <p className="text-base leading-[1.6] text-ink/70 md:text-lg">
+                Some lanes are always open. Others change week to week. If one fits,{" "}
+                <span className="text-ink">raise your hand</span>.
+              </p>
+            </div>
+          </div>
+
+          <ul className="mt-8 divide-y divide-ink/10 border-y border-ink/10 md:mt-10">
+            {[
+              {
+                tags: ["Global", "Partnerships"],
+                title: "Superconnectors & partnership leads",
+                note: "Bridge brands, communities, and ideas through introductions and collaborations.",
+              },
+              {
+                tags: ["Pizza", "Operations"],
+                title: "Pizzaiolos, operators & pizza builders",
+                note: "Share the real shop-floor problems — we'll bring builders alongside you.",
+              },
+              {
+                tags: ["Remote", "AI", "Product"],
+                title: "AI-native builders, engineers & designers",
+                note: "Shape tools for pizza shops, communities, and small businesses worldwide.",
+              },
+              {
+                tags: ["Media", "Culture"],
+                title: "Creators, streamers & storytellers",
+                note: "Carry the story further across content, media, and internet culture.",
+              },
+              {
+                tags: ["Events", "IRL"],
+                title: "Community organizers & event architects",
+                note: "Host pizza experiences worth remembering — meetups, hackathons, dinners, art shows.",
+              },
+            ].map((c, i) => (
+              <li key={c.title}>
+                <a
+                  href="/join"
+                  className="group block px-2 py-5 transition-colors hover:bg-butter/30 md:px-3 md:py-6"
+                >
+                  {/* Mobile: stacked */}
+                  <div className="flex flex-col gap-3 md:hidden">
+                    <div className="flex items-start justify-between gap-4">
+                      <span className="ui text-[10px] font-semibold tabular-nums uppercase tracking-[0.22em] text-ink/40">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <ArrowUpRight className="h-4 w-4 shrink-0 text-ink/45 transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5 group-hover:text-tomato" />
+                    </div>
+                    <h4 className="font-display text-left text-lg font-extrabold leading-snug">
+                      {c.title}
+                    </h4>
+                    <p className="text-left text-[14px] leading-[1.6] text-ink/70">
+                      {c.note}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {c.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="ui rounded-full border border-ink/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/65"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Desktop / tablet: aligned 12-col */}
+                  <div className="hidden md:grid md:grid-cols-12 md:items-center md:gap-x-6">
+                    <span className="ui col-span-1 text-[10px] font-semibold tabular-nums uppercase tracking-[0.22em] text-ink/40">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h4 className="font-display col-span-4 text-left text-lg font-extrabold leading-snug lg:text-xl">
+                      {c.title}
+                    </h4>
+                    <p className="col-span-4 text-left text-[14px] leading-[1.6] text-ink/70 lg:text-[15px]">
+                      {c.note}
+                    </p>
+                    <div className="col-span-2 flex flex-wrap items-center gap-1.5">
+                      {c.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="ui rounded-full border border-ink/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/65"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <ArrowUpRight className="col-span-1 h-4 w-4 justify-self-end text-ink/45 transition-transform group-hover:translate-x-1 group-hover:text-tomato" />
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+
+
 
 
 
@@ -634,150 +743,6 @@ const CommunityPage = () => {
 
 
 
-      {/* OPEN CALLS, participatory needs */}
-      <section className="bg-cream py-16 md:py-24">
-        <div className="container">
-          <div className="border-t-2 border-ink pt-8 md:pt-10">
-            <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
-              <div className="col-span-12 lg:col-span-5">
-                <p className="overline text-tomato">§ C.07, Come help shape it</p>
-                <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
-                  Open calls.
-                </h2>
-                <p className="ui mt-4 text-sm italic text-ink/55 md:text-base">
-                  Bring what you have. We'll figure out the rest together.
-                </p>
-              </div>
-              <div className="col-span-12 lg:col-span-4 lg:col-start-6">
-                <p className="text-left text-base leading-[1.6] text-ink/75 md:text-lg">
-                  PizzaDAO grows through people who start things.
-                  <br />
-                  Some arrive with expertise. Some with curiosity.
-                  <br />
-                  Both end up shaping what we build next.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <ul className="mt-12 divide-y divide-ink/10 border-y border-ink/10 md:mt-16">
-            {[
-              {
-                tags: ["Global", "BD", "Partnerships"],
-                title: "Superconnectors & partnership leads",
-                note: "Come help bridge brands, communities, and ideas. Grow the network through partnerships, introductions, and cultural collaborations.",
-              },
-              {
-                tags: ["Pizza", "Operations", "Hospitality"],
-                title: "Pizzaiolos, operators & pizza builders",
-                note: "Running a shop or obsessed with dough and hospitality? Come share the real problems — we'll bring builders and experimentation alongside you.",
-              },
-              {
-                tags: ["Remote", "AI", "Product"],
-                title: "AI-native builders, engineers & designers",
-                note: "Come help shape tools and digital experiences for pizza shops, communities, and small businesses worldwide.",
-              },
-              {
-                tags: ["Media", "Creator", "Culture"],
-                title: "Creators, streamers & storytellers",
-                note: "Come help carry the story further. Content, media, internet culture, and emerging platforms welcome.",
-              },
-              {
-                tags: ["Events", "Community", "IRL"],
-                title: "Community organizers & event architects",
-                note: "Come help host the kinds of pizza experiences worth remembering. Meetups, hackathons, dinners, workshops, art shows — all of it.",
-              },
-            ].map((c, i) => (
-              <li key={c.title}>
-                <a
-                  href="/join"
-                  className="group block px-3 py-6 transition-colors hover:bg-butter/30 md:px-4 md:py-7 lg:py-6"
-                >
-                  {/* Mobile: stacked editorial block */}
-                  <div className="flex flex-col gap-3 md:hidden">
-                    <div className="flex items-start justify-between gap-4">
-                      <span className="ui text-[10px] font-semibold tabular-nums uppercase tracking-[0.22em] text-ink/40">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <ArrowUpRight className="h-5 w-5 shrink-0 text-ink/50 transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5 group-hover:text-tomato" />
-                    </div>
-                    <h3 className="font-display text-left text-xl font-extrabold leading-snug">
-                      {c.title}
-                    </h3>
-                    <p className="text-left text-[15px] leading-[1.65] text-ink/70">
-                      {c.note}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {c.tags.map((t) => (
-                        <span
-                          key={t}
-                          className="ui rounded-full border border-ink/20 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/65"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Tablet: 2-col layout */}
-                  <div className="hidden md:grid md:grid-cols-12 md:items-start md:gap-x-6 lg:hidden">
-                    <div className="col-span-5 flex items-start gap-4">
-                      <span className="ui shrink-0 pt-1 text-[10px] font-semibold tabular-nums uppercase tracking-[0.22em] text-ink/40">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <h3 className="font-display text-left text-xl font-extrabold leading-snug md:text-2xl">
-                        {c.title}
-                      </h3>
-                    </div>
-                    <div className="col-span-7 flex flex-col gap-3">
-                      <div className="flex items-start justify-between gap-4">
-                        <p className="flex-1 text-left text-[15px] leading-[1.65] text-ink/70">
-                          {c.note}
-                        </p>
-                        <ArrowUpRight className="h-5 w-5 shrink-0 text-ink/50 transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5 group-hover:text-tomato" />
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {c.tags.map((t) => (
-                          <span
-                            key={t}
-                            className="ui rounded-full border border-ink/20 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/65"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Desktop: 12-col grid */}
-                  <div className="hidden lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-6">
-                    <span className="ui col-span-1 text-[10px] font-semibold tabular-nums uppercase tracking-[0.22em] text-ink/40">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="font-display col-span-4 text-left text-xl font-extrabold leading-snug lg:text-2xl">
-                      {c.title}
-                    </h3>
-                    <p className="col-span-4 text-left text-[15px] leading-[1.6] text-ink/70">
-                      {c.note}
-                    </p>
-                    <div className="col-span-2 flex flex-wrap items-center gap-1.5">
-                      {c.tags.map((t) => (
-                        <span
-                          key={t}
-                          className="ui rounded-full border border-ink/20 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/65"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                    <ArrowUpRight className="col-span-1 h-5 w-5 justify-self-end text-ink/50 transition-transform group-hover:translate-x-1 group-hover:text-tomato" />
-                  </div>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
 
       {/* JOIN, identity onboarding, four steps */}
       <section className="bg-butter py-16 text-ink md:py-24">
