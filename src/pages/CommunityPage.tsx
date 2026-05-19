@@ -587,21 +587,21 @@ const CommunityPage = () => {
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
               <div className="col-span-12 lg:col-span-5">
-                <p className="overline text-tomato">§ C.07b, Open calls</p>
+                <p className="overline text-tomato">§ C.07, Come help shape it</p>
                 <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
                   Open calls.
                 </h2>
                 <p className="ui mt-4 text-sm italic text-ink/55 md:text-base">
-                  Choose your role. Or invent a new one.
+                  Bring what you have. We'll figure out the rest together.
                 </p>
               </div>
               <div className="col-span-12 lg:col-span-4 lg:col-start-6">
                 <p className="text-left text-base leading-[1.6] text-ink/75 md:text-lg">
                   PizzaDAO grows through people who start things.
                   <br />
-                  Some arrive with expertise. Others with curiosity.
+                  Some arrive with expertise. Some with curiosity.
                   <br />
-                  We build together.
+                  Both end up shaping what we build next.
                 </p>
               </div>
             </div>
@@ -612,27 +612,27 @@ const CommunityPage = () => {
               {
                 tags: ["Global", "BD", "Partnerships"],
                 title: "Superconnectors & partnership leads",
-                note: "Connect brands, communities, and ideas. Help grow the PizzaDAO network through partnerships, introductions, and cultural collaborations.",
+                note: "Come help bridge brands, communities, and ideas. Grow the network through partnerships, introductions, and cultural collaborations.",
               },
               {
                 tags: ["Pizza", "Operations", "Hospitality"],
                 title: "Pizzaiolos, operators & pizza builders",
-                note: "Run a shop? Obsessed with dough, systems, or hospitality? Bring the challenges. We'll bring builders and experimentation.",
+                note: "Running a shop or obsessed with dough and hospitality? Come share the real problems — we'll bring builders and experimentation alongside you.",
               },
               {
                 tags: ["Remote", "AI", "Product"],
                 title: "AI-native builders, engineers & designers",
-                note: "Help build world-class AI tools and digital experiences for pizza shops, communities, and small businesses.",
+                note: "Come help shape tools and digital experiences for pizza shops, communities, and small businesses worldwide.",
               },
               {
                 tags: ["Media", "Creator", "Culture"],
                 title: "Creators, streamers & storytellers",
-                note: "Help expand the reach and mythology of PizzaDAO through content, media, internet culture, and emerging platforms.",
+                note: "Come help carry the story further. Content, media, internet culture, and emerging platforms welcome.",
               },
               {
                 tags: ["Events", "Community", "IRL"],
                 title: "Community organizers & event architects",
-                note: "Create unforgettable pizza experiences. Meetups, hackathons, dinners, workshops, art shows, and everything in between.",
+                note: "Come help host the kinds of pizza experiences worth remembering. Meetups, hackathons, dinners, workshops, art shows — all of it.",
               },
             ].map((c, i) => (
               <li key={c.title}>
