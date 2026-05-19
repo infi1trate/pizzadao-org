@@ -2,3 +2,7 @@ project_id = "mqstpnscnpexlopmyubk"
 
 [functions.get-calendar-events]
 verify_jwt = false
+
+[functions.subscribe-newsletter]
+verify_jwt = false
+

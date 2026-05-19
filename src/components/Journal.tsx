@@ -1,6 +1,9 @@
+import { useState } from "react";
 import lead from "@/assets/journal-lead.png";
 import j1 from "@/assets/journal-1.jpg";
 import jAi from "@/assets/journal-ai-community.png";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const SECONDARY = [
   {
