@@ -393,7 +393,7 @@ const CommunityPage = () => {
                 <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
                   Real projects.
                   <br />
-                  <span className="text-butter handwritten text-[0.55em] align-middle">made by members.</span>
+                  <span className="handwritten relative inline-block text-butter text-[1.05em] leading-[0.75] -ml-1 translate-y-[0.08em] -rotate-[3deg] align-baseline">made by members.</span>
                 </h2>
               </div>
               <div className="col-span-12 md:col-span-4 md:pl-8">
