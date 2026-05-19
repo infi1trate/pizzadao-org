@@ -1436,54 +1436,54 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                 </p>
               </div>
               <h3 className="font-display mt-3 text-3xl font-extrabold leading-[0.95] md:text-4xl">
-                The shared
+                Upcoming
                 <br />
-                calendar.
+                community events.
               </h3>
 
               {loading ? (
                 <p className="ui mt-7 text-sm text-ink/55">Loading community calendar…</p>
-              ) : (
-                <ul className="mt-7 space-y-2">
-                  {week.map((d, idx) => {
-                    const first = d.events[0];
-                    const more = d.events.length - 1;
-                    const active = d.events.length > 0;
-                    return (
-                      <li
-                        key={`${d.d}-${idx}`}
-                        className={`flex items-center gap-4 rounded-xl px-4 py-3 transition-all ${
-                          active
-                            ? "bg-butter shadow-[0_8px_24px_-12px_hsl(var(--butter)/0.9)]"
-                            : "bg-cream"
-                        }`}
-                      >
-                        <div className="ui w-12 shrink-0 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
-                          {d.d}
-                        </div>
-                        <div className="font-display w-8 shrink-0 text-2xl font-extrabold tabular-nums leading-none">
-                          {d.date}
-                        </div>
-                        <div className="min-w-0 flex-1 text-sm leading-snug text-ink/85">
-                          {first ? (
+              ) : (() => {
+                const activeDays = week.filter((d) => d.events.length > 0);
+                if (activeDays.length === 0) {
+                  return (
+                    <p className="ui mt-7 text-sm text-ink/55">
+                      No community events in the next 7 days. Check the full calendar.
+                    </p>
+                  );
+                }
+                return (
+                  <ul className="mt-7 space-y-2">
+                    {activeDays.map((d, idx) => {
+                      const first = d.events[0];
+                      const more = d.events.length - 1;
+                      return (
+                        <li
+                          key={`${d.d}-${idx}`}
+                          className="flex items-center gap-4 rounded-xl bg-butter px-4 py-3 shadow-[0_8px_24px_-12px_hsl(var(--butter)/0.9)] transition-all"
+                        >
+                          <div className="ui w-12 shrink-0 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
+                            {d.d}
+                          </div>
+                          <div className="font-display w-8 shrink-0 text-2xl font-extrabold tabular-nums leading-none">
+                            {d.date}
+                          </div>
+                          <div className="min-w-0 flex-1 text-sm leading-snug text-ink/85">
                             <span className="block truncate">
                               {first.title}
                               {more > 0 && (
                                 <span className="ml-2 text-[11px] text-ink/55">+{more} more</span>
                               )}
                             </span>
-                          ) : (
-                            <span className="text-ink/30">—</span>
-                          )}
-                        </div>
-                        {active && (
+                          </div>
                           <span className="h-2 w-2 shrink-0 rounded-full bg-tomato" aria-hidden />
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                );
+              })()}
+
 
               <button
                 onClick={onOpenCalendar}
