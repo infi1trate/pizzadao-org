@@ -516,7 +516,7 @@ const CommunityPage = () => {
               <h2 className="font-display mt-3 text-[clamp(1.75rem,3.5vw,2.75rem)] font-extrabold leading-[0.95]">
                 The community,
                 <br />
-                <span className="handwritten text-tomato text-[0.6em]">unedited.</span>
+                <span className="handwritten relative inline-block text-tomato text-[1.15em] leading-[0.75] -ml-0.5 translate-y-[0.08em] -rotate-[3deg] align-baseline">unedited.</span>
               </h2>
             </div>
             <a
