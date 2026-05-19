@@ -543,32 +543,129 @@ const CommunityPage = () => {
             </h2>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2">
-            {VOICES.map((v, i) => (
-              <figure
-                key={v.name}
-                className="relative flex flex-col justify-between rounded-2xl border-2 border-ink bg-cream p-6 md:p-8"
-              >
-                <Sparkles className="absolute right-6 top-6 h-5 w-5 text-tomato" />
-                <blockquote className="font-display text-2xl font-extrabold leading-[1.05] tracking-[-0.005em] md:text-3xl">
-                  “{v.quote}”
-                </blockquote>
-                <figcaption className="mt-8 flex items-baseline justify-between border-t border-ink/15 pt-4">
+          <div className="mt-12 grid grid-cols-1 gap-5 md:mt-16 md:grid-cols-12 md:gap-6">
+            {VOICES.map((v, i) => {
+              const baseCard =
+                "group relative flex flex-col justify-between rounded-2xl border-2 border-ink bg-cream transition-transform duration-300 hover:-translate-y-1 hover:rotate-0 shadow-[0_1px_0_hsl(var(--ink)/0.08),0_22px_36px_-26px_hsl(var(--ink)/0.45)]";
+              const span = v.span ?? "md:col-span-6";
+              const tilt = v.tilt ?? "";
+              const volTag = (
+                <span className="ui absolute right-4 top-4 text-[10px] tabular-nums text-ink/40">
+                  Vol. {String(i + 1).padStart(2, "0")}
+                </span>
+              );
+              const credit = (name: string, city: string) => (
+                <figcaption className="mt-6 flex items-baseline justify-between border-t border-ink/15 pt-4">
                   <div>
-                    <div className="font-display text-lg font-extrabold leading-tight">
-                      {v.name}
+                    <div className="font-display text-base font-extrabold leading-tight md:text-lg">
+                      {name}
                     </div>
                     <div className="ui mt-1 text-[10px] uppercase tracking-[0.2em] text-ink/55">
-                      Chapter · {v.city}
+                      Chapter · {city}
                     </div>
                   </div>
-                  <span className="ui text-[10px] tabular-nums text-ink/40">
-                    Vol. {String(i + 1).padStart(2, "0")}
-                  </span>
                 </figcaption>
-              </figure>
-            ))}
+              );
+
+              if (v.kind === "quote") {
+                return (
+                  <figure key={i} className={`${baseCard} ${span} ${tilt} p-6 md:p-8`}>
+                    <Sparkles className="absolute left-5 top-5 h-5 w-5 text-tomato" />
+                    {volTag}
+                    <blockquote className="mt-6 font-display text-2xl font-extrabold leading-[1.05] tracking-[-0.005em] md:text-3xl">
+                      “{v.quote}”
+                    </blockquote>
+                    {credit(v.name, v.city)}
+                  </figure>
+                );
+              }
+
+              if (v.kind === "note") {
+                return (
+                  <figure
+                    key={i}
+                    className={`${baseCard} ${span} ${tilt} bg-butter/70 p-6 md:p-7`}
+                  >
+                    <span className="ui absolute left-5 top-5 text-[10px] uppercase tracking-[0.22em] text-ink/55">
+                      Field note
+                    </span>
+                    {volTag}
+                    <p className="handwritten mt-10 text-[1.6rem] leading-[1.15] text-ink md:text-[1.9rem]">
+                      “{v.note}”
+                    </p>
+                    {credit(v.name, v.city)}
+                  </figure>
+                );
+              }
+
+              if (v.kind === "screenshot") {
+                return (
+                  <figure
+                    key={i}
+                    className={`${baseCard} ${span} ${tilt} overflow-hidden p-0`}
+                  >
+                    <div className="flex items-center justify-between border-b border-ink/15 bg-cream-warm px-4 py-2.5">
+                      <div className="flex items-center gap-2">
+                        <span className="h-2.5 w-2.5 rounded-full bg-tomato/70" />
+                        <span className="ui text-[11px] font-semibold text-ink">
+                          {v.channel}
+                        </span>
+                      </div>
+                      <span className="ui text-[10px] tabular-nums text-ink/45">
+                        {v.handle}
+                      </span>
+                    </div>
+                    <div className="flex flex-col gap-2 p-5">
+                      {v.lines.map((l, li) => (
+                        <div
+                          key={li}
+                          className={`flex ${l.who === "me" ? "justify-end" : "justify-start"}`}
+                        >
+                          <span
+                            className={`max-w-[85%] rounded-2xl px-3.5 py-2 text-[14px] leading-snug ${
+                              l.who === "me"
+                                ? "bg-ink text-cream rounded-br-sm"
+                                : "bg-ink/8 text-ink rounded-bl-sm"
+                            }`}
+                          >
+                            {l.text}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-auto flex items-center justify-between border-t border-ink/15 px-5 py-3">
+                      <span className="ui text-[10px] uppercase tracking-[0.22em] text-ink/55">
+                        Screenshot · Discord
+                      </span>
+                      <span className="ui text-[10px] tabular-nums text-ink/40">
+                        Vol. {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                  </figure>
+                );
+              }
+
+              // stat
+              return (
+                <figure key={i} className={`${baseCard} ${span} ${tilt} p-6 md:p-8`}>
+                  <span className="ui absolute left-5 top-5 text-[10px] uppercase tracking-[0.22em] text-ink/55">
+                    Receipt
+                  </span>
+                  {volTag}
+                  <div className="mt-10">
+                    <div className="font-display text-[3.4rem] font-extrabold leading-[0.95] tracking-[-0.02em] text-tomato md:text-[4rem]">
+                      {v.stat}
+                    </div>
+                    <p className="mt-3 font-display text-base font-extrabold leading-snug text-ink md:text-lg">
+                      {v.label}
+                    </p>
+                  </div>
+                  {credit(v.name, v.city)}
+                </figure>
+              );
+            })}
           </div>
+
         </div>
       </section>
 
