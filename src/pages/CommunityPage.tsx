@@ -316,7 +316,7 @@ const CommunityPage = () => {
 
                   <div className="mt-5 flex items-baseline justify-between gap-4 border-t border-ink/15 pt-4">
                     <p className="ui text-[10px] uppercase tracking-[0.2em] text-ink/55">
-                      Best for · {w.tag.toLowerCase()}s
+                      Open to anyone
                     </p>
                     <ArrowUpRight className="h-4 w-4 text-ink/70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
