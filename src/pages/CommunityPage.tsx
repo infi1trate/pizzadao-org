@@ -55,30 +55,98 @@ const WAYS_IN = [
   },
 ];
 
-const VOICES = [
+type Voice =
+  | {
+      kind: "quote";
+      name: string;
+      city: string;
+      quote: string;
+      span?: string;
+      tilt?: string;
+    }
+  | {
+      kind: "note";
+      name: string;
+      city: string;
+      note: string;
+      span?: string;
+      tilt?: string;
+    }
+  | {
+      kind: "screenshot";
+      handle: string;
+      channel: string;
+      lines: { who: "them" | "me"; text: string }[];
+      span?: string;
+      tilt?: string;
+    }
+  | {
+      kind: "stat";
+      name: string;
+      city: string;
+      stat: string;
+      label: string;
+      span?: string;
+      tilt?: string;
+    };
+
+const VOICES: Voice[] = [
   {
+    kind: "quote",
     name: "Margherita Ciro",
     city: "Naples",
     quote:
       "I came for the pizza. I stayed because nobody asked me what I did for a living.",
+    span: "md:col-span-7",
+    tilt: "md:-rotate-[0.6deg]",
   },
   {
+    kind: "note",
+    name: "Sister Marinara",
+    city: "Lagos",
+    note:
+      "Four friends. A folding table. Now it's the block's calendar.",
+    span: "md:col-span-5 md:translate-y-3",
+    tilt: "md:rotate-[0.8deg]",
+  },
+  {
+    kind: "screenshot",
+    handle: "@donmami",
+    channel: "#cdmx-chapter",
+    lines: [
+      { who: "them", text: "wait, is the long table still on for sunday?" },
+      { who: "me", text: "yes. bring 2 chairs and somebody new." },
+      { who: "them", text: "on it 🍕" },
+    ],
+    span: "md:col-span-5 md:-translate-y-2",
+    tilt: "md:-rotate-[1deg]",
+  },
+  {
+    kind: "quote",
     name: "Capo Crust",
     city: "Brooklyn",
     quote:
-      "We threw a party for 600 people in a parking lot. Nobody fought. Two people got engaged.",
+      "600 people in a parking lot. Nobody fought. Two people got engaged.",
+    span: "md:col-span-7",
+    tilt: "md:rotate-[0.4deg]",
   },
   {
+    kind: "stat",
+    name: "Tinashe O.",
+    city: "Harare",
+    stat: "0 → 84",
+    label: "RSVPs in 6 days, first chapter night",
+    span: "md:col-span-5",
+    tilt: "md:-rotate-[0.5deg]",
+  },
+  {
+    kind: "note",
     name: "Don Mami",
     city: "Mexico City",
-    quote:
-      "PizzaDAO is the only group chat I haven't muted in three years.",
-  },
-  {
-    name: "Sister Marinara",
-    city: "Lagos",
-    quote:
-      "Our chapter started with four friends and a folding table. Now it's the block's calendar.",
+    note:
+      "The only group chat I haven't muted in three years.",
+    span: "md:col-span-7 md:translate-y-2",
+    tilt: "md:rotate-[0.6deg]",
   },
 ];
 
