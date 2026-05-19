@@ -1118,7 +1118,7 @@ const HeroSection = () => {
             {[
               { k: "Active members", v: "3,000+" },
               { k: "Chapters", v: "60+" },
-              { k: "Open projects", v: "47" },
+              { k: "Open experiments", v: "Always" },
               { k: "This week", v: "12 events" },
             ].map((m) => (
               <div key={m.k} className="px-1">
