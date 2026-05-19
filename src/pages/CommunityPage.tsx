@@ -1409,9 +1409,19 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                     <h3 className="font-display mt-4 break-words text-[clamp(1.5rem,2.4vw,2.25rem)] font-extrabold leading-[1.05] tracking-[-0.005em]">
                       {ev.title}
                     </h3>
-                    <p className="ui mt-2 text-[11px] uppercase tracking-[0.2em] text-ink/55">
-                      {ev.location?.trim() || "Location TBD"}
-                    </p>
+                    <div className="mt-2 flex flex-wrap items-center gap-2">
+                      <p className="ui text-[11px] uppercase tracking-[0.2em] text-ink/55">
+                        {ev.location?.trim() || "Location TBD"}
+                      </p>
+                      {eventTags(ev).map((t) => (
+                        <span
+                          key={t}
+                          className="ui rounded-full bg-ink/8 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/70"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                     <p className="mt-4 text-base leading-relaxed text-ink/80">
                       {ev.description?.trim()
                         ? ev.description.trim().slice(0, 180) +
