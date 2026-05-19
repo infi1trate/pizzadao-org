@@ -1043,7 +1043,7 @@ const HeroSection = () => {
                 The Pizza Mafia
                 <br />
                 is built{" "}
-                <span className="handwritten text-tomato text-[0.7em] align-middle">by you.</span>
+                <span className="handwritten relative inline-block text-tomato text-[0.95em] leading-[0.8] -ml-1 -mr-2 translate-y-[0.05em] -rotate-[3deg] align-baseline">by you.</span>
               </h1>
               <p className="font-display mt-6 max-w-2xl text-xl font-medium leading-snug text-ink/75 md:text-2xl">
                 Some people show up for pizza. Some stay and build something bigger.
