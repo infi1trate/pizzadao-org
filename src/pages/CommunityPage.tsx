@@ -1775,9 +1775,26 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                       {ev.title}
                     </h3>
                     <div className="mt-2 flex flex-wrap items-center gap-2">
-                      <p className="ui text-[11px] uppercase tracking-[0.2em] text-ink/55">
-                        {ev.location?.trim() || "Location TBD"}
-                      </p>
+                      {ev.location?.trim() ? (
+                        isUrlish(ev.location) ? (
+                          <a
+                            href={ev.location.trim()}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="ui max-w-full truncate text-[11px] normal-case tracking-normal text-ink/55 underline-offset-2 hover:text-tomato hover:underline"
+                          >
+                            {ev.location.trim().replace(/^https?:\/\//i, "").replace(/\/$/, "")}
+                          </a>
+                        ) : (
+                          <p className="ui text-[11px] uppercase tracking-[0.2em] text-ink/55">
+                            {ev.location.trim()}
+                          </p>
+                        )
+                      ) : (
+                        <p className="ui text-[11px] uppercase tracking-[0.2em] text-ink/55">
+                          Location TBD
+                        </p>
+                      )}
                       {eventTags(ev).map((t) => (
                         <span
                           key={t}
@@ -1787,12 +1804,14 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                         </span>
                       ))}
                     </div>
-                    <p className="mt-4 text-base leading-relaxed text-ink/80">
-                      {ev.description?.trim()
-                        ? ev.description.trim().slice(0, 180) +
-                          (ev.description.trim().length > 180 ? "…" : "")
-                        : "Details coming soon."}
+                    <p className="mt-4 whitespace-pre-line break-words text-base leading-relaxed text-ink/80">
+                      {(() => {
+                        const clean = stripHtml(ev.description || "");
+                        if (!clean) return "Details coming soon.";
+                        return clean.length > 180 ? clean.slice(0, 180) + "…" : clean;
+                      })()}
                     </p>
+
                     <ArrowUpRight className="absolute right-6 top-6 h-5 w-5 text-ink/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-tomato" />
                   </article>
                 ))
