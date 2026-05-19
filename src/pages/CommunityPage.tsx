@@ -195,49 +195,6 @@ const CommunityPage = () => {
       {/* HERO, participatory, image-led */}
       <HeroSection />
 
-      {/* ONBOARDING STRIP, three steps */}
-      <section className="bg-cream py-12 md:py-16">
-        <div className="container">
-          <div className="flex items-baseline justify-between gap-6">
-            <p className="overline text-tomato">Get started</p>
-            <p className="ui hidden text-[10px] uppercase tracking-[0.22em] text-ink/45 md:block">
-              Three steps · no application
-            </p>
-          </div>
-
-          <ol className="mt-6 grid grid-cols-1 items-stretch gap-3 md:mt-8 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:gap-0">
-            {[
-              { n: "01", title: "Join a city", desc: "Find your local chapter and say hi.", href: "/join" },
-              { n: "02", title: "Show up to something", desc: "A long table, a hack night, a slice club.", href: "#ways-in" },
-              { n: "03", title: "Start something", desc: "Host a party. Ship a tool. Open a chapter.", href: "/join" },
-            ].flatMap((s, i, arr) => {
-              const items = [
-                <li key={s.n}>
-                  <a
-                    href={s.href}
-                    className="group flex h-full flex-col rounded-2xl bg-cream-warm p-6 transition-all duration-300 hover:-translate-y-1 hover:bg-butter hover:shadow-[0_18px_40px_-22px_hsl(var(--ink)/0.35)] md:p-7"
-                  >
-                    <div className="ui flex items-baseline justify-between text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/55">
-                      <span className="tabular-nums">Step {s.n}</span>
-                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </div>
-                    <h3 className="font-display mt-4 text-2xl font-extrabold leading-[1] md:text-[26px]">{s.title}</h3>
-                    <p className="mt-2 text-[15px] leading-relaxed text-ink/75">{s.desc}</p>
-                  </a>
-                </li>,
-              ];
-              if (i < arr.length - 1) {
-                items.push(
-                  <li key={`sep-${i}`} aria-hidden className="hidden items-center justify-center px-2 text-ink/30 md:flex">
-                    <span className="ui text-2xl leading-none">→</span>
-                  </li>,
-                );
-              }
-              return items;
-            })}
-          </ol>
-        </div>
-      </section>
 
       {/* MANIFESTO STRIP, high contrast slab */}
       <section className="bg-ink py-16 text-cream md:py-24">
