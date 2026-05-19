@@ -332,6 +332,115 @@ const CommunityPage = () => {
         </div>
       </section>
 
+      {/* OPEN CALLS — current ways to jump in (extension of Find your lane) */}
+      <section className="bg-cream pb-16 pt-4 md:pb-24 md:pt-6">
+        <div className="container">
+          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-4">
+            <div className="col-span-12 lg:col-span-6">
+              <p className="overline text-tomato">§ C.02, Jump in</p>
+              <h3 className="font-display mt-4 text-[clamp(1.75rem,3.5vw,2.75rem)] font-extrabold leading-[0.95]">
+                Current ways to jump in.
+              </h3>
+            </div>
+            <div className="col-span-12 lg:col-span-5 lg:col-start-8">
+              <p className="text-base leading-[1.6] text-ink/70 md:text-lg">
+                Some lanes are always open. Others change week to week. If one fits,{" "}
+                <span className="text-ink">raise your hand</span>.
+              </p>
+            </div>
+          </div>
+
+          <ul className="mt-8 divide-y divide-ink/10 border-y border-ink/10 md:mt-10">
+            {[
+              {
+                tags: ["Global", "Partnerships"],
+                title: "Superconnectors & partnership leads",
+                note: "Bridge brands, communities, and ideas through introductions and collaborations.",
+              },
+              {
+                tags: ["Pizza", "Operations"],
+                title: "Pizzaiolos, operators & pizza builders",
+                note: "Share the real shop-floor problems — we'll bring builders alongside you.",
+              },
+              {
+                tags: ["Remote", "AI", "Product"],
+                title: "AI-native builders, engineers & designers",
+                note: "Shape tools for pizza shops, communities, and small businesses worldwide.",
+              },
+              {
+                tags: ["Media", "Culture"],
+                title: "Creators, streamers & storytellers",
+                note: "Carry the story further across content, media, and internet culture.",
+              },
+              {
+                tags: ["Events", "IRL"],
+                title: "Community organizers & event architects",
+                note: "Host pizza experiences worth remembering — meetups, hackathons, dinners, art shows.",
+              },
+            ].map((c, i) => (
+              <li key={c.title}>
+                <a
+                  href="/join"
+                  className="group block px-2 py-5 transition-colors hover:bg-butter/30 md:px-3 md:py-6"
+                >
+                  {/* Mobile: stacked */}
+                  <div className="flex flex-col gap-3 md:hidden">
+                    <div className="flex items-start justify-between gap-4">
+                      <span className="ui text-[10px] font-semibold tabular-nums uppercase tracking-[0.22em] text-ink/40">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <ArrowUpRight className="h-4 w-4 shrink-0 text-ink/45 transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5 group-hover:text-tomato" />
+                    </div>
+                    <h4 className="font-display text-left text-lg font-extrabold leading-snug">
+                      {c.title}
+                    </h4>
+                    <p className="text-left text-[14px] leading-[1.6] text-ink/70">
+                      {c.note}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {c.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="ui rounded-full border border-ink/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/65"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Desktop / tablet: aligned 12-col */}
+                  <div className="hidden md:grid md:grid-cols-12 md:items-center md:gap-x-6">
+                    <span className="ui col-span-1 text-[10px] font-semibold tabular-nums uppercase tracking-[0.22em] text-ink/40">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h4 className="font-display col-span-4 text-left text-lg font-extrabold leading-snug lg:text-xl">
+                      {c.title}
+                    </h4>
+                    <p className="col-span-4 text-left text-[14px] leading-[1.6] text-ink/70 lg:text-[15px]">
+                      {c.note}
+                    </p>
+                    <div className="col-span-2 flex flex-wrap items-center gap-1.5">
+                      {c.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="ui rounded-full border border-ink/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/65"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <ArrowUpRight className="col-span-1 h-4 w-4 justify-self-end text-ink/45 transition-transform group-hover:translate-x-1 group-hover:text-tomato" />
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+
+
 
 
 
