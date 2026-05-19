@@ -744,35 +744,6 @@ const CommunityPage = () => {
         </div>
       </section>
 
-      {/* CONTACT SHEET, image wall, slightly chaotic but structured */}
-      <section className="bg-cream py-16 md:py-24">
-        <div className="container">
-          <div className="border-t-2 border-ink pt-8 md:pt-10">
-            <div className="flex items-end justify-between gap-6">
-              <div>
-                <p className="overline text-tomato">§ C.06, Contact sheet</p>
-                <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
-                  This week,
-                  <br />
-                  somewhere on Earth.
-                </h2>
-              </div>
-              <span className="ui hidden text-[10px] uppercase tracking-[0.22em] text-ink/55 md:block">
-                Roll 014 · 6 frames
-              </span>
-            </div>
-          </div>
-
-          <div className="mt-10 grid grid-cols-6 grid-rows-2 gap-3 md:mt-14 md:gap-4">
-            <Frame img={community} caption="Lisbon · Block party" span="col-span-6 md:col-span-3 md:row-span-2 aspect-[4/3] md:aspect-auto" />
-            <Frame img={party} caption="Berlin · Long table" span="col-span-3 md:col-span-2 aspect-square" />
-            <Frame img={hackathon} caption="Tokyo · Build night" span="col-span-3 md:col-span-1 aspect-square" />
-            <Frame img={hands} caption="Lagos · Open kitchen" span="col-span-2 aspect-square" />
-            <Frame img={pizzeria} caption="Mexico City · Pop-up" span="col-span-2 aspect-square" />
-            <Frame img={slice} caption="Brooklyn · Slice drop" span="col-span-2 aspect-square" />
-          </div>
-        </div>
-      </section>
 
       {/* WEEKLY RHYTHM, structured ledger */}
       <section className="bg-ink py-16 text-cream md:py-24">
