@@ -164,6 +164,32 @@
   }
   .fade-up { animation: fadeUp 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 
+  /* Handwritten accents — use sparingly */
+  .handwritten {
+    font-family: 'Rock Salt', 'Asap', cursive;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.1;
+  }
+
+  /* Hand-drawn underline */
+  .underline-scribble {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'><path d='M2 7 Q 50 1 100 6 T 198 5' fill='none' stroke='%23F83A3A' stroke-width='2.5' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 0.4em;
+    padding-bottom: 0.15em;
+  }
+
+  /* Hand-drawn circle wrap */
+  .circle-scribble {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80' preserveAspectRatio='none'><path d='M100 6 C 40 6 6 22 6 40 C 6 60 50 74 100 74 C 160 74 194 58 194 40 C 194 22 150 6 100 6 Z' fill='none' stroke='%23F83A3A' stroke-width='2.5' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 115% 130%;
+    padding: 0.05em 0.5em;
+  }
+
   /* Newspaper grain */
   .grain {
     position: relative;
