@@ -1082,10 +1082,9 @@ const HeroSection = () => {
                   left: t.left,
                   width: t.w,
                   zIndex: t.z,
-                  ['--rot' as never]: `${t.rot}deg`,
                   transform: `rotate(${t.rot}deg)`,
                   animation: `fadeUp 1s cubic-bezier(0.2,0.7,0.2,1) ${t.delay}ms forwards`,
-                } as React.CSSProperties}
+                }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = `rotate(${t.rot * 0.15}deg) translateY(-6px) scale(1.035)`;
                 }}
