@@ -30,6 +30,38 @@ const PRESS = [
 ];
 
 const Journal = () => {
+  const { toast } = useToast();
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = email.trim();
+    if (!trimmed || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed) || trimmed.length > 320) {
+      toast({ title: "Check your email", description: "Please enter a valid email address.", variant: "destructive" });
+      return;
+    }
+    setStatus("loading");
+    try {
+      const { data, error } = await supabase.functions.invoke("subscribe-newsletter", {
+        body: { email: trimmed, source: "journal" },
+      });
+      if (error || !data?.ok) throw error ?? new Error("Subscribe failed");
+      if (data.already) {
+        toast({ title: "You're already on the list", description: "Thanks for being here." });
+      } else {
+        toast({ title: "You're in", description: "We'll be in touch when the next issue lands." });
+      }
+      setStatus("success");
+      setEmail("");
+      setTimeout(() => setStatus("idle"), 4000);
+    } catch (err) {
+      console.error(err);
+      toast({ title: "Something went wrong", description: "Please try again in a moment.", variant: "destructive" });
+      setStatus("idle");
+    }
+  };
+
   return (
     <section id="journal" className="bg-cream pt-20 md:pt-32">
       {/* Masthead */}
