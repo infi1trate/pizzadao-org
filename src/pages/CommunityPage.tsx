@@ -1072,22 +1072,29 @@ const HeroSection = () => {
           </div>
 
           {/* Organic collage */}
-          <div className="relative mt-14 h-[480px] w-full md:mt-20 md:h-[620px]">
+          <div className="relative mt-14 h-[480px] w-full md:mt-20 md:h-[660px]">
             {tiles.map((t, i) => (
               <figure
                 key={i}
-                className="group absolute opacity-0 transition-all duration-500 ease-out hover:z-50 hover:!rotate-0 hover:scale-[1.04]"
+                className="group absolute opacity-0 transition-[transform,box-shadow] duration-500 ease-out hover:z-50"
                 style={{
                   top: t.top,
                   left: t.left,
                   width: t.w,
                   zIndex: t.z,
+                  ['--rot' as never]: `${t.rot}deg`,
                   transform: `rotate(${t.rot}deg)`,
-                  animation: `fadeUp 0.9s cubic-bezier(0.2,0.7,0.2,1) ${t.delay}ms forwards`,
+                  animation: `fadeUp 1s cubic-bezier(0.2,0.7,0.2,1) ${t.delay}ms forwards`,
+                } as React.CSSProperties}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = `rotate(${t.rot * 0.15}deg) translateY(-6px) scale(1.035)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = `rotate(${t.rot}deg)`;
                 }}
               >
                 <div
-                  className="relative overflow-hidden rounded-2xl shadow-[0_22px_60px_-20px_hsl(var(--ink)/0.35)] transition-shadow duration-500 group-hover:shadow-[0_30px_80px_-20px_hsl(var(--tomato)/0.45)]"
+                  className="relative overflow-hidden rounded-2xl shadow-[0_2px_4px_-2px_hsl(var(--ink)/0.25),0_18px_40px_-18px_hsl(var(--ink)/0.35),0_40px_80px_-30px_hsl(var(--ink)/0.25)] ring-1 ring-ink/5 transition-shadow duration-500 group-hover:shadow-[0_4px_8px_-2px_hsl(var(--ink)/0.3),0_30px_70px_-20px_hsl(var(--tomato)/0.4),0_60px_120px_-40px_hsl(var(--butter)/0.35)]"
                   style={{ aspectRatio: t.aspect }}
                 >
                   {t.video ? (
