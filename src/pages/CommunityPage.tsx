@@ -389,18 +389,19 @@ const CommunityPage = () => {
           <div className="border-t-2 border-cream/25 pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
               <div className="col-span-12 md:col-span-8">
-                <p className="overline text-butter">§ C.05, The workshop</p>
+                <p className="overline text-butter">§ C.05, In the workshop</p>
                 <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
-                  This isn't just a community.
+                  Real projects.
                   <br />
-                  <span className="text-butter">It's a workshop.</span>
+                  <span className="text-butter handwritten text-[0.55em] align-middle">made by members.</span>
                 </h2>
               </div>
               <div className="col-span-12 md:col-span-4 md:pl-8">
                 <p className="text-base leading-relaxed text-cream/80 md:text-lg">
-                  Members don't just show up — they prototype, ship, and remix
-                  in the open. Hackathons, tools, experiments, and partner
-                  builds, made together and given back to the network.
+                  A working sample of what the community is building together —
+                  arcade hardware, payroll tools for hospitality workers,
+                  cryptography experiments, and the event infrastructure that
+                  ran Global Pizza Party 2026.
                 </p>
               </div>
             </div>
@@ -410,63 +411,57 @@ const CommunityPage = () => {
             {BUILDS.map((b, i) => (
               <article
                 key={b.name}
-                className={`group relative flex flex-col overflow-hidden rounded-2xl bg-cream text-ink transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-22px_hsl(var(--tomato)/0.45)] ${
-                  i === 0 ? "md:col-span-2" : ""
-                }`}
+                className="group relative flex flex-col overflow-hidden rounded-2xl bg-cream text-ink transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-22px_hsl(var(--tomato)/0.45)]"
               >
                 {b.img ? (
-                  <div className={`relative overflow-hidden bg-ink ${i === 0 ? "aspect-[21/9]" : "aspect-[16/10]"}`}>
+                  <div className="relative aspect-[16/10] overflow-hidden bg-ink">
                     <img
                       src={b.img}
                       alt={b.name}
                       loading="lazy"
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                     />
+                    <span className="ui absolute left-4 top-4 rounded-full bg-cream/95 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink">
+                      {b.tag}
+                    </span>
                   </div>
                 ) : (
-                  <div className={`flex items-end justify-between bg-ink p-7 text-cream ${i === 0 ? "aspect-[21/9]" : "aspect-[16/10]"}`}>
-                    <span className="font-display text-[clamp(2rem,4vw,3.5rem)] font-extrabold leading-[0.9] text-butter">
+                  <div className="relative flex aspect-[16/10] items-end justify-between bg-ink p-7 text-cream">
+                    <span className="font-display text-[clamp(2rem,4vw,3rem)] font-extrabold leading-[0.9] text-butter">
                       {b.name}
                     </span>
-                    <span className="ui text-[10px] uppercase tracking-[0.22em] text-cream/55">
-                      In the workshop
+                    <span className="ui absolute left-4 top-4 rounded-full bg-butter px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink">
+                      {b.tag}
                     </span>
                   </div>
                 )}
 
                 <div className="flex flex-1 flex-col p-7 md:p-8">
-                  <div className="ui flex items-baseline justify-between text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/55">
-                    <span className="rounded-full bg-tomato px-2.5 py-1 text-cream">
-                      {b.type}
-                    </span>
+                  <div className="ui flex items-baseline justify-between text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/50">
                     <span className="tabular-nums">
-                      {String(i + 1).padStart(2, "0")} / 0{BUILDS.length}
+                      Project {String(i + 1).padStart(2, "0")} / 0{BUILDS.length}
                     </span>
                   </div>
-                  <h3 className="font-display mt-5 text-2xl font-extrabold leading-[1.05] md:text-[28px]">
+                  <h3 className="font-display mt-3 text-2xl font-extrabold leading-[1.05] md:text-[28px]">
                     {b.name}
                   </h3>
+                  <p className="font-display mt-3 text-[17px] font-medium leading-snug text-ink/85">
+                    {b.mission}
+                  </p>
+                  <p className="mt-3 flex-1 text-[15px] leading-relaxed text-ink/70">
+                    {b.context}
+                  </p>
 
-                  <dl className="mt-5 flex-1 space-y-4">
-                    {[
-                      { k: "What it is", v: b.what },
-                      { k: "Who made it", v: b.who },
-                      { k: "What came out of it", v: b.outcome },
-                    ].map((row) => (
-                      <div key={row.k}>
-                        <dt className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
-                          {row.k}
-                        </dt>
-                        <dd className="mt-1.5 text-[15px] leading-relaxed text-ink/80">
-                          {row.v}
-                        </dd>
-                      </div>
-                    ))}
-                  </dl>
-
-                  <div className="mt-7 flex items-center justify-end border-t border-ink/15 pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setActiveBuild(i)}
+                    className="mt-6 flex items-center justify-between gap-3 border-t border-ink/15 pt-4 text-left"
+                  >
+                    <span className="ui text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/70 group-hover:text-tomato">
+                      Read more
+                    </span>
                     <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </div>
+                  </button>
                 </div>
               </article>
             ))}
@@ -474,34 +469,86 @@ const CommunityPage = () => {
         </div>
       </section>
 
-      {/* RAW STRIP, behind-the-scenes scrolling images */}
+      {/* Project deep-dive modal */}
+      <Dialog open={activeBuild !== null} onOpenChange={(o) => !o && setActiveBuild(null)}>
+        <DialogContent className="max-w-2xl bg-cream p-0">
+          {activeBuild !== null && (
+            <>
+              {BUILDS[activeBuild].img && (
+                <div className="aspect-[16/9] overflow-hidden bg-ink">
+                  <img
+                    src={BUILDS[activeBuild].img as string}
+                    alt={BUILDS[activeBuild].name}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              )}
+              <div className="p-6 md:p-8">
+                <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-tomato">
+                  {BUILDS[activeBuild].tag}
+                </p>
+                <DialogHeader>
+                  <DialogTitle className="font-display mt-2 text-3xl font-extrabold leading-[1.05] md:text-4xl">
+                    {BUILDS[activeBuild].name}
+                  </DialogTitle>
+                </DialogHeader>
+                <p className="font-display mt-4 text-lg font-medium leading-snug text-ink/85">
+                  {BUILDS[activeBuild].mission}
+                </p>
+                <p className="mt-4 text-[15px] leading-relaxed text-ink/75">
+                  {BUILDS[activeBuild].context}
+                </p>
+                <p className="mt-3 text-[15px] leading-relaxed text-ink/70">
+                  {BUILDS[activeBuild].detail}
+                </p>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* COMMUNITY GALLERY, masonry strip */}
       <section className="bg-cream py-12 md:py-16">
         <div className="container">
-          <div className="flex items-baseline justify-between gap-6">
-            <p className="overline text-tomato">From the camera roll</p>
-            <p className="ui hidden text-[10px] uppercase tracking-[0.22em] text-ink/45 md:block">
-              Unedited · last 30 days
-            </p>
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <p className="overline text-tomato">§ C.06, From the camera roll</p>
+              <h2 className="font-display mt-3 text-[clamp(1.75rem,3.5vw,2.75rem)] font-extrabold leading-[0.95]">
+                The community,
+                <br />
+                <span className="handwritten text-tomato text-[0.6em]">unedited.</span>
+              </h2>
+            </div>
+            <a
+              href="#"
+              className="ui hidden shrink-0 items-center gap-2 border-b border-ink pb-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/80 transition-colors hover:border-tomato hover:text-tomato md:inline-flex"
+            >
+              Open community gallery
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
           </div>
         </div>
 
-        <div className="mt-6 -mx-5 md:mt-8 md:-mx-8 lg:-mx-10">
-          <div className="flex snap-x gap-4 overflow-x-auto px-5 pb-4 md:gap-5 md:px-8 lg:px-10">
+        {/* Masonry strip — varied crops, slight stagger */}
+        <div className="container mt-8 md:mt-10">
+          <div className="columns-2 gap-3 md:columns-4 md:gap-4">
             {[
-              { img: hands,     cap: "Lagos · open kitchen, 22:14",      ratio: "4/5",   rot: -1.2, w: "w-[60%] sm:w-[280px] md:w-[320px]" },
-              { img: party,     cap: "Berlin · long table, vol. 47",      ratio: "16/10", rot: 0.8,  w: "w-[78%] sm:w-[420px] md:w-[480px]" },
-              { img: hackathon, cap: "Tokyo · slice hack, demo night",   ratio: "1/1",   rot: -0.6, w: "w-[60%] sm:w-[300px] md:w-[340px]" },
-              { img: slice,     cap: "Lisbon · sunday slice club",        ratio: "5/4",  rot: 1.4,  w: "w-[68%] sm:w-[360px] md:w-[400px]" },
-              { img: pizzeria,  cap: "Naples · the oven, 03:00",          ratio: "3/4",   rot: -1.8, w: "w-[58%] sm:w-[270px] md:w-[300px]" },
-              { img: community, cap: "CDMX · sunday block party",         ratio: "16/10", rot: 0.6,  w: "w-[78%] sm:w-[440px] md:w-[500px]" },
+              { img: hands,     cap: "Lagos · open kitchen",    ratio: "4/5",   rot: -1.2 },
+              { img: party,     cap: "Berlin · long table",     ratio: "3/4",   rot: 0.8 },
+              { img: hackathon, cap: "Tokyo · demo night",      ratio: "1/1",   rot: -0.6 },
+              { img: slice,     cap: "Lisbon · slice club",     ratio: "5/4",   rot: 1.4 },
+              { img: pizzeria,  cap: "Naples · the oven, 03:00", ratio: "3/4",  rot: -1.8 },
+              { img: community, cap: "CDMX · block party",      ratio: "4/5",   rot: 0.6 },
+              { img: party,     cap: "Quito · global party",    ratio: "1/1",   rot: -1.0 },
+              { img: hackathon, cap: "Amsterdam · the crew",    ratio: "4/5",   rot: 1.1 },
             ].map((p, i) => (
               <figure
                 key={i}
-                className={`group shrink-0 snap-start ${p.w}`}
+                className="group mb-3 break-inside-avoid md:mb-4"
                 style={{ transform: `rotate(${p.rot}deg)` }}
               >
                 <div
-                  className="relative overflow-hidden rounded-xl bg-ink shadow-[0_18px_40px_-22px_hsl(var(--ink)/0.4)] transition-all duration-500 group-hover:scale-[1.03] group-hover:brightness-110 group-hover:shadow-[0_24px_55px_-20px_hsl(var(--tomato)/0.4)]"
+                  className="relative overflow-hidden rounded-xl bg-ink shadow-[0_14px_36px_-22px_hsl(var(--ink)/0.4)] transition-all duration-500 group-hover:z-10 group-hover:scale-[1.06] group-hover:rotate-0 group-hover:shadow-[0_24px_55px_-20px_hsl(var(--tomato)/0.4)]"
                   style={{ aspectRatio: p.ratio }}
                 >
                   <img
@@ -517,10 +564,20 @@ const CommunityPage = () => {
                 </figcaption>
               </figure>
             ))}
-            <div className="w-2 shrink-0" aria-hidden />
+          </div>
+
+          <div className="mt-6 flex justify-center md:hidden">
+            <a
+              href="#"
+              className="ui inline-flex items-center gap-2 border-b border-ink pb-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/80"
+            >
+              Open community gallery
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
           </div>
         </div>
       </section>
+
 
 
 
