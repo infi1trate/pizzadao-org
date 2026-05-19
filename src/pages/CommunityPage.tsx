@@ -1124,7 +1124,7 @@ const CommunityPage = () => {
 
 
 
-      {/* JOIN, identity onboarding, four steps */}
+      {/* INITIATION — name ritual + 3-path action bridge, one section */}
       <section className="bg-butter py-16 text-ink md:py-24">
         <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
@@ -1132,157 +1132,125 @@ const CommunityPage = () => {
               <div className="col-span-12 md:col-span-8">
                 <p className="overline text-tomato">§ C.08, Initiation</p>
                 <h2 className="font-display mt-5 text-[clamp(2.75rem,7vw,5.75rem)] font-extrabold leading-[0.88] tracking-[-0.01em]">
-                  Pick your name.
+                  Every crew
                   <br />
-                  <span className="italic font-normal">Earn your slice.</span>
+                  needs a <span className="handwritten relative inline-block text-tomato text-[1.05em] leading-[0.75] -mr-1 translate-y-[0.08em] -rotate-[3deg] align-baseline">name.</span>
                 </h2>
               </div>
               <div className="col-span-12 md:col-span-4 md:pl-8">
                 <p className="text-base leading-relaxed text-ink/75 md:text-lg">
-                  Joining the Pizza Mafia takes about ten minutes. You don't
-                  fill out a form. You pick an alias, walk into the room, and
-                  start.
+                  Pick an alias. Walk in. Start. That's the whole ritual.
                 </p>
               </div>
             </div>
           </div>
 
-          <ol className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border-2 border-ink bg-ink md:mt-16 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                step: "01",
-                title: "Forge your name",
-                desc: "Don Pepperoni. Sister Marinara. Capo Crust. Pick the alias you want the Mafia to know you by.",
-                cta: "Generate a name",
-                href: "/join",
-              },
-              {
-                step: "02",
-                title: "Walk into Discord",
-                desc: "One link. No application. The room is already loud and someone will say hi within an hour.",
-                cta: "Open the door",
-                href: "/join",
-              },
-              {
-                step: "03",
-                title: "Claim your role",
-                desc: "Host, Builder, Creative, Connector, Supporter. Pick one. You can stack more later, most members do.",
-                cta: "Pick a role",
-                href: "/join",
-              },
-              {
-                step: "04",
-                title: "Start building",
-                desc: "Throw a party. Ship a tool. Make a poster. The work begins the day you show up, not when you're 'ready.'",
-                cta: "See open projects",
-                href: "/join",
-              },
-            ].map((s) => (
-              <li
-                key={s.step}
-                className="group relative flex flex-col bg-cream p-7 transition-colors hover:bg-butter md:p-9"
-              >
-                <div className="flex items-baseline justify-between">
-                  <span className="font-display text-[clamp(3.5rem,5vw,5.5rem)] font-extrabold leading-none text-tomato">
-                    {s.step}
-                  </span>
-                  <span className="ui text-[10px] uppercase tracking-[0.22em] text-ink/45">
-                    Step {s.step} / 04
-                  </span>
+          {/* Name ritual + 3 action paths, visually linked */}
+          <div className="mt-10 overflow-hidden rounded-3xl border-2 border-ink bg-cream md:mt-14">
+            <div className="grid grid-cols-1 md:grid-cols-12">
+              {/* The name ritual */}
+              <div className="relative flex flex-col justify-between bg-ink p-7 text-cream md:col-span-5 md:p-10">
+                <div>
+                  <p className="overline text-butter">The ritual</p>
+                  <p className="font-display mt-5 text-[clamp(2rem,3.4vw,2.75rem)] font-extrabold leading-[0.95]">
+                    Earn your <span className="handwritten relative inline-block text-butter text-[1.1em] leading-[0.75] translate-y-[0.08em] -rotate-[4deg] align-baseline">slice.</span>
+                  </p>
+                  <p className="mt-4 text-[15px] leading-relaxed text-cream/75 md:text-base">
+                    Don Pepperoni. Sister Marinara. Capo Crust. Generate the
+                    alias the Mafia will know you by.
+                  </p>
                 </div>
-                <h3 className="font-display mt-6 text-2xl font-extrabold leading-[1.05] md:text-[26px]">
-                  {s.title}
-                </h3>
-                <p className="mt-3 flex-1 text-base leading-relaxed text-ink/75">
-                  {s.desc}
-                </p>
                 <a
-                  href={s.href}
-                  className="mt-8 inline-flex items-center justify-between gap-3 border-t border-ink/15 pt-4"
+                  href="/join"
+                  className="ui mt-8 inline-flex items-center justify-between gap-3 rounded-full bg-butter px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.22em] text-ink transition-colors hover:bg-cream"
                 >
-                  <span className="font-display text-base font-extrabold tracking-tight text-ink">
-                    {s.cta}
-                  </span>
-                  <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  Generate a name
+                  <ArrowUpRight className="h-4 w-4" />
                 </a>
-              </li>
-            ))}
-          </ol>
-
-          <div className="mt-10 flex flex-col items-start justify-between gap-4 rounded-2xl border-2 border-ink bg-ink p-6 text-cream md:mt-12 md:flex-row md:items-center md:p-8">
-            <div className="flex-1">
-              <p className="overline text-butter">House rules</p>
-              <p className="font-display mt-3 text-xl font-extrabold leading-snug md:text-2xl">
-                No fees. No tiers. No gatekeepers. The only requirement is that
-                you show up and do something.
-              </p>
-            </div>
-            <a
-              href="/join"
-              className="btn-pill-lg bg-tomato text-cream hover:bg-cream hover:text-ink"
-            >
-              Start initiation →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* START SOMEWHERE — lightweight onboarding strip */}
-      <section className="bg-cream py-12 md:py-16">
-        <div className="container">
-          <div className="rounded-2xl border-2 border-ink bg-cream-warm p-6 md:p-10">
-            <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-              <div>
-                <p className="overline text-tomato">§ C.09, First step</p>
-                <h2 className="font-display mt-3 text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-[0.95]">
-                  Start <span className="handwritten relative inline-block text-tomato text-[1.15em] leading-[0.75] -ml-1 translate-y-[0.08em] -rotate-[4deg] align-baseline">somewhere.</span>
-                </h2>
-                <p className="mt-3 max-w-md text-base leading-relaxed text-ink/70">
-                  Three low-friction ways in. Pick the one you can do today.
-                </p>
               </div>
-              <span className="ui hidden text-[10px] uppercase tracking-[0.22em] text-ink/45 md:block">
-                Pick one · do it today
-              </span>
-            </div>
 
-            <div className="mt-8 grid grid-cols-1 gap-3 md:mt-10 md:grid-cols-3 md:gap-4">
-              {[
-                { n: "01", title: "Join Discord", note: "Open the door. Say hi.", href: "/join" },
-                { n: "02", title: "Attend an event", note: "Show up to one nearby.", href: "#ways-in" },
-                { n: "03", title: "Start a project", note: "Pitch the experiment.", href: "/join" },
-              ].map((s) => (
-                <a
-                  key={s.n}
-                  href={s.href}
-                  className="group flex items-center justify-between gap-4 rounded-xl border-2 border-ink bg-cream p-5 transition-all hover:-translate-y-0.5 hover:bg-butter"
-                >
-                  <div>
-                    <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
-                      {s.n}
-                    </p>
-                    <p className="font-display mt-1 text-xl font-extrabold leading-tight">
-                      {s.title}
-                    </p>
-                    <p className="mt-1 text-[13px] leading-snug text-ink/65">
-                      {s.note}
-                    </p>
+              {/* 3 action paths */}
+              <div className="md:col-span-7">
+                <div className="flex h-full flex-col">
+                  <div className="flex items-baseline justify-between border-b border-ink/15 px-6 py-4 md:px-8">
+                    <p className="overline text-tomato">Three ways in</p>
+                    <span className="ui text-[10px] uppercase tracking-[0.22em] text-ink/45">
+                      Pick one · do it today
+                    </span>
                   </div>
-                  <ArrowUpRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
-              ))}
+
+                  {[
+                    {
+                      n: "01",
+                      title: "Join Discord",
+                      note: "The room is already loud. Someone will say hi.",
+                      cta: "Open the door",
+                      href: "/join",
+                      primary: true,
+                    },
+                    {
+                      n: "02",
+                      title: "Attend an event",
+                      note: "Find one near you on the chapter calendar.",
+                      cta: "See this week",
+                      href: "#ways-in",
+                      primary: false,
+                    },
+                    {
+                      n: "03",
+                      title: "Start a project",
+                      note: "Pitch the experiment. Ship the weird thing.",
+                      cta: "Pick a lane",
+                      href: "/join",
+                      primary: false,
+                    },
+                  ].map((s) => (
+                    <a
+                      key={s.n}
+                      href={s.href}
+                      className={`group flex flex-1 items-center justify-between gap-5 border-b border-ink/15 px-6 py-6 transition-colors last:border-b-0 md:px-8 ${
+                        s.primary ? "bg-butter/40 hover:bg-butter/70" : "hover:bg-butter/30"
+                      }`}
+                    >
+                      <div className="flex items-start gap-5">
+                        <span className="ui mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45 tabular-nums">
+                          {s.n}
+                        </span>
+                        <div>
+                          <p className="font-display text-xl font-extrabold leading-tight md:text-2xl">
+                            {s.title}
+                            {s.primary && (
+                              <span className="ui ml-3 inline-flex translate-y-[-2px] items-center rounded-full bg-tomato px-2 py-0.5 align-middle text-[9px] font-semibold uppercase tracking-[0.22em] text-cream">
+                                Start here
+                              </span>
+                            )}
+                          </p>
+                          <p className="mt-1 text-[14px] leading-snug text-ink/70 md:text-[15px]">
+                            {s.note}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex shrink-0 items-center gap-2">
+                        <span className="ui hidden text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/70 group-hover:text-tomato md:inline">
+                          {s.cta}
+                        </span>
+                        <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-
-      {/* CTA */}
+      {/* CTA — the punchline */}
       <section className="bg-tomato py-16 text-cream md:py-24">
         <div className="container">
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
             <div className="col-span-12 md:col-span-8">
-              <p className="overline text-butter">Next</p>
+              <p className="overline text-butter">Last word</p>
               <h2 className="font-display mt-4 text-[clamp(3rem,8vw,6.5rem)] font-extrabold leading-[0.88]">
                 Don't apply.
                 <br />
@@ -1295,11 +1263,11 @@ const CommunityPage = () => {
                 href="/join"
                 className="btn-pill-lg bg-ink text-cream hover:bg-cream hover:text-ink"
               >
-                Join the Mafia →
+                Join Discord →
               </a>
               <a
                 href="/#journal"
-                className="btn-pill-lg border-2 border-cream/50 text-cream hover:border-butter hover:text-butter"
+                className="ui inline-flex items-center gap-2 border-b border-cream/40 pb-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-cream/75 transition-colors hover:border-butter hover:text-butter"
               >
                 Read field reports
               </a>
@@ -1307,6 +1275,7 @@ const CommunityPage = () => {
           </div>
         </div>
       </section>
+
 
       <Footer />
     </main>
