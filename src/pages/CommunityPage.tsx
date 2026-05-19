@@ -1319,7 +1319,7 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                 if (activeDays.length === 0) {
                   return (
                     <p className="ui mt-7 text-sm text-ink/55">
-                      No community events in the next 7 days. Check the full calendar.
+                      No upcoming events yet. Check the full calendar.
                     </p>
                   );
                 }
@@ -1328,32 +1328,46 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                     {activeDays.map((d, idx) => {
                       const first = d.events[0];
                       const more = d.events.length - 1;
+                      const tags = eventTags(first);
                       return (
                         <li
                           key={`${d.d}-${idx}`}
-                          className="flex items-center gap-4 rounded-xl bg-butter px-4 py-3 shadow-[0_8px_24px_-12px_hsl(var(--butter)/0.9)] transition-all"
+                          className="group flex items-start gap-4 rounded-xl bg-butter px-4 py-3 shadow-[0_8px_24px_-12px_hsl(var(--butter)/0.9)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-12px_hsl(var(--ink)/0.25)]"
                         >
-                          <div className="ui w-12 shrink-0 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
+                          <div className="ui w-10 shrink-0 pt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
                             {d.d}
                           </div>
-                          <div className="font-display w-8 shrink-0 text-2xl font-extrabold tabular-nums leading-none">
+                          <div className="font-display w-8 shrink-0 pt-0.5 text-2xl font-extrabold tabular-nums leading-none">
                             {d.date}
                           </div>
                           <div className="min-w-0 flex-1 text-sm leading-snug text-ink/85">
-                            <span className="block truncate">
+                            <span className="block break-words">
                               {first.title}
                               {more > 0 && (
                                 <span className="ml-2 text-[11px] text-ink/55">+{more} more</span>
                               )}
                             </span>
+                            {tags.length > 0 && (
+                              <div className="mt-1.5 flex flex-wrap gap-1">
+                                {tags.map((t) => (
+                                  <span
+                                    key={t}
+                                    className="ui rounded-full bg-ink/8 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/65"
+                                  >
+                                    {t}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
                           </div>
-                          <span className="h-2 w-2 shrink-0 rounded-full bg-tomato" aria-hidden />
+                          <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-tomato transition-transform group-hover:scale-125" aria-hidden />
                         </li>
                       );
                     })}
                   </ul>
                 );
               })()}
+
 
 
               <button
