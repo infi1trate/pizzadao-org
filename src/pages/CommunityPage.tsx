@@ -1355,36 +1355,65 @@ const HeroSection = () => {
   );
 };
 
-const WEEK_DAYS = [
-  { d: "Mon", date: 6, active: true,  label: "Open call" },
-  { d: "Tue", date: 7, active: false, label: "" },
-  { d: "Wed", date: 8, active: true,  label: "Chapter sync" },
-  { d: "Thu", date: 9, active: false, label: "" },
-  { d: "Fri", date: 10, active: true, label: "Field reports" },
-  { d: "Sat", date: 11, active: false, label: "" },
-  { d: "Sun", date: 12, active: true, label: "Slice club" },
-];
+type CalEvent = {
+  start: string;
+  end: string | null;
+  title: string;
+  location: string;
+  description: string;
+};
 
-const FEATURED_EVENTS = [
-  {
-    day: "Wed · 6:30 PM",
-    title: "Chapter sync",
-    city: "Worldwide · Discord",
-    desc: "60+ cities, one shared notebook. Pitch a project, find collaborators, claim a prize.",
-  },
-  {
-    day: "Fri · 8:00 PM",
-    title: "Field reports drop",
-    city: "Berlin · #journal",
-    desc: "Photo dumps, write-ups, and receipts from this week's parties — straight into the chapter feed.",
-  },
-  {
-    day: "Sun · 1:00 PM",
-    title: "Slice club, vol. 47",
-    city: "Lisbon · Praça das Flores",
-    desc: "Long table, no agenda, no headcount. Bring a friend, bring a bottle, sit anywhere.",
-  },
-];
+const DAY_LABELS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+const useCalendarEvents = () => {
+  const [events, setEvents] = useState<CalEvent[] | null>(null);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    let alive = true;
+    import("@/integrations/supabase/client").then(({ supabase }) => {
+      supabase.functions
+        .invoke("get-calendar-events")
+        .then(({ data, error }) => {
+          if (!alive) return;
+          if (error || !data?.events) setEvents([]);
+          else setEvents(data.events as CalEvent[]);
+        })
+        .catch(() => alive && setEvents([]))
+        .finally(() => alive && setLoading(false));
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
+  return { events: events ?? [], loading };
+};
+
+const buildWeek = (events: CalEvent[]) => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(today);
+    d.setDate(today.getDate() + i);
+    const next = new Date(d);
+    next.setDate(d.getDate() + 1);
+    const dayEvents = events.filter((e) => {
+      const s = new Date(e.start);
+      return s >= d && s < next;
+    });
+    return {
+      d: DAY_LABELS[d.getDay()],
+      date: d.getDate(),
+      events: dayEvents,
+    };
+  });
+};
+
+const formatDayTime = (iso: string) => {
+  const d = new Date(iso);
+  const day = DAY_LABELS[d.getDay()];
+  const time = d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+  return `${day} · ${time}`;
+};
 
 const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => (
   <section className="relative overflow-hidden bg-cream py-16 md:py-24">
