@@ -112,18 +112,11 @@ const PageHero = ({
         </div>
       </div>
 
-      {/* Torn-paper bottom edge — imperfect, hand-cut feeling */}
-      <svg
-        aria-hidden
-        className="relative mt-16 block w-full text-cream md:mt-20"
-        viewBox="0 0 1200 18"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="M0,4 C60,12 120,2 200,7 C280,13 340,1 420,6 C500,11 560,3 640,8 C720,13 780,2 860,7 C940,12 1000,4 1080,9 C1140,12 1180,5 1200,8 L1200,18 L0,18 Z"
-          fill="currentColor"
-        />
-      </svg>
+      {/* Hand-cut bottom rule — slightly imperfect hairline */}
+      <div className="container relative mt-16 md:mt-24">
+        <div className="h-px w-full bg-ink/15" />
+        <div className="absolute left-[12%] -top-[1px] h-[2px] w-[22%] bg-tomato" />
+      </div>
     </section>
   );
 };
