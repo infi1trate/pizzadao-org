@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
-import PageHero from "@/components/PageHero";
 import Sponsorship from "@/components/Sponsorship";
+import PartnersGlobe from "@/components/PartnersGlobe";
+
 
 
 const PARTNERS = [
@@ -26,20 +27,118 @@ const PartnersPage = () => {
     <main className="grain min-h-screen bg-cream text-ink">
       <SiteNav solid />
 
-      <PageHero
-        section="§ B, Partnership"
-        title="Where brands meet"
-        italic="real-world attention."
-        accentWord="real-world"
-        note="trusted globally · since 2020"
-        lede="PizzaDAO builds global, community-driven activations that turn brands into experiences people actually show up for."
-        meta={[
-          { k: "Cities Activated", v: "500+" },
-          { k: "Countries", v: "100+" },
-          { k: "Attendees (2025)", v: "20,000+" },
-          { k: "Years Running", v: "6" },
-        ]}
-      />
+      {/* Editorial hero — global cultural initiative */}
+      <section className="paper-soft paper-drift relative overflow-hidden bg-cream pt-12 md:pt-20">
+        {/* Atmospheric warmth — cream → warm gradient */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, hsl(var(--cream)) 0%, hsl(44 70% 96%) 55%, hsl(40 55% 93%) 100%)",
+          }}
+        />
+        {/* Hero ambient glows */}
+        <div
+          aria-hidden
+          className="hero-glow pointer-events-none absolute -right-32 -top-32 h-[640px] w-[640px] rounded-full opacity-[0.09] blur-[120px]"
+          style={{ background: "hsl(var(--tomato))" }}
+        />
+        <div
+          aria-hidden
+          className="hero-glow pointer-events-none absolute -left-40 top-1/3 h-[520px] w-[520px] rounded-full opacity-[0.10] blur-[140px]"
+          style={{ background: "hsl(var(--butter))", animationDelay: "-4s" }}
+        />
+        {/* Subtle checker corners — top-right + bottom-left only */}
+        <div
+          aria-hidden
+          className="checker-tape pointer-events-none absolute right-0 top-0 h-[5px] w-32 opacity-30 md:w-48"
+        />
+        <div
+          aria-hidden
+          className="checker-tape pointer-events-none absolute bottom-0 left-0 h-[5px] w-32 opacity-25 md:w-48"
+        />
+
+        <div className="container relative">
+          {/* Archival ref */}
+          <div className="flex items-center justify-between pb-3">
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+              GPP archive · vol. 04
+            </span>
+            <span className="ui flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-tomato" />
+              Ongoing, est. 2021
+            </span>
+          </div>
+
+          <div className="border-t border-ink/40 pt-10 md:pt-14">
+            <div className="grid grid-cols-12 items-center gap-x-8 gap-y-12 md:gap-x-12">
+              {/* Left: headline mass + lede */}
+              <div className="col-span-12 md:col-span-7 animate-fade-in">
+                <p className="overline text-tomato">§ B, Partnership</p>
+                <h1 className="font-display mt-5 font-extrabold leading-[0.84] tracking-[-0.025em] text-[clamp(3.25rem,9vw,8.5rem)] md:mt-6 md:leading-[0.8]">
+                  Where brands meet{" "}
+                  <span className="relative inline-block">
+                    <span
+                      className="handwritten inline-block text-tomato-deep"
+                      style={{
+                        transform: "rotate(-1.5deg)",
+                        fontSize: "0.62em",
+                        lineHeight: 1,
+                        verticalAlign: "0.18em",
+                        letterSpacing: "-0.005em",
+                      }}
+                    >
+                      real-world
+                    </span>
+                  </span>{" "}
+                  <span className="text-ink/65">attention.</span>
+                </h1>
+
+                <p className="font-serif mt-7 max-w-[44ch] text-[17.5px] leading-[1.55] text-ink/75 md:mt-8 md:text-[19px] md:leading-[1.5]">
+                  PizzaDAO builds global, community-driven activations that turn
+                  brands into experiences people actually show up for.
+                </p>
+                <p className="ui mt-5 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+                  Trusted globally · since 2020
+                </p>
+              </div>
+
+              {/* Right: ambient globe */}
+              <div className="col-span-12 md:col-span-5 animate-fade-in" style={{ animationDelay: "120ms", animationFillMode: "both" }}>
+                <PartnersGlobe />
+                <p className="ui mt-6 text-center text-[10px] font-medium uppercase tracking-[0.24em] text-ink/40">
+                  Fig. i — Active chapters, 6 continents
+                </p>
+              </div>
+            </div>
+
+            {/* Proof strip — editorial footer rail */}
+            <div className="mt-20 border-t border-ink/15 pt-8 md:mt-28">
+              <dl className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-4 md:gap-x-12">
+                {[
+                  { k: "Cities", v: "500+" },
+                  { k: "Countries", v: "100+" },
+                  { k: "Attendees", v: "20,000+" },
+                  { k: "Years running", v: "6" },
+                ].map((m, i) => (
+                  <div key={m.k} className="flex flex-col gap-2">
+                    <dd className="font-display text-[2rem] font-extrabold leading-none tracking-[-0.02em] md:text-[2.5rem]">
+                      {m.v}
+                    </dd>
+                    <dt className="ui text-[10px] font-medium uppercase tracking-[0.24em] text-ink/45">
+                      {m.k}
+                    </dt>
+                  </div>
+                ))}
+              </dl>
+            </div>
+
+            <div className="h-16 md:h-24" />
+          </div>
+        </div>
+      </section>
+
 
       {/* Reuse homepage Sponsorship section for value props + CTA */}
       <Sponsorship />
