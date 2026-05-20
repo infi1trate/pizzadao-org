@@ -3,7 +3,7 @@ import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import Sponsorship from "@/components/Sponsorship";
-import Parallax from "@/components/Parallax";
+
 
 const PARTNERS = [
   { name: "BASF", role: "Materials" },
