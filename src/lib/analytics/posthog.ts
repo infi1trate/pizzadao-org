@@ -46,7 +46,6 @@ export function initPostHog(): void {
     },
     // Sample replays globally; we'll force-record on high-intent routes below.
     disable_session_recording: false,
-    // @ts-expect-error – legacy compat in newer SDKs
     enable_recording_console_log: true,
     loaded: (ph) => {
       if (POSTHOG_DEBUG) ph.debug();
