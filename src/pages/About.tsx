@@ -328,10 +328,46 @@ const About = () => {
         </div>
       </section>
 
-      {/* What we've done */}
-      <section className="paper-soft paper-soft-dark paper-drift relative bg-ink py-20 text-cream md:py-28">
+      {/* What we've done — archival outcomes, not KPIs */}
+      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-20 text-cream md:py-28">
         <div className="checker-tape-sm absolute inset-x-0 top-0 h-[6px] opacity-70" aria-hidden />
-        <div className="container">
+
+        {/* Scattered city ledger — faint marks of where this has happened */}
+        <div className="pointer-events-none absolute inset-0 select-none" aria-hidden>
+          {[
+            { c: "Jakarta",    t: "8%",  l: "6%",  r: "-7deg",  s: 0.85 },
+            { c: "São Paulo",  t: "14%", l: "78%", r: "4deg",   s: 1.05 },
+            { c: "Brooklyn",   t: "24%", l: "42%", r: "-3deg",  s: 0.95 },
+            { c: "Nairobi",    t: "32%", l: "12%", r: "6deg",   s: 1 },
+            { c: "Lagos",      t: "40%", l: "88%", r: "-5deg",  s: 0.9 },
+            { c: "Berlin",     t: "48%", l: "30%", r: "2deg",   s: 1.1 },
+            { c: "Buenos Aires", t: "55%", l: "62%", r: "-4deg", s: 0.95 },
+            { c: "Bangkok",    t: "62%", l: "8%",  r: "5deg",   s: 1 },
+            { c: "Mexico City", t: "68%", l: "82%", r: "-2deg", s: 0.9 },
+            { c: "Lisbon",     t: "74%", l: "36%", r: "3deg",   s: 1.05 },
+            { c: "Mumbai",     t: "82%", l: "70%", r: "-6deg",  s: 0.95 },
+            { c: "Istanbul",   t: "88%", l: "18%", r: "4deg",   s: 1 },
+            { c: "Seoul",      t: "20%", l: "92%", r: "-3deg",  s: 0.85 },
+            { c: "Cape Town",  t: "92%", l: "52%", r: "5deg",   s: 0.95 },
+          ].map((x) => (
+            <span
+              key={x.c}
+              className="font-display absolute text-cream/[0.07] font-extrabold"
+              style={{
+                top: x.t,
+                left: x.l,
+                transform: `translate(-50%, -50%) rotate(${x.r}) scale(${x.s})`,
+                fontSize: "clamp(1rem, 2.4vw, 1.75rem)",
+                letterSpacing: "-0.01em",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {x.c}
+            </span>
+          ))}
+        </div>
+
+        <div className="container relative">
           <div className="grid grid-cols-12 gap-x-6 gap-y-8">
             <div className="col-span-12 md:col-span-7">
               <p className="overline text-butter">§ A.05, Outcomes</p>
@@ -347,35 +383,54 @@ const About = () => {
                 Over the last few years PizzaDAO has funded and supported
                 events across the world.
               </p>
+              <p className="handwritten mt-4 -rotate-1 text-butter/90 text-sm md:text-base">
+                — entry, year four logbook
+              </p>
             </div>
           </div>
 
-          <dl className="mt-14 grid grid-cols-2 gap-y-12 border-t border-cream/20 pt-12 sm:grid-cols-4 md:mt-20 md:pt-14">
+          <dl className="mt-14 grid grid-cols-1 gap-y-12 border-t border-cream/20 pt-12 sm:grid-cols-2 md:mt-20 md:grid-cols-4 md:pt-14">
             {[
-              { k: "Cities activated", v: "420+" },
-              { k: "Funding distributed", v: "$1M+" },
-              { k: "Participants", v: "20K+" },
-              { k: "Return rate", v: "92%" },
+              { k: "Cities activated",     v: "420+", n: "ran out of boxes in 14",  t: "2021 → 2025" },
+              { k: "Funding distributed",  v: "$1M+", n: "every dollar back to local",  t: "from internet strangers" },
+              { k: "Participants",         v: "20K+", n: "most stayed past midnight", t: "May 22, everywhere" },
+              { k: "Return rate",          v: "92%",  n: "came back next year",      t: "and brought a friend" },
             ].map((s) => (
-              <div key={s.k}>
-                <div className="font-display text-5xl font-extrabold leading-none md:text-6xl">
+              <div key={s.k} className="relative pr-4">
+                <div className="font-display text-5xl font-extrabold leading-none md:text-[3.75rem]">
                   {s.v}
                 </div>
                 <div className="ui mt-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-cream/55">
                   {s.k}
                 </div>
+                <p className="handwritten mt-3 -rotate-[1.5deg] text-butter/90 text-[0.92rem] leading-snug">
+                  {s.n}
+                </p>
+                <p className="ui mt-2 text-[10px] uppercase tracking-[0.18em] text-cream/35">
+                  {s.t}
+                </p>
               </div>
             ))}
           </dl>
 
-          <div className="mt-16 max-w-[58ch] border-t border-cream/20 pt-10 md:mt-20">
-            <p className="font-serif text-lg leading-relaxed text-cream/85 md:text-xl">
-              The numbers matter, but only to show that this works at scale.
-            </p>
-            <p className="font-serif mt-4 text-lg leading-relaxed text-cream md:text-xl">
-              The real outcome is simpler, people meet, eat together, and
-              come back the next year.
-            </p>
+          <div className="mt-16 grid grid-cols-12 gap-x-6 gap-y-6 border-t border-cream/20 pt-10 md:mt-20">
+            <div className="col-span-12 max-w-[58ch] md:col-span-8">
+              <p className="font-serif text-lg leading-relaxed text-cream/85 md:text-xl">
+                The numbers matter, but only to show that this works at scale.
+              </p>
+              <p className="font-serif mt-4 text-lg leading-relaxed text-cream md:text-xl">
+                The real outcome is simpler, people meet, eat together, and
+                come back the next year.
+              </p>
+            </div>
+            <div className="col-span-12 flex flex-col items-start gap-3 md:col-span-4 md:items-end md:text-right">
+              <span className="handwritten -rotate-2 text-tomato text-base md:text-lg">
+                2am planning call
+              </span>
+              <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/45">
+                Discord, Apr 14 · 03:12 UTC
+              </span>
+            </div>
           </div>
         </div>
       </section>
