@@ -379,7 +379,7 @@ const About = () => {
               ].map((p) => (
                 <div
                   key={p}
-                  className="font-display flex aspect-[3/2] items-center justify-center bg-cream-warm px-4 text-center text-base font-extrabold tracking-tight text-ink/75 md:text-lg"
+                  className="paper-soft font-display flex aspect-[3/2] items-center justify-center bg-cream-warm px-4 text-center text-base font-extrabold tracking-tight text-ink/75 transition-colors hover:text-tomato md:text-lg"
                 >
                   {p}
                 </div>
