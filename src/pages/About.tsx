@@ -52,7 +52,7 @@ const About = () => {
   }, []);
 
   return (
-    <main className="min-h-screen bg-cream text-ink">
+    <main className="min-h-screen overflow-x-clip bg-cream text-ink">
       <SiteNav solid />
 
       <PageHero
