@@ -28,7 +28,7 @@ const PartnersPage = () => {
       <SiteNav solid />
 
       {/* Editorial hero — global cultural initiative */}
-      <section className="paper-soft paper-drift relative overflow-hidden bg-cream pt-12 md:pt-20">
+      <section className="paper-soft paper-drift relative overflow-hidden bg-cream pt-10 md:pt-14">
         {/* Atmospheric warmth — cream → warm gradient */}
         <div
           aria-hidden
@@ -71,12 +71,12 @@ const PartnersPage = () => {
             </span>
           </div>
 
-          <div className="border-t border-ink/40 pt-10 md:pt-14">
-            <div className="grid grid-cols-12 items-center gap-x-8 gap-y-12 md:gap-x-12">
+          <div className="border-t border-ink/40 pt-8 md:pt-10">
+            <div className="grid grid-cols-12 items-center gap-x-8 gap-y-8 md:gap-x-12">
               {/* Left: headline mass + lede */}
               <div className="col-span-12 md:col-span-7 animate-fade-in">
                 <p className="overline text-tomato">§ B, Partnership</p>
-                <h1 className="font-display mt-5 font-extrabold leading-[0.84] tracking-[-0.025em] text-[clamp(3.25rem,9vw,8.5rem)] md:mt-6 md:leading-[0.8]">
+                <h1 className="font-display mt-4 font-extrabold leading-[0.84] tracking-[-0.025em] text-[clamp(3.25rem,9vw,8.5rem)] md:leading-[0.8]">
                   Where brands meet{" "}
                   <span className="relative inline-block">
                     <span
@@ -95,11 +95,11 @@ const PartnersPage = () => {
                   <span className="text-ink/65">attention.</span>
                 </h1>
 
-                <p className="font-serif mt-7 max-w-[44ch] text-[17.5px] leading-[1.55] text-ink/75 md:mt-8 md:text-[19px] md:leading-[1.5]">
+                <p className="font-serif mt-5 max-w-[44ch] text-[17.5px] leading-[1.55] text-ink/75 md:mt-6 md:text-[19px] md:leading-[1.5]">
                   PizzaDAO builds global, community-driven activations that turn
                   brands into experiences people actually show up for.
                 </p>
-                <p className="ui mt-5 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+                <p className="ui mt-4 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-ink/45">
                   Trusted globally · since 2020
                 </p>
               </div>
@@ -107,22 +107,29 @@ const PartnersPage = () => {
               {/* Right: ambient globe */}
               <div className="col-span-12 md:col-span-5 animate-fade-in" style={{ animationDelay: "120ms", animationFillMode: "both" }}>
                 <PartnersGlobe />
-                <p className="ui mt-6 text-center text-[10px] font-medium uppercase tracking-[0.24em] text-ink/40">
+                <p className="ui mt-4 text-center text-[10px] font-medium uppercase tracking-[0.24em] text-ink/40">
                   Fig. i — Active chapters, 6 continents
                 </p>
               </div>
             </div>
 
             {/* Proof strip — editorial footer rail */}
-            <div className="mt-20 border-t border-ink/15 pt-8 md:mt-28">
-              <dl className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-4 md:gap-x-12">
+            <div className="relative mt-12 border-t border-ink/15 pt-6 md:mt-16 md:pt-7">
+              {/* Asymmetric IRL stamp — offset into the margin */}
+              <span
+                aria-hidden
+                className="handwritten absolute -top-3 right-0 -rotate-[8deg] text-[13px] text-tomato md:right-2"
+              >
+                ↘ measured IRL
+              </span>
+              <dl className="grid grid-cols-2 gap-x-8 gap-y-7 md:grid-cols-4 md:gap-x-12">
                 {[
                   { k: "Cities", v: "500+" },
                   { k: "Countries", v: "100+" },
                   { k: "Attendees", v: "20,000+" },
                   { k: "Years running", v: "6" },
-                ].map((m, i) => (
-                  <div key={m.k} className="flex flex-col gap-2">
+                ].map((m) => (
+                  <div key={m.k} className="flex flex-col gap-1.5">
                     <dd className="font-display text-[2rem] font-extrabold leading-none tracking-[-0.02em] md:text-[2.5rem]">
                       {m.v}
                     </dd>
@@ -134,10 +141,11 @@ const PartnersPage = () => {
               </dl>
             </div>
 
-            <div className="h-16 md:h-24" />
+            <div className="h-8 md:h-12" />
           </div>
         </div>
       </section>
+
 
 
       {/* Reuse homepage Sponsorship section for value props + CTA */}
