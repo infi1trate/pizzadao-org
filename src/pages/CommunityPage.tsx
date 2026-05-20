@@ -1828,7 +1828,7 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                       return (
                         <li
                           key={`${d.d}-${idx}`}
-                          className={`group flex items-start gap-4 rounded-xl bg-butter px-4 py-3 shadow-[0_8px_24px_-12px_hsl(var(--butter)/0.9)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-12px_hsl(var(--ink)/0.25)] ${idx === 0 ? "live-pulse ring-1 ring-tomato/40" : ""}`}
+                          className={`group flex items-start gap-4 rounded-xl px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 ${idx === 0 ? "bg-butter shadow-[0_10px_28px_-16px_hsl(var(--butter)/0.85)]" : "bg-butter/55 hover:bg-butter/75"}`}
                         >
                           <div className="ui w-10 shrink-0 pt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
                             {d.d}
@@ -1848,7 +1848,7 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                                 {tags.map((t) => (
                                   <span
                                     key={t}
-                                    className="ui rounded-full bg-ink/8 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/65"
+                                    className="ui rounded-full bg-ink/[0.06] px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/65"
                                   >
                                     {t}
                                   </span>
@@ -1856,7 +1856,11 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                               </div>
                             )}
                           </div>
-                          <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-tomato transition-transform group-hover:scale-125" aria-hidden />
+                          {idx === 0 && (
+                            <span className="ui mt-1 shrink-0 text-[9px] font-semibold uppercase tracking-[0.22em] text-tomato/80" aria-hidden>
+                              live
+                            </span>
+                          )}
                         </li>
                       );
                     })}
