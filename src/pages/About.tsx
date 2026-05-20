@@ -136,8 +136,21 @@ const About = () => {
         </div>
       </section>
 
+      {/* Interlude — quiet field note, breathing room */}
+      <aside className="bg-cream py-10 md:py-14" aria-hidden>
+        <div className="container">
+          <div className="flex items-center gap-6">
+            <span className="h-px flex-1 bg-ink/15" />
+            <span className="handwritten -rotate-1 text-tomato text-base md:text-lg">
+              funded by internet strangers
+            </span>
+            <span className="checker-tape h-2 w-20 opacity-80" />
+          </div>
+        </div>
+      </aside>
+
       {/* Mission */}
-      <section className="bg-cream py-20 md:py-28">
+      <section className="bg-cream pb-20 pt-6 md:pb-28 md:pt-10">
         <div className="container">
           <div className="grid grid-cols-12 gap-x-6 gap-y-10">
             <div className="col-span-12 md:col-span-5">
@@ -240,6 +253,25 @@ const About = () => {
                   </figcaption>
                 </figure>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interlude — full-bleed stamped band, hits hard */}
+      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-12 text-cream md:py-16">
+        <div className="checker-tape-sm absolute inset-x-0 top-0 h-[6px] opacity-60" aria-hidden />
+        <div className="checker-tape-sm absolute inset-x-0 bottom-0 h-[6px] opacity-60" aria-hidden />
+        <div className="container">
+          <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+            <p className="font-display text-[clamp(2.25rem,7vw,5rem)] font-extrabold leading-[0.9] tracking-[-0.02em]">
+              May 22, <span className="text-butter">everywhere</span>.
+            </p>
+            <div className="flex items-center gap-5">
+              <span className="handwritten marker-bleed-butter -rotate-2 text-butter text-base md:text-lg">
+                ↘ same day, 420+ cities
+              </span>
+              <span className="stamp">Annual ritual</span>
             </div>
           </div>
         </div>
@@ -348,8 +380,22 @@ const About = () => {
         </div>
       </section>
 
+      {/* Interlude — quiet handwritten transition, deep breath */}
+      <aside className="bg-cream py-14 md:py-20" aria-hidden>
+        <div className="container">
+          <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
+            <span className="handwritten -rotate-[2deg] text-tomato text-2xl md:text-[2rem] leading-tight">
+              people kept showing up.
+            </span>
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/45">
+              field note, year three
+            </span>
+          </div>
+        </div>
+      </aside>
+
       {/* Why pizza */}
-      <section className="bg-cream py-24 md:py-32">
+      <section className="bg-cream pb-24 pt-10 md:pb-32 md:pt-14">
         <div className="container">
           <div className="mx-auto max-w-2xl text-center">
             <p className="overline text-tomato">§ A.06, Why pizza</p>
