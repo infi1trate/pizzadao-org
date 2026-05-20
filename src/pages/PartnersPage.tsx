@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
-import PageHero from "@/components/PageHero";
 import Sponsorship from "@/components/Sponsorship";
+import PartnersGlobe from "@/components/PartnersGlobe";
+
 
 
 const PARTNERS = [
