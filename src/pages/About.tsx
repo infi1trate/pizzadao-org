@@ -461,7 +461,147 @@ const About = () => {
         </div>
       </section>
 
+      {/* Global Footprint — the wow moment */}
+      <section className="paper-soft relative overflow-hidden bg-cream py-24 md:py-32">
+        <div className="container">
+          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
+            <div className="col-span-12 md:col-span-7">
+              <p className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-tomato">
+                § A.075, Global footprint
+              </p>
+              <h2 className="font-display mt-5 text-display-1 font-extrabold leading-[0.9]">
+                A ritual with a<br />
+                global footprint.
+              </h2>
+            </div>
+            <div className="col-span-12 md:col-span-5 md:pl-8">
+              <p className="font-serif max-w-[42ch] text-lg leading-relaxed text-ink/75 md:text-xl">
+                Every city brings its own version of the same idea.
+              </p>
+              <p className="handwritten mt-4 -rotate-1 text-base text-tomato">
+                one night, everywhere
+              </p>
+            </div>
+          </div>
+
+          <figure className="relative mt-14 md:mt-20">
+            <div className="relative w-full overflow-hidden border border-ink/15 bg-cream-warm">
+              <svg
+                viewBox="0 0 800 400"
+                className="block h-auto w-full"
+                role="img"
+                aria-label="World map showing PizzaDAO chapter cities across six continents"
+              >
+                <defs>
+                  <pattern
+                    id="footprint-dots"
+                    width="7"
+                    height="7"
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <circle cx="1" cy="1" r="1" className="fill-ink/25" />
+                  </pattern>
+                  <clipPath id="continents">
+                    {/* North America */}
+                    <path d="M110 85 Q190 60 270 95 Q305 150 250 210 Q170 220 115 175 Q95 130 110 85 Z" />
+                    {/* Central + South America */}
+                    <path d="M240 215 Q295 215 310 255 Q320 320 275 365 Q235 360 230 305 Q225 260 240 215 Z" />
+                    {/* Europe */}
+                    <path d="M380 95 Q445 80 460 115 Q450 150 405 155 Q370 145 375 115 Z" />
+                    {/* Africa */}
+                    <path d="M395 155 Q460 155 470 220 Q455 295 410 305 Q375 270 380 215 Q380 180 395 155 Z" />
+                    {/* Middle East / Asia */}
+                    <path d="M460 105 Q610 80 730 120 Q720 200 600 210 Q510 195 470 160 Q455 135 460 105 Z" />
+                    {/* India */}
+                    <path d="M560 180 Q595 180 600 215 Q585 245 565 240 Q545 215 560 180 Z" />
+                    {/* SE Asia */}
+                    <path d="M640 215 Q695 215 705 245 Q680 260 645 250 Q625 235 640 215 Z" />
+                    {/* Australia */}
+                    <path d="M660 270 Q735 260 745 300 Q705 325 665 310 Q645 290 660 270 Z" />
+                  </clipPath>
+                </defs>
+
+                {/* Equator + meridian, faintly */}
+                <line x1="0" y1="200" x2="800" y2="200" className="stroke-ink/10" strokeDasharray="2 6" />
+                <line x1="400" y1="0" x2="400" y2="400" className="stroke-ink/10" strokeDasharray="2 6" />
+
+                {/* Continent dots */}
+                <rect
+                  x="0"
+                  y="0"
+                  width="800"
+                  height="400"
+                  fill="url(#footprint-dots)"
+                  clipPath="url(#continents)"
+                />
+
+                {/* Subtle arcs from a few origin cities */}
+                <g className="stroke-tomato/35" fill="none" strokeWidth="1">
+                  <path d="M236 145 Q330 70 400 118" />
+                  <path d="M400 118 Q540 60 710 138" />
+                  <path d="M236 145 Q260 240 296 268" />
+                  <path d="M710 138 Q740 220 738 295" />
+                  <path d="M408 220 Q560 240 738 295" />
+                </g>
+
+                {/* City pins */}
+                {[
+                  { name: "New York", x: 236, y: 145, anchor: "end", dx: -8, dy: 4 },
+                  { name: "São Paulo", x: 296, y: 268, anchor: "end", dx: -8, dy: 4 },
+                  { name: "London", x: 400, y: 118, anchor: "start", dx: 8, dy: -6 },
+                  { name: "Lagos", x: 408, y: 220, anchor: "start", dx: 8, dy: 4 },
+                  { name: "Tokyo", x: 710, y: 138, anchor: "end", dx: -8, dy: -6 },
+                  { name: "Sydney", x: 738, y: 295, anchor: "end", dx: -8, dy: 14 },
+                ].map((c, i) => (
+                  <g key={c.name}>
+                    <circle
+                      cx={c.x}
+                      cy={c.y}
+                      r="10"
+                      className="fill-tomato/25 animate-pulse"
+                      style={{ animationDelay: `${i * 0.6}s`, animationDuration: "3s" }}
+                    />
+                    <circle cx={c.x} cy={c.y} r="3.5" className="fill-tomato" />
+                    <text
+                      x={c.x + c.dx}
+                      y={c.y + c.dy}
+                      textAnchor={c.anchor as "start" | "end"}
+                      className="fill-ink/80 font-display"
+                      style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.02em" }}
+                    >
+                      {c.name}
+                    </text>
+                  </g>
+                ))}
+
+                {/* Quiet dots — many more cities, unnamed */}
+                {[
+                  [150, 130], [180, 160], [210, 180], [260, 175], [285, 195],
+                  [255, 235], [275, 295], [310, 325], [385, 130], [420, 140],
+                  [435, 100], [445, 175], [430, 210], [415, 255], [395, 285],
+                  [490, 130], [520, 155], [550, 145], [580, 175], [610, 165],
+                  [640, 150], [675, 165], [665, 235], [690, 245], [720, 180],
+                  [690, 295], [705, 280], [718, 310],
+                ].map(([cx, cy], i) => (
+                  <circle key={i} cx={cx} cy={cy} r="2" className="fill-tomato/70" />
+                ))}
+              </svg>
+            </div>
+
+            <figcaption className="mt-5 flex flex-wrap items-baseline justify-between gap-4 border-t border-ink/15 pt-4">
+              <p className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
+                Fig. 01 — Chapter cities, May 22 (selected)
+              </p>
+              <p className="font-serif text-sm text-ink/55">
+                420+ cities · 6 continents · 1 night
+              </p>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
       {/* Press */}
+
       <section className="bg-cream py-20 md:py-28">
         <div className="container">
           <div className="border-t-2 border-ink pt-8">
