@@ -495,12 +495,12 @@ const CommunityPage = () => {
                   href="/join"
                   className={`group relative block px-2 py-5 transition-all duration-200 md:px-3 md:py-6 ${
                     c.active
-                      ? "bg-butter/40 hover:-translate-y-0.5 hover:bg-butter/60 hover:shadow-[0_18px_38px_-22px_hsl(var(--tomato)/0.4)]"
-                      : "hover:bg-butter/30 hover:-translate-y-0.5"
+                      ? "bg-butter/50 hover:-translate-y-0.5 hover:bg-butter/70"
+                      : "hover:bg-butter/25 hover:-translate-y-0.5"
                   }`}
                 >
                   {c.active && (
-                    <span aria-hidden className="pointer-events-none absolute left-0 top-1/2 hidden h-10 w-[3px] -translate-y-1/2 rounded-r bg-tomato md:block" />
+                    <span aria-hidden className="pointer-events-none absolute left-0 top-1/2 hidden h-14 w-[4px] -translate-y-1/2 rounded-r bg-tomato md:block" />
                   )}
                   {/* Mobile: stacked */}
                   <div className="flex flex-col gap-3 md:hidden">
