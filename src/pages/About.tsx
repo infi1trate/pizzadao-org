@@ -400,7 +400,7 @@ const About = () => {
           <div className="grid grid-cols-12 gap-x-6 gap-y-10">
             <div className="col-span-12 md:col-span-5">
               <p className="ui border-t border-ink/40 pt-8 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
-                § A.07, Forward
+                § A.06, Forward
               </p>
               <h2 className="font-display mt-5 text-display-2 font-extrabold leading-[0.92]">
                 What this is becoming
