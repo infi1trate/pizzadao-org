@@ -309,12 +309,24 @@ const Sponsorship = () => {
             </div>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-5 md:mt-14 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
+          <div className="mt-14 grid grid-cols-1 gap-7 md:mt-16 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
             {[
               {
                 k: "Global Moments",
                 v: "Large-scale activations across hundreds of cities, built to create shared global experiences.",
                 note: "500+ cities, one weekend",
+                accent: "global",
+                stamp: "WORLDWIDE",
+                tilt: "-rotate-[1.2deg]",
+                motif: (
+                  <svg viewBox="0 0 200 120" className="absolute -right-6 -top-4 h-28 w-44 text-ink/[0.07]" fill="none" stroke="currentColor" strokeWidth="0.8">
+                    <ellipse cx="100" cy="60" rx="80" ry="40" />
+                    <ellipse cx="100" cy="60" rx="60" ry="40" />
+                    <ellipse cx="100" cy="60" rx="40" ry="40" />
+                    <ellipse cx="100" cy="60" rx="20" ry="40" />
+                    <path d="M20 60h160M30 35h140M30 85h140" />
+                  </svg>
+                ),
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round">
                     <circle cx="12" cy="12" r="9" />
@@ -327,6 +339,18 @@ const Sponsorship = () => {
                 k: "Local Takeovers",
                 v: "City-by-city brand presence through trusted neighborhood pizzerias.",
                 note: "on the corner you already know",
+                accent: "local energy",
+                stamp: "NEIGHBORHOOD",
+                tilt: "rotate-[1.6deg]",
+                motif: (
+                  <svg viewBox="0 0 200 120" className="absolute -right-4 -top-6 h-28 w-40 text-ink/[0.08]" fill="none" stroke="currentColor" strokeWidth="0.8">
+                    <path d="M10 90 L60 40 L100 70 L150 30 L190 80" />
+                    <circle cx="60" cy="40" r="3" />
+                    <circle cx="100" cy="70" r="3" />
+                    <circle cx="150" cy="30" r="3" />
+                    <path d="M60 40 L60 95M100 70 L100 95M150 30 L150 95" strokeDasharray="2 3" />
+                  </svg>
+                ),
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z" />
@@ -338,6 +362,17 @@ const Sponsorship = () => {
                 k: "Builder Collaborations",
                 v: "Hackathons, product integrations, and experimental launches with founders and developers.",
                 note: "shipped in a weekend",
+                accent: "experimental",
+                stamp: "FIELD KIT",
+                tilt: "-rotate-[2deg]",
+                motif: (
+                  <svg viewBox="0 0 200 120" className="absolute -right-8 -top-4 h-28 w-44 text-ink/[0.07]" fill="none" stroke="currentColor" strokeWidth="0.8">
+                    <path d="M10 60 L60 60 L70 40 L130 40 L140 60 L190 60" />
+                    <path d="M10 60 L60 60 L70 80 L130 80 L140 60" />
+                    <circle cx="100" cy="60" r="14" />
+                    <path d="M100 46 L100 74M86 60 L114 60" />
+                  </svg>
+                ),
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 2.5l1.8 5.6 5.7.3-4.6 3.6 1.7 5.7L12 14.6l-4.6 3.1 1.7-5.7-4.6-3.6 5.7-.3z" />
@@ -348,6 +383,16 @@ const Sponsorship = () => {
                 k: "Cultural Programming",
                 v: "Artist residencies, food and culture crossovers, and community-led events.",
                 note: "vol. 04 · ongoing",
+                accent: "community-led",
+                stamp: "ARCHIVE",
+                tilt: "rotate-[1.2deg]",
+                motif: (
+                  <svg viewBox="0 0 200 120" className="absolute -right-4 -top-6 h-28 w-44 text-ink/[0.07]" fill="none" stroke="currentColor" strokeWidth="0.8">
+                    <rect x="30" y="20" width="60" height="80" />
+                    <rect x="110" y="20" width="60" height="80" />
+                    <path d="M40 35h40M40 50h40M40 65h30M120 35h40M120 50h40M120 65h25" />
+                  </svg>
+                ),
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3.5" y="3.5" width="17" height="17" rx="1.5" />
@@ -360,6 +405,17 @@ const Sponsorship = () => {
                 k: "Experimental Activations",
                 v: "NFC pizza boxes, AR experiences, AI-generated menus, and unexpected formats.",
                 note: "tap the box, see what happens",
+                accent: "IRL",
+                stamp: "PROTOTYPE",
+                tilt: "-rotate-[1.4deg]",
+                motif: (
+                  <svg viewBox="0 0 200 120" className="absolute -right-6 -top-6 h-28 w-44 text-ink/[0.07]" fill="none" stroke="currentColor" strokeWidth="0.8">
+                    <circle cx="100" cy="60" r="50" />
+                    <circle cx="100" cy="60" r="35" />
+                    <circle cx="100" cy="60" r="20" />
+                    <path d="M100 10v100M50 60h100M65 25l70 70M135 25l-70 70" strokeDasharray="2 4" />
+                  </svg>
+                ),
                 icon: (
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M3 20L12 4l9 16z" />
@@ -372,12 +428,24 @@ const Sponsorship = () => {
             ].map((b, i) => (
               <article
                 key={b.k}
-                className="group paper-soft relative flex flex-col overflow-hidden bg-cream p-6 transition-all duration-500 ease-out hover:-translate-y-[3px] hover:bg-cream-warm hover:shadow-[0_30px_70px_-40px_hsl(var(--ink)/0.35),0_8px_24px_-16px_hsl(var(--ink)/0.18)] md:p-8"
+                className="group paper-soft paper-drift relative flex flex-col overflow-hidden rounded-[14px] bg-cream p-7 shadow-[0_2px_0_hsl(var(--ink)/0.06),0_18px_40px_-30px_hsl(var(--ink)/0.25)] ring-1 ring-ink/10 transition-all duration-500 ease-out hover:-translate-y-[5px] hover:rotate-[-0.2deg] hover:bg-cream-warm hover:shadow-[0_40px_90px_-40px_hsl(var(--ink)/0.4),0_10px_30px_-18px_hsl(var(--ink)/0.22)] hover:ring-tomato/25 md:p-9"
+                style={{
+                  borderTopLeftRadius: i % 2 === 0 ? "18px" : "12px",
+                  borderBottomRightRadius: i % 2 === 0 ? "12px" : "18px",
+                }}
               >
-                {/* Hairline frame — single top rule, no boxed border */}
-                <span aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/15" />
+                {/* Decorative motif fragment */}
+                {b.motif}
 
-                <div className="flex items-start justify-between">
+                {/* Corner stamp */}
+                <span
+                  aria-hidden
+                  className={`ui absolute right-4 top-4 ${b.tilt} rounded-full border border-ink/25 px-2 py-[3px] text-[8.5px] font-semibold uppercase tracking-[0.22em] text-ink/45 transition-colors duration-500 group-hover:border-tomato/40 group-hover:text-tomato`}
+                >
+                  {b.stamp}
+                </span>
+
+                <div className="relative flex items-start justify-between">
                   <span className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/45">
                     Fig. {String(i + 1).padStart(2, "0")}
                   </span>
@@ -389,16 +457,27 @@ const Sponsorship = () => {
                   </span>
                 </div>
 
-                <h4 className="font-display mt-7 text-2xl font-extrabold leading-[1.05] tracking-[-0.015em] transition-colors duration-500 group-hover:text-tomato md:mt-8 md:text-[1.75rem]">
+                <h4 className="font-display relative mt-10 text-[1.85rem] font-extrabold leading-[1.02] tracking-[-0.018em] transition-colors duration-500 group-hover:text-tomato md:mt-12 md:text-[2.05rem]">
                   {b.k}
                 </h4>
 
-                <p className="font-serif mt-5 text-[14.5px] leading-[1.65] text-ink/70 md:text-[15px]">
+                {/* Imperfect underline */}
+                <svg aria-hidden viewBox="0 0 120 6" className="mt-3 h-[6px] w-20 text-ink/30 transition-colors duration-500 group-hover:text-tomato" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
+                  <path d="M2 3 Q 30 1 60 3 T 118 3" />
+                </svg>
+
+                <p className="font-serif mt-5 text-[15px] leading-[1.7] text-ink/75 md:text-[15.5px]">
                   {b.v}
                 </p>
 
-                {/* Handwritten annotation — reveals on hover */}
-                <p className="handwritten mt-6 -rotate-[1.5deg] text-tomato text-sm opacity-0 transition-opacity duration-500 group-hover:opacity-90">
+                {/* Rock Salt accent — always visible, subtle */}
+                <p className={`handwritten mt-7 ${b.tilt} text-tomato/80 text-[15px] leading-none`}>
+                  {b.accent}
+                </p>
+
+                {/* Annotation reveal on hover */}
+                <p className="ui mt-3 flex items-center gap-2 text-[10.5px] uppercase tracking-[0.22em] text-ink/55 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                  <span aria-hidden className="inline-block h-px w-6 bg-tomato" />
                   ↳ {b.note}
                 </p>
               </article>
