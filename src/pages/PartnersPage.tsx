@@ -28,7 +28,7 @@ const PartnersPage = () => {
       <SiteNav solid />
 
       {/* Editorial hero — global cultural initiative */}
-      <section className="paper-soft paper-drift relative overflow-hidden bg-cream pt-12 md:pt-20">
+      <section className="paper-soft paper-drift relative overflow-hidden bg-cream pt-10 md:pt-14">
         {/* Atmospheric warmth — cream → warm gradient */}
         <div
           aria-hidden
@@ -71,12 +71,12 @@ const PartnersPage = () => {
             </span>
           </div>
 
-          <div className="border-t border-ink/40 pt-10 md:pt-14">
-            <div className="grid grid-cols-12 items-center gap-x-8 gap-y-12 md:gap-x-12">
+          <div className="border-t border-ink/40 pt-8 md:pt-10">
+            <div className="grid grid-cols-12 items-center gap-x-8 gap-y-8 md:gap-x-12">
               {/* Left: headline mass + lede */}
               <div className="col-span-12 md:col-span-7 animate-fade-in">
                 <p className="overline text-tomato">§ B, Partnership</p>
-                <h1 className="font-display mt-5 font-extrabold leading-[0.84] tracking-[-0.025em] text-[clamp(3.25rem,9vw,8.5rem)] md:mt-6 md:leading-[0.8]">
+                <h1 className="font-display mt-4 font-extrabold leading-[0.84] tracking-[-0.025em] text-[clamp(3.25rem,9vw,8.5rem)] md:leading-[0.8]">
                   Where brands meet{" "}
                   <span className="relative inline-block">
                     <span
@@ -95,11 +95,11 @@ const PartnersPage = () => {
                   <span className="text-ink/65">attention.</span>
                 </h1>
 
-                <p className="font-serif mt-7 max-w-[44ch] text-[17.5px] leading-[1.55] text-ink/75 md:mt-8 md:text-[19px] md:leading-[1.5]">
+                <p className="font-serif mt-5 max-w-[44ch] text-[17.5px] leading-[1.55] text-ink/75 md:mt-6 md:text-[19px] md:leading-[1.5]">
                   PizzaDAO builds global, community-driven activations that turn
                   brands into experiences people actually show up for.
                 </p>
-                <p className="ui mt-5 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+                <p className="ui mt-4 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-ink/45">
                   Trusted globally · since 2020
                 </p>
               </div>
@@ -107,22 +107,29 @@ const PartnersPage = () => {
               {/* Right: ambient globe */}
               <div className="col-span-12 md:col-span-5 animate-fade-in" style={{ animationDelay: "120ms", animationFillMode: "both" }}>
                 <PartnersGlobe />
-                <p className="ui mt-6 text-center text-[10px] font-medium uppercase tracking-[0.24em] text-ink/40">
+                <p className="ui mt-4 text-center text-[10px] font-medium uppercase tracking-[0.24em] text-ink/40">
                   Fig. i — Active chapters, 6 continents
                 </p>
               </div>
             </div>
 
             {/* Proof strip — editorial footer rail */}
-            <div className="mt-20 border-t border-ink/15 pt-8 md:mt-28">
-              <dl className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-4 md:gap-x-12">
+            <div className="relative mt-12 border-t border-ink/15 pt-6 md:mt-16 md:pt-7">
+              {/* Asymmetric IRL stamp — offset into the margin */}
+              <span
+                aria-hidden
+                className="handwritten absolute -top-3 right-0 -rotate-[8deg] text-[13px] text-tomato md:right-2"
+              >
+                ↘ measured IRL
+              </span>
+              <dl className="grid grid-cols-2 gap-x-8 gap-y-7 md:grid-cols-4 md:gap-x-12">
                 {[
                   { k: "Cities", v: "500+" },
                   { k: "Countries", v: "100+" },
                   { k: "Attendees", v: "20,000+" },
                   { k: "Years running", v: "6" },
-                ].map((m, i) => (
-                  <div key={m.k} className="flex flex-col gap-2">
+                ].map((m) => (
+                  <div key={m.k} className="flex flex-col gap-1.5">
                     <dd className="font-display text-[2rem] font-extrabold leading-none tracking-[-0.02em] md:text-[2.5rem]">
                       {m.v}
                     </dd>
@@ -134,10 +141,11 @@ const PartnersPage = () => {
               </dl>
             </div>
 
-            <div className="h-16 md:h-24" />
+            <div className="h-8 md:h-12" />
           </div>
         </div>
       </section>
+
 
 
       {/* Reuse homepage Sponsorship section for value props + CTA */}
@@ -146,7 +154,7 @@ const PartnersPage = () => {
       {/* Case studies consolidated into Sponsorship "What we've built" */}
 
       {/* Logo wall — quiet, curated cream band */}
-      <section className="paper-soft paper-drift relative overflow-hidden bg-cream-warm py-32 md:py-44">
+      <section className="paper-soft paper-drift relative overflow-hidden bg-cream-warm py-20 md:py-24">
         {/* Faint horizontal texture band — barely-there warmth */}
         <div
           aria-hidden
@@ -156,6 +164,8 @@ const PartnersPage = () => {
               "radial-gradient(ellipse at center, hsl(var(--butter) / 0.18), transparent 70%)",
           }}
         />
+        {/* Edge-aligned tick — left margin connective motif */}
+        <span aria-hidden className="absolute left-0 top-20 hidden h-px w-10 bg-tomato/60 md:block" />
         <div className="container relative">
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
             <div className="flex items-baseline gap-4">
@@ -165,10 +175,10 @@ const PartnersPage = () => {
               </span>
             </div>
             <p className="ui hidden text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/35 md:block">
-              Programme partners, 2020–2025
+              Programme partners, 2020–2025 →
             </p>
           </div>
-          <div className="mt-20 grid grid-cols-2 items-center gap-x-20 gap-y-20 sm:grid-cols-3 md:mt-28 md:grid-cols-5 md:gap-x-24 md:gap-y-24">
+          <div className="mt-12 grid grid-cols-2 items-center gap-x-16 gap-y-12 sm:grid-cols-3 md:mt-14 md:grid-cols-5 md:gap-x-20 md:gap-y-14">
             {PARTNERS.slice(0, 5).map((p, i) => (
               <div
                 key={p.name}
@@ -178,7 +188,7 @@ const PartnersPage = () => {
                 <div className="font-display text-lg font-semibold tracking-[0.01em] text-ink/45 transition-colors duration-700 ease-out group-hover:text-ink md:text-xl">
                   {p.name}
                 </div>
-                <div className="ui mt-3 text-[9px] font-medium uppercase tracking-[0.26em] text-ink/30 transition-colors duration-700 group-hover:text-ink/55">
+                <div className="ui mt-2 text-[9px] font-medium uppercase tracking-[0.26em] text-ink/30 transition-colors duration-700 group-hover:text-ink/55">
                   {p.role}
                 </div>
               </div>
@@ -189,9 +199,8 @@ const PartnersPage = () => {
 
 
 
-
       {/* Inquiry — warm close, hospitality cues */}
-      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-32 text-cream md:py-44">
+      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-20 text-cream md:py-28">
         {/* Warm hospitality wash — soft ember toward the upper-left */}
         <div
           aria-hidden
@@ -208,15 +217,16 @@ const PartnersPage = () => {
         <div className="absolute inset-x-0 bottom-0 h-px bg-cream/10" aria-hidden />
 
         <div className="container relative">
-          <div className="grid grid-cols-12 gap-x-8 gap-y-16 md:gap-x-20">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-10 md:gap-x-16 md:gap-y-0">
             <div className="col-span-12 md:col-span-5">
               <p className="overline text-butter">§ B.02 — Inquiry</p>
-              <h2 className="font-display mt-7 text-display-2 font-extrabold leading-[0.88] tracking-[-0.025em]">
+              <h2 className="font-display mt-5 text-display-2 font-extrabold leading-[0.88] tracking-[-0.025em]">
                 Tell us
                 <br />
                 what
                 <br />
                 <span className="italic font-serif font-normal text-butter">
+
                   you're trying
                 </span>
                 <br />
@@ -224,11 +234,12 @@ const PartnersPage = () => {
                   to do.
                 </span>
               </h2>
-              <p className="font-serif mt-10 max-w-[34ch] text-[15.5px] leading-[1.65] text-cream/70 md:text-base">
+              <p className="font-serif mt-7 max-w-[34ch] text-[15.5px] leading-[1.65] text-cream/70 md:text-base">
                 We come back with a brief, a city list, and a number, usually
                 within a week. No deck required to start the conversation.
               </p>
-              <p className="ui mt-10 text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/40">
+              <p className="ui mt-6 text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/40">
+
                 Or email partnerships@pizzadao.org directly
               </p>
             </div>

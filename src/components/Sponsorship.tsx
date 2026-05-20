@@ -101,15 +101,22 @@ const Sponsorship = () => {
   return (
     <section
       id="partner-with-us"
-      className="relative bg-butter/30 pt-20 text-ink md:pt-32"
+      className="relative bg-butter/30 pt-14 text-ink md:pt-20"
     >
       {/* Masthead */}
       <div className="container">
-        <div className="border-t-2 border-ink pt-8 md:pt-10">
-          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
+        <div className="relative border-t-2 border-ink pt-6 md:pt-8">
+          {/* Offset stamp — edge-aligned connective motif */}
+          <span
+            aria-hidden
+            className="handwritten absolute -top-4 right-2 -rotate-[6deg] text-tomato text-[13px] md:text-sm"
+          >
+            ↳ since 2020
+          </span>
+          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-5">
             <div className="col-span-12 md:col-span-7">
               <p className="overline text-tomato">§ 06, Partnership</p>
-              <h2 className="font-display mt-4 text-display-1 font-extrabold leading-[0.92] tracking-[0.005em] text-ink">
+              <h2 className="font-display mt-3 text-display-1 font-extrabold leading-[0.92] tracking-[0.005em] text-ink">
                 Why brands
                 <br />
                 <span className="text-ink-soft">partner with PizzaDAO.</span>
@@ -119,7 +126,7 @@ const Sponsorship = () => {
               <p className="text-lg leading-relaxed text-ink/80 md:text-xl">
                 Five years of building unforgettable moments with brands who get it.
               </p>
-              <p className="mt-5 text-base leading-relaxed text-ink/65">
+              <p className="mt-3 text-base leading-relaxed text-ink/65">
                 A community institution with operators on every continent.
                 We build programs that put brands inside culture, not on top
                 of it.
@@ -129,12 +136,12 @@ const Sponsorship = () => {
         </div>
 
         {/* Proof ledger, bright, optimistic */}
-        <div className="mt-12 rounded-2xl border-2 border-ink bg-cream p-4 shadow-[0_24px_60px_-30px_hsl(var(--ink)/0.35)] md:mt-16 md:p-6">
+        <div className="mt-8 rounded-2xl border-2 border-ink bg-cream p-4 shadow-[0_24px_60px_-30px_hsl(var(--ink)/0.35)] md:mt-10 md:p-5">
           <dl className="grid grid-cols-2 md:grid-cols-4">
             {PROOF.map((p, i) => (
               <div
                 key={p.k}
-                className={`px-6 py-9 md:px-9 md:py-12 ${
+                className={`px-6 py-6 md:px-8 md:py-8 ${
                   i > 0 ? "md:border-l md:border-ink/15" : ""
                 } ${i === 1 ? "border-l border-ink/15" : ""} ${
                   i >= 2 ? "border-t border-ink/15 md:border-t-0" : ""
@@ -143,7 +150,7 @@ const Sponsorship = () => {
                 <dt className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-tomato">
                   {p.k}
                 </dt>
-                <dd className="font-display mt-3 text-[clamp(2.25rem,5.5vw,4.25rem)] font-extrabold leading-[0.86] tracking-[-0.01em]">
+                <dd className="font-display mt-2 text-[clamp(2.25rem,5.5vw,4.25rem)] font-extrabold leading-[0.86] tracking-[-0.01em]">
                   <CountUp value={p.num} suffix={p.suffix} fallback={p.v} />
                 </dd>
               </div>
@@ -152,19 +159,23 @@ const Sponsorship = () => {
         </div>
       </div>
 
+
       {/* Value props, editorial 2-column grid */}
-      <div className="container mt-20 md:mt-28">
-        <div className="grid grid-cols-12 gap-x-6 gap-y-10">
+      <div className="container mt-14 md:mt-20">
+        <div className="grid grid-cols-12 gap-x-6 gap-y-7">
           <div className="col-span-12 md:col-span-4">
             <p className="overline text-tomato">What you receive</p>
-            <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.95] tracking-[0.005em] text-ink">
+            <h3 className="font-display mt-3 text-display-2 font-extrabold leading-[0.95] tracking-[0.005em] text-ink">
               Five things
               <br />
               <span className="text-ink-soft">we deliver.</span>
             </h3>
-            <p className="mt-6 text-base leading-relaxed text-ink/65">
+            <p className="mt-4 text-base leading-relaxed text-ink/65">
               Our partnership model is bespoke, not menu-driven. The list below
               is what every program is built on.
+            </p>
+            <p className="handwritten mt-5 -rotate-[1.5deg] text-tomato text-sm">
+              ↳ no two briefs alike
             </p>
           </div>
 
@@ -173,7 +184,7 @@ const Sponsorship = () => {
               {VALUE_PROPS.map((vp) => (
                 <li
                   key={vp.n}
-                  className="group grid grid-cols-12 gap-x-6 gap-y-3 border-b border-ink/15 py-12 md:py-16"
+                  className="group grid grid-cols-12 gap-x-6 gap-y-2 border-b border-ink/15 py-7 md:py-9"
                 >
                   <div className="col-span-2 md:col-span-1">
                     <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-tomato">
@@ -198,18 +209,23 @@ const Sponsorship = () => {
       </div>
 
       {/* What we build together */}
-      <div className="paper-soft paper-drift mt-28 bg-cream-warm py-24 md:mt-40 md:py-32">
+      <div className="paper-soft paper-drift mt-16 bg-cream-warm py-16 md:mt-24 md:py-20">
         <div className="container">
-          <div className="border-t border-ink/40 pt-10 md:pt-14">
-            <div className="grid grid-cols-12 items-end gap-x-8 gap-y-8 md:gap-x-12">
+          <div className="relative border-t border-ink/40 pt-8 md:pt-10">
+            {/* IRL stamp, asymmetric overhang */}
+            <span aria-hidden className="ui absolute -top-3 left-4 bg-cream-warm px-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-tomato">
+              IRL ·  built in cities
+            </span>
+            <div className="grid grid-cols-12 items-end gap-x-8 gap-y-6 md:gap-x-12">
               <div className="col-span-12 md:col-span-8">
                 <p className="overline text-tomato">§ 07, Possibilities</p>
-                <h3 className="font-display mt-6 text-display-2 font-extrabold leading-[0.88] tracking-[-0.02em] md:mt-7">
+                <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.88] tracking-[-0.02em] md:mt-5">
                   What we build
                   <br />
                   <span className="italic font-serif font-normal text-ink/55">together.</span>
                 </h3>
               </div>
+
               <div className="col-span-12 md:col-span-4 md:pl-10 md:pb-3">
                 <p className="font-serif text-[15.5px] leading-[1.65] text-ink/70 md:text-[15px]">
                   Five formats we know how to run, and a hundred more we'd love to invent with you.
@@ -218,7 +234,7 @@ const Sponsorship = () => {
             </div>
           </div>
 
-          <div className="mt-20 grid grid-cols-1 gap-6 md:mt-24 md:grid-cols-2 md:gap-7 lg:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-5 md:mt-14 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
             {[
               {
                 k: "Global Moments",
@@ -281,7 +297,7 @@ const Sponsorship = () => {
             ].map((b, i) => (
               <article
                 key={b.k}
-                className="group paper-soft relative flex flex-col overflow-hidden bg-cream p-8 transition-all duration-500 ease-out hover:-translate-y-[3px] hover:bg-cream-warm hover:shadow-[0_30px_70px_-40px_hsl(var(--ink)/0.35),0_8px_24px_-16px_hsl(var(--ink)/0.18)] md:p-10"
+                className="group paper-soft relative flex flex-col overflow-hidden bg-cream p-6 transition-all duration-500 ease-out hover:-translate-y-[3px] hover:bg-cream-warm hover:shadow-[0_30px_70px_-40px_hsl(var(--ink)/0.35),0_8px_24px_-16px_hsl(var(--ink)/0.18)] md:p-8"
               >
                 {/* Hairline frame — single top rule, no boxed border */}
                 <span aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/15" />
@@ -298,7 +314,7 @@ const Sponsorship = () => {
                   </span>
                 </div>
 
-                <h4 className="font-display mt-10 text-2xl font-extrabold leading-[1.05] tracking-[-0.015em] transition-colors duration-500 group-hover:text-tomato md:mt-12 md:text-[1.75rem]">
+                <h4 className="font-display mt-7 text-2xl font-extrabold leading-[1.05] tracking-[-0.015em] transition-colors duration-500 group-hover:text-tomato md:mt-8 md:text-[1.75rem]">
                   {b.k}
                 </h4>
 
@@ -307,7 +323,7 @@ const Sponsorship = () => {
                 </p>
 
                 {/* Handwritten annotation — reveals on hover */}
-                <p className="handwritten mt-8 -rotate-[1.5deg] text-tomato text-sm opacity-0 transition-opacity duration-500 group-hover:opacity-90">
+                <p className="handwritten mt-6 -rotate-[1.5deg] text-tomato text-sm opacity-0 transition-opacity duration-500 group-hover:opacity-90">
                   ↳ {b.note}
                 </p>
               </article>
@@ -318,12 +334,15 @@ const Sponsorship = () => {
 
 
       {/* What we've built */}
-      <div className="container mt-24 md:mt-32">
-        <div className="border-t-2 border-ink pt-8 md:pt-10">
-          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
+      <div className="container mt-16 md:mt-20">
+        <div className="relative border-t-2 border-ink pt-6 md:pt-8">
+          <span aria-hidden className="ui absolute -top-2.5 right-2 bg-butter/30 px-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/55">
+            Selected, 2021–2025
+          </span>
+          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-5">
             <div className="col-span-12 md:col-span-8">
               <p className="overline text-tomato">§ 08, Proof</p>
-              <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92] tracking-[0.005em]">
+              <h3 className="font-display mt-3 text-display-2 font-extrabold leading-[0.92] tracking-[0.005em]">
                 What we've
                 <br />
                 <span className="text-ink-soft">built.</span>
@@ -337,7 +356,8 @@ const Sponsorship = () => {
           </div>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-5 md:mt-12 md:grid-cols-3">
+
           {[
             {
               partner: "Bitcoin Pizza Day",
@@ -369,15 +389,16 @@ const Sponsorship = () => {
           ].map((c) => (
             <article
               key={c.partner}
-              className="rounded-2xl bg-cream p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-28px_hsl(var(--ink)/0.3)] md:p-10"
+              className="rounded-2xl bg-cream p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-28px_hsl(var(--ink)/0.3)] md:p-8"
             >
               <div className="ui text-[11px] font-semibold uppercase tracking-[0.18em] text-tomato">
                 {c.partner}
               </div>
-              <h4 className="font-display mt-4 text-2xl font-extrabold leading-tight md:text-3xl">
+              <h4 className="font-display mt-3 text-2xl font-extrabold leading-tight md:text-3xl">
                 {c.headline}
               </h4>
-              <ul className="mt-6 space-y-2">
+              <ul className="mt-4 space-y-1.5">
+
                 {c.points.map((p) => (
                   <li key={p} className="flex gap-3 text-sm leading-relaxed text-ink/75">
                     <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-tomato" />
@@ -391,20 +412,21 @@ const Sponsorship = () => {
       </div>
 
       {/* CTA band, warm butter */}
-      <div className="mt-20 bg-butter pb-20 md:mt-28 md:pb-32">
-        <div className="container pt-16 md:pt-20">
-          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
+      <div className="mt-14 bg-butter pb-14 md:mt-20 md:pb-20">
+        <div className="container pt-12 md:pt-16">
+          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
             <div className="col-span-12 md:col-span-8">
               <p className="overline text-tomato">Bespoke programs</p>
-              <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.95]">
+              <h3 className="font-display mt-3 text-display-2 font-extrabold leading-[0.95]">
                 Let's build something
                 <br />
                 <span className="text-tomato">people actually show up to.</span>
               </h3>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-ink/75 md:text-lg">
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-ink/75 md:text-lg">
                 Tell us what you're trying to do. We'll help shape it into something worth showing up for.
               </p>
             </div>
+
             <div className="col-span-12 flex flex-col gap-3 md:col-span-4 md:items-end">
               <a
                 href="mailto:partnerships@pizzadao.org"
