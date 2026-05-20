@@ -323,7 +323,7 @@ const Sponsorship = () => {
                 </p>
 
                 {/* Handwritten annotation — reveals on hover */}
-                <p className="handwritten mt-8 -rotate-[1.5deg] text-tomato text-sm opacity-0 transition-opacity duration-500 group-hover:opacity-90">
+                <p className="handwritten mt-6 -rotate-[1.5deg] text-tomato text-sm opacity-0 transition-opacity duration-500 group-hover:opacity-90">
                   ↳ {b.note}
                 </p>
               </article>
