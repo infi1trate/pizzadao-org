@@ -103,18 +103,19 @@ const About = () => {
                 </p>
               </div>
             </div>
-            <div className="col-span-12 md:col-span-5 md:pl-8 md:pt-16">
-              <figure>
+            <div className="col-span-12 md:col-span-5 md:pl-8 md:pt-20">
+              <figure className="taped rotate-[-1.2deg] transition-transform duration-700 hover:rotate-0">
                 <img
                   src={founding}
                   alt="Late-night gathering of friends huddled around laptops and pizza"
                   loading="lazy"
                   width={1080}
                   height={1350}
-                  className="grain block aspect-[4/5] w-full object-cover"
+                  className="grain photo-hover block aspect-[4/5] w-full object-cover"
                 />
-                <figcaption className="ui mt-3 text-[10px] uppercase tracking-[0.18em] text-ink/55">
-                  Fig. A.1, The founding, 2021
+                <figcaption className="ui mt-3 flex items-baseline justify-between gap-3 text-[10px] uppercase tracking-[0.18em] text-ink/55">
+                  <span>Fig. A.1, The founding, 2021</span>
+                  <span className="margin-note normal-case tracking-normal">↘ day one</span>
                 </figcaption>
               </figure>
             </div>
