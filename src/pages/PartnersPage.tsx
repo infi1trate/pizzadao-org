@@ -46,38 +46,25 @@ const PartnersPage = () => {
 
       {/* Case studies consolidated into Sponsorship "What we've built" */}
 
-      {/* Imperfect divider between Sponsorship and logo wall */}
-      <div className="bg-cream" aria-hidden>
-        <div className="container flex items-center gap-4 py-4">
-          <span className="h-px flex-1 bg-ink/15" />
-          <span className="checker-tape h-[6px] w-20 opacity-75" />
-          <span className="h-px flex-1 bg-ink/15" />
-        </div>
-      </div>
-
       {/* Logo wall — butter brand band */}
-      <section className="paper-soft paper-drift relative overflow-hidden bg-butter py-20 md:py-24">
-        {/* Corner checker tape accents */}
-        <div className="checker-tape absolute left-0 top-0 h-[6px] w-28 opacity-80 md:w-40" aria-hidden />
-        <div className="checker-tape absolute bottom-0 right-0 h-[6px] w-28 opacity-80 md:w-40" aria-hidden />
-
-        <Parallax intensity={60} className="pointer-events-none absolute inset-0">
+      <section className="paper-soft paper-drift relative overflow-hidden bg-butter py-28 md:py-36">
+        <Parallax intensity={40} className="pointer-events-none absolute inset-0">
           <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-cream/40 blur-3xl" />
-          <div className="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-tomato/15 blur-3xl" />
+          <div className="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-tomato/10 blur-3xl" />
         </Parallax>
         <div className="container relative">
-          <div className="flex flex-wrap items-baseline justify-between gap-4 border-t border-ink/25 pt-7">
+          <div className="flex flex-wrap items-baseline justify-between gap-4">
             <p className="overline text-ink/55">§ B.01 — Selected collaborators</p>
-            <span className="handwritten -rotate-[2deg] text-ink/65 text-sm md:text-base">
-              IRL &gt; ads ↗
-            </span>
+            <p className="ui hidden text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/40 md:block">
+              Programme partners, 2020–2025
+            </p>
           </div>
-          <div className="mt-12 grid grid-cols-2 gap-x-12 gap-y-14 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="mt-16 grid grid-cols-2 gap-x-14 gap-y-16 border-t border-ink/15 pt-14 sm:grid-cols-3 lg:grid-cols-6 md:mt-20 md:gap-x-16">
             {PARTNERS.map((p, i) => (
               <div
                 key={p.name}
-                className="flex items-center justify-center opacity-60 grayscale transition-all duration-500 hover:-translate-y-1 hover:opacity-100 hover:grayscale-0 animate-fade-in"
-                style={{ animationDelay: `${i * 80}ms` }}
+                className="flex items-center justify-center opacity-55 transition-[opacity,transform] duration-700 ease-out hover:-translate-y-[2px] hover:opacity-100 animate-fade-in"
+                style={{ animationDelay: `${i * 80}ms`, animationFillMode: "both" }}
               >
                 <div className="font-display text-xl font-extrabold tracking-tight text-ink md:text-2xl">
                   {p.name}
@@ -88,20 +75,16 @@ const PartnersPage = () => {
         </div>
       </section>
 
+
       {/* Inquiry form */}
-      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-24 text-cream md:py-32">
-        <div className="checker-tape-sm absolute inset-x-0 top-0 h-[6px] opacity-65" aria-hidden />
-        <div className="checker-tape-sm absolute inset-x-0 bottom-0 h-[6px] opacity-65" aria-hidden />
+      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-28 text-cream md:py-36">
+        <div className="absolute inset-x-0 top-0 h-px bg-cream/15" aria-hidden />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-cream/10" aria-hidden />
         <div className="container relative">
-          <div className="grid grid-cols-12 gap-x-8 gap-y-12 md:gap-x-12">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-14 md:gap-x-16">
             <div className="col-span-12 md:col-span-5">
-              <div className="flex items-baseline gap-3">
-                <p className="overline text-butter">§ B.02 — Inquiry</p>
-                <span className="handwritten -rotate-[1.5deg] text-butter/90 text-[0.78rem] md:text-sm leading-none">
-                  community first
-                </span>
-              </div>
-              <h2 className="font-display mt-6 text-display-2 font-extrabold leading-[0.88] tracking-[-0.025em] md:mt-7">
+              <p className="overline text-butter">§ B.02 — Inquiry</p>
+              <h2 className="font-display mt-7 text-display-2 font-extrabold leading-[0.88] tracking-[-0.025em]">
                 Tell us
                 <br />
                 what
@@ -114,14 +97,11 @@ const PartnersPage = () => {
                   to do.
                 </span>
               </h2>
-              <p className="font-serif mt-8 max-w-[34ch] text-[15px] leading-[1.6] text-cream/70 md:text-base">
+              <p className="font-serif mt-10 max-w-[34ch] text-[15px] leading-[1.65] text-cream/65 md:text-base">
                 We come back with a brief, a city list, and a number, usually
                 within a week. No deck required to start the conversation.
               </p>
-              <p className="handwritten mt-6 -rotate-1 text-tomato text-sm md:text-base">
-                ↘ real world, real people
-              </p>
-              <p className="ui mt-6 text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/45">
+              <p className="ui mt-8 text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/40">
                 Or email partnerships@pizzadao.org directly
               </p>
             </div>
@@ -131,7 +111,7 @@ const PartnersPage = () => {
                 e.preventDefault();
                 setSubmitted(true);
               }}
-              className="col-span-12 grid grid-cols-2 gap-4 border border-cream/20 bg-cream/[0.03] p-6 md:col-span-7 md:p-8"
+              className="col-span-12 grid grid-cols-2 gap-5 md:col-span-7 md:pl-4"
             >
               {submitted ? (
                 <div className="col-span-2">
@@ -151,7 +131,7 @@ const PartnersPage = () => {
                     <input
                       type="text"
                       required
-                      className="ui mt-2 w-full border border-cream/30 bg-transparent px-4 py-3 text-sm text-cream placeholder:text-cream/35 focus:border-butter focus:outline-none"
+                      className="ui mt-3 w-full border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-sm text-cream placeholder:text-cream/30 transition-colors focus:border-butter focus:outline-none"
                       placeholder="Company name"
                     />
                   </div>
@@ -162,7 +142,7 @@ const PartnersPage = () => {
                     <input
                       type="text"
                       required
-                      className="ui mt-2 w-full border border-cream/30 bg-transparent px-4 py-3 text-sm text-cream placeholder:text-cream/35 focus:border-butter focus:outline-none"
+                      className="ui mt-3 w-full border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-sm text-cream placeholder:text-cream/30 transition-colors focus:border-butter focus:outline-none"
                       placeholder="Full name"
                     />
                   </div>
@@ -173,7 +153,7 @@ const PartnersPage = () => {
                     <input
                       type="email"
                       required
-                      className="ui mt-2 w-full border border-cream/30 bg-transparent px-4 py-3 text-sm text-cream placeholder:text-cream/35 focus:border-butter focus:outline-none"
+                      className="ui mt-3 w-full border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-sm text-cream placeholder:text-cream/30 transition-colors focus:border-butter focus:outline-none"
                       placeholder="you@company.com"
                     />
                   </div>
@@ -184,7 +164,7 @@ const PartnersPage = () => {
                     <textarea
                       required
                       rows={4}
-                      className="ui mt-2 w-full border border-cream/30 bg-transparent px-4 py-3 text-sm text-cream placeholder:text-cream/35 focus:border-butter focus:outline-none"
+                      className="ui mt-3 w-full border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-sm text-cream placeholder:text-cream/30 transition-colors focus:border-butter focus:outline-none"
                       placeholder="What you're trying to achieve, where, by when."
                     />
                   </div>
