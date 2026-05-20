@@ -199,10 +199,8 @@ const PartnersPage = () => {
 
 
 
-
-
       {/* Inquiry — warm close, hospitality cues */}
-      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-32 text-cream md:py-44">
+      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-20 text-cream md:py-28">
         {/* Warm hospitality wash — soft ember toward the upper-left */}
         <div
           aria-hidden
@@ -219,15 +217,16 @@ const PartnersPage = () => {
         <div className="absolute inset-x-0 bottom-0 h-px bg-cream/10" aria-hidden />
 
         <div className="container relative">
-          <div className="grid grid-cols-12 gap-x-8 gap-y-16 md:gap-x-20">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-10 md:gap-x-16 md:gap-y-0">
             <div className="col-span-12 md:col-span-5">
               <p className="overline text-butter">§ B.02 — Inquiry</p>
-              <h2 className="font-display mt-7 text-display-2 font-extrabold leading-[0.88] tracking-[-0.025em]">
+              <h2 className="font-display mt-5 text-display-2 font-extrabold leading-[0.88] tracking-[-0.025em]">
                 Tell us
                 <br />
                 what
                 <br />
                 <span className="italic font-serif font-normal text-butter">
+
                   you're trying
                 </span>
                 <br />
