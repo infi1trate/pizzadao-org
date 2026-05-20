@@ -1408,15 +1408,21 @@ const HeroSection = () => {
               <p className="handwritten mb-4 text-[15px] text-tomato md:text-base">
                 ↘ this part is important
               </p>
-              <h1 className="font-display text-[clamp(3rem,9.5vw,8.25rem)] font-extrabold leading-[0.84] tracking-[-0.015em]">
+              <h1 className="font-display relative text-[clamp(3rem,9.5vw,8.25rem)] font-extrabold leading-[0.84] tracking-[-0.015em]">
                 The Pizza Mafia
                 <br />
                 <span className="relative inline-block align-baseline">
-                  is built{" "}
-                  <span className="handwritten relative z-10 inline-block text-tomato text-[1.05em] sm:text-[1.15em] md:text-[1.25em] leading-[0.7] -ml-0.5 sm:-ml-1 -mr-1 sm:-mr-3 -translate-y-[0.02em] sm:translate-y-[0.04em] -rotate-[4deg] [text-shadow:0_1px_0_hsl(var(--cream))]">
-                    by you.
-                  </span>
+                  is built.
                 </span>
+                {/* "by you" drops down to overlap/interact with the "is built." line, scaled ~12% smaller */}
+                <span
+                  aria-hidden
+                  className="handwritten pointer-events-none absolute z-10 text-tomato text-[0.92em] sm:text-[1em] md:text-[1.08em] leading-[0.7] -rotate-[5deg] [text-shadow:0_1px_0_hsl(var(--cream)),0_0_18px_hsl(var(--cream))]"
+                  style={{ left: "clamp(7.5rem, 22vw, 19rem)", top: "clamp(2.2rem, 6.5vw, 5.5rem)" }}
+                >
+                  by you.
+                </span>
+                <span className="sr-only">by you</span>
               </h1>
               <p className="font-display mt-6 max-w-2xl text-xl font-medium leading-snug text-ink/75 md:text-2xl">
                 Some people show up for pizza. Some stay and build something bigger.
