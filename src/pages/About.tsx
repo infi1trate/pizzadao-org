@@ -189,7 +189,7 @@ const About = () => {
                 internet history, made physical
               </span>
               <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
-                Fig. A.03 — 2010
+                Fig. A.02 — 2010
               </span>
             </figcaption>
           </figure>
