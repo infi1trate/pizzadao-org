@@ -864,8 +864,8 @@ const CommunityPage = () => {
                           )}
                           <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-ink/0" />
 
-                          {/* top-left tag stack */}
-                          <div className="absolute left-5 top-5 flex flex-wrap items-center gap-2">
+                          {/* top-left tag stack — infrastructure credibility */}
+                          <div className="absolute left-5 top-5 flex max-w-[calc(100%-2.5rem)] flex-wrap items-center gap-2">
                             <span className={`ui rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] ${tagTone[featured.tag]}`}>
                               {featured.tag}
                             </span>
@@ -874,12 +874,18 @@ const CommunityPage = () => {
                                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-butter opacity-70" />
                                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-butter" />
                               </span>
-                              In production
+                              Live deployment
+                            </span>
+                            <span className="ui rounded-full bg-butter/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink backdrop-blur-sm">
+                              Hackathon winner
+                            </span>
+                            <span className="ui rounded-full border border-cream/40 bg-ink/40 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-cream backdrop-blur-sm">
+                              Open infra
                             </span>
                           </div>
 
                           {/* corner hand-note */}
-                          <span className="handwritten absolute bottom-5 right-5 max-w-[60%] text-right text-[15px] leading-tight text-cream/95 -rotate-[3deg] md:text-base">
+                          <span className="handwritten marker-bleed absolute bottom-5 right-5 max-w-[60%] text-right text-[15px] leading-tight text-cream/95 -rotate-[3deg] md:text-base">
                             tested live, Global Pizza Party 2026 →
                           </span>
                         </div>
