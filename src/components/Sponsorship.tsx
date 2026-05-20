@@ -1,28 +1,35 @@
+import { MapPin, Sparkles, Waves, Radio, LayoutGrid } from "lucide-react";
+
 const VALUE_PROPS = [
   {
     n: "01",
     k: "Trusted Local Distribution",
-    v: "Hundreds of pizzerias. Real neighborhoods. Your brand shows up where people already are.",
+    v: "Hundreds of pizzerias in real neighborhoods. Your brand shows up where people already gather.",
+    icon: MapPin,
   },
   {
     n: "02",
     k: "Founder + Builder Access",
-    v: "Direct access to founders, developers, and operators shaping the next wave of culture.",
+    v: "Direct lines to founders, developers, and operators shaping what's next.",
+    icon: Sparkles,
   },
   {
     n: "03",
     k: "Cultural Relevance",
-    v: "Programs designed to feel native, not inserted. Built with the community, not around it.",
+    v: "Programs that feel native. Built with communities, not around them.",
+    icon: Waves,
   },
   {
     n: "04",
     k: "Earned Media",
-    v: "Moments people talk about. Content that spreads without forcing it.",
+    v: "Moments people talk about. Content that spreads because it deserves to.",
+    icon: Radio,
   },
   {
     n: "05",
     k: "Global Activation, No Ops",
-    v: "We handle the coordination, logistics, and playbook. You provide the brief.",
+    v: "We coordinate the logistics and playbook. You provide the brief.",
+    icon: LayoutGrid,
   },
 ];
 
