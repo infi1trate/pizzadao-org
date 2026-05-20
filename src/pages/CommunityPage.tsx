@@ -775,24 +775,24 @@ const CommunityPage = () => {
         </div>
       </div>
 
-      {/* RHYTHM BREAK — oversized handwritten interruption, intentionally misbehaving */}
-      <div className="relative overflow-hidden bg-cream py-14 md:py-20">
+      {/* RHYTHM BREAK — oversized handwritten interruption, intentionally misbehaving, overlaps next slab */}
+      <div className="relative z-20 -mb-16 overflow-visible bg-cream py-16 md:-mb-28 md:py-24">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.5]"
+          className="pointer-events-none absolute inset-0 opacity-[0.55]"
           style={{
             background:
-              "radial-gradient(70% 80% at 50% 50%, hsl(var(--butter)/0.55), transparent 70%)",
+              "radial-gradient(70% 80% at 50% 50%, hsl(var(--butter)/0.6), transparent 70%)",
           }}
         />
         <div className="relative">
           <p className="ui mb-3 text-center text-[10px] font-semibold uppercase tracking-[0.32em] text-tomato">
             § Interlude
           </p>
-          <p className="handwritten px-2 text-center text-tomato leading-[0.78] -rotate-[2deg] text-[clamp(3.5rem,16vw,14rem)] [text-shadow:0_2px_0_hsl(var(--cream)),0_0_40px_hsl(var(--butter)/0.6)]">
+          <p className="handwritten marker-bleed px-2 text-center text-tomato leading-[0.72] -rotate-[3deg] text-[clamp(4.5rem,22vw,20rem)] [text-shadow:0_2px_0_hsl(var(--cream)),0_0_60px_hsl(var(--butter)/0.7),0_0_0.6px_hsl(var(--tomato))]">
             but enough talk —
           </p>
-          <p className="font-display mt-4 text-center text-[clamp(1.25rem,2.4vw,1.75rem)] font-extrabold leading-tight text-ink/85">
+          <p className="font-display mt-6 text-center text-[clamp(1.25rem,2.4vw,1.75rem)] font-extrabold leading-tight text-ink/85">
             here's what members actually built.
           </p>
         </div>
