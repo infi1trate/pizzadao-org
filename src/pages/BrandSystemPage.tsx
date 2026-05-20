@@ -52,7 +52,7 @@ const BrandSystemPage = () => {
       <section id="overview" className="paper-soft paper-drift relative overflow-hidden bg-cream pt-28 md:pt-36">
         <div aria-hidden className="pointer-events-none absolute right-4 top-4 z-10 hidden md:block"><span className="ui text-[9px] font-medium uppercase tracking-[0.26em] text-ink/35">Doc · v1.0 · Public asset</span></div>
           <div className="container">
-          <div className="border-t-2 border-ink pt-8 md:pt-10">
+          <div className="border-t border-ink/15 pt-10 md:pt-14">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-10">
               <div className="col-span-12 md:col-span-8">
                 <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1"><p className="overline text-tomato">§ B, Brand System</p><span className="handwritten -rotate-[1.5deg] text-tomato/85 text-sm md:text-base leading-none">open source energy</span></div>
@@ -155,7 +155,7 @@ const BrandSystemPage = () => {
       <section id="principles" className="halftone-soft relative overflow-hidden bg-[hsl(var(--ink)/0.035)] py-28 md:py-44">
         <div aria-hidden className="pointer-events-none absolute right-5 top-4 z-10 hidden md:block"><span className="handwritten rotate-[2deg] text-ink/40 text-xs md:text-sm leading-none">field notes · 2025</span></div>
           <div className="container">
-          <div className="border-t-2 border-ink pt-8 md:pt-10">
+          <div className="border-t border-ink/15 pt-10 md:pt-14">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
                 <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1"><p className="overline text-tomato">§ B.0, Principles</p><span className="handwritten rotate-[1.5deg] text-tomato/85 text-sm md:text-base leading-none">community first</span></div>
@@ -193,7 +193,7 @@ const BrandSystemPage = () => {
       <section id="logos" className="paper-soft paper-drift relative overflow-hidden bg-cream py-28 md:py-44">
         <div aria-hidden className="pointer-events-none absolute right-4 top-4 z-10 hidden md:block"><span className="ui text-[9px] font-medium uppercase tracking-[0.26em] text-ink/35">Asset pack · v1.0</span></div>
           <div className="container">
-          <div className="border-t-2 border-ink pt-8 md:pt-10">
+          <div className="border-t border-ink/15 pt-10 md:pt-14">
             {/* Masthead */}
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
@@ -378,7 +378,7 @@ const BrandSystemPage = () => {
       <section id="downloads" className="print-noise relative overflow-hidden bg-[hsl(var(--ink)/0.035)] py-16 md:py-24">
         <div aria-hidden className="pointer-events-none absolute right-5 top-4 z-10 hidden md:block"><span className="handwritten rotate-[2deg] text-ink/40 text-xs md:text-sm leading-none">open license</span></div>
           <div className="container">
-          <div className="border-t-2 border-ink pt-8 md:pt-10">
+          <div className="border-t border-ink/15 pt-10 md:pt-14">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
                 <p className="overline text-tomato">§ B.01, Index</p>
@@ -417,7 +417,7 @@ const BrandSystemPage = () => {
       <section id="typography" className="halftone-soft relative overflow-hidden bg-cream py-28 md:py-44">
         <div aria-hidden className="pointer-events-none absolute right-4 top-4 z-10 hidden md:block"><span className="ui text-[9px] font-medium uppercase tracking-[0.26em] text-ink/35">Type spec · Public</span></div>
           <div className="container">
-          <div className="border-t-2 border-ink pt-8 md:pt-10">
+          <div className="border-t border-ink/15 pt-10 md:pt-14">
             {/* Masthead */}
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
@@ -626,7 +626,7 @@ const BrandSystemPage = () => {
       <section id="color" className="paper-soft paper-drift relative overflow-hidden bg-[hsl(var(--ink)/0.035)] py-28 md:py-44">
         <div aria-hidden className="pointer-events-none absolute right-4 top-4 z-10 hidden md:block"><span className="ui text-[9px] font-medium uppercase tracking-[0.26em] text-ink/35">Color tokens · v1.0</span></div>
           <div className="container">
-          <div className="border-t-2 border-ink pt-8 md:pt-10">
+          <div className="border-t border-ink/15 pt-10 md:pt-14">
             {/* Masthead */}
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
@@ -986,7 +986,7 @@ const BrandSystemPage = () => {
       <section id="brand-md" className="paper-soft paper-drift relative overflow-hidden bg-cream py-28 md:py-44">
         <div aria-hidden className="pointer-events-none absolute right-4 top-4 z-10 hidden md:block"><span className="ui text-[9px] font-medium uppercase tracking-[0.26em] text-ink/35">brand.md · v1.0</span></div>
           <div className="container">
-          <div className="border-t-2 border-ink pt-8 md:pt-10">
+          <div className="border-t border-ink/15 pt-10 md:pt-14">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-8">
                 <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1"><p className="overline text-tomato">§ B.07, For builders</p><span className="handwritten rotate-[1.5deg] text-tomato/85 text-sm md:text-base leading-none">fork it, ship it</span></div>
@@ -1115,7 +1115,7 @@ dont:  [all caps, corporate jargon]`}
       <section id="applications" className="halftone-soft relative overflow-hidden bg-[hsl(var(--ink)/0.035)] py-28 md:py-44">
         <div aria-hidden className="pointer-events-none absolute right-5 top-4 z-10 hidden md:block"><span className="handwritten rotate-[2deg] text-ink/40 text-xs md:text-sm leading-none">in the wild · 2024–25</span></div>
           <div className="container">
-          <div className="border-t-2 border-ink pt-6 md:pt-8">
+          <div className="border-t border-ink/15 pt-10 md:pt-12">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
                 <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1"><p className="overline text-tomato">§ B.08, In the wild</p><span className="handwritten -rotate-[1.5deg] text-tomato/85 text-sm md:text-base leading-none">out there, on purpose</span></div>
@@ -1219,7 +1219,7 @@ dont:  [all caps, corporate jargon]`}
       <section id="motion" className="paper-soft paper-soft-dark paper-drift ink-spread relative overflow-hidden bg-ink py-24 text-cream md:py-36">
         <div aria-hidden className="pointer-events-none absolute right-4 top-4 z-10 hidden md:block"><span className="ui text-[9px] font-medium uppercase tracking-[0.26em] text-cream/45">Motion brief · v0.3</span></div>
           <div className="container">
-          <div className="border-t-2 border-cream pt-8 md:pt-10">
+          <div className="border-t border-cream/15 pt-10 md:pt-14">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
                 <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1"><p className="overline text-butter">§ B.08b, Motion</p><span className="handwritten rotate-[1.5deg] text-butter/85 text-sm md:text-base leading-none">easy on the eyes</span></div>
@@ -1277,7 +1277,7 @@ dont:  [all caps, corporate jargon]`}
       <section id="flyers" className="print-noise relative overflow-hidden bg-cream py-28 md:py-44">
         <div aria-hidden className="pointer-events-none absolute right-5 top-4 z-10 hidden md:block"><span className="handwritten rotate-[2deg] text-ink/40 text-xs md:text-sm leading-none">community remix</span></div>
           <div className="container">
-          <div className="border-t-2 border-ink pt-8 md:pt-10">
+          <div className="border-t border-ink/15 pt-10 md:pt-14">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
                 <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1"><p className="overline text-tomato">§ B.08c, Party flyers</p><span className="handwritten -rotate-[1.5deg] text-tomato/85 text-sm md:text-base leading-none">tape one up</span></div>
@@ -1365,7 +1365,7 @@ dont:  [all caps, corporate jargon]`}
       <section id="molto-benny" className="halftone-soft relative overflow-hidden bg-butter py-28 md:py-44">
         <div aria-hidden className="pointer-events-none absolute right-4 top-4 z-10 hidden md:block"><span className="ui text-[9px] font-medium uppercase tracking-[0.26em] text-ink/35">Mascot pack · Stickers</span></div>
           <div className="container">
-          <div className="border-t-2 border-ink pt-8 md:pt-10">
+          <div className="border-t border-ink/15 pt-10 md:pt-14">
             {/* Masthead */}
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-8">
@@ -1601,7 +1601,7 @@ dont:  [all caps, corporate jargon]`}
       <section id="voice" className="paper-soft paper-drift relative overflow-hidden bg-[hsl(var(--ink)/0.035)] py-28 md:py-44">
         <div aria-hidden className="pointer-events-none absolute right-5 top-4 z-10 hidden md:block"><span className="handwritten rotate-[2deg] text-ink/40 text-xs md:text-sm leading-none">approved</span></div>
           <div className="container">
-          <div className="border-t-2 border-ink pt-8 md:pt-10">
+          <div className="border-t border-ink/15 pt-10 md:pt-14">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
                 <p className="overline text-tomato">§ B.11, How we sound</p>
