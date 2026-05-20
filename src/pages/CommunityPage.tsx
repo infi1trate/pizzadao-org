@@ -799,17 +799,20 @@ const CommunityPage = () => {
       </div>
 
       {/* THE WORKSHOP, builder-focused outputs */}
-      <section className="relative bg-ink py-16 text-cream md:py-24">
+      <section className="relative bg-ink pb-16 pt-24 text-cream md:pb-24 md:pt-40">
 
         <div className="container">
           <div className="border-t-2 border-cream/25 pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
               <div className="col-span-12 md:col-span-8">
-                <p className="overline text-butter">§ C.05, In the workshop</p>
+                <p className="overline inline-flex items-center gap-2 text-butter">
+                  <span className="h-1.5 w-1.5 rounded-full bg-butter" />
+                  § C.05, Infrastructure for pizza culture
+                </p>
                 <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
                   Real projects.
                   <br />
-                  <span className="handwritten relative inline-block text-butter text-[1.05em] leading-[0.75] -ml-1 translate-y-[0.08em] -rotate-[3deg] align-baseline">made by members.</span>
+                  <span className="handwritten marker-bleed-butter relative inline-block text-butter text-[1.05em] leading-[0.75] -ml-1 translate-y-[0.08em] -rotate-[3deg] align-baseline">made by members.</span>
                 </h2>
               </div>
               <div className="col-span-12 md:col-span-4 md:pl-8">
