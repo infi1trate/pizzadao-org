@@ -164,6 +164,9 @@ const About = () => {
               <p className="overline text-tomato">§ A.03, May 22</p>
               <h2 className="font-display mt-5 text-display-2 font-extrabold leading-[0.92]">
                 Bitcoin Pizza Day
+                <span className="handwritten ml-3 align-middle text-base text-tomato md:text-lg">
+                  ↘ our high holiday
+                </span>
               </h2>
               <div className="font-serif mt-8 max-w-[58ch] space-y-5 text-lg leading-relaxed text-ink/85 md:text-xl">
                 <p>
@@ -186,17 +189,18 @@ const About = () => {
                 </p>
               </div>
             </div>
-            <figure className="col-span-12 md:col-span-6 md:pl-8">
+            <figure className="taped col-span-12 rotate-[1.4deg] transition-transform duration-700 hover:rotate-0 md:col-span-6 md:pl-8">
               <img
                 src={party}
                 alt="Crowded outdoor pizza street party at dusk"
                 loading="lazy"
                 width={1920}
                 height={1080}
-                className="grain block aspect-[4/5] w-full object-cover"
+                className="grain photo-hover block aspect-[4/5] w-full object-cover md:ml-8"
               />
-              <figcaption className="ui mt-3 text-[10px] uppercase tracking-[0.18em] text-ink/55">
-                Fig. A.2, Global Pizza Party, May 22
+              <figcaption className="ui mt-3 flex items-baseline justify-between gap-3 text-[10px] uppercase tracking-[0.18em] text-ink/55 md:ml-8">
+                <span>Fig. A.2, Global Pizza Party, May 22</span>
+                <span className="margin-note normal-case tracking-normal">↖ city 087</span>
               </figcaption>
             </figure>
           </div>
