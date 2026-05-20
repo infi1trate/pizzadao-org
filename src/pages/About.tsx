@@ -64,7 +64,14 @@ const About = () => {
       <PageHero
         section="§ A, About PizzaDAO"
         title="An institution built on a slice"
+        accentWord="slice"
+        note="started online, became real"
         lede="PizzaDAO is a global community that organizes around one simple idea, share pizza with strangers. It began as a small experiment on the internet and turned into something people now show up for in real life."
+        tapedImage={{
+          src: founding,
+          alt: "Friends gathered around laptops and pizza, late night",
+          caption: "Fig. A.0, day one",
+        }}
       />
 
       {/* Checker tape divider — pizzeria nod, used once at the top */}
