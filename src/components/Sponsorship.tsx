@@ -466,34 +466,78 @@ const Sponsorship = () => {
       </div>
 
 
-      {/* CTA band, warm butter */}
-      <div className="mt-8 bg-butter pb-14 md:mt-10 md:pb-20">
-        <div className="container pt-10 md:pt-12">
-          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
-            <div className="col-span-12 md:col-span-8">
+      {/* CTA band — warm, intentional, emotionally persuasive */}
+      <div className="relative mt-6 overflow-hidden bg-butter pb-10 md:mt-8 md:pb-14">
+        {/* Warm gradient wash — richer at center, softer at edges */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 40% 60%, hsl(44 95% 72% / 0.55) 0%, transparent 60%)",
+          }}
+        />
+        {/* Secondary warm accent — toward upper-left */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-20 -top-20 h-[320px] w-[320px] rounded-full opacity-[0.14] blur-[90px]"
+          style={{ background: "hsl(var(--tomato))" }}
+        />
+        {/* Faint pizza-box checkered reference — top-right edge only, very subtle */}
+        <div
+          aria-hidden
+          className="checker-tape pointer-events-none absolute right-0 top-0 h-[4px] w-20 opacity-20 md:w-32"
+        />
+        {/* Subtle grain */}
+        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.25]" />
+
+        <div className="container relative">
+          {/* Tighter, more editorial composition */}
+          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-5 md:gap-x-10">
+            {/* Left: headline + copy, tightly grouped */}
+            <div className="col-span-12 md:col-span-7 lg:col-span-8">
               <p className="overline text-tomato">Bespoke programs</p>
-              <h3 className="font-display mt-3 text-display-2 font-extrabold leading-[0.95]">
+              <h3 className="font-display mt-2 text-display-2 font-extrabold leading-[0.92] tracking-[-0.02em]">
                 Let's build something
                 <br />
-                <span className="text-tomato">people actually show up to.</span>
+                people actually{" "}
+                <span
+                  className="handwritten inline-block text-tomato"
+                  style={{
+                    transform: "rotate(-2.5deg)",
+                    fontSize: "0.72em",
+                    verticalAlign: "0.14em",
+                  }}
+                >
+                  show up
+                </span>
+                {" "}to.
               </h3>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-ink/75 md:text-lg">
-                Tell us what you're trying to do. We'll help shape it into something worth showing up for.
+              <p className="mt-3 max-w-lg text-[15px] leading-[1.55] text-ink/70 md:text-base">
+                Tell us what you're trying to do. We'll shape it into something worth showing up for.
+              </p>
+
+              {/* Handwritten annotation — restrained, single instance */}
+              <p className="handwritten mt-4 -rotate-[1.5deg] text-tomato/85 text-[14px]">
+                ↳ IRL matters
               </p>
             </div>
 
-            <div className="col-span-12 flex flex-col gap-3 md:col-span-4 md:items-end">
+            {/* Right: buttons, aligned with baseline of headline */}
+            <div className="col-span-12 flex flex-col gap-3 md:col-span-5 lg:col-span-4 md:items-end md:pb-1">
               <a
                 href="mailto:partnerships@pizzadao.org"
-                className="btn-pill-lg bg-tomato text-cream shadow-[0_14px_40px_-16px_hsl(var(--tomato)/0.7)] hover:bg-ink"
+                className="group relative inline-flex items-center justify-center gap-2.5 bg-tomato px-7 py-4 text-sm font-semibold tracking-[0.03em] text-cream shadow-[0_10px_30px_-12px_hsl(var(--tomato)/0.5),0_3px_8px_-4px_hsl(0_0%_0%/0.25)] transition-all duration-500 ease-out hover:-translate-y-[3px] hover:bg-tomato-deep hover:shadow-[0_20px_48px_-16px_hsl(var(--tomato)/0.65),0_6px_16px_-6px_hsl(0_0%_0%/0.3)] md:px-9 md:py-5"
               >
-                Start a partnership brief →
+                <span>Start a partnership brief</span>
+                <span aria-hidden className="transition-transform duration-500 ease-out group-hover:translate-x-1">→</span>
               </a>
               <a
                 href="#"
-                className="btn-pill-lg border border-ink/60 text-ink hover:bg-ink hover:text-cream"
+                className="group relative inline-flex items-center justify-center gap-2.5 border border-ink/50 bg-cream/40 px-7 py-4 text-sm font-semibold tracking-[0.03em] text-ink backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-[3px] hover:border-ink hover:bg-cream hover:shadow-[0_14px_36px_-14px_hsl(var(--ink)/0.2)] md:px-9 md:py-5"
               >
-                Download partner deck
+                <span>Download partner deck</span>
+                <span aria-hidden className="transition-transform duration-500 ease-out group-hover:translate-x-1">↓</span>
               </a>
             </div>
           </div>
