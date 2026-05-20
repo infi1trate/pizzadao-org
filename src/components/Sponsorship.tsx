@@ -33,27 +33,6 @@ const VALUE_PROPS = [
   },
 ];
 
-const ACTIVATIONS = [
-  {
-    tag: "Annual",
-    partner: "Bitcoin Pizza Day, 2024",
-    headline: "300 cities. One weekend. One ribbon.",
-    note: "Co-branded activation across the global chapter network, local execution, unified creative.",
-  },
-  {
-    tag: "Limited Run",
-    partner: "Independent Pizzeria Fund",
-    headline: "$250K routed to neighborhood operators.",
-    note: "Sponsor-funded grants distributed through verified PizzaDAO chapters in 14 countries.",
-  },
-  {
-    tag: "Cultural",
-    partner: "Art × Hospitality Residency",
-    headline: "12 artists. 6 cities. One menu.",
-    note: "A traveling residency that placed commissioned work inside partner pizzerias for a season.",
-  },
-];
-
 const PROOF: { k: string; v: string; sub?: string; num?: number; prefix?: string; suffix?: string }[] = [
   { k: "City network", v: "500+", sub: "independently organized", num: 500, suffix: "+" },
   { k: "Countries", v: "100+", sub: "active chapters", num: 100, suffix: "+" },
