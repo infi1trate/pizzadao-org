@@ -161,18 +161,21 @@ const Sponsorship = () => {
 
 
       {/* Value props, editorial 2-column grid */}
-      <div className="container mt-20 md:mt-28">
-        <div className="grid grid-cols-12 gap-x-6 gap-y-10">
+      <div className="container mt-14 md:mt-20">
+        <div className="grid grid-cols-12 gap-x-6 gap-y-7">
           <div className="col-span-12 md:col-span-4">
             <p className="overline text-tomato">What you receive</p>
-            <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.95] tracking-[0.005em] text-ink">
+            <h3 className="font-display mt-3 text-display-2 font-extrabold leading-[0.95] tracking-[0.005em] text-ink">
               Five things
               <br />
               <span className="text-ink-soft">we deliver.</span>
             </h3>
-            <p className="mt-6 text-base leading-relaxed text-ink/65">
+            <p className="mt-4 text-base leading-relaxed text-ink/65">
               Our partnership model is bespoke, not menu-driven. The list below
               is what every program is built on.
+            </p>
+            <p className="handwritten mt-5 -rotate-[1.5deg] text-tomato text-sm">
+              ↳ no two briefs alike
             </p>
           </div>
 
@@ -181,7 +184,7 @@ const Sponsorship = () => {
               {VALUE_PROPS.map((vp) => (
                 <li
                   key={vp.n}
-                  className="group grid grid-cols-12 gap-x-6 gap-y-3 border-b border-ink/15 py-12 md:py-16"
+                  className="group grid grid-cols-12 gap-x-6 gap-y-2 border-b border-ink/15 py-7 md:py-9"
                 >
                   <div className="col-span-2 md:col-span-1">
                     <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-tomato">
@@ -206,18 +209,23 @@ const Sponsorship = () => {
       </div>
 
       {/* What we build together */}
-      <div className="paper-soft paper-drift mt-28 bg-cream-warm py-24 md:mt-40 md:py-32">
+      <div className="paper-soft paper-drift mt-16 bg-cream-warm py-16 md:mt-24 md:py-20">
         <div className="container">
-          <div className="border-t border-ink/40 pt-10 md:pt-14">
-            <div className="grid grid-cols-12 items-end gap-x-8 gap-y-8 md:gap-x-12">
+          <div className="relative border-t border-ink/40 pt-8 md:pt-10">
+            {/* IRL stamp, asymmetric overhang */}
+            <span aria-hidden className="ui absolute -top-3 left-4 bg-cream-warm px-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-tomato">
+              IRL ·  built in cities
+            </span>
+            <div className="grid grid-cols-12 items-end gap-x-8 gap-y-6 md:gap-x-12">
               <div className="col-span-12 md:col-span-8">
                 <p className="overline text-tomato">§ 07, Possibilities</p>
-                <h3 className="font-display mt-6 text-display-2 font-extrabold leading-[0.88] tracking-[-0.02em] md:mt-7">
+                <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.88] tracking-[-0.02em] md:mt-5">
                   What we build
                   <br />
                   <span className="italic font-serif font-normal text-ink/55">together.</span>
                 </h3>
               </div>
+
               <div className="col-span-12 md:col-span-4 md:pl-10 md:pb-3">
                 <p className="font-serif text-[15.5px] leading-[1.65] text-ink/70 md:text-[15px]">
                   Five formats we know how to run, and a hundred more we'd love to invent with you.
