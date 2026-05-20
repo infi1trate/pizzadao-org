@@ -392,10 +392,14 @@ const About = () => {
       {/* Press */}
       <section className="bg-cream py-20 md:py-28">
         <div className="container">
+          <div className="checker-tape mb-10 h-[6px] w-24 opacity-80" aria-hidden />
           <div className="border-t-2 border-ink pt-8">
             <p className="overline text-tomato">Press</p>
             <h2 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92]">
               On the record.
+              <span className="handwritten ml-3 align-middle text-base text-tomato md:text-lg">
+                ↘ in their words
+              </span>
             </h2>
           </div>
           <ul className="mt-12 border-t border-ink/15">
