@@ -362,13 +362,13 @@ const About = () => {
 
       {/* Why pizza — poster thesis */}
       <section className="relative overflow-hidden bg-cream py-24 md:py-36">
-        {/* Subtle checkered edge at top */}
-        <div className="checker-tape absolute left-0 right-0 top-0 h-[6px]" />
+        {/* Single subtle checkered edge at top — sparingly */}
+        <div className="checker-tape absolute left-0 right-0 top-0 h-[6px] opacity-60" aria-hidden="true" />
 
         <div className="container relative">
           <div className="mx-auto max-w-5xl text-center">
             <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
-              § A.06, Thesis
+              § A.05, Thesis
             </p>
 
             <h2 className="font-display mt-8 text-[clamp(2.8rem,9vw,7rem)] font-extrabold leading-[0.86] tracking-[-0.025em]">
@@ -392,9 +392,6 @@ const About = () => {
             </span>
           </div>
         </div>
-
-        {/* Subtle checkered edge at bottom */}
-        <div className="checker-tape absolute bottom-0 left-0 right-0 h-[6px]" />
       </section>
 
       {/* What this is becoming */}
