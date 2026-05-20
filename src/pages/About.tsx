@@ -259,7 +259,8 @@ const About = () => {
       </section>
 
       {/* What we've done */}
-      <section className="bg-ink py-20 text-cream md:py-28">
+      <section className="paper-soft paper-soft-dark paper-drift relative bg-ink py-20 text-cream md:py-28">
+        <div className="checker-tape-sm absolute inset-x-0 top-0 h-[6px] opacity-70" aria-hidden />
         <div className="container">
           <div className="grid grid-cols-12 gap-x-6 gap-y-8">
             <div className="col-span-12 md:col-span-7">
