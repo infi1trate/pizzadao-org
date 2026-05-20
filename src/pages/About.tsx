@@ -136,8 +136,21 @@ const About = () => {
         </div>
       </section>
 
+      {/* Interlude — quiet field note, breathing room */}
+      <aside className="bg-cream py-10 md:py-14" aria-hidden>
+        <div className="container">
+          <div className="flex items-center gap-6">
+            <span className="h-px flex-1 bg-ink/15" />
+            <span className="handwritten -rotate-1 text-tomato text-base md:text-lg">
+              funded by internet strangers
+            </span>
+            <span className="checker-tape h-2 w-20 opacity-80" />
+          </div>
+        </div>
+      </aside>
+
       {/* Mission */}
-      <section className="bg-cream py-20 md:py-28">
+      <section className="bg-cream pb-20 pt-6 md:pb-28 md:pt-10">
         <div className="container">
           <div className="grid grid-cols-12 gap-x-6 gap-y-10">
             <div className="col-span-12 md:col-span-5">
