@@ -314,7 +314,7 @@ const Sponsorship = () => {
                   </span>
                 </div>
 
-                <h4 className="font-display mt-10 text-2xl font-extrabold leading-[1.05] tracking-[-0.015em] transition-colors duration-500 group-hover:text-tomato md:mt-12 md:text-[1.75rem]">
+                <h4 className="font-display mt-7 text-2xl font-extrabold leading-[1.05] tracking-[-0.015em] transition-colors duration-500 group-hover:text-tomato md:mt-8 md:text-[1.75rem]">
                   {b.k}
                 </h4>
 
