@@ -543,10 +543,10 @@ const CommunityPage = () => {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div className="col-span-4">
-                      <h4 className="font-display text-left text-lg font-extrabold leading-snug lg:text-xl">
+                      <h4 className={`font-display text-left font-extrabold leading-[1.1] ${c.active ? "text-[1.35rem] lg:text-[1.55rem]" : "text-lg lg:text-xl"}`}>
                         {c.title}
                       </h4>
-                      <span className={`ui mt-1.5 inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] ${c.active ? "bg-tomato text-cream" : "bg-ink/8 text-ink/65"}`}>
+                      <span className={`ui mt-1.5 inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] ${c.active ? "bg-tomato text-cream shadow-[0_4px_14px_-4px_hsl(var(--tomato)/0.6)]" : "bg-ink/[0.07] text-ink/65"}`}>
                         {c.active && (
                           <span className="relative flex h-1.5 w-1.5">
                             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cream opacity-70" />
