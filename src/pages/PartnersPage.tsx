@@ -30,6 +30,8 @@ const PartnersPage = () => {
         section="§ B, Partnership"
         title="Where brands meet"
         italic="real-world attention."
+        accentWord="real-world"
+        note="trusted globally · since 2020"
         lede="PizzaDAO builds global, community-driven activations that turn brands into experiences people actually show up for."
         meta={[
           { k: "Cities Activated", v: "500+" },
