@@ -298,52 +298,67 @@ const About = () => {
         </div>
       </section>
 
-      {/* What we've done — quiet outcomes ledger */}
+      {/* What we've done — compressed proof-of-work */}
       <section className="paper-soft paper-soft-dark relative overflow-hidden bg-ink py-20 text-cream md:py-28">
         <div className="container relative">
-          <div className="grid grid-cols-12 gap-x-6 gap-y-8">
-            <div className="col-span-12 md:col-span-7">
-              <p className="overline text-butter">§ A.05, Outcomes</p>
-              <h2 className="font-display mt-5 text-display-2 font-extrabold leading-[0.92]">
+          {/* Section header */}
+          <div className="flex items-center justify-between border-b border-cream/20 pb-6">
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/45">
+              § A.05, Proof of work
+            </span>
+            <span className="handwritten -rotate-2 text-butter text-sm">
+              still going
+            </span>
+          </div>
+
+          {/* Title + intro */}
+          <div className="mt-10 grid grid-cols-12 gap-x-6 gap-y-8 md:mt-14">
+            <div className="col-span-12 md:col-span-6">
+              <h2 className="font-display text-display-1 font-extrabold leading-[0.88] tracking-[-0.02em]">
                 What we've done
               </h2>
             </div>
-            <div className="col-span-12 md:col-span-5 md:pt-4">
-              <p className="font-serif text-lg leading-relaxed text-cream/80">
-                Over the last few years PizzaDAO has funded and supported
-                events across the world.
+            <div className="col-span-12 md:col-span-5 md:col-start-8">
+              <p className="font-serif text-lg leading-relaxed text-cream/80 md:text-xl">
+                PizzaDAO has funded and supported real-world gatherings across
+                the globe.
               </p>
             </div>
           </div>
 
-          <dl className="mt-14 grid grid-cols-1 gap-y-12 border-t border-cream/20 pt-12 sm:grid-cols-2 md:mt-20 md:grid-cols-4 md:pt-14">
-            {[
-              { k: "Cities activated",    v: "420+", t: "2021 → 2025" },
-              { k: "Funding distributed", v: "$1M+", t: "to local pizzerias" },
-              { k: "Participants",        v: "20K+", t: "May 22, everywhere" },
-              { k: "Return rate",         v: "92%",  t: "year over year" },
-            ].map((s) => (
-              <div key={s.k} className="relative pr-4">
-                <div className="font-display text-5xl font-extrabold leading-none md:text-[3.75rem]">
-                  {s.v}
+          {/* Metrics ledger — single horizontal rule through all four */}
+          <div className="relative mt-16 md:mt-20">
+            {/* Thin ledger line */}
+            <div className="absolute left-0 right-0 top-[3.75rem] hidden h-px bg-cream/15 md:block" />
+            <dl className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 md:grid-cols-4 md:gap-y-0">
+              {[
+                { k: "Cities", v: "420+", t: "activated globally" },
+                { k: "Funding", v: "$1M+", t: "pizza & event support" },
+                { k: "Attendees", v: "20K+", t: "across all events" },
+                { k: "Return rate", v: "92%", t: "organizers come back" },
+              ].map((s) => (
+                <div key={s.k} className="relative md:px-6 md:first:pl-0 md:last:pr-0">
+                  <div className="font-display text-5xl font-extrabold leading-none md:text-[3.5rem]">
+                    {s.v}
+                  </div>
+                  <div className="ui mt-5 text-[11px] font-semibold uppercase tracking-[0.18em] text-cream/55">
+                    {s.k}
+                  </div>
+                  <p className="ui mt-1 text-[10px] uppercase tracking-[0.18em] text-cream/35">
+                    {s.t}
+                  </p>
                 </div>
-                <div className="ui mt-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-cream/55">
-                  {s.k}
-                </div>
-                <p className="ui mt-2 text-[10px] uppercase tracking-[0.18em] text-cream/35">
-                  {s.t}
-                </p>
-              </div>
-            ))}
-          </dl>
+              ))}
+            </dl>
+          </div>
 
+          {/* Supporting copy */}
           <div className="mt-16 max-w-[58ch] border-t border-cream/20 pt-10 md:mt-20">
             <p className="font-serif text-lg leading-relaxed text-cream/85 md:text-xl">
-              The numbers matter, but only to show that this works at scale.
+              The numbers matter because they show the system works.
             </p>
             <p className="font-serif mt-4 text-lg leading-relaxed text-cream md:text-xl">
-              The real outcome is simpler, people meet, eat together, and
-              come back the next year.
+              The more important proof is that people keep coming back.
             </p>
           </div>
         </div>
