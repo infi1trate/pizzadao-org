@@ -434,53 +434,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* Globe / scale bridge */}
-          <div className="mt-16 border-t border-ink/20 pt-10 md:mt-20">
-            <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
-              <div className="col-span-12 md:col-span-5">
-                <p className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
-                  Global footprint
-                </p>
-                <p className="font-serif mt-3 text-base leading-relaxed text-ink/70">
-                  Six continents. Hundreds of cities. One shared night.
-                </p>
-              </div>
-              <div className="col-span-12 md:col-span-7 md:pl-8">
-                <div className="relative aspect-[16/7] w-full overflow-hidden rounded-sm border border-ink/15 bg-cream">
-                  <svg
-                    viewBox="0 0 800 350"
-                    className="absolute inset-0 h-full w-full"
-                    aria-hidden="true"
-                  >
-                    <defs>
-                      <pattern id="globe-dots" width="10" height="10" patternUnits="userSpaceOnUse">
-                        <circle cx="1.2" cy="1.2" r="1.2" className="fill-ink/20" />
-                      </pattern>
-                    </defs>
-                    <ellipse cx="400" cy="175" rx="360" ry="150" fill="url(#globe-dots)" />
-                    {[
-                      [165, 130], [205, 150], [240, 120], [280, 145],
-                      [310, 170], [340, 140], [380, 160], [420, 130],
-                      [455, 175], [490, 150], [525, 135], [560, 165],
-                      [595, 145], [630, 180], [220, 200], [300, 220],
-                      [400, 230], [500, 215], [580, 235], [350, 110],
-                    ].map(([cx, cy], i) => (
-                      <circle
-                        key={i}
-                        cx={cx}
-                        cy={cy}
-                        r={i % 4 === 0 ? 4 : 2.5}
-                        className="fill-tomato"
-                      />
-                    ))}
-                  </svg>
-                  <span className="handwritten absolute bottom-3 right-4 -rotate-2 text-sm text-tomato">
-                    one night, everywhere
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* (Global Footprint moved to its own section below) */}
 
           <div className="mt-16 border-t border-ink/20 pt-8">
             <p className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
