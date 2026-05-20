@@ -232,7 +232,7 @@ const ContactPage = () => {
                       label="Name"
                       required
                       value={name}
-                      onChange={setName}
+                      onChange={(v) => { markStarted("name"); setName(v); }}
                       error={errors.name}
                       autoComplete="name"
                     />
@@ -241,7 +241,7 @@ const ContactPage = () => {
                       label="Organization"
                       hint="optional"
                       value={organization}
-                      onChange={setOrganization}
+                      onChange={(v) => { markStarted("organization"); setOrganization(v); }}
                       autoComplete="organization"
                     />
                     <div className="md:col-span-2">
@@ -251,7 +251,7 @@ const ContactPage = () => {
                         type="email"
                         required
                         value={email}
-                        onChange={setEmail}
+                        onChange={(v) => { markStarted("email"); setEmail(v); }}
                         error={errors.email}
                         autoComplete="email"
                       />
@@ -272,13 +272,14 @@ const ContactPage = () => {
                       required
                       rows={6}
                       value={message}
-                      onChange={(e) => setMessage(e.target.value)}
+                      onChange={(e) => { markStarted("message"); setMessage(e.target.value); }}
                       aria-invalid={!!errors.message}
                       aria-describedby={errors.message ? "message-error" : undefined}
                       className={`mt-2 w-full resize-y rounded-lg border bg-cream px-4 py-3 font-serif text-base leading-relaxed text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-tomato/40 ${
                         errors.message ? "border-tomato" : "border-ink/15 focus:border-ink/40"
                       }`}
                       placeholder="Tell us what's on your mind."
+                      data-ph-mask
                     />
                     {errors.message && (
                       <p id="message-error" className="ui mt-2 text-xs text-tomato">
