@@ -233,6 +233,11 @@ const About = () => {
                 </div>
 
                 <figure className="relative rotate-[1.4deg] bg-cream-warm p-3 pb-5 shadow-[0_32px_70px_-30px_hsl(0_0%_0%/0.45),0_6px_18px_-8px_hsl(0_0%_0%/0.18)] transition-transform duration-700 hover:rotate-0 md:ml-10 md:-mr-6">
+                  {/* Photo index strip — archival sleeve */}
+                  <span className="ui absolute -top-3 left-3 inline-flex items-center gap-1.5 bg-ink px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.22em] text-cream">
+                    <span className="inline-block h-1 w-1 rounded-full bg-tomato" />
+                    Fig. A.2 / 087
+                  </span>
                   <div className="paper-soft">
                     <img
                       src={party}
@@ -282,7 +287,12 @@ const About = () => {
         <div className="container">
           <div className="grid grid-cols-12 gap-x-6 gap-y-10">
             <div className="col-span-12 md:col-span-7">
-              <p className="overline text-tomato">§ A.04, Structure</p>
+              <div className="flex items-baseline gap-3">
+                <p className="overline text-tomato">§ A.04, Structure</p>
+                <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/40">
+                  · field notes
+                </span>
+              </div>
               <h2 className="font-display mt-5 text-display-2 font-extrabold leading-[0.92]">
                 How it runs
               </h2>
@@ -562,14 +572,19 @@ const About = () => {
       <section className="bg-cream py-20 md:py-28">
         <div className="container">
           <div className="checker-tape mb-10 h-[6px] w-24 opacity-80" aria-hidden />
-          <div className="border-t-2 border-ink pt-8">
-            <p className="overline text-tomato">Press</p>
-            <h2 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92]">
-              On the record.
-              <span className="handwritten ml-3 align-middle text-base text-tomato md:text-lg">
-                ↘ in their words
-              </span>
-            </h2>
+          <div className="flex items-start justify-between gap-6 border-t-2 border-ink pt-8">
+            <div>
+              <p className="overline text-tomato">Press</p>
+              <h2 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92]">
+                On the record.
+                <span className="handwritten ml-3 align-middle text-base text-tomato md:text-lg">
+                  ↘ in their words
+                </span>
+              </h2>
+            </div>
+            <span className="stamp stamp-ink mt-2 hidden md:inline-flex">
+              GPP archive · 04
+            </span>
           </div>
           <ul className="mt-12 border-t border-ink/15">
             {PRESS.map((p, i) => (
