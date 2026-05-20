@@ -198,53 +198,124 @@ const Sponsorship = () => {
       </div>
 
       {/* What we build together */}
-      <div className="mt-24 bg-cream-warm py-20 md:mt-32 md:py-28">
+      <div className="paper-soft paper-drift mt-28 bg-cream-warm py-24 md:mt-40 md:py-32">
         <div className="container">
-          <div className="border-t-2 border-ink pt-8 md:pt-10">
-            <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
+          <div className="border-t border-ink/40 pt-10 md:pt-14">
+            <div className="grid grid-cols-12 items-end gap-x-8 gap-y-8 md:gap-x-12">
               <div className="col-span-12 md:col-span-8">
                 <p className="overline text-tomato">§ 07, Possibilities</p>
-                <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92] tracking-[0.005em]">
+                <h3 className="font-display mt-6 text-display-2 font-extrabold leading-[0.88] tracking-[-0.02em] md:mt-7">
                   What we build
                   <br />
-                  <span className="text-ink-soft">together.</span>
+                  <span className="italic font-serif font-normal text-ink/55">together.</span>
                 </h3>
               </div>
-              <div className="col-span-12 md:col-span-4 md:pl-8">
-                <p className="text-base leading-relaxed text-ink/70 md:text-lg">
+              <div className="col-span-12 md:col-span-4 md:pl-10 md:pb-3">
+                <p className="font-serif text-[15.5px] leading-[1.65] text-ink/70 md:text-[15px]">
                   Five formats we know how to run, and a hundred more we'd love to invent with you.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-5 md:mt-16 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-20 grid grid-cols-1 gap-6 md:mt-24 md:grid-cols-2 md:gap-7 lg:grid-cols-3">
             {[
-              { k: "Global Moments", v: "Large-scale activations across hundreds of cities, built to create shared global experiences." },
-              { k: "Local Takeovers", v: "City-by-city brand presence through trusted neighborhood pizzerias." },
-              { k: "Builder Collaborations", v: "Hackathons, product integrations, and experimental launches with founders and developers." },
-              { k: "Cultural Programming", v: "Artist residencies, food and culture crossovers, and community-led events." },
-              { k: "Experimental Activations", v: "NFC pizza boxes, AR experiences, AI-generated menus, and unexpected formats." },
+              {
+                k: "Global Moments",
+                v: "Large-scale activations across hundreds of cities, built to create shared global experiences.",
+                note: "500+ cities, one weekend",
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round">
+                    <circle cx="12" cy="12" r="9" />
+                    <ellipse cx="12" cy="12" rx="4" ry="9" />
+                    <path d="M3 12h18M5 7h14M5 17h14" />
+                  </svg>
+                ),
+              },
+              {
+                k: "Local Takeovers",
+                v: "City-by-city brand presence through trusted neighborhood pizzerias.",
+                note: "on the corner you already know",
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z" />
+                    <circle cx="12" cy="9" r="2.4" />
+                  </svg>
+                ),
+              },
+              {
+                k: "Builder Collaborations",
+                v: "Hackathons, product integrations, and experimental launches with founders and developers.",
+                note: "shipped in a weekend",
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2.5l1.8 5.6 5.7.3-4.6 3.6 1.7 5.7L12 14.6l-4.6 3.1 1.7-5.7-4.6-3.6 5.7-.3z" />
+                  </svg>
+                ),
+              },
+              {
+                k: "Cultural Programming",
+                v: "Artist residencies, food and culture crossovers, and community-led events.",
+                note: "vol. 04 · ongoing",
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3.5" y="3.5" width="17" height="17" rx="1.5" />
+                    <rect x="7" y="7" width="10" height="10" rx="0.5" />
+                    <path d="M9.5 12h5M12 9.5v5" />
+                  </svg>
+                ),
+              },
+              {
+                k: "Experimental Activations",
+                v: "NFC pizza boxes, AR experiences, AI-generated menus, and unexpected formats.",
+                note: "tap the box, see what happens",
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 20L12 4l9 16z" />
+                    <circle cx="9.5" cy="15.5" r="0.9" fill="currentColor" stroke="none" />
+                    <circle cx="14" cy="14" r="0.9" fill="currentColor" stroke="none" />
+                    <circle cx="12" cy="11" r="0.9" fill="currentColor" stroke="none" />
+                  </svg>
+                ),
+              },
             ].map((b, i) => (
               <article
                 key={b.k}
-                className="group rounded-2xl border border-ink/15 bg-cream p-7 transition-all duration-300 hover:-translate-y-1 hover:border-tomato hover:shadow-[0_18px_50px_-24px_hsl(var(--ink)/0.3)] md:p-8"
+                className="group paper-soft relative flex flex-col overflow-hidden bg-cream p-8 transition-all duration-500 ease-out hover:-translate-y-[3px] hover:bg-cream-warm hover:shadow-[0_30px_70px_-40px_hsl(var(--ink)/0.35),0_8px_24px_-16px_hsl(var(--ink)/0.18)] md:p-10"
               >
-                <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-tomato">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h4 className="font-display mt-4 text-2xl font-extrabold leading-tight transition-colors group-hover:text-tomato md:text-3xl">
+                {/* Hairline frame — single top rule, no boxed border */}
+                <span aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/15" />
+
+                <div className="flex items-start justify-between">
+                  <span className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/45">
+                    Fig. {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    aria-hidden
+                    className="h-7 w-7 text-ink/35 transition-colors duration-500 group-hover:text-tomato"
+                  >
+                    {b.icon}
+                  </span>
+                </div>
+
+                <h4 className="font-display mt-10 text-2xl font-extrabold leading-[1.05] tracking-[-0.015em] transition-colors duration-500 group-hover:text-tomato md:mt-12 md:text-[1.75rem]">
                   {b.k}
                 </h4>
-                <div className="mt-5 border-t border-ink/15" />
-                <p className="mt-4 text-base leading-relaxed text-ink/75">
+
+                <p className="font-serif mt-5 text-[14.5px] leading-[1.65] text-ink/70 md:text-[15px]">
                   {b.v}
+                </p>
+
+                {/* Handwritten annotation — reveals on hover */}
+                <p className="handwritten mt-8 -rotate-[1.5deg] text-tomato text-sm opacity-0 transition-opacity duration-500 group-hover:opacity-90">
+                  ↳ {b.note}
                 </p>
               </article>
             ))}
           </div>
         </div>
       </div>
+
 
       {/* What we've built */}
       <div className="container mt-24 md:mt-32">
