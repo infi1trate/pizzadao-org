@@ -164,6 +164,10 @@ const Transmission = () => {
                 href="https://discord.pizzadao.xyz/"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => {
+                  track(EVT.TRANSMISSION_CTA, { cta: "join_discord", position: "hero" });
+                  trackOutbound("Discord", "https://discord.pizzadao.xyz/", { surface: "hero_cta" });
+                }}
                 className="btn-pill-lg group bg-ink text-cream shadow-[0_8px_24px_-12px_hsl(0_0%_4%/0.4)] hover:bg-tomato"
               >
                 Join the Discord
