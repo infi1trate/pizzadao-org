@@ -139,11 +139,12 @@ const About = () => {
                 excuse for people to show up for each other, across borders,
                 across politics, across screens.
               </p>
-              <blockquote className="mt-8 border-l-2 border-tomato pl-5">
-                <p className="font-serif text-xl italic leading-snug text-ink md:text-2xl">
+              <blockquote className="paper-soft paper-drift mt-10 rounded-md border-l-[3px] border-tomato bg-cream-warm/60 py-7 pl-6 pr-5 md:pl-8">
+                <p className="font-serif text-xl italic leading-snug text-ink md:text-[1.65rem]">
                   “Pizza is the most democratic food on Earth. We just made it
                   organized.”
                 </p>
+                <span className="margin-note mt-4 block">— marker in the margin</span>
               </blockquote>
               <p className="font-serif mt-8 text-base leading-relaxed text-ink/70">
                 Every dollar we raise funds a local pizzeria, a community party,
