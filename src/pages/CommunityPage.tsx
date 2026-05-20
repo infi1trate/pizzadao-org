@@ -1237,21 +1237,21 @@ const CommunityPage = () => {
               <div className="col-span-12 md:col-span-8">
                 <p className="overline text-tomato">§ C.08, Initiation</p>
                 <h2 className="font-display mt-5 text-[clamp(2.75rem,7vw,5.75rem)] font-extrabold leading-[0.88] tracking-[-0.01em]">
-                  Every crew
+                  Every member
                   <br />
-                  needs a <span className="handwritten relative inline-block text-tomato text-[1.05em] leading-[0.75] -mr-1 translate-y-[0.08em] -rotate-[3deg] align-baseline">name.</span>
+                  earns a <span className="handwritten marker-bleed relative inline-block text-tomato text-[1.05em] leading-[0.75] -mr-1 translate-y-[0.08em] -rotate-[3deg] align-baseline">name.</span>
                 </h2>
               </div>
               <div className="col-span-12 md:col-span-4 md:pl-8">
                 <p className="text-base leading-relaxed text-ink/75 md:text-lg">
-                  Pick an alias. Walk in. Start. That's the whole ritual.
+                  An alias the Mafia will know you by. Claim it, walk in, start.
                 </p>
               </div>
             </div>
           </div>
 
           {/* Name ritual + 3 action paths, visually linked */}
-          <div className="mt-10 overflow-hidden rounded-3xl border-2 border-ink bg-cream md:mt-14">
+          <div className="paper-soft mt-10 overflow-hidden rounded-3xl bg-cream shadow-[0_30px_80px_-40px_hsl(var(--ink)/0.5)] ring-1 ring-ink/10 md:mt-14">
             <div className="grid grid-cols-1 md:grid-cols-12">
               {/* The name ritual */}
               <div className="relative flex flex-col justify-between bg-ink p-7 text-cream md:col-span-5 md:p-10">
