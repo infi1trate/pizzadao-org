@@ -687,29 +687,41 @@ const About = () => {
         </div>
       </section>
 
-      {/* Closing — restrained, mission-driven */}
-      <section className="paper-soft paper-soft-dark relative overflow-hidden bg-tomato py-24 text-cream md:py-32">
+      {/* Closing — final poster moment */}
+      <section className="paper-soft paper-soft-dark relative overflow-hidden bg-tomato py-28 text-cream md:py-36">
+        {/* Subtle checkered edge — top */}
+        <div className="checker-tape absolute left-0 right-0 top-0 h-[5px] opacity-25" aria-hidden="true" />
+        {/* Subtle checkered edge — bottom */}
+        <div className="checker-tape absolute bottom-0 left-0 right-0 h-[5px] opacity-25" aria-hidden="true" />
+
         <div className="container relative">
-          <div className="mx-auto max-w-4xl">
-            <p className="overline text-butter">§ A.09, Take part</p>
-            <h2 className="font-display mt-6 text-display-1 font-extrabold leading-[0.9] tracking-[-0.02em]">
-              If you have ever shown up to something like this, you
-              understand it immediately.
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/50">
+              § A.09, Take part
+            </p>
+
+            <h2 className="font-display mt-8 text-display-1 font-extrabold leading-[0.9] tracking-[-0.02em]">
+              If you have ever shown up to something like this, you understand it immediately.
             </h2>
-            <p className="font-serif mt-10 max-w-[58ch] text-xl leading-relaxed text-cream/90 md:text-2xl">
+
+            <p className="handwritten mt-8 rotate-1 text-xl text-butter/90">
+              see you on may 22
+            </p>
+
+            <p className="font-serif mx-auto mt-8 max-w-[48ch] text-xl leading-relaxed text-cream/80 md:text-2xl">
               If you haven't, May 22 is a good place to start.
             </p>
 
-            <div className="mt-12 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-12 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <a
                 href="/community"
-                className="ui inline-flex items-center justify-center bg-ink px-7 py-4 text-xs font-semibold tracking-[0.18em] text-cream transition-colors hover:bg-cream hover:text-ink"
+                className="ui inline-flex items-center justify-center bg-cream px-8 py-4 text-xs font-semibold tracking-[0.18em] text-ink transition-colors hover:bg-butter"
               >
                 Find a city →
               </a>
               <a
                 href="/join"
-                className="ui inline-flex items-center justify-center border border-cream/50 px-7 py-4 text-xs font-semibold tracking-[0.18em] text-cream transition-colors hover:border-butter hover:text-butter"
+                className="ui inline-flex items-center justify-center border border-cream/40 px-8 py-4 text-xs font-semibold tracking-[0.18em] text-cream transition-colors hover:border-butter hover:text-butter"
               >
                 Host an event
               </a>
