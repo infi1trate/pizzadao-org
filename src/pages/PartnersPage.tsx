@@ -66,9 +66,9 @@ const PartnersPage = () => {
           <div className="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-tomato/15 blur-3xl" />
         </Parallax>
         <div className="container relative">
-          <div className="flex flex-wrap items-baseline justify-between gap-4 border-t border-ink/30 pt-6">
-            <p className="overline text-ink/60">Selected collaborators</p>
-            <span className="handwritten -rotate-[2deg] text-ink/70 text-sm md:text-base">
+          <div className="flex flex-wrap items-baseline justify-between gap-4 border-t border-ink/25 pt-7">
+            <p className="overline text-ink/55">§ B.01 — Selected collaborators</p>
+            <span className="handwritten -rotate-[2deg] text-ink/65 text-sm md:text-base">
               IRL &gt; ads ↗
             </span>
           </div>
