@@ -233,6 +233,11 @@ const About = () => {
                 </div>
 
                 <figure className="relative rotate-[1.4deg] bg-cream-warm p-3 pb-5 shadow-[0_32px_70px_-30px_hsl(0_0%_0%/0.45),0_6px_18px_-8px_hsl(0_0%_0%/0.18)] transition-transform duration-700 hover:rotate-0 md:ml-10 md:-mr-6">
+                  {/* Photo index strip — archival sleeve */}
+                  <span className="ui absolute -top-3 left-3 inline-flex items-center gap-1.5 bg-ink px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.22em] text-cream">
+                    <span className="inline-block h-1 w-1 rounded-full bg-tomato" />
+                    Fig. A.2 / 087
+                  </span>
                   <div className="paper-soft">
                     <img
                       src={party}
