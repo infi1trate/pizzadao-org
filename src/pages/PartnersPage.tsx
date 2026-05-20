@@ -135,7 +135,7 @@ const PartnersPage = () => {
             >
               {submitted ? (
                 <div className="col-span-2">
-                  <div className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-butter">
+                  <div className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-butter">
                     ● Received
                   </div>
                   <p className="font-display mt-3 text-2xl font-extrabold leading-tight md:text-3xl">
@@ -145,7 +145,7 @@ const PartnersPage = () => {
               ) : (
                 <>
                   <div className="col-span-2 md:col-span-1">
-                    <label className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/55">
+                    <label className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/50">
                       Brand
                     </label>
                     <input
@@ -156,7 +156,7 @@ const PartnersPage = () => {
                     />
                   </div>
                   <div className="col-span-2 md:col-span-1">
-                    <label className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/55">
+                    <label className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/50">
                       Your name
                     </label>
                     <input
@@ -167,7 +167,7 @@ const PartnersPage = () => {
                     />
                   </div>
                   <div className="col-span-2">
-                    <label className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/55">
+                    <label className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/50">
                       Work email
                     </label>
                     <input
@@ -178,7 +178,7 @@ const PartnersPage = () => {
                     />
                   </div>
                   <div className="col-span-2">
-                    <label className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/55">
+                    <label className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/50">
                       Tell us the brief (1–3 sentences)
                     </label>
                     <textarea
