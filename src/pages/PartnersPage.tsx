@@ -46,8 +46,21 @@ const PartnersPage = () => {
 
       {/* Case studies consolidated into Sponsorship "What we've built" */}
 
+      {/* Imperfect divider between Sponsorship and logo wall */}
+      <div className="bg-cream" aria-hidden>
+        <div className="container flex items-center gap-4 py-4">
+          <span className="h-px flex-1 bg-ink/15" />
+          <span className="checker-tape h-[6px] w-20 opacity-75" />
+          <span className="h-px flex-1 bg-ink/15" />
+        </div>
+      </div>
+
       {/* Logo wall — butter brand band */}
-      <section className="relative overflow-hidden bg-butter py-20 md:py-24">
+      <section className="paper-soft paper-drift relative overflow-hidden bg-butter py-20 md:py-24">
+        {/* Corner checker tape accents */}
+        <div className="checker-tape absolute left-0 top-0 h-[6px] w-28 opacity-80 md:w-40" aria-hidden />
+        <div className="checker-tape absolute bottom-0 right-0 h-[6px] w-28 opacity-80 md:w-40" aria-hidden />
+
         <Parallax intensity={60} className="pointer-events-none absolute inset-0">
           <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-cream/40 blur-3xl" />
           <div className="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-tomato/15 blur-3xl" />
@@ -76,8 +89,10 @@ const PartnersPage = () => {
       </section>
 
       {/* Inquiry form */}
-      <section className="bg-ink py-20 text-cream md:py-28">
-        <div className="container">
+      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-20 text-cream md:py-28">
+        <div className="checker-tape-sm absolute inset-x-0 top-0 h-[6px] opacity-65" aria-hidden />
+        <div className="checker-tape-sm absolute inset-x-0 bottom-0 h-[6px] opacity-65" aria-hidden />
+        <div className="container relative">
           <div className="grid grid-cols-12 gap-x-6 gap-y-10">
             <div className="col-span-12 md:col-span-5">
               <div className="flex items-baseline gap-3">
