@@ -288,6 +288,10 @@ const Transmission = () => {
               href="https://discord.pizzadao.xyz/"
               target="_blank"
               rel="noreferrer"
+              onClick={() => {
+                track(EVT.TRANSMISSION_CTA, { cta: "step_inside", position: "closing" });
+                trackOutbound("Discord", "https://discord.pizzadao.xyz/", { surface: "closing_cta" });
+              }}
               className="btn-pill-lg group bg-ink text-cream hover:bg-tomato"
             >
               Step inside
@@ -308,6 +312,7 @@ const Transmission = () => {
               href="https://discord.pizzadao.xyz/"
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackOutbound("Discord", "https://discord.pizzadao.xyz/", { surface: "footer" })}
               className="hover:text-tomato"
             >
               Discord
@@ -316,6 +321,7 @@ const Transmission = () => {
               href="https://x.com/pizza_dao"
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackOutbound("X", "https://x.com/pizza_dao", { surface: "footer" })}
               className="hover:text-tomato"
             >
               X
