@@ -7,9 +7,9 @@ import timeline2010 from "@/assets/timeline-2010.jpg";
 
 
 const ROLES = [
-  { name: "Chapter leads", note: "Organize their own city, venue, pizza, people, vibe." },
-  { name: "Contributors", note: "Step in wherever they see a gap, design, ops, code, comms." },
-  { name: "Participants", note: "Show up, share a slice, bring a friend, take part." },
+  { name: "Chapter leads", note: "Organize local events and shape the city experience." },
+  { name: "Contributors", note: "Help with design, logistics, partnerships, content, and operations." },
+  { name: "Participants", note: "Show up, bring friends, share pizza, and keep the ritual alive." },
 ];
 
 const PRESS: Array<{ outlet: string; line: string; href: string; kind?: "video" }> = [
@@ -241,43 +241,52 @@ const About = () => {
       {/* How it runs */}
       <section className="bg-cream py-20 md:py-28">
         <div className="container">
-          <div className="grid grid-cols-12 gap-x-6 gap-y-10">
-            <div className="col-span-12 md:col-span-7">
-              <p className="overline text-tomato">§ A.04, Structure</p>
-              <h2 className="font-display mt-5 text-display-2 font-extrabold leading-[0.92]">
+          {/* Section header */}
+          <div className="flex items-center justify-between border-t border-ink/40 pt-8">
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+              § A.04, Structure
+            </span>
+            <span className="handwritten -rotate-2 text-tomato text-sm">
+              light by design
+            </span>
+          </div>
+
+          {/* Title + body */}
+          <div className="mt-10 grid grid-cols-12 gap-x-6 gap-y-8 md:mt-14">
+            <div className="col-span-12 md:col-span-5">
+              <h2 className="font-display text-display-1 font-extrabold leading-[0.88] tracking-[-0.02em]">
                 How it runs
               </h2>
             </div>
-            <div className="col-span-12 md:col-span-7">
-              <div className="font-serif max-w-[58ch] space-y-5 text-lg leading-relaxed text-ink/85 md:text-xl">
+            <div className="col-span-12 md:col-span-6 md:col-start-7">
+              <div className="font-serif space-y-5 text-lg leading-relaxed text-ink/85 md:text-xl">
                 <p>
-                  There is no central office. A small group helps coordinate
-                  funding and timing, everything else is handled by people
-                  on the ground.
+                  PizzaDAO stays light on purpose.
                 </p>
                 <p>
-                  Chapter leads organize their cities. Contributors help
-                  wherever they see a gap. Most people just show up and take
-                  part.
+                  A small group helps coordinate timing, funding, and shared
+                  standards. Everything else happens through local organizers,
+                  contributors, and people who decide to show up.
                 </p>
                 <p className="text-ink">
-                  It stays flexible on purpose, the structure is light so it
-                  can adapt to different places and cultures.
+                  That structure lets each city feel different while still
+                  being part of the same global ritual.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="mt-14 grid grid-cols-1 border-t border-ink/20 md:grid-cols-3 md:border-t-0">
+          {/* 3-column model — clean ledger with tactile borders */}
+          <div className="mt-16 grid grid-cols-1 md:mt-20 md:grid-cols-3">
             {ROLES.map((r, i) => (
               <article
                 key={r.name}
-                className="border-b border-ink/20 py-6 md:border-b-0 md:border-t md:border-ink/20 md:py-8 md:pr-8 md:[&:not(:first-child)]:pl-8 md:[&:not(:last-child)]:border-r md:[&:not(:last-child)]:border-ink/20"
+                className="border-t border-ink/20 py-8 md:py-10 md:pr-10 md:[&:not(:first-child)]:pl-10 md:[&:not(:first-child)]:border-l md:[&:not(:first-child)]:border-ink/20"
               >
-                <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/45">
+                <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="font-display mt-3 text-2xl font-extrabold leading-tight md:text-3xl">
+                <h3 className="font-display mt-4 text-2xl font-extrabold leading-tight md:text-[1.75rem]">
                   {r.name}
                 </h3>
                 <p className="font-serif mt-3 text-base leading-relaxed text-ink/75">
