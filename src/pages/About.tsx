@@ -258,6 +258,25 @@ const About = () => {
         </div>
       </section>
 
+      {/* Interlude — full-bleed stamped band, hits hard */}
+      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-12 text-cream md:py-16">
+        <div className="checker-tape-sm absolute inset-x-0 top-0 h-[6px] opacity-60" aria-hidden />
+        <div className="checker-tape-sm absolute inset-x-0 bottom-0 h-[6px] opacity-60" aria-hidden />
+        <div className="container">
+          <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+            <p className="font-display text-[clamp(2.25rem,7vw,5rem)] font-extrabold leading-[0.9] tracking-[-0.02em]">
+              May 22, <span className="text-butter">everywhere</span>.
+            </p>
+            <div className="flex items-center gap-5">
+              <span className="handwritten marker-bleed-butter -rotate-2 text-butter text-base md:text-lg">
+                ↘ same day, 420+ cities
+              </span>
+              <span className="stamp">Annual ritual</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* How it runs */}
       <section className="bg-cream py-20 md:py-28">
         <div className="container">
