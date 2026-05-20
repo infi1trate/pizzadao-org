@@ -61,6 +61,14 @@ const MafiaNamePage = () => {
     setLoadingNames(true);
     setNames([]);
     setSelectedIdx(null);
+    generateCountRef.current += 1;
+    if (generateCountRef.current > 1) {
+      track(EVT.MAFIA_NAME_REGENERATED, {
+        attempt: generateCountRef.current,
+        movie: chosenFilm.title,
+        topping: chosenTopping,
+      });
+    }
     try {
       const { data, error } = await supabase.functions.invoke("generate-mafia-names", {
         body: {
@@ -77,8 +85,19 @@ const MafiaNamePage = () => {
       });
       if (error) throw error;
       if ((data as any)?.error) throw new Error((data as any).error);
-      setNames((data as any).names ?? []);
+      const generated = (data as any).names ?? [];
+      setNames(generated);
+      track(EVT.MAFIA_NAMES_GENERATED, {
+        count: generated.length,
+        movie: chosenFilm.title,
+        topping: chosenTopping,
+      });
     } catch (e: any) {
+      track(EVT.MAFIA_GENERATE_FAILED, {
+        reason: e?.message ?? "unknown",
+        movie: chosenFilm.title,
+        topping: chosenTopping,
+      });
       toast({
         title: "The oven hiccuped",
         description: e?.message ?? "Could not generate names. Try again.",
@@ -92,11 +111,17 @@ const MafiaNamePage = () => {
   const handleSelectFilm = (f: MafiaFilm) => {
     setFilm(f);
     setStep("topping");
+    track(EVT.MAFIA_MOVIE_PICKED, {
+      movie_id: f.id,
+      movie_title: f.title,
+      custom: f.id.startsWith("custom:"),
+    });
   };
 
   const handleSelectTopping = async (t: string) => {
     setTopping(t);
     setStep("names");
+    track(EVT.MAFIA_TOPPING_PICKED, { topping: t });
     if (film) await generate(film, t);
   };
 
@@ -115,6 +140,13 @@ const MafiaNamePage = () => {
         selected_explanation: names[selectedIdx]?.explanation ?? null,
       });
       if (error) throw error;
+      track(EVT.MAFIA_NAME_CLAIMED, {
+        name: chosen,
+        movie: film.title,
+        topping,
+        edited: editing,
+        generate_attempts: generateCountRef.current,
+      });
       setClaimed(true);
       setStep("claim");
     } catch (e: any) {
@@ -127,6 +159,7 @@ const MafiaNamePage = () => {
       setClaiming(false);
     }
   };
+
 
   const finalName = selectedIdx !== null ? (editing ? editedName : names[selectedIdx]?.name) : "";
 
