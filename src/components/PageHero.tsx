@@ -98,8 +98,8 @@ const PageHero = ({
                 )}
               </h1>
             </div>
-            <div className="col-span-12 md:col-span-4 md:pl-8">
-              <p className="text-lg leading-relaxed text-ink/80 md:text-xl">
+            <div className="col-span-12 md:col-span-4 md:pl-10 md:pb-3">
+              <p className="font-serif text-[15.5px] leading-[1.55] text-ink/75 md:text-base md:leading-[1.6]">
                 {lede}
               </p>
 
@@ -124,13 +124,13 @@ const PageHero = ({
           </div>
 
           {meta && (
-            <dl className="mt-16 grid grid-cols-2 gap-6 border-y border-ink/20 py-6 md:mt-24 md:grid-cols-4">
+            <dl className="mt-20 grid grid-cols-2 gap-x-8 gap-y-10 border-y border-ink/15 py-8 md:mt-28 md:grid-cols-4 md:gap-x-12">
               {meta.map((m) => (
-                <div key={m.k}>
-                  <dt className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
+                <div key={m.k} className="flex flex-col gap-3">
+                  <dt className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/45">
                     {m.k}
                   </dt>
-                  <dd className="font-display mt-2 text-3xl font-extrabold leading-none md:text-4xl">
+                  <dd className="font-display text-[2.25rem] font-extrabold leading-[0.95] tracking-[-0.02em] md:text-[2.75rem]">
                     {m.v}
                   </dd>
                 </div>
