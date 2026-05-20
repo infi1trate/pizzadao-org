@@ -1258,12 +1258,15 @@ const CommunityPage = () => {
           </div>
 
           {/* Name ritual + 3 action paths, visually linked */}
-          <div className="paper-soft mt-10 overflow-hidden rounded-3xl bg-cream shadow-[0_30px_80px_-40px_hsl(var(--ink)/0.5)] ring-1 ring-ink/10 md:mt-14">
+          <div className="paper-soft mt-10 overflow-hidden rounded-3xl bg-cream shadow-[0_30px_80px_-40px_hsl(var(--ink)/0.5)] md:mt-14">
             <div className="grid grid-cols-1 md:grid-cols-12">
-              {/* The name ritual */}
-              <div className="relative flex flex-col justify-between bg-ink p-7 text-cream md:col-span-5 md:p-10">
+              {/* The name ritual — receipt / stamp energy, not form energy */}
+              <div className="paper-soft paper-soft-dark relative flex flex-col justify-between bg-ink p-7 text-cream md:col-span-5 md:p-10">
                 <div>
-                  <p className="overline text-butter">The ritual</p>
+                  <p className="overline inline-flex items-center gap-2 text-butter">
+                    <span className="h-1.5 w-1.5 rounded-full bg-butter" />
+                    The ritual
+                  </p>
                   <p className="font-display mt-5 text-[clamp(2rem,3.4vw,2.75rem)] font-extrabold leading-[0.95]">
                     Earn your <span className="handwritten marker-bleed-butter relative inline-block text-butter text-[1.1em] leading-[0.75] translate-y-[0.08em] -rotate-[4deg] align-baseline">slice.</span>
                   </p>
@@ -1271,22 +1274,35 @@ const CommunityPage = () => {
                     Don Pepperoni. Sister Marinara. Capo Crust. Generate the
                     alias the Mafia will know you by.
                   </p>
+
+                  {/* Sample names — collectible/stamped feel */}
+                  <ul className="mt-7 flex flex-wrap gap-2">
+                    {["Don Pepperoni", "Sister Marinara", "Capo Crust", "Vinnie Calzone"].map((n, i) => (
+                      <li
+                        key={n}
+                        className="handwritten inline-flex items-center rounded-full border border-butter/35 bg-butter/10 px-3 py-1.5 text-[14px] text-butter/95 md:text-[15px]"
+                        style={{ transform: `rotate(${[-1.4, 0.8, -0.6, 1.2][i]}deg)` }}
+                      >
+                        {n}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
                 <a
                   href="/join"
-                  className="ui mt-8 inline-flex items-center justify-between gap-3 rounded-full bg-butter px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.22em] text-ink transition-colors hover:bg-cream"
+                  className="ui mt-8 group/cta inline-flex items-center justify-between gap-3 rounded-full bg-butter px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.22em] text-ink transition-all hover:bg-cream hover:shadow-[0_18px_40px_-12px_hsl(var(--butter)/0.6)]"
                 >
-                  Generate a name
-                  <ArrowUpRight className="h-4 w-4" />
+                  Claim your name
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
                 </a>
               </div>
 
-              {/* 3 action paths */}
+              {/* 3 action paths — softer dividers, ritual flow, not table chrome */}
               <div className="md:col-span-7">
                 <div className="flex h-full flex-col">
-                  <div className="flex items-baseline justify-between border-b border-ink/15 px-6 py-4 md:px-8">
+                  <div className="flex items-baseline justify-between px-6 pb-3 pt-6 md:px-10 md:pt-8">
                     <p className="overline text-tomato">Three ways in</p>
-                    <span className="ui text-[10px] uppercase tracking-[0.22em] text-ink/45">
+                    <span className="ui text-[10px] uppercase tracking-[0.22em] text-ink/40">
                       Pick one · do it today
                     </span>
                   </div>
@@ -1316,16 +1332,16 @@ const CommunityPage = () => {
                       href: "/join",
                       primary: false,
                     },
-                  ].map((s) => (
+                  ].map((s, idx, arr) => (
                     <a
                       key={s.n}
                       href={s.href}
-                      className={`group flex flex-1 items-center justify-between gap-5 border-b border-ink/15 px-6 py-6 transition-colors last:border-b-0 md:px-8 ${
-                        s.primary ? "bg-butter/40 hover:bg-butter/70" : "hover:bg-butter/30"
-                      }`}
+                      className={`group flex flex-1 items-center justify-between gap-5 px-6 py-5 transition-colors md:px-10 md:py-6 ${
+                        idx < arr.length - 1 ? "border-b border-dashed border-ink/15" : ""
+                      } ${s.primary ? "bg-butter/35 hover:bg-butter/60" : "hover:bg-butter/20"}`}
                     >
                       <div className="flex items-start gap-5">
-                        <span className="ui mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45 tabular-nums">
+                        <span className="ui mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/40 tabular-nums">
                           {s.n}
                         </span>
                         <div>
@@ -1343,7 +1359,7 @@ const CommunityPage = () => {
                         </div>
                       </div>
                       <div className="flex shrink-0 items-center gap-2">
-                        <span className="ui hidden text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/70 group-hover:text-tomato md:inline">
+                        <span className="ui hidden text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/65 group-hover:text-tomato md:inline">
                           {s.cta}
                         </span>
                         <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
