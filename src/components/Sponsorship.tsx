@@ -297,7 +297,7 @@ const Sponsorship = () => {
             ].map((b, i) => (
               <article
                 key={b.k}
-                className="group paper-soft relative flex flex-col overflow-hidden bg-cream p-8 transition-all duration-500 ease-out hover:-translate-y-[3px] hover:bg-cream-warm hover:shadow-[0_30px_70px_-40px_hsl(var(--ink)/0.35),0_8px_24px_-16px_hsl(var(--ink)/0.18)] md:p-10"
+                className="group paper-soft relative flex flex-col overflow-hidden bg-cream p-6 transition-all duration-500 ease-out hover:-translate-y-[3px] hover:bg-cream-warm hover:shadow-[0_30px_70px_-40px_hsl(var(--ink)/0.35),0_8px_24px_-16px_hsl(var(--ink)/0.18)] md:p-8"
               >
                 {/* Hairline frame — single top rule, no boxed border */}
                 <span aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/15" />
