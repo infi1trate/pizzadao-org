@@ -54,6 +54,7 @@ const Transmission = () => {
   const [reelIdx, setReelIdx] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
   const reel = REELS[reelIdx];
+  const trackOutbound = useTrackOutbound("transmission");
 
   useEffect(() => {
     const v = videoRef.current;
@@ -79,7 +80,9 @@ const Transmission = () => {
   }, []);
 
   const rollName = () => {
-    setRevealed(MAFIA_NAMES[Math.floor(Math.random() * MAFIA_NAMES.length)]);
+    const name = MAFIA_NAMES[Math.floor(Math.random() * MAFIA_NAMES.length)];
+    setRevealed(name);
+    track(EVT.TRANSMISSION_ROLL_NAME, { name });
   };
 
   const year = useMemo(() => new Date().getFullYear(), []);
