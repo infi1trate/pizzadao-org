@@ -89,8 +89,10 @@ const PartnersPage = () => {
       </section>
 
       {/* Inquiry form */}
-      <section className="bg-ink py-20 text-cream md:py-28">
-        <div className="container">
+      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-20 text-cream md:py-28">
+        <div className="checker-tape-sm absolute inset-x-0 top-0 h-[6px] opacity-65" aria-hidden />
+        <div className="checker-tape-sm absolute inset-x-0 bottom-0 h-[6px] opacity-65" aria-hidden />
+        <div className="container relative">
           <div className="grid grid-cols-12 gap-x-6 gap-y-10">
             <div className="col-span-12 md:col-span-5">
               <div className="flex items-baseline gap-3">
