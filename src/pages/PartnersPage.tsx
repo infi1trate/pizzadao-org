@@ -46,34 +46,49 @@ const PartnersPage = () => {
 
       {/* Case studies consolidated into Sponsorship "What we've built" */}
 
-      {/* Logo wall — butter brand band */}
-      <section className="paper-soft paper-drift relative overflow-hidden bg-butter py-28 md:py-36">
-        <Parallax intensity={40} className="pointer-events-none absolute inset-0">
-          <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-cream/40 blur-3xl" />
-          <div className="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-tomato/10 blur-3xl" />
-        </Parallax>
+      {/* Logo wall — quiet, curated cream band */}
+      <section className="paper-soft paper-drift relative overflow-hidden bg-cream-warm py-32 md:py-44">
+        {/* Faint horizontal texture band — barely-there warmth */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-1/2 h-[55%] -translate-y-1/2"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, hsl(var(--butter) / 0.18), transparent 70%)",
+          }}
+        />
         <div className="container relative">
-          <div className="flex flex-wrap items-baseline justify-between gap-4">
-            <p className="overline text-ink/55">§ B.01 — Selected collaborators</p>
-            <p className="ui hidden text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/40 md:block">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
+            <div className="flex items-baseline gap-4">
+              <p className="overline text-ink/50">§ B.01 — Selected collaborators</p>
+              <span className="handwritten -rotate-[1.5deg] text-ink/55 text-sm md:text-base">
+                friends of the kitchen
+              </span>
+            </div>
+            <p className="ui hidden text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/35 md:block">
               Programme partners, 2020–2025
             </p>
           </div>
-          <div className="mt-16 grid grid-cols-2 gap-x-14 gap-y-16 border-t border-ink/15 pt-14 sm:grid-cols-3 lg:grid-cols-6 md:mt-20 md:gap-x-16">
-            {PARTNERS.map((p, i) => (
+          <div className="mt-20 grid grid-cols-2 items-center gap-x-20 gap-y-20 sm:grid-cols-3 md:mt-28 md:grid-cols-5 md:gap-x-24 md:gap-y-24">
+            {PARTNERS.slice(0, 5).map((p, i) => (
               <div
                 key={p.name}
-                className="flex items-center justify-center opacity-55 transition-[opacity,transform] duration-700 ease-out hover:-translate-y-[2px] hover:opacity-100 animate-fade-in"
-                style={{ animationDelay: `${i * 80}ms`, animationFillMode: "both" }}
+                className="group flex flex-col items-center justify-center text-center animate-fade-in"
+                style={{ animationDelay: `${i * 90}ms`, animationFillMode: "both" }}
               >
-                <div className="font-display text-xl font-extrabold tracking-tight text-ink md:text-2xl">
+                <div className="font-display text-lg font-semibold tracking-[0.01em] text-ink/45 transition-colors duration-700 ease-out group-hover:text-ink md:text-xl">
                   {p.name}
+                </div>
+                <div className="ui mt-3 text-[9px] font-medium uppercase tracking-[0.26em] text-ink/30 transition-colors duration-700 group-hover:text-ink/55">
+                  {p.role}
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+
 
 
       {/* Inquiry form */}
