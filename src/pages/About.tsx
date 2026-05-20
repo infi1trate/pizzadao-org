@@ -162,14 +162,12 @@ const About = () => {
 
 
       {/* Bitcoin Pizza Day — bridge between internet history and ritual */}
-      {/* Checkered divider */}
-      <div className="checker-tape h-[5px] w-full" />
       <section className="relative bg-cream py-20 md:py-28">
         <div className="container">
           {/* Section header + stamp */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-6">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-t border-ink/40 pt-8 pb-6">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
-              § A.03, Ritual
+              § A.02, Ritual
             </span>
             <span className="stamp text-tomato">May 22</span>
           </div>
@@ -191,7 +189,7 @@ const About = () => {
                 internet history, made physical
               </span>
               <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
-                Fig. A.03 — 2010
+                Fig. A.02 — 2010
               </span>
             </figcaption>
           </figure>
@@ -235,8 +233,6 @@ const About = () => {
           </div>
         </div>
       </section>
-      {/* Checkered divider */}
-      <div className="checker-tape h-[5px] w-full" />
 
       {/* How it runs */}
       <section className="bg-cream py-20 md:py-28">
@@ -244,7 +240,7 @@ const About = () => {
           {/* Section header */}
           <div className="flex items-center justify-between border-t border-ink/40 pt-8">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
-              § A.04, Structure
+              § A.03, Structure
             </span>
             <span className="handwritten -rotate-2 text-tomato text-sm">
               light by design
@@ -304,7 +300,7 @@ const About = () => {
           {/* Section header */}
           <div className="flex items-center justify-between border-b border-cream/20 pb-6">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/45">
-              § A.05, Proof of work
+              § A.04, Proof of work
             </span>
             <span className="handwritten -rotate-2 text-butter text-sm">
               still going
@@ -366,13 +362,13 @@ const About = () => {
 
       {/* Why pizza — poster thesis */}
       <section className="relative overflow-hidden bg-cream py-24 md:py-36">
-        {/* Subtle checkered edge at top */}
-        <div className="checker-tape absolute left-0 right-0 top-0 h-[6px]" />
+        {/* Single subtle checkered edge at top — sparingly */}
+        <div className="checker-tape absolute left-0 right-0 top-0 h-[6px] opacity-60" aria-hidden="true" />
 
         <div className="container relative">
           <div className="mx-auto max-w-5xl text-center">
             <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
-              § A.06, Thesis
+              § A.05, Thesis
             </p>
 
             <h2 className="font-display mt-8 text-[clamp(2.8rem,9vw,7rem)] font-extrabold leading-[0.86] tracking-[-0.025em]">
@@ -396,9 +392,6 @@ const About = () => {
             </span>
           </div>
         </div>
-
-        {/* Subtle checkered edge at bottom */}
-        <div className="checker-tape absolute bottom-0 left-0 right-0 h-[6px]" />
       </section>
 
       {/* What this is becoming */}
@@ -407,7 +400,7 @@ const About = () => {
           <div className="grid grid-cols-12 gap-x-6 gap-y-10">
             <div className="col-span-12 md:col-span-5">
               <p className="ui border-t border-ink/40 pt-8 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
-                § A.07, Forward
+                § A.06, Forward
               </p>
               <h2 className="font-display mt-5 text-display-2 font-extrabold leading-[0.92]">
                 What this is becoming
@@ -467,7 +460,7 @@ const About = () => {
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
             <div className="col-span-12 md:col-span-7">
               <p className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-tomato">
-                § A.075, Global footprint
+                § A.07, Global footprint
               </p>
               <h2 className="font-display mt-5 text-display-1 font-extrabold leading-[0.9]">
                 A ritual with a<br />
@@ -613,9 +606,9 @@ const About = () => {
                 On the record.
               </h2>
             </div>
-            <p className="handwritten -rotate-1 text-lg text-tomato">
-              press archive
-            </p>
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/40">
+              Est. 2021 · Selected
+            </span>
           </div>
 
           {/* Intro */}
