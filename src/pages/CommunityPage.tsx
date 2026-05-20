@@ -456,33 +456,46 @@ const CommunityPage = () => {
                 tags: ["Global", "Partnerships"],
                 title: "Superconnectors & partnership leads",
                 note: "Bridge brands, communities, and ideas through introductions and collaborations.",
+                signal: "updated this week",
               },
               {
                 tags: ["Pizza", "Operations"],
                 title: "Pizzaiolos, operators & pizza builders",
                 note: "Share the real shop-floor problems — we'll bring builders alongside you.",
+                signal: "looking for collaborators",
               },
               {
                 tags: ["Remote", "AI", "Product"],
                 title: "AI-native builders, engineers & designers",
                 note: "Shape tools for pizza shops, communities, and small businesses worldwide.",
+                signal: "active now",
+                active: true,
               },
               {
                 tags: ["Media", "Culture"],
                 title: "Creators, streamers & storytellers",
                 note: "Carry the story further across content, media, and internet culture.",
+                signal: "open",
               },
               {
                 tags: ["Events", "IRL"],
                 title: "Community organizers & event architects",
                 note: "Host pizza experiences worth remembering — meetups, hackathons, dinners, art shows.",
+                signal: "live opportunity",
               },
             ].map((c, i) => (
               <li key={c.title}>
                 <a
                   href="/join"
-                  className="group block px-2 py-5 transition-colors hover:bg-butter/30 md:px-3 md:py-6"
+                  className={`group relative block px-2 py-5 transition-all duration-200 md:px-3 md:py-6 ${
+                    c.active
+                      ? "bg-butter/40 hover:-translate-y-0.5 hover:bg-butter/60 hover:shadow-[0_18px_38px_-22px_hsl(var(--tomato)/0.4)]"
+                      : "hover:bg-butter/30 hover:-translate-y-0.5"
+                  }`}
                 >
+                  {c.active && (
+                    <span aria-hidden className="pointer-events-none absolute left-0 top-1/2 hidden h-10 w-[3px] -translate-y-1/2 rounded-r bg-tomato md:block" />
+                  )}
                   {/* Mobile: stacked */}
                   <div className="flex flex-col gap-3 md:hidden">
                     <div className="flex items-start justify-between gap-4">
@@ -497,7 +510,16 @@ const CommunityPage = () => {
                     <p className="text-left text-[14px] leading-[1.6] text-ink/70">
                       {c.note}
                     </p>
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      <span className={`ui inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] ${c.active ? "bg-tomato text-cream" : "bg-ink/8 text-ink/65"}`}>
+                        {c.active && (
+                          <span className="relative flex h-1.5 w-1.5">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cream opacity-70" />
+                            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cream" />
+                          </span>
+                        )}
+                        {c.signal}
+                      </span>
                       {c.tags.map((t) => (
                         <span
                           key={t}
@@ -514,9 +536,20 @@ const CommunityPage = () => {
                     <span className="ui col-span-1 text-[10px] font-semibold tabular-nums uppercase tracking-[0.22em] text-ink/40">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <h4 className="font-display col-span-4 text-left text-lg font-extrabold leading-snug lg:text-xl">
-                      {c.title}
-                    </h4>
+                    <div className="col-span-4">
+                      <h4 className="font-display text-left text-lg font-extrabold leading-snug lg:text-xl">
+                        {c.title}
+                      </h4>
+                      <span className={`ui mt-1.5 inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] ${c.active ? "bg-tomato text-cream" : "bg-ink/8 text-ink/65"}`}>
+                        {c.active && (
+                          <span className="relative flex h-1.5 w-1.5">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cream opacity-70" />
+                            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cream" />
+                          </span>
+                        )}
+                        {c.signal}
+                      </span>
+                    </div>
                     <p className="col-span-4 text-left text-[14px] leading-[1.6] text-ink/70 lg:text-[15px]">
                       {c.note}
                     </p>
