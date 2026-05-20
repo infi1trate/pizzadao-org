@@ -334,12 +334,15 @@ const Sponsorship = () => {
 
 
       {/* What we've built */}
-      <div className="container mt-24 md:mt-32">
-        <div className="border-t-2 border-ink pt-8 md:pt-10">
-          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
+      <div className="container mt-16 md:mt-20">
+        <div className="relative border-t-2 border-ink pt-6 md:pt-8">
+          <span aria-hidden className="ui absolute -top-2.5 right-2 bg-butter/30 px-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/55">
+            Selected, 2021–2025
+          </span>
+          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-5">
             <div className="col-span-12 md:col-span-8">
               <p className="overline text-tomato">§ 08, Proof</p>
-              <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92] tracking-[0.005em]">
+              <h3 className="font-display mt-3 text-display-2 font-extrabold leading-[0.92] tracking-[0.005em]">
                 What we've
                 <br />
                 <span className="text-ink-soft">built.</span>
@@ -353,7 +356,8 @@ const Sponsorship = () => {
           </div>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-5 md:mt-12 md:grid-cols-3">
+
           {[
             {
               partner: "Bitcoin Pizza Day",
