@@ -233,8 +233,6 @@ const About = () => {
           </div>
         </div>
       </section>
-      {/* Checkered divider */}
-      <div className="checker-tape h-[5px] w-full" />
 
       {/* How it runs */}
       <section className="bg-cream py-20 md:py-28">
@@ -242,7 +240,7 @@ const About = () => {
           {/* Section header */}
           <div className="flex items-center justify-between border-t border-ink/40 pt-8">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
-              § A.04, Structure
+              § A.03, Structure
             </span>
             <span className="handwritten -rotate-2 text-tomato text-sm">
               light by design
