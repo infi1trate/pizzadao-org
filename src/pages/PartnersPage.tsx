@@ -77,19 +77,14 @@ const PartnersPage = () => {
 
 
       {/* Inquiry form */}
-      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-24 text-cream md:py-32">
-        <div className="checker-tape-sm absolute inset-x-0 top-0 h-[6px] opacity-65" aria-hidden />
-        <div className="checker-tape-sm absolute inset-x-0 bottom-0 h-[6px] opacity-65" aria-hidden />
+      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-28 text-cream md:py-36">
+        <div className="absolute inset-x-0 top-0 h-px bg-cream/15" aria-hidden />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-cream/10" aria-hidden />
         <div className="container relative">
-          <div className="grid grid-cols-12 gap-x-8 gap-y-12 md:gap-x-12">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-14 md:gap-x-16">
             <div className="col-span-12 md:col-span-5">
-              <div className="flex items-baseline gap-3">
-                <p className="overline text-butter">§ B.02 — Inquiry</p>
-                <span className="handwritten -rotate-[1.5deg] text-butter/90 text-[0.78rem] md:text-sm leading-none">
-                  community first
-                </span>
-              </div>
-              <h2 className="font-display mt-6 text-display-2 font-extrabold leading-[0.88] tracking-[-0.025em] md:mt-7">
+              <p className="overline text-butter">§ B.02 — Inquiry</p>
+              <h2 className="font-display mt-7 text-display-2 font-extrabold leading-[0.88] tracking-[-0.025em]">
                 Tell us
                 <br />
                 what
@@ -102,14 +97,11 @@ const PartnersPage = () => {
                   to do.
                 </span>
               </h2>
-              <p className="font-serif mt-8 max-w-[34ch] text-[15px] leading-[1.6] text-cream/70 md:text-base">
+              <p className="font-serif mt-10 max-w-[34ch] text-[15px] leading-[1.65] text-cream/65 md:text-base">
                 We come back with a brief, a city list, and a number, usually
                 within a week. No deck required to start the conversation.
               </p>
-              <p className="handwritten mt-6 -rotate-1 text-tomato text-sm md:text-base">
-                ↘ real world, real people
-              </p>
-              <p className="ui mt-6 text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/45">
+              <p className="ui mt-8 text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/40">
                 Or email partnerships@pizzadao.org directly
               </p>
             </div>
@@ -119,7 +111,7 @@ const PartnersPage = () => {
                 e.preventDefault();
                 setSubmitted(true);
               }}
-              className="col-span-12 grid grid-cols-2 gap-4 border border-cream/20 bg-cream/[0.03] p-6 md:col-span-7 md:p-8"
+              className="col-span-12 grid grid-cols-2 gap-5 md:col-span-7 md:pl-4"
             >
               {submitted ? (
                 <div className="col-span-2">
