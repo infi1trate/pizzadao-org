@@ -572,14 +572,19 @@ const About = () => {
       <section className="bg-cream py-20 md:py-28">
         <div className="container">
           <div className="checker-tape mb-10 h-[6px] w-24 opacity-80" aria-hidden />
-          <div className="border-t-2 border-ink pt-8">
-            <p className="overline text-tomato">Press</p>
-            <h2 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92]">
-              On the record.
-              <span className="handwritten ml-3 align-middle text-base text-tomato md:text-lg">
-                ↘ in their words
-              </span>
-            </h2>
+          <div className="flex items-start justify-between gap-6 border-t-2 border-ink pt-8">
+            <div>
+              <p className="overline text-tomato">Press</p>
+              <h2 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92]">
+                On the record.
+                <span className="handwritten ml-3 align-middle text-base text-tomato md:text-lg">
+                  ↘ in their words
+                </span>
+              </h2>
+            </div>
+            <span className="stamp stamp-ink mt-2 hidden md:inline-flex">
+              GPP archive · 04
+            </span>
           </div>
           <ul className="mt-12 border-t border-ink/15">
             {PRESS.map((p, i) => (
