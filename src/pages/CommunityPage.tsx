@@ -1508,18 +1508,18 @@ const HERO_IMAGES: HeroTile[] = [
 // Layout for collage tiles, percentages relative to collage box.
 // Intentionally imperfect overlap. Two tiles allowed to break the row.
 const TILE_LAYOUTS = [
-  // ANCHOR — dominant editorial centerpiece; sized to fit the engineered container.
-  { top: "6%",  left: "28%", w: "44%", aspect: "5/6",   rot: -1.5, z: 8, delay: 80  },
-  // upper-left support
-  { top: "2%",  left: "-1%", w: "22%", aspect: "1/1",   rot: -5,   z: 4, delay: 220 },
-  // upper-right support, slightly breaks right edge
-  { top: "0%",  left: "78%", w: "24%", aspect: "3/4",   rot: 5,    z: 3, delay: 360 },
+  // ANCHOR — dominant editorial centerpiece, smaller so supporting cards breathe.
+  { top: "5%",  left: "31%", w: "39%", aspect: "5/6",   rot: -1.5, z: 4, delay: 80  },
+  // upper-left support — larger, readable
+  { top: "3%",  left: "-1%", w: "26%", aspect: "4/5",   rot: -5,   z: 3, delay: 220 },
+  // upper-right support
+  { top: "1%",  left: "73%", w: "26%", aspect: "3/4",   rot: 5,    z: 3, delay: 360 },
   // lower-left medium
-  { top: "62%", left: "3%",  w: "22%", aspect: "5/4",   rot: -3,   z: 5, delay: 500 },
-  // lower-right medium, breaks right boundary
-  { top: "56%", left: "80%", w: "22%", aspect: "4/5",   rot: 4,    z: 6, delay: 640 },
-  // tiny accent, tucked
-  { top: "76%", left: "32%", w: "14%", aspect: "1/1",   rot: -6,   z: 7, delay: 820 },
+  { top: "60%", left: "1%",  w: "26%", aspect: "5/4",   rot: -3,   z: 5, delay: 500 },
+  // lower-right medium (Melbourne slot) — enlarged so it stops getting buried
+  { top: "55%", left: "72%", w: "27%", aspect: "4/5",   rot: 4,    z: 6, delay: 640 },
+  // tiny accent — tucked below anchor, doesn't cover supports
+  { top: "82%", left: "40%", w: "15%", aspect: "1/1",   rot: -6,   z: 7, delay: 820 },
 ];
 
 
