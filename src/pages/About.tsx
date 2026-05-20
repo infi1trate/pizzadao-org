@@ -600,48 +600,90 @@ const About = () => {
         </div>
       </section>
 
-      {/* Press */}
-
-      <section className="bg-cream py-20 md:py-28">
+      {/* Press — editorial archive */}
+      <section className="paper-soft relative overflow-hidden bg-cream py-20 md:py-28">
         <div className="container">
-          <div className="border-t-2 border-ink pt-8">
-            <p className="overline text-tomato">§ A.08, Press</p>
-            <h2 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92]">
-              On the record.
-            </h2>
+          {/* Section header */}
+          <div className="flex flex-wrap items-baseline justify-between gap-4 border-t border-ink/40 pt-8">
+            <div>
+              <p className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-tomato">
+                § A.08, Press archive
+              </p>
+              <h2 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92]">
+                On the record.
+              </h2>
+            </div>
+            <p className="handwritten -rotate-1 text-lg text-tomato">
+              press archive
+            </p>
           </div>
-          <ul className="mt-12 border-t border-ink/15">
-            {PRESS.map((p, i) => (
-              <li key={p.outlet} className="border-b border-ink/15">
-                <a
-                  href={p.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`group grid grid-cols-12 items-baseline gap-x-6 gap-y-2 px-2 py-7 transition-colors duration-300 md:py-9 ${
-                    p.kind === "video" ? "hover:bg-butter/25" : "hover:bg-ink/[0.04]"
-                  }`}
-                >
-                  <span className="ui col-span-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/40 md:col-span-1">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="font-display col-span-10 flex items-center gap-2 text-xl font-extrabold tracking-tight transition-colors group-hover:text-tomato md:col-span-3 md:text-[1.6rem]">
-                    {p.outlet}
-                    {p.kind === "video" && (
-                      <span className="ui inline-flex items-center gap-1 rounded-full border border-ink/25 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/55">
-                        ▶ Video
-                      </span>
-                    )}
-                  </span>
-                  <p className="font-serif col-span-12 text-base italic leading-snug text-ink/70 md:col-span-7 md:text-lg">
-                    {p.line}
-                  </p>
-                  <span className="ui col-span-12 flex items-center justify-end gap-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/0 transition-all duration-300 group-hover:text-ink/60 md:col-span-1">
-                    Read <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
+
+          {/* Intro */}
+          <p className="font-serif mt-6 max-w-[52ch] text-lg leading-relaxed text-ink/70 md:text-xl">
+            Others have covered PizzaDAO as it grew from a strange internet experiment into a global food event.
+          </p>
+
+          {/* Featured quote */}
+          <figure className="relative mt-14 border-l-2 border-tomato/40 pl-6 md:mt-20 md:pl-10">
+            <blockquote className="font-display max-w-[50ch] text-[1.65rem] font-extrabold leading-[1.15] tracking-tight text-ink md:text-[2.2rem]">
+              {PRESS[0].line.replace(/["/]/g, '')}
+            </blockquote>
+            <figcaption className="mt-6 flex items-baseline gap-4">
+              <span className="font-display text-sm font-extrabold tracking-tight text-ink/90">
+                {PRESS[0].outlet}
+              </span>
+              <a
+                href={PRESS[0].href}
+                target="_blank"
+                rel="noreferrer"
+                className="ui inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/40 transition-colors hover:text-tomato"
+              >
+                Read article
+                <span className="inline-block">↗</span>
+              </a>
+            </figcaption>
+          </figure>
+
+          {/* Remaining coverage — clean editorial list */}
+          <div className="mt-16 md:mt-20">
+            <div className="border-t border-ink/15 pt-4">
+              <p className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/40">
+                Selected coverage
+              </p>
+            </div>
+            <ul className="mt-6">
+              {PRESS.slice(1).map((p, i) => (
+                <li key={p.outlet} className="group border-b border-ink/10">
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`grid grid-cols-12 items-baseline gap-x-6 gap-y-2 py-5 transition-colors duration-300 md:py-6 ${
+                      p.kind === "video" ? "hover:bg-butter/15" : "hover:bg-ink/[0.03]"
+                    }`}
+                  >
+                    <span className="ui col-span-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/30 md:col-span-1">
+                      {String(i + 2).padStart(2, "0")}
+                    </span>
+                    <span className="font-display col-span-10 flex items-center gap-2 text-base font-extrabold tracking-tight transition-colors group-hover:text-tomato md:col-span-3 md:text-lg">
+                      {p.outlet}
+                      {p.kind === "video" && (
+                        <span className="ui inline-flex items-center gap-1 rounded-full border border-ink/20 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/50">
+                          ▶ Video
+                        </span>
+                      )}
+                    </span>
+                    <p className="font-serif col-span-12 pl-8 text-base italic leading-snug text-ink/65 md:col-span-7 md:pl-0 md:text-lg">
+                      {p.line}
+                    </p>
+                    <span className="ui col-span-12 flex items-center justify-end gap-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/0 transition-all duration-300 group-hover:text-ink/50 md:col-span-1">
+                      <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
