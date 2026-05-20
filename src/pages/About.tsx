@@ -449,24 +449,54 @@ const About = () => {
         </div>
       </aside>
 
-      {/* Why pizza */}
-      <section className="bg-cream pb-24 pt-10 md:pb-32 md:pt-14">
-        <div className="container">
-          <div className="mx-auto max-w-2xl text-center">
+      {/* Why pizza — visual pause, oversized statement */}
+      <section className="paper-soft paper-drift relative overflow-hidden bg-cream py-28 md:py-40">
+        {/* Checker edge details — top-left and bottom-right corners */}
+        <div className="checker-tape absolute left-0 top-0 h-2 w-32 opacity-80 md:w-48" aria-hidden />
+        <div className="checker-tape absolute bottom-0 right-0 h-2 w-32 opacity-80 md:w-48" aria-hidden />
+
+        {/* Faint floating crumbs / ambient marks */}
+        <div className="pointer-events-none absolute inset-0 select-none" aria-hidden>
+          <span className="absolute left-[8%] top-[18%] text-tomato/15 text-4xl">•</span>
+          <span className="absolute left-[88%] top-[24%] text-tomato/10 text-2xl">·</span>
+          <span className="absolute left-[14%] top-[72%] text-tomato/15 text-3xl">·</span>
+          <span className="absolute left-[82%] top-[78%] text-tomato/15 text-5xl">•</span>
+          <span className="absolute left-[50%] top-[8%] text-ink/10 text-xl">·</span>
+          <span className="absolute left-[28%] top-[44%] text-ink/[0.06] text-6xl">·</span>
+          <span className="absolute left-[70%] top-[58%] text-ink/[0.06] text-7xl">·</span>
+        </div>
+
+        <div className="container relative">
+          <div className="mx-auto max-w-4xl text-center">
             <p className="overline text-tomato">§ A.06, Why pizza</p>
-            <h2 className="font-display mt-5 text-display-2 font-extrabold leading-[0.92]">
-              Why pizza
+
+            <span className="handwritten mt-6 inline-block -rotate-2 text-tomato text-base md:text-lg">
+              ↘ the honest answer
+            </span>
+
+            <h2 className="font-display mt-4 font-extrabold leading-[0.86] tracking-[-0.02em] text-[clamp(2.75rem,9.5vw,8rem)]">
+              Pizza is{" "}
+              <span className="underline-scribble text-ink">easy</span>{" "}
+              to organize around.
             </h2>
-            <div className="font-serif mt-8 space-y-4 text-lg leading-relaxed text-ink/85 md:text-xl">
-              <p>Pizza is easy to organize around.</p>
+
+            <div className="mx-auto mt-12 max-w-[44ch] space-y-5 text-lg leading-relaxed text-ink/80 md:text-xl">
               <p>
                 It is familiar, shareable, and doesn't need explanation. You
                 can walk into almost any city in the world and figure out how
                 to make it happen.
               </p>
-              <p className="text-ink">
+              <p className="font-serif italic text-ink">
                 That makes it a good starting point for something bigger.
               </p>
+            </div>
+
+            <div className="mx-auto mt-12 flex max-w-md items-center gap-4">
+              <span className="h-px flex-1 bg-ink/20" />
+              <span className="handwritten -rotate-1 text-ink/55 text-sm">
+                end of side note
+              </span>
+              <span className="h-px flex-1 bg-ink/20" />
             </div>
           </div>
         </div>
