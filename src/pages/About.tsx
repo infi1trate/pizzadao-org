@@ -406,33 +406,83 @@ const About = () => {
         <div className="container">
           <div className="grid grid-cols-12 gap-x-6 gap-y-10">
             <div className="col-span-12 md:col-span-5">
-              <p className="overline text-tomato">§ A.07, Forward</p>
+              <p className="ui border-t border-ink/40 pt-8 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
+                § A.07, Forward
+              </p>
               <h2 className="font-display mt-5 text-display-2 font-extrabold leading-[0.92]">
                 What this is becoming
               </h2>
             </div>
             <div className="col-span-12 md:col-span-7 md:pl-8">
               <div className="font-serif max-w-[58ch] space-y-5 text-lg leading-relaxed text-ink/85 md:text-xl">
-                <p>
-                  PizzaDAO is turning into a network that can activate in the
-                  real world quickly. When a city opts in, something happens
-                  there, not a campaign, not a post, an actual gathering.
-                </p>
-                <p>
-                  That has started to attract partners, brands, builders,
-                  and communities that want to show up in a way that feels
-                  real.
-                </p>
                 <p className="text-ink">
-                  We work with them case by case. The goal is always the
-                  same, keep the experience intact and useful for the
-                  people attending.
+                  PizzaDAO is becoming a global coordination layer for
+                  real-world culture.
+                </p>
+                <p>
+                  The Global Pizza Party is the clearest expression of it,
+                  but the larger idea is broader: help people organize
+                  meaningful gatherings through the internet without
+                  flattening what makes each place different.
+                </p>
+                <p>
+                  That means more local chapters, better tools for
+                  organizers, stronger partnerships, and more reasons for
+                  people to gather beyond May 22.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="mt-16 border-t border-ink/20 pt-8 md:mt-20">
+          {/* Globe / scale bridge */}
+          <div className="mt-16 border-t border-ink/20 pt-10 md:mt-20">
+            <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
+              <div className="col-span-12 md:col-span-5">
+                <p className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
+                  Global footprint
+                </p>
+                <p className="font-serif mt-3 text-base leading-relaxed text-ink/70">
+                  Six continents. Hundreds of cities. One shared night.
+                </p>
+              </div>
+              <div className="col-span-12 md:col-span-7 md:pl-8">
+                <div className="relative aspect-[16/7] w-full overflow-hidden rounded-sm border border-ink/15 bg-cream">
+                  <svg
+                    viewBox="0 0 800 350"
+                    className="absolute inset-0 h-full w-full"
+                    aria-hidden="true"
+                  >
+                    <defs>
+                      <pattern id="globe-dots" width="10" height="10" patternUnits="userSpaceOnUse">
+                        <circle cx="1.2" cy="1.2" r="1.2" className="fill-ink/20" />
+                      </pattern>
+                    </defs>
+                    <ellipse cx="400" cy="175" rx="360" ry="150" fill="url(#globe-dots)" />
+                    {[
+                      [165, 130], [205, 150], [240, 120], [280, 145],
+                      [310, 170], [340, 140], [380, 160], [420, 130],
+                      [455, 175], [490, 150], [525, 135], [560, 165],
+                      [595, 145], [630, 180], [220, 200], [300, 220],
+                      [400, 230], [500, 215], [580, 235], [350, 110],
+                    ].map(([cx, cy], i) => (
+                      <circle
+                        key={i}
+                        cx={cx}
+                        cy={cy}
+                        r={i % 4 === 0 ? 4 : 2.5}
+                        className="fill-tomato"
+                      />
+                    ))}
+                  </svg>
+                  <span className="handwritten absolute bottom-3 right-4 -rotate-2 text-sm text-tomato">
+                    one night, everywhere
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-16 border-t border-ink/20 pt-8">
             <p className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
               Selected partners
             </p>
