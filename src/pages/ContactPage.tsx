@@ -91,6 +91,9 @@ const ContactPage = () => {
     else if (!isEmail(email.trim())) e.email = "That email looks off.";
     if (!message.trim()) e.message = "Tell us a little about what's on your mind.";
     setErrors(e);
+    if (Object.keys(e).length) {
+      track(EVT.CONTACT_FAILED, { reason: "validation", fields: Object.keys(e) });
+    }
     return Object.keys(e).length === 0;
   };
 
@@ -116,9 +119,26 @@ const ContactPage = () => {
       );
 
       if (invokeError) throw invokeError;
+      // Identify after explicit submit (consent boundary).
+      void identifyByEmail(email.trim(), {
+        name: name.trim(),
+        organization: organization.trim() || undefined,
+        intents,
+        source_page: "/contact",
+      });
+      track(EVT.CONTACT_SUBMITTED, {
+        intents,
+        intents_count: intents.length,
+        has_org: Boolean(organization.trim()),
+        message_length: message.trim().length,
+      });
       setSubmitted(true);
     } catch (err) {
       console.error(err);
+      track(EVT.CONTACT_FAILED, {
+        reason: "submit_error",
+        message: err instanceof Error ? err.message : "unknown",
+      });
       setError(
         "Something went wrong sending your message. Please try again or email hello@pizzadao.org directly.",
       );
