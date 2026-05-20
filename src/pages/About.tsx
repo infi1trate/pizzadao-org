@@ -3,6 +3,7 @@ import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
 import party from "@/assets/timeline-party.jpg";
 import founding from "@/assets/timeline-founding.jpg";
+import timeline2010 from "@/assets/timeline-2010.jpg";
 
 
 const ROLES = [
@@ -160,61 +161,82 @@ const About = () => {
       </section>
 
 
-      {/* Bitcoin Pizza Day */}
-      <section className="bg-cream-warm py-20 md:py-28">
+      {/* Bitcoin Pizza Day — bridge between internet history and ritual */}
+      {/* Checkered divider */}
+      <div className="checker-tape h-[5px] w-full" />
+      <section className="relative bg-cream py-20 md:py-28">
         <div className="container">
-          <div className="grid grid-cols-12 gap-x-6 gap-y-10">
-            <div className="col-span-12 md:col-span-6">
-              <p className="overline text-tomato">§ A.03, May 22</p>
-              <h2 className="font-display mt-5 text-display-2 font-extrabold leading-[0.92]">
-                Bitcoin Pizza Day
+          {/* Section header + stamp */}
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-6">
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+              § A.03, Ritual
+            </span>
+            <span className="stamp text-tomato">May 22</span>
+          </div>
+
+          {/* Archival image — full width, documentary feel */}
+          <figure className="relative">
+            <div className="paper-soft overflow-hidden bg-cream-warm">
+              <img
+                src={timeline2010}
+                alt="Archival reference to the 2010 Bitcoin pizza transaction"
+                loading="lazy"
+                width={1920}
+                height={1080}
+                className="grain block aspect-[21/9] w-full object-cover"
+              />
+            </div>
+            <figcaption className="mt-3 flex items-baseline justify-between gap-3">
+              <span className="handwritten -rotate-1 text-tomato text-sm md:text-base">
+                internet history, made physical
+              </span>
+              <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+                Fig. A.03 — 2010
+              </span>
+            </figcaption>
+          </figure>
+
+          {/* Title + body — editorial, measured */}
+          <div className="mt-16 grid grid-cols-12 gap-x-6 gap-y-8 md:mt-20">
+            <div className="col-span-12 md:col-span-7">
+              <h2 className="font-display text-display-1 font-extrabold leading-[0.88] tracking-[-0.02em]">
+                May 22 became a ritual
               </h2>
-              <div className="font-serif mt-8 max-w-[58ch] space-y-5 text-lg leading-relaxed text-ink/85 md:text-xl">
-                <p>
-                  Every year on May 22, people in crypto remember the first
-                  real-world Bitcoin transaction, two pizzas for 10,000 BTC.
-                </p>
-                <p>
-                  We decided to mark that day by doing the same thing
-                  everywhere at once. The first Global Pizza Party was small
-                  and loosely organized, a handful of cities and a lot of
-                  guesswork. The next year it doubled, then doubled again.
-                </p>
-                <p>
-                  Now it happens across hundreds of cities at the same time.
-                  Local organizers coordinate events, order pizza, and bring
-                  people together in their own way.
-                </p>
-                <p className="text-ink">
-                  No two cities look the same, that is part of the point.
-                </p>
-              </div>
             </div>
-            <div className="col-span-12 md:col-span-6 md:pl-8">
-              <figure className="relative bg-cream-warm p-3 pb-5 shadow-[0_32px_70px_-30px_hsl(0_0%_0%/0.45),0_6px_18px_-8px_hsl(0_0%_0%/0.18)]">
-                <div className="paper-soft">
-                  <img
-                    src={party}
-                    alt="Crowded outdoor pizza street party at dusk"
-                    loading="lazy"
-                    width={1920}
-                    height={1080}
-                    className="grain block aspect-[4/5] w-full object-cover"
-                  />
-                </div>
-                <figcaption className="mt-4 flex items-baseline justify-between gap-3 px-1">
-                  <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
-                    First time meeting in person
-                  </span>
-                  <span className="ui text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/45">
-                    Bangkok, 2023
-                  </span>
-                </figcaption>
-              </figure>
+            <div className="col-span-12 md:col-span-5 md:pt-2">
+              <p className="font-serif text-lg leading-relaxed text-ink/80 md:text-xl">
+                What started as a single transaction turned into a global
+                gathering. The date matters because the story matters.
+              </p>
             </div>
+          </div>
+
+          <div className="font-serif mt-14 max-w-[64ch] space-y-5 text-lg leading-relaxed text-ink/85 md:mt-16 md:text-xl">
+            <p>
+              On May 22, 2010, two pizzas were bought for 10,000 BTC.
+            </p>
+            <p>
+              The story became part of internet history because it proved
+              something abstract could become real. A transaction became
+              dinner. Code became a table.
+            </p>
+            <p>
+              Years later, PizzaDAO turned that memory into a recurring
+              global ritual.
+            </p>
+            <p>
+              Every May 22, local organizers bring people together in their
+              own cities. Some events are polished. Some are chaotic. Some
+              are small. Some take over entire blocks.
+            </p>
+            <p className="text-ink">
+              That range is what makes it work.
+            </p>
           </div>
         </div>
       </section>
+      {/* Checkered divider */}
+      <div className="checker-tape h-[5px] w-full" />
 
       {/* How it runs */}
       <section className="bg-cream py-20 md:py-28">
