@@ -1889,7 +1889,7 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                 featured.map((ev, i) => (
                   <article
                     key={`${ev.start}-${ev.title}`}
-                    className="group relative rounded-2xl bg-cream-warm p-6 shadow-[0_18px_40px_-24px_hsl(var(--ink)/0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-22px_hsl(var(--tomato)/0.35)] md:p-8"
+                    className="paper-soft group relative rounded-2xl bg-cream-warm p-6 shadow-[0_18px_40px_-24px_hsl(var(--ink)/0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-22px_hsl(var(--tomato)/0.35)] md:p-8"
                     style={{ transform: `rotate(${(i % 2 === 0 ? 0.4 : -0.5)}deg)` }}
                   >
                     <div className="flex items-baseline justify-between">
