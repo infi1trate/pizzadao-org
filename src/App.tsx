@@ -52,7 +52,8 @@ const App = () => (
           <Route path="/terms" element={<Terms />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<PasswordGate><NotFound /></PasswordGate>} />
-        </Routes>
+          </Routes>
+        </PostHogProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
