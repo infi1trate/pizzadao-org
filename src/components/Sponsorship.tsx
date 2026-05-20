@@ -1,28 +1,35 @@
+import { MapPin, Sparkles, Waves, Radio, LayoutGrid } from "lucide-react";
+
 const VALUE_PROPS = [
   {
     n: "01",
     k: "Trusted Local Distribution",
-    v: "Hundreds of pizzerias. Real neighborhoods. Your brand shows up where people already are.",
+    v: "Hundreds of pizzerias in real neighborhoods. Your brand shows up where people already gather.",
+    icon: MapPin,
   },
   {
     n: "02",
     k: "Founder + Builder Access",
-    v: "Direct access to founders, developers, and operators shaping the next wave of culture.",
+    v: "Direct lines to founders, developers, and operators shaping what's next.",
+    icon: Sparkles,
   },
   {
     n: "03",
     k: "Cultural Relevance",
-    v: "Programs designed to feel native, not inserted. Built with the community, not around it.",
+    v: "Programs that feel native. Built with communities, not around them.",
+    icon: Waves,
   },
   {
     n: "04",
     k: "Earned Media",
-    v: "Moments people talk about. Content that spreads without forcing it.",
+    v: "Moments people talk about. Content that spreads because it deserves to.",
+    icon: Radio,
   },
   {
     n: "05",
     k: "Global Activation, No Ops",
-    v: "We handle the coordination, logistics, and playbook. You provide the brief.",
+    v: "We coordinate the logistics and playbook. You provide the brief.",
+    icon: LayoutGrid,
   },
 ];
 
@@ -211,49 +218,66 @@ const Sponsorship = () => {
 
 
 
-      {/* Value props, editorial 2-column grid */}
-      <div className="container mt-14 md:mt-20">
-        <div className="grid grid-cols-12 gap-x-6 gap-y-7">
+      {/* Value props — refined capabilities overview */}
+      <div className="container mt-10 md:mt-14">
+        <div className="grid grid-cols-12 gap-x-6 gap-y-6">
           <div className="col-span-12 md:col-span-4">
             <p className="overline text-tomato">What you receive</p>
-            <h3 className="font-display mt-3 text-display-2 font-extrabold leading-[0.95] tracking-[0.005em] text-ink">
+            <h3 className="font-display mt-2 text-display-2 font-extrabold leading-[0.95] tracking-[0.005em] text-ink">
               Five things
               <br />
               <span className="text-ink-soft">we deliver.</span>
             </h3>
-            <p className="mt-4 text-base leading-relaxed text-ink/65">
-              Our partnership model is bespoke, not menu-driven. The list below
-              is what every program is built on.
+            <p className="mt-3 text-[15px] leading-relaxed text-ink/60">
+              Bespoke programs built on these foundations.
             </p>
-            <p className="handwritten mt-5 -rotate-[1.5deg] text-tomato text-sm">
+            <p className="handwritten mt-4 -rotate-[1.5deg] text-tomato text-[13px]">
               ↳ no two briefs alike
             </p>
           </div>
 
-          <ol className="col-span-12 md:col-span-8 md:pl-8">
-            <div className="border-t border-ink/15">
-              {VALUE_PROPS.map((vp) => (
-                <li
-                  key={vp.n}
-                  className="group grid grid-cols-12 gap-x-6 gap-y-2 border-b border-ink/15 py-7 md:py-9"
-                >
-                  <div className="col-span-2 md:col-span-1">
-                    <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-tomato">
-                      {vp.n}
-                    </span>
-                  </div>
-                  <div className="col-span-10 md:col-span-5">
-                    <h4 className="font-display text-3xl font-extrabold leading-tight md:text-4xl">
-                      {vp.k}
-                    </h4>
-                  </div>
-                  <div className="col-span-12 md:col-span-6">
-                    <p className="max-w-md text-base leading-relaxed text-ink/75">
-                      {vp.v}
-                    </p>
-                  </div>
-                </li>
-              ))}
+          <ol className="col-span-12 md:col-span-8 md:pl-6">
+            <div className="border-t border-ink/10">
+              {VALUE_PROPS.map((vp, i) => {
+                const Icon = vp.icon;
+                return (
+                  <li
+                    key={vp.n}
+                    className="group relative border-b border-ink/10 py-5 md:py-6"
+                  >
+                    <div className="grid grid-cols-12 items-start gap-x-4 gap-y-2">
+                      <div className="col-span-12 md:col-span-5">
+                        <div className="flex items-center gap-2.5">
+                          <Icon size={15} strokeWidth={1.25} className="shrink-0 text-ink/20" />
+                          <h4 className="font-display text-[1.4rem] font-extrabold leading-[1.05] tracking-[-0.01em] md:text-[1.6rem]">
+                            {vp.k}
+                          </h4>
+                        </div>
+                      </div>
+                      <div className="col-span-12 md:col-span-7 md:relative md:pl-2">
+                        <p className="text-[14px] leading-[1.55] text-ink/70 md:text-[15px]">
+                          {vp.v}
+                        </p>
+                        {i === 0 && (
+                          <span className="handwritten mt-1.5 block -rotate-[2deg] text-[11px] text-tomato/80 md:absolute md:right-0 md:top-0 md:mt-0">
+                            trusted globally
+                          </span>
+                        )}
+                        {i === 2 && (
+                          <span className="handwritten mt-1.5 block rotate-[1deg] text-[11px] text-tomato/80 md:absolute md:right-0 md:top-0 md:mt-0">
+                            community-first
+                          </span>
+                        )}
+                        {i === 3 && (
+                          <span className="handwritten mt-1.5 block -rotate-[1deg] text-[11px] text-tomato/80 md:absolute md:right-0 md:top-0 md:mt-0">
+                            IRL attention
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
             </div>
           </ol>
         </div>
