@@ -963,7 +963,7 @@ const CommunityPage = () => {
                       return (
                         <article
                           key={b.name}
-                          className="group relative flex flex-col overflow-hidden rounded-2xl bg-cream text-ink transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-22px_hsl(var(--tomato)/0.45)]"
+                          className="paper-soft group relative flex flex-col overflow-hidden rounded-2xl bg-cream text-ink transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-22px_hsl(var(--tomato)/0.45)]"
                         >
                           {b.img ? (
                             <div className="relative aspect-[16/10] overflow-hidden bg-ink">
