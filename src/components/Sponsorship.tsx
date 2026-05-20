@@ -412,20 +412,21 @@ const Sponsorship = () => {
       </div>
 
       {/* CTA band, warm butter */}
-      <div className="mt-20 bg-butter pb-20 md:mt-28 md:pb-32">
-        <div className="container pt-16 md:pt-20">
-          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
+      <div className="mt-14 bg-butter pb-14 md:mt-20 md:pb-20">
+        <div className="container pt-12 md:pt-16">
+          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
             <div className="col-span-12 md:col-span-8">
               <p className="overline text-tomato">Bespoke programs</p>
-              <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.95]">
+              <h3 className="font-display mt-3 text-display-2 font-extrabold leading-[0.95]">
                 Let's build something
                 <br />
                 <span className="text-tomato">people actually show up to.</span>
               </h3>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-ink/75 md:text-lg">
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-ink/75 md:text-lg">
                 Tell us what you're trying to do. We'll help shape it into something worth showing up for.
               </p>
             </div>
+
             <div className="col-span-12 flex flex-col gap-3 md:col-span-4 md:items-end">
               <a
                 href="mailto:partnerships@pizzadao.org"
