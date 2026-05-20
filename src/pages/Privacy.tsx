@@ -87,6 +87,16 @@ const sections: LegalSection[] = [
           other websites.
         </p>
         <p>
+          We use <strong className="text-ink">PostHog</strong> as our product
+          analytics tool to measure how the site is used in aggregate —
+          which pages are visited, which calls to action are clicked, and
+          where people get stuck. PostHog may also record a small sample of
+          anonymised session replays so we can fix usability issues. All form
+          inputs (name, email, message) are <em>masked</em> in those replays
+          and never visible to us. We honour your browser's "Do Not Track"
+          signal and run in a cookieless mode when it's set.
+        </p>
+        <p>
           You can disable cookies in your browser at any time. Some parts of
           the site may not function fully without them.
         </p>

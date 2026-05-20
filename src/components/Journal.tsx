@@ -4,6 +4,8 @@ import j1 from "@/assets/journal-1.jpg";
 import jAi from "@/assets/journal-ai-community.png";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { identifyByEmail, track } from "@/lib/analytics/posthog";
+import { EVT } from "@/lib/analytics/events";
 
 const SECONDARY = [
   {
@@ -38,6 +40,7 @@ const Journal = () => {
     e.preventDefault();
     const trimmed = email.trim();
     if (!trimmed || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed) || trimmed.length > 320) {
+      track(EVT.NEWSLETTER_FAILED, { source: "journal", reason: "validation" });
       toast({ title: "Check your email", description: "Please enter a valid email address.", variant: "destructive" });
       return;
     }
@@ -47,6 +50,8 @@ const Journal = () => {
         body: { email: trimmed, source: "journal" },
       });
       if (error || !data?.ok) throw error ?? new Error("Subscribe failed");
+      void identifyByEmail(trimmed, { newsletter_source: "journal" });
+      track(EVT.NEWSLETTER_SUBMITTED, { source: "journal", already: Boolean(data.already) });
       if (data.already) {
         toast({ title: "You're already on the list", description: "Thanks for being here." });
       } else {
@@ -57,6 +62,10 @@ const Journal = () => {
       setTimeout(() => setStatus("idle"), 4000);
     } catch (err) {
       console.error(err);
+      track(EVT.NEWSLETTER_FAILED, {
+        source: "journal",
+        reason: err instanceof Error ? err.message : "unknown",
+      });
       toast({ title: "Something went wrong", description: "Please try again in a moment.", variant: "destructive" });
       setStatus("idle");
     }

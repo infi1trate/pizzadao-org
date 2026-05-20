@@ -1,5 +1,7 @@
-import { useState, type ReactNode, type FormEvent } from "react";
+import { useEffect, useRef, useState, type ReactNode, type FormEvent } from "react";
 import { Input } from "@/components/ui/input";
+import { track, register } from "@/lib/analytics/posthog";
+import { EVT } from "@/lib/analytics/events";
 
 const STORAGE_KEY = "pd-unlocked";
 const PASSWORD = "cowabunga";
@@ -10,18 +12,42 @@ const PasswordGate = ({ children }: { children: ReactNode }) => {
   );
   const [value, setValue] = useState("");
   const [error, setError] = useState(false);
+  const attemptsRef = useRef(0);
+  const viewedRef = useRef(false);
+
+  useEffect(() => {
+    if (unlocked) {
+      register({ gate_unlocked: true });
+      return;
+    }
+    if (viewedRef.current) return;
+    viewedRef.current = true;
+    track(EVT.GATE_VIEWED, { path: window.location.pathname });
+  }, [unlocked]);
 
   if (unlocked) return <>{children}</>;
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
+    attemptsRef.current += 1;
     if (value.trim().toLowerCase() === PASSWORD) {
       sessionStorage.setItem(STORAGE_KEY, "1");
+      register({ gate_unlocked: true });
+      track(EVT.GATE_SUBMITTED, {
+        success: true,
+        attempts: attemptsRef.current,
+        path: window.location.pathname,
+      });
       setUnlocked(true);
     } else {
+      track(EVT.GATE_FAILED, {
+        attempts: attemptsRef.current,
+        path: window.location.pathname,
+      });
       setError(true);
     }
   };
+
 
   return (
     <main className="relative min-h-[100svh] bg-cream text-ink grain flex items-center justify-center px-6">

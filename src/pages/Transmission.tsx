@@ -2,6 +2,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import logoDark from "@/assets/logo-dark.svg";
+import { track } from "@/lib/analytics/posthog";
+import { EVT } from "@/lib/analytics/events";
+import { useTrackOutbound } from "@/lib/analytics/useTrackOutbound";
 
 /**
  * /transmission — standalone editorial placeholder.
@@ -51,6 +54,7 @@ const Transmission = () => {
   const [reelIdx, setReelIdx] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
   const reel = REELS[reelIdx];
+  const trackOutbound = useTrackOutbound("transmission");
 
   useEffect(() => {
     const v = videoRef.current;
@@ -76,7 +80,9 @@ const Transmission = () => {
   }, []);
 
   const rollName = () => {
-    setRevealed(MAFIA_NAMES[Math.floor(Math.random() * MAFIA_NAMES.length)]);
+    const name = MAFIA_NAMES[Math.floor(Math.random() * MAFIA_NAMES.length)];
+    setRevealed(name);
+    track(EVT.TRANSMISSION_ROLL_NAME, { name });
   };
 
   const year = useMemo(() => new Date().getFullYear(), []);
@@ -116,6 +122,7 @@ const Transmission = () => {
               href="https://discord.pizzadao.xyz/"
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackOutbound("Discord", "https://discord.pizzadao.xyz/", { surface: "nav" })}
               className="ui text-sm text-ink/80 transition-colors hover:text-tomato"
             >
               Discord
@@ -124,6 +131,7 @@ const Transmission = () => {
               href="https://x.com/pizza_dao"
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackOutbound("X", "https://x.com/pizza_dao", { surface: "nav" })}
               className="ui text-sm text-ink/80 transition-colors hover:text-tomato"
             >
               X
@@ -156,6 +164,10 @@ const Transmission = () => {
                 href="https://discord.pizzadao.xyz/"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => {
+                  track(EVT.TRANSMISSION_CTA, { cta: "join_discord", position: "hero" });
+                  trackOutbound("Discord", "https://discord.pizzadao.xyz/", { surface: "hero_cta" });
+                }}
                 className="btn-pill-lg group bg-ink text-cream shadow-[0_8px_24px_-12px_hsl(0_0%_4%/0.4)] hover:bg-tomato"
               >
                 Join the Discord
@@ -276,6 +288,10 @@ const Transmission = () => {
               href="https://discord.pizzadao.xyz/"
               target="_blank"
               rel="noreferrer"
+              onClick={() => {
+                track(EVT.TRANSMISSION_CTA, { cta: "step_inside", position: "closing" });
+                trackOutbound("Discord", "https://discord.pizzadao.xyz/", { surface: "closing_cta" });
+              }}
               className="btn-pill-lg group bg-ink text-cream hover:bg-tomato"
             >
               Step inside
@@ -296,6 +312,7 @@ const Transmission = () => {
               href="https://discord.pizzadao.xyz/"
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackOutbound("Discord", "https://discord.pizzadao.xyz/", { surface: "footer" })}
               className="hover:text-tomato"
             >
               Discord
@@ -304,6 +321,7 @@ const Transmission = () => {
               href="https://x.com/pizza_dao"
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackOutbound("X", "https://x.com/pizza_dao", { surface: "footer" })}
               className="hover:text-tomato"
             >
               X

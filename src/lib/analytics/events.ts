@@ -1,0 +1,63 @@
+/**
+ * Single source of truth for tracked event names + payload shapes.
+ *
+ * Naming convention: `domain.object_action` (lowercase).
+ *
+ * Domains:
+ *   comms.*  — channels, copy, outbound, newsletter
+ *   sales.*  — partner / contact / brand-asset funnel
+ *   ux.*     — funnel friction (gate, scroll, dead clicks, 404)
+ *   ui.*     — component-level interactions
+ *   mafia.*  — /get-your-mafia-name funnel
+ *   transmission.* — /pre-launch funnel
+ */
+
+export const EVT = {
+  // --- Comms ---------------------------------------------------------------
+  OUTBOUND_LINK: "comms.outbound_link_clicked",
+  SHARE_CLICKED: "comms.share_clicked",
+  NEWSLETTER_SUBMITTED: "comms.newsletter_subscribed",
+  NEWSLETTER_FAILED: "comms.newsletter_submit_failed",
+
+  // --- Sales / partnerships -----------------------------------------------
+  CONTACT_VIEWED: "sales.contact_form_viewed",
+  CONTACT_STARTED: "sales.contact_form_started",
+  CONTACT_INTENT_SELECTED: "sales.contact_intent_selected",
+  CONTACT_SUBMITTED: "sales.contact_form_submitted",
+  CONTACT_FAILED: "sales.contact_form_failed",
+  PARTNERS_CTA_CLICKED: "sales.partners_cta_clicked",
+  JOIN_INTENT_CLICKED: "sales.join_intent_clicked",
+  FIGMA_OPENED: "sales.figma_kit_opened",
+  BRAND_ASSET_DOWNLOADED: "sales.brand_asset_downloaded",
+
+  // --- UX ------------------------------------------------------------------
+  GATE_VIEWED: "ux.gate_viewed",
+  GATE_SUBMITTED: "ux.gate_submitted",
+  GATE_FAILED: "ux.gate_failed",
+  SCROLL_DEPTH: "ux.scroll_depth",
+  SECTION_VIEWED: "ux.section_viewed",
+  CTA_CLICKED: "ux.cta_clicked",
+  NOT_FOUND: "ux.404_hit",
+
+  // --- UI ------------------------------------------------------------------
+  NAV_CLICKED: "ui.nav_link_clicked",
+  TAB_CHANGED: "ui.tab_changed",
+  ACCORDION_TOGGLED: "ui.accordion_toggled",
+  COPY_TOKEN: "ui.copy_token",
+  THEME_INTERACTED: "ui.theme_section_interacted",
+
+  // --- Mafia name flow -----------------------------------------------------
+  MAFIA_STARTED: "mafia.started",
+  MAFIA_TOPPING_PICKED: "mafia.topping_picked",
+  MAFIA_MOVIE_PICKED: "mafia.movie_picked",
+  MAFIA_NAMES_GENERATED: "mafia.names_generated",
+  MAFIA_NAME_REGENERATED: "mafia.name_regenerated",
+  MAFIA_NAME_CLAIMED: "mafia.name_claimed",
+  MAFIA_GENERATE_FAILED: "mafia.generate_failed",
+
+  // --- Pre-launch (Transmission) ------------------------------------------
+  TRANSMISSION_CTA: "transmission.cta_clicked",
+  TRANSMISSION_ROLL_NAME: "transmission.roll_name_clicked",
+} as const;
+
+export type EventName = (typeof EVT)[keyof typeof EVT];

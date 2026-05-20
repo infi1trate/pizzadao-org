@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Check, Copy, RefreshCw, Search, Sparkles, X } from "lucide-react";
 import logoDark from "@/assets/logo-dark.svg";
@@ -7,6 +7,8 @@ import { TOPPING_IMAGE } from "@/data/topping-images";
 import FilmPoster from "@/components/FilmPoster";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
+import { track } from "@/lib/analytics/posthog";
+import { EVT } from "@/lib/analytics/events";
 
 type GeneratedName = { name: string; explanation: string; style_tags: string[] };
 type Step = "film" | "topping" | "names" | "claim";
@@ -35,6 +37,12 @@ const MafiaNamePage = () => {
   const [claiming, setClaiming] = useState(false);
   const [claimed, setClaimed] = useState(false);
 
+  const generateCountRef = useRef(0);
+
+  useEffect(() => {
+    track(EVT.MAFIA_STARTED, {});
+  }, []);
+
   const filteredFilms = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return MAFIA_FILMS;
@@ -53,6 +61,14 @@ const MafiaNamePage = () => {
     setLoadingNames(true);
     setNames([]);
     setSelectedIdx(null);
+    generateCountRef.current += 1;
+    if (generateCountRef.current > 1) {
+      track(EVT.MAFIA_NAME_REGENERATED, {
+        attempt: generateCountRef.current,
+        movie: chosenFilm.title,
+        topping: chosenTopping,
+      });
+    }
     try {
       const { data, error } = await supabase.functions.invoke("generate-mafia-names", {
         body: {
@@ -69,8 +85,19 @@ const MafiaNamePage = () => {
       });
       if (error) throw error;
       if ((data as any)?.error) throw new Error((data as any).error);
-      setNames((data as any).names ?? []);
+      const generated = (data as any).names ?? [];
+      setNames(generated);
+      track(EVT.MAFIA_NAMES_GENERATED, {
+        count: generated.length,
+        movie: chosenFilm.title,
+        topping: chosenTopping,
+      });
     } catch (e: any) {
+      track(EVT.MAFIA_GENERATE_FAILED, {
+        reason: e?.message ?? "unknown",
+        movie: chosenFilm.title,
+        topping: chosenTopping,
+      });
       toast({
         title: "The oven hiccuped",
         description: e?.message ?? "Could not generate names. Try again.",
@@ -84,11 +111,17 @@ const MafiaNamePage = () => {
   const handleSelectFilm = (f: MafiaFilm) => {
     setFilm(f);
     setStep("topping");
+    track(EVT.MAFIA_MOVIE_PICKED, {
+      movie_id: f.id,
+      movie_title: f.title,
+      custom: f.id.startsWith("custom:"),
+    });
   };
 
   const handleSelectTopping = async (t: string) => {
     setTopping(t);
     setStep("names");
+    track(EVT.MAFIA_TOPPING_PICKED, { topping: t });
     if (film) await generate(film, t);
   };
 
@@ -107,6 +140,13 @@ const MafiaNamePage = () => {
         selected_explanation: names[selectedIdx]?.explanation ?? null,
       });
       if (error) throw error;
+      track(EVT.MAFIA_NAME_CLAIMED, {
+        name: chosen,
+        movie: film.title,
+        topping,
+        edited: editing,
+        generate_attempts: generateCountRef.current,
+      });
       setClaimed(true);
       setStep("claim");
     } catch (e: any) {
@@ -119,6 +159,7 @@ const MafiaNamePage = () => {
       setClaiming(false);
     }
   };
+
 
   const finalName = selectedIdx !== null ? (editing ? editedName : names[selectedIdx]?.name) : "";
 

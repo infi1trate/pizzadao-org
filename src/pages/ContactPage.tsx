@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
+import { identifyByEmail, track } from "@/lib/analytics/posthog";
+import { EVT } from "@/lib/analytics/events";
+import { useTrackOutbound } from "@/lib/analytics/useTrackOutbound";
 
 const INTENTS = [
   "Partnership",
@@ -55,14 +58,30 @@ const ContactPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  const startedRef = useRef(false);
+  const trackOutbound = useTrackOutbound("contact_aside");
+
   useEffect(() => {
     document.title = "Contact, PizzaDAO";
+    track(EVT.CONTACT_VIEWED, { page: "/contact" });
   }, []);
 
+  const markStarted = (field: string) => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    track(EVT.CONTACT_STARTED, { first_field: field });
+  };
+
   const toggleIntent = (i: string) => {
-    setIntents((cur) =>
-      cur.includes(i) ? cur.filter((x) => x !== i) : [...cur, i],
-    );
+    setIntents((cur) => {
+      const next = cur.includes(i) ? cur.filter((x) => x !== i) : [...cur, i];
+      track(EVT.CONTACT_INTENT_SELECTED, {
+        intent: i,
+        selected: !cur.includes(i),
+        intents_count: next.length,
+      });
+      return next;
+    });
   };
 
   const validate = () => {
@@ -72,6 +91,9 @@ const ContactPage = () => {
     else if (!isEmail(email.trim())) e.email = "That email looks off.";
     if (!message.trim()) e.message = "Tell us a little about what's on your mind.";
     setErrors(e);
+    if (Object.keys(e).length) {
+      track(EVT.CONTACT_FAILED, { reason: "validation", fields: Object.keys(e) });
+    }
     return Object.keys(e).length === 0;
   };
 
@@ -97,9 +119,26 @@ const ContactPage = () => {
       );
 
       if (invokeError) throw invokeError;
+      // Identify after explicit submit (consent boundary).
+      void identifyByEmail(email.trim(), {
+        name: name.trim(),
+        organization: organization.trim() || undefined,
+        intents,
+        source_page: "/contact",
+      });
+      track(EVT.CONTACT_SUBMITTED, {
+        intents,
+        intents_count: intents.length,
+        has_org: Boolean(organization.trim()),
+        message_length: message.trim().length,
+      });
       setSubmitted(true);
     } catch (err) {
       console.error(err);
+      track(EVT.CONTACT_FAILED, {
+        reason: "submit_error",
+        message: err instanceof Error ? err.message : "unknown",
+      });
       setError(
         "Something went wrong sending your message. Please try again or email hello@pizzadao.org directly.",
       );
@@ -193,7 +232,7 @@ const ContactPage = () => {
                       label="Name"
                       required
                       value={name}
-                      onChange={setName}
+                      onChange={(v) => { markStarted("name"); setName(v); }}
                       error={errors.name}
                       autoComplete="name"
                     />
@@ -202,7 +241,7 @@ const ContactPage = () => {
                       label="Organization"
                       hint="optional"
                       value={organization}
-                      onChange={setOrganization}
+                      onChange={(v) => { markStarted("organization"); setOrganization(v); }}
                       autoComplete="organization"
                     />
                     <div className="md:col-span-2">
@@ -212,7 +251,7 @@ const ContactPage = () => {
                         type="email"
                         required
                         value={email}
-                        onChange={setEmail}
+                        onChange={(v) => { markStarted("email"); setEmail(v); }}
                         error={errors.email}
                         autoComplete="email"
                       />
@@ -233,13 +272,14 @@ const ContactPage = () => {
                       required
                       rows={6}
                       value={message}
-                      onChange={(e) => setMessage(e.target.value)}
+                      onChange={(e) => { markStarted("message"); setMessage(e.target.value); }}
                       aria-invalid={!!errors.message}
                       aria-describedby={errors.message ? "message-error" : undefined}
                       className={`mt-2 w-full resize-y rounded-lg border bg-cream px-4 py-3 font-serif text-base leading-relaxed text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-tomato/40 ${
                         errors.message ? "border-tomato" : "border-ink/15 focus:border-ink/40"
                       }`}
                       placeholder="Tell us what's on your mind."
+                      data-ph-mask
                     />
                     {errors.message && (
                       <p id="message-error" className="ui mt-2 text-xs text-tomato">
@@ -296,6 +336,7 @@ const ContactPage = () => {
                       href={c.href}
                       target={external ? "_blank" : undefined}
                       rel={external ? "noreferrer noopener" : undefined}
+                      onClick={() => trackOutbound(c.k, c.href, { channel: c.k })}
                       className="group block py-5"
                     >
                       <div className="flex items-baseline justify-between gap-4">
