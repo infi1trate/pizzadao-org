@@ -467,8 +467,8 @@ const Sponsorship = () => {
 
 
       {/* CTA band, warm butter */}
-      <div className="mt-14 bg-butter pb-14 md:mt-20 md:pb-20">
-        <div className="container pt-12 md:pt-16">
+      <div className="mt-8 bg-butter pb-14 md:mt-10 md:pb-20">
+        <div className="container pt-10 md:pt-12">
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
             <div className="col-span-12 md:col-span-8">
               <p className="overline text-tomato">Bespoke programs</p>
