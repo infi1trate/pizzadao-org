@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
-import PageHero from "@/components/PageHero";
 import party from "@/assets/timeline-party.jpg";
 import founding from "@/assets/timeline-founding.jpg";
+
 
 const ROLES = [
   { name: "Chapter leads", note: "Organize their own city, venue, pizza, people, vibe." },
