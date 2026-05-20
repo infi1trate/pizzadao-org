@@ -336,6 +336,7 @@ const ContactPage = () => {
                       href={c.href}
                       target={external ? "_blank" : undefined}
                       rel={external ? "noreferrer noopener" : undefined}
+                      onClick={() => trackOutbound(c.k, c.href, { channel: c.k })}
                       className="group block py-5"
                     >
                       <div className="flex items-baseline justify-between gap-4">
