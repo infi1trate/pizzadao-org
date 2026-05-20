@@ -1789,7 +1789,7 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
           {/* Calendar — printed poster aesthetic */}
           <div className="col-span-12 md:col-span-5">
             <div
-              className="relative rounded-2xl bg-cream-warm p-6 shadow-[0_24px_60px_-30px_hsl(var(--ink)/0.35)] md:p-8"
+              className="paper-soft relative rounded-2xl bg-cream-warm p-6 shadow-[0_24px_60px_-30px_hsl(var(--ink)/0.35)] md:p-8"
               style={{ transform: "rotate(-0.6deg)" }}
             >
               <div className="flex items-baseline justify-between">
