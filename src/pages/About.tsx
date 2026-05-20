@@ -267,6 +267,9 @@ const About = () => {
               <p className="overline text-butter">§ A.05, Outcomes</p>
               <h2 className="font-display mt-5 text-display-2 font-extrabold leading-[0.92]">
                 What we've done
+                <span className="handwritten marker-bleed-butter ml-3 align-middle text-base text-butter md:text-lg">
+                  ↘ measured in slices
+                </span>
               </h2>
             </div>
             <div className="col-span-12 md:col-span-5 md:pt-4">
