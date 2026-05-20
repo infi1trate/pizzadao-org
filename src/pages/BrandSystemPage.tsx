@@ -50,7 +50,8 @@ const BrandSystemPage = () => {
 
       {/* § B, Hero */}
       <section id="overview" className="paper-soft paper-drift relative overflow-hidden bg-cream pt-28 md:pt-36">
-        <div className="container">
+        <div aria-hidden className="pointer-events-none absolute right-4 top-4 z-10 hidden md:block"><span className="ui text-[9px] font-medium uppercase tracking-[0.26em] text-ink/35">Doc · v1.0 · Public asset</span></div>
+          <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-10">
               <div className="col-span-12 md:col-span-8">
@@ -152,7 +153,8 @@ const BrandSystemPage = () => {
 
       {/* § B.0, Principles */}
       <section id="principles" className="halftone-soft relative overflow-hidden bg-[hsl(var(--ink)/0.035)] py-28 md:py-44">
-        <div className="container">
+        <div aria-hidden className="pointer-events-none absolute right-5 top-4 z-10 hidden md:block"><span className="handwritten rotate-[2deg] text-ink/40 text-xs md:text-sm leading-none">field notes · 2025</span></div>
+          <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
@@ -189,7 +191,8 @@ const BrandSystemPage = () => {
 
       {/* § B.01, Logos */}
       <section id="logos" className="paper-soft paper-drift relative overflow-hidden bg-cream py-28 md:py-44">
-        <div className="container">
+        <div aria-hidden className="pointer-events-none absolute right-4 top-4 z-10 hidden md:block"><span className="ui text-[9px] font-medium uppercase tracking-[0.26em] text-ink/35">Asset pack · v1.0</span></div>
+          <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             {/* Masthead */}
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
@@ -373,7 +376,8 @@ const BrandSystemPage = () => {
 
       {/* § B.01, Index of the kit */}
       <section id="downloads" className="print-noise relative overflow-hidden bg-[hsl(var(--ink)/0.035)] py-16 md:py-24">
-        <div className="container">
+        <div aria-hidden className="pointer-events-none absolute right-5 top-4 z-10 hidden md:block"><span className="handwritten rotate-[2deg] text-ink/40 text-xs md:text-sm leading-none">open license</span></div>
+          <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
@@ -411,7 +415,8 @@ const BrandSystemPage = () => {
 
       {/* § B.02, Typography */}
       <section id="typography" className="halftone-soft relative overflow-hidden bg-cream py-28 md:py-44">
-        <div className="container">
+        <div aria-hidden className="pointer-events-none absolute right-4 top-4 z-10 hidden md:block"><span className="ui text-[9px] font-medium uppercase tracking-[0.26em] text-ink/35">Type spec · Public</span></div>
+          <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             {/* Masthead */}
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
@@ -619,7 +624,8 @@ const BrandSystemPage = () => {
 
       {/* § B.03, Color */}
       <section id="color" className="paper-soft paper-drift relative overflow-hidden bg-[hsl(var(--ink)/0.035)] py-28 md:py-44">
-        <div className="container">
+        <div aria-hidden className="pointer-events-none absolute right-4 top-4 z-10 hidden md:block"><span className="ui text-[9px] font-medium uppercase tracking-[0.26em] text-ink/35">Color tokens · v1.0</span></div>
+          <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             {/* Masthead */}
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
@@ -978,7 +984,8 @@ const BrandSystemPage = () => {
 
       {/* § B.07, Build with PizzaDAO programmatically */}
       <section id="brand-md" className="paper-soft paper-drift relative overflow-hidden bg-cream py-28 md:py-44">
-        <div className="container">
+        <div aria-hidden className="pointer-events-none absolute right-4 top-4 z-10 hidden md:block"><span className="ui text-[9px] font-medium uppercase tracking-[0.26em] text-ink/35">brand.md · v1.0</span></div>
+          <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-8">
@@ -1106,7 +1113,8 @@ dont:  [all caps, corporate jargon]`}
 
       {/* § B.08, In the wild */}
       <section id="applications" className="halftone-soft relative overflow-hidden bg-[hsl(var(--ink)/0.035)] py-28 md:py-44">
-        <div className="container">
+        <div aria-hidden className="pointer-events-none absolute right-5 top-4 z-10 hidden md:block"><span className="handwritten rotate-[2deg] text-ink/40 text-xs md:text-sm leading-none">in the wild · 2024–25</span></div>
+          <div className="container">
           <div className="border-t-2 border-ink pt-6 md:pt-8">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
@@ -1209,7 +1217,8 @@ dont:  [all caps, corporate jargon]`}
 
       {/* § B.08b, Motion */}
       <section id="motion" className="paper-soft paper-soft-dark paper-drift ink-spread relative overflow-hidden bg-ink py-24 text-cream md:py-36">
-        <div className="container">
+        <div aria-hidden className="pointer-events-none absolute right-4 top-4 z-10 hidden md:block"><span className="ui text-[9px] font-medium uppercase tracking-[0.26em] text-cream/45">Motion brief · v0.3</span></div>
+          <div className="container">
           <div className="border-t-2 border-cream pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
@@ -1266,7 +1275,8 @@ dont:  [all caps, corporate jargon]`}
 
       {/* § B.08c, Party Flyer Guidelines */}
       <section id="flyers" className="print-noise relative overflow-hidden bg-cream py-28 md:py-44">
-        <div className="container">
+        <div aria-hidden className="pointer-events-none absolute right-5 top-4 z-10 hidden md:block"><span className="handwritten rotate-[2deg] text-ink/40 text-xs md:text-sm leading-none">community remix</span></div>
+          <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
@@ -1353,7 +1363,8 @@ dont:  [all caps, corporate jargon]`}
 
       {/* § B.10, Molto Benny */}
       <section id="molto-benny" className="halftone-soft relative overflow-hidden bg-butter py-28 md:py-44">
-        <div className="container">
+        <div aria-hidden className="pointer-events-none absolute right-4 top-4 z-10 hidden md:block"><span className="ui text-[9px] font-medium uppercase tracking-[0.26em] text-ink/35">Mascot pack · Stickers</span></div>
+          <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             {/* Masthead */}
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
@@ -1588,7 +1599,8 @@ dont:  [all caps, corporate jargon]`}
 
       {/* § B.11, How we sound */}
       <section id="voice" className="paper-soft paper-drift relative overflow-hidden bg-[hsl(var(--ink)/0.035)] py-28 md:py-44">
-        <div className="container">
+        <div aria-hidden className="pointer-events-none absolute right-5 top-4 z-10 hidden md:block"><span className="handwritten rotate-[2deg] text-ink/40 text-xs md:text-sm leading-none">approved</span></div>
+          <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
