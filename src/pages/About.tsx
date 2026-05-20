@@ -606,35 +606,116 @@ const About = () => {
         </div>
       </section>
 
-      {/* Soft landing */}
-      <section className="paper-soft paper-soft-dark paper-drift relative bg-tomato py-24 text-cream md:py-32">
-        <div className="checker-tape-sm absolute inset-x-0 top-0 h-[6px] opacity-60" aria-hidden />
-        <div className="container">
-          <div className="mx-auto max-w-4xl">
-            <p className="overline text-butter">§ A.08, Take part</p>
-            <h2 className="font-display mt-6 text-display-1 font-extrabold leading-[0.92]">
-              If you have ever shown up to something like this, you understand it immediately.
-            </h2>
-            <p className="handwritten marker-bleed-butter mt-6 inline-block -rotate-1 text-butter text-lg md:text-xl">
-              ↘ see you on May 22
-            </p>
-            <p className="font-serif mt-6 text-xl leading-relaxed text-cream/85 md:text-2xl">
-              If you haven't, May 22 is a good place to start.
-            </p>
+      {/* Soft landing — documentary credits, poster composition */}
+      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-tomato py-28 text-cream md:py-36">
+        {/* Faint checker pattern hidden in background */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.08] mix-blend-multiply"
+          style={{
+            backgroundImage:
+              "linear-gradient(45deg, hsl(var(--ink)) 25%, transparent 25%, transparent 75%, hsl(var(--ink)) 75%), linear-gradient(45deg, hsl(var(--ink)) 25%, transparent 25%, transparent 75%, hsl(var(--ink)) 75%)",
+            backgroundSize: "44px 44px",
+            backgroundPosition: "0 0, 22px 22px",
+          }}
+        />
 
-            <div className="mt-12 flex flex-col gap-3 sm:flex-row md:mt-14">
+        {/* Top + bottom checker tapes */}
+        <div className="checker-tape-sm absolute inset-x-0 top-0 h-[6px] opacity-70" aria-hidden />
+        <div className="checker-tape-sm absolute inset-x-0 bottom-0 h-[6px] opacity-70" aria-hidden />
+
+        {/* Drifting city names — credits roll */}
+        <div className="pointer-events-none absolute inset-0 select-none" aria-hidden>
+          {[
+            { c: "Jakarta",      t: "10%", l: "8%",  r: "-6deg",  s: 1 },
+            { c: "São Paulo",    t: "16%", l: "76%", r: "5deg",   s: 1.1 },
+            { c: "Brooklyn",     t: "28%", l: "38%", r: "-2deg",  s: 1 },
+            { c: "Nairobi",      t: "36%", l: "84%", r: "4deg",   s: 0.95 },
+            { c: "Berlin",       t: "44%", l: "12%", r: "-5deg",  s: 1.05 },
+            { c: "Bangkok",      t: "56%", l: "64%", r: "3deg",   s: 1 },
+            { c: "Mexico City",  t: "64%", l: "20%", r: "-3deg",  s: 1 },
+            { c: "Lisbon",       t: "72%", l: "82%", r: "5deg",   s: 0.9 },
+            { c: "Istanbul",     t: "82%", l: "30%", r: "-4deg",  s: 1.05 },
+            { c: "Cape Town",    t: "90%", l: "70%", r: "2deg",   s: 0.95 },
+          ].map((x) => (
+            <span
+              key={x.c}
+              className="font-display absolute text-cream/[0.12] font-extrabold"
+              style={{
+                top: x.t,
+                left: x.l,
+                transform: `translate(-50%, -50%) rotate(${x.r}) scale(${x.s})`,
+                fontSize: "clamp(0.95rem, 2vw, 1.5rem)",
+                letterSpacing: "-0.01em",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {x.c}
+            </span>
+          ))}
+        </div>
+
+        <div className="container relative">
+          <div className="mx-auto max-w-4xl">
+            <div className="flex items-baseline gap-4">
+              <p className="overline text-butter">§ A.08, Take part</p>
+              <span className="handwritten -rotate-2 text-butter/90 text-sm md:text-base">
+                ↘ end of file
+              </span>
+            </div>
+
+            <h2 className="font-display mt-6 text-display-1 font-extrabold leading-[0.88] tracking-[-0.02em]">
+              If you have ever shown up to something like this, you{" "}
+              <span className="underline-scribble text-cream">understand</span>{" "}
+              it immediately.
+            </h2>
+
+            <div className="mt-10 grid grid-cols-12 gap-x-6 gap-y-8">
+              <div className="col-span-12 md:col-span-8">
+                <p className="font-serif text-xl leading-relaxed text-cream/90 md:text-2xl">
+                  If you haven't, May 22 is a good place to start.
+                </p>
+                <p className="handwritten marker-bleed-butter mt-6 inline-block -rotate-[1.5deg] text-butter text-lg md:text-xl">
+                  see you on May 22 ↗
+                </p>
+              </div>
+
+              {/* Stamp block — archival closing mark */}
+              <div className="col-span-12 flex flex-col items-start gap-3 md:col-span-4 md:items-end md:text-right">
+                <span className="stamp" style={{ borderColor: "hsl(var(--butter))", color: "hsl(var(--butter))" }}>
+                  Vol. 04 · ongoing
+                </span>
+                <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/55">
+                  PizzaDAO field archive
+                </span>
+                <span className="handwritten -rotate-1 text-cream/80 text-sm">
+                  thanks for reading.
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-14 flex flex-col gap-3 sm:flex-row md:mt-16">
               <a
                 href="/community"
-                className="ui inline-flex items-center justify-center bg-ink px-7 py-4 text-xs font-semibold tracking-[0.18em] text-cream hover:bg-cream hover:text-ink"
+                className="ui inline-flex items-center justify-center bg-ink px-7 py-4 text-xs font-semibold tracking-[0.18em] text-cream transition-colors hover:bg-cream hover:text-ink"
               >
                 Find a city →
               </a>
               <a
                 href="/join"
-                className="ui inline-flex items-center justify-center border border-cream/50 px-7 py-4 text-xs font-semibold tracking-[0.18em] text-cream hover:border-butter hover:text-butter"
+                className="ui inline-flex items-center justify-center border border-cream/50 px-7 py-4 text-xs font-semibold tracking-[0.18em] text-cream transition-colors hover:border-butter hover:text-butter"
               >
                 Host an event
               </a>
+            </div>
+
+            {/* Hand-drawn closing rule */}
+            <div className="mt-14 flex items-center gap-4">
+              <span className="h-px flex-1 bg-cream/25" />
+              <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/55">
+                fin.
+              </span>
+              <span className="h-px flex-1 bg-cream/25" />
             </div>
           </div>
         </div>
