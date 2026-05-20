@@ -1826,7 +1826,7 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                       return (
                         <li
                           key={`${d.d}-${idx}`}
-                          className="group flex items-start gap-4 rounded-xl bg-butter px-4 py-3 shadow-[0_8px_24px_-12px_hsl(var(--butter)/0.9)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-12px_hsl(var(--ink)/0.25)]"
+                          className={`group flex items-start gap-4 rounded-xl bg-butter px-4 py-3 shadow-[0_8px_24px_-12px_hsl(var(--butter)/0.9)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-12px_hsl(var(--ink)/0.25)] ${idx === 0 ? "live-pulse ring-1 ring-tomato/40" : ""}`}
                         >
                           <div className="ui w-10 shrink-0 pt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
                             {d.d}
