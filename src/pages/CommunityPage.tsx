@@ -745,8 +745,32 @@ const CommunityPage = () => {
         </div>
       </div>
 
+      {/* RHYTHM BREAK — oversized handwritten interruption, intentionally misbehaving */}
+      <div className="relative overflow-hidden bg-cream py-14 md:py-20">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.5]"
+          style={{
+            background:
+              "radial-gradient(70% 80% at 50% 50%, hsl(var(--butter)/0.55), transparent 70%)",
+          }}
+        />
+        <div className="relative">
+          <p className="ui mb-3 text-center text-[10px] font-semibold uppercase tracking-[0.32em] text-tomato">
+            § Interlude
+          </p>
+          <p className="handwritten px-2 text-center text-tomato leading-[0.78] -rotate-[2deg] text-[clamp(3.5rem,16vw,14rem)] [text-shadow:0_2px_0_hsl(var(--cream)),0_0_40px_hsl(var(--butter)/0.6)]">
+            but enough talk —
+          </p>
+          <p className="font-display mt-4 text-center text-[clamp(1.25rem,2.4vw,1.75rem)] font-extrabold leading-tight text-ink/85">
+            here's what members actually built.
+          </p>
+        </div>
+      </div>
+
       {/* THE WORKSHOP, builder-focused outputs */}
       <section className="relative bg-ink py-16 text-cream md:py-24">
+
         <div className="container">
           <div className="border-t-2 border-cream/25 pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
