@@ -344,7 +344,7 @@ const CommunityPage = () => {
                   time and energy you have this week. Most members end up doing
                   more than one.
                 </p>
-                <p className="handwritten mt-4 text-tomato text-[15px] md:text-base">
+                <p className="handwritten marker-bleed mt-4 text-tomato text-[15px] md:text-base">
                   ↘ pick a track, start contributing
                 </p>
               </div>
