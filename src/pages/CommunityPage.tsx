@@ -1258,7 +1258,7 @@ const CommunityPage = () => {
                 <div>
                   <p className="overline text-butter">The ritual</p>
                   <p className="font-display mt-5 text-[clamp(2rem,3.4vw,2.75rem)] font-extrabold leading-[0.95]">
-                    Earn your <span className="handwritten relative inline-block text-butter text-[1.1em] leading-[0.75] translate-y-[0.08em] -rotate-[4deg] align-baseline">slice.</span>
+                    Earn your <span className="handwritten marker-bleed-butter relative inline-block text-butter text-[1.1em] leading-[0.75] translate-y-[0.08em] -rotate-[4deg] align-baseline">slice.</span>
                   </p>
                   <p className="mt-4 text-[15px] leading-relaxed text-cream/75 md:text-base">
                     Don Pepperoni. Sister Marinara. Capo Crust. Generate the
