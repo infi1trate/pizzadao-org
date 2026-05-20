@@ -24,19 +24,35 @@ const PageHero = ({
   note,
   tapedImage,
 }: Props) => {
-  // Wrap one word in the title with the marker underline, if specified.
-  const renderTitle = () => {
-    if (!accentWord) return title;
-    const idx = title.toLowerCase().lastIndexOf(accentWord.toLowerCase());
-    if (idx === -1) return title;
-    const before = title.slice(0, idx);
-    const match = title.slice(idx, idx + accentWord.length);
-    const after = title.slice(idx + accentWord.length);
+  // Wrap one word in a string with the marker underline, if it matches accentWord.
+  const renderWithAccent = (text: string) => {
+    if (!accentWord) return text;
+    const idx = text.toLowerCase().lastIndexOf(accentWord.toLowerCase());
+    if (idx === -1) return text;
+    const before = text.slice(0, idx);
+    const match = text.slice(idx, idx + accentWord.length);
+    const after = text.slice(idx + accentWord.length);
     return (
       <>
         {before}
         <span className="underline-scribble text-ink">{match}</span>
         {after}
+      </>
+    );
+  };
+
+  // Stack italic across two lines when it contains the accent word — drops
+  // the trailing word onto its own line for editorial emphasis.
+  const renderItalic = (text: string) => {
+    const parts = text.trim().split(/\s+/);
+    if (parts.length < 2) return <>{renderWithAccent(text)}</>;
+    const last = parts[parts.length - 1];
+    const head = parts.slice(0, -1).join(" ");
+    return (
+      <>
+        {renderWithAccent(head)}
+        <br />
+        <span className="block pl-[0.06em]">{renderWithAccent(last)}</span>
       </>
     );
   };
