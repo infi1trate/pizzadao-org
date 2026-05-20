@@ -300,7 +300,7 @@ const About = () => {
           {/* Section header */}
           <div className="flex items-center justify-between border-b border-cream/20 pb-6">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/45">
-              § A.05, Proof of work
+              § A.04, Proof of work
             </span>
             <span className="handwritten -rotate-2 text-butter text-sm">
               still going
