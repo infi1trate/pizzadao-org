@@ -131,7 +131,7 @@ const PartnersPage = () => {
                     <input
                       type="text"
                       required
-                      className="ui mt-2 w-full border border-cream/30 bg-transparent px-4 py-3 text-sm text-cream placeholder:text-cream/35 focus:border-butter focus:outline-none"
+                      className="ui mt-3 w-full border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-sm text-cream placeholder:text-cream/30 transition-colors focus:border-butter focus:outline-none"
                       placeholder="Company name"
                     />
                   </div>
@@ -142,7 +142,7 @@ const PartnersPage = () => {
                     <input
                       type="text"
                       required
-                      className="ui mt-2 w-full border border-cream/30 bg-transparent px-4 py-3 text-sm text-cream placeholder:text-cream/35 focus:border-butter focus:outline-none"
+                      className="ui mt-3 w-full border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-sm text-cream placeholder:text-cream/30 transition-colors focus:border-butter focus:outline-none"
                       placeholder="Full name"
                     />
                   </div>
@@ -153,7 +153,7 @@ const PartnersPage = () => {
                     <input
                       type="email"
                       required
-                      className="ui mt-2 w-full border border-cream/30 bg-transparent px-4 py-3 text-sm text-cream placeholder:text-cream/35 focus:border-butter focus:outline-none"
+                      className="ui mt-3 w-full border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-sm text-cream placeholder:text-cream/30 transition-colors focus:border-butter focus:outline-none"
                       placeholder="you@company.com"
                     />
                   </div>
@@ -164,7 +164,7 @@ const PartnersPage = () => {
                     <textarea
                       required
                       rows={4}
-                      className="ui mt-2 w-full border border-cream/30 bg-transparent px-4 py-3 text-sm text-cream placeholder:text-cream/35 focus:border-butter focus:outline-none"
+                      className="ui mt-3 w-full border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-sm text-cream placeholder:text-cream/30 transition-colors focus:border-butter focus:outline-none"
                       placeholder="What you're trying to achieve, where, by when."
                     />
                   </div>
