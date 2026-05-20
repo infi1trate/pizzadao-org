@@ -78,15 +78,17 @@ const PageHero = ({
               </p>
 
               {tapedImage && (
-                <figure className="taped photo-hover mt-10 hidden w-[68%] -rotate-2 bg-cream-warm p-2 pb-3 shadow-[0_18px_40px_-22px_hsl(0_0%_0%/0.35)] md:ml-auto md:block">
-                  <img
-                    src={tapedImage.src}
-                    alt={tapedImage.alt}
-                    loading="eager"
-                    className="grain block aspect-[4/5] w-full object-cover"
-                  />
+                <figure className="taped mt-10 hidden w-[72%] -rotate-[2.2deg] bg-cream-warm p-3 pb-4 shadow-[0_28px_56px_-26px_hsl(0_0%_0%/0.4),0_6px_18px_-8px_hsl(0_0%_0%/0.18)] transition-transform duration-700 hover:rotate-0 md:ml-auto md:block">
+                  <div className="paper-soft">
+                    <img
+                      src={tapedImage.src}
+                      alt={tapedImage.alt}
+                      loading="eager"
+                      className="grain photo-hover block aspect-[4/5] w-full object-cover"
+                    />
+                  </div>
                   {tapedImage.caption && (
-                    <figcaption className="ui mt-2 px-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/55">
+                    <figcaption className="handwritten mt-3 px-1 text-ink/85 text-[0.9rem] leading-tight">
                       {tapedImage.caption}
                     </figcaption>
                   )}
