@@ -49,7 +49,7 @@ const BrandSystemPage = () => {
       <SectionNav />
 
       {/* § B, Hero */}
-      <section id="overview" className="bg-cream pt-28 md:pt-36">
+      <section id="overview" className="paper-soft paper-drift relative overflow-hidden bg-cream pt-28 md:pt-36">
         <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-10">
@@ -103,7 +103,7 @@ const BrandSystemPage = () => {
       </section>
 
       {/* § B, Quick start */}
-      <section aria-labelledby="quick-start" className="bg-cream pt-12 md:pt-16">
+      <section aria-labelledby="quick-start" className="print-noise relative overflow-hidden bg-cream pt-12 md:pt-16">
         <div className="container">
           <div className="rounded-3xl bg-ink p-6 text-cream shadow-sm md:p-8">
             <div className="flex flex-wrap items-end justify-between gap-4">
@@ -151,7 +151,7 @@ const BrandSystemPage = () => {
 
 
       {/* § B.0, Principles */}
-      <section id="principles" className="bg-[hsl(var(--ink)/0.035)] py-28 md:py-44">
+      <section id="principles" className="halftone-soft relative overflow-hidden bg-[hsl(var(--ink)/0.035)] py-28 md:py-44">
         <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
@@ -188,7 +188,7 @@ const BrandSystemPage = () => {
 
 
       {/* § B.01, Logos */}
-      <section id="logos" className="bg-cream py-28 md:py-44">
+      <section id="logos" className="paper-soft paper-drift relative overflow-hidden bg-cream py-28 md:py-44">
         <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             {/* Masthead */}
@@ -372,7 +372,7 @@ const BrandSystemPage = () => {
       </section>
 
       {/* § B.01, Index of the kit */}
-      <section id="downloads" className="bg-[hsl(var(--ink)/0.035)] py-16 md:py-24">
+      <section id="downloads" className="print-noise relative overflow-hidden bg-[hsl(var(--ink)/0.035)] py-16 md:py-24">
         <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
@@ -410,7 +410,7 @@ const BrandSystemPage = () => {
       </section>
 
       {/* § B.02, Typography */}
-      <section id="typography" className="bg-cream py-28 md:py-44">
+      <section id="typography" className="halftone-soft relative overflow-hidden bg-cream py-28 md:py-44">
         <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             {/* Masthead */}
@@ -618,7 +618,7 @@ const BrandSystemPage = () => {
       </section>
 
       {/* § B.03, Color */}
-      <section id="color" className="bg-[hsl(var(--ink)/0.035)] py-28 md:py-44">
+      <section id="color" className="paper-soft paper-drift relative overflow-hidden bg-[hsl(var(--ink)/0.035)] py-28 md:py-44">
         <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             {/* Masthead */}
@@ -977,7 +977,7 @@ const BrandSystemPage = () => {
 
 
       {/* § B.07, Build with PizzaDAO programmatically */}
-      <section id="brand-md" className="bg-cream py-28 md:py-44">
+      <section id="brand-md" className="paper-soft paper-drift relative overflow-hidden bg-cream py-28 md:py-44">
         <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
@@ -1105,7 +1105,7 @@ dont:  [all caps, corporate jargon]`}
       </section>
 
       {/* § B.08, In the wild */}
-      <section id="applications" className="bg-[hsl(var(--ink)/0.035)] py-28 md:py-44">
+      <section id="applications" className="halftone-soft relative overflow-hidden bg-[hsl(var(--ink)/0.035)] py-28 md:py-44">
         <div className="container">
           <div className="border-t-2 border-ink pt-6 md:pt-8">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
@@ -1208,7 +1208,7 @@ dont:  [all caps, corporate jargon]`}
       </section>
 
       {/* § B.08b, Motion */}
-      <section id="motion" className="bg-ink py-24 text-cream md:py-36">
+      <section id="motion" className="paper-soft paper-soft-dark paper-drift ink-spread relative overflow-hidden bg-ink py-24 text-cream md:py-36">
         <div className="container">
           <div className="border-t-2 border-cream pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
@@ -1265,7 +1265,7 @@ dont:  [all caps, corporate jargon]`}
       </section>
 
       {/* § B.08c, Party Flyer Guidelines */}
-      <section id="flyers" className="bg-cream py-28 md:py-44">
+      <section id="flyers" className="print-noise relative overflow-hidden bg-cream py-28 md:py-44">
         <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
@@ -1352,7 +1352,7 @@ dont:  [all caps, corporate jargon]`}
       </section>
 
       {/* § B.10, Molto Benny */}
-      <section id="molto-benny" className="bg-butter py-28 md:py-44">
+      <section id="molto-benny" className="halftone-soft relative overflow-hidden bg-butter py-28 md:py-44">
         <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             {/* Masthead */}
@@ -1587,7 +1587,7 @@ dont:  [all caps, corporate jargon]`}
       </section>
 
       {/* § B.11, How we sound */}
-      <section id="voice" className="bg-[hsl(var(--ink)/0.035)] py-28 md:py-44">
+      <section id="voice" className="paper-soft paper-drift relative overflow-hidden bg-[hsl(var(--ink)/0.035)] py-28 md:py-44">
         <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
