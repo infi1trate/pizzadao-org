@@ -7,9 +7,9 @@ import timeline2010 from "@/assets/timeline-2010.jpg";
 
 
 const ROLES = [
-  { name: "Chapter leads", note: "Organize their own city, venue, pizza, people, vibe." },
-  { name: "Contributors", note: "Step in wherever they see a gap, design, ops, code, comms." },
-  { name: "Participants", note: "Show up, share a slice, bring a friend, take part." },
+  { name: "Chapter leads", note: "Organize local events and shape the city experience." },
+  { name: "Contributors", note: "Help with design, logistics, partnerships, content, and operations." },
+  { name: "Participants", note: "Show up, bring friends, share pizza, and keep the ritual alive." },
 ];
 
 const PRESS: Array<{ outlet: string; line: string; href: string; kind?: "video" }> = [
