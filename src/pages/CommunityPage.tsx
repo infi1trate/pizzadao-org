@@ -775,28 +775,29 @@ const CommunityPage = () => {
         </div>
       </div>
 
-      {/* RHYTHM BREAK — oversized handwritten interruption, intentionally misbehaving, overlaps next slab */}
-      <div className="relative z-20 -mb-16 overflow-visible bg-cream py-16 md:-mb-28 md:py-24">
+      {/* RHYTHM BREAK — cinematic interruption, softened, intentionally overlapping next slab */}
+      <div className="relative z-20 -mb-10 overflow-visible bg-cream py-20 md:-mb-16 md:py-28">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.55]"
+          className="pointer-events-none absolute inset-0 opacity-[0.4]"
           style={{
             background:
-              "radial-gradient(70% 80% at 50% 50%, hsl(var(--butter)/0.6), transparent 70%)",
+              "radial-gradient(60% 70% at 50% 50%, hsl(var(--butter)/0.45), transparent 72%)",
           }}
         />
-        <div className="relative">
-          <p className="ui mb-3 text-center text-[10px] font-semibold uppercase tracking-[0.32em] text-tomato">
+        <div className="relative mx-auto max-w-[88%] md:max-w-[78%]">
+          <p className="ui mb-4 text-center text-[10px] font-semibold uppercase tracking-[0.32em] text-tomato/80">
             § Interlude
           </p>
-          <p className="handwritten marker-bleed px-2 text-center text-tomato leading-[0.72] -rotate-[3deg] text-[clamp(4.5rem,22vw,20rem)] [text-shadow:0_2px_0_hsl(var(--cream)),0_0_60px_hsl(var(--butter)/0.7),0_0_0.6px_hsl(var(--tomato))]">
+          <p className="handwritten px-2 text-center text-tomato/85 leading-[0.78] -rotate-[2deg] text-[clamp(3.5rem,18.5vw,16rem)] [text-shadow:0_1px_0_hsl(var(--cream)),0_0_40px_hsl(var(--butter)/0.45)]">
             but enough talk —
           </p>
-          <p className="font-display mt-6 text-center text-[clamp(1.25rem,2.4vw,1.75rem)] font-extrabold leading-tight text-ink/85">
+          <p className="font-display mt-8 text-center text-[clamp(1.1rem,2.2vw,1.6rem)] font-extrabold leading-tight text-ink/80">
             here's what members actually built.
           </p>
         </div>
       </div>
+
 
       {/* THE WORKSHOP, builder-focused outputs */}
       <section className="relative bg-ink pb-16 pt-24 text-cream md:pb-24 md:pt-40">
