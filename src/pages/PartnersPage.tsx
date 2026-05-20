@@ -80,7 +80,12 @@ const PartnersPage = () => {
         <div className="container">
           <div className="grid grid-cols-12 gap-x-6 gap-y-10">
             <div className="col-span-12 md:col-span-5">
-              <p className="overline text-butter">Inquiry</p>
+              <div className="flex items-baseline gap-3">
+                <p className="overline text-butter">Inquiry</p>
+                <span className="handwritten -rotate-[1.5deg] text-butter/90 text-[0.78rem] md:text-sm leading-none">
+                  community first
+                </span>
+              </div>
               <h2 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92]">
                 Tell us what
                 <br />
@@ -92,7 +97,10 @@ const PartnersPage = () => {
                 We come back with a brief, a city list, and a number, usually
                 within a week. No deck required to start the conversation.
               </p>
-              <p className="ui mt-6 text-[10px] uppercase tracking-[0.18em] text-cream/50">
+              <p className="handwritten mt-5 -rotate-1 text-tomato text-sm md:text-base">
+                ↘ real world, real people
+              </p>
+              <p className="ui mt-5 text-[10px] uppercase tracking-[0.18em] text-cream/50">
                 Or email partnerships@pizzadao.org directly
               </p>
             </div>
