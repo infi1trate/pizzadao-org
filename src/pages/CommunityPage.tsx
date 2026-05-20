@@ -259,7 +259,7 @@ const CommunityPage = () => {
                 </p>
               </div>
 
-              <ul className="mt-10 space-y-4 border-t border:cream/20 pt-8">
+              <ul className="mt-10 space-y-4 border-t border-cream/20 pt-8">
                 {[
                   "Anyone can propose an experiment.",
                   "Anyone can open a chapter in their city.",
