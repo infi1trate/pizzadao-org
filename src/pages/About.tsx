@@ -606,9 +606,9 @@ const About = () => {
                 On the record.
               </h2>
             </div>
-            <p className="handwritten -rotate-1 text-lg text-tomato">
-              press archive
-            </p>
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/40">
+              Est. 2021 · Selected
+            </span>
           </div>
 
           {/* Intro */}
