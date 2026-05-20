@@ -91,12 +91,25 @@ const PartnersPage = () => {
 
 
 
-      {/* Inquiry form */}
-      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-28 text-cream md:py-36">
-        <div className="absolute inset-x-0 top-0 h-px bg-cream/15" aria-hidden />
+      {/* Inquiry — warm close, hospitality cues */}
+      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-32 text-cream md:py-44">
+        {/* Warm hospitality wash — soft ember toward the upper-left */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-40 -top-40 h-[720px] w-[720px] rounded-full opacity-[0.16] blur-[140px]"
+          style={{ background: "hsl(var(--tomato))" }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-32 bottom-0 h-[540px] w-[540px] rounded-full opacity-[0.10] blur-[140px]"
+          style={{ background: "hsl(var(--butter))" }}
+        />
+        {/* Understated tablecloth detail — a single short tape, not a band */}
+        <div className="checker-tape-sm absolute left-0 top-0 h-[5px] w-32 opacity-50 md:w-48" aria-hidden />
         <div className="absolute inset-x-0 bottom-0 h-px bg-cream/10" aria-hidden />
+
         <div className="container relative">
-          <div className="grid grid-cols-12 gap-x-8 gap-y-14 md:gap-x-16">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-16 md:gap-x-20">
             <div className="col-span-12 md:col-span-5">
               <p className="overline text-butter">§ B.02 — Inquiry</p>
               <h2 className="font-display mt-7 text-display-2 font-extrabold leading-[0.88] tracking-[-0.025em]">
@@ -112,11 +125,11 @@ const PartnersPage = () => {
                   to do.
                 </span>
               </h2>
-              <p className="font-serif mt-10 max-w-[34ch] text-[15px] leading-[1.65] text-cream/65 md:text-base">
+              <p className="font-serif mt-10 max-w-[34ch] text-[15.5px] leading-[1.65] text-cream/70 md:text-base">
                 We come back with a brief, a city list, and a number, usually
                 within a week. No deck required to start the conversation.
               </p>
-              <p className="ui mt-8 text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/40">
+              <p className="ui mt-10 text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/40">
                 Or email partnerships@pizzadao.org directly
               </p>
             </div>
@@ -126,14 +139,14 @@ const PartnersPage = () => {
                 e.preventDefault();
                 setSubmitted(true);
               }}
-              className="col-span-12 grid grid-cols-2 gap-5 md:col-span-7 md:pl-4"
+              className="col-span-12 grid grid-cols-2 gap-x-6 gap-y-8 md:col-span-7 md:pl-6"
             >
               {submitted ? (
                 <div className="col-span-2">
                   <div className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-butter">
                     ● Received
                   </div>
-                  <p className="font-display mt-3 text-2xl font-extrabold leading-tight md:text-3xl">
+                  <p className="font-display mt-4 text-2xl font-extrabold leading-tight md:text-3xl">
                     Thanks. A partnership lead will be in touch within 5 business days.
                   </p>
                 </div>
@@ -183,12 +196,16 @@ const PartnersPage = () => {
                       placeholder="What you're trying to achieve, where, by when."
                     />
                   </div>
-                  <div className="col-span-2">
+                  <div className="relative col-span-2 mt-4 flex flex-col-reverse items-start gap-5 md:flex-row md:items-center md:justify-between md:gap-8">
+                    <p className="handwritten -rotate-[1.5deg] text-butter text-sm md:text-base">
+                      ↳ let's cook
+                    </p>
                     <button
                       type="submit"
-                      className="ui w-full bg-tomato px-5 py-4 text-xs font-semibold tracking-[0.18em] text-cream transition-colors hover:bg-butter hover:text-ink"
+                      className="group relative inline-flex items-center justify-center gap-3 bg-tomato px-8 py-5 text-sm font-semibold tracking-[0.04em] text-cream shadow-[0_18px_44px_-22px_hsl(var(--tomato)/0.7),0_4px_12px_-6px_hsl(0_0%_0%/0.4)] transition-all duration-500 ease-out hover:-translate-y-[2px] hover:bg-butter hover:text-ink hover:shadow-[0_28px_60px_-22px_hsl(var(--butter)/0.55),0_6px_16px_-6px_hsl(0_0%_0%/0.5)]"
                     >
-                      Request a partnership brief →
+                      <span>Request a partnership brief</span>
+                      <span aria-hidden className="transition-transform duration-500 ease-out group-hover:translate-x-1">→</span>
                     </button>
                   </div>
                 </>
@@ -197,6 +214,7 @@ const PartnersPage = () => {
           </div>
         </div>
       </section>
+
 
       <Footer />
     </main>
