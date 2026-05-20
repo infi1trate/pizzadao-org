@@ -111,18 +111,24 @@ const About = () => {
               </div>
             </div>
             <div className="col-span-12 md:col-span-5 md:pl-8 md:pt-20">
-              <figure className="taped rotate-[-1.2deg] transition-transform duration-700 hover:rotate-0">
-                <img
-                  src={founding}
-                  alt="Late-night gathering of friends huddled around laptops and pizza"
-                  loading="lazy"
-                  width={1080}
-                  height={1350}
-                  className="grain photo-hover block aspect-[4/5] w-full object-cover"
-                />
-                <figcaption className="ui mt-3 flex items-baseline justify-between gap-3 text-[10px] uppercase tracking-[0.18em] text-ink/55">
-                  <span>Fig. A.1, The founding, 2021</span>
-                  <span className="margin-note normal-case tracking-normal">↘ day one</span>
+              <figure className="taped relative -rotate-[1.4deg] bg-cream-warm p-3 pb-5 shadow-[0_28px_60px_-30px_hsl(0_0%_0%/0.4),0_6px_18px_-8px_hsl(0_0%_0%/0.18)] transition-transform duration-700 hover:rotate-0 md:-ml-6">
+                <div className="paper-soft">
+                  <img
+                    src={founding}
+                    alt="Late-night gathering of friends huddled around laptops and pizza"
+                    loading="lazy"
+                    width={1080}
+                    height={1350}
+                    className="grain photo-hover block aspect-[4/5] w-full object-cover"
+                  />
+                </div>
+                <figcaption className="mt-4 flex items-baseline justify-between gap-3 px-1">
+                  <span className="handwritten text-ink/85 text-[0.95rem] leading-tight">
+                    late night planning call
+                  </span>
+                  <span className="ui text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/45">
+                    2021
+                  </span>
                 </figcaption>
               </figure>
             </div>
