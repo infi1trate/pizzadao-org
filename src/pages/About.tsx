@@ -3,6 +3,7 @@ import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
 import party from "@/assets/timeline-party.jpg";
 import founding from "@/assets/timeline-founding.jpg";
+import timeline2010 from "@/assets/timeline-2010.jpg";
 
 
 const ROLES = [
