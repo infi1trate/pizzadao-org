@@ -1,11 +1,14 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { track } from "@/lib/analytics/posthog";
+import { EVT } from "@/lib/analytics/events";
 
 const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+    track(EVT.NOT_FOUND, { from_path: location.pathname, referrer: document.referrer });
   }, [location.pathname]);
 
   return (

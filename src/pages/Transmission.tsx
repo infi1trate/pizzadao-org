@@ -2,6 +2,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import logoDark from "@/assets/logo-dark.svg";
+import { track } from "@/lib/analytics/posthog";
+import { EVT } from "@/lib/analytics/events";
+import { useTrackOutbound } from "@/lib/analytics/useTrackOutbound";
 
 /**
  * /transmission — standalone editorial placeholder.
