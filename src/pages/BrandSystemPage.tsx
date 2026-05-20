@@ -54,7 +54,7 @@ const BrandSystemPage = () => {
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-10">
               <div className="col-span-12 md:col-span-8">
-                <p className="overline text-tomato">§ B, Brand System</p>
+                <span className="flex items-baseline gap-3"><p className="overline text-tomato">§ B, Brand System</p><span className="handwritten -rotate-[1.5deg] text-tomato/85 text-sm md:text-base leading-none">open source energy</span></span>
                 <h1 className="font-display mt-5 text-mega font-extrabold leading-[0.86]">
                   Build with
                   <br />
@@ -156,7 +156,7 @@ const BrandSystemPage = () => {
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
-                <p className="overline text-tomato">§ B.0, Principles</p>
+                <span className="flex items-baseline gap-3"><p className="overline text-tomato">§ B.0, Principles</p><span className="handwritten rotate-[1.5deg] text-tomato/85 text-sm md:text-base leading-none">community first</span></span>
                 <h2 className="font-display mt-5 text-5xl font-extrabold leading-[0.88] md:text-7xl">
                   How the brand behaves.
                 </h2>
@@ -194,7 +194,7 @@ const BrandSystemPage = () => {
             {/* Masthead */}
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
-                <p className="overline text-tomato">§ B.01, Logos</p>
+                <span className="flex items-baseline gap-3"><p className="overline text-tomato">§ B.01, Logos</p><span className="handwritten -rotate-[1.5deg] text-tomato/85 text-sm md:text-base leading-none">remix encouraged</span></span>
                 <h2 className="font-display mt-5 text-5xl font-extrabold leading-[0.88] md:text-7xl">
                   The marks, on the right surface.
                 </h2>
@@ -416,7 +416,7 @@ const BrandSystemPage = () => {
             {/* Masthead */}
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
-                <p className="overline text-tomato">§ B.02, Typography</p>
+                <span className="flex items-baseline gap-3"><p className="overline text-tomato">§ B.02, Typography</p><span className="handwritten rotate-[1.5deg] text-tomato/85 text-sm md:text-base leading-none">set it loud, set it kind</span></span>
                 <h2 className="font-display mt-5 text-5xl font-extrabold leading-[0.88] md:text-7xl">
                   A voice you can set in type.
                 </h2>
@@ -624,7 +624,7 @@ const BrandSystemPage = () => {
             {/* Masthead */}
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
-                <p className="overline text-tomato">§ B.03, Color</p>
+                <span className="flex items-baseline gap-3"><p className="overline text-tomato">§ B.03, Color</p><span className="handwritten -rotate-[1.5deg] text-tomato/85 text-sm md:text-base leading-none">hot & ready</span></span>
                 <h2 className="font-display mt-5 text-5xl font-extrabold leading-[0.88] md:text-7xl">
                   Four ingredients lead. The rest season.
                 </h2>
@@ -982,7 +982,7 @@ const BrandSystemPage = () => {
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-8">
-                <p className="overline text-tomato">§ B.07, For builders</p>
+                <span className="flex items-baseline gap-3"><p className="overline text-tomato">§ B.07, For builders</p><span className="handwritten rotate-[1.5deg] text-tomato/85 text-sm md:text-base leading-none">fork it, ship it</span></span>
                 <h2 className="font-display mt-5 text-5xl font-extrabold leading-[0.88] md:text-7xl">
                   Build with PizzaDAO,
                   <br />
@@ -1110,7 +1110,7 @@ dont:  [all caps, corporate jargon]`}
           <div className="border-t-2 border-ink pt-6 md:pt-8">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
-                <p className="overline text-tomato">§ B.08, In the wild</p>
+                <span className="flex items-baseline gap-3"><p className="overline text-tomato">§ B.08, In the wild</p><span className="handwritten -rotate-[1.5deg] text-tomato/85 text-sm md:text-base leading-none">out there, on purpose</span></span>
                 <h2 className="font-display mt-5 text-5xl font-extrabold leading-[0.88] md:text-7xl">
                   Out there. On walls.<br />
                   <span className="text-ink/60">In hands. On phones.</span>
@@ -1213,7 +1213,7 @@ dont:  [all caps, corporate jargon]`}
           <div className="border-t-2 border-cream pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
-                <p className="overline text-butter">§ B.08b, Motion</p>
+                <span className="flex items-baseline gap-3"><p className="overline text-butter">§ B.08b, Motion</p><span className="handwritten rotate-[1.5deg] text-butter/85 text-sm md:text-base leading-none">easy on the eyes</span></span>
                 <h2 className="font-display mt-5 text-5xl font-extrabold leading-[0.88] md:text-7xl">
                   How the brand moves.
                 </h2>
@@ -1270,7 +1270,7 @@ dont:  [all caps, corporate jargon]`}
           <div className="border-t-2 border-ink pt-8 md:pt-10">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
-                <p className="overline text-tomato">§ B.08c, Party flyers</p>
+                <span className="flex items-baseline gap-3"><p className="overline text-tomato">§ B.08c, Party flyers</p><span className="handwritten -rotate-[1.5deg] text-tomato/85 text-sm md:text-base leading-none">tape one up</span></span>
                 <h2 className="font-display mt-5 text-5xl font-extrabold leading-[0.88] md:text-7xl">
                   Make a flyer.
                 </h2>
@@ -1358,7 +1358,7 @@ dont:  [all caps, corporate jargon]`}
             {/* Masthead */}
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-8">
-                <p className="overline text-tomato">§ B.10, Mascot</p>
+                <span className="flex items-baseline gap-3"><p className="overline text-tomato">§ B.10, Mascot</p><span className="handwritten rotate-[1.5deg] text-tomato/85 text-sm md:text-base leading-none">say hi to benny</span></span>
                 <h2 className="font-display mt-5 text-5xl font-extrabold leading-[0.88] md:text-7xl">
                   Meet Molto Benny.
                 </h2>
