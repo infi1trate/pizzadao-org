@@ -782,162 +782,195 @@ const CommunityPage = () => {
 
             return (
               <>
-                {/* FEATURED PROJECT */}
-                <article className="group relative mt-10 overflow-hidden rounded-3xl bg-cream text-ink shadow-[0_40px_80px_-30px_hsl(var(--tomato)/0.55)] md:mt-14">
-                  <div className="grid grid-cols-1 md:grid-cols-12">
-                    <div className="relative md:col-span-7">
-                      <div className="relative aspect-[16/10] overflow-hidden bg-ink md:aspect-auto md:h-full md:min-h-[420px]">
-                        {featured.img && (
-                          <img
-                            src={featured.img}
-                            alt={featured.name}
-                            loading="lazy"
-                            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                          />
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-ink/55 via-ink/0 to-ink/0" />
-                        <div className="absolute left-5 top-5 flex items-center gap-2">
-                          <span className={`ui rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] ${tagTone[featured.tag]}`}>
-                            {featured.tag}
-                          </span>
-                          <span className="ui rounded-full bg-ink/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-cream backdrop-blur-sm">
-                            Featured project
+                {/* FEATURED PROJECT — infrastructure spotlight */}
+                <article className="group relative mt-10 md:mt-14">
+                  {/* ambient warmth behind the card */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute -inset-x-6 -inset-y-8 -z-0 opacity-60 blur-3xl md:-inset-x-20 md:-inset-y-16"
+                    style={{
+                      background:
+                        "radial-gradient(50% 60% at 30% 50%, hsl(var(--tomato)/0.55), transparent 70%), radial-gradient(40% 50% at 80% 60%, hsl(var(--butter)/0.45), transparent 75%)",
+                    }}
+                  />
+                  <div className="relative overflow-hidden rounded-3xl bg-cream text-ink shadow-[0_40px_80px_-30px_hsl(var(--tomato)/0.55)] ring-1 ring-ink/[0.06]">
+                    <div className="grid grid-cols-1 md:grid-cols-12">
+                      <div className="relative md:col-span-7">
+                        <div className="relative aspect-[16/10] overflow-hidden bg-ink md:aspect-auto md:h-full md:min-h-[480px]">
+                          {featured.img && (
+                            <img
+                              src={featured.img}
+                              alt={featured.name}
+                              loading="lazy"
+                              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                            />
+                          )}
+                          <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-ink/0" />
+
+                          {/* top-left tag stack */}
+                          <div className="absolute left-5 top-5 flex flex-wrap items-center gap-2">
+                            <span className={`ui rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] ${tagTone[featured.tag]}`}>
+                              {featured.tag}
+                            </span>
+                            <span className="ui inline-flex items-center gap-1.5 rounded-full bg-ink/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-cream backdrop-blur-sm">
+                              <span className="relative flex h-1.5 w-1.5">
+                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-butter opacity-70" />
+                                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-butter" />
+                              </span>
+                              In production
+                            </span>
+                          </div>
+
+                          {/* corner hand-note */}
+                          <span className="handwritten absolute bottom-5 right-5 max-w-[60%] text-right text-[15px] leading-tight text-cream/95 -rotate-[3deg] md:text-base">
+                            tested live, Global Pizza Party 2026 →
                           </span>
                         </div>
                       </div>
-                    </div>
 
-                    <div className="flex flex-col justify-between p-7 md:col-span-5 md:p-10">
-                      <div>
-                        <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-tomato">
-                          Infrastructure · {String(featuredIndex + 1).padStart(2, "0")} / 0{BUILDS.length}
-                        </p>
-                        <h3 className="font-display mt-3 text-[clamp(2rem,3.6vw,2.75rem)] font-extrabold leading-[1] tracking-[-0.01em]">
-                          {featured.name}
-                        </h3>
-                        <p className="font-display mt-4 text-lg font-medium leading-snug text-ink/85 md:text-xl">
-                          {featured.hook}
-                        </p>
-                        <p className="mt-4 text-[15px] leading-relaxed text-ink/70">
-                          {featured.context}
-                        </p>
+                      <div className="flex flex-col justify-between p-7 md:col-span-5 md:p-10">
+                        <div>
+                          <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-tomato">
+                            Infrastructure · {String(featuredIndex + 1).padStart(2, "0")} / 0{BUILDS.length}
+                          </p>
+                          <h3 className="font-display mt-3 text-[clamp(2.25rem,4vw,3.25rem)] font-extrabold leading-[0.95] tracking-[-0.015em]">
+                            {featured.name}
+                          </h3>
+                          <p className="font-display mt-4 text-lg font-medium leading-snug text-ink/85 md:text-xl">
+                            {featured.hook}
+                          </p>
+                          <p className="mt-4 text-[15px] leading-relaxed text-ink/70">
+                            {featured.context}
+                          </p>
 
-                        {featured.metric && (
-                          <dl className="mt-6 grid grid-cols-3 gap-4 border-t border-ink/15 pt-5">
-                            {featured.metric.map((m) => (
-                              <div key={m.k}>
-                                <dt className="font-display text-xl font-extrabold leading-none tracking-[-0.01em] text-tomato md:text-2xl">
-                                  {m.k}
-                                </dt>
-                                <dd className="ui mt-2 text-[10px] uppercase leading-snug tracking-[0.18em] text-ink/55">
-                                  {m.v}
-                                </dd>
-                              </div>
-                            ))}
-                          </dl>
-                        )}
-                      </div>
+                          {featured.metric && (
+                            <dl className="mt-7 grid grid-cols-3 gap-4 border-t-2 border-ink pt-5">
+                              {featured.metric.map((m) => (
+                                <div key={m.k}>
+                                  <dt className="font-display text-2xl font-extrabold leading-none tracking-[-0.02em] text-tomato md:text-[28px]">
+                                    {m.k}
+                                  </dt>
+                                  <dd className="ui mt-2 text-[10px] uppercase leading-snug tracking-[0.18em] text-ink/55">
+                                    {m.v}
+                                  </dd>
+                                </div>
+                              ))}
+                            </dl>
+                          )}
+                        </div>
 
-                      <div className="mt-7 flex flex-wrap items-center gap-3">
-                        {featured.demo && (
-                          <a
-                            href={featured.demo}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="ui inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-cream transition-colors hover:bg-tomato"
+                        <div className="mt-7 flex flex-wrap items-center gap-3">
+                          {featured.demo && (
+                            <a
+                              href={featured.demo}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="ui group/cta inline-flex items-center gap-2 rounded-full bg-tomato px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.22em] text-cream shadow-[0_12px_30px_-12px_hsl(var(--tomato)/0.7)] transition-all hover:bg-ink hover:shadow-[0_18px_40px_-12px_hsl(var(--ink)/0.5)]"
+                            >
+                              View live demo
+                              <ArrowUpRight className="h-4 w-4 transition-transform group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
+                            </a>
+                          )}
+                          <button
+                            type="button"
+                            onClick={() => setActiveBuild(featuredIndex)}
+                            className="ui inline-flex items-center gap-2 rounded-full border border-ink/25 px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/80 transition-colors hover:border-ink hover:text-ink"
                           >
-                            View demo
-                            <ArrowUpRight className="h-4 w-4" />
-                          </a>
-                        )}
-                        <button
-                          type="button"
-                          onClick={() => setActiveBuild(featuredIndex)}
-                          className="ui inline-flex items-center gap-2 rounded-full border border-ink/25 px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/80 transition-colors hover:border-ink hover:text-ink"
-                        >
-                          Learn more
-                        </button>
+                            How it works
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </article>
 
-                {/* SUPPORTING PROJECTS */}
-                <div className="mt-6 grid grid-cols-1 gap-5 md:mt-8 md:grid-cols-3 md:gap-6">
-                  {supporting.map((b) => {
-                    const i = BUILDS.indexOf(b);
-                    return (
-                      <article
-                        key={b.name}
-                        className="group relative flex flex-col overflow-hidden rounded-2xl bg-cream text-ink transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-22px_hsl(var(--tomato)/0.45)]"
-                      >
-                        {b.img ? (
-                          <div className="relative aspect-[16/10] overflow-hidden bg-ink">
-                            <img
-                              src={b.img}
-                              alt={b.name}
-                              loading="lazy"
-                              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                            />
-                            <span className={`ui absolute left-4 top-4 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] ${tagTone[b.tag]}`}>
-                              {b.tag}
-                            </span>
-                          </div>
-                        ) : (
-                          <div className="relative flex aspect-[16/10] items-end justify-between bg-ink p-6 text-cream">
-                            <span className="font-display text-[clamp(1.6rem,3vw,2.25rem)] font-extrabold leading-[0.9] text-butter">
+                {/* SUPPORTING PROJECTS — quieter, footnote-style row */}
+                <div className="mt-10 md:mt-14">
+                  <div className="mb-5 flex items-end justify-between border-b border-cream/20 pb-3">
+                    <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/55">
+                      Also in the workshop
+                    </p>
+                    <p className="ui text-[10px] uppercase tracking-[0.22em] text-cream/40">
+                      {supporting.length} active builds
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
+                    {supporting.map((b) => {
+                      const i = BUILDS.indexOf(b);
+                      return (
+                        <article
+                          key={b.name}
+                          className="group relative flex flex-col overflow-hidden rounded-2xl bg-cream text-ink transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-22px_hsl(var(--tomato)/0.45)]"
+                        >
+                          {b.img ? (
+                            <div className="relative aspect-[16/10] overflow-hidden bg-ink">
+                              <img
+                                src={b.img}
+                                alt={b.name}
+                                loading="lazy"
+                                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                              />
+                              <span className={`ui absolute left-4 top-4 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] ${tagTone[b.tag]}`}>
+                                {b.tag}
+                              </span>
+                            </div>
+                          ) : (
+                            <div className="relative flex aspect-[16/10] items-end justify-between bg-ink p-6 text-cream">
+                              <span className="font-display text-[clamp(1.6rem,3vw,2.25rem)] font-extrabold leading-[0.9] text-butter">
+                                {b.name}
+                              </span>
+                              <span className={`ui absolute left-4 top-4 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] ${tagTone[b.tag]}`}>
+                                {b.tag}
+                              </span>
+                            </div>
+                          )}
+
+                          <div className="flex flex-1 flex-col p-6 md:p-7">
+                            <p className="ui text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/50 tabular-nums">
+                              Project {String(i + 1).padStart(2, "0")} / 0{BUILDS.length}
+                            </p>
+                            <h3 className="font-display mt-3 text-xl font-extrabold leading-[1.05] md:text-[22px]">
                               {b.name}
-                            </span>
-                            <span className={`ui absolute left-4 top-4 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] ${tagTone[b.tag]}`}>
-                              {b.tag}
-                            </span>
-                          </div>
-                        )}
+                            </h3>
+                            <p className="font-display mt-2 text-[15px] font-medium leading-snug text-ink/85">
+                              {b.hook}
+                            </p>
+                            <p className="mt-3 flex-1 text-[14px] leading-relaxed text-ink/70">
+                              {b.context}
+                            </p>
 
-                        <div className="flex flex-1 flex-col p-6 md:p-7">
-                          <p className="ui text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/50 tabular-nums">
-                            Project {String(i + 1).padStart(2, "0")} / 0{BUILDS.length}
-                          </p>
-                          <h3 className="font-display mt-3 text-xl font-extrabold leading-[1.05] md:text-[22px]">
-                            {b.name}
-                          </h3>
-                          <p className="font-display mt-2 text-[15px] font-medium leading-snug text-ink/85">
-                            {b.hook}
-                          </p>
-                          <p className="mt-3 flex-1 text-[14px] leading-relaxed text-ink/70">
-                            {b.context}
-                          </p>
-
-                          <div className="mt-5 flex items-center justify-between gap-3 border-t border-ink/15 pt-4">
-                            {b.demo ? (
-                              <a
-                                href={b.demo}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="ui inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink transition-colors hover:text-tomato"
-                              >
-                                View demo
-                                <ArrowUpRight className="h-4 w-4" />
-                              </a>
-                            ) : (
-                              <button
-                                type="button"
-                                onClick={() => setActiveBuild(i)}
-                                className="ui inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/75 transition-colors hover:text-tomato"
-                              >
-                                Learn more
-                                <ArrowUpRight className="h-4 w-4" />
-                              </button>
-                            )}
+                            <div className="mt-5 flex items-center justify-between gap-3 border-t border-ink/15 pt-4">
+                              {b.demo ? (
+                                <a
+                                  href={b.demo}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="ui inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink transition-colors hover:text-tomato"
+                                >
+                                  View demo
+                                  <ArrowUpRight className="h-4 w-4" />
+                                </a>
+                              ) : (
+                                <button
+                                  type="button"
+                                  onClick={() => setActiveBuild(i)}
+                                  className="ui inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/75 transition-colors hover:text-tomato"
+                                >
+                                  Learn more
+                                  <ArrowUpRight className="h-4 w-4" />
+                                </button>
+                              )}
+                            </div>
                           </div>
-                        </div>
-                      </article>
-                    );
-                  })}
+                        </article>
+                      );
+                    })}
+                  </div>
                 </div>
               </>
             );
           })()}
+
         </div>
       </section>
 
