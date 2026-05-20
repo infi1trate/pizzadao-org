@@ -1240,9 +1240,16 @@ const CommunityPage = () => {
         );
       })()}
 
-
-
-
+      {/* Asymmetric rhythm break — quiet handwritten margin annotation, off-center */}
+      <div className="relative overflow-hidden bg-cream py-6 md:py-10">
+        <div className="container">
+          <p
+            className="handwritten text-tomato/70 text-[clamp(1.4rem,3.4vw,2.4rem)] leading-[0.95] -rotate-[2deg] md:ml-[58%] md:max-w-[40%]"
+          >
+            ↘ ok, your turn.
+          </p>
+        </div>
+      </div>
 
 
       {/* INITIATION — name ritual + 3-path action bridge, one section */}
