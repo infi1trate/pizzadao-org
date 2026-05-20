@@ -380,8 +380,22 @@ const About = () => {
         </div>
       </section>
 
+      {/* Interlude — quiet handwritten transition, deep breath */}
+      <aside className="bg-cream py-14 md:py-20" aria-hidden>
+        <div className="container">
+          <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
+            <span className="handwritten -rotate-[2deg] text-tomato text-2xl md:text-[2rem] leading-tight">
+              people kept showing up.
+            </span>
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/45">
+              field note, year three
+            </span>
+          </div>
+        </div>
+      </aside>
+
       {/* Why pizza */}
-      <section className="bg-cream py-24 md:py-32">
+      <section className="bg-cream pb-24 pt-10 md:pb-32 md:pt-14">
         <div className="container">
           <div className="mx-auto max-w-2xl text-center">
             <p className="overline text-tomato">§ A.06, Why pizza</p>
