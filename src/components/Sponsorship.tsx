@@ -101,15 +101,22 @@ const Sponsorship = () => {
   return (
     <section
       id="partner-with-us"
-      className="relative bg-butter/30 pt-20 text-ink md:pt-32"
+      className="relative bg-butter/30 pt-14 text-ink md:pt-20"
     >
       {/* Masthead */}
       <div className="container">
-        <div className="border-t-2 border-ink pt-8 md:pt-10">
-          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
+        <div className="relative border-t-2 border-ink pt-6 md:pt-8">
+          {/* Offset stamp — edge-aligned connective motif */}
+          <span
+            aria-hidden
+            className="handwritten absolute -top-4 right-2 -rotate-[6deg] text-tomato text-[13px] md:text-sm"
+          >
+            ↳ since 2020
+          </span>
+          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-5">
             <div className="col-span-12 md:col-span-7">
               <p className="overline text-tomato">§ 06, Partnership</p>
-              <h2 className="font-display mt-4 text-display-1 font-extrabold leading-[0.92] tracking-[0.005em] text-ink">
+              <h2 className="font-display mt-3 text-display-1 font-extrabold leading-[0.92] tracking-[0.005em] text-ink">
                 Why brands
                 <br />
                 <span className="text-ink-soft">partner with PizzaDAO.</span>
@@ -119,7 +126,7 @@ const Sponsorship = () => {
               <p className="text-lg leading-relaxed text-ink/80 md:text-xl">
                 Five years of building unforgettable moments with brands who get it.
               </p>
-              <p className="mt-5 text-base leading-relaxed text-ink/65">
+              <p className="mt-3 text-base leading-relaxed text-ink/65">
                 A community institution with operators on every continent.
                 We build programs that put brands inside culture, not on top
                 of it.
@@ -129,12 +136,12 @@ const Sponsorship = () => {
         </div>
 
         {/* Proof ledger, bright, optimistic */}
-        <div className="mt-12 rounded-2xl border-2 border-ink bg-cream p-4 shadow-[0_24px_60px_-30px_hsl(var(--ink)/0.35)] md:mt-16 md:p-6">
+        <div className="mt-8 rounded-2xl border-2 border-ink bg-cream p-4 shadow-[0_24px_60px_-30px_hsl(var(--ink)/0.35)] md:mt-10 md:p-5">
           <dl className="grid grid-cols-2 md:grid-cols-4">
             {PROOF.map((p, i) => (
               <div
                 key={p.k}
-                className={`px-6 py-9 md:px-9 md:py-12 ${
+                className={`px-6 py-6 md:px-8 md:py-8 ${
                   i > 0 ? "md:border-l md:border-ink/15" : ""
                 } ${i === 1 ? "border-l border-ink/15" : ""} ${
                   i >= 2 ? "border-t border-ink/15 md:border-t-0" : ""
@@ -143,7 +150,7 @@ const Sponsorship = () => {
                 <dt className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-tomato">
                   {p.k}
                 </dt>
-                <dd className="font-display mt-3 text-[clamp(2.25rem,5.5vw,4.25rem)] font-extrabold leading-[0.86] tracking-[-0.01em]">
+                <dd className="font-display mt-2 text-[clamp(2.25rem,5.5vw,4.25rem)] font-extrabold leading-[0.86] tracking-[-0.01em]">
                   <CountUp value={p.num} suffix={p.suffix} fallback={p.v} />
                 </dd>
               </div>
@@ -151,6 +158,7 @@ const Sponsorship = () => {
           </dl>
         </div>
       </div>
+
 
       {/* Value props, editorial 2-column grid */}
       <div className="container mt-20 md:mt-28">
