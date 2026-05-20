@@ -52,7 +52,7 @@ const About = () => {
   }, []);
 
   return (
-    <main className="min-h-screen bg-cream text-ink">
+    <main className="min-h-screen overflow-x-clip bg-cream text-ink">
       <SiteNav solid />
 
       <PageHero
@@ -60,6 +60,17 @@ const About = () => {
         title="An institution built on a slice"
         lede="PizzaDAO is a global community that organizes around one simple idea, share pizza with strangers. It began as a small experiment on the internet and turned into something people now show up for in real life."
       />
+
+      <PageHero
+        section="§ A, About PizzaDAO"
+        title="An institution built on a slice"
+        lede="PizzaDAO is a global community that organizes around one simple idea, share pizza with strangers. It began as a small experiment on the internet and turned into something people now show up for in real life."
+      />
+
+      {/* Checker tape divider — pizzeria nod, used once at the top */}
+      <div className="container mt-10 md:mt-14">
+        <div className="checker-tape h-2 w-full opacity-80" aria-hidden />
+      </div>
 
       {/* Where it started */}
       <section className="bg-cream pt-20 md:pt-28">
@@ -92,18 +103,19 @@ const About = () => {
                 </p>
               </div>
             </div>
-            <div className="col-span-12 md:col-span-5 md:pl-8 md:pt-16">
-              <figure>
+            <div className="col-span-12 md:col-span-5 md:pl-8 md:pt-20">
+              <figure className="taped rotate-[-1.2deg] transition-transform duration-700 hover:rotate-0">
                 <img
                   src={founding}
                   alt="Late-night gathering of friends huddled around laptops and pizza"
                   loading="lazy"
                   width={1080}
                   height={1350}
-                  className="grain block aspect-[4/5] w-full object-cover"
+                  className="grain photo-hover block aspect-[4/5] w-full object-cover"
                 />
-                <figcaption className="ui mt-3 text-[10px] uppercase tracking-[0.18em] text-ink/55">
-                  Fig. A.1, The founding, 2021
+                <figcaption className="ui mt-3 flex items-baseline justify-between gap-3 text-[10px] uppercase tracking-[0.18em] text-ink/55">
+                  <span>Fig. A.1, The founding, 2021</span>
+                  <span className="margin-note normal-case tracking-normal">↘ day one</span>
                 </figcaption>
               </figure>
             </div>
@@ -127,11 +139,12 @@ const About = () => {
                 excuse for people to show up for each other, across borders,
                 across politics, across screens.
               </p>
-              <blockquote className="mt-8 border-l-2 border-tomato pl-5">
-                <p className="font-serif text-xl italic leading-snug text-ink md:text-2xl">
+              <blockquote className="paper-soft paper-drift mt-10 rounded-md border-l-[3px] border-tomato bg-cream-warm/60 py-7 pl-6 pr-5 md:pl-8">
+                <p className="font-serif text-xl italic leading-snug text-ink md:text-[1.65rem]">
                   “Pizza is the most democratic food on Earth. We just made it
                   organized.”
                 </p>
+                <span className="margin-note mt-4 block">— marker in the margin</span>
               </blockquote>
               <p className="font-serif mt-8 text-base leading-relaxed text-ink/70">
                 Every dollar we raise funds a local pizzeria, a community party,
@@ -151,6 +164,9 @@ const About = () => {
               <p className="overline text-tomato">§ A.03, May 22</p>
               <h2 className="font-display mt-5 text-display-2 font-extrabold leading-[0.92]">
                 Bitcoin Pizza Day
+                <span className="handwritten ml-3 align-middle text-base text-tomato md:text-lg">
+                  ↘ our high holiday
+                </span>
               </h2>
               <div className="font-serif mt-8 max-w-[58ch] space-y-5 text-lg leading-relaxed text-ink/85 md:text-xl">
                 <p>
@@ -173,17 +189,18 @@ const About = () => {
                 </p>
               </div>
             </div>
-            <figure className="col-span-12 md:col-span-6 md:pl-8">
+            <figure className="taped col-span-12 rotate-[1.4deg] transition-transform duration-700 hover:rotate-0 md:col-span-6 md:pl-8">
               <img
                 src={party}
                 alt="Crowded outdoor pizza street party at dusk"
                 loading="lazy"
                 width={1920}
                 height={1080}
-                className="grain block aspect-[4/5] w-full object-cover"
+                className="grain photo-hover block aspect-[4/5] w-full object-cover md:ml-8"
               />
-              <figcaption className="ui mt-3 text-[10px] uppercase tracking-[0.18em] text-ink/55">
-                Fig. A.2, Global Pizza Party, May 22
+              <figcaption className="ui mt-3 flex items-baseline justify-between gap-3 text-[10px] uppercase tracking-[0.18em] text-ink/55 md:ml-8">
+                <span>Fig. A.2, Global Pizza Party, May 22</span>
+                <span className="margin-note normal-case tracking-normal">↖ city 087</span>
               </figcaption>
             </figure>
           </div>
@@ -242,13 +259,17 @@ const About = () => {
       </section>
 
       {/* What we've done */}
-      <section className="bg-ink py-20 text-cream md:py-28">
+      <section className="paper-soft paper-soft-dark paper-drift relative bg-ink py-20 text-cream md:py-28">
+        <div className="checker-tape-sm absolute inset-x-0 top-0 h-[6px] opacity-70" aria-hidden />
         <div className="container">
           <div className="grid grid-cols-12 gap-x-6 gap-y-8">
             <div className="col-span-12 md:col-span-7">
               <p className="overline text-butter">§ A.05, Outcomes</p>
               <h2 className="font-display mt-5 text-display-2 font-extrabold leading-[0.92]">
                 What we've done
+                <span className="handwritten marker-bleed-butter ml-3 align-middle text-base text-butter md:text-lg">
+                  ↘ measured in slices
+                </span>
               </h2>
             </div>
             <div className="col-span-12 md:col-span-5 md:pt-4">
@@ -358,7 +379,7 @@ const About = () => {
               ].map((p) => (
                 <div
                   key={p}
-                  className="font-display flex aspect-[3/2] items-center justify-center bg-cream-warm px-4 text-center text-base font-extrabold tracking-tight text-ink/75 md:text-lg"
+                  className="paper-soft font-display flex aspect-[3/2] items-center justify-center bg-cream-warm px-4 text-center text-base font-extrabold tracking-tight text-ink/75 transition-colors hover:text-tomato md:text-lg"
                 >
                   {p}
                 </div>
@@ -371,10 +392,14 @@ const About = () => {
       {/* Press */}
       <section className="bg-cream py-20 md:py-28">
         <div className="container">
+          <div className="checker-tape mb-10 h-[6px] w-24 opacity-80" aria-hidden />
           <div className="border-t-2 border-ink pt-8">
             <p className="overline text-tomato">Press</p>
             <h2 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92]">
               On the record.
+              <span className="handwritten ml-3 align-middle text-base text-tomato md:text-lg">
+                ↘ in their words
+              </span>
             </h2>
           </div>
           <ul className="mt-12 border-t border-ink/15">
@@ -413,14 +438,18 @@ const About = () => {
       </section>
 
       {/* Soft landing */}
-      <section className="bg-tomato py-24 text-cream md:py-32">
+      <section className="paper-soft paper-soft-dark paper-drift relative bg-tomato py-24 text-cream md:py-32">
+        <div className="checker-tape-sm absolute inset-x-0 top-0 h-[6px] opacity-60" aria-hidden />
         <div className="container">
           <div className="mx-auto max-w-4xl">
             <p className="overline text-butter">§ A.08, Take part</p>
             <h2 className="font-display mt-6 text-display-1 font-extrabold leading-[0.92]">
               If you have ever shown up to something like this, you understand it immediately.
             </h2>
-            <p className="font-serif mt-8 text-xl leading-relaxed text-cream/85 md:text-2xl">
+            <p className="handwritten marker-bleed-butter mt-6 inline-block -rotate-1 text-butter text-lg md:text-xl">
+              ↘ see you on May 22
+            </p>
+            <p className="font-serif mt-6 text-xl leading-relaxed text-cream/85 md:text-2xl">
               If you haven't, May 22 is a good place to start.
             </p>
 
