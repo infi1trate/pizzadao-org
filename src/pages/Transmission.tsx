@@ -122,6 +122,7 @@ const Transmission = () => {
               href="https://discord.pizzadao.xyz/"
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackOutbound("Discord", "https://discord.pizzadao.xyz/", { surface: "nav" })}
               className="ui text-sm text-ink/80 transition-colors hover:text-tomato"
             >
               Discord
@@ -130,6 +131,7 @@ const Transmission = () => {
               href="https://x.com/pizza_dao"
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackOutbound("X", "https://x.com/pizza_dao", { surface: "nav" })}
               className="ui text-sm text-ink/80 transition-colors hover:text-tomato"
             >
               X
