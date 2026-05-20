@@ -234,11 +234,12 @@ const PartnersPage = () => {
                   to do.
                 </span>
               </h2>
-              <p className="font-serif mt-10 max-w-[34ch] text-[15.5px] leading-[1.65] text-cream/70 md:text-base">
+              <p className="font-serif mt-7 max-w-[34ch] text-[15.5px] leading-[1.65] text-cream/70 md:text-base">
                 We come back with a brief, a city list, and a number, usually
                 within a week. No deck required to start the conversation.
               </p>
-              <p className="ui mt-10 text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/40">
+              <p className="ui mt-6 text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/40">
+
                 Or email partnerships@pizzadao.org directly
               </p>
             </div>
