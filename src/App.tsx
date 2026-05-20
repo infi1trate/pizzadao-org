@@ -18,6 +18,7 @@ import Terms from "./pages/Terms.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 import PasswordGate from "./components/PasswordGate.tsx";
+import PostHogProvider from "./lib/analytics/PostHogProvider.tsx";
 
 const queryClient = new QueryClient();
 
@@ -27,10 +28,11 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          {/* Public pre-launch teaser */}
-          <Route path="/pre-launch" element={<Transmission />} />
+        <PostHogProvider>
+          <ScrollToTop />
+          <Routes>
+            {/* Public pre-launch teaser */}
+            <Route path="/pre-launch" element={<Transmission />} />
 
           {/* Root redirects to the pre-launch page until full launch */}
           <Route path="/" element={<Navigate to="/pre-launch" replace />} />
