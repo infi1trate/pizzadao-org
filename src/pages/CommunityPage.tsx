@@ -240,29 +240,26 @@ const CommunityPage = () => {
             <div className="col-span-12 md:col-span-5">
               <p className="overline text-butter">Manifesto</p>
               <h2 className="font-display mt-5 text-[clamp(2.75rem,7vw,5.5rem)] font-extrabold leading-[0.88] tracking-[-0.01em]">
-                A community
+                Find
                 <br />
-                that <span className="handwritten relative inline-block text-tomato text-[1.05em] leading-[0.75] -mr-1 translate-y-[0.08em] -rotate-[4deg] align-baseline">actually</span>
-                <br />
-                does stuff.
+                your <span className="handwritten marker-bleed relative inline-block text-tomato text-[1.05em] leading-[0.75] -mr-1 translate-y-[0.08em] -rotate-[4deg] align-baseline">crew.</span>
               </h2>
+              <p className="ui mt-6 text-[11px] font-semibold uppercase tracking-[0.22em] text-butter/85">
+                Members · Crews · Chapters
+              </p>
             </div>
             <div className="col-span-12 md:col-span-6 md:col-start-7">
-              <div className="space-y-6 border-l-2 border-butter/60 pl-6 md:pl-8">
-                <p className="font-display text-2xl font-extrabold leading-snug text-cream md:text-3xl">
-                  A DAO is a community{" "}
-                  <span className="text-butter">coordinating resources, decisions, and action</span>{" "}
-                  around shared purpose.
+              <div className="space-y-5 border-l-2 border-butter/60 pl-6 md:pl-8">
+                <p className="font-display text-[clamp(1.6rem,2.6vw,2.25rem)] font-extrabold leading-[1.1] text-cream">
+                  Crews coordinate. Chapters host.{" "}
+                  <span className="text-butter">Members make the work happen.</span>
                 </p>
-                <p className="text-lg leading-relaxed text-cream/80 md:text-xl">
-                  PizzaDAO funds <span className="text-cream">experiments, events, tools, and cultural initiatives</span> through community participation and governance.
-                </p>
-                <p className="text-lg leading-relaxed text-cream/70 md:text-xl">
-                  The work is whatever members decide to build together this week.
+                <p className="text-base leading-relaxed text-cream/65 md:text-[17px]">
+                  Funding, tools, and culture move through whichever crew picks them up this week.
                 </p>
               </div>
 
-              <ul className="mt-10 space-y-4 border-t border-cream/20 pt-8">
+              <ul className="mt-10 space-y-4 border-t border:cream/20 pt-8">
                 {[
                   "Anyone can propose an experiment.",
                   "Anyone can open a chapter in their city.",
