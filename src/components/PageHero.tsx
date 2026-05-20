@@ -1,27 +1,73 @@
+import type { ReactNode } from "react";
+
 type Props = {
   section: string; // "§ A, About"
   title: string;
   italic?: string;
   lede: string;
   meta?: { k: string; v: string }[];
+  /** A word inside the title to receive the red marker underline accent. */
+  accentWord?: string;
+  /** Tiny handwritten margin note near the headline. */
+  note?: string;
+  /** Optional taped polaroid image in the hero corner. */
+  tapedImage?: { src: string; alt: string; caption?: string };
 };
 
-const PageHero = ({ section, title, italic, lede, meta }: Props) => {
+const PageHero = ({
+  section,
+  title,
+  italic,
+  lede,
+  meta,
+  accentWord,
+  note,
+  tapedImage,
+}: Props) => {
+  // Wrap one word in the title with the marker underline, if specified.
+  const renderTitle = () => {
+    if (!accentWord) return title;
+    const idx = title.toLowerCase().lastIndexOf(accentWord.toLowerCase());
+    if (idx === -1) return title;
+    const before = title.slice(0, idx);
+    const match = title.slice(idx, idx + accentWord.length);
+    const after = title.slice(idx + accentWord.length);
+    return (
+      <>
+        {before}
+        <span className="underline-scribble text-ink">{match}</span>
+        {after}
+      </>
+    );
+  };
+
   return (
-    <section className="bg-cream pt-12 md:pt-20">
-      <div className="container">
+    <section className="paper-soft paper-drift relative overflow-hidden bg-cream pt-12 md:pt-20">
+      {/* Faint corner wash — atmosphere, not decoration */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-24 -top-20 h-[420px] w-[420px] rounded-full opacity-[0.07] blur-3xl"
+        style={{ background: "hsl(var(--tomato))" }}
+      />
+
+      <div className="container relative">
         <div className="border-t-2 border-ink pt-8 md:pt-10">
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
             <div className="col-span-12 md:col-span-8">
-              <p className="overline text-tomato">{section}</p>
-              <h1 className="font-display mt-5 text-mega font-extrabold leading-[0.86]">
-                {title}
+              <div className="flex items-baseline gap-3">
+                <p className="overline text-tomato">{section}</p>
+                {note && (
+                  <span className="handwritten -rotate-2 text-tomato text-[0.78rem] md:text-sm leading-none">
+                    “{note}”
+                  </span>
+                )}
+              </div>
+              <h1 className="font-display mt-5 text-mega font-extrabold leading-[0.84] tracking-[-0.02em] md:leading-[0.82]">
+                {renderTitle()}
                 {italic && (
                   <>
                     <br />
-                    <span className="text-ink/65">
-                      {italic}
-                    </span>
+                    <span className="text-ink/65">{italic}</span>
                   </>
                 )}
               </h1>
@@ -30,6 +76,22 @@ const PageHero = ({ section, title, italic, lede, meta }: Props) => {
               <p className="text-lg leading-relaxed text-ink/80 md:text-xl">
                 {lede}
               </p>
+
+              {tapedImage && (
+                <figure className="taped photo-hover mt-10 hidden w-[68%] -rotate-2 bg-cream-warm p-2 pb-3 shadow-[0_18px_40px_-22px_hsl(0_0%_0%/0.35)] md:ml-auto md:block">
+                  <img
+                    src={tapedImage.src}
+                    alt={tapedImage.alt}
+                    loading="eager"
+                    className="grain block aspect-[4/5] w-full object-cover"
+                  />
+                  {tapedImage.caption && (
+                    <figcaption className="ui mt-2 px-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/55">
+                      {tapedImage.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              )}
             </div>
           </div>
 
@@ -49,6 +111,19 @@ const PageHero = ({ section, title, italic, lede, meta }: Props) => {
           )}
         </div>
       </div>
+
+      {/* Torn-paper bottom edge — imperfect, hand-cut feeling */}
+      <svg
+        aria-hidden
+        className="relative mt-16 block w-full text-cream md:mt-20"
+        viewBox="0 0 1200 18"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0,4 C60,12 120,2 200,7 C280,13 340,1 420,6 C500,11 560,3 640,8 C720,13 780,2 860,7 C940,12 1000,4 1080,9 C1140,12 1180,5 1200,8 L1200,18 L0,18 Z"
+          fill="currentColor"
+        />
+      </svg>
     </section>
   );
 };
