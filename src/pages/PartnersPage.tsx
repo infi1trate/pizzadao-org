@@ -66,9 +66,9 @@ const PartnersPage = () => {
           <div className="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-tomato/15 blur-3xl" />
         </Parallax>
         <div className="container relative">
-          <div className="flex flex-wrap items-baseline justify-between gap-4 border-t border-ink/30 pt-6">
-            <p className="overline text-ink/60">Selected collaborators</p>
-            <span className="handwritten -rotate-[2deg] text-ink/70 text-sm md:text-base">
+          <div className="flex flex-wrap items-baseline justify-between gap-4 border-t border-ink/25 pt-7">
+            <p className="overline text-ink/55">§ B.01 — Selected collaborators</p>
+            <span className="handwritten -rotate-[2deg] text-ink/65 text-sm md:text-base">
               IRL &gt; ads ↗
             </span>
           </div>
@@ -89,33 +89,39 @@ const PartnersPage = () => {
       </section>
 
       {/* Inquiry form */}
-      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-20 text-cream md:py-28">
+      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-24 text-cream md:py-32">
         <div className="checker-tape-sm absolute inset-x-0 top-0 h-[6px] opacity-65" aria-hidden />
         <div className="checker-tape-sm absolute inset-x-0 bottom-0 h-[6px] opacity-65" aria-hidden />
         <div className="container relative">
-          <div className="grid grid-cols-12 gap-x-6 gap-y-10">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-12 md:gap-x-12">
             <div className="col-span-12 md:col-span-5">
               <div className="flex items-baseline gap-3">
-                <p className="overline text-butter">Inquiry</p>
+                <p className="overline text-butter">§ B.02 — Inquiry</p>
                 <span className="handwritten -rotate-[1.5deg] text-butter/90 text-[0.78rem] md:text-sm leading-none">
                   community first
                 </span>
               </div>
-              <h2 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92]">
-                Tell us what
+              <h2 className="font-display mt-6 text-display-2 font-extrabold leading-[0.88] tracking-[-0.025em] md:mt-7">
+                Tell us
+                <br />
+                what
                 <br />
                 <span className="italic font-serif font-normal text-butter">
-                  you're trying to do.
+                  you're trying
+                </span>
+                <br />
+                <span className="italic font-serif font-normal text-butter">
+                  to do.
                 </span>
               </h2>
-              <p className="font-serif mt-6 text-base leading-relaxed text-cream/75 md:text-lg">
+              <p className="font-serif mt-8 max-w-[34ch] text-[15px] leading-[1.6] text-cream/70 md:text-base">
                 We come back with a brief, a city list, and a number, usually
                 within a week. No deck required to start the conversation.
               </p>
-              <p className="handwritten mt-5 -rotate-1 text-tomato text-sm md:text-base">
+              <p className="handwritten mt-6 -rotate-1 text-tomato text-sm md:text-base">
                 ↘ real world, real people
               </p>
-              <p className="ui mt-5 text-[10px] uppercase tracking-[0.18em] text-cream/50">
+              <p className="ui mt-6 text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/45">
                 Or email partnerships@pizzadao.org directly
               </p>
             </div>
@@ -129,7 +135,7 @@ const PartnersPage = () => {
             >
               {submitted ? (
                 <div className="col-span-2">
-                  <div className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-butter">
+                  <div className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-butter">
                     ● Received
                   </div>
                   <p className="font-display mt-3 text-2xl font-extrabold leading-tight md:text-3xl">
@@ -139,7 +145,7 @@ const PartnersPage = () => {
               ) : (
                 <>
                   <div className="col-span-2 md:col-span-1">
-                    <label className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/55">
+                    <label className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/50">
                       Brand
                     </label>
                     <input
@@ -150,7 +156,7 @@ const PartnersPage = () => {
                     />
                   </div>
                   <div className="col-span-2 md:col-span-1">
-                    <label className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/55">
+                    <label className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/50">
                       Your name
                     </label>
                     <input
@@ -161,7 +167,7 @@ const PartnersPage = () => {
                     />
                   </div>
                   <div className="col-span-2">
-                    <label className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/55">
+                    <label className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/50">
                       Work email
                     </label>
                     <input
@@ -172,7 +178,7 @@ const PartnersPage = () => {
                     />
                   </div>
                   <div className="col-span-2">
-                    <label className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/55">
+                    <label className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/50">
                       Tell us the brief (1–3 sentences)
                     </label>
                     <textarea

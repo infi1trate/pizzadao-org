@@ -24,19 +24,35 @@ const PageHero = ({
   note,
   tapedImage,
 }: Props) => {
-  // Wrap one word in the title with the marker underline, if specified.
-  const renderTitle = () => {
-    if (!accentWord) return title;
-    const idx = title.toLowerCase().lastIndexOf(accentWord.toLowerCase());
-    if (idx === -1) return title;
-    const before = title.slice(0, idx);
-    const match = title.slice(idx, idx + accentWord.length);
-    const after = title.slice(idx + accentWord.length);
+  // Wrap one word in a string with the marker underline, if it matches accentWord.
+  const renderWithAccent = (text: string) => {
+    if (!accentWord) return text;
+    const idx = text.toLowerCase().lastIndexOf(accentWord.toLowerCase());
+    if (idx === -1) return text;
+    const before = text.slice(0, idx);
+    const match = text.slice(idx, idx + accentWord.length);
+    const after = text.slice(idx + accentWord.length);
     return (
       <>
         {before}
         <span className="underline-scribble text-ink">{match}</span>
         {after}
+      </>
+    );
+  };
+
+  // Stack italic across two lines when it contains the accent word — drops
+  // the trailing word onto its own line for editorial emphasis.
+  const renderItalic = (text: string) => {
+    const parts = text.trim().split(/\s+/);
+    if (parts.length < 2) return <>{renderWithAccent(text)}</>;
+    const last = parts[parts.length - 1];
+    const head = parts.slice(0, -1).join(" ");
+    return (
+      <>
+        {renderWithAccent(head)}
+        <br />
+        <span className="block pl-[0.06em]">{renderWithAccent(last)}</span>
       </>
     );
   };
@@ -72,18 +88,18 @@ const PageHero = ({
                   </span>
                 )}
               </div>
-              <h1 className="font-display mt-5 text-mega font-extrabold leading-[0.84] tracking-[-0.02em] md:leading-[0.82]">
-                {renderTitle()}
+              <h1 className="font-display mt-6 text-mega font-extrabold leading-[0.82] tracking-[-0.025em] md:mt-7 md:leading-[0.8]">
+                {renderWithAccent(title)}
                 {italic && (
                   <>
                     <br />
-                    <span className="text-ink/65">{italic}</span>
+                    <span className="text-ink/65">{renderItalic(italic)}</span>
                   </>
                 )}
               </h1>
             </div>
-            <div className="col-span-12 md:col-span-4 md:pl-8">
-              <p className="text-lg leading-relaxed text-ink/80 md:text-xl">
+            <div className="col-span-12 md:col-span-4 md:pl-10 md:pb-3">
+              <p className="font-serif text-[15.5px] leading-[1.55] text-ink/75 md:text-base md:leading-[1.6]">
                 {lede}
               </p>
 
@@ -108,13 +124,13 @@ const PageHero = ({
           </div>
 
           {meta && (
-            <dl className="mt-16 grid grid-cols-2 gap-6 border-y border-ink/20 py-6 md:mt-24 md:grid-cols-4">
+            <dl className="mt-20 grid grid-cols-2 gap-x-8 gap-y-10 border-y border-ink/15 py-8 md:mt-28 md:grid-cols-4 md:gap-x-12">
               {meta.map((m) => (
-                <div key={m.k}>
-                  <dt className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
+                <div key={m.k} className="flex flex-col gap-3">
+                  <dt className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/45">
                     {m.k}
                   </dt>
-                  <dd className="font-display mt-2 text-3xl font-extrabold leading-none md:text-4xl">
+                  <dd className="font-display text-[2.25rem] font-extrabold leading-[0.95] tracking-[-0.02em] md:text-[2.75rem]">
                     {m.v}
                   </dd>
                 </div>
