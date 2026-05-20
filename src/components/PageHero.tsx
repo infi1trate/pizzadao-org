@@ -51,6 +51,16 @@ const PageHero = ({
       />
 
       <div className="container relative">
+        {/* Archival ref in the top corner */}
+        <div className="flex items-center justify-between pb-3">
+          <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+            GPP archive · vol. 04
+          </span>
+          <span className="ui flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-tomato" />
+            Ongoing, est. 2021
+          </span>
+        </div>
         <div className="border-t-2 border-ink pt-8 md:pt-10">
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
             <div className="col-span-12 md:col-span-8">
