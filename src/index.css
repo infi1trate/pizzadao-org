@@ -329,4 +329,28 @@
     transform: rotate(-3deg);
     display: inline-block;
   }
+
+  /* Ink stamp — looks like a hand-stamped archival mark */
+  .stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.7rem 0.3rem;
+    border: 2px solid hsl(var(--tomato));
+    color: hsl(var(--tomato));
+    font-family: 'Asap', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transform: rotate(-3.5deg);
+    opacity: 0.92;
+    background: hsl(var(--cream) / 0.4);
+    box-shadow: inset 0 0 0 1px hsl(var(--cream));
+  }
+  .stamp-ink {
+    border-color: hsl(var(--ink));
+    color: hsl(var(--ink));
+  }
 }
