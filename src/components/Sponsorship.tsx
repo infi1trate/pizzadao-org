@@ -394,10 +394,11 @@ const Sponsorship = () => {
               <div className="ui text-[11px] font-semibold uppercase tracking-[0.18em] text-tomato">
                 {c.partner}
               </div>
-              <h4 className="font-display mt-4 text-2xl font-extrabold leading-tight md:text-3xl">
+              <h4 className="font-display mt-3 text-2xl font-extrabold leading-tight md:text-3xl">
                 {c.headline}
               </h4>
-              <ul className="mt-6 space-y-2">
+              <ul className="mt-4 space-y-1.5">
+
                 {c.points.map((p) => (
                   <li key={p} className="flex gap-3 text-sm leading-relaxed text-ink/75">
                     <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-tomato" />
