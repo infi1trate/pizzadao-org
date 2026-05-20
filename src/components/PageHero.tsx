@@ -77,9 +77,9 @@ const PageHero = ({
             Ongoing, est. 2021
           </span>
         </div>
-        <div className="border-t-2 border-ink pt-8 md:pt-10">
-          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
-            <div className="col-span-12 md:col-span-8">
+        <div className="border-t border-ink/40 pt-10 md:pt-14">
+          <div className="grid grid-cols-12 items-end gap-x-8 gap-y-10 md:gap-x-12">
+            <div className="col-span-12 md:col-span-8 animate-fade-in">
               <div className="flex items-baseline gap-3">
                 <p className="overline text-tomato">{section}</p>
                 {note && (
@@ -98,8 +98,8 @@ const PageHero = ({
                 )}
               </h1>
             </div>
-            <div className="col-span-12 md:col-span-4 md:pl-10 md:pb-3">
-              <p className="font-serif text-[15.5px] leading-[1.55] text-ink/75 md:text-base md:leading-[1.6]">
+            <div className="col-span-12 md:col-span-4 md:pl-10 md:pb-3 animate-fade-in" style={{ animationDelay: "120ms", animationFillMode: "both" }}>
+              <p className="font-serif text-[15.5px] leading-[1.6] text-ink/70 md:text-[15px] md:leading-[1.65]">
                 {lede}
               </p>
 
@@ -124,26 +124,32 @@ const PageHero = ({
           </div>
 
           {meta && (
-            <dl className="mt-20 grid grid-cols-2 gap-x-8 gap-y-10 border-y border-ink/15 py-8 md:mt-28 md:grid-cols-4 md:gap-x-12">
-              {meta.map((m) => (
-                <div key={m.k} className="flex flex-col gap-3">
-                  <dt className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/45">
-                    {m.k}
-                  </dt>
-                  <dd className="font-display text-[2.25rem] font-extrabold leading-[0.95] tracking-[-0.02em] md:text-[2.75rem]">
-                    {m.v}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            <div className="mt-24 md:mt-32">
+              <div className="flex items-baseline justify-between pb-5">
+                <p className="overline text-ink/45">Programme — by the numbers</p>
+                <p className="ui hidden text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/35 md:block">
+                  Fig. i — Reach, 2020–2025
+                </p>
+              </div>
+              <dl className="grid grid-cols-2 gap-x-8 gap-y-12 border-t border-ink/15 pt-10 md:grid-cols-4 md:gap-x-14">
+                {meta.map((m, i) => (
+                  <div
+                    key={m.k}
+                    className="flex flex-col gap-3 animate-fade-in"
+                    style={{ animationDelay: `${200 + i * 80}ms`, animationFillMode: "both" }}
+                  >
+                    <dt className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/45">
+                      {m.k}
+                    </dt>
+                    <dd className="font-display text-[2.25rem] font-extrabold leading-[0.95] tracking-[-0.02em] md:text-[2.75rem]">
+                      {m.v}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
           )}
         </div>
-      </div>
-
-      {/* Hand-cut bottom rule — slightly imperfect hairline */}
-      <div className="container relative mt-16 md:mt-24">
-        <div className="h-px w-full bg-ink/15" />
-        <div className="absolute left-[12%] -top-[1px] h-[2px] w-[22%] bg-tomato" />
       </div>
     </section>
   );
