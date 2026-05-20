@@ -202,20 +202,45 @@ const About = () => {
                 </p>
               </div>
             </div>
-            <figure className="taped col-span-12 rotate-[1.4deg] transition-transform duration-700 hover:rotate-0 md:col-span-6 md:pl-8">
-              <img
-                src={party}
-                alt="Crowded outdoor pizza street party at dusk"
-                loading="lazy"
-                width={1920}
-                height={1080}
-                className="grain photo-hover block aspect-[4/5] w-full object-cover md:ml-8"
-              />
-              <figcaption className="ui mt-3 flex items-baseline justify-between gap-3 text-[10px] uppercase tracking-[0.18em] text-ink/55 md:ml-8">
-                <span>Fig. A.2, Global Pizza Party, May 22</span>
-                <span className="margin-note normal-case tracking-normal">↖ city 087</span>
-              </figcaption>
-            </figure>
+            <div className="col-span-12 md:col-span-6 md:pl-8">
+              <div className="relative">
+                {/* back layer — a second photo peeking out, like a stack */}
+                <div
+                  aria-hidden
+                  className="absolute -left-3 -top-4 hidden h-[88%] w-[78%] -rotate-[3deg] bg-cream-warm p-2 shadow-[0_18px_40px_-22px_hsl(0_0%_0%/0.35)] md:block"
+                >
+                  <div className="paper-soft h-full w-full">
+                    <img
+                      src={founding}
+                      alt=""
+                      aria-hidden
+                      className="grain h-full w-full object-cover opacity-95"
+                    />
+                  </div>
+                </div>
+
+                <figure className="relative rotate-[1.4deg] bg-cream-warm p-3 pb-5 shadow-[0_32px_70px_-30px_hsl(0_0%_0%/0.45),0_6px_18px_-8px_hsl(0_0%_0%/0.18)] transition-transform duration-700 hover:rotate-0 md:ml-10 md:-mr-6">
+                  <div className="paper-soft">
+                    <img
+                      src={party}
+                      alt="Crowded outdoor pizza street party at dusk"
+                      loading="lazy"
+                      width={1920}
+                      height={1080}
+                      className="grain photo-hover block aspect-[4/5] w-full object-cover"
+                    />
+                  </div>
+                  <figcaption className="mt-4 flex items-baseline justify-between gap-3 px-1">
+                    <span className="handwritten text-ink/85 text-[0.95rem] leading-tight">
+                      first time meeting in person
+                    </span>
+                    <span className="ui text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/45">
+                      Bangkok, 2023
+                    </span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
           </div>
         </div>
       </section>
