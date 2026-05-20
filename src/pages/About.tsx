@@ -61,6 +61,17 @@ const About = () => {
         lede="PizzaDAO is a global community that organizes around one simple idea, share pizza with strangers. It began as a small experiment on the internet and turned into something people now show up for in real life."
       />
 
+      <PageHero
+        section="§ A, About PizzaDAO"
+        title="An institution built on a slice"
+        lede="PizzaDAO is a global community that organizes around one simple idea, share pizza with strangers. It began as a small experiment on the internet and turned into something people now show up for in real life."
+      />
+
+      {/* Checker tape divider — pizzeria nod, used once at the top */}
+      <div className="container mt-10 md:mt-14">
+        <div className="checker-tape h-2 w-full opacity-80" aria-hidden />
+      </div>
+
       {/* Where it started */}
       <section className="bg-cream pt-20 md:pt-28">
         <div className="container">
