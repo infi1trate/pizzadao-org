@@ -438,14 +438,18 @@ const About = () => {
       </section>
 
       {/* Soft landing */}
-      <section className="bg-tomato py-24 text-cream md:py-32">
+      <section className="paper-soft paper-soft-dark paper-drift relative bg-tomato py-24 text-cream md:py-32">
+        <div className="checker-tape-sm absolute inset-x-0 top-0 h-[6px] opacity-60" aria-hidden />
         <div className="container">
           <div className="mx-auto max-w-4xl">
             <p className="overline text-butter">§ A.08, Take part</p>
             <h2 className="font-display mt-6 text-display-1 font-extrabold leading-[0.92]">
               If you have ever shown up to something like this, you understand it immediately.
             </h2>
-            <p className="font-serif mt-8 text-xl leading-relaxed text-cream/85 md:text-2xl">
+            <p className="handwritten marker-bleed-butter mt-6 inline-block -rotate-1 text-butter text-lg md:text-xl">
+              ↘ see you on May 22
+            </p>
+            <p className="font-serif mt-6 text-xl leading-relaxed text-cream/85 md:text-2xl">
               If you haven't, May 22 is a good place to start.
             </p>
 
