@@ -996,9 +996,15 @@ const CommunityPage = () => {
                           )}
 
                           <div className="flex flex-1 flex-col p-6 md:p-7">
-                            <p className="ui text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/50 tabular-nums">
-                              Project {String(i + 1).padStart(2, "0")} / 0{BUILDS.length}
-                            </p>
+                            <div className="flex items-center justify-between">
+                              <p className="ui text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/50 tabular-nums">
+                                Project {String(i + 1).padStart(2, "0")} / 0{BUILDS.length}
+                              </p>
+                              <p className="ui inline-flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.22em] text-ink/55">
+                                <span className="h-1.5 w-1.5 rounded-full bg-tomato/70" />
+                                {b.tag === "Hackathon" ? "in pilot" : "shipping"}
+                              </p>
+                            </div>
                             <h3 className="font-display mt-3 text-xl font-extrabold leading-[1.05] md:text-[22px]">
                               {b.name}
                             </h3>
@@ -1015,9 +1021,9 @@ const CommunityPage = () => {
                                   href={b.demo}
                                   target="_blank"
                                   rel="noreferrer"
-                                  className="ui inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink transition-colors hover:text-tomato"
+                                  className="ui inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-cream transition-colors hover:bg-tomato"
                                 >
-                                  View demo
+                                  View live demo
                                   <ArrowUpRight className="h-4 w-4" />
                                 </a>
                               ) : (
@@ -1026,10 +1032,13 @@ const CommunityPage = () => {
                                   onClick={() => setActiveBuild(i)}
                                   className="ui inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/75 transition-colors hover:text-tomato"
                                 >
-                                  Learn more
+                                  How it works
                                   <ArrowUpRight className="h-4 w-4" />
                                 </button>
                               )}
+                              <span className="ui text-[10px] uppercase tracking-[0.22em] text-ink/40">
+                                Open infra
+                              </span>
                             </div>
                           </div>
                         </article>
