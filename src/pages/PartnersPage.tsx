@@ -53,8 +53,11 @@ const PartnersPage = () => {
           <div className="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-tomato/15 blur-3xl" />
         </Parallax>
         <div className="container relative">
-          <div className="border-t border-ink/30 pt-6">
+          <div className="flex flex-wrap items-baseline justify-between gap-4 border-t border-ink/30 pt-6">
             <p className="overline text-ink/60">Selected collaborators</p>
+            <span className="handwritten -rotate-[2deg] text-ink/70 text-sm md:text-base">
+              IRL &gt; ads ↗
+            </span>
           </div>
           <div className="mt-12 grid grid-cols-2 gap-x-12 gap-y-14 sm:grid-cols-3 lg:grid-cols-6">
             {PARTNERS.map((p, i) => (
