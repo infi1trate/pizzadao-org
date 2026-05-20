@@ -234,7 +234,7 @@ const Sponsorship = () => {
             </div>
           </div>
 
-          <div className="mt-20 grid grid-cols-1 gap-6 md:mt-24 md:grid-cols-2 md:gap-7 lg:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-5 md:mt-14 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
             {[
               {
                 k: "Global Moments",
