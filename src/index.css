@@ -242,6 +242,49 @@
   .paper-soft-dark::after { display: none; }
   .paper-soft > * { position: relative; z-index: 1; }
 
+  /* Ultra-light photocopy print noise — adds a faint toner-fleck breath.
+     Pair with .paper-soft on light surfaces, or use alone on flat blocks. */
+  .print-noise { position: relative; isolation: isolate; }
+  .print-noise::after {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.05;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='pn'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23pn)'/></svg>");
+  }
+  .print-noise > * { position: relative; z-index: 1; }
+
+  /* Faint halftone — soft printed-dot field. Tuned to read as "press"
+     rather than pattern. Best on cream / butter / tinted blocks. */
+  .halftone-soft { position: relative; isolation: isolate; }
+  .halftone-soft::after {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.045;
+    mix-blend-mode: multiply;
+    background-image: radial-gradient(hsl(var(--ink)) 0.6px, transparent 1.1px);
+    background-size: 6px 6px;
+  }
+  .halftone-soft > * { position: relative; z-index: 1; }
+
+  /* Ink spread — extremely soft ink-bleed gradient on edges of dark blocks. */
+  .ink-spread { position: relative; isolation: isolate; }
+  .ink-spread::after {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.55;
+    background:
+      radial-gradient(120% 80% at 10% 0%, hsl(var(--tomato) / 0.06), transparent 55%),
+      radial-gradient(110% 70% at 90% 100%, hsl(var(--butter) / 0.05), transparent 55%);
+  }
+  .ink-spread > * { position: relative; z-index: 1; }
+
   /* Marker bleed — applies a soft analog ink halo to handwritten/red type.
      Ultra-tight, opaque core, faint warm edge — not a glow. */
   .marker-bleed {
