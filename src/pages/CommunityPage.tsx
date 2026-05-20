@@ -333,7 +333,7 @@ const CommunityPage = () => {
               <div className="col-span-12 md:col-span-7">
                 <p className="overline text-tomato">§ C.01, Ways to participate</p>
                 <h2 className="font-display mt-5 text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.9]">
-                  <span className="handwritten relative inline-block text-tomato text-[1.1em] leading-[0.75] -ml-1 translate-y-[0.05em] -rotate-[3deg] align-baseline">find your lane.</span>
+                  <span className="handwritten marker-bleed relative inline-block text-tomato text-[1.1em] leading-[0.75] -ml-1 translate-y-[0.05em] -rotate-[3deg] align-baseline">find your lane.</span>
                   <br />
                   Show up however fits.
                 </h2>
