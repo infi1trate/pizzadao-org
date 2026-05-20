@@ -1177,7 +1177,7 @@ dont:  [all caps, corporate jargon]`}
                 </figcaption>
               </figure>
 
-              <figure className="relative col-span-6 overflow-hidden rounded-2xl bg-ink lg:col-span-4">
+              <figure className="tape-corner relative col-span-6 overflow-hidden rounded-2xl bg-ink lg:col-span-4">
                 <img
                   src={wildTee}
                   alt="Community member holding a PizzaDAO NYC Bazaar t-shirt"
@@ -1284,6 +1284,10 @@ dont:  [all caps, corporate jargon]`}
                 <h2 className="font-display mt-5 text-5xl font-extrabold leading-[0.88] md:text-7xl">
                   Make a flyer.
                 </h2>
+                <div className="mt-5 flex items-center gap-3">
+                  <span aria-hidden className="reg-mark" />
+                  <span className="prod-stamp">Print ready · A3</span>
+                </div>
               </div>
               <div className="col-span-12 md:col-span-5 md:pb-3">
                 <p className="text-base leading-relaxed text-ink/75 md:text-lg max-w-[60ch]">
@@ -1333,15 +1337,15 @@ dont:  [all caps, corporate jargon]`}
 
             {/* Examples */}
             <div className="mt-16">
-              <p className="overline text-tomato">F.01, From the chapters</p>
+              <div className="flex flex-wrap items-center justify-between gap-3"><div className="flex items-center gap-3"><p className="overline text-tomato">F.01, From the chapters</p><span aria-hidden className="reg-mark" /></div><span className="prod-stamp">Proof · v1.0</span></div>
               <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
                 {[
                   { src: flyerPizzaFuture, city: "Toronto", title: "Pizza Future" },
                   { src: flyerDaoTokyo, city: "Tokyo", title: "DAO Tokyo" },
                   { src: flyerPizzaFesta, city: "Lisboa", title: "Pizza Festa" },
                 ].map((f) => (
-                  <figure key={f.title} className="overflow-hidden rounded-3xl bg-cream shadow-sm">
-                    <div className="aspect-square overflow-hidden">
+                  <figure key={f.title} className="crop-marks relative rounded-3xl bg-cream shadow-sm">
+                    <div className="aspect-square overflow-hidden rounded-t-3xl">
                       <img
                         src={f.src}
                         alt={`${f.title}, PizzaDAO party flyer from ${f.city}`}
