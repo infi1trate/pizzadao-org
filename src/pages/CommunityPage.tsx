@@ -248,13 +248,19 @@ const CommunityPage = () => {
                 Members · Crews · Chapters
               </p>
             </div>
-            <div className="col-span-12 md:col-span-6 md:col-start-7">
-              <div className="space-y-5 border-l-2 border-butter/60 pl-6 md:pl-8">
+            <div className="col-span-12 md:col-span-6 md:col-start-7 md:translate-y-2">
+              <div className="relative space-y-5 border-l-2 border-butter/60 pl-6 md:pl-8">
+                <span
+                  aria-hidden
+                  className="handwritten marker-bleed-butter absolute -left-3 -top-7 hidden text-butter text-[14px] leading-tight -rotate-[8deg] md:block"
+                >
+                  ↘ read this twice
+                </span>
                 <p className="font-display text-[clamp(1.6rem,2.6vw,2.25rem)] font-extrabold leading-[1.1] text-cream">
                   Crews coordinate. Chapters host.{" "}
                   <span className="text-butter">Members make the work happen.</span>
                 </p>
-                <p className="text-base leading-relaxed text-cream/65 md:text-[17px]">
+                <p className="text-base leading-relaxed text-cream/65 md:text-[17px] md:pl-4">
                   Funding, tools, and culture move through whichever crew picks them up this week.
                 </p>
               </div>
@@ -268,7 +274,7 @@ const CommunityPage = () => {
                 ].map((r, i) => (
                   <li
                     key={r}
-                    className="flex items-baseline gap-5 border-b border-cream/15 pb-4"
+                    className={`flex items-baseline gap-5 border-b border-cream/15 pb-4 ${i === 1 ? "md:pl-3" : ""}`}
                   >
                     <span className="ui w-8 text-[11px] tabular-nums text-butter">
                       0{i + 1}
@@ -489,12 +495,12 @@ const CommunityPage = () => {
                   href="/join"
                   className={`group relative block px-2 py-5 transition-all duration-200 md:px-3 md:py-6 ${
                     c.active
-                      ? "bg-butter/40 hover:-translate-y-0.5 hover:bg-butter/60 hover:shadow-[0_18px_38px_-22px_hsl(var(--tomato)/0.4)]"
-                      : "hover:bg-butter/30 hover:-translate-y-0.5"
+                      ? "bg-butter/50 hover:-translate-y-0.5 hover:bg-butter/70"
+                      : "hover:bg-butter/25 hover:-translate-y-0.5"
                   }`}
                 >
                   {c.active && (
-                    <span aria-hidden className="pointer-events-none absolute left-0 top-1/2 hidden h-10 w-[3px] -translate-y-1/2 rounded-r bg-tomato md:block" />
+                    <span aria-hidden className="pointer-events-none absolute left-0 top-1/2 hidden h-14 w-[4px] -translate-y-1/2 rounded-r bg-tomato md:block" />
                   )}
                   {/* Mobile: stacked */}
                   <div className="flex flex-col gap-3 md:hidden">
@@ -537,10 +543,10 @@ const CommunityPage = () => {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div className="col-span-4">
-                      <h4 className="font-display text-left text-lg font-extrabold leading-snug lg:text-xl">
+                      <h4 className={`font-display text-left font-extrabold leading-[1.1] ${c.active ? "text-[1.35rem] lg:text-[1.55rem]" : "text-lg lg:text-xl"}`}>
                         {c.title}
                       </h4>
-                      <span className={`ui mt-1.5 inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] ${c.active ? "bg-tomato text-cream" : "bg-ink/8 text-ink/65"}`}>
+                      <span className={`ui mt-1.5 inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] ${c.active ? "bg-tomato text-cream shadow-[0_4px_14px_-4px_hsl(var(--tomato)/0.6)]" : "bg-ink/[0.07] text-ink/65"}`}>
                         {c.active && (
                           <span className="relative flex h-1.5 w-1.5">
                             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cream opacity-70" />
@@ -775,28 +781,29 @@ const CommunityPage = () => {
         </div>
       </div>
 
-      {/* RHYTHM BREAK — oversized handwritten interruption, intentionally misbehaving, overlaps next slab */}
-      <div className="relative z-20 -mb-16 overflow-visible bg-cream py-16 md:-mb-28 md:py-24">
+      {/* RHYTHM BREAK — cinematic interruption, softened, intentionally overlapping next slab */}
+      <div className="relative z-20 -mb-10 overflow-visible bg-cream py-20 md:-mb-16 md:py-28">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.55]"
+          className="pointer-events-none absolute inset-0 opacity-[0.4]"
           style={{
             background:
-              "radial-gradient(70% 80% at 50% 50%, hsl(var(--butter)/0.6), transparent 70%)",
+              "radial-gradient(60% 70% at 50% 50%, hsl(var(--butter)/0.45), transparent 72%)",
           }}
         />
-        <div className="relative">
-          <p className="ui mb-3 text-center text-[10px] font-semibold uppercase tracking-[0.32em] text-tomato">
+        <div className="relative mx-auto max-w-[88%] md:max-w-[78%]">
+          <p className="ui mb-4 text-center text-[10px] font-semibold uppercase tracking-[0.32em] text-tomato/80">
             § Interlude
           </p>
-          <p className="handwritten marker-bleed px-2 text-center text-tomato leading-[0.72] -rotate-[3deg] text-[clamp(4.5rem,22vw,20rem)] [text-shadow:0_2px_0_hsl(var(--cream)),0_0_60px_hsl(var(--butter)/0.7),0_0_0.6px_hsl(var(--tomato))]">
+          <p className="handwritten px-2 text-center text-tomato/85 leading-[0.78] -rotate-[2deg] text-[clamp(3.5rem,18.5vw,16rem)] [text-shadow:0_1px_0_hsl(var(--cream)),0_0_40px_hsl(var(--butter)/0.45)]">
             but enough talk —
           </p>
-          <p className="font-display mt-6 text-center text-[clamp(1.25rem,2.4vw,1.75rem)] font-extrabold leading-tight text-ink/85">
+          <p className="font-display mt-8 text-center text-[clamp(1.1rem,2.2vw,1.6rem)] font-extrabold leading-tight text-ink/80">
             here's what members actually built.
           </p>
         </div>
       </div>
+
 
       {/* THE WORKSHOP, builder-focused outputs */}
       <section className="relative bg-ink pb-16 pt-24 text-cream md:pb-24 md:pt-40">
@@ -989,9 +996,15 @@ const CommunityPage = () => {
                           )}
 
                           <div className="flex flex-1 flex-col p-6 md:p-7">
-                            <p className="ui text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/50 tabular-nums">
-                              Project {String(i + 1).padStart(2, "0")} / 0{BUILDS.length}
-                            </p>
+                            <div className="flex items-center justify-between">
+                              <p className="ui text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/50 tabular-nums">
+                                Project {String(i + 1).padStart(2, "0")} / 0{BUILDS.length}
+                              </p>
+                              <p className="ui inline-flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.22em] text-ink/55">
+                                <span className="h-1.5 w-1.5 rounded-full bg-tomato/70" />
+                                {b.tag === "Hackathon" ? "in pilot" : "shipping"}
+                              </p>
+                            </div>
                             <h3 className="font-display mt-3 text-xl font-extrabold leading-[1.05] md:text-[22px]">
                               {b.name}
                             </h3>
@@ -1008,9 +1021,9 @@ const CommunityPage = () => {
                                   href={b.demo}
                                   target="_blank"
                                   rel="noreferrer"
-                                  className="ui inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink transition-colors hover:text-tomato"
+                                  className="ui inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-cream transition-colors hover:bg-tomato"
                                 >
-                                  View demo
+                                  View live demo
                                   <ArrowUpRight className="h-4 w-4" />
                                 </a>
                               ) : (
@@ -1019,10 +1032,13 @@ const CommunityPage = () => {
                                   onClick={() => setActiveBuild(i)}
                                   className="ui inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/75 transition-colors hover:text-tomato"
                                 >
-                                  Learn more
+                                  How it works
                                   <ArrowUpRight className="h-4 w-4" />
                                 </button>
                               )}
+                              <span className="ui text-[10px] uppercase tracking-[0.22em] text-ink/40">
+                                Open infra
+                              </span>
                             </div>
                           </div>
                         </article>
@@ -1224,9 +1240,16 @@ const CommunityPage = () => {
         );
       })()}
 
-
-
-
+      {/* Asymmetric rhythm break — quiet handwritten margin annotation, off-center */}
+      <div className="relative overflow-hidden bg-cream py-6 md:py-10">
+        <div className="container">
+          <p
+            className="handwritten text-tomato/70 text-[clamp(1.4rem,3.4vw,2.4rem)] leading-[0.95] -rotate-[2deg] md:ml-[58%] md:max-w-[40%]"
+          >
+            ↘ ok, your turn.
+          </p>
+        </div>
+      </div>
 
 
       {/* INITIATION — name ritual + 3-path action bridge, one section */}
@@ -1251,12 +1274,15 @@ const CommunityPage = () => {
           </div>
 
           {/* Name ritual + 3 action paths, visually linked */}
-          <div className="paper-soft mt-10 overflow-hidden rounded-3xl bg-cream shadow-[0_30px_80px_-40px_hsl(var(--ink)/0.5)] ring-1 ring-ink/10 md:mt-14">
+          <div className="paper-soft mt-10 overflow-hidden rounded-3xl bg-cream shadow-[0_30px_80px_-40px_hsl(var(--ink)/0.5)] md:mt-14">
             <div className="grid grid-cols-1 md:grid-cols-12">
-              {/* The name ritual */}
-              <div className="relative flex flex-col justify-between bg-ink p-7 text-cream md:col-span-5 md:p-10">
+              {/* The name ritual — receipt / stamp energy, not form energy */}
+              <div className="paper-soft paper-soft-dark relative flex flex-col justify-between bg-ink p-7 text-cream md:col-span-5 md:p-10">
                 <div>
-                  <p className="overline text-butter">The ritual</p>
+                  <p className="overline inline-flex items-center gap-2 text-butter">
+                    <span className="h-1.5 w-1.5 rounded-full bg-butter" />
+                    The ritual
+                  </p>
                   <p className="font-display mt-5 text-[clamp(2rem,3.4vw,2.75rem)] font-extrabold leading-[0.95]">
                     Earn your <span className="handwritten marker-bleed-butter relative inline-block text-butter text-[1.1em] leading-[0.75] translate-y-[0.08em] -rotate-[4deg] align-baseline">slice.</span>
                   </p>
@@ -1264,22 +1290,35 @@ const CommunityPage = () => {
                     Don Pepperoni. Sister Marinara. Capo Crust. Generate the
                     alias the Mafia will know you by.
                   </p>
+
+                  {/* Sample names — collectible/stamped feel */}
+                  <ul className="mt-7 flex flex-wrap gap-2">
+                    {["Don Pepperoni", "Sister Marinara", "Capo Crust", "Vinnie Calzone"].map((n, i) => (
+                      <li
+                        key={n}
+                        className="handwritten inline-flex items-center rounded-full border border-butter/35 bg-butter/10 px-3 py-1.5 text-[14px] text-butter/95 md:text-[15px]"
+                        style={{ transform: `rotate(${[-1.4, 0.8, -0.6, 1.2][i]}deg)` }}
+                      >
+                        {n}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
                 <a
                   href="/join"
-                  className="ui mt-8 inline-flex items-center justify-between gap-3 rounded-full bg-butter px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.22em] text-ink transition-colors hover:bg-cream"
+                  className="ui mt-8 group/cta inline-flex items-center justify-between gap-3 rounded-full bg-butter px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.22em] text-ink transition-all hover:bg-cream hover:shadow-[0_18px_40px_-12px_hsl(var(--butter)/0.6)]"
                 >
-                  Generate a name
-                  <ArrowUpRight className="h-4 w-4" />
+                  Claim your name
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
                 </a>
               </div>
 
-              {/* 3 action paths */}
+              {/* 3 action paths — softer dividers, ritual flow, not table chrome */}
               <div className="md:col-span-7">
                 <div className="flex h-full flex-col">
-                  <div className="flex items-baseline justify-between border-b border-ink/15 px-6 py-4 md:px-8">
+                  <div className="flex items-baseline justify-between px-6 pb-3 pt-6 md:px-10 md:pt-8">
                     <p className="overline text-tomato">Three ways in</p>
-                    <span className="ui text-[10px] uppercase tracking-[0.22em] text-ink/45">
+                    <span className="ui text-[10px] uppercase tracking-[0.22em] text-ink/40">
                       Pick one · do it today
                     </span>
                   </div>
@@ -1309,16 +1348,16 @@ const CommunityPage = () => {
                       href: "/join",
                       primary: false,
                     },
-                  ].map((s) => (
+                  ].map((s, idx, arr) => (
                     <a
                       key={s.n}
                       href={s.href}
-                      className={`group flex flex-1 items-center justify-between gap-5 border-b border-ink/15 px-6 py-6 transition-colors last:border-b-0 md:px-8 ${
-                        s.primary ? "bg-butter/40 hover:bg-butter/70" : "hover:bg-butter/30"
-                      }`}
+                      className={`group flex flex-1 items-center justify-between gap-5 px-6 py-5 transition-colors md:px-10 md:py-6 ${
+                        idx < arr.length - 1 ? "border-b border-dashed border-ink/15" : ""
+                      } ${s.primary ? "bg-butter/35 hover:bg-butter/60" : "hover:bg-butter/20"}`}
                     >
                       <div className="flex items-start gap-5">
-                        <span className="ui mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45 tabular-nums">
+                        <span className="ui mt-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/40 tabular-nums">
                           {s.n}
                         </span>
                         <div>
@@ -1336,7 +1375,7 @@ const CommunityPage = () => {
                         </div>
                       </div>
                       <div className="flex shrink-0 items-center gap-2">
-                        <span className="ui hidden text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/70 group-hover:text-tomato md:inline">
+                        <span className="ui hidden text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/65 group-hover:text-tomato md:inline">
                           {s.cta}
                         </span>
                         <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -1469,18 +1508,18 @@ const HERO_IMAGES: HeroTile[] = [
 // Layout for collage tiles, percentages relative to collage box.
 // Intentionally imperfect overlap. Two tiles allowed to break the row.
 const TILE_LAYOUTS = [
-  // ANCHOR — dominant editorial centerpiece, largest, lowest rotation, slightly breaks bottom
-  { top: "12%", left: "26%", w: "50%", aspect: "4/5",   rot: -1.5, z: 8, delay: 80  },
+  // ANCHOR — dominant editorial centerpiece; sized to fit the engineered container.
+  { top: "6%",  left: "28%", w: "44%", aspect: "5/6",   rot: -1.5, z: 8, delay: 80  },
   // upper-left support
-  { top: "2%",  left: "-2%", w: "24%", aspect: "1/1",   rot: -5,   z: 4, delay: 220 },
+  { top: "2%",  left: "-1%", w: "22%", aspect: "1/1",   rot: -5,   z: 4, delay: 220 },
   // upper-right support, slightly breaks right edge
-  { top: "0%",  left: "78%", w: "26%", aspect: "3/4",   rot: 5,    z: 3, delay: 360 },
+  { top: "0%",  left: "78%", w: "24%", aspect: "3/4",   rot: 5,    z: 3, delay: 360 },
   // lower-left medium
-  { top: "60%", left: "4%",  w: "22%", aspect: "5/4",   rot: -3,   z: 5, delay: 500 },
+  { top: "62%", left: "3%",  w: "22%", aspect: "5/4",   rot: -3,   z: 5, delay: 500 },
   // lower-right medium, breaks right boundary
-  { top: "58%", left: "80%", w: "24%", aspect: "4/5",   rot: 4,    z: 6, delay: 640 },
-  // tiny accent, tucked, breaks bottom-left
-  { top: "78%", left: "30%", w: "16%", aspect: "1/1",   rot: -6,   z: 7, delay: 820 },
+  { top: "56%", left: "80%", w: "22%", aspect: "4/5",   rot: 4,    z: 6, delay: 640 },
+  // tiny accent, tucked
+  { top: "76%", left: "32%", w: "14%", aspect: "1/1",   rot: -6,   z: 7, delay: 820 },
 ];
 
 
@@ -1565,8 +1604,9 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Organic collage */}
-          <div className="relative mt-14 h-[480px] w-full md:mt-20 md:h-[660px] [&_figure]:will-change-transform">
+          {/* Organic collage — overflow clipped to prevent collision with stats below */}
+          <div className="relative mt-14 h-[520px] w-full overflow-hidden md:mt-20 md:h-[720px] [contain:layout_paint] [&_figure]:will-change-transform">
+
             {tiles.map((t, i) => (
               <figure
                 key={i}
@@ -1826,7 +1866,7 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                       return (
                         <li
                           key={`${d.d}-${idx}`}
-                          className={`group flex items-start gap-4 rounded-xl bg-butter px-4 py-3 shadow-[0_8px_24px_-12px_hsl(var(--butter)/0.9)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-12px_hsl(var(--ink)/0.25)] ${idx === 0 ? "live-pulse ring-1 ring-tomato/40" : ""}`}
+                          className={`group flex items-start gap-4 rounded-xl px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 ${idx === 0 ? "bg-butter shadow-[0_10px_28px_-16px_hsl(var(--butter)/0.85)]" : "bg-butter/55 hover:bg-butter/75"}`}
                         >
                           <div className="ui w-10 shrink-0 pt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
                             {d.d}
@@ -1846,7 +1886,7 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                                 {tags.map((t) => (
                                   <span
                                     key={t}
-                                    className="ui rounded-full bg-ink/8 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/65"
+                                    className="ui rounded-full bg-ink/[0.06] px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/65"
                                   >
                                     {t}
                                   </span>
@@ -1854,7 +1894,11 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                               </div>
                             )}
                           </div>
-                          <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-tomato transition-transform group-hover:scale-125" aria-hidden />
+                          {idx === 0 && (
+                            <span className="ui mt-1 shrink-0 text-[9px] font-semibold uppercase tracking-[0.22em] text-tomato/80" aria-hidden>
+                              live
+                            </span>
+                          )}
                         </li>
                       );
                     })}
@@ -1896,9 +1940,12 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                       <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-tomato">
                         {formatDayTime(ev.start)}
                       </p>
-                      <p className="ui text-[10px] tabular-nums text-ink/40">
-                        Event {String(i + 1).padStart(2, "0")}
-                      </p>
+                      {i === 0 && (
+                        <p className="ui inline-flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.22em] text-ink/50">
+                          <span className="h-1.5 w-1.5 rounded-full bg-tomato/70" aria-hidden />
+                          this week
+                        </p>
+                      )}
                     </div>
                     <h3 className="font-display mt-4 break-words text-[clamp(1.5rem,2.4vw,2.25rem)] font-extrabold leading-[1.05] tracking-[-0.005em]">
                       {ev.title}
