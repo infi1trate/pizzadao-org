@@ -46,38 +46,25 @@ const PartnersPage = () => {
 
       {/* Case studies consolidated into Sponsorship "What we've built" */}
 
-      {/* Imperfect divider between Sponsorship and logo wall */}
-      <div className="bg-cream" aria-hidden>
-        <div className="container flex items-center gap-4 py-4">
-          <span className="h-px flex-1 bg-ink/15" />
-          <span className="checker-tape h-[6px] w-20 opacity-75" />
-          <span className="h-px flex-1 bg-ink/15" />
-        </div>
-      </div>
-
       {/* Logo wall — butter brand band */}
-      <section className="paper-soft paper-drift relative overflow-hidden bg-butter py-20 md:py-24">
-        {/* Corner checker tape accents */}
-        <div className="checker-tape absolute left-0 top-0 h-[6px] w-28 opacity-80 md:w-40" aria-hidden />
-        <div className="checker-tape absolute bottom-0 right-0 h-[6px] w-28 opacity-80 md:w-40" aria-hidden />
-
-        <Parallax intensity={60} className="pointer-events-none absolute inset-0">
+      <section className="paper-soft paper-drift relative overflow-hidden bg-butter py-28 md:py-36">
+        <Parallax intensity={40} className="pointer-events-none absolute inset-0">
           <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-cream/40 blur-3xl" />
-          <div className="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-tomato/15 blur-3xl" />
+          <div className="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-tomato/10 blur-3xl" />
         </Parallax>
         <div className="container relative">
-          <div className="flex flex-wrap items-baseline justify-between gap-4 border-t border-ink/25 pt-7">
+          <div className="flex flex-wrap items-baseline justify-between gap-4">
             <p className="overline text-ink/55">§ B.01 — Selected collaborators</p>
-            <span className="handwritten -rotate-[2deg] text-ink/65 text-sm md:text-base">
-              IRL &gt; ads ↗
-            </span>
+            <p className="ui hidden text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/40 md:block">
+              Programme partners, 2020–2025
+            </p>
           </div>
-          <div className="mt-12 grid grid-cols-2 gap-x-12 gap-y-14 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="mt-16 grid grid-cols-2 gap-x-14 gap-y-16 border-t border-ink/15 pt-14 sm:grid-cols-3 lg:grid-cols-6 md:mt-20 md:gap-x-16">
             {PARTNERS.map((p, i) => (
               <div
                 key={p.name}
-                className="flex items-center justify-center opacity-60 grayscale transition-all duration-500 hover:-translate-y-1 hover:opacity-100 hover:grayscale-0 animate-fade-in"
-                style={{ animationDelay: `${i * 80}ms` }}
+                className="flex items-center justify-center opacity-55 transition-[opacity,transform] duration-700 ease-out hover:-translate-y-[2px] hover:opacity-100 animate-fade-in"
+                style={{ animationDelay: `${i * 80}ms`, animationFillMode: "both" }}
               >
                 <div className="font-display text-xl font-extrabold tracking-tight text-ink md:text-2xl">
                   {p.name}
@@ -87,6 +74,7 @@ const PartnersPage = () => {
           </div>
         </div>
       </section>
+
 
       {/* Inquiry form */}
       <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-24 text-cream md:py-32">
