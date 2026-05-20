@@ -7,12 +7,14 @@ import PartnersGlobe from "@/components/PartnersGlobe";
 
 
 const PARTNERS = [
-  { name: "BASF", role: "Materials" },
-  { name: "PRIVY", role: "Identity" },
-  { name: "SUPERCHILD", role: "Creative" },
-  { name: "MRBEAST", role: "Distribution" },
-  { name: "OPTIMISM", role: "Infrastructure" },
-  { name: "FARCASTER", role: "Social" },
+  { name: "PayPal", color: "#003087" },
+  { name: "Ledger", color: "#000000" },
+  { name: "Stand With Crypto", color: "#0052FF" },
+  { name: "Brave", color: "#FB542B" },
+  { name: "OpenSea", color: "#2081E2" },
+  { name: "Base", color: "#0052FF" },
+  { name: "Polygon", color: "#8247E5" },
+  { name: "ENS", color: "#5298FF" },
 ];
 
 
