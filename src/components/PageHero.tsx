@@ -59,11 +59,21 @@ const PageHero = ({
 
   return (
     <section className="paper-soft paper-drift relative overflow-hidden bg-cream pt-12 md:pt-20">
-      {/* Faint corner wash — atmosphere, not decoration */}
+      {/* Cinematic atmosphere — layered warm wash, ambient and slow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-24 -top-20 h-[420px] w-[420px] rounded-full opacity-[0.07] blur-3xl"
+        className="pointer-events-none absolute -right-32 -top-32 h-[640px] w-[640px] rounded-full opacity-[0.09] blur-[120px] hero-glow"
         style={{ background: "hsl(var(--tomato))" }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-40 top-1/3 h-[520px] w-[520px] rounded-full opacity-[0.10] blur-[140px] hero-glow"
+        style={{ background: "hsl(var(--butter))", animationDelay: "-4s" }}
+      />
+      {/* Faint editorial vignette toward the lower edge */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink/[0.04] to-transparent"
       />
 
       <div className="container relative">
@@ -80,15 +90,8 @@ const PageHero = ({
         <div className="border-t border-ink/40 pt-10 md:pt-14">
           <div className="grid grid-cols-12 items-end gap-x-8 gap-y-10 md:gap-x-12">
             <div className="col-span-12 md:col-span-8 animate-fade-in">
-              <div className="flex items-baseline gap-3">
-                <p className="overline text-tomato">{section}</p>
-                {note && (
-                  <span className="handwritten -rotate-2 text-tomato text-[0.78rem] md:text-sm leading-none">
-                    “{note}”
-                  </span>
-                )}
-              </div>
-              <h1 className="font-display mt-6 text-mega font-extrabold leading-[0.82] tracking-[-0.025em] md:mt-7 md:leading-[0.8]">
+              <p className="overline text-tomato">{section}</p>
+              <h1 className="font-display mt-6 font-extrabold leading-[0.82] tracking-[-0.025em] text-mega md:mt-8 md:leading-[0.78] md:text-[clamp(4rem,15.5vw,16rem)]">
                 {renderWithAccent(title)}
                 {italic && (
                   <>
@@ -97,6 +100,11 @@ const PageHero = ({
                   </>
                 )}
               </h1>
+              {note && (
+                <p className="handwritten mt-6 -rotate-[1.5deg] text-tomato text-sm md:text-base">
+                  ↳ {note}
+                </p>
+              )}
             </div>
             <div className="col-span-12 md:col-span-4 md:pl-10 md:pb-3 animate-fade-in" style={{ animationDelay: "120ms", animationFillMode: "both" }}>
               <p className="font-serif text-[15.5px] leading-[1.6] text-ink/70 md:text-[15px] md:leading-[1.65]">
@@ -124,18 +132,18 @@ const PageHero = ({
           </div>
 
           {meta && (
-            <div className="mt-24 md:mt-32">
-              <div className="flex items-baseline justify-between pb-5">
+            <div className="mt-32 md:mt-44">
+              <div className="flex items-baseline justify-between pb-6">
                 <p className="overline text-ink/45">Programme — by the numbers</p>
                 <p className="ui hidden text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/35 md:block">
                   Fig. i — Reach, 2020–2025
                 </p>
               </div>
-              <dl className="grid grid-cols-2 gap-x-8 gap-y-12 border-t border-ink/15 pt-10 md:grid-cols-4 md:gap-x-14">
+              <dl className="grid grid-cols-2 gap-x-10 gap-y-16 border-t border-ink/15 pt-14 md:grid-cols-4 md:gap-x-16 md:pt-16">
                 {meta.map((m, i) => (
                   <div
                     key={m.k}
-                    className="flex flex-col gap-3 animate-fade-in"
+                    className="flex flex-col gap-4 animate-fade-in"
                     style={{ animationDelay: `${200 + i * 80}ms`, animationFillMode: "both" }}
                   >
                     <dt className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/45">
