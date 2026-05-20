@@ -1486,11 +1486,11 @@ const HeroSection = () => {
                 <span className="relative inline-block align-baseline">
                   is built.
                 </span>
-                {/* "by you" drops down to overlap/interact with the "is built." line, scaled ~12% smaller */}
+                {/* "by you" drops down to overlap/interact with the "is built." line, scaled ~6% smaller, marker-bleed edge */}
                 <span
                   aria-hidden
-                  className="handwritten pointer-events-none absolute z-10 text-tomato text-[0.92em] sm:text-[1em] md:text-[1.08em] leading-[0.7] -rotate-[5deg] [text-shadow:0_1px_0_hsl(var(--cream)),0_0_18px_hsl(var(--cream))]"
-                  style={{ left: "clamp(7.5rem, 22vw, 19rem)", top: "clamp(2.2rem, 6.5vw, 5.5rem)" }}
+                  className="handwritten marker-bleed pointer-events-none absolute z-10 text-tomato text-[0.86em] sm:text-[0.94em] md:text-[1.02em] leading-[0.7] -rotate-[5deg]"
+                  style={{ left: "clamp(7.5rem, 22vw, 19rem)", top: "clamp(2.4rem, 6.8vw, 5.8rem)" }}
                 >
                   by you.
                 </span>
@@ -1501,17 +1501,27 @@ const HeroSection = () => {
               </p>
             </div>
             <div className="col-span-12 md:col-span-4 md:pl-8">
-              <p className="text-lg leading-relaxed text-ink/80 md:text-xl">
-                People don't just join PizzaDAO. They host. Build. Create.
-                Feed. Organize. <span className="handwritten inline-block text-tomato text-[1.25em] leading-none -rotate-[3deg] translate-y-[0.05em]">show up.</span>
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row md:flex-col">
-                <a href="/join" className="btn-pill-lg bg-tomato text-cream hover:bg-ink">
-                  Join the Pizza Mafia →
-                </a>
-                <a href="#ways-in" className="btn-pill-lg border-2 border-ink/20 text-ink hover:border-ink">
-                  See how people show up
-                </a>
+              {/* Soft warm panel — integrated, not utility */}
+              <div
+                className="paper-soft relative rounded-3xl px-6 py-7 md:px-7 md:py-8"
+                style={{
+                  background:
+                    "linear-gradient(155deg, hsl(var(--cream) / 0.55), hsl(var(--butter) / 0.18) 60%, hsl(var(--tomato) / 0.06))",
+                  boxShadow: "0 1px 0 hsl(var(--cream) / 0.6) inset, 0 30px 60px -30px hsl(var(--tomato) / 0.25)",
+                }}
+              >
+                <p className="text-lg leading-relaxed text-ink/85 md:text-xl">
+                  People don't just join PizzaDAO. They host. Build. Create.
+                  Feed. Organize. <span className="handwritten marker-bleed inline-block text-tomato text-[1.25em] leading-none -rotate-[3deg] translate-y-[0.05em]">show up.</span>
+                </p>
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row md:flex-col">
+                  <a href="/join" className="btn-pill-lg bg-tomato text-cream hover:bg-ink">
+                    Join the Pizza Mafia →
+                  </a>
+                  <a href="#ways-in" className="btn-pill-lg border-2 border-ink/15 text-ink hover:border-ink hover:bg-cream/60">
+                    See how people show up
+                  </a>
+                </div>
               </div>
             </div>
           </div>
