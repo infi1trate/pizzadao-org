@@ -1661,6 +1661,8 @@ const eventTags = (ev: CalEvent): string[] => {
   if (isOnline) tags.push("online");
   else if (ev.location?.trim()) tags.push("IRL");
   if (ev.recurring) tags.push("recurring");
+  if (/lab|workshop|build/i.test(desc) || /lab|workshop/i.test(ev.title)) tags.push("pizza lab");
+  if (/chapter|crew/i.test(desc + " " + ev.title)) tags.push("community-run");
   return tags;
 };
 
