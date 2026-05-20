@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Check, Copy, RefreshCw, Search, Sparkles, X } from "lucide-react";
 import logoDark from "@/assets/logo-dark.svg";
@@ -7,6 +7,8 @@ import { TOPPING_IMAGE } from "@/data/topping-images";
 import FilmPoster from "@/components/FilmPoster";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
+import { track } from "@/lib/analytics/posthog";
+import { EVT } from "@/lib/analytics/events";
 
 type GeneratedName = { name: string; explanation: string; style_tags: string[] };
 type Step = "film" | "topping" | "names" | "claim";
@@ -34,6 +36,12 @@ const MafiaNamePage = () => {
   const [editing, setEditing] = useState(false);
   const [claiming, setClaiming] = useState(false);
   const [claimed, setClaimed] = useState(false);
+
+  const generateCountRef = useRef(0);
+
+  useEffect(() => {
+    track(EVT.MAFIA_STARTED, {});
+  }, []);
 
   const filteredFilms = useMemo(() => {
     const q = query.trim().toLowerCase();
