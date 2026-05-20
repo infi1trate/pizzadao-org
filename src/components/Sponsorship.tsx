@@ -389,7 +389,7 @@ const Sponsorship = () => {
           ].map((c) => (
             <article
               key={c.partner}
-              className="rounded-2xl bg-cream p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-28px_hsl(var(--ink)/0.3)] md:p-10"
+              className="rounded-2xl bg-cream p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-28px_hsl(var(--ink)/0.3)] md:p-8"
             >
               <div className="ui text-[11px] font-semibold uppercase tracking-[0.18em] text-tomato">
                 {c.partner}
