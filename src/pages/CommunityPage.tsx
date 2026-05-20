@@ -1902,9 +1902,12 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                       <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-tomato">
                         {formatDayTime(ev.start)}
                       </p>
-                      <p className="ui text-[10px] tabular-nums text-ink/40">
-                        Event {String(i + 1).padStart(2, "0")}
-                      </p>
+                      {i === 0 && (
+                        <p className="ui inline-flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.22em] text-ink/50">
+                          <span className="h-1.5 w-1.5 rounded-full bg-tomato/70" aria-hidden />
+                          this week
+                        </p>
+                      )}
                     </div>
                     <h3 className="font-display mt-4 break-words text-[clamp(1.5rem,2.4vw,2.25rem)] font-extrabold leading-[1.05] tracking-[-0.005em]">
                       {ev.title}
