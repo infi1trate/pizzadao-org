@@ -70,7 +70,7 @@ const About = () => {
         tapedImage={{
           src: founding,
           alt: "Friends gathered around laptops and pizza, late night",
-          caption: "Fig. A.0, day one",
+          caption: "started online, 2021",
         }}
       />
 
