@@ -282,7 +282,12 @@ const About = () => {
         <div className="container">
           <div className="grid grid-cols-12 gap-x-6 gap-y-10">
             <div className="col-span-12 md:col-span-7">
-              <p className="overline text-tomato">§ A.04, Structure</p>
+              <div className="flex items-baseline gap-3">
+                <p className="overline text-tomato">§ A.04, Structure</p>
+                <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/40">
+                  · field notes
+                </span>
+              </div>
               <h2 className="font-display mt-5 text-display-2 font-extrabold leading-[0.92]">
                 How it runs
               </h2>
