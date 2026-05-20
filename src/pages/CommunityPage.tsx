@@ -381,7 +381,7 @@ const CommunityPage = () => {
               return (
                 <article
                   key={w.title}
-                  className={`group relative flex flex-col rounded-[10px] ${tones[i % tones.length]} ${rots[i % rots.length]} ${offsets[i % offsets.length]} ${scales[i % scales.length]} p-6 md:p-7 shadow-[0_1px_0_hsl(var(--ink)/0.04),0_2px_4px_-2px_hsl(var(--ink)/0.12),0_22px_36px_-26px_hsl(var(--ink)/0.45)] ring-1 ring-ink/[0.06] transition-all duration-300 hover:-translate-y-0.5 hover:rotate-0 hover:shadow-[0_2px_6px_-2px_hsl(var(--ink)/0.18),0_36px_60px_-26px_hsl(var(--ink)/0.5)]`}
+                  className={`paper-soft group relative flex flex-col rounded-[10px] ${tones[i % tones.length]} ${rots[i % rots.length]} ${offsets[i % offsets.length]} ${scales[i % scales.length]} p-6 md:p-7 shadow-[0_1px_0_hsl(var(--ink)/0.04),0_2px_4px_-2px_hsl(var(--ink)/0.12),0_22px_36px_-26px_hsl(var(--ink)/0.45)] ring-1 ring-ink/[0.06] transition-all duration-300 hover:-translate-y-0.5 hover:rotate-0 hover:shadow-[0_2px_6px_-2px_hsl(var(--ink)/0.18),0_36px_60px_-26px_hsl(var(--ink)/0.5)]`}
                   style={{
                     // soft paper grain — fibrous noise, very low opacity
                     backgroundImage:
