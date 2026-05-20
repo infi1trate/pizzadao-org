@@ -684,7 +684,8 @@ const BrandSystemPage = () => {
               </article>
 
               {/* Cheese, yellow */}
-              <article className="flex flex-col bg-cream">
+              <article className="relative flex flex-col bg-cream">
+                <span aria-hidden className="handwritten pointer-events-none absolute -top-5 right-2 z-10 -rotate-[3deg] text-[13px] leading-none text-ink/45 md:-top-6 md:right-3 md:text-sm">too much yellow gets chaotic</span>
                 <div className="aspect-[4/5] bg-butter p-5 md:p-7">
                   <div className="flex h-full flex-col justify-between">
                     <span className="ui text-[11px] font-semibold uppercase tracking-[0.2em] text-ink/65">C.02 · Highlight</span>
@@ -822,9 +823,12 @@ const BrandSystemPage = () => {
                 ))}
               </ul>
 
-              <p className="mt-4 text-xs leading-relaxed text-ink/55">
-                Extended colors never carry a layout on their own. Pair them with Flour or Char, and keep them to a single moment per page.
-              </p>
+              <div className="mt-4 flex items-baseline justify-between gap-6">
+                <p className="text-xs leading-relaxed text-ink/55 max-w-[60ch]">
+                  Extended colors never carry a layout on their own. Pair them with Flour or Char, and keep them to a single moment per page.
+                </p>
+                <span aria-hidden className="handwritten hidden shrink-0 rotate-[2deg] text-sm leading-none text-ink/45 md:inline-block">seasoning, not the meal</span>
+              </div>
             </div>
 
             {/* Supporting opacities */}
@@ -1387,7 +1391,8 @@ dont:  [all caps, corporate jargon]`}
 
             {/* Core primitives, what must stay */}
             <div className="mt-12 grid grid-cols-12 gap-6 md:mt-16">
-              <div className="col-span-12 overflow-hidden rounded-3xl bg-cream shadow-sm md:col-span-7">
+              <div className="relative col-span-12 overflow-hidden rounded-3xl bg-cream shadow-sm md:col-span-7">
+                <span aria-hidden className="handwritten pointer-events-none absolute left-5 top-4 z-10 -rotate-[2deg] text-sm leading-none text-tomato/70 md:text-base">benny should always feel alive</span>
                 <div className="relative aspect-[4/3] p-8 md:p-14">
                   <img
                     src={moltoBenny}
@@ -1544,7 +1549,8 @@ dont:  [all caps, corporate jargon]`}
             </div>
 
             {/* Sticker files, separate from character variants */}
-            <div className="mt-12 rounded-3xl bg-cream shadow-sm p-5 md:p-8">
+            <div className="relative mt-12 rounded-3xl bg-cream shadow-sm p-5 md:p-8">
+              <span aria-hidden className="handwritten pointer-events-none absolute -top-4 right-6 z-10 rotate-[2deg] text-sm leading-none text-ink/45 md:-top-5 md:text-base">works great on shirts too</span>
               <div className="grid grid-cols-12 items-start gap-6">
                 <div className="col-span-12 md:col-span-5">
                   <p className="overline text-tomato">M.02, Sticker files</p>
@@ -1621,7 +1627,10 @@ dont:  [all caps, corporate jargon]`}
             </div>
 
             {/* Tone tabs */}
-            <Tabs defaultValue="warm" className="mt-12">
+            <div className="relative mt-12">
+              <span aria-hidden className="handwritten pointer-events-none absolute -top-5 left-3 -rotate-[2deg] text-sm leading-none text-tomato/70 md:-top-6 md:left-4 md:text-base">best used loud</span>
+            </div>
+            <Tabs defaultValue="warm" className="mt-4">
               <TabsList className="flex h-auto w-full justify-start gap-2 rounded-full border border-ink/15 bg-cream p-1">
                 {[
                   { v: "warm", l: "Warm" },
