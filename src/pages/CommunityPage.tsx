@@ -1451,7 +1451,7 @@ const HeroSection = () => {
           </div>
 
           {/* Organic collage */}
-          <div className="relative mt-14 h-[480px] w-full md:mt-20 md:h-[660px]">
+          <div className="relative mt-14 h-[480px] w-full md:mt-20 md:h-[660px] [&_figure]:will-change-transform">
             {tiles.map((t, i) => (
               <figure
                 key={i}
