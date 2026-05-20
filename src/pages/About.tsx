@@ -364,28 +364,41 @@ const About = () => {
         </div>
       </section>
 
-      {/* Why pizza — visual pause */}
-      <section className="bg-cream py-24 md:py-32">
-        <div className="container">
-          <div className="mx-auto max-w-4xl">
-            <p className="overline text-tomato">§ A.06, Why pizza</p>
-            <h2 className="font-display mt-6 font-extrabold leading-[0.88] tracking-[-0.02em] text-[clamp(2.5rem,8vw,6.5rem)]">
-              Pizza is{" "}
-              <span className="underline-scribble text-ink">easy</span>{" "}
-              to organize around.
+      {/* Why pizza — poster thesis */}
+      <section className="relative overflow-hidden bg-cream py-24 md:py-36">
+        {/* Subtle checkered edge at top */}
+        <div className="checker-tape absolute left-0 right-0 top-0 h-[6px]" />
+
+        <div className="container relative">
+          <div className="mx-auto max-w-5xl text-center">
+            <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+              § A.06, Thesis
+            </p>
+
+            <h2 className="font-display mt-8 text-[clamp(2.8rem,9vw,7rem)] font-extrabold leading-[0.86] tracking-[-0.025em]">
+              Pizza is social{" "}
+              <span className="text-tomato">infrastructure.</span>
             </h2>
-            <div className="mt-10 max-w-[58ch] space-y-5 font-serif text-lg leading-relaxed text-ink/80 md:text-xl">
+
+            <div className="font-serif mx-auto mt-12 max-w-[52ch] space-y-5 text-lg leading-relaxed text-ink/80 md:mt-14 md:text-xl">
               <p>
-                It is familiar, shareable, and doesn't need explanation. You
-                can walk into almost any city in the world and figure out how
-                to make it happen.
+                It is familiar, affordable, easy to share, and understood
+                almost anywhere.
               </p>
-              <p className="italic text-ink">
-                That makes it a good starting point for something bigger.
+              <p>
+                That makes it unusually useful for bringing strangers
+                together without needing much explanation.
               </p>
             </div>
+
+            <span className="handwritten mt-10 inline-block -rotate-2 text-tomato text-base md:mt-12 md:text-lg">
+              the simplest table in the world
+            </span>
           </div>
         </div>
+
+        {/* Subtle checkered edge at bottom */}
+        <div className="checker-tape absolute bottom-0 left-0 right-0 h-[6px]" />
       </section>
 
       {/* What this is becoming */}
