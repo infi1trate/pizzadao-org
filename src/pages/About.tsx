@@ -162,14 +162,12 @@ const About = () => {
 
 
       {/* Bitcoin Pizza Day — bridge between internet history and ritual */}
-      {/* Checkered divider */}
-      <div className="checker-tape h-[5px] w-full" />
       <section className="relative bg-cream py-20 md:py-28">
         <div className="container">
           {/* Section header + stamp */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-6">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-t border-ink/40 pt-8 pb-6">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
-              § A.03, Ritual
+              § A.02, Ritual
             </span>
             <span className="stamp text-tomato">May 22</span>
           </div>
