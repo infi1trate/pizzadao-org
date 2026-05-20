@@ -99,6 +99,35 @@ const BrandSystemPage = () => {
                 v0.1 · Open license · Built in public
               </span>
             </div>
+
+            {/* Live ticker, community contributions */}
+            <div className="mt-10 rounded-2xl border border-ink/10 bg-cream/60 px-4 py-3 backdrop-blur-sm md:mt-14 md:px-5 md:py-3.5">
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                <span className="ui inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/55">
+                  <span aria-hidden className="relative inline-flex h-1.5 w-1.5">
+                    <span className="absolute inset-0 animate-ping rounded-full bg-tomato/60" />
+                    <span className="relative inline-block h-1.5 w-1.5 rounded-full bg-tomato" />
+                  </span>
+                  Live · in the system
+                </span>
+                <ul className="flex min-w-0 flex-1 flex-wrap items-center gap-x-4 gap-y-1.5 text-[11px] text-ink/65 md:text-[12px]">
+                  {[
+                    { tag: "New", label: "Benny variation · São Paulo" },
+                    { tag: "Remix", label: "Latest chapter poster · Lagos" },
+                    { tag: "Updated", label: "Sticker pairing · v1.2" },
+                    { tag: "Print", label: "Community example · Berlin" },
+                  ].map((u) => (
+                    <li key={u.label} className="inline-flex items-center gap-1.5">
+                      <span className="ui rounded-full border border-ink/15 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-ink/55">{u.tag}</span>
+                      <span className="truncate">{u.label}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href="https://github.com/pizzadao" target="_blank" rel="noreferrer" className="ui inline-flex items-center gap-1 text-[11px] font-semibold text-ink/70 underline-offset-4 hover:text-tomato hover:underline">
+                  See changelog <ArrowUpRight className="h-3 w-3" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1122,7 +1151,7 @@ dont:  [all caps, corporate jargon]`}
           <div className="border-t border-ink/15 pt-10 md:pt-12">
             <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
               <div className="col-span-12 md:col-span-7">
-                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1"><p className="overline text-tomato">§ B.08, In the wild</p><span className="handwritten -rotate-[1.5deg] text-tomato/85 text-sm md:text-base leading-none">out there, on purpose</span></div>
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1"><p className="overline text-tomato">§ B.08, In the wild</p><span className="handwritten -rotate-[1.5deg] text-tomato/85 text-sm md:text-base leading-none">out there, on purpose</span><span className="ui inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-cream px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/55"><span aria-hidden className="h-1 w-1 rounded-full bg-tomato" /> Just added · Berlin</span></div>
                 <h2 className="font-display mt-5 text-5xl font-extrabold leading-[0.88] md:text-7xl">
                   Out there. On walls.<br />
                   <span className="text-ink/60">In hands. On phones.</span>
@@ -1341,7 +1370,7 @@ dont:  [all caps, corporate jargon]`}
 
             {/* Examples */}
             <div className="mt-16">
-              <div className="flex flex-wrap items-center justify-between gap-3"><div className="flex items-center gap-3"><p className="overline text-tomato">F.01, From the chapters</p><span aria-hidden className="reg-mark" /></div><span className="prod-stamp">Proof · v1.0</span></div>
+              <div className="flex flex-wrap items-center justify-between gap-3"><div className="flex items-center gap-3"><p className="overline text-tomato">F.01, From the chapters</p><span aria-hidden className="reg-mark" /><span className="ui inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-cream px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/55"><span aria-hidden className="h-1 w-1 rounded-full bg-tomato" /> Latest · Lagos poster</span></div><span className="prod-stamp">Proof · v1.0</span></div>
               <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
                 {[
                   { src: flyerPizzaFuture, city: "Toronto", title: "Pizza Future" },
@@ -1455,7 +1484,12 @@ dont:  [all caps, corporate jargon]`}
             {/* Variants, only the real ones */}
             <div className="mt-16">
               <div className="flex items-end justify-between gap-6 pt-6">
-                <p className="overline text-tomato">M.01, Official variants</p>
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <p className="overline text-tomato">M.01, Official variants</p>
+                  <span className="ui inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-cream px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/55">
+                    <span aria-hidden className="h-1 w-1 rounded-full bg-tomato" /> New · São Paulo variation
+                  </span>
+                </div>
                 <span className="ui hidden text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/55 md:block">
                   Source · pizzadao.github.io/pizzadao-brand-kit
                 </span>
