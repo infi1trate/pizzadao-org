@@ -33,27 +33,6 @@ const VALUE_PROPS = [
   },
 ];
 
-const ACTIVATIONS = [
-  {
-    tag: "Annual",
-    partner: "Bitcoin Pizza Day, 2024",
-    headline: "300 cities. One weekend. One ribbon.",
-    note: "Co-branded activation across the global chapter network, local execution, unified creative.",
-  },
-  {
-    tag: "Limited Run",
-    partner: "Independent Pizzeria Fund",
-    headline: "$250K routed to neighborhood operators.",
-    note: "Sponsor-funded grants distributed through verified PizzaDAO chapters in 14 countries.",
-  },
-  {
-    tag: "Cultural",
-    partner: "Art × Hospitality Residency",
-    headline: "12 artists. 6 cities. One menu.",
-    note: "A traveling residency that placed commissioned work inside partner pizzerias for a season.",
-  },
-];
-
 const PROOF: { k: string; v: string; sub?: string; num?: number; prefix?: string; suffix?: string }[] = [
   { k: "City network", v: "500+", sub: "independently organized", num: 500, suffix: "+" },
   { k: "Countries", v: "100+", sub: "active chapters", num: 100, suffix: "+" },
@@ -487,87 +466,9 @@ const Sponsorship = () => {
       </div>
 
 
-      {/* What we've built */}
-      <div className="container mt-16 md:mt-20">
-        <div className="relative border-t-2 border-ink pt-6 md:pt-8">
-          <span aria-hidden className="ui absolute -top-2.5 right-2 bg-butter/30 px-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/55">
-            Selected, 2021–2025
-          </span>
-          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-5">
-            <div className="col-span-12 md:col-span-8">
-              <p className="overline text-tomato">§ 08, Proof</p>
-              <h3 className="font-display mt-3 text-display-2 font-extrabold leading-[0.92] tracking-[0.005em]">
-                What we've
-                <br />
-                <span className="text-ink-soft">built.</span>
-              </h3>
-            </div>
-            <div className="col-span-12 md:col-span-4 md:pl-8">
-              <p className="text-base leading-relaxed text-ink/70 md:text-lg">
-                A few programs we're proud of. Each one community-led, partner-supported, and built to last beyond the launch.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-10 grid grid-cols-1 gap-5 md:mt-12 md:grid-cols-3">
-
-          {[
-            {
-              partner: "Bitcoin Pizza Day",
-              headline: "300 cities. One day. One shared moment.",
-              points: [
-                "Global activation across 100+ countries",
-                "20K+ attendees",
-                "Earned media + community reach",
-              ],
-            },
-            {
-              partner: "Independent Pizzeria Fund",
-              headline: "$250K routed directly to neighborhood operators.",
-              points: [
-                "Direct economic impact",
-                "Community trust",
-                "Local distribution",
-              ],
-            },
-            {
-              partner: "Arts Residency",
-              headline: "12 artists. 6 cities. One network.",
-              points: [
-                "Cultural programming",
-                "Creator-led engagement",
-                "Long-tail content",
-              ],
-            },
-          ].map((c) => (
-            <article
-              key={c.partner}
-              className="rounded-2xl bg-cream p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-28px_hsl(var(--ink)/0.3)] md:p-8"
-            >
-              <div className="ui text-[11px] font-semibold uppercase tracking-[0.18em] text-tomato">
-                {c.partner}
-              </div>
-              <h4 className="font-display mt-3 text-2xl font-extrabold leading-tight md:text-3xl">
-                {c.headline}
-              </h4>
-              <ul className="mt-4 space-y-1.5">
-
-                {c.points.map((p) => (
-                  <li key={p} className="flex gap-3 text-sm leading-relaxed text-ink/75">
-                    <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-tomato" />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </div>
-
       {/* CTA band, warm butter */}
-      <div className="mt-14 bg-butter pb-14 md:mt-20 md:pb-20">
-        <div className="container pt-12 md:pt-16">
+      <div className="mt-8 bg-butter pb-14 md:mt-10 md:pb-20">
+        <div className="container pt-10 md:pt-12">
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
             <div className="col-span-12 md:col-span-8">
               <p className="overline text-tomato">Bespoke programs</p>
