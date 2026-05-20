@@ -154,7 +154,7 @@ const PartnersPage = () => {
       {/* Case studies consolidated into Sponsorship "What we've built" */}
 
       {/* Logo wall — quiet, curated cream band */}
-      <section className="paper-soft paper-drift relative overflow-hidden bg-cream-warm py-32 md:py-44">
+      <section className="paper-soft paper-drift relative overflow-hidden bg-cream-warm py-20 md:py-24">
         {/* Faint horizontal texture band — barely-there warmth */}
         <div
           aria-hidden
@@ -164,6 +164,8 @@ const PartnersPage = () => {
               "radial-gradient(ellipse at center, hsl(var(--butter) / 0.18), transparent 70%)",
           }}
         />
+        {/* Edge-aligned tick — left margin connective motif */}
+        <span aria-hidden className="absolute left-0 top-20 hidden h-px w-10 bg-tomato/60 md:block" />
         <div className="container relative">
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
             <div className="flex items-baseline gap-4">
@@ -173,10 +175,10 @@ const PartnersPage = () => {
               </span>
             </div>
             <p className="ui hidden text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/35 md:block">
-              Programme partners, 2020–2025
+              Programme partners, 2020–2025 →
             </p>
           </div>
-          <div className="mt-20 grid grid-cols-2 items-center gap-x-20 gap-y-20 sm:grid-cols-3 md:mt-28 md:grid-cols-5 md:gap-x-24 md:gap-y-24">
+          <div className="mt-12 grid grid-cols-2 items-center gap-x-16 gap-y-12 sm:grid-cols-3 md:mt-14 md:grid-cols-5 md:gap-x-20 md:gap-y-14">
             {PARTNERS.slice(0, 5).map((p, i) => (
               <div
                 key={p.name}
@@ -186,7 +188,7 @@ const PartnersPage = () => {
                 <div className="font-display text-lg font-semibold tracking-[0.01em] text-ink/45 transition-colors duration-700 ease-out group-hover:text-ink md:text-xl">
                   {p.name}
                 </div>
-                <div className="ui mt-3 text-[9px] font-medium uppercase tracking-[0.26em] text-ink/30 transition-colors duration-700 group-hover:text-ink/55">
+                <div className="ui mt-2 text-[9px] font-medium uppercase tracking-[0.26em] text-ink/30 transition-colors duration-700 group-hover:text-ink/55">
                   {p.role}
                 </div>
               </div>
@@ -194,6 +196,7 @@ const PartnersPage = () => {
           </div>
         </div>
       </section>
+
 
 
 
