@@ -88,12 +88,12 @@ const PageHero = ({
                   </span>
                 )}
               </div>
-              <h1 className="font-display mt-5 text-mega font-extrabold leading-[0.84] tracking-[-0.02em] md:leading-[0.82]">
-                {renderTitle()}
+              <h1 className="font-display mt-6 text-mega font-extrabold leading-[0.82] tracking-[-0.025em] md:mt-7 md:leading-[0.8]">
+                {renderWithAccent(title)}
                 {italic && (
                   <>
                     <br />
-                    <span className="text-ink/65">{italic}</span>
+                    <span className="text-ink/65">{renderItalic(italic)}</span>
                   </>
                 )}
               </h1>
