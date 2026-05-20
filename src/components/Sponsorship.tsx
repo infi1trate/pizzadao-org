@@ -47,12 +47,13 @@ const ACTIVATIONS = [
   },
 ];
 
-const PROOF: { k: string; v: string; num?: number; prefix?: string; suffix?: string }[] = [
-  { k: "Partner Satisfaction", v: "92%", num: 92, suffix: "%" },
-  { k: "Activations Delivered", v: "200+", num: 200, suffix: "+" },
-  { k: "Brand Collaborations", v: "60+", num: 60, suffix: "+" },
-  { k: "Global Reach", v: "Multi-market" },
+const PROOF: { k: string; v: string; sub?: string; num?: number; prefix?: string; suffix?: string }[] = [
+  { k: "City network", v: "500+", sub: "independently organized", num: 500, suffix: "+" },
+  { k: "Countries", v: "100+", sub: "active chapters", num: 100, suffix: "+" },
+  { k: "Annual attendance", v: "20,000+", sub: "real-world participants", num: 20000, suffix: "+" },
+  { k: "Repeat collaborators", v: "60+", sub: "brands, year over year", num: 60, suffix: "+" },
 ];
+
 
 import { useEffect, useRef, useState } from "react";
 
