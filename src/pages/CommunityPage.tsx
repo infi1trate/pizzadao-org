@@ -357,7 +357,7 @@ const CommunityPage = () => {
           {/* Board grid — sticky-note cards, slight rotation on desktop only */}
           <div className="mt-12 grid grid-cols-1 gap-5 md:mt-16 md:grid-cols-2 md:gap-7 lg:grid-cols-3">
             {WAYS_IN.map((w, i) => {
-              // Alternate note tones, kept within the design system
+              // Alternate paper tones — warm, lightly imperfect
               const tones = [
                 "bg-cream",
                 "bg-butter/55",
@@ -374,20 +374,28 @@ const CommunityPage = () => {
                 "bg-tomato",
                 "bg-ink",
               ];
-              // Subtle per-card rotation on md+ only, none on mobile
-              const rots = ["md:-rotate-[1.4deg]", "md:rotate-[0.8deg]", "md:-rotate-[0.6deg]", "md:rotate-[1.2deg]", "md:-rotate-[1deg]", "md:rotate-[0.5deg]"];
-              // Tiny vertical offset for a hand-pinned feel
-              const offsets = ["md:translate-y-1", "md:-translate-y-1", "md:translate-y-2", "md:-translate-y-2", "md:translate-y-0", "md:-translate-y-1"];
+              // Tighter, more believable rotation — like notes set down by a person
+              const rots = ["md:-rotate-[0.9deg]", "md:rotate-[0.5deg]", "md:-rotate-[0.4deg]", "md:rotate-[0.8deg]", "md:-rotate-[0.6deg]", "md:rotate-[0.3deg]"];
+              // Variable offset — one card (index 2) overlaps into its neighbor on desktop
+              const offsets = ["md:translate-y-1", "md:-translate-y-2", "md:translate-y-3 md:-translate-x-2", "md:-translate-y-1", "md:translate-y-2", "md:-translate-y-1"];
+              // Subtle scale variance — one is hero-sized
+              const scales = ["md:scale-100", "md:scale-[0.97]", "md:scale-[1.04] md:z-10", "md:scale-[0.98]", "md:scale-100", "md:scale-[0.99]"];
 
               return (
                 <article
                   key={w.title}
-                  className={`group relative flex flex-col rounded-[14px] ${tones[i % tones.length]} ${rots[i % rots.length]} ${offsets[i % offsets.length]} p-6 md:p-7 shadow-[0_1px_0_hsl(var(--ink)/0.08),0_18px_30px_-22px_hsl(var(--ink)/0.35)] ring-1 ring-ink/8 transition-all duration-300 hover:-translate-y-1 hover:rotate-0 hover:shadow-[0_2px_0_hsl(var(--ink)/0.1),0_30px_50px_-22px_hsl(var(--ink)/0.4)]`}
+                  className={`group relative flex flex-col rounded-[10px] ${tones[i % tones.length]} ${rots[i % rots.length]} ${offsets[i % offsets.length]} ${scales[i % scales.length]} p-6 md:p-7 shadow-[0_1px_0_hsl(var(--ink)/0.04),0_2px_4px_-2px_hsl(var(--ink)/0.12),0_22px_36px_-26px_hsl(var(--ink)/0.45)] ring-1 ring-ink/[0.06] transition-all duration-300 hover:-translate-y-0.5 hover:rotate-0 hover:shadow-[0_2px_6px_-2px_hsl(var(--ink)/0.18),0_36px_60px_-26px_hsl(var(--ink)/0.5)]`}
+                  style={{
+                    // soft paper grain — fibrous noise, very low opacity
+                    backgroundImage:
+                      "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23p)' opacity='0.07'/></svg>\")",
+                    backgroundBlendMode: "multiply",
+                  }}
                 >
-                  {/* sticky-note pin tab */}
+                  {/* Subtle torn/soft paper edge highlight (top) */}
                   <span
                     aria-hidden
-                    className="absolute -top-2 left-6 h-3 w-10 rounded-full bg-ink/80"
+                    className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-ink/15 to-transparent"
                   />
 
                   {/* track marker row */}
@@ -423,6 +431,7 @@ const CommunityPage = () => {
               );
             })}
           </div>
+
         </div>
       </section>
 
