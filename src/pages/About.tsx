@@ -54,111 +54,111 @@ const About = () => {
     <main className="min-h-screen overflow-x-clip bg-cream text-ink">
       <SiteNav solid />
 
-      <PageHero
-        section="§ A, About PizzaDAO"
-        title="An institution built on a slice"
-        accentWord="slice"
-        lede="PizzaDAO is a global community that organizes around one simple idea, share pizza with strangers. It began as a small experiment on the internet and turned into something people now show up for in real life."
-        tapedImage={{
-          src: founding,
-          alt: "Friends gathered around laptops and pizza, late night",
-          caption: "started online, 2021",
-        }}
-      />
-
-      {/* Single checker tape — one editorial accent at the top */}
-      <div className="container mt-10 md:mt-14">
-        <div className="checker-tape h-2 w-full opacity-80" aria-hidden />
-      </div>
-
-      {/* Where it started */}
-      <section className="bg-cream pt-20 md:pt-28">
+      {/* Unified opening — hero + origin + mission as one editorial unit */}
+      <section className="paper-soft relative overflow-hidden bg-cream pt-16 md:pt-24">
         <div className="container">
-          <div className="grid grid-cols-12 gap-x-6 gap-y-10">
-            <div className="col-span-12 md:col-span-7">
+          <div className="flex items-center justify-between pb-3">
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+              § A, About PizzaDAO
+            </span>
+            <span className="ui flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-tomato" />
+              Ongoing, est. 2021
+            </span>
+          </div>
+
+          {/* Hero headline + intro */}
+          <div className="border-t border-ink/40 pt-10 md:pt-14">
+            <div className="grid grid-cols-12 items-end gap-x-8 gap-y-10 md:gap-x-12">
+              <div className="col-span-12 md:col-span-8">
+                <h1 className="font-display font-extrabold leading-[0.82] tracking-[-0.025em] text-mega md:leading-[0.78] md:text-[clamp(4rem,13vw,13rem)]">
+                  An institution built on a{" "}
+                  <span className="underline-scribble text-ink">slice</span>
+                </h1>
+              </div>
+              <div className="col-span-12 md:col-span-4 md:pb-3">
+                <div className="font-serif space-y-4 text-[15.5px] leading-[1.65] text-ink/75 md:text-[15px]">
+                  <p>
+                    PizzaDAO began as a simple internet experiment: send
+                    pizza to people we had never met and see what happened.
+                  </p>
+                  <p>
+                    What happened was bigger than the pizza. People shared
+                    it, gathered around it, invited others in, and turned a
+                    small act of coordination into something physical.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Single documentary image */}
+          <figure className="mt-16 md:mt-20">
+            <div className="paper-soft overflow-hidden bg-cream-warm">
+              <img
+                src={founding}
+                alt="Late-night gathering of friends huddled around laptops and pizza"
+                loading="eager"
+                width={1920}
+                height={1080}
+                className="grain block aspect-[16/9] w-full object-cover md:aspect-[21/9]"
+              />
+            </div>
+            <figcaption className="mt-4 flex items-baseline justify-between gap-3">
+              <span className="handwritten -rotate-1 text-tomato text-sm md:text-base">
+                started online, became real
+              </span>
+              <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+                Fig. A.01 — 2021
+              </span>
+            </figcaption>
+          </figure>
+
+          {/* Where it started — story body */}
+          <div className="mt-20 grid grid-cols-12 gap-x-6 gap-y-10 md:mt-28">
+            <div className="col-span-12 md:col-span-4">
               <p className="overline text-tomato">§ A.01, Origin</p>
               <h2 className="font-display mt-5 text-display-2 font-extrabold leading-[0.92]">
                 Where it started
               </h2>
-              <div className="font-serif mt-8 max-w-[58ch] space-y-5 text-lg leading-relaxed text-ink/85 md:text-xl">
+            </div>
+            <div className="col-span-12 md:col-span-7 md:col-start-6">
+              <div className="font-serif max-w-[58ch] space-y-5 text-lg leading-relaxed text-ink/85 md:text-xl">
                 <p>
-                  A few of us were talking online during the pandemic about
-                  how disconnected everything felt. There were communities
-                  everywhere, but most of them stopped at the screen.
+                  During the pandemic, online communities were everywhere,
+                  but most of them stopped at the screen.
                 </p>
                 <p>
-                  We wanted to try something physical. So we started sending
-                  pizza to people we had never met, no application, no real
-                  structure, just a wallet and a willingness to participate.
+                  PizzaDAO started with the opposite instinct. Take something
+                  familiar, easy to share, and deeply human, then use the
+                  internet to coordinate it across the real world.
                 </p>
                 <p>
-                  It worked better than expected. People didn't just accept
-                  the pizza, they shared it, posted it, invited others, and
-                  started organizing locally.
+                  At first, it was loose and strange. A few people, a few
+                  wallets, a few pizzas sent across borders.
                 </p>
                 <p className="text-ink">
-                  That was the moment it became clear this could turn into
-                  something larger.
+                  Then people started showing up.
                 </p>
               </div>
             </div>
-            <div className="col-span-12 md:col-span-5 md:pl-8 md:pt-20">
-              <figure className="relative bg-cream-warm p-3 pb-5 shadow-[0_28px_60px_-30px_hsl(0_0%_0%/0.4),0_6px_18px_-8px_hsl(0_0%_0%/0.18)]">
-                <div className="paper-soft">
-                  <img
-                    src={founding}
-                    alt="Late-night gathering of friends huddled around laptops and pizza"
-                    loading="lazy"
-                    width={1080}
-                    height={1350}
-                    className="grain block aspect-[4/5] w-full object-cover"
-                  />
-                </div>
-                <figcaption className="mt-4 flex items-baseline justify-between gap-3 px-1">
-                  <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/55">
-                    Late-night planning call
-                  </span>
-                  <span className="ui text-[9px] font-semibold uppercase tracking-[0.18em] text-ink/45">
-                    2021
-                  </span>
-                </figcaption>
-              </figure>
-            </div>
           </div>
+
+          {/* Pull quote — closes the opening unit */}
+          <div className="mt-20 grid grid-cols-12 gap-x-6 md:mt-28">
+            <blockquote className="col-span-12 border-l-[3px] border-tomato py-2 pl-6 md:col-span-10 md:col-start-2 md:pl-10">
+              <p className="font-display text-display-2 font-extrabold leading-[0.96] tracking-[-0.02em]">
+                “Pizza is the most democratic food on Earth.
+                <span className="text-ink/55"> We just made it organized.”</span>
+              </p>
+            </blockquote>
+          </div>
+
+          {/* Bottom spacer ends the unified opening */}
+          <div className="pb-24 md:pb-32" />
         </div>
       </section>
 
-      {/* Mission */}
-      <section className="bg-cream pb-20 pt-20 md:pb-28 md:pt-28">
-        <div className="container">
-          <div className="grid grid-cols-12 gap-x-6 gap-y-10">
-            <div className="col-span-12 md:col-span-5">
-              <p className="overline text-tomato">§ A.02, Mission</p>
-              <h2 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92]">
-                Why we exist.
-              </h2>
-            </div>
-            <div className="col-span-12 md:col-span-7 md:pl-8">
-              <p className="font-serif text-lg leading-relaxed text-ink/85 md:text-xl">
-                We turn the most universal meal in the world into a recurring
-                excuse for people to show up for each other, across borders,
-                across politics, across screens.
-              </p>
-              <blockquote className="mt-10 border-l-[3px] border-tomato py-2 pl-6">
-                <p className="font-serif text-xl italic leading-snug text-ink md:text-[1.65rem]">
-                  “Pizza is the most democratic food on Earth. We just made it
-                  organized.”
-                </p>
-              </blockquote>
-              <p className="font-serif mt-8 text-base leading-relaxed text-ink/70">
-                Every dollar we raise funds a local pizzeria, a community party,
-                or an artist commissioned to document the work. Nothing leaves
-                the network. The flywheel is the point.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Bitcoin Pizza Day */}
       <section className="bg-cream-warm py-20 md:py-28">
