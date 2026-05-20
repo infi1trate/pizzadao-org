@@ -1345,7 +1345,7 @@ dont:  [all caps, corporate jargon]`}
                   { src: flyerPizzaFesta, city: "Lisboa", title: "Pizza Festa" },
                 ].map((f) => (
                   <figure key={f.title} className="crop-marks relative rounded-3xl bg-cream shadow-sm">
-                    <div className="aspect-square overflow-hidden">
+                    <div className="aspect-square overflow-hidden rounded-t-3xl">
                       <img
                         src={f.src}
                         alt={`${f.title}, PizzaDAO party flyer from ${f.city}`}
