@@ -47,12 +47,13 @@ const ACTIVATIONS = [
   },
 ];
 
-const PROOF: { k: string; v: string; num?: number; prefix?: string; suffix?: string }[] = [
-  { k: "Partner Satisfaction", v: "92%", num: 92, suffix: "%" },
-  { k: "Activations Delivered", v: "200+", num: 200, suffix: "+" },
-  { k: "Brand Collaborations", v: "60+", num: 60, suffix: "+" },
-  { k: "Global Reach", v: "Multi-market" },
+const PROOF: { k: string; v: string; sub?: string; num?: number; prefix?: string; suffix?: string }[] = [
+  { k: "City network", v: "500+", sub: "independently organized", num: 500, suffix: "+" },
+  { k: "Countries", v: "100+", sub: "active chapters", num: 100, suffix: "+" },
+  { k: "Annual attendance", v: "20,000+", sub: "real-world participants", num: 20000, suffix: "+" },
+  { k: "Repeat collaborators", v: "60+", sub: "brands, year over year", num: 60, suffix: "+" },
 ];
+
 
 import { useEffect, useRef, useState } from "react";
 
@@ -101,63 +102,113 @@ const Sponsorship = () => {
   return (
     <section
       id="partner-with-us"
-      className="relative bg-butter/30 pt-14 text-ink md:pt-20"
+      className="relative overflow-hidden bg-butter/25 pt-10 text-ink md:pt-14"
     >
+      {/* Faint geographic mesh — barely visible cartographic texture */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.18]"
+        style={{
+          backgroundImage:
+            "linear-gradient(hsl(var(--ink) / 0.10) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--ink) / 0.10) 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
+          maskImage:
+            "radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.10]"
+        style={{
+          backgroundImage:
+            "radial-gradient(hsl(var(--ink) / 0.55) 1px, transparent 1.4px)",
+          backgroundSize: "18px 18px",
+          maskImage:
+            "radial-gradient(ellipse at 70% 60%, #000 0%, transparent 60%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at 70% 60%, #000 0%, transparent 60%)",
+        }}
+      />
+
       {/* Masthead */}
-      <div className="container">
-        <div className="relative border-t-2 border-ink pt-6 md:pt-8">
-          {/* Offset stamp — edge-aligned connective motif */}
+      <div className="container relative">
+        <div className="relative border-t-2 border-ink pt-6 md:pt-7">
+          {/* Offset Rock Salt annotation — restrained, single instance */}
           <span
             aria-hidden
             className="handwritten absolute -top-4 right-2 -rotate-[6deg] text-tomato text-[13px] md:text-sm"
           >
-            ↳ since 2020
+            ↳ community-led, global IRL
           </span>
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-5">
             <div className="col-span-12 md:col-span-7">
-              <p className="overline text-tomato">§ 06, Partnership</p>
-              <h2 className="font-display mt-3 text-display-1 font-extrabold leading-[0.92] tracking-[0.005em] text-ink">
+              <p className="overline text-tomato">§ 06, Why it works</p>
+              <h2 className="font-display mt-3 text-display-1 font-extrabold leading-[0.9] tracking-[0.005em] text-ink">
                 Why brands
                 <br />
                 <span className="text-ink-soft">partner with PizzaDAO.</span>
               </h2>
             </div>
             <div className="col-span-12 md:col-span-5 md:pl-8">
-              <p className="text-lg leading-relaxed text-ink/80 md:text-xl">
-                Five years of building unforgettable moments with brands who get it.
+              <p className="text-lg leading-[1.45] text-ink/85 md:text-xl">
+                Trust, coordinated globally. Built city by city, by the people who already live there.
               </p>
-              <p className="mt-3 text-base leading-relaxed text-ink/65">
-                A community institution with operators on every continent.
-                We build programs that put brands inside culture, not on top
-                of it.
+              <p className="mt-3 text-[15px] leading-[1.6] text-ink/65">
+                PizzaDAO is a 500-city network of independently organized
+                chapters. Brands plug into a real, repeating, IRL community —
+                not a list, not a mailshot, not a pop-up.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Proof ledger, bright, optimistic */}
-        <div className="mt-8 rounded-2xl border-2 border-ink bg-cream p-4 shadow-[0_24px_60px_-30px_hsl(var(--ink)/0.35)] md:mt-10 md:p-5">
+        {/* Proof ledger — operational credibility, no soft percentages */}
+        <div className="mt-6 border-2 border-ink bg-cream shadow-[0_24px_60px_-30px_hsl(var(--ink)/0.35)] md:mt-8">
           <dl className="grid grid-cols-2 md:grid-cols-4">
             {PROOF.map((p, i) => (
               <div
                 key={p.k}
-                className={`px-6 py-6 md:px-8 md:py-8 ${
+                className={`px-5 py-6 md:px-7 md:py-8 ${
                   i > 0 ? "md:border-l md:border-ink/15" : ""
                 } ${i === 1 ? "border-l border-ink/15" : ""} ${
                   i >= 2 ? "border-t border-ink/15 md:border-t-0" : ""
                 }`}
               >
-                <dt className="ui text-[10px] font-semibold uppercase tracking-[0.18em] text-tomato">
+                <dt className="ui text-[10px] font-semibold uppercase tracking-[0.2em] text-tomato">
                   {p.k}
                 </dt>
-                <dd className="font-display mt-2 text-[clamp(2.25rem,5.5vw,4.25rem)] font-extrabold leading-[0.86] tracking-[-0.01em]">
+                <dd className="font-display mt-2 text-[clamp(2.5rem,6.2vw,5rem)] font-extrabold leading-[0.82] tracking-[-0.015em] text-ink">
                   <CountUp value={p.num} suffix={p.suffix} fallback={p.v} />
                 </dd>
+                {p.sub && (
+                  <p className="ui mt-2 text-[10px] font-medium uppercase tracking-[0.18em] text-ink/55">
+                    {p.sub}
+                  </p>
+                )}
               </div>
             ))}
           </dl>
         </div>
+
+        {/* Trust rail — small operational signals beneath the ledger */}
+        <ul className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] font-medium text-ink/55">
+          <li className="ui uppercase tracking-[0.18em]">
+            <span className="mr-2 inline-block h-1.5 w-1.5 -translate-y-[1px] rounded-full bg-tomato align-middle" />
+            Annual Global Pizza Party · 5 years running
+          </li>
+          <li className="ui uppercase tracking-[0.18em]">
+            <span className="mr-2 inline-block h-1.5 w-1.5 -translate-y-[1px] rounded-full bg-tomato align-middle" />
+            6 continents · 100+ countries
+          </li>
+          <li className="ui uppercase tracking-[0.18em]">
+            <span className="mr-2 inline-block h-1.5 w-1.5 -translate-y-[1px] rounded-full bg-tomato align-middle" />
+            Locally organized, globally coordinated
+          </li>
+        </ul>
       </div>
+
 
 
       {/* Value props, editorial 2-column grid */}
