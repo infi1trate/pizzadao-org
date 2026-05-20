@@ -248,13 +248,19 @@ const CommunityPage = () => {
                 Members · Crews · Chapters
               </p>
             </div>
-            <div className="col-span-12 md:col-span-6 md:col-start-7">
-              <div className="space-y-5 border-l-2 border-butter/60 pl-6 md:pl-8">
+            <div className="col-span-12 md:col-span-6 md:col-start-7 md:translate-y-2">
+              <div className="relative space-y-5 border-l-2 border-butter/60 pl-6 md:pl-8">
+                <span
+                  aria-hidden
+                  className="handwritten marker-bleed-butter absolute -left-3 -top-7 hidden text-butter text-[14px] leading-tight -rotate-[8deg] md:block"
+                >
+                  ↘ read this twice
+                </span>
                 <p className="font-display text-[clamp(1.6rem,2.6vw,2.25rem)] font-extrabold leading-[1.1] text-cream">
                   Crews coordinate. Chapters host.{" "}
                   <span className="text-butter">Members make the work happen.</span>
                 </p>
-                <p className="text-base leading-relaxed text-cream/65 md:text-[17px]">
+                <p className="text-base leading-relaxed text-cream/65 md:text-[17px] md:pl-4">
                   Funding, tools, and culture move through whichever crew picks them up this week.
                 </p>
               </div>
@@ -268,7 +274,7 @@ const CommunityPage = () => {
                 ].map((r, i) => (
                   <li
                     key={r}
-                    className="flex items-baseline gap-5 border-b border-cream/15 pb-4"
+                    className={`flex items-baseline gap-5 border-b border-cream/15 pb-4 ${i === 1 ? "md:pl-3" : ""}`}
                   >
                     <span className="ui w-8 text-[11px] tabular-nums text-butter">
                       0{i + 1}
