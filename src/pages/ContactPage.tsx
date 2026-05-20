@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
+import { identifyByEmail, track } from "@/lib/analytics/posthog";
+import { EVT } from "@/lib/analytics/events";
+import { useTrackOutbound } from "@/lib/analytics/useTrackOutbound";
 
 const INTENTS = [
   "Partnership",
@@ -55,14 +58,30 @@ const ContactPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  const startedRef = useRef(false);
+  const trackOutbound = useTrackOutbound("contact_aside");
+
   useEffect(() => {
     document.title = "Contact, PizzaDAO";
+    track(EVT.CONTACT_VIEWED, { page: "/contact" });
   }, []);
 
+  const markStarted = (field: string) => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    track(EVT.CONTACT_STARTED, { first_field: field });
+  };
+
   const toggleIntent = (i: string) => {
-    setIntents((cur) =>
-      cur.includes(i) ? cur.filter((x) => x !== i) : [...cur, i],
-    );
+    setIntents((cur) => {
+      const next = cur.includes(i) ? cur.filter((x) => x !== i) : [...cur, i];
+      track(EVT.CONTACT_INTENT_SELECTED, {
+        intent: i,
+        selected: !cur.includes(i),
+        intents_count: next.length,
+      });
+      return next;
+    });
   };
 
   const validate = () => {
