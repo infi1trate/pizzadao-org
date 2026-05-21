@@ -183,6 +183,8 @@ const PartnersPage = () => {
         {/* Section seam hairlines — tighter editorial join */}
         <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/10" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-ink/10" />
+        {/* Photographic atmosphere — faint table-surface warmth at edge */}
+        <PhotoVeil variant="table" position="top-right" opacity={0.045} blend="multiply" />
 
         <div className="container relative">
           {/* Editorial heading — minimal, confident */}
