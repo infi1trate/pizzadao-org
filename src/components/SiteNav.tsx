@@ -60,7 +60,19 @@ const SiteNav = ({ solid = false }: Props) => {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 md:flex">
+        <div className="hidden items-center gap-3 md:flex">
+          <a
+            href="https://app.pizzadao.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`btn-pill border ${
+              onRed
+                ? "border-cream/40 text-cream/90 hover:border-cream hover:text-cream"
+                : "border-ink/30 text-ink/80 hover:border-ink hover:text-ink"
+            }`}
+          >
+            Member login
+          </a>
           <Link
             to="/join"
             className={`btn-pill ${
