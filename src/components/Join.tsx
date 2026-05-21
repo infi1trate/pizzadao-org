@@ -4,27 +4,23 @@ import { Link } from "react-router-dom";
 
 const STEPS = [
   {
-    n: "01",
-    title: "Pick your Mafia name",
-    body: "Every member goes by an alias. Pseudonym, partial truth, gentle inside joke, you choose.",
+    title: "Pick a name",
+    body: "Every member gets an alias. You choose the story.",
     bg: "bg-butter text-ink",
   },
   {
-    n: "02",
-    title: "Join Discord",
-    body: "Hundreds of channels, dozens of chapters, one always-on conversation.",
+    title: "Join the table",
+    body: "Hundreds of cities, one conversation.",
     bg: "bg-cream text-ink",
   },
   {
-    n: "03",
-    title: "Receive your role",
-    body: "A mod assigns your role based on your city, your skills, or just the vibes.",
+    title: "Find your people",
+    body: "Connect by city, skill, or just the vibes.",
     bg: "bg-ink text-cream",
   },
   {
-    n: "04",
-    title: "Start building",
-    body: "Throw a party. Help a chapter. Show up. The work is the welcome.",
+    title: "Start something",
+    body: "Throw a party. Help a chapter. Show up.",
     bg: "bg-cream text-ink",
   },
 ];
@@ -58,10 +54,7 @@ const Join = () => {
             </div>
             <div className="col-span-12 md:col-span-4 md:pl-8">
               <p className="text-xl leading-snug text-cream md:text-2xl">
-                Identity, not membership.
-              </p>
-              <p className="mt-4 max-w-md text-base leading-relaxed text-cream/85">
-                Four steps. No fees, no forms, no gatekeeping. Start with your alias.
+                A global pizza club. No fees, no forms.
               </p>
               <Link
                 to="/get-your-mafia-name"
@@ -81,18 +74,13 @@ const Join = () => {
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
             {STEPS.map((s) => (
               <article
-                key={s.n}
+                key={s.title}
                 className={`flex flex-col rounded-2xl p-6 md:p-7 ${s.bg}`}
               >
-                <div className="flex items-baseline justify-between">
-                  <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] opacity-60">
-                    Step
-                  </span>
-                </div>
-                <h4 className="font-display mt-6 text-2xl font-extrabold leading-tight md:text-[1.625rem]">
+                <h4 className="font-display text-2xl font-extrabold leading-tight md:text-[1.625rem]">
                   {s.title}
                 </h4>
-                <p className="mt-3 flex-1 text-sm leading-relaxed opacity-85">
+                <p className="mt-2 text-sm leading-relaxed opacity-80">
                   {s.body}
                 </p>
               </article>
