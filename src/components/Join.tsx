@@ -86,7 +86,7 @@ const Join = () => {
             {STEPS.map((s) => (
               <article
                 key={s.n}
-                className={`flex flex-col rounded-3xl p-6 md:p-7 ${s.bg}`}
+                className={`flex flex-col rounded-2xl p-6 md:p-7 ${s.bg}`}
               >
                 <div className="flex items-baseline justify-between">
                   <span className="font-display text-4xl font-extrabold leading-none">
@@ -107,7 +107,7 @@ const Join = () => {
           </div>
 
           {/* Closing line */}
-          <div className="mt-16 rounded-3xl border border-cream/40 py-12 text-center md:mt-20 md:py-16">
+          <div className="mt-16 rounded-2xl border border-cream/40 py-12 text-center md:mt-20 md:py-16">
             <p className="font-display text-display-2 font-extrabold leading-[0.96]">
               Pull up a chair.
               <br />

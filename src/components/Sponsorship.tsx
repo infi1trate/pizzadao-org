@@ -151,7 +151,7 @@ const Sponsorship = () => {
         </div>
 
         {/* Proof ledger — operational credibility, no soft percentages */}
-        <div className="mt-6 border-2 border-ink bg-cream shadow-[0_24px_60px_-30px_hsl(var(--ink)/0.35)] md:mt-8">
+        <div className="mt-6 rounded-2xl border border-ink/15 bg-cream shadow-[var(--shadow-lifted)] md:mt-8">
           <dl className="grid grid-cols-2 md:grid-cols-4">
             {PROOF.map((p, i) => (
               <div
