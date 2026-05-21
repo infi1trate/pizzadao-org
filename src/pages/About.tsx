@@ -628,61 +628,134 @@ const About = () => {
             </span>
           </div>
 
-          {/* Featured press quote */}
-          <figure className="border-l-2 border-tomato/50 pl-6 md:pl-10">
-            <blockquote className="font-display max-w-[22ch] text-[clamp(2.2rem,6.5vw,4.5rem)] font-extrabold leading-[1.02] tracking-[-0.02em] text-ink">
+          {/* Section title + intro */}
+          <div className="grid grid-cols-12 gap-x-6 gap-y-10 pb-16 md:pb-24">
+            <div className="col-span-12 md:col-span-5">
+              <h2 className="font-display text-[clamp(2.4rem,6vw,4.6rem)] font-extrabold leading-[0.92] tracking-[-0.02em]">
+                On the record
+              </h2>
+            </div>
+            <div className="col-span-12 md:col-span-6 md:col-start-7">
+              <p className="font-serif text-lg leading-[1.7] text-ink/75 md:text-xl">
+                As PizzaDAO grew, journalists, filmmakers, and publishers
+                started documenting what was happening.
+              </p>
+              <p className="ui mt-6 text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/35">
+                Selected clippings · {PRESS.length} entries
+              </p>
+            </div>
+          </div>
+
+          {/* Oversized featured quote — the headline of the archive */}
+          <figure className="relative border-t border-ink/15 pt-16 md:pt-24">
+            <span
+              aria-hidden
+              className="font-display absolute -top-2 left-0 select-none text-[8rem] leading-none text-tomato/15 md:text-[14rem]"
+            >
+              “
+            </span>
+            <blockquote className="font-display ml-2 max-w-[20ch] text-[clamp(2.4rem,7.5vw,5.4rem)] font-extrabold leading-[1.0] tracking-[-0.02em] text-ink md:ml-10">
               The world's largest Bitcoin Pizza Day celebration.
             </blockquote>
-            <figcaption className="mt-8 flex items-baseline gap-4">
-              <span className="font-display text-sm font-extrabold tracking-tight text-ink/90">
+            <figcaption className="mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t border-ink/15 pt-6 md:ml-10">
+              <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/40">
+                Filed under
+              </span>
+              <span className="font-display text-base font-extrabold tracking-tight text-ink">
                 CoinDesk
+              </span>
+              <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/35">
+                · Business desk · 2021
               </span>
               <a
                 href={PRESS[0].href}
                 target="_blank"
                 rel="noreferrer"
-                className="ui inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/40 transition-colors hover:text-tomato"
+                className="ui ml-auto inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/45 transition-colors hover:text-tomato"
               >
-                Read article <span>↗</span>
+                Read clipping <span>↗</span>
               </a>
             </figcaption>
           </figure>
 
-          {/* Selected coverage — quiet list */}
-          <ul className="mt-20 border-t border-ink/15 md:mt-24">
-            {PRESS.slice(1).map((p, i) => (
-              <li key={p.outlet} className="group border-b border-ink/10">
-                <a
-                  href={p.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`grid grid-cols-12 items-baseline gap-x-6 gap-y-2 py-6 transition-colors duration-300 md:py-7 ${
-                    p.kind === "video" ? "hover:bg-butter/15" : "hover:bg-ink/[0.03]"
-                  }`}
-                >
-                  <span className="ui col-span-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/30 md:col-span-1">
-                    {String(i + 2).padStart(2, "0")}
-                  </span>
-                  <span className="font-display col-span-10 flex items-center gap-2 text-base font-extrabold tracking-tight transition-colors group-hover:text-tomato md:col-span-3 md:text-lg">
-                    {p.outlet}
-                    {p.kind === "video" && (
-                      <span className="ui inline-flex items-center gap-1 rounded-full border border-ink/20 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.22em] text-ink/50">
-                        ▶ Video
+          {/* Editorial clippings — varied, archival, never a logo wall */}
+          <div className="mt-24 md:mt-32">
+            <div className="flex items-baseline justify-between border-t border-ink/15 pt-6">
+              <p className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/45">
+                Further coverage
+              </p>
+              <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/30">
+                §
+              </p>
+            </div>
+
+            <div className="mt-12 grid grid-cols-12 gap-x-8 gap-y-16 md:gap-y-20">
+              {PRESS.slice(1).map((p, i) => {
+                // Asymmetric editorial rhythm: alternate wide/narrow columns
+                const layouts = [
+                  "md:col-span-7",
+                  "md:col-span-5",
+                  "md:col-span-6 md:col-start-4",
+                  "md:col-span-7",
+                  "md:col-span-5",
+                ];
+                const span = layouts[i % layouts.length];
+                const indent = i % 3 === 0 ? "md:ml-6" : "";
+                return (
+                  <a
+                    key={p.outlet}
+                    href={p.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`group col-span-12 ${span} ${indent} block`}
+                  >
+                    {/* Clipping masthead */}
+                    <div className="flex items-baseline gap-3 border-b border-ink/15 pb-3">
+                      <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/30">
+                        Clip · {String(i + 2).padStart(2, "0")}
                       </span>
-                    )}
-                  </span>
-                  <p className="font-serif col-span-12 pl-8 text-base italic leading-snug text-ink/65 md:col-span-7 md:pl-0 md:text-lg">
-                    {p.line}
-                  </p>
-                  <span className="ui col-span-12 flex items-center justify-end gap-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/0 transition-all duration-300 group-hover:text-ink/50 md:col-span-1">
-                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                      ↗
-                    </span>
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
+                      <span className="font-display text-sm font-extrabold tracking-tight text-ink transition-colors group-hover:text-tomato md:text-base">
+                        {p.outlet}
+                      </span>
+                      {p.kind === "video" && (
+                        <span className="ui text-[9px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+                          · Broadcast
+                        </span>
+                      )}
+                      <span className="ml-auto text-ink/30 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-tomato">
+                        ↗
+                      </span>
+                    </div>
+
+                    {/* Excerpt — feels like a column of body type */}
+                    <p className="font-serif mt-5 text-lg leading-[1.55] text-ink/80 md:text-xl md:leading-[1.5]">
+                      <span
+                        aria-hidden
+                        className="text-tomato/60"
+                      >
+                        “
+                      </span>
+                      {p.line.replace(/^[“"]|[”"]$/g, "")}
+                      <span
+                        aria-hidden
+                        className="text-tomato/60"
+                      >
+                        ”
+                      </span>
+                    </p>
+
+                    {/* Faint editorial trailing line */}
+                    <p className="ui mt-5 text-[10px] font-semibold uppercase tracking-[0.24em] text-ink/35">
+                      — {p.outlet}
+                      {p.kind === "video" ? " · video transcript" : " · article"}
+                    </p>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+
+
 
           {/* Reflection — quiet bridge before the close */}
           <div className="mt-28 grid grid-cols-12 gap-x-6 gap-y-8 md:mt-36">
