@@ -217,10 +217,17 @@ const MafiaNamePage = () => {
     if (film) await generate(film, t);
   };
 
-  const generateAvatar = async (chosenName: string) => {
+  const generateAvatar = async (chosenName: string, opts: { redraw?: boolean } = {}) => {
     if (!film || !topping) return;
     setAvatarLoading(true);
     setAvatarUrl(null);
+    const startedAt = performance.now();
+    track(EVT.MAFIA_AVATAR_STARTED, {
+      mafia_name: chosenName,
+      movie: film.title,
+      topping,
+      redraw: Boolean(opts.redraw),
+    });
     try {
       const { data, error } = await supabase.functions.invoke("generate-mafia-avatar", {
         body: {
@@ -233,14 +240,37 @@ const MafiaNamePage = () => {
       if (error) throw error;
       if ((data as any)?.error) throw new Error((data as any).error);
       const img = (data as any)?.image;
-      if (img) setAvatarUrl(img);
-    } catch (e) {
+      if (img) {
+        setAvatarUrl(img);
+        track(EVT.MAFIA_AVATAR_GENERATED, {
+          mafia_name: chosenName,
+          movie: film.title,
+          topping,
+          latency_ms: Math.round(performance.now() - startedAt),
+          redraw: Boolean(opts.redraw),
+        });
+      } else {
+        track(EVT.MAFIA_AVATAR_FAILED, {
+          mafia_name: chosenName,
+          movie: film.title,
+          topping,
+          reason: "no_image_returned",
+        });
+      }
+    } catch (e: any) {
       // Silent — dossier still works without avatar
       console.warn("avatar gen failed", e);
+      track(EVT.MAFIA_AVATAR_FAILED, {
+        mafia_name: chosenName,
+        movie: film.title,
+        topping,
+        reason: e?.message ?? "unknown",
+      });
     } finally {
       setAvatarLoading(false);
     }
   };
+
 
   const handleClaim = async () => {
     if (!film || !topping || selectedIdx === null) return;
