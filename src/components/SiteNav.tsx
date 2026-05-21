@@ -9,8 +9,6 @@ const NAV = [
   { label: "Our Work", href: "/#work" },
   { label: "Partners", href: "/partners" },
   { label: "Community", href: "/community" },
-  { label: "Journal", href: "/#journal" },
-  { label: "Join", href: "/join" },
 ];
 
 type Props = { solid?: boolean };
