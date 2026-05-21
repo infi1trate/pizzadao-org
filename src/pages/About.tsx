@@ -463,7 +463,7 @@ const About = () => {
 
           {/* Supporting copy — narrow, calm */}
           <div className="mt-16 grid grid-cols-12 gap-x-6 md:mt-24">
-            <div className="col-span-12 md:col-span-5 md:col-start-1">
+            <div className="col-span-12 md:col-span-6 md:col-start-1">
               <div className="font-serif max-w-[48ch] space-y-5 text-lg leading-[1.75] text-ink/70 md:text-xl">
                 <p>
                   It is familiar, affordable, easy to share, and understood
@@ -474,13 +474,6 @@ const About = () => {
                   together without needing much explanation.
                 </p>
               </div>
-            </div>
-
-            {/* Tiny handwritten note — single, restrained */}
-            <div className="col-span-12 mt-12 md:col-span-4 md:col-start-9 md:mt-0">
-              <p className="handwritten -rotate-1 text-base text-ink/60 md:text-lg">
-                ↳ the simplest table in the world
-              </p>
             </div>
           </div>
         </div>
