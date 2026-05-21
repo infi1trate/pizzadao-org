@@ -195,6 +195,7 @@ const BUILDS: Build[] = [
     context: "A traveling cabinet, an open game jam, and a growing library of pizza-themed games made by members — hardware, code, and pixel art, shipped together.",
     detail: "Started as a one-night build at a chapter meetup and grew into an ongoing collab between hardware tinkerers, indie devs, and visual artists. The catalog is open for any chapter to install or remix.",
     img: hackathon,
+    demo: "https://c-r-x-s-s.github.io/PizzaDAO-Arcade/",
   },
   {
     name: "HourPay",
