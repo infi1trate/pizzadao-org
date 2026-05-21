@@ -206,7 +206,7 @@ const BUILDS: Build[] = [
     mission: "Paid by the hour, not the pay cycle.",
     context: "A working experiment aimed at reducing reliance on payday loans for pizzeria and hospitality staff. Wages stream in real time as the shift happens.",
     detail: "Built by member-operators who watched their own teams struggle between paydays. In pilot with a small group of independent pizzerias.",
-    img: pizzeria,
+    img: hourpayStage,
   },
   {
     name: "Secret Pineapple",
