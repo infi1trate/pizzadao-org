@@ -151,13 +151,6 @@ const About = () => {
                 </div>
               </div>
 
-              {/* Tiny handwritten annotation — single, restrained */}
-              <span
-                className="handwritten absolute right-5 top-5 -rotate-2 text-cream/90 text-sm md:right-10 md:top-10 md:text-base"
-                style={{ textShadow: "0 1px 12px hsl(0 0% 0% / 0.6)" }}
-              >
-                ↳ started online, became real
-              </span>
             </div>
 
             {/* Quiet figure caption */}
@@ -285,10 +278,7 @@ const About = () => {
             </div>
 
             <div className="container">
-              <figcaption className="mt-4 flex items-baseline justify-between gap-3">
-                <span className="handwritten -rotate-1 text-butter text-sm md:text-base">
-                  ↳ a transaction became dinner
-                </span>
+              <figcaption className="mt-4 flex items-baseline justify-end">
                 <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/45">
                   Fig. II.01 — 22 · 05 · 2010
                 </span>
@@ -434,12 +424,10 @@ const About = () => {
             {/* Human detail */}
             <div className="col-span-12 flex items-end md:col-span-7 md:col-start-6">
               <div className="border-l border-ink/15 pl-6 md:pl-10">
-                <p className="handwritten -rotate-1 text-base text-ink/70 md:text-lg">
-                  ↳ no one is in charge. everyone shows up.
-                </p>
-                <p className="font-serif mt-6 max-w-[40ch] text-base leading-[1.7] text-ink/55">
-                  That is the only operating principle that has stayed the same
-                  since the first pizza went out.
+                <p className="font-serif max-w-[40ch] text-base leading-[1.7] text-ink/65 md:text-lg">
+                  No one is in charge. Everyone shows up. That is the only
+                  operating principle that has stayed the same since the first
+                  pizza went out.
                 </p>
               </div>
             </div>
@@ -475,7 +463,7 @@ const About = () => {
 
           {/* Supporting copy — narrow, calm */}
           <div className="mt-16 grid grid-cols-12 gap-x-6 md:mt-24">
-            <div className="col-span-12 md:col-span-5 md:col-start-1">
+            <div className="col-span-12 md:col-span-6 md:col-start-1">
               <div className="font-serif max-w-[48ch] space-y-5 text-lg leading-[1.75] text-ink/70 md:text-xl">
                 <p>
                   It is familiar, affordable, easy to share, and understood
@@ -486,13 +474,6 @@ const About = () => {
                   together without needing much explanation.
                 </p>
               </div>
-            </div>
-
-            {/* Tiny handwritten note — single, restrained */}
-            <div className="col-span-12 mt-12 md:col-span-4 md:col-start-9 md:mt-0">
-              <p className="handwritten -rotate-1 text-base text-ink/60 md:text-lg">
-                ↳ the simplest table in the world
-              </p>
             </div>
           </div>
         </div>
@@ -757,19 +738,6 @@ const About = () => {
 
 
 
-          {/* Reflection — quiet bridge before the close */}
-          <div className="mt-28 grid grid-cols-12 gap-x-6 gap-y-8 md:mt-36">
-            <div className="col-span-12 md:col-span-2">
-              <p className="overline text-tomato">Reflection</p>
-            </div>
-            <div className="col-span-12 md:col-span-9">
-              <p className="font-display text-[clamp(1.8rem,4vw,3rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-ink/90">
-                It was never really about the pizza.
-                <span className="text-ink/45"> It was about the table — and the
-                fact that the internet finally figured out how to set one.</span>
-              </p>
-            </div>
-          </div>
         </div>
 
         {/* Final close — documentary ending */}
