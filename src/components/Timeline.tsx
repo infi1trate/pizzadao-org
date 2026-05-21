@@ -141,8 +141,7 @@ const Timeline = () => {
                   width={1080}
                   height={1350}
                 />
-                <figcaption className="ui absolute bottom-3 left-3 right-3 flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-cream/80 mix-blend-difference">
-                  <span>Fig. 03.{i + 1}</span>
+                <figcaption className="ui absolute bottom-3 right-3 flex items-center text-[10px] uppercase tracking-[0.18em] text-cream/80 mix-blend-difference">
                   <span>{c.meta}</span>
                 </figcaption>
               </figure>
@@ -157,8 +156,7 @@ const Timeline = () => {
                   {c.body}
                 </p>
 
-                <blockquote className="mt-6 flex gap-3">
-                  <span className="ui text-tomato text-sm font-semibold pt-1.5">§</span>
+                <blockquote className="mt-6">
                   <div>
                     <p className="font-display text-lg font-extrabold leading-tight text-ink md:text-xl">
                       {c.pull}
