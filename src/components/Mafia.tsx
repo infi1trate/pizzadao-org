@@ -50,7 +50,8 @@ const Mafia = () => {
 
           {/* RIGHT, living membership wall */}
           <div className="col-span-12 md:col-span-6 md:pl-8">
-            <div className="ui mb-4 flex items-center justify-between border-b border-ink/25 pb-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/70">
+            <div className="ui mb-4 flex items-center justify-between border-b border-ink/15 pb-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/70">
+
               <span>● Active members</span>
               <span>3,000+ worldwide</span>
             </div>
