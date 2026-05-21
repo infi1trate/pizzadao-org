@@ -527,14 +527,14 @@ const Sponsorship = () => {
             <div className="col-span-12 flex flex-col gap-3 md:col-span-5 lg:col-span-4 md:items-end md:pb-1">
               <a
                 href="mailto:partnerships@pizzadao.org"
-                className="group relative inline-flex items-center justify-center gap-2.5 bg-tomato px-7 py-4 text-sm font-semibold tracking-[0.03em] text-cream shadow-[0_10px_30px_-12px_hsl(var(--tomato)/0.5),0_3px_8px_-4px_hsl(0_0%_0%/0.25)] transition-all duration-500 ease-out hover:-translate-y-[3px] hover:bg-tomato-deep hover:shadow-[0_20px_48px_-16px_hsl(var(--tomato)/0.65),0_6px_16px_-6px_hsl(0_0%_0%/0.3)] md:px-9 md:py-5"
+                className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-tomato px-7 py-4 text-sm font-semibold tracking-[0.03em] text-cream shadow-[0_10px_30px_-12px_hsl(var(--tomato)/0.5),0_3px_8px_-4px_hsl(0_0%_0%/0.25)] transition-all duration-500 ease-out hover:-translate-y-[3px] hover:bg-tomato-deep hover:shadow-[0_20px_48px_-16px_hsl(var(--tomato)/0.65),0_6px_16px_-6px_hsl(0_0%_0%/0.3)] md:px-9 md:py-5"
               >
                 <span>Start a partnership brief</span>
                 <span aria-hidden className="transition-transform duration-500 ease-out group-hover:translate-x-1">→</span>
               </a>
               <a
                 href="#"
-                className="group relative inline-flex items-center justify-center gap-2.5 border border-ink/50 bg-cream/40 px-7 py-4 text-sm font-semibold tracking-[0.03em] text-ink backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-[3px] hover:border-ink hover:bg-cream hover:shadow-[0_14px_36px_-14px_hsl(var(--ink)/0.2)] md:px-9 md:py-5"
+                className="group relative inline-flex items-center justify-center gap-2.5 rounded-full border border-ink/50 bg-cream/40 px-7 py-4 text-sm font-semibold tracking-[0.03em] text-ink backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-[3px] hover:border-ink hover:bg-cream hover:shadow-[0_14px_36px_-14px_hsl(var(--ink)/0.2)] md:px-9 md:py-5"
               >
                 <span>Download partner deck</span>
                 <span aria-hidden className="transition-transform duration-500 ease-out group-hover:translate-x-1">↓</span>
