@@ -73,12 +73,12 @@ const PartnersPage = () => {
             </span>
           </div>
 
-          <div className="border-t border-ink/40 pt-8 md:pt-10">
-            <div className="grid grid-cols-12 items-center gap-x-8 gap-y-8 md:gap-x-12">
+          <div className="border-t border-ink/40 pt-6 md:pt-8">
+            <div className="grid grid-cols-12 items-center gap-x-8 gap-y-6 md:gap-x-12">
               {/* Left: headline mass + lede */}
               <div className="col-span-12 md:col-span-7 animate-fade-in">
                 <p className="overline text-tomato">§ B, Partnership</p>
-                <h1 className="font-display mt-4 font-extrabold leading-[0.84] tracking-[-0.025em] text-[clamp(3.25rem,9vw,8.5rem)] md:leading-[0.8]">
+                <h1 className="font-display mt-3 font-extrabold leading-[0.84] tracking-[-0.025em] text-[clamp(3.25rem,9vw,8.5rem)] md:leading-[0.8]">
                   Where brands meet{" "}
                   <span className="relative inline-block">
                     <span
@@ -97,11 +97,11 @@ const PartnersPage = () => {
                   <span className="text-ink">attention.</span>
                 </h1>
 
-                <p className="font-serif mt-5 max-w-[44ch] text-[17.5px] leading-[1.55] text-ink/75 md:mt-6 md:text-[19px] md:leading-[1.5]">
+                <p className="font-serif mt-5 max-w-[44ch] text-[17.5px] leading-[1.55] text-ink/75 md:text-[19px] md:leading-[1.5]">
                   PizzaDAO builds global, community-driven activations that turn
                   brands into experiences people actually show up for.
                 </p>
-                <p className="ui mt-4 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+                <p className="ui mt-3 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-ink/45">
                   Trusted globally · since 2020
                 </p>
               </div>
@@ -109,14 +109,14 @@ const PartnersPage = () => {
               {/* Right: ambient globe */}
               <div className="col-span-12 md:col-span-5 animate-fade-in" style={{ animationDelay: "120ms", animationFillMode: "both" }}>
                 <PartnersGlobe />
-                <p className="ui mt-4 text-center text-[10px] font-medium uppercase tracking-[0.24em] text-ink/40">
+                <p className="ui mt-3 text-center text-[10px] font-medium uppercase tracking-[0.24em] text-ink/40">
                   Fig. i — Active chapters, 6 continents
                 </p>
               </div>
             </div>
 
             {/* Proof strip — editorial footer rail */}
-            <div className="relative mt-12 border-t border-ink/15 pt-6 md:mt-16 md:pt-7">
+            <div className="relative mt-10 border-t border-ink/15 pt-5 md:mt-12 md:pt-6">
               {/* Asymmetric IRL stamp — offset into the margin */}
               <span
                 aria-hidden
@@ -124,7 +124,7 @@ const PartnersPage = () => {
               >
                 ↘ measured IRL
               </span>
-              <dl className="grid grid-cols-2 gap-x-8 gap-y-7 md:grid-cols-4 md:gap-x-12">
+              <dl className="grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-4 md:gap-x-12">
                 {[
                   { k: "Cities", v: "500+" },
                   { k: "Countries", v: "100+" },
@@ -143,7 +143,7 @@ const PartnersPage = () => {
               </dl>
             </div>
 
-            <div className="h-8 md:h-12" />
+            <div className="h-4 md:h-6" />
           </div>
         </div>
       </section>
@@ -156,9 +156,9 @@ const PartnersPage = () => {
       {/* Case studies consolidated into Sponsorship "What we've built" */}
 
       {/* Logo wall — premium social proof, gallery-like */}
-      <section className="paper-soft paper-drift relative overflow-hidden bg-cream py-16 md:py-20">
+      <section className="paper-soft paper-drift relative overflow-hidden bg-cream py-12 md:py-14">
         {/* Warm grain overlay */}
-        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.35]" />
+        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.32]" />
         {/* Faint gradient wash */}
         <div
           aria-hidden
@@ -168,19 +168,13 @@ const PartnersPage = () => {
               "linear-gradient(180deg, hsl(var(--cream)) 0%, hsl(44 60% 97%) 40%, hsl(var(--cream)) 100%)",
           }}
         />
-        {/* Extremely soft checkered treatment — single edge detail */}
-        <div
-          aria-hidden
-          className="checker-tape pointer-events-none absolute right-0 top-0 h-[4px] w-24 opacity-20 md:w-36"
-        />
-        <div
-          aria-hidden
-          className="checker-tape pointer-events-none absolute bottom-0 left-0 h-[4px] w-24 opacity-15 md:w-36"
-        />
+        {/* Section seam hairlines — tighter editorial join */}
+        <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/10" />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-ink/10" />
 
         <div className="container relative">
           {/* Editorial heading — minimal, confident */}
-          <div className="flex items-baseline justify-between gap-x-6">
+          <div className="relative flex items-baseline justify-between gap-x-6">
             <h2 className="font-display text-[clamp(1.6rem,3.2vw,2.6rem)] font-extrabold leading-[1] tracking-[-0.02em] text-ink">
               Selected collaborators
             </h2>
@@ -190,13 +184,20 @@ const PartnersPage = () => {
             >
               Trusted globally
             </span>
+            {/* Asymmetric handwritten annotation */}
+            <span
+              aria-hidden
+              className="handwritten absolute -top-5 left-[42%] -rotate-[4deg] text-[12px] text-tomato/80 md:left-[36%]"
+            >
+              ↘ a partial list
+            </span>
           </div>
 
           {/* Thin editorial rule */}
-          <div className="mt-6 h-px bg-ink/10 md:mt-8" />
+          <div className="mt-5 h-px bg-ink/10 md:mt-6" />
 
           {/* Logo grid — gallery spacing, monochrome default */}
-          <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10 md:mt-14 md:grid-cols-4 md:gap-x-12 md:gap-y-14">
+          <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-8 md:mt-10 md:grid-cols-4 md:gap-x-12 md:gap-y-10">
             {PARTNERS.map((p, i) => (
               <div
                 key={p.name}
@@ -218,7 +219,7 @@ const PartnersPage = () => {
 
 
       {/* Inquiry — warm close, hospitality cues */}
-      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-16 text-cream md:py-20">
+      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-14 text-cream md:py-16">
         {/* Atmospheric warm glow — soft ember drift */}
         <div
           aria-hidden
