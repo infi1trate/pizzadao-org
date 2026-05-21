@@ -204,7 +204,7 @@ const Journal = () => {
               <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92]">
                 One issue.
                 <br />
-                <span className="text-ink/65">When it's ready.</span>
+                <span className="handwritten text-ink/65 text-[1.05em]">When it's ready.</span>
               </h3>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-ink/70 md:text-lg">
                 An occasional dispatch — the best new writing, dispatches from
