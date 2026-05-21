@@ -461,8 +461,17 @@ const Sponsorship = () => {
       </div>
 
 
-      {/* CTA band — warm, intentional, emotionally persuasive */}
-      <div className="relative mt-6 overflow-hidden bg-butter pb-10 md:mt-8 md:pb-14">
+      {/* CTA band — edge-to-edge butter, layered transition from cream-warm above */}
+      <div className="relative overflow-hidden bg-butter pb-12 pt-14 md:pb-16 md:pt-16">
+        {/* Top tonal bridge — cream-warm fading into butter */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-28"
+          style={{
+            background:
+              "linear-gradient(180deg, hsl(40 55% 93%) 0%, transparent 100%)",
+          }}
+        />
         {/* Warm gradient wash — richer at center, softer at edges */}
         <div
           aria-hidden
@@ -478,13 +487,19 @@ const Sponsorship = () => {
           className="pointer-events-none absolute -left-20 -top-20 h-[320px] w-[320px] rounded-full opacity-[0.14] blur-[90px]"
           style={{ background: "hsl(var(--tomato))" }}
         />
-        {/* Faint pizza-box checkered reference — top-right edge only, very subtle */}
+        {/* Edge darkening — soft vignette for printed dimensionality */}
         <div
           aria-hidden
-          className="checker-tape pointer-events-none absolute right-0 top-0 h-[4px] w-20 opacity-20 md:w-32"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 50%, transparent 55%, hsl(30 40% 35% / 0.10) 100%)",
+          }}
         />
+        {/* Top hairline — divides from cream-warm cleanly */}
+        <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/12" />
         {/* Subtle grain */}
-        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.25]" />
+        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.22]" />
 
         <div className="container relative">
           {/* Tighter, more editorial composition */}
