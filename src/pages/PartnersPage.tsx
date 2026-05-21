@@ -218,56 +218,75 @@ const PartnersPage = () => {
 
 
       {/* Inquiry — warm close, hospitality cues */}
-      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-20 text-cream md:py-28">
-        {/* Warm hospitality wash — soft ember toward the upper-left */}
+      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-16 text-cream md:py-20">
+        {/* Atmospheric warm glow — soft ember drift */}
         <div
           aria-hidden
-          className="pointer-events-none absolute -left-40 -top-40 h-[720px] w-[720px] rounded-full opacity-[0.16] blur-[140px]"
+          className="pointer-events-none absolute -left-32 -top-32 h-[600px] w-[600px] rounded-full opacity-[0.14] blur-[120px]"
           style={{ background: "hsl(var(--tomato))" }}
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-32 bottom-0 h-[540px] w-[540px] rounded-full opacity-[0.10] blur-[140px]"
+          className="pointer-events-none absolute -right-20 bottom-0 h-[420px] w-[420px] rounded-full opacity-[0.10] blur-[100px]"
           style={{ background: "hsl(var(--butter))" }}
         />
-        {/* Understated tablecloth detail — a single short tape, not a band */}
-        <div className="checker-tape-sm absolute left-0 top-0 h-[5px] w-32 opacity-50 md:w-48" aria-hidden />
-        <div className="absolute inset-x-0 bottom-0 h-px bg-cream/10" aria-hidden />
+        {/* Soft gradient drift — restrained warmth wash */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 30% 50%, hsl(var(--tomato) / 0.06) 0%, transparent 55%)",
+          }}
+        />
+        {/* Faint tablecloth texture — single short tape */}
+        <div className="checker-tape-sm absolute left-0 top-0 h-[4px] w-24 opacity-35 md:w-40" aria-hidden />
+        {/* Soft grain overlay */}
+        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.12]" />
+        {/* Bottom hairline */}
+        <div className="absolute inset-x-0 bottom-0 h-px bg-cream/8" aria-hidden />
 
         <div className="container relative">
-          <div className="grid grid-cols-12 gap-x-8 gap-y-10 md:gap-x-16 md:gap-y-0">
-            <div className="col-span-12 md:col-span-5">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-8 md:gap-x-14 md:gap-y-0">
+            {/* Left: headline + copy, tightly grouped */}
+            <div className="col-span-12 md:col-span-5 lg:col-span-5">
               <p className="overline text-butter">§ B.02 — Inquiry</p>
-              <h2 className="font-display mt-5 text-display-2 font-extrabold leading-[0.88] tracking-[-0.025em]">
+              <h2 className="font-display mt-4 text-display-2 font-extrabold leading-[0.88] tracking-[-0.025em]">
                 Tell us
                 <br />
-                what
+                what you're
                 <br />
-                <span className="italic font-serif font-normal text-butter">
-
-                  you're trying
-                </span>
-                <br />
-                <span className="italic font-serif font-normal text-butter">
-                  to do.
+                <span
+                  className="handwritten inline-block text-butter"
+                  style={{
+                    transform: "rotate(-2deg)",
+                    fontSize: "0.78em",
+                    verticalAlign: "0.1em",
+                  }}
+                >
+                  trying to do.
                 </span>
               </h2>
-              <p className="font-serif mt-7 max-w-[34ch] text-[15.5px] leading-[1.65] text-cream/70 md:text-base">
-                We come back with a brief, a city list, and a number, usually
-                within a week. No deck required to start the conversation.
+              <p className="font-serif mt-5 max-w-[34ch] text-[15px] leading-[1.6] text-cream/65 md:text-base">
+                We come back with a brief, a city list, and a number, usually within a week. No deck required.
               </p>
-              <p className="ui mt-6 text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/40">
-
+              <p className="ui mt-5 text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/35">
                 Or email partnerships@pizzadao.org directly
+              </p>
+
+              {/* Handwritten hospitality phrase */}
+              <p className="handwritten mt-5 -rotate-[1.5deg] text-butter/80 text-[14px]">
+                ↳ start with an idea
               </p>
             </div>
 
+            {/* Right: form, tighter and aligned */}
             <form
               onSubmit={(e) => {
                 e.preventDefault();
                 setSubmitted(true);
               }}
-              className="col-span-12 grid grid-cols-2 gap-x-6 gap-y-8 md:col-span-7 md:pl-6"
+              className="col-span-12 grid grid-cols-2 gap-x-5 gap-y-6 md:col-span-7 md:pl-8 lg:pl-12"
             >
               {submitted ? (
                 <div className="col-span-2">
@@ -281,56 +300,53 @@ const PartnersPage = () => {
               ) : (
                 <>
                   <div className="col-span-2 md:col-span-1">
-                    <label className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/50">
+                    <label className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/45">
                       Brand
                     </label>
                     <input
                       type="text"
                       required
-                      className="ui mt-3 w-full border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-sm text-cream placeholder:text-cream/30 transition-colors focus:border-butter focus:outline-none"
+                      className="ui mt-2.5 w-full border-0 border-b border-cream/20 bg-transparent px-0 py-2.5 text-sm text-cream placeholder:text-cream/25 transition-colors focus:border-butter focus:outline-none"
                       placeholder="Company name"
                     />
                   </div>
                   <div className="col-span-2 md:col-span-1">
-                    <label className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/50">
+                    <label className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/45">
                       Your name
                     </label>
                     <input
                       type="text"
                       required
-                      className="ui mt-3 w-full border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-sm text-cream placeholder:text-cream/30 transition-colors focus:border-butter focus:outline-none"
+                      className="ui mt-2.5 w-full border-0 border-b border-cream/20 bg-transparent px-0 py-2.5 text-sm text-cream placeholder:text-cream/25 transition-colors focus:border-butter focus:outline-none"
                       placeholder="Full name"
                     />
                   </div>
                   <div className="col-span-2">
-                    <label className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/50">
+                    <label className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/45">
                       Work email
                     </label>
                     <input
                       type="email"
                       required
-                      className="ui mt-3 w-full border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-sm text-cream placeholder:text-cream/30 transition-colors focus:border-butter focus:outline-none"
+                      className="ui mt-2.5 w-full border-0 border-b border-cream/20 bg-transparent px-0 py-2.5 text-sm text-cream placeholder:text-cream/25 transition-colors focus:border-butter focus:outline-none"
                       placeholder="you@company.com"
                     />
                   </div>
                   <div className="col-span-2">
-                    <label className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/50">
+                    <label className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/45">
                       Tell us the brief (1–3 sentences)
                     </label>
                     <textarea
                       required
-                      rows={4}
-                      className="ui mt-3 w-full border-0 border-b border-cream/25 bg-transparent px-0 py-3 text-sm text-cream placeholder:text-cream/30 transition-colors focus:border-butter focus:outline-none"
+                      rows={3}
+                      className="ui mt-2.5 w-full border-0 border-b border-cream/20 bg-transparent px-0 py-2.5 text-sm text-cream placeholder:text-cream/25 transition-colors focus:border-butter focus:outline-none"
                       placeholder="What you're trying to achieve, where, by when."
                     />
                   </div>
-                  <div className="relative col-span-2 mt-4 flex flex-col-reverse items-start gap-5 md:flex-row md:items-center md:justify-between md:gap-8">
-                    <p className="handwritten -rotate-[1.5deg] text-butter text-sm md:text-base">
-                      ↳ let's cook
-                    </p>
+                  <div className="relative col-span-2 mt-2 flex flex-col-reverse items-start gap-4 md:flex-row md:items-center md:justify-between md:gap-6">
                     <button
                       type="submit"
-                      className="group relative inline-flex items-center justify-center gap-3 bg-tomato px-8 py-5 text-sm font-semibold tracking-[0.04em] text-cream shadow-[0_18px_44px_-22px_hsl(var(--tomato)/0.7),0_4px_12px_-6px_hsl(0_0%_0%/0.4)] transition-all duration-500 ease-out hover:-translate-y-[2px] hover:bg-butter hover:text-ink hover:shadow-[0_28px_60px_-22px_hsl(var(--butter)/0.55),0_6px_16px_-6px_hsl(0_0%_0%/0.5)]"
+                      className="group relative inline-flex items-center justify-center gap-2.5 bg-tomato px-7 py-4 text-sm font-semibold tracking-[0.03em] text-cream shadow-[0_10px_28px_-10px_hsl(var(--tomato)/0.6),0_3px_8px_-4px_hsl(0_0%_0%/0.3)] transition-all duration-500 ease-out hover:-translate-y-[3px] hover:bg-butter hover:text-ink hover:shadow-[0_18px_48px_-14px_hsl(var(--butter)/0.5),0_6px_14px_-6px_hsl(0_0%_0%/0.35)] md:px-9 md:py-5"
                     >
                       <span>Request a partnership brief</span>
                       <span aria-hidden className="transition-transform duration-500 ease-out group-hover:translate-x-1">→</span>
