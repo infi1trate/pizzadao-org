@@ -411,40 +411,21 @@ const About = () => {
       </section>
 
       {/* ────────────────────────────────────────────────────────────
-          TRANSITION — SOCIAL INFRASTRUCTURE
-          A bold editorial interruption. Definitive. Memorable. Grounded.
+          THESIS — SOCIAL INFRASTRUCTURE
+          A quick, definitive interruption. 5 seconds to absorb.
          ──────────────────────────────────────────────────────────── */}
-      <section className="paper-soft relative overflow-hidden bg-cream py-32 md:py-48">
+      <section className="paper-soft relative overflow-hidden bg-cream py-20 md:py-28">
         <div className="container relative">
-          {/* Overline */}
-          <p className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/40">
-            Why this works
-          </p>
-
-          {/* Massive primary statement */}
-          <div className="mt-8 md:mt-12">
-            <h2 className="font-display max-w-[14ch] text-[clamp(3.2rem,12vw,10rem)] font-extrabold leading-[0.82] tracking-[-0.035em]">
+          <blockquote className="mx-auto max-w-[18ch] text-center">
+            <p className="font-display font-extrabold text-ink text-[clamp(2.8rem,9vw,8rem)] leading-[0.9] tracking-[-0.035em]">
               Pizza is{" "}
-              <span className="text-tomato">social</span>{" "}
+              <span className="italic text-tomato">social</span>{" "}
               infrastructure.
-            </h2>
-          </div>
-
-          {/* Supporting copy — narrow, calm */}
-          <div className="mt-16 grid grid-cols-12 gap-x-6 md:mt-24">
-            <div className="col-span-12 md:col-span-6 md:col-start-1">
-              <div className="font-serif max-w-[48ch] space-y-5 text-lg leading-[1.75] text-ink/70 md:text-xl">
-                <p>
-                  It is familiar, affordable, easy to share, and understood
-                  almost anywhere.
-                </p>
-                <p>
-                  That makes it unusually effective at bringing strangers
-                  together without needing much explanation.
-                </p>
-              </div>
-            </div>
-          </div>
+            </p>
+            <footer className="mt-8 font-serif text-base leading-[1.6] text-ink/60 md:text-lg">
+              Familiar, affordable, understood almost anywhere.
+            </footer>
+          </blockquote>
         </div>
       </section>
 
