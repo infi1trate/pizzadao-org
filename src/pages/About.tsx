@@ -12,6 +12,23 @@ import community from "@/assets/community.jpg";
 const HERO_PHOTO   = findPhoto("Lagos")?.src       ?? party;
 const RITUAL_PHOTO = findPhoto("Buenos Aires")?.src ?? timeline2010;
 
+// Small documentary polaroids — pinned to the origin column for warmth.
+const ORIGIN_POLAROIDS = [
+  { src: findPhoto("Manila")?.src ?? findPhoto("Bangkok")?.src ?? community, city: "Manila", note: "first run, 2021", tilt: "-rotate-[3deg]", offset: "translate-y-0" },
+  { src: findPhoto("Brooklyn")?.src ?? findPhoto("New York")?.src ?? party,  city: "Brooklyn", note: "rooftop, may 22",  tilt: "rotate-[2.2deg]",  offset: "translate-y-4" },
+  { src: findPhoto("Lagos")?.src ?? findPhoto("Nairobi")?.src ?? timeline2010, city: "Lagos",  note: "boxes & friends", tilt: "-rotate-[1.4deg]", offset: "translate-y-2" },
+];
+
+// Contact-strip — three faces of one global night, end of the Ritual section.
+const RITUAL_STRIP = [
+  { src: findPhoto("Buenos Aires")?.src ?? party,    city: "Buenos Aires", stamp: "22.05 · 23:14" },
+  { src: findPhoto("Nairobi")?.src ?? community,     city: "Nairobi",      stamp: "22.05 · 19:02" },
+  { src: findPhoto("Detroit")?.src ?? timeline2010,  city: "Detroit",      stamp: "22.05 · 21:47" },
+  { src: findPhoto("Bangkok")?.src ?? party,         city: "Bangkok",      stamp: "23.05 · 01:30" },
+];
+
+const THESIS_PHOTO = findPhoto("Rio de Janeiro")?.src ?? findPhoto("Medellín")?.src ?? community;
+
 const ROLES = [
   { name: "Chapter leads", note: "Organize local events and shape the city experience." },
   { name: "Contributors", note: "Help with design, logistics, partnerships, content, and operations." },
@@ -122,6 +139,38 @@ const About = () => {
               <h2 className="font-display mt-5 text-[clamp(2rem,4.5vw,3.25rem)] font-extrabold leading-[0.95]">
                 A Discord server, a holiday, and a hunch.
               </h2>
+
+              {/* Pinned polaroid trio — tactile field-archive warmth */}
+              <div className="mt-12 hidden md:flex md:items-start md:gap-3">
+                {ORIGIN_POLAROIDS.map((p, i) => (
+                  <figure
+                    key={p.city}
+                    className={`relative ${p.tilt} ${p.offset} w-[36%] origin-top transition-transform duration-500 hover:rotate-0 hover:scale-[1.03]`}
+                    style={{ zIndex: 10 - i }}
+                  >
+                    <div className="grain relative overflow-hidden bg-cream p-2 pb-8 shadow-[0_8px_20px_-10px_hsl(0_0%_0%/0.35),0_2px_5px_-2px_hsl(0_0%_0%/0.2)]">
+                      <div className="aspect-square overflow-hidden bg-ink">
+                        <img
+                          src={p.src}
+                          alt={`${p.city} — early PizzaDAO gathering`}
+                          loading="lazy"
+                          decoding="async"
+                          className="h-full w-full object-cover [filter:saturate(0.92)_contrast(1.04)_sepia(0.06)]"
+                        />
+                      </div>
+                      <figcaption className="handwritten absolute inset-x-2 bottom-1 text-center text-xs leading-tight text-ink/70">
+                        {p.city} · {p.note}
+                      </figcaption>
+                    </div>
+                    {/* paper tape */}
+                    <span
+                      aria-hidden
+                      className="absolute -top-2 left-1/2 h-4 w-12 -translate-x-1/2 rotate-[-4deg] bg-butter/70 opacity-80 shadow-sm"
+                      style={{ clipPath: "polygon(4% 0,96% 0,100% 100%,0 100%)" }}
+                    />
+                  </figure>
+                ))}
+              </div>
             </div>
             <div className="col-span-12 md:col-span-7 md:col-start-6">
               <p className="font-serif text-xl leading-[1.55] text-ink md:text-2xl">
@@ -186,7 +235,17 @@ const About = () => {
       </section>
 
       {/* ── RITUAL ───────────────────────────────────────────────── */}
-      <section className="relative bg-ink text-cream">
+      <section className="relative overflow-hidden bg-ink text-cream">
+        {/* warm atmospheric wash — tomato/butter glow on deep ink */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(60% 50% at 18% 28%, hsl(14 75% 38% / 0.22), transparent 70%), radial-gradient(55% 45% at 88% 78%, hsl(40 85% 55% / 0.10), transparent 70%)",
+          }}
+        />
+        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.18] mix-blend-overlay" />
         {/* Full-bleed cinematic photograph */}
         <figure className="relative">
           <div className="grain relative overflow-hidden bg-ink">
@@ -241,8 +300,49 @@ const About = () => {
             </div>
           </div>
 
+          {/* Contact-sheet strip — four faces of one global night */}
+          <div className="mt-24 md:mt-32">
+            <div className="mb-5 flex items-baseline justify-between">
+              <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/45">
+                Field contact sheet · May 22
+              </span>
+              <span className="ui hidden text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/30 md:inline">
+                Roll 03 / 12
+              </span>
+            </div>
+            <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3">
+              {RITUAL_STRIP.map((p, i) => (
+                <figure
+                  key={p.city}
+                  className="group relative overflow-hidden bg-ink ring-1 ring-cream/10"
+                  style={{ animationDelay: `${i * 80}ms` }}
+                >
+                  <div className="aspect-[4/5] overflow-hidden">
+                    <img
+                      src={p.src}
+                      alt={`${p.city}, May 22`}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover opacity-90 transition-all duration-700 [filter:saturate(0.85)_contrast(1.08)_sepia(0.08)] group-hover:scale-[1.04] group-hover:opacity-100"
+                    />
+                  </div>
+                  <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.3] mix-blend-overlay" />
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0"
+                    style={{ background: "linear-gradient(to top, hsl(0 0% 0% / 0.75) 0%, transparent 45%)" }}
+                  />
+                  <figcaption className="absolute inset-x-0 bottom-0 flex items-baseline justify-between px-3 pb-2.5">
+                    <span className="font-display text-xs font-extrabold tracking-tight text-cream">{p.city}</span>
+                    <span className="ui text-[9px] font-semibold uppercase tracking-[0.22em] text-cream/65">{p.stamp}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+
           {/* Quiet emotional accent — short, supportive, not informational */}
-          <div className="mt-28 flex justify-center md:mt-40">
+          <div className="mt-20 flex justify-center md:mt-28">
             <p className="handwritten -rotate-[1.5deg] text-butter text-[clamp(2rem,5vw,3.5rem)] leading-tight">
               Every May 22, a door opens.
             </p>
@@ -302,6 +402,9 @@ const About = () => {
               </div>
             ))}
           </dl>
+          <p className="handwritten -mt-2 rotate-[-1.2deg] text-right text-tomato text-xl md:text-2xl">
+            …and counting →
+          </p>
 
           {/* Roles ledger */}
           <div className="mt-20 md:mt-28">
@@ -334,15 +437,42 @@ const About = () => {
       </section>
 
       {/* ── THESIS ───────────────────────────────────────────────── */}
-      <section className="bg-cream py-28 md:py-40">
+      <section className="relative overflow-hidden bg-cream py-28 md:py-40">
         <div className="container">
-          <p className="font-display text-ink font-extrabold leading-[0.95] tracking-[-0.025em] text-[clamp(2.5rem,8vw,7rem)]">
-            Pizza is{" "}
-            <span className="text-tomato">social infrastructure</span>.
-          </p>
-          <p className="font-serif mt-8 max-w-[44ch] text-lg leading-[1.55] text-ink/60 md:text-xl">
-            Familiar, affordable, understood almost anywhere.
-          </p>
+          <div className="grid grid-cols-12 gap-x-8 gap-y-10 items-center">
+            <div className="col-span-12 md:col-span-8">
+              <p className="font-display text-ink font-extrabold leading-[0.95] tracking-[-0.025em] text-[clamp(2.5rem,8vw,7rem)]">
+                Pizza is{" "}
+                <span className="text-tomato">social infrastructure</span>.
+              </p>
+              <p className="font-serif mt-8 max-w-[44ch] text-lg leading-[1.55] text-ink/60 md:text-xl">
+                Familiar, affordable, understood almost anywhere.
+              </p>
+            </div>
+
+            {/* Pinned thesis polaroid — humanizes the abstract claim */}
+            <figure className="relative col-span-12 md:col-span-4 md:col-start-9 mx-auto md:mx-0 w-[70%] sm:w-[55%] md:w-full max-w-[280px] -rotate-[3.5deg] transition-transform duration-500 hover:rotate-0">
+              <div className="grain relative overflow-hidden bg-cream p-2.5 pb-10 shadow-[0_18px_40px_-18px_hsl(0_0%_0%/0.45),0_4px_10px_-4px_hsl(0_0%_0%/0.25)]">
+                <div className="aspect-[4/5] overflow-hidden bg-ink">
+                  <img
+                    src={THESIS_PHOTO}
+                    alt="People sharing pizza on a city street"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover [filter:saturate(0.95)_contrast(1.06)_sepia(0.05)]"
+                  />
+                </div>
+                <figcaption className="handwritten absolute inset-x-2 bottom-1 text-center text-sm text-ink/75">
+                  strangers, 11 minutes later
+                </figcaption>
+              </div>
+              <span
+                aria-hidden
+                className="absolute -top-3 left-1/2 h-5 w-16 -translate-x-1/2 rotate-[3deg] bg-tomato/60 shadow-sm"
+                style={{ clipPath: "polygon(4% 0,96% 0,100% 100%,0 100%)" }}
+              />
+            </figure>
+          </div>
         </div>
       </section>
 
