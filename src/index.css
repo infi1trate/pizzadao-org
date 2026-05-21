@@ -45,11 +45,24 @@
     --destructive: var(--tomato);
     --destructive-foreground: var(--cream);
 
-    --border: 0 0% 8%;
-    --input: 0 0% 8%;
+    /* Warm institutional gray — replaces near-black borders site-wide */
+    --border: 30 12% 78%;
+    --input: 30 12% 78%;
     --ring: var(--ink);
+    --rule-warm: 30 14% 70%;
 
-    --radius: 0.875rem;
+    --radius: 1rem;
+
+    /* Motion tokens — cinematic, weighted, restrained */
+    --ease-editorial: cubic-bezier(0.22, 0.61, 0.24, 1);
+    --ease-filmic:   cubic-bezier(0.16, 0.84, 0.32, 1);
+    --dur-fast: 280ms;
+    --dur-base: 520ms;
+    --dur-slow: 900ms;
+
+    /* Soft ambient elevation — replaces SaaS drop shadows */
+    --shadow-soft:   0 1px 2px hsl(30 20% 12% / 0.04), 0 8px 28px -18px hsl(30 20% 12% / 0.18);
+    --shadow-lifted: 0 2px 4px hsl(30 20% 12% / 0.05), 0 18px 48px -24px hsl(30 20% 12% / 0.22);
 
     --sidebar-background: var(--cream);
     --sidebar-foreground: var(--ink);
