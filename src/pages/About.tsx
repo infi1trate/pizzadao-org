@@ -2,9 +2,17 @@ import { useEffect } from "react";
 import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
 import ArchivalWall from "@/components/ArchivalWall";
+import { findPhoto } from "@/lib/pizzadaoPhotos";
 import timeline2010 from "@/assets/timeline-2010.jpg";
 import party from "@/assets/timeline-party.jpg";
 import community from "@/assets/community.jpg";
+
+// Real PizzaDAO archive photos for the hero scenes — with local fallbacks
+// in case the remote CDN is ever unreachable.
+const HERO_PHOTO   = findPhoto("Lagos")?.src       ?? party;
+const RITUAL_PHOTO = findPhoto("Buenos Aires")?.src ?? timeline2010;
+const FIELD_PHOTO  = findPhoto("Cape Town")?.src   ?? community;
+
 
 const ROLES = [
   { name: "Chapter leads", note: "Organize local events and shape the city experience." },
@@ -109,11 +117,13 @@ const About = () => {
           <figure className="relative">
             <div className="grain relative overflow-hidden bg-ink">
               <img
-                src={party}
+                src={HERO_PHOTO}
                 alt="Volunteers carrying pizza boxes through a crowded street gathering, strangers meeting around shared tables"
                 loading="eager"
+                decoding="async"
                 width={2400}
                 height={1500}
+                onError={(e) => { (e.currentTarget as HTMLImageElement).src = party; }}
                 className="block aspect-[4/5] w-full object-cover sm:aspect-[3/2] md:aspect-[16/9] lg:aspect-[2/1]"
               />
               {/* Soft analog vignette — pulls eye to center, grounds the type */}
@@ -246,11 +256,13 @@ const About = () => {
           <figure className="relative z-10 mt-8 md:mt-16">
             <div className="relative overflow-hidden bg-ink">
               <img
-                src={timeline2010}
-                alt="Archival reference to the 2010 Bitcoin pizza transaction"
+                src={RITUAL_PHOTO}
+                alt="Archival reference to a Bitcoin Pizza Day gathering"
                 loading="lazy"
+                decoding="async"
                 width={2400}
                 height={1200}
+                onError={(e) => { (e.currentTarget as HTMLImageElement).src = timeline2010; }}
                 className="grain block aspect-[21/10] w-full object-cover opacity-90"
               />
               {/* Cinematic vignette */}
@@ -409,9 +421,11 @@ const About = () => {
               <figure className="crop-marks relative">
                 <div className="grain relative overflow-hidden bg-ink">
                   <img
-                    src={community}
+                    src={FIELD_PHOTO}
                     alt="Hands reaching for pizza slices at a community gathering"
                     loading="lazy"
+                    decoding="async"
+                    onError={(e) => { (e.currentTarget as HTMLImageElement).src = community; }}
                     className="block aspect-[4/3] w-full object-cover"
                   />
                 </div>
