@@ -522,4 +522,43 @@
     border-color: hsl(var(--ink));
     color: hsl(var(--ink));
   }
+
+  /* ============================================================
+     Global hardening utilities — applied via existing classnames
+     ============================================================ */
+
+  /* Unified editorial surface — soft warm border + ambient depth.
+     Use on cards/panels/modules to replace ad-hoc borders+shadows. */
+  .surface-editorial {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--rule-warm) / 0.6);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-soft);
+    transition: box-shadow var(--dur-base) var(--ease-editorial),
+                transform var(--dur-base) var(--ease-editorial),
+                border-color var(--dur-base) var(--ease-editorial);
+  }
+  .surface-editorial:hover {
+    box-shadow: var(--shadow-lifted);
+    border-color: hsl(var(--rule-warm) / 0.9);
+  }
+
+  /* Soften every shadow utility globally so SaaS drop-shadows can't surface */
+  .shadow-sm   { box-shadow: 0 1px 2px hsl(30 20% 12% / 0.04) !important; }
+  .shadow,
+  .shadow-md   { box-shadow: var(--shadow-soft) !important; }
+  .shadow-lg,
+  .shadow-xl,
+  .shadow-2xl  { box-shadow: var(--shadow-lifted) !important; }
+
+  /* Tame default hover/transform micro-bounces site-wide */
+  .transition,
+  .transition-all,
+  .transition-transform,
+  .transition-colors {
+    transition-timing-function: var(--ease-editorial);
+  }
+
+  /* Editorial divider — warm hairline, replaces hard black rules where used */
+  .rule-warm { border-top: 1px solid hsl(var(--rule-warm) / 0.55); }
 }
