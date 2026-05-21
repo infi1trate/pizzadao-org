@@ -6,7 +6,6 @@ import logoLight from "@/assets/logo-light.svg";
 
 const NAV = [
   { label: "About", href: "/about" },
-  { label: "Our Work", href: "/#work" },
   { label: "Partners", href: "/partners" },
   { label: "Community", href: "/community" },
 ];
