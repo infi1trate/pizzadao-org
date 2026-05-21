@@ -224,84 +224,131 @@ const About = () => {
           May 22 · Bitcoin Pizza Day · the annual global gathering.
          ──────────────────────────────────────────────────────────── */}
       <section className="paper-soft paper-soft-dark relative overflow-hidden bg-ink py-24 text-cream md:py-32">
-        <div className="relative">
-          <div className="container">
-            <div className="flex items-center justify-between border-t border-cream/20 pb-12 pt-6">
-              <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-butter">
-                Act II — The Ritual
-              </span>
-              <span className="stamp text-butter">May 22</span>
-            </div>
+        {/* Archive timestamp band */}
+        <div className="container">
+          <div className="flex items-center justify-between border-t border-cream/20 pb-10 pt-6">
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-butter">
+              Act II — The Ritual
+            </span>
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/45">
+              Archive · 05 · 22 · 2010 → ongoing
+            </span>
+          </div>
+        </div>
 
-            <div className="grid grid-cols-12 items-end gap-x-8 gap-y-8 pb-20 md:pb-24">
-              <h2 className="font-display col-span-12 text-[clamp(2.6rem,9vw,7rem)] font-extrabold leading-[0.84] tracking-[-0.025em] md:col-span-9">
-                A transaction
-                <br />
-                <span className="text-cream/55">became a dinner.</span>
-              </h2>
-              <p className="font-serif col-span-12 text-lg leading-[1.6] text-cream/70 md:col-span-3">
-                A date in internet history, rewritten every year as something
-                you can actually attend.
-              </p>
+        {/* Oversized MAY 22 + cinematic image composition */}
+        <div className="relative">
+          {/* Oversized typographic marker */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 z-0 select-none overflow-hidden"
+          >
+            <div className="font-display whitespace-nowrap text-center text-[clamp(7rem,28vw,22rem)] font-extrabold leading-[0.78] tracking-[-0.04em] text-butter/[0.10]">
+              MAY 22
             </div>
           </div>
 
           {/* Full-bleed documentary image */}
-          <figure className="relative">
-            <div className="overflow-hidden bg-ink">
+          <figure className="relative z-10 mt-8 md:mt-16">
+            <div className="relative overflow-hidden bg-ink">
               <img
                 src={timeline2010}
                 alt="Archival reference to the 2010 Bitcoin pizza transaction"
                 loading="lazy"
-                width={1920}
-                height={760}
-                className="grain block aspect-[21/8] w-full object-cover opacity-90"
+                width={2400}
+                height={1200}
+                className="grain block aspect-[21/10] w-full object-cover opacity-90"
               />
+              {/* Cinematic vignette */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at 50% 60%, transparent 35%, hsl(0 0% 0% / 0.55) 95%)",
+                }}
+              />
+              {/* Title embedded into the frame */}
+              <div className="absolute inset-x-0 bottom-0">
+                <div className="container pb-8 md:pb-14">
+                  <h2
+                    className="font-display max-w-[16ch] text-[clamp(2.4rem,7.5vw,6rem)] font-extrabold leading-[0.86] tracking-[-0.025em] text-cream"
+                    style={{ textShadow: "0 2px 28px hsl(0 0% 0% / 0.55)" }}
+                  >
+                    May 22 became
+                    <br />
+                    <span className="italic text-butter">a ritual.</span>
+                  </h2>
+                </div>
+              </div>
             </div>
+
             <div className="container">
               <figcaption className="mt-4 flex items-baseline justify-between gap-3">
                 <span className="handwritten -rotate-1 text-butter text-sm md:text-base">
-                  internet history, made physical
+                  ↳ a transaction became dinner
                 </span>
                 <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/45">
-                  Fig. II.01 — May 22, 2010
+                  Fig. II.01 — 22 · 05 · 2010
                 </span>
               </figcaption>
             </div>
           </figure>
 
+          {/* Thin checkered divider */}
+          <div className="container mt-20 md:mt-28">
+            <div
+              aria-hidden="true"
+              className="h-2 w-full opacity-40"
+              style={{
+                backgroundImage:
+                  "linear-gradient(45deg, hsl(var(--butter)) 25%, transparent 25%, transparent 75%, hsl(var(--butter)) 75%), linear-gradient(45deg, hsl(var(--butter)) 25%, transparent 25%, transparent 75%, hsl(var(--butter)) 75%)",
+                backgroundSize: "8px 8px",
+                backgroundPosition: "0 0, 4px 4px",
+              }}
+            />
+          </div>
+
           {/* Long-form ritual narrative */}
           <div className="container">
-            <div className="mt-24 grid grid-cols-12 gap-x-6 gap-y-10 md:mt-32">
+            <div className="mt-16 grid grid-cols-12 gap-x-6 gap-y-10 md:mt-24">
               <div className="col-span-12 md:col-span-5">
                 <p className="overline text-butter">The annual gathering</p>
                 <h3 className="font-display mt-5 text-display-2 font-extrabold leading-[0.9]">
-                  Every May 22, somewhere, a door opens.
+                  Every May 22,
+                  <br />
+                  somewhere,
+                  <br />
+                  <span className="italic text-cream/70">a door opens.</span>
                 </h3>
               </div>
               <div className="col-span-12 md:col-span-6 md:col-start-7">
-                <div className="font-serif max-w-[60ch] space-y-5 text-lg leading-[1.7] text-cream/85 md:text-xl">
+                <div className="font-serif max-w-[58ch] space-y-5 text-lg leading-[1.7] text-cream/85 md:text-xl">
                   <p>
                     On May 22, 2010, two pizzas were bought for 10,000 BTC.
-                    The story became part of internet history because it
-                    proved something abstract could become real.
+                    The story became symbolic because it proved something
+                    abstract could become real.
+                  </p>
+                  <p className="text-cream">
+                    A transaction became dinner. Code became a table.
                   </p>
                   <p>
-                    Years later, PizzaDAO turned that memory into a recurring
-                    global ritual. Every May 22, local organizers bring people
-                    together in their own cities.
+                    Years later, PizzaDAO turned that moment into a recurring
+                    global ritual. Every May 22, organizers across the world
+                    gather people together in their own cities.
                   </p>
                   <p>
-                    Some events are polished. Some are chaotic. Some are small.
-                    Some take over entire blocks.
+                    Some events are massive. Some are improvised. Some run
+                    out of boxes. Some last all night.
                   </p>
-                  <p className="text-cream">That range is what makes it work.</p>
+                  <p className="text-cream">People keep coming back anyway.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
 
       {/* ────────────────────────────────────────────────────────────
           ACT III — HOW IT ACTUALLY WORKS
