@@ -373,49 +373,56 @@ const About = () => {
       {/* ── PRESS ────────────────────────────────────────────────── */}
       <section className="bg-cream py-24 md:py-32">
         <div className="container">
-          <div className="grid grid-cols-12 gap-x-8 gap-y-8">
-            <div className="col-span-12 md:col-span-5">
-              <p className="overline text-tomato">On the record</p>
-              <h2 className="font-display mt-5 text-[clamp(2rem,4.5vw,3.25rem)] font-extrabold leading-[0.95]">
-                Press and coverage.
-              </h2>
-            </div>
-            <div className="col-span-12 md:col-span-6 md:col-start-7">
-              <p className="font-serif max-w-[54ch] text-lg leading-[1.7] text-ink/75">
-                As PizzaDAO grew, journalists, filmmakers, and publishers
-                started documenting what was happening.
-              </p>
-            </div>
-          </div>
+          <p className="overline text-tomato">On the record</p>
 
-          <ul className="mt-16 divide-y divide-ink/10 border-t border-ink/15 md:mt-20">
-            {PRESS.map((p) => (
-              <li key={p.outlet}>
-                <a
-                  href={p.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group grid grid-cols-12 items-baseline gap-x-6 gap-y-2 py-8 md:py-10"
-                >
-                  <div className="col-span-12 md:col-span-3">
-                    <span className="font-display text-sm font-extrabold tracking-tight text-ink transition-colors group-hover:text-tomato">
+          {/* One dominant featured quote */}
+          <figure className="mt-8 max-w-[26ch]">
+            <blockquote className="font-display text-ink font-extrabold leading-[0.98] tracking-[-0.02em] text-[clamp(2.25rem,5.5vw,4.25rem)]">
+              The world's largest Bitcoin Pizza Day celebration.
+            </blockquote>
+            <figcaption className="ui mt-6 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/55">
+              <span className="h-px w-8 bg-ink/40" />
+              CoinDesk · 2021
+            </figcaption>
+          </figure>
+
+          {/* Clean stacked press list — single hierarchy */}
+          <div className="mt-20 md:mt-28">
+            <div className="flex items-baseline justify-between border-t border-ink/20 pt-5">
+              <span className="ui text-[10px] font-semibold uppercase tracking-[0.24em] text-ink/45">
+                Further coverage
+              </span>
+              <span className="ui text-[10px] font-semibold uppercase tracking-[0.24em] text-ink/35">
+                {String(PRESS.length - 1).padStart(2, "0")} clippings
+              </span>
+            </div>
+
+            <ul className="divide-y divide-ink/10">
+              {PRESS.slice(1).map((p) => (
+                <li key={p.outlet}>
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group grid grid-cols-12 items-baseline gap-x-6 gap-y-1 py-7 md:py-8"
+                  >
+                    <span className="font-display col-span-12 text-sm font-extrabold tracking-tight text-ink transition-colors group-hover:text-tomato md:col-span-3">
                       {p.outlet}
                     </span>
-                  </div>
-                  <p className="font-serif col-span-12 text-lg leading-[1.5] text-ink/80 md:col-span-8 md:text-xl">
-                    {p.line.replace(/^[“"]|[”"]$/g, "")}
-                  </p>
-                  <div className="col-span-12 hidden md:col-span-1 md:flex md:justify-end">
-                    <span className="text-ink/30 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-tomato">
+                    <p className="font-serif col-span-12 text-base leading-[1.55] text-ink/75 md:col-span-8 md:text-lg">
+                      {p.line.replace(/^[“"]|[”"]$/g, "")}
+                    </p>
+                    <span className="hidden text-ink/30 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-tomato md:col-span-1 md:flex md:justify-end">
                       ↗
                     </span>
-                  </div>
-                </a>
-              </li>
-            ))}
-          </ul>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
+
 
       {/* ── CLOSE ────────────────────────────────────────────────── */}
       <section className="relative bg-ink py-28 text-cream md:py-40">
