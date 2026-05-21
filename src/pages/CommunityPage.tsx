@@ -1019,7 +1019,16 @@ const CommunityPage = () => {
                             </p>
 
                             <div className="mt-5 flex items-center justify-between gap-3 border-t border-ink/15 pt-4">
-                              {b.demo ? (
+                              {b.embed ? (
+                                <button
+                                  type="button"
+                                  onClick={() => setEmbedSite({ name: b.name, url: b.embed! })}
+                                  className="ui inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-cream transition-colors hover:bg-tomato"
+                                >
+                                  Open arcade
+                                  <ArrowUpRight className="h-4 w-4" />
+                                </button>
+                              ) : b.demo ? (
                                 <a
                                   href={b.demo}
                                   target="_blank"
