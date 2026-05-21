@@ -705,7 +705,7 @@ const About = () => {
                   Find a city →
                 </a>
                 <a
-                  href="/join"
+                  href="/get-your-mafia-name"
                   className="ui inline-flex items-center justify-center rounded-full border border-[hsl(44_80%_92%_/0.35)] px-10 py-4 text-xs font-semibold tracking-[0.22em] text-[hsl(44_80%_92%_/0.85)] transition-colors hover:border-[hsl(44_80%_92%_/0.6)] hover:text-cream"
                 >
                   Host an event

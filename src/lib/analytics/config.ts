@@ -23,7 +23,7 @@ export const POSTHOG_HOST: string =
 /** Routes that get 100% session-replay sampling (the rest get the global rate). */
 export const HIGH_INTENT_PATHS = [
   "/contact",
-  "/join",
+  "/get-your-mafia-name",
   "/partners",
   "/get-your-mafia-name",
 ];

@@ -43,7 +43,7 @@ const App = () => (
           <Route path="/home" element={<PasswordGate><Index /></PasswordGate>} />
           <Route path="/about" element={<PasswordGate><About /></PasswordGate>} />
           <Route path="/partners" element={<PasswordGate><PartnersPage /></PasswordGate>} />
-          <Route path="/join" element={<PasswordGate><JoinPage /></PasswordGate>} />
+          <Route path="/get-your-mafia-name" element={<PasswordGate><JoinPage /></PasswordGate>} />
           <Route path="/community" element={<PasswordGate><CommunityPage /></PasswordGate>} />
           <Route path="/brand-system" element={<PasswordGate><BrandSystemPage /></PasswordGate>} />
           <Route path="/contact" element={<PasswordGate><ContactPage /></PasswordGate>} />
