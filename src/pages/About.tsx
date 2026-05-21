@@ -14,9 +14,8 @@ const RITUAL_PHOTO = findPhoto("Buenos Aires")?.src ?? timeline2010;
 
 // Small documentary polaroids — pinned to the origin column for warmth.
 const ORIGIN_POLAROIDS = [
-  { src: findPhoto("Manila")?.src ?? findPhoto("Bangkok")?.src ?? community, city: "Manila", note: "first run, 2021", tilt: "-rotate-[3deg]", offset: "translate-y-0" },
-  { src: findPhoto("Brooklyn")?.src ?? findPhoto("New York")?.src ?? party,  city: "Brooklyn", note: "rooftop, may 22",  tilt: "rotate-[2.2deg]",  offset: "translate-y-4" },
-  { src: findPhoto("Lagos")?.src ?? findPhoto("Nairobi")?.src ?? timeline2010, city: "Lagos",  note: "boxes & friends", tilt: "-rotate-[1.4deg]", offset: "translate-y-2" },
+  { src: findPhoto("New York")?.src ?? party, city: "New York", note: "NFTNYC · the reveal", tilt: "-rotate-[2.6deg]", offset: "translate-y-0" },
+  { src: findPhoto("Lagos")?.src ?? findPhoto("Nairobi")?.src ?? timeline2010, city: "Lagos", note: "may 22 · first party", tilt: "rotate-[1.8deg]", offset: "translate-y-3" },
 ];
 
 // Contact-strip — three faces of one global night, end of the Ritual section.
@@ -171,7 +170,7 @@ const About = () => {
               § 01 — Origin · 2020–2021
             </span>
             <span className="ui hidden text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/35 md:inline">
-              Discord · #pizza-day
+              Clubhouse · The Room About Nothing
             </span>
           </div>
 
@@ -179,7 +178,7 @@ const About = () => {
             <div className="col-span-12 md:col-span-4">
               <p className="overline text-tomato">How it started</p>
               <h2 className="font-display mt-5 text-[clamp(2rem,4.6vw,3.4rem)] font-extrabold leading-[0.94] tracking-[-0.02em]">
-                A Discord server, a holiday, and a hunch.
+                A Clubhouse room, a holiday, and a hunch.
               </h2>
 
               {/* Pinned polaroid trio — tactile field-archive warmth */}
@@ -187,7 +186,7 @@ const About = () => {
                 {ORIGIN_POLAROIDS.map((p, i) => (
                   <figure
                     key={p.city}
-                    className={`relative ${p.tilt} ${p.offset} w-[36%] origin-top transition-transform duration-500 hover:rotate-0 hover:scale-[1.03]`}
+                    className={`relative ${p.tilt} ${p.offset} w-[48%] origin-top transition-transform duration-500 hover:rotate-0 hover:scale-[1.03]`}
                     style={{ zIndex: 10 - i }}
                   >
                     <div className="grain relative overflow-hidden bg-cream p-2 pb-8 shadow-[0_8px_20px_-10px_hsl(0_0%_0%/0.35),0_2px_5px_-2px_hsl(0_0%_0%/0.2)]">
@@ -221,37 +220,44 @@ const About = () => {
                 Filed · Spring 2021
               </p>
               <p className="font-serif text-xl leading-[1.5] text-ink md:text-[1.6rem] md:leading-[1.45]">
-                PizzaDAO started in 2021 as a small group of people on the
-                internet, trying to throw a party in cities they'd never been to,
-                for people they'd never met.
+                PizzaDAO started in 2021 inside a Clubhouse room called
+                <em> The Room About Nothing</em> — strangers behind 8-bit
+                avatars, trying to throw a party in cities they'd never been
+                to, for people they'd never met.
               </p>
               <div className="font-serif mt-10 max-w-[62ch] space-y-5 text-lg leading-[1.75] text-ink/85">
                 <p>
                   It was the second year of the pandemic. Everyone had been
-                  inside for too long. Most of us had only ever known each other
-                  as usernames in a Discord server, talking about a fifteen-year-old
-                  story: the guy who paid 10,000 BTC for two pizzas, on May 22,
-                  2010.
+                  inside for too long. Most of us had only ever known each
+                  other as voices on a 1am audio call, talking about a
+                  fifteen-year-old story: the guy who paid 10,000 BTC for two
+                  pizzas, on May 22, 2010.
                 </p>
                 <p>
-                  Someone joked we should buy pizza for strangers on that day,
-                  in every city we could reach. A few weeks later we were
-                  actually trying to do it. Spreadsheets at 2am. Telegram
-                  threads in four languages. Delivery apps that refused foreign
-                  cards. Organizers in cities we'd never visited, texting "I
-                  think I found a pizzeria, but they only take cash."
+                  An admin named Snax kept saying — with absolute, slightly
+                  unreasonable certainty — that we should use digital art to
+                  buy real pizza for strangers, in every city we could reach.
+                  A few weeks later we were actually doing it. Three hundred
+                  artists contributed pizza toppings. A Hollywood effects
+                  artist helped wire them into ten thousand algorithmically
+                  generated NFTs, randomness verified on-chain. On Pi Day
+                  2021, reservations opened. Five hours later, half a million
+                  dollars had come in. The project — RarePizzas — would
+                  eventually raise around $1.3M, all of it pointed at pizza.
                 </p>
                 <p>
-                  We had no idea if anyone would actually show up. Most of the
-                  organizers had never met each other in person. Some had
-                  never met anyone from the internet, period.
+                  Then May 22 came. People walked outside. Strangers
+                  introduced themselves. Photos started coming in from Lagos,
+                  Seoul, Manila, Brooklyn — pizza boxes on sidewalks, kids
+                  dancing in the street, organizers grinning at their phones
+                  because the thing they'd been typing about for months had
+                  a face now.
                 </p>
                 <p>
-                  Then May 22 came. People walked outside. Strangers introduced
-                  themselves. Photos started coming in from Lagos, Buenos Aires,
-                  Manila, Brooklyn — pizza boxes on sidewalks, people eating
-                  on curbs, organizers grinning at their phones because the
-                  thing they'd been typing about for months had a face now.
+                  We finally met each other in person later that year, at
+                  NFTNYC. Most of us had never seen the faces behind the
+                  voices we'd been building with for nine months. Someone
+                  brought Benny, the mascot. He's been on every table since.
                 </p>
                 <p className="text-ink">
                   That was the moment the internet became a room you could
@@ -522,10 +528,10 @@ const About = () => {
           {/* Four numbers — emotionally restrained, editorial */}
           <dl className="mt-24 grid grid-cols-2 gap-x-8 gap-y-12 border-y border-ink/15 py-14 md:mt-32 md:grid-cols-4 md:gap-x-12 md:py-16">
             {[
-              { k: "Cities", v: "420+" },
-              { k: "Countries", v: "60+" },
-              { k: "Funded", v: "$1M+" },
-              { k: "Since", v: "2021" },
+              { k: "Cities", v: "400+" },
+              { k: "Countries", v: "65+" },
+              { k: "People fed", v: "20,000+" },
+              { k: "Pizzerias", v: "500+" },
             ].map((m) => (
               <div key={m.k}>
                 <dt className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/45">

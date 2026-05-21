@@ -1,70 +1,77 @@
-## What's changed since analytics was last updated
+# About page — accuracy + storytelling pass
 
-1. **`/join` page was removed.** The Join CTA now jumps straight to `/get-your-mafia-name`. `HIGH_INTENT_PATHS` already dropped `/join`, but `docs/analytics.md` and the unused `JOIN_INTENT_CLICKED` event still reference it.
-2. **Mafia name flow gained AI avatar generation** (`generate-mafia-avatar` edge function) — currently no events for portrait started / succeeded / failed / re-drawn / downloaded.
-3. **Community page** ships interactive surfaces with zero tracking: builds carousel, embedded site viewer (rsv.pizza etc.), photo gallery lightbox, calendar opener, easter-egg "secret pineapple" card.
-4. **Brand System page** has many outbound links (Figma, Google Fonts, GitHub brand-kit, Telegram) and no `useTrackOutbound` calls — even though `FIGMA_OPENED` / `BRAND_ASSET_DOWNLOADED` events are already defined.
-5. **SiteNav** outbound to `app.pizzadao.org` is untracked; `NAV_CLICKED` is defined but unused.
-6. **Partners page** never fires `PARTNERS_CTA_CLICKED` even though the docs' "Partner funnel" depends on it.
+Use Brandon Forant's "The Room About Nothing" as the source of truth and correct the inaccuracies woven into the current `/about` page. No new sections. Copy-and-detail surgery only.
 
-## Plan
+## What's wrong today
 
-### 1. Event catalog (`src/lib/analytics/events.ts`)
+- **Origin medium**: page says "Discord server" + "Discord · #pizza-day". The actual origin was a **Clubhouse** room called **"The Room About Nothing"**. Discord came weeks later (the 1,700-member channel that formed once the idea took off).
+- **Missing the actual mechanism**: nothing about **RarePizzas** (10,000 algorithmically generated pizza NFTs built from 300+ artists' submitted toppings, Chainlink VRF, all assets CC-licensed) — which is *how* the first party got funded ($1.3M raised, $500K in 5 hours on Pi Day).
+- **Missing the people**: no Snax (founder, "fearless leader in a fishing vest"), no Shrimp (Anthony Shafer, Hollywood SFX artist who built the generator), no Benny the mascot, no NFTNYC reveal moment, no Pizza Mafia naming convention (topping = name).
+- **Stale numbers**: page claims "420+ cities / 60+ countries". Article's 2025 figures are **400+ cities, 6 continents, 65+ countries, 20,000+ fed, 500+ independent pizzerias, $1M+ pizza**. (Article also references "75 countries" elsewhere — flagged below.)
+- **Fabricated captions**: polaroid notes like "Manila — first run, 2021" and "Brooklyn — rooftop, may 22" are invented detail. The first party did happen May 22, 2021 but specific city attributions need to be true or removed.
 
-Add:
-- `MAFIA_AVATAR_STARTED` = `mafia.avatar_started`
-- `MAFIA_AVATAR_GENERATED` = `mafia.avatar_generated` (props: `latency_ms`, `attempt`)
-- `MAFIA_AVATAR_FAILED` = `mafia.avatar_failed` (props: `reason`)
-- `MAFIA_AVATAR_REDRAW` = `mafia.avatar_redrawn` (props: `attempt`)
-- `MAFIA_AVATAR_DOWNLOADED` = `mafia.avatar_downloaded`
-- `COMMUNITY_BUILD_VIEWED` = `community.build_viewed` (props: `name`, `index`, `featured`)
-- `COMMUNITY_BUILD_EMBED_OPENED` = `community.build_embed_opened` (props: `name`, `url`)
-- `COMMUNITY_GALLERY_OPENED` = `community.gallery_opened` (props: `index`, `source`)
-- `COMMUNITY_GALLERY_NAVIGATED` = `community.gallery_navigated` (props: `from`, `to`)
-- `COMMUNITY_CALENDAR_OPENED` = `community.calendar_opened` (props: `surface`)
-- `COMMUNITY_EASTER_EGG` = `community.easter_egg_clicked` (props: `id: "secret_pineapple"`)
+## Section-by-section changes
 
-Rename / repurpose:
-- `JOIN_INTENT_CLICKED` (`sales.join_intent_clicked`) → `MAFIA_INTENT_CLICKED` (`mafia.intent_clicked`) for "Get your mafia name" CTAs scattered across About / Community / Partners / Home, since that is now the join surface.
+### Hero (unchanged structurally)
+Keep current image + composition. No copy change needed — "An institution built on a slice." still works.
 
-Remove (truly unused, not on any dashboard):
-- `THEME_INTERACTED`, `SHARE_CLICKED` — keep only if we plan to use them; otherwise drop to keep the catalog honest.
+### § 01 — Origin (the "Discord server, holiday, hunch" block)
+- Replace the archive slip metadata:
+  - "§ 01 — Origin · 2020–2021" stays
+  - **"Discord · #pizza-day"** → **"Clubhouse · The Room About Nothing"**
+- Replace headline `A Discord server, a holiday, and a hunch.` → **`A Clubhouse room, a holiday, and a hunch.`**
+- Rewrite the prose to align with the article. Proposed lead:
+  > PizzaDAO started in 2021 inside a Clubhouse room called *The Room About Nothing* — strangers behind 8-bit avatars, trying to throw a party in cities they'd never been to, for people they'd never met.
+- Body paragraphs: keep the voice, but swap the Discord references for Clubhouse, and add one paragraph naming the **RarePizzas** funding mechanism — 10,000 NFTs from 300 artists, Chainlink VRF, $1.3M raised — without turning it into a tech essay.
+- Polaroid captions: replace invented locations with truthful ones the article supports. Suggested set:
+  - "Clubhouse · 1am" (anonymous, no photo would exist — drop this slot OR use a screenshot-style placeholder)
+  - "NFTNYC · the reveal" — the first time the team met in person
+  - "May 22, 2021 · first party"
+  - **Recommend**: drop the polaroid trio to a **duo** (NFTNYC reveal + May 22 first party) since we don't have a real Clubhouse artifact.
 
-### 2. Instrument the new surfaces
+### § 02 — Founding principle poster ("democratic food")
+No copy change. The aphorism is editorial, not factual.
 
-- **`src/pages/MafiaNamePage.tsx`** — wrap the `supabase.functions.invoke("generate-mafia-avatar", …)` call: fire `MAFIA_AVATAR_STARTED` before, `MAFIA_AVATAR_GENERATED` on success (with `performance.now()` delta), `MAFIA_AVATAR_FAILED` on error. Fire `MAFIA_AVATAR_REDRAW` from the "Re-draw portrait" button and `MAFIA_AVATAR_DOWNLOADED` from the Download avatar button. Include `mafia_name`, `movie`, `topping` in props for funnel breakdowns.
-- **`src/pages/CommunityPage.tsx`** — fire `COMMUNITY_BUILD_VIEWED` from `setActiveBuild`, `COMMUNITY_BUILD_EMBED_OPENED` from `setEmbedSite`, `COMMUNITY_GALLERY_OPENED` from `openAt`, `COMMUNITY_GALLERY_NAVIGATED` from `setGalleryIndex`, `COMMUNITY_CALENDAR_OPENED` from `onOpenCalendar` (pass `surface: "hero" | "footer"` based on which CTA fires), and `COMMUNITY_EASTER_EGG` if the secret-pineapple card is clickable.
-- **`src/pages/BrandSystemPage.tsx`** — pull in `useTrackOutbound("brand_system")` and attach `onClick={trackOutbound(label, href, { kind })}` to the brand-kit, GitHub, Figma, Google Fonts, and Telegram anchors. Also call `track(EVT.FIGMA_OPENED, { source })` from each `UseInFigma` instance and `track(EVT.BRAND_ASSET_DOWNLOADED, { asset })` from the molto-benny / logo download links.
-- **`src/components/SiteNav.tsx`** — `useTrackOutbound("site_nav")` on the `app.pizzadao.org` anchor; fire `NAV_CLICKED` with `{ label, to }` on the internal nav `<Link>`s for top-of-funnel navigation insight.
-- **`src/pages/PartnersPage.tsx`** — fire `PARTNERS_CTA_CLICKED` from the primary CTAs (the "Become a partner" / "Talk to us" buttons) with `{ position }`.
+### Ritual section (May 22)
+- Tighten the body so the dateline is accurate. Bitcoin Pizza Day is **May 22, 2010** ✅ (already correct).
+- Add one line acknowledging the recurring ritual started in **2021**, not just "years later".
+- Contact-sheet city stamps: keep — these are atmospheric, not historical claims.
 
-### 3. Session replay & high-intent paths (`src/lib/analytics/config.ts`)
+### § 03 — How it runs ("A small core, a global cast")
+- Update numbers ledger to match the 2025 figures from the article:
+  - **400+ cities** (was 420+)
+  - **65+ countries** (was 60+) — or use **6 continents** as the second metric
+  - **$1M+ funded** ✅ keep
+  - **Since 2021** ✅ keep
+- Optionally add a fifth/replacement metric: **20,000+ people fed** or **500+ pizzerias**.
+- Body copy is good — no rewrite needed.
 
-- Confirmed `/join` is already gone from `HIGH_INTENT_PATHS`.
-- Add `/community` so we record the new interactive surface for the first wave of users (it's where embeds, gallery, and calendar live). Keep `/contact`, `/get-your-mafia-name`, `/partners`.
+### § 04 — Thesis ("social infrastructure")
+No factual change. Keep poster treatment.
 
-### 4. Docs (`docs/analytics.md`)
+### Press section
+Keep — these are real outlet quotes.
 
-- Drop the `/join` reference in the "Session replay" section; add `/community`.
-- Replace the row for `sales.join_intent_clicked` with `mafia.intent_clicked` and explain where it fires.
-- Add rows for every new mafia avatar + community event.
-- Add a new "Community engagement" dashboard recipe (build views → embed opens → gallery opens → calendar opens) and an "Avatar funnel" sub-step under the existing Mafia funnel: `mafia.names_generated → mafia.avatar_started → mafia.avatar_generated → mafia.avatar_downloaded`, with `mafia.avatar_failed` as the drop-off cohort.
-- Update the Brand-system engagement dashboard with the now-wired `sales.figma_kit_opened` and `sales.brand_asset_downloaded`.
-- Note the catalog cleanup (renames / removals) so anyone with an old PostHog insight knows to rebind.
+### Closing red CTA
+No change.
 
-### Out of scope
+## New material to optionally weave in (no new sections)
 
-- No changes to the PostHog SDK config beyond `HIGH_INTENT_PATHS`.
-- No changes to identity / attribution logic.
-- No changes to copy or layout — purely instrumentation.
+If the user wants more warmth/personality, these can land as **one-line annotations** inside existing sections — not as new blocks:
 
-### Files touched
+- **Snax** — name-drop once in the Origin prose ("an admin named Snax…") to give the founder a face.
+- **Benny** — one handwritten margin note near the closing CTA: *"Benny has been on every table, in every city."*
+- **Pizza Mafia names** — already linked from `/get-your-mafia-name`, but a one-liner in the Origin section explaining the naming convention (your topping = your name) would land well.
 
-- `src/lib/analytics/events.ts`
-- `src/lib/analytics/config.ts`
-- `src/pages/MafiaNamePage.tsx`
-- `src/pages/CommunityPage.tsx`
-- `src/pages/BrandSystemPage.tsx`
-- `src/pages/PartnersPage.tsx`
-- `src/components/SiteNav.tsx`
-- `docs/analytics.md`
+## Open question for the user
+
+1. **Name names?** The article publicly credits Snax (founder), Shrimp (Anthony Shafer), and Brandon Forant (author/CD). Want them named on the page, or keep the voice collective/anonymous?
+2. **Which number for "countries"?** Article says **65 countries** (2024 figure) but elsewhere mentions **75 countries** in the closing reflection. Pick one — recommend **65+** as the more recent, concrete figure.
+3. **RarePizzas depth** — name-drop only (one sentence), short paragraph, or its own micro-moment? Recommend **one sentence** to stay restrained.
+
+## Technical notes
+
+- All edits land in `src/pages/About.tsx`.
+- `ORIGIN_POLAROIDS` array (top of file) needs its caption strings rewritten; if reducing to a duo, drop the third entry and update the layout (`w-[36%]` → `w-[48%]`).
+- Numbers `dl` array in How-it-runs section: swap the 4 `{ k, v }` entries.
+- No new components, no new assets needed.
