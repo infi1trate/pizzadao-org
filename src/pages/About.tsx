@@ -85,11 +85,12 @@ const About = () => {
 
       {/* ────────────────────────────────────────────────────────────
           ACT I — THE SPARK
-          Hero · origin · why PizzaDAO started.
+          One cinematic scene. Image and headline interlocked.
          ──────────────────────────────────────────────────────────── */}
-      <section className="paper-soft relative overflow-hidden bg-cream pt-16 md:pt-24">
-        <div className="container">
-          <div className="flex items-center justify-between pb-3">
+      <section className="paper-soft relative overflow-hidden bg-cream">
+        {/* Top archival bar */}
+        <div className="container relative z-10 pt-10 md:pt-14">
+          <div className="flex items-center justify-between">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-tomato">
               Act I — The Spark
             </span>
@@ -98,47 +99,81 @@ const About = () => {
               Est. 2021 · Ongoing
             </span>
           </div>
+          <div className="mt-8 border-t border-ink/30" />
+        </div>
 
-          <div className="border-t border-ink/40 pt-12 md:pt-16">
-            <div className="grid grid-cols-12 items-end gap-x-8 gap-y-10 md:gap-x-12">
-              <div className="col-span-12 md:col-span-9">
-                <h1 className="font-display font-extrabold leading-[0.8] tracking-[-0.028em] text-mega md:leading-[0.76] md:text-[clamp(4rem,13.5vw,14rem)]">
-                  An institution built on a{" "}
-                  <span className="underline-scribble text-ink">slice</span>
-                </h1>
-              </div>
-              <div className="col-span-12 md:col-span-3 md:pb-4">
-                <p className="handwritten -rotate-1 text-tomato text-base md:text-lg">
-                  ↳ how a 10,000 BTC pizza<br />became a global ritual
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Documentary opening image — full width, cinematic */}
-          <figure className="mt-20 md:mt-28">
-            <div className="paper-soft overflow-hidden bg-cream-warm">
+        {/* Immersive composition — image + embedded headline */}
+        <div className="relative mt-10 md:mt-14">
+          {/* Documentary image, oversized and full-bleed-ish */}
+          <figure className="relative">
+            <div className="grain relative overflow-hidden bg-ink">
               <img
-                src={founding}
-                alt="Late-night gathering of friends huddled around laptops and pizza, the earliest days of PizzaDAO"
+                src={party}
+                alt="Volunteers carrying pizza boxes through a crowded street gathering, strangers meeting around shared tables"
                 loading="eager"
-                width={1920}
-                height={820}
-                className="grain block aspect-[16/9] w-full object-cover md:aspect-[21/8]"
+                width={2400}
+                height={1500}
+                className="block aspect-[4/5] w-full object-cover sm:aspect-[3/2] md:aspect-[16/9] lg:aspect-[2/1]"
               />
-            </div>
-            <figcaption className="mt-4 flex items-baseline justify-between gap-3">
-              <span className="handwritten -rotate-1 text-tomato text-sm md:text-base">
-                started online, became real
+              {/* Soft analog vignette — pulls eye to center, grounds the type */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at 50% 55%, transparent 35%, hsl(0 0% 0% / 0.55) 95%)",
+                }}
+              />
+              {/* Warm cinematic wash from the top */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 top-0 h-1/3"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, hsl(0 0% 0% / 0.35), transparent)",
+                }}
+              />
+              {/* Paper grain over photo */}
+              <div
+                aria-hidden
+                className="paper-soft pointer-events-none absolute inset-0 opacity-50 mix-blend-overlay"
+              />
+
+              {/* Embedded headline — sits inside the scene */}
+              <div className="absolute inset-0 flex items-end">
+                <div className="container w-full pb-10 sm:pb-16 md:pb-20 lg:pb-24">
+                  <h1 className="font-display max-w-[16ch] font-extrabold leading-[0.82] tracking-[-0.028em] text-cream text-[clamp(2.6rem,10vw,9.5rem)] md:leading-[0.78]"
+                      style={{ textShadow: "0 2px 30px hsl(0 0% 0% / 0.45)" }}>
+                    An institution built on a{" "}
+                    <span className="italic text-butter">slice</span>
+                  </h1>
+                </div>
+              </div>
+
+              {/* Tiny handwritten annotation — single, restrained */}
+              <span
+                className="handwritten absolute right-5 top-5 -rotate-2 text-cream/90 text-sm md:right-10 md:top-10 md:text-base"
+                style={{ textShadow: "0 1px 12px hsl(0 0% 0% / 0.6)" }}
+              >
+                ↳ started online, became real
               </span>
+            </div>
+
+            {/* Quiet figure caption */}
+            <figcaption className="container mt-4 flex items-baseline justify-between gap-3">
               <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
-                Fig. I.01 — 2021
+                Fig. I.01 — A chapter, mid-service
+              </span>
+              <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/35">
+                One night · many cities
               </span>
             </figcaption>
           </figure>
+        </div>
 
-          {/* Origin body — story, not specs */}
-          <div className="mt-24 grid grid-cols-12 gap-x-6 gap-y-10 md:mt-32">
+        {/* Origin body — story, not specs */}
+        <div className="container">
+          <div className="mt-28 grid grid-cols-12 gap-x-6 gap-y-10 md:mt-36">
             <div className="col-span-12 md:col-span-4">
               <p className="overline text-tomato">Why it started</p>
               <h3 className="font-display mt-5 text-display-2 font-extrabold leading-[0.9]">
