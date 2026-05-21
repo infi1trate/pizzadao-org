@@ -117,11 +117,13 @@ const About = () => {
           <figure className="relative">
             <div className="grain relative overflow-hidden bg-ink">
               <img
-                src={party}
+                src={HERO_PHOTO}
                 alt="Volunteers carrying pizza boxes through a crowded street gathering, strangers meeting around shared tables"
                 loading="eager"
+                decoding="async"
                 width={2400}
                 height={1500}
+                onError={(e) => { (e.currentTarget as HTMLImageElement).src = party; }}
                 className="block aspect-[4/5] w-full object-cover sm:aspect-[3/2] md:aspect-[16/9] lg:aspect-[2/1]"
               />
               {/* Soft analog vignette — pulls eye to center, grounds the type */}
