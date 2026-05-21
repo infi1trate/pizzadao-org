@@ -113,7 +113,7 @@ const Reach = () => {
               </p>
 
               {/* Active city panel, bright card */}
-              <div className="mt-8 rounded-2xl border border-ink/10 bg-white p-6 shadow-[var(--shadow-soft)]">
+              <div className="mt-8 rounded-2xl border border-ink/15 bg-cream p-6 shadow-[var(--shadow-soft)]">
                 {active ? (
                   <div className="fade-up">
                     <div className="overline text-tomato">Selected chapter</div>
