@@ -402,6 +402,9 @@ const About = () => {
               </div>
             ))}
           </dl>
+          <p className="handwritten -mt-2 rotate-[-1.2deg] text-right text-tomato text-xl md:text-2xl">
+            …and counting →
+          </p>
 
           {/* Roles ledger */}
           <div className="mt-20 md:mt-28">
