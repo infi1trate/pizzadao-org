@@ -94,7 +94,7 @@ const PartnersPage = () => {
                       real-world
                     </span>
                   </span>{" "}
-                  <span className="text-ink/65">attention.</span>
+                  <span className="text-ink">attention.</span>
                 </h1>
 
                 <p className="font-serif mt-5 max-w-[44ch] text-[17.5px] leading-[1.55] text-ink/75 md:mt-6 md:text-[19px] md:leading-[1.5]">
