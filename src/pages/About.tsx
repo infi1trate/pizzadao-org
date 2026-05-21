@@ -544,45 +544,102 @@ const About = () => {
       </section>
 
 
-      {/* ── THESIS ───────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-cream py-28 md:py-40">
-        <div className="container">
-          <div className="grid grid-cols-12 gap-x-8 gap-y-10 items-center">
-            <div className="col-span-12 md:col-span-8">
-              <p className="font-display text-ink font-extrabold leading-[0.95] tracking-[-0.025em] text-[clamp(2.5rem,8vw,7rem)]">
-                Pizza is{" "}
-                <span className="text-tomato">social infrastructure</span>.
-              </p>
-              <p className="font-serif mt-8 max-w-[44ch] text-lg leading-[1.55] text-ink/60 md:text-xl">
-                Familiar, affordable, understood almost anywhere.
-              </p>
-            </div>
+      {/* ── THESIS — "social infrastructure" ─────────────────────── */}
+      <section className="relative overflow-hidden bg-cream py-32 md:py-44">
+        {/* warm cream wash + grain — atmosphere, not decoration */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(75% 60% at 20% 30%, hsl(40 90% 70% / 0.20), transparent 70%), radial-gradient(60% 50% at 88% 80%, hsl(14 80% 60% / 0.10), transparent 70%)",
+          }}
+        />
+        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.18] mix-blend-multiply" />
 
-            {/* Pinned thesis polaroid — humanizes the abstract claim */}
-            <figure className="relative col-span-12 md:col-span-4 md:col-start-9 mx-auto md:mx-0 w-[70%] sm:w-[55%] md:w-full max-w-[280px] -rotate-[3.5deg] transition-transform duration-500 hover:rotate-0">
-              <div className="grain relative overflow-hidden bg-cream p-2.5 pb-10 shadow-[0_18px_40px_-18px_hsl(0_0%_0%/0.45),0_4px_10px_-4px_hsl(0_0%_0%/0.25)]">
-                <div className="aspect-[4/5] overflow-hidden bg-ink">
+        <div className="container relative">
+          <div className="mb-10 flex items-baseline justify-between md:mb-14">
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/45">
+              § 04 — Why it works
+            </span>
+            <span className="ui hidden text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/35 md:inline">
+              Manifesto · plate 04
+            </span>
+          </div>
+
+          <div className="relative">
+            {/* Photo-filled "infrastructure" — image-fragment inside type */}
+            <h2 className="font-display font-extrabold leading-[0.84] tracking-[-0.035em] text-ink text-[clamp(3rem,12vw,11rem)]">
+              Pizza is{" "}
+              <span
+                className="italic"
+                style={{ color: "hsl(var(--tomato))" }}
+              >
+                social
+              </span>
+              <br className="hidden sm:block" />{" "}
+              <span
+                className="relative inline-block bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: `url(${THESIS_PHOTO})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center 40%",
+                  WebkitTextStroke: "1px hsl(var(--ink) / 0.15)",
+                  filter: "saturate(0.95) contrast(1.06)",
+                }}
+              >
+                infrastructure
+              </span>
+              <span style={{ color: "hsl(var(--ink))" }}>.</span>
+            </h2>
+
+            {/* Pinned thumb that ALSO labels the photo word — playful pointer */}
+            <figure className="pointer-events-none absolute right-2 -top-6 hidden w-[150px] -rotate-[6deg] md:block lg:right-6 lg:-top-10 lg:w-[180px]">
+              <div className="grain relative overflow-hidden bg-cream p-2 pb-7 shadow-[0_14px_30px_-12px_hsl(0_0%_0%/0.4)]">
+                <div className="aspect-square overflow-hidden bg-ink">
                   <img
                     src={THESIS_PHOTO}
-                    alt="People sharing pizza on a city street"
+                    alt=""
+                    aria-hidden
                     loading="lazy"
                     decoding="async"
                     className="h-full w-full object-cover [filter:saturate(0.95)_contrast(1.06)_sepia(0.05)]"
                   />
                 </div>
-                <figcaption className="handwritten absolute inset-x-2 bottom-1 text-center text-sm text-ink/75">
-                  strangers, 11 minutes later
+                <figcaption className="handwritten absolute inset-x-2 bottom-0.5 text-center text-[11px] text-ink/70">
+                  ↓ this word, ↑ this scene
                 </figcaption>
               </div>
               <span
                 aria-hidden
-                className="absolute -top-3 left-1/2 h-5 w-16 -translate-x-1/2 rotate-[3deg] bg-tomato/60 shadow-sm"
+                className="absolute -top-2 left-1/2 h-4 w-12 -translate-x-1/2 rotate-[3deg] bg-butter/80 shadow-sm"
                 style={{ clipPath: "polygon(4% 0,96% 0,100% 100%,0 100%)" }}
               />
             </figure>
           </div>
+
+          {/* Subtitle row + checker accent + handwritten kicker */}
+          <div className="mt-12 grid grid-cols-12 gap-x-8 gap-y-8 md:mt-16">
+            <p className="font-serif col-span-12 max-w-[44ch] text-lg leading-[1.55] text-ink/70 md:col-span-7 md:text-2xl md:leading-[1.4]">
+              Familiar, affordable, understood almost anywhere.
+            </p>
+            <div className="col-span-12 flex items-center gap-4 md:col-span-5 md:justify-end">
+              <span
+                aria-hidden
+                className="h-[10px] w-32 opacity-90"
+                style={{
+                  backgroundImage:
+                    "repeating-linear-gradient(90deg, hsl(var(--tomato)) 0 12px, hsl(var(--ink)) 12px 24px)",
+                }}
+              />
+              <p className="handwritten -rotate-[2deg] text-tomato text-2xl md:text-3xl">
+                a great equalizer.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
+
 
       {/* ── GLOBAL SCALE ─────────────────────────────────────────── */}
       <section className="relative bg-ink py-24 text-cream md:py-32">
