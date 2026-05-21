@@ -423,10 +423,11 @@ const Sponsorship = () => {
             ].map((b, i) => (
               <article
                 key={b.k}
-                className="group paper-soft paper-drift relative flex flex-col overflow-hidden rounded-[14px] bg-cream p-7 shadow-[0_2px_0_hsl(var(--ink)/0.06),0_18px_40px_-30px_hsl(var(--ink)/0.25)] ring-1 ring-ink/10 transition-all duration-500 ease-out hover:-translate-y-[5px] hover:rotate-[-0.2deg] hover:bg-cream-warm hover:shadow-[0_40px_90px_-40px_hsl(var(--ink)/0.4),0_10px_30px_-18px_hsl(var(--ink)/0.22)] hover:ring-tomato/25 md:p-9"
+                className="group paper-soft paper-drift relative flex flex-col overflow-hidden rounded-[14px] bg-cream p-6 shadow-[0_2px_0_hsl(var(--ink)/0.06),0_18px_40px_-30px_hsl(var(--ink)/0.25)] ring-1 ring-ink/10 transition-all duration-500 ease-out hover:-translate-y-[5px] hover:rotate-[-0.2deg] hover:bg-cream-warm hover:shadow-[0_40px_90px_-40px_hsl(var(--ink)/0.4),0_10px_30px_-18px_hsl(var(--ink)/0.22)] hover:ring-tomato/25 md:p-8"
                 style={{
                   borderTopLeftRadius: i % 2 === 0 ? "18px" : "12px",
                   borderBottomRightRadius: i % 2 === 0 ? "12px" : "18px",
+                  transform: i % 3 === 1 ? "translateY(10px)" : undefined,
                 }}
               >
                 {/* Decorative motif fragment */}
@@ -452,16 +453,16 @@ const Sponsorship = () => {
                   </span>
                 </div>
 
-                <h4 className="font-display relative mt-10 text-[1.85rem] font-extrabold leading-[1.02] tracking-[-0.018em] transition-colors duration-500 group-hover:text-tomato md:mt-12 md:text-[2.05rem]">
+                <h4 className="font-display relative mt-8 text-[1.85rem] font-extrabold leading-[1.02] tracking-[-0.018em] transition-colors duration-500 group-hover:text-tomato md:mt-10 md:text-[2.05rem]">
                   {b.k}
                 </h4>
 
                 {/* Imperfect underline */}
-                <svg aria-hidden viewBox="0 0 120 6" className="mt-3 h-[6px] w-20 text-ink/30 transition-colors duration-500 group-hover:text-tomato" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
+                <svg aria-hidden viewBox="0 0 120 6" className="mt-2.5 h-[6px] w-20 text-ink/30 transition-colors duration-500 group-hover:text-tomato" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
                   <path d="M2 3 Q 30 1 60 3 T 118 3" />
                 </svg>
 
-                <p className="font-serif mt-5 text-[15px] leading-[1.7] text-ink/75 md:text-[15.5px]">
+                <p className="font-serif mt-4 text-[15px] leading-[1.65] text-ink/75 md:text-[15.5px]">
                   {b.v}
                 </p>
 
