@@ -211,13 +211,15 @@ const About = () => {
             </div>
           </div>
 
-          {/* One pull quote that closes the act */}
-          <div className="mt-24 grid grid-cols-12 gap-x-6 pb-28 md:mt-32 md:pb-36">
-            <blockquote className="col-span-12 border-l-[3px] border-tomato py-2 pl-6 md:col-span-10 md:col-start-2 md:pl-10">
-              <p className="font-display text-display-2 font-extrabold leading-[0.96] tracking-[-0.02em]">
-                “Pizza is the most democratic food on Earth.
-                <span className="text-ink/55"> We just made it organized.”</span>
+          {/* Manifesto quote — foundational poster moment */}
+          <div className="mt-32 pb-32 md:mt-48 md:pb-48">
+            <blockquote className="mx-auto max-w-[18ch]">
+              <p className="font-display font-extrabold text-ink text-[clamp(3.5rem,11vw,11rem)] leading-[0.92] tracking-[-0.035em]">
+                Pizza is the most democratic food on Earth.
               </p>
+              <footer className="mt-10 ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/55">
+                — Founding principle
+              </footer>
             </blockquote>
           </div>
         </div>
