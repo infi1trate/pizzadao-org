@@ -4,27 +4,23 @@ import { Link } from "react-router-dom";
 
 const STEPS = [
   {
-    n: "01",
-    title: "Pick your Mafia name",
-    body: "Every member goes by an alias. Pseudonym, partial truth, gentle inside joke, you choose.",
+    title: "Pick a name",
+    body: "Every member gets an alias. You choose the story.",
     bg: "bg-butter text-ink",
   },
   {
-    n: "02",
-    title: "Join Discord",
-    body: "Hundreds of channels, dozens of chapters, one always-on conversation.",
+    title: "Join the table",
+    body: "Hundreds of cities, one conversation.",
     bg: "bg-cream text-ink",
   },
   {
-    n: "03",
-    title: "Receive your role",
-    body: "A mod assigns your role based on your city, your skills, or just the vibes.",
+    title: "Find your people",
+    body: "Connect by city, skill, or just the vibes.",
     bg: "bg-ink text-cream",
   },
   {
-    n: "04",
-    title: "Start building",
-    body: "Throw a party. Help a chapter. Show up. The work is the welcome.",
+    title: "Start something",
+    body: "Throw a party. Help a chapter. Show up.",
     bg: "bg-cream text-ink",
   },
 ];
