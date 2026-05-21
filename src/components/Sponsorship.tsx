@@ -88,8 +88,18 @@ const Sponsorship = () => {
   return (
     <section
       id="partner-with-us"
-      className="relative overflow-hidden bg-butter/25 pt-10 text-ink md:pt-14"
+      className="relative overflow-hidden bg-butter/25 pt-12 text-ink md:pt-14"
     >
+      {/* Top hairline + soft tonal bridge from cream hero above */}
+      <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/10" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-32"
+        style={{
+          background:
+            "linear-gradient(180deg, hsl(40 55% 93%) 0%, transparent 100%)",
+        }}
+      />
       {/* Faint geographic mesh — barely visible cartographic texture */}
       <div
         aria-hidden
