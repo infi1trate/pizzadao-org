@@ -124,7 +124,11 @@ const About = () => {
               </h2>
             </div>
             <div className="col-span-12 md:col-span-7 md:col-start-6">
-              <div className="font-serif max-w-[62ch] space-y-5 text-lg leading-[1.75] text-ink/85">
+              <p className="font-serif text-xl leading-[1.55] text-ink md:text-2xl">
+                PizzaDAO is a global community that gathers people around shared
+                tables, in hundreds of cities, every May 22.
+              </p>
+              <div className="font-serif mt-10 max-w-[62ch] space-y-5 text-lg leading-[1.75] text-ink/85">
                 <p>
                   The internet had plenty of rooms. What it didn't have was a table.
                 </p>
