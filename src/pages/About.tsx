@@ -151,13 +151,6 @@ const About = () => {
                 </div>
               </div>
 
-              {/* Tiny handwritten annotation — single, restrained */}
-              <span
-                className="handwritten absolute right-5 top-5 -rotate-2 text-cream/90 text-sm md:right-10 md:top-10 md:text-base"
-                style={{ textShadow: "0 1px 12px hsl(0 0% 0% / 0.6)" }}
-              >
-                ↳ started online, became real
-              </span>
             </div>
 
             {/* Quiet figure caption */}
