@@ -216,7 +216,7 @@ const BUILDS: Build[] = [
     mission: "Cryptographically anonymized, itemized receipts.",
     context: "A hackathon-winning prototype exploring how to prove what was purchased without revealing who bought it — useful for sponsorships, reimbursements, and public-goods accounting.",
     detail: "Combines zero-knowledge proofs with itemized receipt schemas so chapters can transparently report spending without doxxing members or vendors.",
-    img: null,
+    img: secretPineapple,
   },
 ];
 
