@@ -493,7 +493,7 @@ const CommunityPage = () => {
               <li key={c.title}>
                 <a
                   href="/join"
-                  className={`group relative block px-2 py-5 transition-all duration-200 md:px-3 md:py-6 ${
+                  className={`group relative block rounded-lg px-2 py-5 transition-all duration-200 md:px-3 md:py-6 ${
                     c.active
                       ? "bg-butter/50 hover:-translate-y-0.5 hover:bg-butter/70"
                       : "hover:bg-butter/25 hover:-translate-y-0.5"
@@ -1352,7 +1352,7 @@ const CommunityPage = () => {
                     <a
                       key={s.n}
                       href={s.href}
-                      className={`group flex flex-1 items-center justify-between gap-5 px-6 py-5 transition-colors md:px-10 md:py-6 ${
+                      className={`group flex flex-1 items-center justify-between gap-5 rounded-lg px-6 py-5 transition-colors md:px-10 md:py-6 ${
                         idx < arr.length - 1 ? "border-b border-dashed border-ink/15" : ""
                       } ${s.primary ? "bg-butter/35 hover:bg-butter/60" : "hover:bg-butter/20"}`}
                     >
