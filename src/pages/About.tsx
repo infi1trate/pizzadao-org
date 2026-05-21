@@ -562,76 +562,50 @@ const About = () => {
             </figcaption>
           </figure>
 
-          {/* Editorial clippings — varied, archival, never a logo wall */}
-          <div className="mt-24 md:mt-32">
-            <div className="border-t border-ink/15 pt-6">
-              <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
+          {/* Restrained outlet list — one type treatment, generous spacing */}
+          <div className="mt-28 md:mt-40">
+            <div className="flex items-baseline justify-between border-t border-ink/15 pt-6">
+              <p className="ui text-[10px] font-semibold uppercase tracking-[0.24em] text-ink/45">
                 Further coverage
+              </p>
+              <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/30">
+                {String(PRESS.length - 1).padStart(2, "0")} clippings
               </p>
             </div>
 
-            <div className="mt-12 grid grid-cols-12 gap-x-8 gap-y-16 md:gap-y-20">
-              {PRESS.slice(1).map((p, i) => {
-                // Asymmetric editorial rhythm: alternate wide/narrow columns
-                const layouts = [
-                  "md:col-span-7",
-                  "md:col-span-5",
-                  "md:col-span-6 md:col-start-4",
-                  "md:col-span-7",
-                  "md:col-span-5",
-                ];
-                const span = layouts[i % layouts.length];
-                const indent = i % 3 === 0 ? "md:ml-6" : "";
-                return (
+            <ul className="mt-4 divide-y divide-ink/10">
+              {PRESS.slice(1).map((p) => (
+                <li key={p.outlet}>
                   <a
-                    key={p.outlet}
                     href={p.href}
                     target="_blank"
                     rel="noreferrer"
-                    className={`group col-span-12 ${span} ${indent} block`}
+                    className="group grid grid-cols-12 items-baseline gap-x-6 gap-y-3 py-10 md:py-12"
                   >
-                    {/* Clipping masthead */}
-                    <div className="flex items-baseline gap-3 border-b border-ink/15 pb-3">
-                      <span className="font-display text-sm font-extrabold tracking-tight text-ink transition-colors group-hover:text-tomato md:text-base">
+                    {/* Outlet — single small label, one weight */}
+                    <div className="col-span-12 md:col-span-3">
+                      <span className="font-display text-sm font-extrabold tracking-tight text-ink transition-colors group-hover:text-tomato">
                         {p.outlet}
-                      </span>
-                      {p.kind === "video" && (
-                        <span className="ui text-[9px] font-semibold uppercase tracking-[0.22em] text-ink/45">
-                          · Broadcast
-                        </span>
-                      )}
-                      <span className="ml-auto text-ink/30 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-tomato">
-                        ↗
                       </span>
                     </div>
 
-                    {/* Excerpt — feels like a column of body type */}
-                    <p className="font-serif mt-5 text-lg leading-[1.55] text-ink/80 md:text-xl md:leading-[1.5]">
-                      <span
-                        aria-hidden
-                        className="text-tomato/60"
-                      >
-                        “
-                      </span>
+                    {/* Quoted line — the only emphasized type in the row */}
+                    <p className="font-serif col-span-12 text-lg leading-[1.45] text-ink/80 md:col-span-8 md:text-xl">
                       {p.line.replace(/^[“"]|[”"]$/g, "")}
-                      <span
-                        aria-hidden
-                        className="text-tomato/60"
-                      >
-                        ”
-                      </span>
                     </p>
 
-                    {/* Faint editorial trailing line */}
-                    <p className="ui mt-5 text-[10px] font-semibold uppercase tracking-[0.24em] text-ink/35">
-                      — {p.outlet}
-                      {p.kind === "video" ? " · video transcript" : " · article"}
-                    </p>
+                    {/* Arrow — quiet hover affordance */}
+                    <div className="col-span-12 hidden md:col-span-1 md:flex md:justify-end">
+                      <span className="text-ink/25 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-tomato">
+                        ↗
+                      </span>
+                    </div>
                   </a>
-                );
-              })}
-            </div>
+                </li>
+              ))}
+            </ul>
           </div>
+
 
 
 
