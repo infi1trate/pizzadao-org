@@ -278,10 +278,7 @@ const About = () => {
             </div>
 
             <div className="container">
-              <figcaption className="mt-4 flex items-baseline justify-between gap-3">
-                <span className="handwritten -rotate-1 text-butter text-sm md:text-base">
-                  ↳ a transaction became dinner
-                </span>
+              <figcaption className="mt-4 flex items-baseline justify-end">
                 <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/45">
                   Fig. II.01 — 22 · 05 · 2010
                 </span>
