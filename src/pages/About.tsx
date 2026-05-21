@@ -772,40 +772,56 @@ const About = () => {
           </div>
         </div>
 
-        {/* Emotional close — poster moment */}
-        <div className="paper-soft-dark relative mt-28 overflow-hidden bg-tomato py-32 text-cream md:mt-36 md:py-40">
-          <div className="checker-tape absolute left-0 right-0 top-0 h-[5px] opacity-25" aria-hidden="true" />
-          <div className="checker-tape absolute bottom-0 left-0 right-0 h-[5px] opacity-25" aria-hidden="true" />
+        {/* Final close — documentary ending */}
+        <div className="relative overflow-hidden bg-[hsl(0_78%_54%)] py-36 md:py-52">
+          {/* Atmospheric grain — warmer, softer than paper-soft-dark */}
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.09]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.92  0 0 0 0 0.78  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>")`,
+              mixBlendMode: "screen",
+            }}
+            aria-hidden="true"
+          />
+          {/* Warm radial wash — analog depth */}
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background: `radial-gradient(120% 80% at 18% 12%, hsl(44 80% 99% / 0.06), transparent 55%), radial-gradient(120% 90% at 88% 92%, hsl(0 78% 40% / 0.25), transparent 60%)`,
+            }}
+            aria-hidden="true"
+          />
+          {/* Single soft checkered strip — top only, softer */}
+          <div
+            className="checker-tape absolute left-0 right-0 top-0 h-[3px] opacity-[0.12]"
+            aria-hidden="true"
+          />
 
           <div className="container relative">
-            <div className="mx-auto max-w-4xl text-center">
-              <p className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/55">
-                Closing
+            <div className="mx-auto max-w-[72ch]">
+              {/* Small emotional annotation — Rock Salt, once only */}
+              <p className="handwritten mb-12 text-base text-[hsl(44_80%_92%_/0.75)] md:text-lg">
+                People kept showing up.
               </p>
 
-              <h2 className="font-display mt-10 text-[clamp(2.6rem,8vw,6rem)] font-extrabold leading-[0.88] tracking-[-0.02em]">
-                If you've ever shown up to something like this, you already
-                understand it.
+              <h2 className="font-display text-[clamp(2.4rem,7.5vw,6.2rem)] font-extrabold leading-[0.88] tracking-[-0.02em] text-cream">
+                If you have ever shown up to something like this, you understand it immediately.
               </h2>
 
-              <p className="handwritten mt-10 rotate-1 text-xl text-butter/95 md:text-2xl">
-                see you on may 22
-              </p>
-
-              <p className="font-serif mx-auto mt-8 max-w-[44ch] text-xl leading-[1.6] text-cream/80 md:text-2xl">
+              <p className="font-serif mt-10 max-w-[48ch] text-lg leading-[1.55] text-[hsl(44_80%_92%_/0.72)] md:text-xl">
                 If you haven't, May 22 is a good place to start.
               </p>
 
-              <div className="mt-14 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <div className="mt-16 flex flex-col items-start gap-4 sm:flex-row">
                 <a
                   href="/community"
-                  className="ui inline-flex items-center justify-center bg-cream px-9 py-4 text-xs font-semibold tracking-[0.22em] text-ink transition-colors hover:bg-butter"
+                  className="ui inline-flex items-center justify-center bg-cream px-10 py-4 text-xs font-semibold tracking-[0.22em] text-ink transition-colors hover:bg-[hsl(44_80%_99%)]"
                 >
                   Find a city →
                 </a>
                 <a
                   href="/join"
-                  className="ui inline-flex items-center justify-center border border-cream/40 px-9 py-4 text-xs font-semibold tracking-[0.22em] text-cream transition-colors hover:border-butter hover:text-butter"
+                  className="ui inline-flex items-center justify-center border border-[hsl(44_80%_92%_/0.35)] px-10 py-4 text-xs font-semibold tracking-[0.22em] text-[hsl(44_80%_92%_/0.85)] transition-colors hover:border-[hsl(44_80%_92%_/0.6)] hover:text-cream"
                 >
                   Host an event
                 </a>
@@ -813,6 +829,7 @@ const About = () => {
             </div>
           </div>
         </div>
+
       </section>
 
       <Footer />
