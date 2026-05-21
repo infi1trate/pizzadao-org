@@ -52,7 +52,7 @@ const Join = () => {
         <div className="container relative pt-20 pb-16 md:pt-32 md:pb-24">
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
             <div className="col-span-12 md:col-span-8">
-              <p className="overline text-cream/70">§ 10, The Invitation</p>
+              <p className="overline text-cream/70">The Invitation</p>
               <h2 className="font-display mt-5 text-mega font-extrabold leading-[0.88]">
                 Become
                 <br />

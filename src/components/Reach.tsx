@@ -47,7 +47,7 @@ const Reach = () => {
         <div className="border-t-2 border-ink pt-8 md:pt-10">
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
             <div className="col-span-12 md:col-span-7">
-              <p className="overline text-tomato">§ 07, A global table</p>
+              <p className="overline text-tomato">A global table</p>
               <h2 className="font-display mt-4 text-display-1 font-extrabold leading-[0.88]">
                 Where we've
                 <br />
@@ -101,7 +101,7 @@ const Reach = () => {
         <div className="container relative py-16 md:py-24">
           <div className="grid grid-cols-12 gap-x-6 gap-y-8">
             <div className="col-span-12 md:col-span-4">
-              <p className="overline text-tomato">Fig. 03, Atlas</p>
+              <p className="overline text-tomato">Atlas</p>
               <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.92] text-ink">
                 A growing
                 <br />
