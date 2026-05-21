@@ -139,6 +139,38 @@ const About = () => {
               <h2 className="font-display mt-5 text-[clamp(2rem,4.5vw,3.25rem)] font-extrabold leading-[0.95]">
                 A Discord server, a holiday, and a hunch.
               </h2>
+
+              {/* Pinned polaroid trio — tactile field-archive warmth */}
+              <div className="mt-12 hidden md:flex md:items-start md:gap-3">
+                {ORIGIN_POLAROIDS.map((p, i) => (
+                  <figure
+                    key={p.city}
+                    className={`relative ${p.tilt} ${p.offset} w-[36%] origin-top transition-transform duration-500 hover:rotate-0 hover:scale-[1.03]`}
+                    style={{ zIndex: 10 - i }}
+                  >
+                    <div className="grain relative overflow-hidden bg-cream p-2 pb-8 shadow-[0_8px_20px_-10px_hsl(0_0%_0%/0.35),0_2px_5px_-2px_hsl(0_0%_0%/0.2)]">
+                      <div className="aspect-square overflow-hidden bg-ink">
+                        <img
+                          src={p.src}
+                          alt={`${p.city} — early PizzaDAO gathering`}
+                          loading="lazy"
+                          decoding="async"
+                          className="h-full w-full object-cover [filter:saturate(0.92)_contrast(1.04)_sepia(0.06)]"
+                        />
+                      </div>
+                      <figcaption className="handwritten absolute inset-x-2 bottom-1 text-center text-xs leading-tight text-ink/70">
+                        {p.city} · {p.note}
+                      </figcaption>
+                    </div>
+                    {/* paper tape */}
+                    <span
+                      aria-hidden
+                      className="absolute -top-2 left-1/2 h-4 w-12 -translate-x-1/2 rotate-[-4deg] bg-butter/70 opacity-80 shadow-sm"
+                      style={{ clipPath: "polygon(4% 0,96% 0,100% 100%,0 100%)" }}
+                    />
+                  </figure>
+                ))}
+              </div>
             </div>
             <div className="col-span-12 md:col-span-7 md:col-start-6">
               <p className="font-serif text-xl leading-[1.55] text-ink md:text-2xl">
