@@ -163,8 +163,3 @@ const SiteNav = ({ solid = false }: Props) => {
 };
 
 export default SiteNav;
-    </header>
-  );
-};
-
-export default SiteNav;
