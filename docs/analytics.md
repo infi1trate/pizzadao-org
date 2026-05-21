@@ -137,18 +137,43 @@ Steps: `$pageview /partners` → `sales.partners_cta_clicked` OR
 - Web vitals (Insights → Web Vitals): LCP / CLS / INP by page
 
 ### 7. Mafia name funnel
-Steps: `mafia.started` → `mafia.movie_picked` → `mafia.topping_picked` →
-`mafia.names_generated` → `mafia.name_claimed`.
+Steps: `mafia.intent_clicked` (any CTA) → `mafia.started` →
+`mafia.movie_picked` → `mafia.topping_picked` → `mafia.names_generated` →
+`mafia.name_claimed`.
 
 Breakdowns:
+- `surface` on `mafia.intent_clicked` (site_nav, community, partners…) to see
+  which CTA actually drives the flow now that `/join` is gone
 - `topping` to see which toppings drive claim rate
-- Distribution of `generate_attempts` on the `mafia.name_claimed` event
-  (how many re-rolls before claiming)
+- Distribution of `generate_attempts` on `mafia.name_claimed`
 
-### 8. Geo / device split
-- `$pageview` totals + conversion rate per `country` and `$device_type`
-- Today we know desktop = 526, mobile = 419 — this dashboard will show
-  whether either converts more.
+### 7b. Avatar sub-funnel
+Steps: `mafia.name_claimed` → `mafia.avatar_started` →
+`mafia.avatar_generated` → `mafia.avatar_downloaded`.
+
+- `mafia.avatar_failed` is the drop-off cohort (break down by `reason`).
+- `mafia.avatar_redrawn` count per claimed name = how picky users are.
+- p50/p95 of `latency_ms` on `mafia.avatar_generated` = edge function health.
+
+### 8. Community engagement (new)
+Steps: `$pageview /community` → `community.build_viewed` OR
+`community.build_embed_opened` → `community.gallery_opened` →
+`community.calendar_opened`.
+
+Breakdowns: `name` on builds, `source` on gallery opens (header vs tile vs
+mobile_cta), `surface` on calendar opens.
+
+### 9. Geo / device split
+- `$pageview` totals + conversion rate per `country` and `$device_type`.
+
+## Catalog cleanup (May 2026)
+
+- Removed: `sales.join_intent_clicked` (`/join` page no longer exists),
+  `comms.share_clicked`, `ui.theme_section_interacted` — never wired.
+- Added the mafia avatar events and the entire `community.*` namespace.
+- The "Join" CTAs across the site now emit `mafia.intent_clicked`. Rebind
+  any saved PostHog insights that referenced `sales.join_intent_clicked`.
+
 
 ## A/B testing (when ready)
 
