@@ -186,10 +186,34 @@ const About = () => {
       </section>
 
       {/* ── RITUAL ───────────────────────────────────────────────── */}
+      <section className="relative bg-ink text-cream">
+        {/* Full-bleed cinematic photograph */}
+        <figure className="relative">
+          <div className="grain relative overflow-hidden bg-ink">
+            <img
+              src={RITUAL_PHOTO}
+              alt="Archival reference to a Bitcoin Pizza Day gathering"
+              loading="lazy"
+              decoding="async"
+              width={2400}
+              height={1400}
+              onError={(e) => { (e.currentTarget as HTMLImageElement).src = timeline2010; }}
+              className="block aspect-[4/5] w-full object-cover opacity-90 sm:aspect-[3/2] md:aspect-[21/9]"
+              style={{ objectPosition: "50% 45%" }}
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to bottom, hsl(0 0% 0% / 0.55) 0%, hsl(0 0% 0% / 0.20) 35%, hsl(0 0% 0% / 0.35) 65%, hsl(0 0% 0% / 0.85) 100%)",
+              }}
+            />
+          </div>
+        </figure>
 
-      <section className="relative bg-ink py-24 text-cream md:py-32">
-        <div className="container">
-          <div className="grid grid-cols-12 gap-x-8 gap-y-10">
+        <div className="container py-28 md:py-40">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-12">
             <div className="col-span-12 md:col-span-5">
               <p className="overline text-butter">May 22 · Bitcoin Pizza Day</p>
               <h2 className="font-display mt-5 text-[clamp(2.25rem,5.5vw,4rem)] font-extrabold leading-[0.92]">
@@ -200,8 +224,8 @@ const About = () => {
               <div className="font-serif max-w-[60ch] space-y-5 text-lg leading-[1.75] text-cream/85">
                 <p>
                   On May 22, 2010, two pizzas were bought for 10,000 BTC. The
-                  story became symbolic because it proved that something abstract
-                  could become real. A transaction became dinner.
+                  story became symbolic because it proved that something
+                  abstract could become real. A transaction became dinner.
                 </p>
                 <p>
                   Years later, PizzaDAO turned that moment into a recurring
@@ -209,29 +233,20 @@ const About = () => {
                   gather people together in their own cities.
                 </p>
                 <p>
-                  Some events are massive. Some are improvised. Some run out of
-                  boxes. Some last all night.
+                  Some events are massive. Some are improvised. Some run out
+                  of boxes. Some last all night.
                 </p>
                 <p className="text-cream">People keep coming back anyway.</p>
               </div>
             </div>
           </div>
 
-          <figure className="mt-16 md:mt-20">
-            <div className="grain relative overflow-hidden rounded-sm bg-ink">
-              <img
-                src={RITUAL_PHOTO}
-                alt="Archival reference to a Bitcoin Pizza Day gathering"
-                loading="lazy"
-                decoding="async"
-                width={2400}
-                height={1400}
-                onError={(e) => { (e.currentTarget as HTMLImageElement).src = timeline2010; }}
-                className="block aspect-[3/2] w-full object-cover md:aspect-[21/9]"
-                style={{ objectPosition: "50% 45%" }}
-              />
-            </div>
-          </figure>
+          {/* Quiet emotional accent — short, supportive, not informational */}
+          <div className="mt-28 flex justify-center md:mt-40">
+            <p className="handwritten -rotate-[1.5deg] text-butter text-[clamp(2rem,5vw,3.5rem)] leading-tight">
+              Every May 22, a door opens.
+            </p>
+          </div>
         </div>
       </section>
 
