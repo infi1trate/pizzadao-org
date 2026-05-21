@@ -54,10 +54,7 @@ const Join = () => {
             </div>
             <div className="col-span-12 md:col-span-4 md:pl-8">
               <p className="text-xl leading-snug text-cream md:text-2xl">
-                Identity, not membership.
-              </p>
-              <p className="mt-4 max-w-md text-base leading-relaxed text-cream/85">
-                Four steps. No fees, no forms, no gatekeeping. Start with your alias.
+                A global pizza club. No fees, no forms.
               </p>
               <Link
                 to="/get-your-mafia-name"
