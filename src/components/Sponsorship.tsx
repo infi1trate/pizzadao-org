@@ -286,17 +286,17 @@ const Sponsorship = () => {
             <span aria-hidden className="ui absolute -top-1 left-0 text-[10px] font-semibold uppercase tracking-[0.22em] text-tomato">
               IRL ·  built in cities
             </span>
-            <div className="grid grid-cols-12 items-end gap-x-8 gap-y-6 md:gap-x-12">
+            <div className="grid grid-cols-12 items-end gap-x-8 gap-y-5 md:gap-x-12">
               <div className="col-span-12 md:col-span-8">
                 <p className="overline text-tomato">Possibilities</p>
-                <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.88] tracking-[-0.02em] md:mt-5">
+                <h3 className="font-display mt-3 text-display-2 font-extrabold leading-[0.88] tracking-[-0.02em] md:mt-4">
                   What we build
                   <br />
                   <span className="handwritten text-tomato text-[1.05em]">together.</span>
                 </h3>
               </div>
 
-              <div className="col-span-12 md:col-span-4 md:pl-10 md:pb-3">
+              <div className="col-span-12 md:col-span-4 md:pl-10 md:pb-2">
                 <p className="font-serif text-[15.5px] leading-[1.65] text-ink/70 md:text-[15px]">
                   Five formats we know how to run, and a hundred more we'd love to invent with you.
                 </p>
@@ -304,7 +304,7 @@ const Sponsorship = () => {
             </div>
           </div>
 
-          <div className="mt-14 grid grid-cols-1 gap-7 md:mt-16 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+          <div className="mt-10 grid grid-cols-1 gap-6 md:mt-12 md:grid-cols-2 md:gap-7 lg:grid-cols-3">
             {[
               {
                 k: "Global Moments",
