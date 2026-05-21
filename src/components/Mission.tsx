@@ -12,8 +12,7 @@ const Mission = () => {
             <h2 className="font-display text-[clamp(2.5rem,7.5vw,7rem)] font-extrabold leading-[0.92]">
               Our mission is to{" "}
               <span className="handwritten text-tomato text-[1.05em]">build community</span>{" "}
-              and support local businesses by bringing people together around a{" "}
-              <span className="handwritten bg-tomato px-3 text-cream rounded-xl text-[1.05em]">shared love for pizza</span>.
+              and support local businesses by bringing people together around a shared love for pizza.
             </h2>
 
             <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-x-6">
