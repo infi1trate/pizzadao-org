@@ -112,8 +112,7 @@ const About = () => {
         </div>
 
         {/* Immersive composition — image + embedded headline */}
-        <div className="relative mt-10 md:mt-14">
-          {/* Documentary image, oversized and full-bleed-ish */}
+        <div className="relative mt-12 md:mt-16">
           <figure className="relative">
             <div className="grain relative overflow-hidden bg-ink">
               <img
@@ -124,52 +123,52 @@ const About = () => {
                 width={2400}
                 height={1500}
                 onError={(e) => { (e.currentTarget as HTMLImageElement).src = party; }}
-                className="block aspect-[4/5] w-full object-cover sm:aspect-[3/2] md:aspect-[16/9] lg:aspect-[2/1]"
+                style={{ objectPosition: "50% 42%" }}
+                className="block aspect-[4/5] w-full object-cover sm:aspect-[3/2] md:aspect-[16/9] lg:aspect-[21/9]"
               />
-              {/* Soft analog vignette — pulls eye to center, grounds the type */}
+
+              {/* Bottom-weighted cinematic gradient — anchors the headline, keeps midtones */}
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0"
                 style={{
                   background:
-                    "radial-gradient(ellipse at 50% 55%, transparent 35%, hsl(0 0% 0% / 0.55) 95%)",
+                    "linear-gradient(to bottom, hsl(0 0% 0% / 0.18) 0%, transparent 28%, transparent 50%, hsl(0 0% 0% / 0.55) 88%, hsl(0 0% 0% / 0.70) 100%)",
                 }}
-              />
-              {/* Warm cinematic wash from the top */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-x-0 top-0 h-1/3"
-                style={{
-                  background:
-                    "linear-gradient(to bottom, hsl(0 0% 0% / 0.35), transparent)",
-                }}
-              />
-              {/* Paper grain over photo */}
-              <div
-                aria-hidden
-                className="paper-soft pointer-events-none absolute inset-0 opacity-50 mix-blend-overlay"
               />
 
-              {/* Embedded headline — sits inside the scene */}
+              {/* Soft analog vignette — pulls the eye toward the human moment */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at 50% 48%, transparent 42%, hsl(0 0% 0% / 0.45) 100%)",
+                }}
+              />
+
+              {/* Restrained film grain over the photograph */}
+              <div
+                aria-hidden
+                className="paper-soft pointer-events-none absolute inset-0 opacity-40 mix-blend-overlay"
+              />
+
+              {/* Embedded headline — sits inside the scene, with room to breathe */}
               <div className="absolute inset-0 flex items-end">
-                <div className="container w-full pb-10 sm:pb-16 md:pb-20 lg:pb-24">
-                  <h1 className="font-display max-w-[16ch] font-extrabold leading-[0.82] tracking-[-0.028em] text-cream text-[clamp(2.6rem,10vw,9.5rem)] md:leading-[0.78]"
-                      style={{ textShadow: "0 2px 30px hsl(0 0% 0% / 0.45)" }}>
+                <div className="container w-full pb-12 sm:pb-20 md:pb-28 lg:pb-32">
+                  <h1 className="font-display max-w-[15ch] font-extrabold leading-[0.82] tracking-[-0.028em] text-cream text-[clamp(2.6rem,10vw,9.5rem)] md:leading-[0.78]"
+                      style={{ textShadow: "0 2px 36px hsl(0 0% 0% / 0.55)" }}>
                     An institution built on a{" "}
                     <span className="italic text-butter">slice</span>
                   </h1>
                 </div>
               </div>
-
             </div>
 
-            {/* Quiet figure caption */}
-            <figcaption className="container mt-4 flex items-baseline justify-between gap-3">
+            {/* Single quiet figure caption */}
+            <figcaption className="container mt-4">
               <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
-                Fig. I.01 — A chapter, mid-service
-              </span>
-              <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/35">
-                One night · many cities
+                Fig. I.01 — A chapter, mid-service · one night, many cities
               </span>
             </figcaption>
           </figure>
