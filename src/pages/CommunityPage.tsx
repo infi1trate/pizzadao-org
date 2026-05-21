@@ -166,6 +166,7 @@ type Build = {
   detail: string;
   img: string | null;
   demo?: string;
+  embed?: string;
   featured?: boolean;
   metric?: { k: string; v: string }[];
 };
