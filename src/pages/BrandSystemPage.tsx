@@ -80,6 +80,10 @@ const BrandSystemPage = () => {
                 href="https://pizzadao.github.io/pizzadao-brand-kit/"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => {
+                  track(EVT.BRAND_ASSET_DOWNLOADED, { asset: "brand-kit", surface: "hero" });
+                  trackOutbound("Download assets", "https://pizzadao.github.io/pizzadao-brand-kit/", { surface: "hero" });
+                }}
                 className="btn-pill-lg bg-ink text-cream hover:bg-tomato"
               >
                 <Download className="h-4 w-4" />
@@ -89,11 +93,13 @@ const BrandSystemPage = () => {
                 href="https://github.com/pizzadao"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => trackOutbound("GitHub", "https://github.com/pizzadao", { surface: "hero" })}
                 className="btn-pill-lg border border-ink/20 bg-cream text-ink hover:border-ink hover:bg-butter"
               >
                 <Github className="h-4 w-4" />
                 View GitHub
               </a>
+
               <a
                 href="#brand-md"
                 className="btn-pill-lg border border-ink/20 bg-cream text-ink hover:border-ink hover:bg-butter"
