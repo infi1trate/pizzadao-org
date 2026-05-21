@@ -636,6 +636,8 @@ const Sponsorship = () => {
         {/* Subtle grain + halftone print texture */}
         <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.22]" />
         <div aria-hidden className="halftone-soft pointer-events-none absolute inset-0" />
+        {/* Photographic warmth — distant crowd, integrated into left edge */}
+        <PhotoVeil variant="crowd" position="left" opacity={0.045} blend="multiply" />
 
         <div className="container relative">
           {/* Tighter, more editorial composition */}
