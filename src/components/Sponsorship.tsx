@@ -130,11 +130,11 @@ const Sponsorship = () => {
 
       {/* Masthead */}
       <div className="container relative">
-        <div className="relative border-t-2 border-ink pt-6 md:pt-7">
-          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-5">
+        <div className="relative border-t-2 border-ink pt-5 md:pt-6">
+          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-4">
             <div className="col-span-12 md:col-span-7">
               <p className="overline text-tomato">Why it works</p>
-              <h2 className="font-display mt-3 text-display-1 font-extrabold leading-[0.9] tracking-[0.005em] text-ink">
+              <h2 className="font-display mt-2 text-display-1 font-extrabold leading-[0.9] tracking-[0.005em] text-ink">
                 Why brands
                 <br />
                 <span className="text-ink">partner with PizzaDAO.</span>
@@ -144,7 +144,7 @@ const Sponsorship = () => {
               <p className="text-lg leading-[1.45] text-ink/85 md:text-xl">
                 Trust, coordinated globally. Built city by city, by the people who already live there.
               </p>
-              <p className="mt-3 text-[15px] leading-[1.6] text-ink/65">
+              <p className="mt-2 text-[15px] leading-[1.6] text-ink/65">
                 PizzaDAO is a 500-city network of independently organized
                 chapters. Brands plug into a real, repeating, IRL community —
                 not a list, not a mailshot, not a pop-up.
@@ -153,13 +153,20 @@ const Sponsorship = () => {
           </div>
         </div>
 
-        {/* Proof ledger — operational credibility, no soft percentages */}
-        <div className="mt-6 rounded-2xl border border-ink/15 bg-cream shadow-[var(--shadow-lifted)] md:mt-8">
+        {/* Proof ledger — operational credibility, slight overlap with masthead */}
+        <div className="relative mt-5 rounded-2xl border border-ink/15 bg-cream shadow-[var(--shadow-lifted)] md:mt-6">
+          {/* Asymmetric annotation — slight tension off the corner */}
+          <span
+            aria-hidden
+            className="handwritten absolute -top-3 right-4 -rotate-[6deg] text-[12px] text-tomato md:right-6"
+          >
+            ↘ what we measure
+          </span>
           <dl className="grid grid-cols-2 md:grid-cols-4">
             {PROOF.map((p, i) => (
               <div
                 key={p.k}
-                className={`px-5 py-6 md:px-7 md:py-8 ${
+                className={`px-5 py-5 md:px-7 md:py-7 ${
                   i > 0 ? "md:border-l md:border-ink/15" : ""
                 } ${i === 1 ? "border-l border-ink/15" : ""} ${
                   i >= 2 ? "border-t border-ink/15 md:border-t-0" : ""
@@ -172,7 +179,7 @@ const Sponsorship = () => {
                   <CountUp value={p.num} suffix={p.suffix} fallback={p.v} />
                 </dd>
                 {p.sub && (
-                  <p className="ui mt-2 text-[10px] font-medium uppercase tracking-[0.18em] text-ink/55">
+                  <p className="ui mt-1.5 text-[10px] font-medium uppercase tracking-[0.18em] text-ink/55">
                     {p.sub}
                   </p>
                 )}
