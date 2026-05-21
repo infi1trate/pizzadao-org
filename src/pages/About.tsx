@@ -374,15 +374,12 @@ const About = () => {
 
           {/* 3-column ledger — calm, structural, tactile */}
           <div className="grid grid-cols-1 border-t border-ink/15 md:grid-cols-3">
-            {ROLES.map((r, i) => (
+            {ROLES.map((r) => (
               <article
                 key={r.name}
-                className="border-b border-ink/10 py-10 md:border-b-0 md:border-l md:border-ink/10 md:py-12 md:px-10 md:first:border-l-0 md:first:pl-0"
+                className="border-b border-ink/15 py-10 md:border-b-0 md:border-l md:border-ink/15 md:py-12 md:px-10 md:first:border-l-0 md:first:pl-0"
               >
-                <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/40">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="font-display mt-5 text-[1.65rem] font-extrabold leading-[0.95] md:text-[1.75rem]">
+                <h3 className="font-display text-[1.65rem] font-extrabold leading-[0.95] md:text-[1.75rem]">
                   {r.name}
                 </h3>
                 <p className="font-serif mt-4 max-w-[32ch] text-base leading-[1.7] text-ink/70">
