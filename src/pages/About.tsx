@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
-import CinematicGlobe from "@/components/CinematicGlobe";
+import ArchivalWall from "@/components/ArchivalWall";
 import timeline2010 from "@/assets/timeline-2010.jpg";
 import party from "@/assets/timeline-party.jpg";
 import community from "@/assets/community.jpg";
