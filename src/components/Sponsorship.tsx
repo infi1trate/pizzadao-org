@@ -210,9 +210,6 @@ const Sponsorship = () => {
             <p className="mt-3 text-[15px] leading-relaxed text-ink/60">
               Bespoke programs built on these foundations.
             </p>
-            <p className="handwritten mt-4 -rotate-[1.5deg] text-tomato text-[13px]">
-              ↳ no two briefs alike
-            </p>
           </div>
 
           <ol className="col-span-12 md:col-span-8 md:pl-6">
