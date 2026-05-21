@@ -574,6 +574,11 @@ const MafiaNamePage = () => {
           phase={finalePhase}
           finalName={finalName}
           description={selectedIdx !== null ? names[selectedIdx]?.explanation : ""}
+          film={film}
+          topping={topping}
+          avatarUrl={avatarUrl}
+          avatarLoading={avatarLoading}
+          onRegenerateAvatar={() => generateAvatar(finalName)}
           onShare={shareName}
           onReset={reset}
         />
