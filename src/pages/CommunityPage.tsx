@@ -3,6 +3,8 @@ import { ArrowUpRight, Sparkles, Pizza, Wrench, Palette, Users, Code2, MapPin, C
 import SiteNav from "@/components/SiteNav";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import Footer from "@/components/Footer";
+import { track } from "@/lib/analytics/posthog";
+import { EVT } from "@/lib/analytics/events";
 import community from "@/assets/community.jpg";
 import hackathon from "@/assets/hackathon.jpg";
 import party from "@/assets/timeline-party.jpg";
@@ -12,6 +14,7 @@ import hourpayStage from "@/assets/hourpay-stage.jpg";
 import secretPineapple from "@/assets/secret-pineapple.jpg";
 import rsvPizza from "@/assets/rsv-pizza.png";
 import slice from "@/assets/slice.jpg";
+
 
 const WAYS_IN = [
   {
