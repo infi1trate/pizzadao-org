@@ -345,12 +345,13 @@ const About = () => {
 
       {/* ────────────────────────────────────────────────────────────
           ACT III — HOW IT RUNS
-          A clean breath. Calm, structured, credible. Intentionally light.
+          The cleanest section on the page. A structural breath.
+          No image. No decoration. Just calm editorial clarity.
          ──────────────────────────────────────────────────────────── */}
-      <section className="paper-soft relative overflow-hidden bg-cream py-24 md:py-32">
+      <section className="paper-soft relative overflow-hidden bg-cream py-24 md:py-36">
         <div className="container">
           {/* Archival band */}
-          <div className="flex items-center justify-between border-t border-ink/15 pb-10 pt-6">
+          <div className="flex items-center justify-between border-t border-ink/10 pb-10 pt-6">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-tomato">
               Act III — How It Runs
             </span>
@@ -359,8 +360,8 @@ const About = () => {
             </span>
           </div>
 
-          {/* Title + intro */}
-          <div className="grid grid-cols-12 gap-x-8 gap-y-8 pb-20 md:pb-28">
+          {/* Title + intro — airy, calm */}
+          <div className="grid grid-cols-12 gap-x-8 gap-y-8 pb-16 md:pb-24">
             <div className="col-span-12 md:col-span-5">
               <h2 className="font-display text-[clamp(2.4rem,7vw,5rem)] font-extrabold leading-[0.86] tracking-[-0.025em]">
                 How it runs
@@ -384,13 +385,10 @@ const About = () => {
             </div>
           </div>
 
-          {/* 3-column ledger — calm, structural, tactile */}
-          <div className="grid grid-cols-1 border-t border-ink/15 md:grid-cols-3">
+          {/* 3-column ledger — calm, structural, no borders */}
+          <div className="grid grid-cols-1 gap-y-10 md:grid-cols-3 md:gap-x-14 md:gap-y-0">
             {ROLES.map((r) => (
-              <article
-                key={r.name}
-                className="border-b border-ink/15 py-10 md:border-b-0 md:border-l md:border-ink/15 md:py-12 md:px-10 md:first:border-l-0 md:first:pl-0"
-              >
+              <article key={r.name} className="py-2 md:py-4">
                 <h3 className="font-display text-[1.65rem] font-extrabold leading-[0.95] md:text-[1.75rem]">
                   {r.name}
                 </h3>
@@ -401,37 +399,13 @@ const About = () => {
             ))}
           </div>
 
-          {/* Documentary fragment + human detail */}
-          <div className="mt-16 grid grid-cols-12 gap-x-8 gap-y-8 md:mt-24">
-            {/* Small image fragment */}
-            <div className="col-span-12 md:col-span-4">
-              <figure className="crop-marks relative">
-                <div className="grain relative overflow-hidden bg-ink">
-                  <img
-                    src={FIELD_PHOTO}
-                    alt="Hands reaching for pizza slices at a community gathering"
-                    loading="lazy"
-                    decoding="async"
-                    onError={(e) => { (e.currentTarget as HTMLImageElement).src = community; }}
-                    className="block aspect-[4/3] w-full object-cover"
-                  />
-                </div>
-                <figcaption className="ui mt-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/35">
-                  Fig. III.01 — Field note
-                </figcaption>
-              </figure>
-            </div>
-
-            {/* Human detail */}
-            <div className="col-span-12 flex items-end md:col-span-7 md:col-start-6">
-              <div className="border-l border-ink/15 pl-6 md:pl-10">
-                <p className="font-serif max-w-[40ch] text-base leading-[1.7] text-ink/65 md:text-lg">
-                  No one is in charge. Everyone shows up. That is the only
-                  operating principle that has stayed the same since the first
-                  pizza went out.
-                </p>
-              </div>
-            </div>
+          {/* Single quiet principle — centered, restrained */}
+          <div className="mt-20 max-w-[46ch] md:mt-28">
+            <p className="font-serif text-base leading-[1.7] text-ink/60 md:text-lg">
+              No one is in charge. Everyone shows up. That is the only
+              operating principle that has stayed the same since the first
+              pizza went out.
+            </p>
           </div>
         </div>
       </section>
