@@ -221,6 +221,7 @@ const BUILDS: Build[] = [
 const CommunityPage = () => {
   const [calOpen, setCalOpen] = useState(false);
   const [activeBuild, setActiveBuild] = useState<number | null>(null);
+  const [embedSite, setEmbedSite] = useState<{ name: string; url: string } | null>(null);
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [galleryIndex, setGalleryIndex] = useState(0);
   useEffect(() => {
