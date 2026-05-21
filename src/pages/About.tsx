@@ -79,16 +79,9 @@ const About = () => {
       <SiteNav solid />
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
-      <section className="paper-soft relative bg-cream pt-10 md:pt-14">
-        <div className="container flex items-center justify-between pb-8">
-          <p className="overline text-tomato">About PizzaDAO</p>
-          <span className="ui hidden text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/40 md:inline">
-            Est. 2021 · Ongoing
-          </span>
-        </div>
-
-        <figure className="container">
-          <div className="grain relative overflow-hidden rounded-sm bg-ink">
+      <section className="relative overflow-hidden bg-ink text-cream">
+        <figure className="relative">
+          <div className="grain relative overflow-hidden bg-ink">
             <img
               src={HERO_PHOTO}
               alt="Volunteers carrying pizza boxes through a crowded street gathering"
@@ -97,36 +90,80 @@ const About = () => {
               width={2400}
               height={1500}
               onError={(e) => { (e.currentTarget as HTMLImageElement).src = party; }}
-              style={{ objectPosition: "50% 38%" }}
-              className="block aspect-[4/5] w-full object-cover sm:aspect-[3/2] md:aspect-[16/10] lg:aspect-[2/1]"
+              style={{ objectPosition: "50% 42%" }}
+              className="block h-[88svh] min-h-[560px] w-full object-cover md:h-[100svh] md:min-h-[720px]"
             />
 
-            {/* Single deeper gradient — readable type, calm midtones */}
+            {/* Warm tomato/butter atmospheric tint — pushes color into the scene */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 mix-blend-soft-light"
+              style={{
+                background:
+                  "radial-gradient(70% 60% at 20% 30%, hsl(14 80% 50% / 0.35), transparent 70%), radial-gradient(60% 55% at 85% 80%, hsl(40 90% 60% / 0.22), transparent 70%)",
+              }}
+            />
+
+            {/* Cinematic dual gradient — sky bloom + bottom anchor for type */}
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(to bottom, hsl(0 0% 0% / 0.32) 0%, hsl(0 0% 0% / 0.10) 32%, hsl(0 0% 0% / 0.15) 55%, hsl(0 0% 0% / 0.72) 100%)",
+                  "linear-gradient(to bottom, hsl(0 0% 0% / 0.55) 0%, hsl(0 0% 0% / 0.05) 22%, transparent 45%, hsl(0 0% 0% / 0.25) 65%, hsl(0 0% 0% / 0.88) 100%)",
               }}
             />
 
-            {/* Headline embedded in scene with generous breathing room */}
-            <div className="absolute inset-0 flex items-end">
-              <div className="w-full px-6 pb-10 sm:px-10 sm:pb-14 md:px-16 md:pb-20 lg:px-24 lg:pb-24">
-                <h1
-                  className="font-display max-w-[16ch] font-extrabold leading-[0.86] tracking-[-0.025em] text-cream text-[clamp(2.25rem,7vw,6.5rem)]"
-                  style={{ textShadow: "0 2px 28px hsl(0 0% 0% / 0.55)" }}
-                >
-                  An institution built on a{" "}
-                  <span className="italic text-butter">slice</span>.
-                </h1>
+            {/* Side vignette — pulls eye into the crowd */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(140% 90% at 50% 55%, transparent 55%, hsl(0 0% 0% / 0.55) 100%)",
+              }}
+            />
+
+            {/* High-frequency grain — analog bite */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 opacity-[0.22] mix-blend-overlay"
+              style={{
+                backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.92  0 0 0 0 0.78  0 0 0 1.1 -0.05'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")`,
+                backgroundSize: "240px 240px",
+              }}
+            />
+
+            {/* Top micro-labels — sit over the scene under SiteNav */}
+            <div className="absolute inset-x-0 top-0 z-10 px-6 pt-24 sm:px-10 md:px-16 md:pt-28 lg:px-20">
+              <div className="flex items-baseline justify-between">
+                <p className="overline text-butter [text-shadow:0_1px_8px_hsl(0_0%_0%/0.6)]">
+                  About PizzaDAO
+                </p>
+                <span className="ui hidden text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/75 md:inline [text-shadow:0_1px_8px_hsl(0_0%_0%/0.6)]">
+                  Est. 2021 · Ongoing
+                </span>
+              </div>
+            </div>
+
+            {/* Headline anchored to the bottom — embedded in the scene */}
+            <div className="absolute inset-x-0 bottom-0 px-6 pb-14 sm:px-10 sm:pb-20 md:px-16 md:pb-24 lg:px-20 lg:pb-28">
+              <h1
+                className="font-display max-w-[18ch] font-extrabold leading-[0.84] tracking-[-0.03em] text-cream text-[clamp(2.75rem,9vw,8.5rem)] animate-fade-in"
+                style={{ textShadow: "0 4px 40px hsl(0 0% 0% / 0.7), 0 1px 2px hsl(0 0% 0% / 0.5)" }}
+              >
+                An institution built on a{" "}
+                <span className="italic text-butter">slice</span>.
+              </h1>
+
+              <div className="mt-8 flex items-baseline gap-4 md:mt-10">
+                <span aria-hidden className="h-px w-12 bg-butter/70" />
+                <figcaption className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/75">
+                  A chapter, mid-service · one night, many cities
+                </figcaption>
               </div>
             </div>
           </div>
-          <figcaption className="ui mt-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
-            A chapter, mid-service · one night, many cities
-          </figcaption>
         </figure>
       </section>
 
