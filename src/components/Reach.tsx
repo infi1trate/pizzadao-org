@@ -143,7 +143,7 @@ const Reach = () => {
             </div>
 
             <div className="col-span-12 md:col-span-8">
-              <figure className="relative overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-[var(--shadow-lifted)]">
+              <figure className="relative overflow-hidden rounded-2xl border border-ink/15 bg-cream shadow-[var(--shadow-lifted)]">
                 {/* soft warm tint behind landmasses */}
                 <div
                   aria-hidden
