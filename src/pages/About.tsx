@@ -597,12 +597,9 @@ const About = () => {
 
           {/* Editorial clippings — varied, archival, never a logo wall */}
           <div className="mt-24 md:mt-32">
-            <div className="flex items-baseline justify-between border-t border-ink/15 pt-6">
-              <p className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/45">
+            <div className="border-t border-ink/15 pt-6">
+              <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
                 Further coverage
-              </p>
-              <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/30">
-                §
               </p>
             </div>
 
