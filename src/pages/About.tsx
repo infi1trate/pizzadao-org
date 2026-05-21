@@ -432,11 +432,7 @@ const About = () => {
           A bold editorial interruption. Definitive. Memorable. Grounded.
          ──────────────────────────────────────────────────────────── */}
       <section className="paper-soft relative overflow-hidden bg-cream py-32 md:py-48">
-        {/* Subtle checkered tape — thin, top edge only */}
-        <div
-          aria-hidden="true"
-          className="checker-tape absolute left-0 right-0 top-0 h-[4px] opacity-[0.18]"
-        />
+        <div className="container relative">
 
         <div className="container relative">
           {/* Overline */}
