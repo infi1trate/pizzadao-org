@@ -1064,10 +1064,16 @@ function FinaleScene({
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
+      track(EVT.MAFIA_AVATAR_DOWNLOADED, {
+        mafia_name: finalName,
+        movie: film?.title,
+        topping,
+      });
     } catch {
       // ignore
     }
   };
+
 
   return (
     <section className="relative z-10">
