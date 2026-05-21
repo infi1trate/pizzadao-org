@@ -613,28 +613,74 @@ const About = () => {
 
         {/* Final close — documentary ending */}
         <div className="relative overflow-hidden bg-[hsl(0_78%_54%)] py-36 md:py-52">
-          {/* Atmospheric grain — warmer, softer than paper-soft-dark */}
+          {/* L1 — coarse paper tooth: low frequency, multiply for darker fibres */}
           <div
-            className="pointer-events-none absolute inset-0 opacity-[0.09]"
+            className="pointer-events-none absolute inset-0 opacity-[0.32] mix-blend-multiply"
             style={{
-              backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.92  0 0 0 0 0.78  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>")`,
-              mixBlendMode: "screen",
+              backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='480' height='480'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.012 0.018' numOctaves='2' seed='7' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.15  0 0 0 0 0.02  0 0 0 0 0.02  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>")`,
+              backgroundSize: "480px 480px",
             }}
             aria-hidden="true"
           />
-          {/* Warm radial wash — analog depth */}
+          {/* L2 — high-frequency contrasty grain: pulled up for tactile bite */}
           <div
-            className="pointer-events-none absolute inset-0"
+            className="pointer-events-none absolute inset-0 opacity-[0.28] mix-blend-overlay"
             style={{
-              background: `radial-gradient(120% 80% at 18% 12%, hsl(44 80% 99% / 0.06), transparent 55%), radial-gradient(120% 90% at 88% 92%, hsl(0 78% 40% / 0.25), transparent 60%)`,
+              backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.88  0 0 0 0 0.72  0 0 0 1.2 -0.1'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>")`,
+              backgroundSize: "260px 260px",
             }}
             aria-hidden="true"
           />
-          {/* Single soft checkered strip — top only, softer */}
+          {/* L3 — bright warm grain pass: highlights, screen blend for sparkle */}
           <div
-            className="checker-tape absolute left-0 right-0 top-0 h-[3px] opacity-[0.12]"
+            className="pointer-events-none absolute inset-0 opacity-[0.10] mix-blend-screen"
+            style={{
+              backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='h'><feTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='2' seed='5' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.92  0 0 0 0 0.78  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23h)'/></svg>")`,
+            }}
             aria-hidden="true"
           />
+          {/* L4 — ink dispersion blobs: uneven pigment pooling, like screenprint */}
+          <div
+            className="pointer-events-none absolute inset-0 mix-blend-multiply"
+            style={{
+              background: `
+                radial-gradient(38% 28% at 14% 22%, hsl(0 80% 32% / 0.38), transparent 70%),
+                radial-gradient(42% 32% at 86% 78%, hsl(0 80% 28% / 0.42), transparent 72%),
+                radial-gradient(30% 24% at 72% 18%, hsl(0 75% 36% / 0.22), transparent 70%),
+                radial-gradient(34% 26% at 22% 84%, hsl(0 75% 34% / 0.28), transparent 72%)`,
+            }}
+            aria-hidden="true"
+          />
+          {/* L5 — warm highlight wash: where the squeegee lifted */}
+          <div
+            className="pointer-events-none absolute inset-0 mix-blend-screen"
+            style={{
+              background: `radial-gradient(60% 45% at 30% 18%, hsl(44 90% 96% / 0.10), transparent 60%), radial-gradient(50% 40% at 78% 88%, hsl(20 90% 88% / 0.06), transparent 60%)`,
+            }}
+            aria-hidden="true"
+          />
+          {/* L6 — faint misregistration streak: subtle squeegee pass */}
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.08] mix-blend-multiply"
+            style={{
+              backgroundImage: `repeating-linear-gradient(180deg, hsl(0 80% 28% / 0.5) 0px, transparent 1.5px, transparent 6px)`,
+            }}
+            aria-hidden="true"
+          />
+          {/* L7 — soft edge vignette: pulls focus, suggests paper edge */}
+          <div
+            className="pointer-events-none absolute inset-0 mix-blend-multiply"
+            style={{
+              background: `radial-gradient(120% 95% at 50% 50%, transparent 55%, hsl(0 80% 22% / 0.32) 100%)`,
+            }}
+            aria-hidden="true"
+          />
+          {/* Top checkered tape — kept, softer */}
+          <div
+            className="checker-tape absolute left-0 right-0 top-0 h-[3px] opacity-[0.14]"
+            aria-hidden="true"
+          />
+
 
           <div className="container relative">
             <div className="mx-auto max-w-[72ch]">
