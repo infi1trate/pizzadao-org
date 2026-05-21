@@ -256,11 +256,13 @@ const About = () => {
           <figure className="relative z-10 mt-8 md:mt-16">
             <div className="relative overflow-hidden bg-ink">
               <img
-                src={timeline2010}
-                alt="Archival reference to the 2010 Bitcoin pizza transaction"
+                src={RITUAL_PHOTO}
+                alt="Archival reference to a Bitcoin Pizza Day gathering"
                 loading="lazy"
+                decoding="async"
                 width={2400}
                 height={1200}
+                onError={(e) => { (e.currentTarget as HTMLImageElement).src = timeline2010; }}
                 className="grain block aspect-[21/10] w-full object-cover opacity-90"
               />
               {/* Cinematic vignette */}
