@@ -1084,6 +1084,7 @@ dont:  [all caps, corporate jargon]`}
                     href="https://github.com/pizzadao/pizzadao-brand-kit/blob/main/Brand.md"
                     target="_blank"
                     rel="noreferrer"
+                    onClick={() => track(EVT.BRAND_ASSET_DOWNLOADED, { asset: "brand_md", surface: "brand_md_section" })}
                     className="btn-pill bg-ink text-cream hover:bg-tomato"
                   >
                     <Download className="h-4 w-4" />
@@ -1093,12 +1094,14 @@ dont:  [all caps, corporate jargon]`}
                     href="https://github.com/pizzadao/pizzadao-brand-kit"
                     target="_blank"
                     rel="noreferrer"
+                    onClick={() => trackOutbound("Brand kit source", "https://github.com/pizzadao/pizzadao-brand-kit", { surface: "brand_md_section" })}
                     className="btn-pill border border-ink/20 bg-cream text-ink hover:border-ink hover:bg-butter"
                   >
                     <Github className="h-4 w-4" />
                     View source
                   </a>
                 </div>
+
               </article>
 
               {/* MCP */}
@@ -1374,10 +1377,12 @@ dont:  [all caps, corporate jargon]`}
                 href="https://t.me/+uF9BfD-pQz9kNTRh"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackOutbound("Graphic Review Telegram", "https://t.me/+uF9BfD-pQz9kNTRh", { surface: "flyers" })}
                 className="ui mt-6 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-cream transition-colors hover:bg-tomato"
               >
                 Open Graphic Review chat <ArrowUpRight className="h-4 w-4" />
               </a>
+
             </div>
 
             {/* Examples */}
