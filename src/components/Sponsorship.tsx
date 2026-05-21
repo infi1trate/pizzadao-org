@@ -237,21 +237,6 @@ const Sponsorship = () => {
                         <p className="text-[14px] leading-[1.55] text-ink/70 md:text-[15px]">
                           {vp.v}
                         </p>
-                        {i === 0 && (
-                          <span className="handwritten mt-1.5 block -rotate-[2deg] text-[11px] text-tomato/80 md:absolute md:right-0 md:top-0 md:mt-0">
-                            trusted globally
-                          </span>
-                        )}
-                        {i === 2 && (
-                          <span className="handwritten mt-1.5 block rotate-[1deg] text-[11px] text-tomato/80 md:absolute md:right-0 md:top-0 md:mt-0">
-                            community-first
-                          </span>
-                        )}
-                        {i === 3 && (
-                          <span className="handwritten mt-1.5 block -rotate-[1deg] text-[11px] text-tomato/80 md:absolute md:right-0 md:top-0 md:mt-0">
-                            IRL attention
-                          </span>
-                        )}
                       </div>
                     </div>
                   </li>
