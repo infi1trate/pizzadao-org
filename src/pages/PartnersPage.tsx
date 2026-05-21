@@ -346,7 +346,7 @@ const PartnersPage = () => {
                   <div className="relative col-span-2 mt-2 flex flex-col-reverse items-start gap-4 md:flex-row md:items-center md:justify-between md:gap-6">
                     <button
                       type="submit"
-                      className="group relative inline-flex items-center justify-center gap-2.5 bg-tomato px-7 py-4 text-sm font-semibold tracking-[0.03em] text-cream shadow-[0_10px_28px_-10px_hsl(var(--tomato)/0.6),0_3px_8px_-4px_hsl(0_0%_0%/0.3)] transition-all duration-500 ease-out hover:-translate-y-[3px] hover:bg-butter hover:text-ink hover:shadow-[0_18px_48px_-14px_hsl(var(--butter)/0.5),0_6px_14px_-6px_hsl(0_0%_0%/0.35)] md:px-9 md:py-5"
+                      className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-tomato px-7 py-4 text-sm font-semibold tracking-[0.03em] text-cream shadow-[0_10px_28px_-10px_hsl(var(--tomato)/0.6),0_3px_8px_-4px_hsl(0_0%_0%/0.3)] transition-all duration-500 ease-out hover:-translate-y-[3px] hover:bg-butter hover:text-ink hover:shadow-[0_18px_48px_-14px_hsl(var(--butter)/0.5),0_6px_14px_-6px_hsl(0_0%_0%/0.35)] md:px-9 md:py-5"
                     >
                       <span>Request a partnership brief</span>
                       <span aria-hidden className="transition-transform duration-500 ease-out group-hover:translate-x-1">→</span>

@@ -151,6 +151,11 @@
     transition-timing-function: var(--ease-editorial);
     transition-duration: var(--dur-fast);
   }
+
+  /* Sitewide button radius safeguard — utilities can still opt into larger pills */
+  button, [role="button"] {
+    border-radius: var(--button-radius, 0.5rem);
+  }
 }
 
 @layer components {
