@@ -424,10 +424,6 @@ const Sponsorship = () => {
                   {b.v}
                 </p>
 
-                {/* Rock Salt accent — always visible, subtle */}
-                <p className={`handwritten mt-7 ${b.tilt} text-tomato/80 text-[15px] leading-none`}>
-                  {b.accent}
-                </p>
 
                 {/* Annotation reveal on hover */}
                 <p className="ui mt-3 flex items-center gap-2 text-[10.5px] uppercase tracking-[0.22em] text-ink/55 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
