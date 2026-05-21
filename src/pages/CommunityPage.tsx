@@ -234,6 +234,36 @@ const CommunityPage = () => {
     document.title = "Community, PizzaDAO";
   }, []);
 
+  const openBuild = (i: number) => {
+    const b = BUILDS[i];
+    track(EVT.COMMUNITY_BUILD_VIEWED, {
+      name: b?.name,
+      index: i,
+      featured: Boolean(b?.featured),
+    });
+    setActiveBuild(i);
+  };
+
+  const openEmbed = (site: { name: string; url: string }) => {
+    track(EVT.COMMUNITY_BUILD_EMBED_OPENED, site);
+    setEmbedSite(site);
+  };
+
+  const openCalendar = (surface: string) => {
+    track(EVT.COMMUNITY_CALENDAR_OPENED, { surface });
+    setCalOpen(true);
+  };
+
+  const navigateGallery = (i: number) => {
+    setGalleryIndex((from) => {
+      if (from !== i) {
+        track(EVT.COMMUNITY_GALLERY_NAVIGATED, { from, to: i });
+      }
+      return i;
+    });
+  };
+
+
   return (
     <main className="min-h-screen bg-cream text-ink">
       <SiteNav solid />
