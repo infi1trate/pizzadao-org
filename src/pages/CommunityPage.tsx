@@ -10,6 +10,7 @@ import hands from "@/assets/hands-pizza.jpg";
 import pizzeria from "@/assets/pizzeria.jpg";
 import hourpayStage from "@/assets/hourpay-stage.jpg";
 import secretPineapple from "@/assets/secret-pineapple.jpg";
+import rsvPizza from "@/assets/rsv-pizza.png";
 import slice from "@/assets/slice.jpg";
 
 const WAYS_IN = [
@@ -181,7 +182,7 @@ const BUILDS: Build[] = [
     mission: "Open RSVPs, chapter dashboards, and proof-of-attendance in one stack.",
     context: "Tested live during Global Pizza Party 2026 across ~30k attendees worldwide, running hundreds of simultaneous parties in dozens of cities.",
     detail: "Now the default RSVP and check-in layer for chapter events, with public APIs so any community — pizza or otherwise — can use it.",
-    img: party,
+    img: rsvPizza,
     demo: "https://rsv.pizza",
     featured: true,
     metric: [
