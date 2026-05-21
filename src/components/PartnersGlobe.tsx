@@ -3,15 +3,31 @@
  *
  * Purpose: signal global reach and city density without behaving like an
  * interactive widget. No hover, no click, no tooltips. Slow rotation only.
+ *
+ * City dots are sourced from the same PizzaDAO city manifest used by the
+ * Global Pizza Party globe (lng/lat), projected orthographically onto the
+ * front hemisphere with a slow continuous yaw so the planet feels alive.
  */
-const PULSES = [
-  { top: "30%", left: "28%", delay: "0s" },   // North America
-  { top: "38%", left: "48%", delay: "1.2s" }, // Europe
-  { top: "55%", left: "44%", delay: "2.4s" }, // Africa
-  { top: "42%", left: "70%", delay: "0.6s" }, // Asia
-  { top: "70%", left: "78%", delay: "1.8s" }, // Oceania
-  { top: "68%", left: "32%", delay: "3.0s" }, // South America
-];
+import { useEffect, useRef, useState } from "react";
+import citiesData from "@/data/pizzadao-cities.json";
+
+type City = { name: string; coords: [number, number] };
+const CITIES: City[] = (citiesData as Array<{ name: string; coords: unknown }>)
+  .filter((c) => Array.isArray(c.coords) && (c.coords as number[]).length === 2)
+  .map((c) => ({ name: c.name, coords: c.coords as [number, number] }));
+
+// A handful of marquee chapters get the pulsing tomato ring treatment.
+const PULSE_NAMES = new Set([
+  "New York",
+  "London",
+  "Lagos",
+  "Tokyo",
+  "São Paulo",
+  "Sao Paulo",
+  "Sydney",
+  "Mumbai",
+  "Mexico City",
+]);
 
 const PartnersGlobe = () => {
   return (
