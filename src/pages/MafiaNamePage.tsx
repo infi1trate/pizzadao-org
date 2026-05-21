@@ -752,27 +752,41 @@ function SelectedFilmCard({ film, onChange }: { film: MafiaFilm; onChange: () =>
 
 function ToppingDrawer({ toppings, query, onPick }: { toppings: string[]; query: string; onPick: (t: string) => void }) {
   return (
-    <div>
-      <p className="ui text-[10px] uppercase tracking-[0.28em] text-ink/45">
+    <div className="relative">
+      {/* faint checkercloth */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -m-2 rounded-2xl opacity-[0.07]"
+        style={{
+          backgroundImage:
+            "linear-gradient(45deg, hsl(0 93% 60%) 25%, transparent 25%, transparent 75%, hsl(0 93% 60%) 75%), linear-gradient(45deg, hsl(0 93% 60%) 25%, transparent 25%, transparent 75%, hsl(0 93% 60%) 75%)",
+          backgroundSize: "22px 22px",
+          backgroundPosition: "0 0, 11px 11px",
+        }}
+      />
+      <p className="relative ui text-[10px] uppercase tracking-[0.28em] text-ink/45">
         {query ? "Matches" : "From the kitchen"}
       </p>
-      <div className="mt-4 flex flex-wrap gap-2.5">
-        {toppings.map((t) => {
+      <div className="relative mt-5 flex flex-wrap gap-3">
+        {toppings.map((t, i) => {
           const img = TOPPING_IMAGE[t];
+          // imperfect rhythm: tiny rotation per chip
+          const rot = ((i * 13) % 5) - 2;
           return (
             <button
               key={t}
               onClick={() => onPick(t)}
-              className="group inline-flex items-center gap-2.5 rounded-full border border-ink/15 bg-cream/80 py-1.5 pl-1.5 pr-4 text-left transition-all hover:-translate-y-0.5 hover:border-tomato hover:bg-cream hover:shadow-[0_10px_22px_-12px_hsl(0_93%_60%/0.4)]"
+              style={{ transform: `rotate(${rot * 0.3}deg)` }}
+              className="group inline-flex items-center gap-3 rounded-full border border-ink/15 bg-cream py-2 pl-2 pr-5 text-left shadow-[0_8px_18px_-12px_hsl(20_30%_15%/0.35)] transition-all hover:-translate-y-0.5 hover:rotate-0 hover:border-tomato hover:shadow-[0_14px_28px_-12px_hsl(0_93%_60%/0.5)]"
             >
-              <span className="grid h-8 w-8 place-items-center overflow-hidden rounded-full bg-ink/5 text-base">
+              <span className="grid h-11 w-11 place-items-center overflow-hidden rounded-full bg-ink/5 text-xl ring-1 ring-ink/10">
                 {img ? (
                   <img src={img} alt="" loading="lazy" className="h-full w-full object-cover" />
                 ) : (
                   <span>{TOPPING_EMOJI[t] ?? "🍕"}</span>
                 )}
               </span>
-              <span className="font-display text-[15px] font-black tracking-tight text-ink">{t}</span>
+              <span className="font-display text-[17px] font-black tracking-tight text-ink">{t}</span>
             </button>
           );
         })}
@@ -780,14 +794,14 @@ function ToppingDrawer({ toppings, query, onPick }: { toppings: string[]; query:
         {query.trim() && !toppings.some((t) => t.toLowerCase() === query.trim().toLowerCase()) && (
           <button
             onClick={() => onPick(query.trim())}
-            className="inline-flex items-center gap-2 rounded-full border-2 border-dashed border-tomato/40 bg-tomato/5 px-4 py-2 text-tomato hover:bg-tomato/10"
+            className="inline-flex items-center gap-2 rounded-full border-2 border-dashed border-tomato/40 bg-tomato/5 px-5 py-2.5 text-tomato hover:bg-tomato/10"
           >
             <Sparkles className="h-4 w-4" />
-            <span className="font-display text-sm font-black">Use "{query.trim()}"</span>
+            <span className="font-display text-[16px] font-black">Use "{query.trim()}"</span>
           </button>
         )}
       </div>
-      <p className="ui mt-4 text-[10px] uppercase tracking-[0.24em] text-ink/35">
+      <p className="relative ui mt-5 text-[10px] uppercase tracking-[0.24em] text-ink/35">
         Tap to choose · or type your own
       </p>
     </div>
