@@ -113,7 +113,7 @@ const Work = () => {
           return (
             <article
               key={p.title}
-              className={`${bg} ${isLast ? "pb-20 md:pb-32" : "pb-16 md:pb-24"} pt-16 md:pt-24`}
+              className={`${bg} ${isLast ? "pb-16 md:pb-32" : "pb-14 md:pb-24"} pt-14 md:pt-24`}
             >
               <div className="container">
                 <div
