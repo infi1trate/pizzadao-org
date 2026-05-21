@@ -421,9 +421,11 @@ const About = () => {
               <figure className="crop-marks relative">
                 <div className="grain relative overflow-hidden bg-ink">
                   <img
-                    src={community}
+                    src={FIELD_PHOTO}
                     alt="Hands reaching for pizza slices at a community gathering"
                     loading="lazy"
+                    decoding="async"
+                    onError={(e) => { (e.currentTarget as HTMLImageElement).src = community; }}
                     className="block aspect-[4/3] w-full object-cover"
                   />
                 </div>
