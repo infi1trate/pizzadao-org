@@ -939,6 +939,16 @@ function NameCard({
           </span>
         </span>
       )}
+
+      {/* handwritten margin note when selected */}
+      {isSelected && (
+        <span
+          aria-hidden
+          className="handwritten pointer-events-none absolute -bottom-3 right-4 rotate-[-6deg] text-[18px] text-tomato"
+        >
+          {primary ? "this guy" : "keep it"}
+        </span>
+      )}
     </button>
   );
 }
