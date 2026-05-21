@@ -45,11 +45,24 @@
     --destructive: var(--tomato);
     --destructive-foreground: var(--cream);
 
-    --border: 0 0% 8%;
-    --input: 0 0% 8%;
+    /* Warm institutional gray — replaces near-black borders site-wide */
+    --border: 30 12% 78%;
+    --input: 30 12% 78%;
     --ring: var(--ink);
+    --rule-warm: 30 14% 70%;
 
-    --radius: 0.875rem;
+    --radius: 1rem;
+
+    /* Motion tokens — cinematic, weighted, restrained */
+    --ease-editorial: cubic-bezier(0.22, 0.61, 0.24, 1);
+    --ease-filmic:   cubic-bezier(0.16, 0.84, 0.32, 1);
+    --dur-fast: 280ms;
+    --dur-base: 520ms;
+    --dur-slow: 900ms;
+
+    /* Soft ambient elevation — replaces SaaS drop shadows */
+    --shadow-soft:   0 1px 2px hsl(30 20% 12% / 0.04), 0 8px 28px -18px hsl(30 20% 12% / 0.18);
+    --shadow-lifted: 0 2px 4px hsl(30 20% 12% / 0.05), 0 18px 48px -24px hsl(30 20% 12% / 0.22);
 
     --sidebar-background: var(--cream);
     --sidebar-foreground: var(--ink);
@@ -78,8 +91,8 @@
     --accent-foreground: var(--cream);
     --destructive: var(--tomato);
     --destructive-foreground: var(--cream);
-    --border: 0 0% 100% / 0.15;
-    --input: 0 0% 100% / 0.15;
+    --border: 0 0% 100% / 0.12;
+    --input: 0 0% 100% / 0.12;
     --ring: var(--cream);
   }
 }
@@ -94,16 +107,35 @@
     font-weight: 400;
     font-feature-settings: "kern", "liga";
     text-rendering: optimizeLegibility;
+    position: relative;
+  }
+  /* Site-wide ultra-faint paper grain — printed institution, not pattern */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='280'><filter id='gn'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23gn)'/></svg>");
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    body::before { animation: bodyGrainDrift 38s linear infinite; }
+  }
+  @keyframes bodyGrainDrift {
+    0%   { background-position: 0 0; }
+    100% { background-position: 280px 0; }
   }
   h1, h2, h3, h4, h5, h6, .display {
     font-family: 'Asap Condensed', 'Asap', system-ui, sans-serif;
     font-weight: 800;
-    letter-spacing: -0.01em;
-    line-height: 0.92;
+    letter-spacing: -0.012em;
+    line-height: 0.94;
     text-transform: none;
     text-wrap: balance;
   }
-  p { text-wrap: pretty; }
+  p { text-wrap: pretty; line-height: 1.62; }
   .ui {
     font-family: 'Asap', system-ui, sans-serif;
     font-feature-settings: "kern", "liga";
@@ -113,6 +145,12 @@
     a, button { -webkit-tap-highlight-color: hsl(var(--tomato) / 0.15); }
   }
   ::selection { background: hsl(var(--tomato)); color: hsl(var(--cream)); }
+
+  /* Editorial transition default — cinematic, never bouncy */
+  a, button, [role="button"] {
+    transition-timing-function: var(--ease-editorial);
+    transition-duration: var(--dur-fast);
+  }
 }
 
 @layer components {
@@ -484,4 +522,43 @@
     border-color: hsl(var(--ink));
     color: hsl(var(--ink));
   }
+
+  /* ============================================================
+     Global hardening utilities — applied via existing classnames
+     ============================================================ */
+
+  /* Unified editorial surface — soft warm border + ambient depth.
+     Use on cards/panels/modules to replace ad-hoc borders+shadows. */
+  .surface-editorial {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--rule-warm) / 0.6);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-soft);
+    transition: box-shadow var(--dur-base) var(--ease-editorial),
+                transform var(--dur-base) var(--ease-editorial),
+                border-color var(--dur-base) var(--ease-editorial);
+  }
+  .surface-editorial:hover {
+    box-shadow: var(--shadow-lifted);
+    border-color: hsl(var(--rule-warm) / 0.9);
+  }
+
+  /* Soften every shadow utility globally so SaaS drop-shadows can't surface */
+  .shadow-sm   { box-shadow: 0 1px 2px hsl(30 20% 12% / 0.04) !important; }
+  .shadow,
+  .shadow-md   { box-shadow: var(--shadow-soft) !important; }
+  .shadow-lg,
+  .shadow-xl,
+  .shadow-2xl  { box-shadow: var(--shadow-lifted) !important; }
+
+  /* Tame default hover/transform micro-bounces site-wide */
+  .transition,
+  .transition-all,
+  .transition-transform,
+  .transition-colors {
+    transition-timing-function: var(--ease-editorial);
+  }
+
+  /* Editorial divider — warm hairline, replaces hard black rules where used */
+  .rule-warm { border-top: 1px solid hsl(var(--rule-warm) / 0.55); }
 }
