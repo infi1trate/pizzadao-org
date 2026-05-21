@@ -700,13 +700,13 @@ const About = () => {
               <div className="mt-16 flex flex-col items-start gap-4 sm:flex-row">
                 <a
                   href="/community"
-                  className="ui inline-flex items-center justify-center bg-cream px-10 py-4 text-xs font-semibold tracking-[0.22em] text-ink transition-colors hover:bg-[hsl(44_80%_99%)]"
+                  className="ui inline-flex items-center justify-center rounded-full bg-cream px-10 py-4 text-xs font-semibold tracking-[0.22em] text-ink transition-colors hover:bg-[hsl(44_80%_99%)]"
                 >
                   Find a city →
                 </a>
                 <a
                   href="/join"
-                  className="ui inline-flex items-center justify-center border border-[hsl(44_80%_92%_/0.35)] px-10 py-4 text-xs font-semibold tracking-[0.22em] text-[hsl(44_80%_92%_/0.85)] transition-colors hover:border-[hsl(44_80%_92%_/0.6)] hover:text-cream"
+                  className="ui inline-flex items-center justify-center rounded-full border border-[hsl(44_80%_92%_/0.35)] px-10 py-4 text-xs font-semibold tracking-[0.22em] text-[hsl(44_80%_92%_/0.85)] transition-colors hover:border-[hsl(44_80%_92%_/0.6)] hover:text-cream"
                 >
                   Host an event
                 </a>
