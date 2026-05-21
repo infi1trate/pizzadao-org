@@ -528,10 +528,10 @@ const About = () => {
           {/* Four numbers — emotionally restrained, editorial */}
           <dl className="mt-24 grid grid-cols-2 gap-x-8 gap-y-12 border-y border-ink/15 py-14 md:mt-32 md:grid-cols-4 md:gap-x-12 md:py-16">
             {[
-              { k: "Cities", v: "420+" },
-              { k: "Countries", v: "60+" },
-              { k: "Funded", v: "$1M+" },
-              { k: "Since", v: "2021" },
+              { k: "Cities", v: "400+" },
+              { k: "Countries", v: "65+" },
+              { k: "People fed", v: "20,000+" },
+              { k: "Pizzerias", v: "500+" },
             ].map((m) => (
               <div key={m.k}>
                 <dt className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/45">
