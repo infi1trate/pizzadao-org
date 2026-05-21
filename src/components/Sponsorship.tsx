@@ -280,6 +280,8 @@ const Sponsorship = () => {
         {/* Hairline top + bottom rules — editorial section markers */}
         <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/10" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-ink/10" />
+        {/* Photographic warmth — hands at work, integrated into right edge */}
+        <PhotoVeil variant="hands" position="right" opacity={0.05} blend="multiply" />
 
         <div className="container relative">
           <div className="relative pt-2 md:pt-4">
