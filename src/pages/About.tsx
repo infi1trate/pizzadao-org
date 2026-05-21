@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import PartnersGlobe from "@/components/PartnersGlobe";
 import timeline2010 from "@/assets/timeline-2010.jpg";
 import party from "@/assets/timeline-party.jpg";
+import community from "@/assets/community.jpg";
 
 const ROLES = [
   { name: "Chapter leads", note: "Organize local events and shape the city experience." },
