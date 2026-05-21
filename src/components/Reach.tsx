@@ -236,7 +236,7 @@ const Reach = () => {
                         className={`ui rounded-full border px-4 py-2 text-xs font-semibold transition-all ${
                           isActive
                             ? "border-tomato bg-tomato text-cream"
-                            : "border-ink/15 bg-white text-ink/75 hover:border-tomato hover:text-tomato"
+                            : "border-ink/15 bg-cream text-ink/75 hover:border-tomato hover:text-tomato"
                         }`}
                       >
                         {c.name}
