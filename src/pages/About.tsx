@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import PartnersGlobe from "@/components/PartnersGlobe";
 import timeline2010 from "@/assets/timeline-2010.jpg";
 import party from "@/assets/timeline-party.jpg";
+import community from "@/assets/community.jpg";
 
 const ROLES = [
   { name: "Chapter leads", note: "Organize local events and shape the city experience." },
@@ -351,43 +352,98 @@ const About = () => {
 
 
       {/* ────────────────────────────────────────────────────────────
-          ACT III — HOW IT ACTUALLY WORKS
-          Chapter leads · contributors · participants. Clean and structured.
+          ACT III — HOW IT RUNS
+          A clean breath. Calm, structured, credible. Intentionally light.
          ──────────────────────────────────────────────────────────── */}
-      <section className="bg-cream py-24 md:py-32">
-        <ActOpener
-          number="III"
-          title="How it actually works."
-          subtitle="Light by design. A small group coordinates the calendar; the rest happens in cities, on the ground, by people who decide to show up."
-        />
-
+      <section className="paper-soft relative overflow-hidden bg-cream py-24 md:py-32">
         <div className="container">
-          {/* 3-column ledger — restrained, structural */}
-          <div className="grid grid-cols-1 md:grid-cols-3">
+          {/* Archival band */}
+          <div className="flex items-center justify-between border-t border-ink/20 pb-10 pt-6">
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-tomato">
+              Act III — How It Runs
+            </span>
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/40">
+              Lightweight by design
+            </span>
+          </div>
+
+          {/* Title + intro */}
+          <div className="grid grid-cols-12 gap-x-8 gap-y-8 pb-20 md:pb-28">
+            <div className="col-span-12 md:col-span-5">
+              <h2 className="font-display text-[clamp(2.4rem,7vw,5rem)] font-extrabold leading-[0.86] tracking-[-0.025em]">
+                How it runs
+              </h2>
+            </div>
+            <div className="col-span-12 md:col-span-6 md:col-start-7">
+              <div className="font-serif max-w-[52ch] space-y-5 text-lg leading-[1.7] text-ink/80 md:text-xl">
+                <p>
+                  PizzaDAO stays intentionally lightweight.
+                </p>
+                <p>
+                  A small group helps coordinate funding, timing, and shared
+                  standards. Everything else happens through local organizers,
+                  contributors, and people who decide to show up.
+                </p>
+                <p className="text-ink">
+                  That structure lets every city feel different while still
+                  participating in the same global ritual.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* 3-column ledger — calm, structural, tactile */}
+          <div className="grid grid-cols-1 border-t border-ink/15 md:grid-cols-3">
             {ROLES.map((r, i) => (
               <article
                 key={r.name}
-                className="border-t border-ink/25 py-10 md:py-12 md:pr-10 md:[&:not(:first-child)]:pl-10 md:[&:not(:first-child)]:border-l md:[&:not(:first-child)]:border-ink/15"
+                className="border-b border-ink/10 py-10 md:border-b-0 md:border-l md:border-ink/10 md:py-12 md:px-10 md:first:border-l-0 md:first:pl-0"
               >
-                <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-tomato">
-                  Role {String(i + 1).padStart(2, "0")}
+                <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/40">
+                  {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="font-display mt-5 text-3xl font-extrabold leading-[0.95] md:text-[2rem]">
+                <h3 className="font-display mt-5 text-[1.65rem] font-extrabold leading-[0.95] md:text-[1.75rem]">
                   {r.name}
                 </h3>
-                <p className="font-serif mt-4 text-base leading-[1.7] text-ink/75">
+                <p className="font-serif mt-4 max-w-[32ch] text-base leading-[1.7] text-ink/70">
                   {r.note}
                 </p>
               </article>
             ))}
           </div>
 
-          {/* Quiet structural note */}
-          <p className="font-serif mt-16 max-w-[58ch] text-lg leading-[1.7] text-ink/65 md:mt-20">
-            There is no headquarters. There is a calendar, a shared standard,
-            and a network of people who keep choosing to make the date real
-            wherever they live.
-          </p>
+          {/* Documentary fragment + human detail */}
+          <div className="mt-16 grid grid-cols-12 gap-x-8 gap-y-8 md:mt-24">
+            {/* Small image fragment */}
+            <div className="col-span-12 md:col-span-4">
+              <figure className="crop-marks relative">
+                <div className="grain relative overflow-hidden bg-ink">
+                  <img
+                    src={community}
+                    alt="Hands reaching for pizza slices at a community gathering"
+                    loading="lazy"
+                    className="block aspect-[4/3] w-full object-cover"
+                  />
+                </div>
+                <figcaption className="ui mt-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/35">
+                  Fig. III.01 — Field note
+                </figcaption>
+              </figure>
+            </div>
+
+            {/* Human detail */}
+            <div className="col-span-12 flex items-end md:col-span-7 md:col-start-6">
+              <div className="border-l border-ink/15 pl-6 md:pl-10">
+                <p className="handwritten -rotate-1 text-base text-ink/70 md:text-lg">
+                  ↳ no one is in charge. everyone shows up.
+                </p>
+                <p className="font-serif mt-6 max-w-[40ch] text-base leading-[1.7] text-ink/55">
+                  That is the only operating principle that has stayed the same
+                  since the first pizza went out.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
