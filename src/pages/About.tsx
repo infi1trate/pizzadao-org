@@ -220,37 +220,44 @@ const About = () => {
                 Filed · Spring 2021
               </p>
               <p className="font-serif text-xl leading-[1.5] text-ink md:text-[1.6rem] md:leading-[1.45]">
-                PizzaDAO started in 2021 as a small group of people on the
-                internet, trying to throw a party in cities they'd never been to,
-                for people they'd never met.
+                PizzaDAO started in 2021 inside a Clubhouse room called
+                <em> The Room About Nothing</em> — strangers behind 8-bit
+                avatars, trying to throw a party in cities they'd never been
+                to, for people they'd never met.
               </p>
               <div className="font-serif mt-10 max-w-[62ch] space-y-5 text-lg leading-[1.75] text-ink/85">
                 <p>
                   It was the second year of the pandemic. Everyone had been
-                  inside for too long. Most of us had only ever known each other
-                  as usernames in a Discord server, talking about a fifteen-year-old
-                  story: the guy who paid 10,000 BTC for two pizzas, on May 22,
-                  2010.
+                  inside for too long. Most of us had only ever known each
+                  other as voices on a 1am audio call, talking about a
+                  fifteen-year-old story: the guy who paid 10,000 BTC for two
+                  pizzas, on May 22, 2010.
                 </p>
                 <p>
-                  Someone joked we should buy pizza for strangers on that day,
-                  in every city we could reach. A few weeks later we were
-                  actually trying to do it. Spreadsheets at 2am. Telegram
-                  threads in four languages. Delivery apps that refused foreign
-                  cards. Organizers in cities we'd never visited, texting "I
-                  think I found a pizzeria, but they only take cash."
+                  An admin named Snax kept saying — with absolute, slightly
+                  unreasonable certainty — that we should use digital art to
+                  buy real pizza for strangers, in every city we could reach.
+                  A few weeks later we were actually doing it. Three hundred
+                  artists contributed pizza toppings. A Hollywood effects
+                  artist helped wire them into ten thousand algorithmically
+                  generated NFTs, randomness verified on-chain. On Pi Day
+                  2021, reservations opened. Five hours later, half a million
+                  dollars had come in. The project — RarePizzas — would
+                  eventually raise around $1.3M, all of it pointed at pizza.
                 </p>
                 <p>
-                  We had no idea if anyone would actually show up. Most of the
-                  organizers had never met each other in person. Some had
-                  never met anyone from the internet, period.
+                  Then May 22 came. People walked outside. Strangers
+                  introduced themselves. Photos started coming in from Lagos,
+                  Seoul, Manila, Brooklyn — pizza boxes on sidewalks, kids
+                  dancing in the street, organizers grinning at their phones
+                  because the thing they'd been typing about for months had
+                  a face now.
                 </p>
                 <p>
-                  Then May 22 came. People walked outside. Strangers introduced
-                  themselves. Photos started coming in from Lagos, Buenos Aires,
-                  Manila, Brooklyn — pizza boxes on sidewalks, people eating
-                  on curbs, organizers grinning at their phones because the
-                  thing they'd been typing about for months had a face now.
+                  We finally met each other in person later that year, at
+                  NFTNYC. Most of us had never seen the faces behind the
+                  voices we'd been building with for nine months. Someone
+                  brought Benny, the mascot. He's been on every table since.
                 </p>
                 <p className="text-ink">
                   That was the moment the internet became a room you could
