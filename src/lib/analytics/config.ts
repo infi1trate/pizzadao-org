@@ -25,6 +25,7 @@ export const HIGH_INTENT_PATHS = [
   "/contact",
   "/get-your-mafia-name",
   "/partners",
+  "/community",
 ];
 
 /** Global session-replay sampling rate (0–1). High-intent paths always record. */
