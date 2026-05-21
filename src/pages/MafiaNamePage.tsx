@@ -608,7 +608,14 @@ const MafiaNamePage = () => {
           topping={topping}
           avatarUrl={avatarUrl}
           avatarLoading={avatarLoading}
-          onRegenerateAvatar={() => generateAvatar(finalName)}
+          onRegenerateAvatar={() => {
+            track(EVT.MAFIA_AVATAR_REDRAW, {
+              mafia_name: finalName,
+              movie: film?.title,
+              topping,
+            });
+            generateAvatar(finalName, { redraw: true });
+          }}
           onShare={shareName}
           onReset={reset}
         />
