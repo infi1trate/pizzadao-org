@@ -217,6 +217,31 @@ const MafiaNamePage = () => {
     if (film) await generate(film, t);
   };
 
+  const generateAvatar = async (chosenName: string) => {
+    if (!film || !topping) return;
+    setAvatarLoading(true);
+    setAvatarUrl(null);
+    try {
+      const { data, error } = await supabase.functions.invoke("generate-mafia-avatar", {
+        body: {
+          name: chosenName,
+          topping,
+          filmTitle: film.title,
+          filmTone: film.tone,
+        },
+      });
+      if (error) throw error;
+      if ((data as any)?.error) throw new Error((data as any).error);
+      const img = (data as any)?.image;
+      if (img) setAvatarUrl(img);
+    } catch (e) {
+      // Silent — dossier still works without avatar
+      console.warn("avatar gen failed", e);
+    } finally {
+      setAvatarLoading(false);
+    }
+  };
+
   const handleClaim = async () => {
     if (!film || !topping || selectedIdx === null) return;
     const chosen = editing ? editedName.trim() : names[selectedIdx].name;
@@ -241,6 +266,8 @@ const MafiaNamePage = () => {
       });
       setClaimed(true);
       setStep("claim");
+      // Fire avatar generation in parallel with the ceremony
+      generateAvatar(chosen);
     } catch (e: any) {
       toast({
         title: "Could not seal the envelope",
