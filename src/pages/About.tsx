@@ -12,6 +12,23 @@ import community from "@/assets/community.jpg";
 const HERO_PHOTO   = findPhoto("Lagos")?.src       ?? party;
 const RITUAL_PHOTO = findPhoto("Buenos Aires")?.src ?? timeline2010;
 
+// Small documentary polaroids — pinned to the origin column for warmth.
+const ORIGIN_POLAROIDS = [
+  { src: findPhoto("Manila")?.src ?? findPhoto("Bangkok")?.src ?? community, city: "Manila", note: "first run, 2021", tilt: "-rotate-[3deg]", offset: "translate-y-0" },
+  { src: findPhoto("Brooklyn")?.src ?? findPhoto("New York")?.src ?? party,  city: "Brooklyn", note: "rooftop, may 22",  tilt: "rotate-[2.2deg]",  offset: "translate-y-4" },
+  { src: findPhoto("Lagos")?.src ?? findPhoto("Nairobi")?.src ?? timeline2010, city: "Lagos",  note: "boxes & friends", tilt: "-rotate-[1.4deg]", offset: "translate-y-2" },
+];
+
+// Contact-strip — three faces of one global night, end of the Ritual section.
+const RITUAL_STRIP = [
+  { src: findPhoto("Buenos Aires")?.src ?? party,    city: "Buenos Aires", stamp: "22.05 · 23:14" },
+  { src: findPhoto("Nairobi")?.src ?? community,     city: "Nairobi",      stamp: "22.05 · 19:02" },
+  { src: findPhoto("Detroit")?.src ?? timeline2010,  city: "Detroit",      stamp: "22.05 · 21:47" },
+  { src: findPhoto("Bangkok")?.src ?? party,         city: "Bangkok",      stamp: "23.05 · 01:30" },
+];
+
+const THESIS_PHOTO = findPhoto("Rio de Janeiro")?.src ?? findPhoto("Medellín")?.src ?? community;
+
 const ROLES = [
   { name: "Chapter leads", note: "Organize local events and shape the city experience." },
   { name: "Contributors", note: "Help with design, logistics, partnerships, content, and operations." },
