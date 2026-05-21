@@ -14,9 +14,8 @@ const RITUAL_PHOTO = findPhoto("Buenos Aires")?.src ?? timeline2010;
 
 // Small documentary polaroids — pinned to the origin column for warmth.
 const ORIGIN_POLAROIDS = [
-  { src: findPhoto("Manila")?.src ?? findPhoto("Bangkok")?.src ?? community, city: "Manila", note: "first run, 2021", tilt: "-rotate-[3deg]", offset: "translate-y-0" },
-  { src: findPhoto("Brooklyn")?.src ?? findPhoto("New York")?.src ?? party,  city: "Brooklyn", note: "rooftop, may 22",  tilt: "rotate-[2.2deg]",  offset: "translate-y-4" },
-  { src: findPhoto("Lagos")?.src ?? findPhoto("Nairobi")?.src ?? timeline2010, city: "Lagos",  note: "boxes & friends", tilt: "-rotate-[1.4deg]", offset: "translate-y-2" },
+  { src: findPhoto("New York")?.src ?? party, city: "New York", note: "NFTNYC · the reveal", tilt: "-rotate-[2.6deg]", offset: "translate-y-0" },
+  { src: findPhoto("Lagos")?.src ?? findPhoto("Nairobi")?.src ?? timeline2010, city: "Lagos", note: "may 22 · first party", tilt: "rotate-[1.8deg]", offset: "translate-y-3" },
 ];
 
 // Contact-strip — three faces of one global night, end of the Ritual section.
