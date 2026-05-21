@@ -208,8 +208,8 @@ const Sponsorship = () => {
 
 
       {/* Value props — refined capabilities overview */}
-      <div className="container mt-10 md:mt-14">
-        <div className="grid grid-cols-12 gap-x-6 gap-y-6">
+      <div className="container mt-8 md:mt-12">
+        <div className="grid grid-cols-12 gap-x-6 gap-y-5">
           <div className="col-span-12 md:col-span-4">
             <p className="overline text-tomato">What you receive</p>
             <h3 className="font-display mt-2 text-display-2 font-extrabold leading-[0.95] tracking-[0.005em] text-ink">
@@ -217,7 +217,7 @@ const Sponsorship = () => {
               <br />
               <span className="text-ink">we deliver.</span>
             </h3>
-            <p className="mt-3 text-[15px] leading-relaxed text-ink/60">
+            <p className="mt-2 text-[15px] leading-relaxed text-ink/60">
               Bespoke programs built on these foundations.
             </p>
           </div>
