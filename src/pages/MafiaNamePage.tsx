@@ -89,6 +89,8 @@ const MafiaNamePage = () => {
   const [claiming, setClaiming] = useState(false);
   const [claimed, setClaimed] = useState(false);
   const [finalePhase, setFinalePhase] = useState(0);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const [avatarLoading, setAvatarLoading] = useState(false);
 
   const generateCountRef = useRef(0);
   const filmInputRef = useRef<HTMLInputElement>(null);
