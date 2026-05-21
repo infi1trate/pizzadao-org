@@ -1066,6 +1066,27 @@ const CommunityPage = () => {
       </section>
 
 
+      {/* Embedded site modal (e.g. Arcade) */}
+      <Dialog open={embedSite !== null} onOpenChange={(o) => !o && setEmbedSite(null)}>
+        <DialogContent className="max-w-6xl bg-ink p-0 sm:rounded-lg overflow-hidden">
+          {embedSite && (
+            <div className="flex h-[85vh] flex-col">
+              <DialogHeader className="border-b border-cream/10 px-5 py-3">
+                <DialogTitle className="ui text-[11px] font-semibold uppercase tracking-[0.22em] text-cream">
+                  {embedSite.name}
+                </DialogTitle>
+              </DialogHeader>
+              <iframe
+                src={embedSite.url}
+                title={embedSite.name}
+                className="h-full w-full flex-1 bg-ink"
+                allow="autoplay; fullscreen; gamepad"
+              />
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
       {/* Project deep-dive modal */}
       <Dialog open={activeBuild !== null} onOpenChange={(o) => !o && setActiveBuild(null)}>
         <DialogContent className="max-w-2xl bg-cream p-0">
