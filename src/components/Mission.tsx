@@ -10,9 +10,9 @@ const Mission = () => {
           </div>
           <div className="col-span-12 md:col-span-10">
             <h2 className="font-display text-[clamp(2.5rem,7.5vw,7rem)] font-extrabold leading-[0.92]">
-              Our mission is to{" "}
-              <span className="handwritten text-tomato text-[1.05em]">build community</span>{" "}
-              and support local businesses by bringing people together around a shared love for pizza.
+              Our mission is to build community
+              and support local businesses by bringing people together around a{" "}
+              <span className="handwritten text-tomato text-[1.05em]">shared love for pizza</span>.
             </h2>
 
             <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-x-6">
