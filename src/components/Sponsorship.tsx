@@ -304,15 +304,21 @@ const Sponsorship = () => {
             </div>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 md:mt-12 md:grid-cols-2 md:gap-7 lg:grid-cols-3">
+          <div className="mt-10 grid grid-cols-1 gap-6 md:mt-12 md:grid-cols-2 md:gap-7 lg:grid-cols-3 lg:auto-rows-fr">
             {[
               {
                 k: "Global Moments",
-                v: "Large-scale activations across hundreds of cities, built to create shared global experiences.",
+                v: "Large-scale activations across hundreds of cities, built to create shared global experiences. One brief, one weekend, hundreds of independent chapters showing up in parallel.",
                 note: "500+ cities, one weekend",
                 accent: "global",
                 stamp: "WORLDWIDE",
                 tilt: "-rotate-[1.2deg]",
+                featured: true,
+                stats: [
+                  { k: "Cities", v: "500+" },
+                  { k: "Continents", v: "6" },
+                  { k: "Lead time", v: "8 wks" },
+                ],
                 motif: (
                   <svg viewBox="0 0 200 120" className="absolute -right-6 -top-4 h-28 w-44 text-ink/[0.07]" fill="none" stroke="currentColor" strokeWidth="0.8">
                     <ellipse cx="100" cy="60" rx="80" ry="40" />
@@ -320,6 +326,33 @@ const Sponsorship = () => {
                     <ellipse cx="100" cy="60" rx="40" ry="40" />
                     <ellipse cx="100" cy="60" rx="20" ry="40" />
                     <path d="M20 60h160M30 35h140M30 85h140" />
+                  </svg>
+                ),
+                motifLg: (
+                  <svg viewBox="0 0 400 260" className="pointer-events-none absolute -right-12 -bottom-10 h-[280px] w-[460px] text-ink/[0.07]" fill="none" stroke="currentColor" strokeWidth="0.7">
+                    <ellipse cx="200" cy="130" rx="170" ry="90" />
+                    <ellipse cx="200" cy="130" rx="135" ry="90" />
+                    <ellipse cx="200" cy="130" rx="100" ry="90" />
+                    <ellipse cx="200" cy="130" rx="60" ry="90" />
+                    <ellipse cx="200" cy="130" rx="20" ry="90" />
+                    <path d="M30 130h340M40 80h320M40 180h320M40 50h320M40 210h320" />
+                    {/* network dots — chapter cities */}
+                    <g fill="currentColor" stroke="none">
+                      <circle cx="80" cy="80" r="2" />
+                      <circle cx="135" cy="55" r="1.6" />
+                      <circle cx="170" cy="90" r="2.2" />
+                      <circle cx="220" cy="65" r="1.8" />
+                      <circle cx="265" cy="100" r="2" />
+                      <circle cx="310" cy="80" r="1.6" />
+                      <circle cx="105" cy="170" r="1.8" />
+                      <circle cx="160" cy="195" r="2" />
+                      <circle cx="225" cy="180" r="1.6" />
+                      <circle cx="285" cy="170" r="2.2" />
+                      <circle cx="335" cy="195" r="1.6" />
+                    </g>
+                    {/* faint arcs */}
+                    <path d="M80 80 Q 200 -10 320 80" strokeDasharray="2 3" />
+                    <path d="M105 170 Q 200 260 295 170" strokeDasharray="2 3" />
                   </svg>
                 ),
                 icon: (
@@ -420,60 +453,141 @@ const Sponsorship = () => {
                   </svg>
                 ),
               },
-            ].map((b, i) => (
-              <article
-                key={b.k}
-                className="group paper-soft paper-drift relative flex flex-col overflow-hidden rounded-[14px] bg-cream p-6 shadow-[0_2px_0_hsl(var(--ink)/0.06),0_18px_40px_-30px_hsl(var(--ink)/0.25)] ring-1 ring-ink/10 transition-all duration-500 ease-out hover:-translate-y-[5px] hover:rotate-[-0.2deg] hover:bg-cream-warm hover:shadow-[0_40px_90px_-40px_hsl(var(--ink)/0.4),0_10px_30px_-18px_hsl(var(--ink)/0.22)] hover:ring-tomato/25 md:p-8"
-                style={{
-                  borderTopLeftRadius: i % 2 === 0 ? "18px" : "12px",
-                  borderBottomRightRadius: i % 2 === 0 ? "12px" : "18px",
-                  transform: i % 3 === 1 ? "translateY(10px)" : undefined,
-                }}
-              >
-                {/* Decorative motif fragment */}
-                {b.motif}
-
-                {/* Corner stamp */}
-                <span
-                  aria-hidden
-                  className={`ui absolute right-4 top-4 ${b.tilt} rounded-full border border-ink/15 px-2 py-[3px] text-[8.5px] font-semibold uppercase tracking-[0.22em] text-ink/55 transition-colors duration-500 group-hover:border-tomato/40 group-hover:text-tomato`}
+            ].map((b, i) => {
+              const featured = b.featured;
+              return (
+                <article
+                  key={b.k}
+                  className={`group paper-soft paper-drift relative flex flex-col overflow-hidden ring-1 ring-ink/10 transition-all duration-500 ease-out hover:-translate-y-[5px] hover:rotate-[-0.2deg] hover:ring-tomato/30 ${
+                    featured
+                      ? "lg:col-span-2 lg:row-span-2 rounded-[18px] bg-cream-warm p-7 md:p-10 lg:p-12 shadow-[0_3px_0_hsl(var(--ink)/0.08),0_30px_70px_-30px_hsl(28_60%_30%/0.35),0_10px_24px_-12px_hsl(var(--tomato)/0.18)] hover:shadow-[0_55px_120px_-40px_hsl(28_60%_25%/0.45),0_14px_36px_-14px_hsl(var(--tomato)/0.28)]"
+                      : "rounded-[14px] bg-cream p-6 md:p-8 shadow-[0_2px_0_hsl(var(--ink)/0.06),0_22px_50px_-32px_hsl(28_50%_25%/0.32)] hover:bg-cream-warm hover:shadow-[0_44px_100px_-44px_hsl(28_55%_22%/0.42),0_12px_30px_-16px_hsl(var(--tomato)/0.22)]"
+                  }`}
+                  style={{
+                    borderTopLeftRadius: featured ? "22px" : i % 2 === 0 ? "18px" : "12px",
+                    borderBottomRightRadius: featured ? "14px" : i % 2 === 0 ? "12px" : "18px",
+                  }}
                 >
-                  {b.stamp}
-                </span>
+                  {/* Inner grain — tactile paper feel */}
+                  <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.22]" />
+                  {/* Soft warm wash for emotional energy */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                      background: featured
+                        ? "radial-gradient(ellipse at 85% 90%, hsl(var(--butter) / 0.28) 0%, transparent 55%), radial-gradient(ellipse at 15% 10%, hsl(var(--tomato) / 0.06) 0%, transparent 50%)"
+                        : "radial-gradient(ellipse at 80% 100%, hsl(var(--butter) / 0.14) 0%, transparent 60%)",
+                    }}
+                  />
 
-                <div className="relative flex items-start justify-between">
-                  <span className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/45">
-                    Fig. {String(i + 1).padStart(2, "0")}
-                  </span>
+                  {/* Decorative motif fragment */}
+                  {featured ? b.motifLg : b.motif}
+
+                  {/* Featured ribbon — tiny editorial mark */}
+                  {featured && (
+                    <span
+                      aria-hidden
+                      className="ui absolute left-0 top-7 rounded-r-full bg-tomato px-3 py-1 text-[9.5px] font-semibold uppercase tracking-[0.24em] text-cream shadow-[0_6px_14px_-6px_hsl(var(--tomato)/0.55)]"
+                    >
+                      Featured · Fig. 01
+                    </span>
+                  )}
+
+                  {/* Corner stamp */}
                   <span
                     aria-hidden
-                    className="h-7 w-7 text-ink/35 transition-colors duration-500 group-hover:text-tomato"
+                    className={`ui absolute right-4 top-4 ${b.tilt} rounded-full border border-ink/15 px-2 py-[3px] text-[8.5px] font-semibold uppercase tracking-[0.22em] text-ink/55 transition-colors duration-500 group-hover:border-tomato/40 group-hover:text-tomato`}
                   >
-                    {b.icon}
+                    {b.stamp}
                   </span>
-                </div>
 
-                <h4 className="font-display relative mt-8 text-[1.85rem] font-extrabold leading-[1.02] tracking-[-0.018em] transition-colors duration-500 group-hover:text-tomato md:mt-10 md:text-[2.05rem]">
-                  {b.k}
-                </h4>
+                  <div className="relative flex items-start justify-between">
+                    {!featured && (
+                      <span className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/45">
+                        Fig. {String(i + 1).padStart(2, "0")}
+                      </span>
+                    )}
+                    {featured && <span aria-hidden className="block h-5" />}
+                    <span
+                      aria-hidden
+                      className={`${featured ? "h-9 w-9 text-tomato/70" : "h-7 w-7 text-ink/35"} transition-colors duration-500 group-hover:text-tomato`}
+                    >
+                      {b.icon}
+                    </span>
+                  </div>
 
-                {/* Imperfect underline */}
-                <svg aria-hidden viewBox="0 0 120 6" className="mt-2.5 h-[6px] w-20 text-ink/30 transition-colors duration-500 group-hover:text-tomato" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
-                  <path d="M2 3 Q 30 1 60 3 T 118 3" />
-                </svg>
+                  <h4
+                    className={`font-display relative font-extrabold tracking-[-0.018em] transition-colors duration-500 group-hover:text-tomato ${
+                      featured
+                        ? "mt-12 text-[2.4rem] leading-[0.98] md:mt-16 md:text-[3.1rem] lg:text-[3.5rem]"
+                        : "mt-8 text-[1.85rem] leading-[1.02] md:mt-10 md:text-[2.05rem]"
+                    }`}
+                  >
+                    {b.k}
+                  </h4>
 
-                <p className="font-serif mt-4 text-[15px] leading-[1.65] text-ink/75 md:text-[15.5px]">
-                  {b.v}
-                </p>
+                  {/* Imperfect underline */}
+                  <svg
+                    aria-hidden
+                    viewBox="0 0 120 6"
+                    className={`mt-2.5 h-[6px] transition-colors duration-500 group-hover:text-tomato ${
+                      featured ? "w-32 text-tomato/60" : "w-20 text-ink/30"
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                    strokeLinecap="round"
+                  >
+                    <path d="M2 3 Q 30 1 60 3 T 118 3" />
+                  </svg>
 
+                  <p
+                    className={`font-serif text-ink/75 ${
+                      featured
+                        ? "mt-5 max-w-[42ch] text-[16.5px] leading-[1.6] md:text-[17.5px] md:leading-[1.55]"
+                        : "mt-4 text-[15px] leading-[1.65] md:text-[15.5px]"
+                    }`}
+                  >
+                    {b.v}
+                  </p>
 
-                {/* Annotation reveal on hover */}
-                <p className="ui mt-3 flex items-center gap-2 text-[10.5px] uppercase tracking-[0.22em] text-ink/55 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                  <span aria-hidden className="inline-block h-px w-6 bg-tomato" />
-                  ↳ {b.note}
-                </p>
-              </article>
-            ))}
+                  {/* Featured mini-stats row */}
+                  {featured && b.stats && (
+                    <dl className="relative mt-6 grid grid-cols-3 gap-x-4 border-t border-ink/15 pt-5 md:mt-8 md:pt-6">
+                      {b.stats.map((s) => (
+                        <div key={s.k}>
+                          <dd className="font-display text-[1.6rem] font-extrabold leading-none tracking-[-0.02em] text-ink md:text-[1.85rem]">
+                            {s.v}
+                          </dd>
+                          <dt className="ui mt-1.5 text-[9.5px] font-medium uppercase tracking-[0.22em] text-ink/50">
+                            {s.k}
+                          </dt>
+                        </div>
+                      ))}
+                    </dl>
+                  )}
+
+                  {/* Spacer pushes annotation to bottom on featured */}
+                  {featured && <div className="flex-1" aria-hidden />}
+
+                  {/* Annotation — always visible on featured, reveal on others */}
+                  <p
+                    className={`ui mt-4 flex items-center gap-2 text-[10.5px] uppercase tracking-[0.22em] ${
+                      featured
+                        ? "text-tomato"
+                        : "text-ink/55 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    }`}
+                  >
+                    <span
+                      aria-hidden
+                      className={`inline-block h-px ${featured ? "w-8 bg-tomato" : "w-6 bg-tomato"}`}
+                    />
+                    ↳ {b.note}
+                  </p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>
