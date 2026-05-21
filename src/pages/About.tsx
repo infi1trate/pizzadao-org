@@ -433,8 +433,6 @@ const About = () => {
          ──────────────────────────────────────────────────────────── */}
       <section className="paper-soft relative overflow-hidden bg-cream py-32 md:py-48">
         <div className="container relative">
-
-        <div className="container relative">
           {/* Overline */}
           <p className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/40">
             Why this works
