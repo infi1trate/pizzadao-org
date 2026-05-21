@@ -184,27 +184,28 @@ const About = () => {
               </h3>
             </div>
             <div className="col-span-12 md:col-span-7 md:col-start-6">
-              <div className="font-serif max-w-[60ch] space-y-5 text-lg leading-[1.7] text-ink/85 md:text-xl">
+            <div className="font-serif max-w-[60ch] space-y-5 text-lg leading-[1.7] text-ink/85 md:text-xl">
                 <p>
-                  During the pandemic, online communities exploded, but most of
-                  them still ended at the screen.
+                  The internet had plenty of rooms. What it didn't have was a
+                  table.
                 </p>
                 <p>
-                  PizzaDAO started with a simple experiment: send pizza to
-                  people we had never met and see what happened.
+                  In 2021, a few people in a Discord server tried ordering
+                  pizza for strangers in other cities, just to see who would
+                  come.
                 </p>
                 <p>
-                  At first, it was small and disorganized. Late night Discord
-                  calls. People coordinating deliveries across borders.
-                  Organizers wondering if anyone would actually show up.
+                  Nobody knew if it would work. Spreadsheets at 2am. Delivery
+                  apps failing on foreign addresses. Organizers texting, "are you
+                  actually going?" Most had never been in the same room.
                 </p>
                 <p>
-                  Then people kept showing up. Some cities had twenty people.
-                  Some took over entire blocks. Most organizers had never met
-                  in person before.
+                  Then someone opened a door and people were outside. Six
+                  people and a box. Or a sidewalk spilling over. No permits. No
+                  plan B.
                 </p>
                 <p className="text-ink">
-                  That uncertainty became part of the culture.
+                  The uncertainty was the point.
                 </p>
               </div>
             </div>
