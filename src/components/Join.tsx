@@ -1,5 +1,6 @@
 import joinHero from "@/assets/join-hero.jpg";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const STEPS = [
   {
@@ -29,10 +30,6 @@ const STEPS = [
 ];
 
 const Join = () => {
-  const handleGetStarted = () => {
-    // Intent: trigger onboarding modal (modal implementation pending)
-    window.dispatchEvent(new CustomEvent("open-onboarding"));
-  };
 
   return (
     <section id="join" className="relative overflow-hidden bg-tomato text-cream">
@@ -64,16 +61,15 @@ const Join = () => {
                 Identity, not membership.
               </p>
               <p className="mt-4 max-w-md text-base leading-relaxed text-cream/85">
-                Four steps. No fees, no forms, no gatekeeping.
+                Four steps. No fees, no forms, no gatekeeping. Start with your alias.
               </p>
-              <button
-                type="button"
-                onClick={handleGetStarted}
+              <Link
+                to="/get-your-mafia-name"
                 className="btn-pill-lg group mt-8 bg-cream text-ink hover:bg-butter"
               >
-                Get started
+                Get your Mafia name
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>
