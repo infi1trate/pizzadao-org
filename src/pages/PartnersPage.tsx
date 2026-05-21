@@ -3,6 +3,7 @@ import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
 import Sponsorship from "@/components/Sponsorship";
 import PartnersGlobe from "@/components/PartnersGlobe";
+import PartnerActivations from "@/components/PartnerActivations";
 import PhotoVeil from "@/components/PhotoVeil";
 import { track } from "@/lib/analytics/posthog";
 import { EVT } from "@/lib/analytics/events";
@@ -233,6 +234,9 @@ const PartnersPage = () => {
       </section>
 
 
+
+      {/* Activation gallery — field photography from partner moments */}
+      <PartnerActivations />
 
       {/* Inquiry — warm close, hospitality cues */}
       <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-14 text-cream md:py-16">
