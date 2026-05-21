@@ -118,34 +118,49 @@ const About = () => {
         <div className="container">
           <div className="grid grid-cols-12 gap-x-8 gap-y-8">
             <div className="col-span-12 md:col-span-4">
-              <p className="overline text-tomato">Why it started</p>
+              <p className="overline text-tomato">How it started</p>
               <h2 className="font-display mt-5 text-[clamp(2rem,4.5vw,3.25rem)] font-extrabold leading-[0.95]">
-                The internet needed a table.
+                A Discord server, a holiday, and a hunch.
               </h2>
             </div>
             <div className="col-span-12 md:col-span-7 md:col-start-6">
               <p className="font-serif text-xl leading-[1.55] text-ink md:text-2xl">
-                PizzaDAO is a global community that gathers people around shared
-                tables, in hundreds of cities, every May 22.
+                PizzaDAO started in 2021 as a small group of people on the
+                internet, trying to throw a party in cities they'd never been to,
+                for people they'd never met.
               </p>
               <div className="font-serif mt-10 max-w-[62ch] space-y-5 text-lg leading-[1.75] text-ink/85">
                 <p>
-                  The internet had plenty of rooms. What it didn't have was a table.
+                  It was the second year of the pandemic. Everyone had been
+                  inside for too long. Most of us had only ever known each other
+                  as usernames in a Discord server, talking about a fifteen-year-old
+                  story: the guy who paid 10,000 BTC for two pizzas, on May 22,
+                  2010.
                 </p>
                 <p>
-                  In 2021, a few people in a Discord server tried ordering pizza
-                  for strangers in other cities, just to see who would come.
+                  Someone joked we should buy pizza for strangers on that day,
+                  in every city we could reach. A few weeks later we were
+                  actually trying to do it. Spreadsheets at 2am. Telegram
+                  threads in four languages. Delivery apps that refused foreign
+                  cards. Organizers in cities we'd never visited, texting "I
+                  think I found a pizzeria, but they only take cash."
                 </p>
                 <p>
-                  Spreadsheets at 2am. Delivery apps failing on foreign addresses.
-                  Organizers texting, "are you actually going?" Most had never
-                  been in the same room.
+                  We had no idea if anyone would actually show up. Most of the
+                  organizers had never met each other in person. Some had
+                  never met anyone from the internet, period.
                 </p>
                 <p>
-                  Then someone opened a door and people were outside. Six people
-                  and a box. Or a sidewalk spilling over. No permits. No plan B.
+                  Then May 22 came. People walked outside. Strangers introduced
+                  themselves. Photos started coming in from Lagos, Buenos Aires,
+                  Manila, Brooklyn — pizza boxes on sidewalks, people eating
+                  on curbs, organizers grinning at their phones because the
+                  thing they'd been typing about for months had a face now.
                 </p>
-                <p className="text-ink">The uncertainty was the point.</p>
+                <p className="text-ink">
+                  That was the moment the internet became a room you could
+                  walk into.
+                </p>
               </div>
             </div>
           </div>
