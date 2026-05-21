@@ -13,7 +13,7 @@ const Hero = () => {
 
   return (
     <section id="top" className="relative bg-tomato text-cream">
-      <div className="container relative pt-28 pb-10 md:pt-36 md:pb-14">
+      <div className="container relative pt-24 pb-12 md:pt-36 md:pb-14">
         {/* Headline + supporting column */}
         <div className="grid grid-cols-12 gap-x-6 gap-y-8 md:gap-y-10">
           <div className="col-span-12 md:col-span-9">
@@ -58,7 +58,7 @@ const Hero = () => {
             <img
               src={heroCrowd}
               alt="A packed Bitcoin Pizza Day crowd glowing under amber stage lights at a global PizzaDAO event"
-              className="block aspect-[4/5] w-full object-cover md:aspect-[16/10]"
+              className="block aspect-[3/4] w-full object-cover md:aspect-[16/10]"
               width={1920}
               height={1200}
               fetchPriority="high"

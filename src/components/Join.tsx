@@ -75,7 +75,7 @@ const Join = () => {
             {STEPS.map((s) => (
               <article
                 key={s.title}
-                className={`flex flex-col rounded-2xl p-6 md:p-7 ${s.bg}`}
+                className={`flex flex-col rounded-2xl p-5 md:p-7 ${s.bg}`}
               >
                 <h4 className="font-display text-2xl font-extrabold leading-tight md:text-[1.625rem]">
                   {s.title}
@@ -88,7 +88,7 @@ const Join = () => {
           </div>
 
           {/* Closing line */}
-          <div className="mt-16 rounded-2xl border border-cream/40 py-12 text-center md:mt-20 md:py-16">
+          <div className="mt-14 rounded-2xl border border-cream/40 px-5 py-10 text-center md:mt-20 md:py-16">
             <p className="font-display text-display-2 font-extrabold leading-[0.96]">
               There's always room at the table.
             </p>
