@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
-import PartnersGlobe from "@/components/PartnersGlobe";
+import CinematicGlobe from "@/components/CinematicGlobe";
 import timeline2010 from "@/assets/timeline-2010.jpg";
 import party from "@/assets/timeline-party.jpg";
 import community from "@/assets/community.jpg";
@@ -502,64 +502,113 @@ const About = () => {
           ACT IV — GLOBAL SCALE
           The signature globe moment.
          ──────────────────────────────────────────────────────────── */}
-      <section className="paper-soft relative overflow-hidden bg-cream-warm py-28 md:py-40">
+      <section className="relative overflow-hidden bg-ink py-32 md:py-48 text-cream">
+        {/* Deep space wash */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.08]"
+          className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 40%, hsl(var(--tomato)) 0%, transparent 60%)",
+              "radial-gradient(ellipse at 50% 55%, hsl(225 50% 10%) 0%, hsl(230 60% 4%) 55%, hsl(0 0% 0%) 100%)",
           }}
+        />
+        {/* Faint global light pattern */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-screen"
+          style={{
+            backgroundImage:
+              "radial-gradient(1px 1px at 12% 22%, hsl(var(--cream)) 50%, transparent 51%), radial-gradient(1px 1px at 78% 68%, hsl(var(--cream)) 50%, transparent 51%), radial-gradient(1px 1px at 34% 80%, hsl(var(--cream)) 50%, transparent 51%), radial-gradient(1px 1px at 88% 14%, hsl(var(--cream)) 50%, transparent 51%), radial-gradient(1px 1px at 56% 38%, hsl(var(--cream)) 50%, transparent 51%)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="grain pointer-events-none absolute inset-0 opacity-[0.18]"
         />
 
         <div className="container relative">
-          <div className="flex items-center justify-between border-t border-ink/20 pb-12 pt-6">
-            <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-tomato">
+          {/* Archival header — minimal chrome */}
+          <div className="flex items-center justify-between border-t border-cream/15 pb-20 pt-6 md:pb-28">
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.32em] text-tomato">
               Act IV — Global Scale
             </span>
-            <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/40">
-              420+ cities · 6 continents · 1 night
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.24em] text-cream/40">
+              Archive · transmissions · 2021 →
             </span>
           </div>
 
-          <div className="grid grid-cols-12 items-center gap-x-10 gap-y-16">
-            <div className="col-span-12 md:col-span-5">
-              <h2 className="font-display text-[clamp(2.6rem,7.5vw,5.5rem)] font-extrabold leading-[0.86] tracking-[-0.02em]">
-                One night.
-                <br />
-                <span className="text-ink/55">Everywhere at once.</span>
-              </h2>
-              <p className="font-serif mt-8 max-w-[42ch] text-lg leading-[1.7] text-ink/75 md:text-xl">
-                Every city brings its own version of the same idea. The
-                footprint isn't a map of branches — it's the shape of a
-                ritual the internet learned to carry across borders.
-              </p>
-              <p className="handwritten mt-8 -rotate-1 text-base text-tomato">
-                ↳ one weekend, every continent
-              </p>
-            </div>
-
-            <div className="col-span-12 md:col-span-7">
-              <PartnersGlobe />
-            </div>
+          {/* Headline — quiet, centered, breathing */}
+          <div className="mx-auto max-w-[22ch] text-center">
+            <h2 className="font-display text-[clamp(2.6rem,7.2vw,5.6rem)] font-extrabold leading-[0.92] tracking-[-0.02em]">
+              A ritual with a
+              <br />
+              <span className="italic font-serif font-normal text-cream/75">
+                global footprint.
+              </span>
+            </h2>
           </div>
 
-          <div className="mt-16 grid grid-cols-2 gap-px border-t border-ink/15 pt-10 md:grid-cols-4">
-            {[
-              { k: "Cities", v: "420+" },
-              { k: "Funding", v: "$1M+" },
-              { k: "Attendees", v: "20K+" },
-              { k: "Return rate", v: "92%" },
-            ].map((s) => (
-              <div key={s.k} className="px-2 md:px-6 md:first:pl-0">
-                <div className="font-display text-4xl font-extrabold leading-none tracking-[-0.02em] md:text-[3rem]">
-                  {s.v}
-                </div>
-                <div className="ui mt-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/55">
-                  {s.k}
-                </div>
+          {/* The globe — the moment */}
+          <div className="relative mt-20 md:mt-28">
+            {/* Faint archival photo wisps flanking the globe */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-0 top-1/2 hidden -translate-y-1/2 lg:block"
+              style={{ width: "16%" }}
+            >
+              <div className="relative aspect-[3/4] overflow-hidden opacity-[0.18]">
+                <img
+                  src={party}
+                  alt=""
+                  className="h-full w-full object-cover grayscale"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, hsl(230 60% 4%) 0%, transparent 60%, hsl(230 60% 4%) 100%)",
+                  }}
+                />
               </div>
-            ))}
+              <div className="ui mt-3 text-[9px] font-semibold uppercase tracking-[0.28em] text-cream/35">
+                Fig. IV.01 — Brooklyn, 2022
+              </div>
+            </div>
+            <div
+              aria-hidden
+              className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 lg:block"
+              style={{ width: "16%" }}
+            >
+              <div className="relative aspect-[3/4] overflow-hidden opacity-[0.18]">
+                <img
+                  src={community}
+                  alt=""
+                  className="h-full w-full object-cover grayscale"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(-90deg, hsl(230 60% 4%) 0%, transparent 60%, hsl(230 60% 4%) 100%)",
+                  }}
+                />
+              </div>
+              <div className="ui mt-3 text-right text-[9px] font-semibold uppercase tracking-[0.28em] text-cream/35">
+                Fig. IV.02 — Lagos, 2023
+              </div>
+            </div>
+
+            <CinematicGlobe />
+          </div>
+
+          {/* Supporting copy — minimal, centered, late */}
+          <div className="mx-auto mt-20 max-w-[44ch] text-center md:mt-28">
+            <p className="font-serif text-lg leading-[1.75] text-cream/70 md:text-xl">
+              Every city brings its own version of the same idea.
+            </p>
+            <p className="ui mt-10 text-[10px] font-semibold uppercase tracking-[0.32em] text-cream/35">
+              2021 — 2024 · 6 continents
+            </p>
           </div>
         </div>
       </section>
