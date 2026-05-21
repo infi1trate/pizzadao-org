@@ -229,7 +229,7 @@ const Sponsorship = () => {
                 return (
                   <li
                     key={vp.n}
-                    className="group relative border-b border-ink/15 py-5 md:py-6"
+                    className="group relative border-b border-ink/15 py-4 md:py-5"
                   >
                     <div className="grid grid-cols-12 items-start gap-x-4 gap-y-2">
                       <div className="col-span-12 md:col-span-5">
