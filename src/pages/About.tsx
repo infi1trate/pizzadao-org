@@ -483,116 +483,69 @@ const About = () => {
           ACT IV — GLOBAL SCALE
           The signature globe moment.
          ──────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-ink py-32 md:py-48 text-cream">
-        {/* Deep space wash */}
+      <section className="relative overflow-hidden bg-ink py-28 md:py-40 text-cream">
+        {/* Deep paper-dark wash */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 55%, hsl(225 50% 10%) 0%, hsl(230 60% 4%) 55%, hsl(0 0% 0%) 100%)",
-          }}
-        />
-        {/* Faint global light pattern */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-screen"
-          style={{
-            backgroundImage:
-              "radial-gradient(1px 1px at 12% 22%, hsl(var(--cream)) 50%, transparent 51%), radial-gradient(1px 1px at 78% 68%, hsl(var(--cream)) 50%, transparent 51%), radial-gradient(1px 1px at 34% 80%, hsl(var(--cream)) 50%, transparent 51%), radial-gradient(1px 1px at 88% 14%, hsl(var(--cream)) 50%, transparent 51%), radial-gradient(1px 1px at 56% 38%, hsl(var(--cream)) 50%, transparent 51%)",
+              "radial-gradient(ellipse at 50% 0%, hsl(225 30% 12%) 0%, hsl(230 40% 6%) 55%, hsl(0 0% 0%) 100%)",
           }}
         />
         <div
           aria-hidden
-          className="grain pointer-events-none absolute inset-0 opacity-[0.18]"
+          className="grain pointer-events-none absolute inset-0 opacity-[0.22]"
         />
 
         <div className="container relative">
           {/* Archival header — minimal chrome */}
-          <div className="flex items-center justify-between border-t border-cream/15 pb-20 pt-6 md:pb-28">
+          <div className="flex items-center justify-between border-t border-cream/15 pb-16 pt-6 md:pb-24">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.32em] text-tomato">
-              Act IV — Global Scale
+              Act IV — The Archive
             </span>
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.24em] text-cream/40">
-              Archive · transmissions · 2021 →
+              Global Pizza Party · 2021 → 2024
             </span>
           </div>
 
-          {/* Headline — quiet, centered, breathing */}
-          <div className="mx-auto max-w-[22ch] text-center">
-            <h2 className="font-display text-[clamp(2.6rem,7.2vw,5.6rem)] font-extrabold leading-[0.92] tracking-[-0.02em]">
-              A ritual with a
-              <br />
-              <span className="italic font-serif font-normal text-cream/75">
-                global footprint.
-              </span>
-            </h2>
+          {/* Headline — left-aligned, large, breathing */}
+          <div className="grid grid-cols-12 gap-x-6 gap-y-8 pb-20 md:pb-28">
+            <div className="col-span-12 md:col-span-8">
+              <h2 className="font-display text-[clamp(2.6rem,8.5vw,7rem)] font-extrabold leading-[0.86] tracking-[-0.028em]">
+                People kept
+                <br />
+                <span className="italic font-serif font-normal text-cream/80">
+                  showing up.
+                </span>
+              </h2>
+            </div>
+            <div className="col-span-12 md:col-span-4 md:pt-6">
+              <p className="font-serif max-w-[36ch] text-lg leading-[1.65] text-cream/70 md:text-xl">
+                Year after year, cities around the world kept gathering around
+                the same simple idea.
+              </p>
+              <p className="ui mt-8 text-[10px] font-semibold uppercase tracking-[0.32em] text-cream/35">
+                Selected frames · 17 cities · 4 years
+              </p>
+            </div>
           </div>
 
-          {/* The globe — the moment */}
-          <div className="relative mt-20 md:mt-28">
-            {/* Faint archival photo wisps flanking the globe */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute left-0 top-1/2 hidden -translate-y-1/2 lg:block"
-              style={{ width: "16%" }}
-            >
-              <div className="relative aspect-[3/4] overflow-hidden opacity-[0.18]">
-                <img
-                  src={party}
-                  alt=""
-                  className="h-full w-full object-cover grayscale"
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, hsl(230 60% 4%) 0%, transparent 60%, hsl(230 60% 4%) 100%)",
-                  }}
-                />
-              </div>
-              <div className="ui mt-3 text-[9px] font-semibold uppercase tracking-[0.28em] text-cream/35">
-                Fig. IV.01 — Brooklyn, 2022
-              </div>
-            </div>
-            <div
-              aria-hidden
-              className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 lg:block"
-              style={{ width: "16%" }}
-            >
-              <div className="relative aspect-[3/4] overflow-hidden opacity-[0.18]">
-                <img
-                  src={community}
-                  alt=""
-                  className="h-full w-full object-cover grayscale"
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(-90deg, hsl(230 60% 4%) 0%, transparent 60%, hsl(230 60% 4%) 100%)",
-                  }}
-                />
-              </div>
-              <div className="ui mt-3 text-right text-[9px] font-semibold uppercase tracking-[0.28em] text-cream/35">
-                Fig. IV.02 — Lagos, 2023
-              </div>
-            </div>
+          {/* The wall */}
+          <ArchivalWall />
 
-            <CinematicGlobe />
-          </div>
-
-          {/* Supporting copy — minimal, centered, late */}
-          <div className="mx-auto mt-20 max-w-[44ch] text-center md:mt-28">
-            <p className="font-serif text-lg leading-[1.75] text-cream/70 md:text-xl">
-              Every city brings its own version of the same idea.
-            </p>
-            <p className="ui mt-10 text-[10px] font-semibold uppercase tracking-[0.32em] text-cream/35">
-              2021 — 2024 · 6 continents
-            </p>
+          {/* Closing field note */}
+          <div className="mt-20 flex flex-wrap items-baseline justify-between gap-4 border-t border-cream/15 pt-6 md:mt-28">
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.32em] text-cream/40">
+              Field archive · ongoing
+            </span>
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.24em] text-cream/30">
+              Hover for city &amp; year
+            </span>
           </div>
         </div>
       </section>
+
 
       {/* ────────────────────────────────────────────────────────────
           ACT V — THE MEMORY
