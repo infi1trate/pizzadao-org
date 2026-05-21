@@ -107,16 +107,35 @@
     font-weight: 400;
     font-feature-settings: "kern", "liga";
     text-rendering: optimizeLegibility;
+    position: relative;
+  }
+  /* Site-wide ultra-faint paper grain — printed institution, not pattern */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='280'><filter id='gn'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23gn)'/></svg>");
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    body::before { animation: bodyGrainDrift 38s linear infinite; }
+  }
+  @keyframes bodyGrainDrift {
+    0%   { background-position: 0 0; }
+    100% { background-position: 280px 0; }
   }
   h1, h2, h3, h4, h5, h6, .display {
     font-family: 'Asap Condensed', 'Asap', system-ui, sans-serif;
     font-weight: 800;
-    letter-spacing: -0.01em;
-    line-height: 0.92;
+    letter-spacing: -0.012em;
+    line-height: 0.94;
     text-transform: none;
     text-wrap: balance;
   }
-  p { text-wrap: pretty; }
+  p { text-wrap: pretty; line-height: 1.62; }
   .ui {
     font-family: 'Asap', system-ui, sans-serif;
     font-feature-settings: "kern", "liga";
@@ -126,6 +145,12 @@
     a, button { -webkit-tap-highlight-color: hsl(var(--tomato) / 0.15); }
   }
   ::selection { background: hsl(var(--tomato)); color: hsl(var(--cream)); }
+
+  /* Editorial transition default — cinematic, never bouncy */
+  a, button, [role="button"] {
+    transition-timing-function: var(--ease-editorial);
+    transition-duration: var(--dur-fast);
+  }
 }
 
 @layer components {
