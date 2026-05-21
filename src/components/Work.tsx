@@ -85,7 +85,7 @@ const Work = () => {
         <div className="border-t-2 border-ink pt-8 md:pt-10">
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
             <div className="col-span-12 md:col-span-8">
-              <p className="overline text-tomato">§ 05, Our Work</p>
+              <p className="overline text-tomato">Our Work</p>
               <h2 className="font-display mt-5 text-[clamp(3rem,8.5vw,7rem)] font-extrabold leading-[0.86] tracking-[-0.01em]">
                 Three pillars.
                 <br />

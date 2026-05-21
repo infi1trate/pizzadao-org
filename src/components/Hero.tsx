@@ -65,7 +65,7 @@ const Hero = () => {
             />
           </div>
           <figcaption className="ui mt-4 flex flex-col items-start justify-between gap-1.5 text-[10px] uppercase tracking-[0.22em] text-cream/75 md:flex-row md:items-center md:text-[11px]">
-            <span>Fig. 01, Global Pizza Party · worldwide</span>
+            <span>Global Pizza Party · worldwide</span>
             <span className="text-cream/55">75+ cities · 6 continents · one slice at a time</span>
           </figcaption>
         </figure>

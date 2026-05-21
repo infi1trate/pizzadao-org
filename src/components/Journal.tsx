@@ -78,7 +78,7 @@ const Journal = () => {
         <div className="border-t-2 border-ink pt-8 md:pt-10">
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
             <div className="col-span-12 md:col-span-7">
-              <p className="overline text-tomato">§ 09, The Journal</p>
+              <p className="overline text-tomato">The Journal</p>
               <h2 className="font-display mt-4 text-display-1 font-extrabold leading-[0.88]">
                 A living
                 <br />
@@ -108,7 +108,7 @@ const Journal = () => {
       <div className="container mt-16 md:mt-24">
         <div className="border-t-2 border-ink pt-6">
           <div className="flex items-center justify-between">
-            <p className="overline text-tomato">Cover Story · Vol. V</p>
+            <p className="overline text-tomato">Cover Story</p>
             <span className="ui text-[10px] uppercase tracking-[0.18em] text-ink/45">
               The lead
             </span>
@@ -135,7 +135,7 @@ const Journal = () => {
                 ● Lead Story
               </span>
               <figcaption className="ui pointer-events-none absolute bottom-4 left-5 right-5 flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-cream/85 mix-blend-difference">
-                <span>Fig. 09, Origin Story</span>
+                <span>Origin Story</span>
                 <span>Substack · Brandon Forant</span>
               </figcaption>
             </figure>

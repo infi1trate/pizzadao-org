@@ -20,7 +20,7 @@ const Mafia = () => {
         <div className="grid grid-cols-12 gap-x-6 gap-y-12 border-t-2 border-ink pt-10 md:gap-y-16">
           {/* LEFT, editorial statement */}
           <div className="col-span-12 md:col-span-6">
-            <p className="overline text-tomato">§ 04, The Pizza Mafia</p>
+            <p className="overline text-tomato">The Pizza Mafia</p>
             <h2 className="font-display mt-5 text-[clamp(3rem,9vw,7.5rem)] font-extrabold leading-[0.86] tracking-[-0.01em]">
               5 Years.
               <br />
@@ -79,7 +79,7 @@ const Mafia = () => {
               </div>
             </div>
             <p className="ui mt-4 text-[10px] uppercase tracking-[0.22em] text-ink/55">
-              Fig. 04, The membership wall · always scrolling
+              The membership wall · always scrolling
             </p>
           </div>
         </div>

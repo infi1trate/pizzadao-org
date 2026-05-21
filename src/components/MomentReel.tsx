@@ -33,7 +33,7 @@ const MomentReel = () => {
         <div className="grid grid-cols-12 items-center gap-x-4 gap-y-12 md:gap-x-6">
           {/* LEFT, copy */}
           <div className="col-span-12 md:col-span-7 lg:col-span-7">
-            <p className="overline text-tomato">§ 06, Live from the Mafia</p>
+            <p className="overline text-tomato">Live from the Mafia</p>
             <h2 className="font-display mt-4 text-display-1 font-extrabold leading-[0.92]">
               Real rooms.
               <br />

@@ -75,7 +75,7 @@ const Timeline = () => {
         <div className="border-t-2 border-ink pt-8 md:pt-10">
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-6">
             <div className="col-span-12 md:col-span-7">
-              <p className="overline text-tomato">§ 03, The Mythology</p>
+              <p className="overline text-tomato">The Mythology</p>
               <h2 className="font-display mt-4 text-display-1 font-extrabold leading-[0.88]">
                 A meal that
                 <br />

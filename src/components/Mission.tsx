@@ -6,7 +6,7 @@ const Mission = () => {
       <div className="container py-24 md:py-36">
         <div className="grid grid-cols-12 gap-x-6 gap-y-10">
           <div className="col-span-12 md:col-span-2">
-            <p className="overline text-tomato">§ 02, Mission</p>
+            <p className="overline text-tomato">Mission</p>
           </div>
           <div className="col-span-12 md:col-span-10">
             <h2 className="font-display text-[clamp(2.5rem,7.5vw,7rem)] font-extrabold leading-[0.92]">
