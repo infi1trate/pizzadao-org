@@ -251,7 +251,7 @@ const Sponsorship = () => {
                 <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.88] tracking-[-0.02em] md:mt-5">
                   What we build
                   <br />
-                  <span className="handwritten text-ink/55 text-[1.05em]">together.</span>
+                  <span className="handwritten text-tomato text-[1.05em]">together.</span>
                 </h3>
               </div>
 
