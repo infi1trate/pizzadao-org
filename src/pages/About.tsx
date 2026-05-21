@@ -170,15 +170,25 @@ const About = () => {
       {/* ── ORIGIN ───────────────────────────────────────────────── */}
       <section className="bg-cream py-24 md:py-36">
         <div className="container">
+          {/* Tiny archive slip — field-note framing */}
+          <div className="mb-10 flex items-baseline justify-between border-t border-ink/15 pt-5 md:mb-14">
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/45">
+              § 01 — Origin · 2020–2021
+            </span>
+            <span className="ui hidden text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/35 md:inline">
+              Discord · #pizza-day
+            </span>
+          </div>
+
           <div className="grid grid-cols-12 gap-x-8 gap-y-8">
             <div className="col-span-12 md:col-span-4">
               <p className="overline text-tomato">How it started</p>
-              <h2 className="font-display mt-5 text-[clamp(2rem,4.5vw,3.25rem)] font-extrabold leading-[0.95]">
+              <h2 className="font-display mt-5 text-[clamp(2rem,4.6vw,3.4rem)] font-extrabold leading-[0.94] tracking-[-0.02em]">
                 A Discord server, a holiday, and a hunch.
               </h2>
 
               {/* Pinned polaroid trio — tactile field-archive warmth */}
-              <div className="mt-12 hidden md:flex md:items-start md:gap-3">
+              <div className="mt-14 hidden md:flex md:items-start md:gap-3">
                 {ORIGIN_POLAROIDS.map((p, i) => (
                   <figure
                     key={p.city}
@@ -210,7 +220,12 @@ const About = () => {
               </div>
             </div>
             <div className="col-span-12 md:col-span-7 md:col-start-6">
-              <p className="font-serif text-xl leading-[1.55] text-ink md:text-2xl">
+              {/* Tiny dateline — restrained archival cue */}
+              <p className="ui mb-5 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/45">
+                <span aria-hidden className="h-px w-8 bg-ink/30" />
+                Filed · Spring 2021
+              </p>
+              <p className="font-serif text-xl leading-[1.5] text-ink md:text-[1.6rem] md:leading-[1.45]">
                 PizzaDAO started in 2021 as a small group of people on the
                 internet, trying to throw a party in cities they'd never been to,
                 for people they'd never met.
