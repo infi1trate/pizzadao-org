@@ -29,11 +29,6 @@ const RITUAL_STRIP = [
 
 const THESIS_PHOTO = findPhoto("Rio de Janeiro")?.src ?? findPhoto("Medellín")?.src ?? community;
 
-const ROLES = [
-  { name: "Chapter leads", note: "Organize local events and shape the city experience." },
-  { name: "Contributors", note: "Help with design, logistics, partnerships, content, and operations." },
-  { name: "Participants", note: "Show up, bring friends, share pizza, and keep the ritual alive." },
-];
 
 const PRESS: Array<{ outlet: string; line: string; href: string; kind?: "video" }> = [
   {
