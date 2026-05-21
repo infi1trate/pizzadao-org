@@ -1,55 +1,83 @@
-# Source the Archive from real PizzaDAO photos
+# Mafia Name — Ceremony + Avatar Refactor
 
-## What I found
+Refocus `/get-your-mafia-name` from an editorial identity microsite into a playful, tactile **mafia alias generator**. The user is **claiming a name**, not discovering themselves. Keep the strong bones (oversized inputs, deliberation animation, asymmetric name hierarchy) and dial up warmth, humor, paper texture, and mob-notebook personality. Add a generated cartoon mafia **avatar** as the centerpiece of a dossier-style final card.
 
-The **Global Pizza Party 2026** project doesn't bundle photos — its gallery streams them straight from a public PizzaDAO GitHub repo:
+---
 
-```
-https://raw.githubusercontent.com/PizzaDAO/dow-pizza-party/main/public/photos/{slug}/2025/{filename}
-```
+## 1. Hero refactor
 
-The list of cities + filenames lives in `src/data/cityManifest.ts` (~200 cities across Americas / Europe / Asia / Africa / Oceania / Middle East), with curated captions and "featured" highlights in `src/lib/galleryData.ts`. This is real, documentary event photography — exactly the brief.
+- Headline: **"Claim your mafia name."**
+- Subhead: **"Choose a film. Choose a topping. The family handles the rest."**
+- Strip philosophical/abstract copy. Direct, confident, memorable.
 
-Because the URLs are public, we don't need the Drive connector, an upload, or any backend. We can hotlink the same images.
+## 2. Inputs — tighten copy, keep oversized fields
 
-## Plan
+- Film placeholder → **"What's your mafia movie?"**
+- Topping placeholder → **"What's your topping?"**
+- Keep oversized rounded inputs, contextual drawers, progressive reveal.
+- After film select: compact **dossier summary** — `TITLE · YEAR · COUNTRY` + a 2–4 word tone tag (e.g. "Quiet power.", "Operatic.").
+- Topping chips: **+15–20% size**, warmer shadows, faint checker-cloth texture behind the drawer, slightly imperfect grid rhythm. Bigger ingredient glyphs.
 
-### 1. Port the photo manifest into this project
-- Copy `src/data/cityManifest.ts` and `src/lib/galleryData.ts` from the GPP 2026 project into this one (light trim — drop the `highlight` field if unused here).
-- Keep the same `PHOTO_BASE` URL so we reuse the public CDN.
+## 3. Deliberation animation — keep, add mob-notebook overlays
 
-### 2. Rebuild the Act IV archival wall to draw from the manifest
-In `src/components/ArchivalWall.tsx`:
-- Replace the hand-authored `FRAMES` array with a curated draw from `getGalleryFeed()`.
-- Curate, don't dump: pick ~18–22 photos spread across regions, preferring cities with multiple frames (better odds of crowd/table/night shots). Deterministic selection so the layout is stable across renders.
-- Map each pick onto the existing asymmetric slot system (col-start / col-span / row-span / aspect / parallax drift / tone). Same cinematic grid, real photos.
-- Hover caption now reads from real data: `city`, `country` + flag, optional editorial `caption`.
-- Add lightweight `onError` fallback: if a remote image 404s, hide the frame so we never show a broken tile.
+Keep the cycling/blur/flicker. Layer in scribbled annotations using **Rock Salt** font (annotations only — never primary UI):
+- crossed-out candidate names
+- margin notes: "nah", "too obvious", "watch this guy", "capo material", "this one?"
+- flickering aliases
 
-### 3. Replace remaining placeholder photography across the About page
-The About page currently reuses a handful of local stock-ish JPGs (`party.jpg`, `community.jpg`, `timeline-2010.jpg`, etc.) in three other spots:
+## 4. Name reveal — less gallery, more archive
 
-| Section | Current image | Swap to |
-|---|---|---|
-| Act I — The Spark (hero) | `party.jpg` | A strong crowd shot from the manifest (e.g. Lagos / NYC / Buenos Aires) |
-| Act II — The Ritual (May 22 cinematic) | `timeline-2010.jpg` | A night-scene party photo (Tokyo / Berlin / Seoul) |
-| Act III — How it runs (field-note fragment) | `community.jpg` | A quieter, documentary-feel shot (Naples / Lisbon / Cape Town) |
+- Keep 1 dominant + 2 alternates, asymmetric.
+- Reduce big empty spacing; introduce **card overlap, paper layering, tape/paperclip energy**.
+- Hover/select: paper lift, warm shadow, red underline, small **APPROVED** stamp drops, Rock Salt margin scribble appears ("this guy", "made", "earner").
+- No checkbox/SaaS hover states.
 
-Each swap keeps the existing layout, treatments, and alt text patterns — only `src` changes, plus an `onError` fallback to the original local asset so nothing breaks if the remote URL ever moves.
+## 5. Selection dock
 
-### 4. Keep the editorial tone intact
-- No new sections, no logo wall, no captions added beyond what already exists.
-- Same tone treatments (warm/cool/mono), same grain, same hover-only caption reveal.
-- Headline + supporting copy in Act IV stay as written ("People kept showing up.").
+Restyle the floating dock as a **mafia paperwork tray**: warmer light, deeper shadow, subtle grain + paper texture, embossed feel. Same functions (edit, copy, claim).
 
-## Technical notes
+## 6. Avatar system (NEW)
 
-- Remote images are hotlinked from `raw.githubusercontent.com`. That's how GPP 2026 ships today; no CORS/CDN issues for `<img>` tags.
-- Add `loading="lazy"` and `decoding="async"` on all wall frames (already done for the wall; will extend to the new swaps).
-- Deterministic curation uses a seeded picker keyed off the manifest order so SSR/CSR render the same frames every time.
-- No new dependencies. No schema or backend changes.
+Generate a cartoon mafia avatar tied to the chosen movie + topping + name. Style reference: the uploaded turkey/cookie-eyepatch portraits — rubber-hose cartoon, thick outlines, circular frame, warm muted palette, mischievous, pizza details (sausage cigar, pizza-slice eyepatch, pizza lapel pin, feathered fedora, gold chain, marinara stain).
 
-## Out of scope
+**Implementation:**
+- New edge function `generate-mafia-avatar` calling Lovable AI image model `google/gemini-2.5-flash-image` (Nano Banana) with a style-locked prompt that interpolates topping motif, film tone, and name.
+- Returns a base64 PNG; cached per `(film, topping, name)` to avoid regenerating.
+- Displayed on the final card; downloadable as PNG; "regenerate" action available.
 
-- A full `/gallery` route — this plan only touches the About page.
-- Pulling the Drive folder you originally referenced. (Still possible later if you connect Google Drive; the public GitHub repo gives us better coverage for now.)
+## 7. Final card — PizzaDAO Family Paperwork
+
+Transform the claim card into a dossier artifact:
+- Layered textured paper, subtle folds/stains, taped-photo avatar, paperclip, red **APPROVED** ink stamp, embossed PizzaDAO seal.
+- Contents: avatar, claimed name, optional alias, handwritten annotations (Rock Salt), family registry no., movie + topping references, initiation status, share/download/claim-again actions.
+- Microcopy: **YOU'VE BEEN MADE.**, **FAMILY RECORD**, **STATUS: MADE**, **ARCHIVE NO. 02491**, signed "— Benny".
+
+## 8. Ceremony finale
+
+Keep seal stamp + spotlight. Enhance: stronger vignette, warmer ambient shadow, drifting dust/grain, slight paper shake on stamp impact. Feel: "You've officially been made."
+
+---
+
+## Technical section
+
+**Files**
+- `src/pages/MafiaNamePage.tsx` — copy, layout, drawer styling, dock, name cards, integration of avatar + dossier card.
+- `src/index.css` — add Rock Salt font import (annotations only), paper/checker-cloth textures, stamp/paper-lift keyframes, vignette utility.
+- `tailwind.config.ts` — add `font-handwritten` family mapped to Rock Salt; add new shadow/animation tokens.
+- `src/components/mafia/Dossier.tsx` (new) — final paperwork card.
+- `src/components/mafia/MafiaAvatar.tsx` (new) — avatar frame + loading/regenerate states.
+- `supabase/functions/generate-mafia-avatar/index.ts` (new) — calls Lovable AI Gateway image model, returns `{ image: "data:image/png;base64,..." }`. Handles 429/402.
+- `supabase/config.toml` — register the new function (no JWT verify; matches existing pattern).
+
+**Avatar prompt template (locked style)**
+> Vintage rubber-hose cartoon mafia portrait, circular crop on cream background with dark navy border ring, thick black outlines, warm muted palette, expressive mischievous face, pinstripe suit + fedora, subtle pizza references ({TOPPING_MOTIF}), {FILM_TONE} mood, no text, no logos, flat shading, 1024×1024.
+
+`TOPPING_MOTIF` and `FILM_TONE` derived from selected topping/film tags.
+
+**State**
+- Persist last claimed `{ name, film, topping, avatarUrl, archiveNo }` in `localStorage` so refresh keeps the dossier.
+- `archiveNo` deterministic hash of name (already in code).
+
+**No DB schema changes.** Existing `mafia_name_claims` table continues to store the claim.
+
+**Out of scope:** changing the films dataset, topping list, navigation, or other pages.
