@@ -110,6 +110,16 @@ const PartnersGlobe = () => {
     });
 
     const projected = CITIES.flatMap((c, i) => {
+      // `projection(point)` still returns coordinates for cities on the far
+      // side of an orthographic globe. Those backside points read as a second
+      // dot layer moving against the planet, so use the same clipped path pass
+      // as continents/graticule before rendering any city marker.
+      const visiblePoint = path({
+        type: "Point",
+        coordinates: c.coords,
+      });
+      if (!visiblePoint) return [];
+
       const p = projection(c.coords);
       if (!p) return [];
       const tier = MARQUEE.has(c.name) ? 2 : MID.has(c.name) ? 1 : 0;
