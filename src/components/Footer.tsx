@@ -42,10 +42,6 @@ const Footer = () => {
                 Made worldwide · Est. 2021
               </span>
             </div>
-            {/* Small global signal */}
-            <p className="handwritten mt-4 -rotate-[1deg] text-butter/60 text-[13px]">
-              ↳ 500+ cities, one kitchen
-            </p>
           </div>
 
           {/* Right: link columns */}
