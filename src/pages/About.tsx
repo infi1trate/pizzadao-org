@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
 import PartnersGlobe from "@/components/PartnersGlobe";
-import founding from "@/assets/timeline-founding.jpg";
 import timeline2010 from "@/assets/timeline-2010.jpg";
 import party from "@/assets/timeline-party.jpg";
 
