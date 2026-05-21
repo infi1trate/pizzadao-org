@@ -312,7 +312,7 @@ const About = () => {
                   <br />
                   somewhere,
                   <br />
-                  <span className="italic text-cream/65">a door opens.</span>
+                  <span className="handwritten text-butter text-[1.05em]">a door opens.</span>
                 </h3>
               </div>
               <div className="col-span-12 mt-12 md:col-span-7 md:col-start-4 md:mt-20">
