@@ -198,7 +198,7 @@ const Sponsorship = () => {
             <h3 className="font-display mt-2 text-display-2 font-extrabold leading-[0.95] tracking-[0.005em] text-ink">
               Five things
               <br />
-              <span className="text-ink-soft">we deliver.</span>
+              <span className="text-ink">we deliver.</span>
             </h3>
             <p className="mt-3 text-[15px] leading-relaxed text-ink/60">
               Bespoke programs built on these foundations.
