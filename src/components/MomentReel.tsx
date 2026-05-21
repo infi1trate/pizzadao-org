@@ -6,16 +6,23 @@ const MomentReel = () => {
       id="moments"
       className="relative isolate overflow-hidden bg-butter text-ink"
     >
-      {/* Ambient video layer, high-key b/w that fades INTO the yellow (no muddy mids) */}
+      {/* Ambient WenPizza video layer — same source as the phone, softened and yellow-tinted */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-butter">
-        <img
-          src={party}
-          alt=""
+        <video
+          src="https://www.dropbox.com/scl/fi/c2zu0k44nsh753zaaseri/Video-Apr-26-2023-1-18-01-AM.mov?rlkey=bqnbkqjqxdm2nze2xeqgdcjnx&raw=1"
+          poster={party}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
           aria-hidden="true"
-          className="h-full w-full scale-[1.08] object-cover opacity-90 blur-[5px] grayscale contrast-75 brightness-150 mix-blend-lighten"
+          tabIndex={-1}
+          className="h-full w-full scale-[1.08] object-cover opacity-90 blur-[6px] saturate-[0.85] contrast-90 brightness-110"
         />
-        {/* Butter veil to keep the brand yellow vivid */}
-        <div className="absolute inset-0 bg-butter/35" />
+        {/* Bright butter wash to keep yellow vivid and avoid muddy tones */}
+        <div className="absolute inset-0 bg-butter/60 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-butter/25" />
         {/* Subtle vignette */}
         <div
           className="absolute inset-0"
