@@ -127,7 +127,7 @@ const Sponsorship = () => {
               <h2 className="font-display mt-3 text-display-1 font-extrabold leading-[0.9] tracking-[0.005em] text-ink">
                 Why brands
                 <br />
-                <span className="text-ink-soft">partner with PizzaDAO.</span>
+                <span className="text-ink">partner with PizzaDAO.</span>
               </h2>
             </div>
             <div className="col-span-12 md:col-span-5 md:pl-8">
@@ -198,7 +198,7 @@ const Sponsorship = () => {
             <h3 className="font-display mt-2 text-display-2 font-extrabold leading-[0.95] tracking-[0.005em] text-ink">
               Five things
               <br />
-              <span className="text-ink-soft">we deliver.</span>
+              <span className="text-ink">we deliver.</span>
             </h3>
             <p className="mt-3 text-[15px] leading-relaxed text-ink/60">
               Bespoke programs built on these foundations.
@@ -251,7 +251,7 @@ const Sponsorship = () => {
                 <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.88] tracking-[-0.02em] md:mt-5">
                   What we build
                   <br />
-                  <span className="handwritten text-ink/55 text-[1.05em]">together.</span>
+                  <span className="handwritten text-tomato text-[1.05em]">together.</span>
                 </h3>
               </div>
 
