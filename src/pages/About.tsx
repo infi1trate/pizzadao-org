@@ -424,12 +424,10 @@ const About = () => {
             {/* Human detail */}
             <div className="col-span-12 flex items-end md:col-span-7 md:col-start-6">
               <div className="border-l border-ink/15 pl-6 md:pl-10">
-                <p className="handwritten -rotate-1 text-base text-ink/70 md:text-lg">
-                  ↳ no one is in charge. everyone shows up.
-                </p>
-                <p className="font-serif mt-6 max-w-[40ch] text-base leading-[1.7] text-ink/55">
-                  That is the only operating principle that has stayed the same
-                  since the first pizza went out.
+                <p className="font-serif max-w-[40ch] text-base leading-[1.7] text-ink/65 md:text-lg">
+                  No one is in charge. Everyone shows up. That is the only
+                  operating principle that has stayed the same since the first
+                  pizza went out.
                 </p>
               </div>
             </div>
