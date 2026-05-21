@@ -89,9 +89,6 @@ const Join = () => {
                 className={`flex flex-col rounded-2xl p-6 md:p-7 ${s.bg}`}
               >
                 <div className="flex items-baseline justify-between">
-                  <span className="font-display text-4xl font-extrabold leading-none">
-                    {s.n}
-                  </span>
                   <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] opacity-60">
                     Step
                   </span>

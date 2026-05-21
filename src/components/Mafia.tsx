@@ -62,14 +62,11 @@ const Mafia = () => {
                       key={`${n}-${i}`}
                       className="group flex items-baseline justify-between border-b border-ink/10 px-6 py-4 transition-colors hover:bg-butter/60 md:px-7 md:py-5"
                     >
-                      <div className="flex items-baseline gap-5 md:gap-6">
-                        <span className="ui w-9 text-xs tabular-nums text-ink/40">
-                          {String((i % NAMES.length) + 1).padStart(3, "0")}
-                        </span>
-                        <span className="font-display text-2xl font-extrabold leading-tight tracking-[-0.005em] md:text-3xl">
-                          {n}
-                        </span>
-                      </div>
+                    <div className="flex items-baseline gap-5 md:gap-6">
+                      <span className="font-display text-2xl font-extrabold leading-tight tracking-[-0.005em] md:text-3xl">
+                        {n}
+                      </span>
+                    </div>
                       <span className="ui text-[10px] uppercase tracking-[0.2em] text-ink/35 transition-colors group-hover:text-tomato">
                         Member
                       </span>
