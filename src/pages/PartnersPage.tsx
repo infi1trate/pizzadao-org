@@ -4,6 +4,9 @@ import Footer from "@/components/Footer";
 import Sponsorship from "@/components/Sponsorship";
 import PartnersGlobe from "@/components/PartnersGlobe";
 import PhotoVeil from "@/components/PhotoVeil";
+import { track } from "@/lib/analytics/posthog";
+import { EVT } from "@/lib/analytics/events";
+
 
 
 
@@ -300,6 +303,7 @@ const PartnersPage = () => {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
+                track(EVT.PARTNERS_CTA_CLICKED, { position: "inquiry_form", action: "submit" });
                 setSubmitted(true);
               }}
               className="col-span-12 grid grid-cols-2 gap-x-5 gap-y-6 md:col-span-7 md:pl-8 lg:pl-12"

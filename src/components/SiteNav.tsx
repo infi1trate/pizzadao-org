@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logoDark from "@/assets/logo-dark.svg";
 import logoLight from "@/assets/logo-light.svg";
+import { track } from "@/lib/analytics/posthog";
+import { EVT } from "@/lib/analytics/events";
+import { useTrackOutbound } from "@/lib/analytics/useTrackOutbound";
 
 const NAV = [
   { label: "About", href: "/about" },
@@ -10,10 +13,13 @@ const NAV = [
   { label: "Community", href: "/community" },
 ];
 
+
 type Props = { solid?: boolean };
 
 const SiteNav = ({ solid = false }: Props) => {
   const [open, setOpen] = useState(false);
+  const trackOutbound = useTrackOutbound("site_nav");
+
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -48,6 +54,7 @@ const SiteNav = ({ solid = false }: Props) => {
             <Link
               key={n.label}
               to={n.href}
+              onClick={() => track(EVT.NAV_CLICKED, { label: n.label, to: n.href, surface: "desktop" })}
               className={`ui text-sm font-medium tracking-wide transition-colors ${
                 onRed
                   ? "text-cream/90 hover:text-butter"
@@ -64,6 +71,7 @@ const SiteNav = ({ solid = false }: Props) => {
             href="https://app.pizzadao.org"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackOutbound("Member login", "https://app.pizzadao.org", { surface: "desktop" })}
             className={`btn-pill border ${
               onRed
                 ? "border-cream/40 text-cream/90 hover:border-cream hover:text-cream"
@@ -74,6 +82,7 @@ const SiteNav = ({ solid = false }: Props) => {
           </a>
           <Link
             to="/get-your-mafia-name"
+            onClick={() => track(EVT.MAFIA_INTENT_CLICKED, { label: "Join", surface: "site_nav_desktop" })}
             className={`btn-pill ${
               onRed
                 ? "bg-cream text-ink hover:bg-butter"
@@ -82,6 +91,7 @@ const SiteNav = ({ solid = false }: Props) => {
           >
             Join
           </Link>
+
         </div>
 
         <button
@@ -114,7 +124,10 @@ const SiteNav = ({ solid = false }: Props) => {
               <Link
                 key={n.label}
                 to={n.href}
-                onClick={() => setOpen(false)}
+                onClick={() => {
+                  track(EVT.NAV_CLICKED, { label: n.label, to: n.href, surface: "mobile" });
+                  setOpen(false);
+                }}
                 className="font-display group flex min-h-[64px] items-center justify-between border-b border-rule-warm/60 text-[2rem] font-extrabold leading-none tracking-[-0.01em] text-ink transition-colors hover:text-tomato"
                 style={{
                   transitionDelay: open ? `${80 + i * 40}ms` : "0ms",
@@ -134,17 +147,24 @@ const SiteNav = ({ solid = false }: Props) => {
               target="_blank"
               rel="noopener noreferrer"
               className="btn-pill-lg border border-ink/30 text-center text-ink/80 hover:border-ink hover:text-ink"
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                trackOutbound("Member login", "https://app.pizzadao.org", { surface: "mobile" });
+                setOpen(false);
+              }}
             >
               Member login
             </a>
             <Link
               to="/get-your-mafia-name"
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                track(EVT.MAFIA_INTENT_CLICKED, { label: "Join the Pizza Mafia", surface: "site_nav_mobile" });
+                setOpen(false);
+              }}
               className="btn-pill-lg bg-tomato text-cream text-center hover:bg-ink"
             >
               Join the Pizza Mafia →
             </Link>
+
             <div className="mt-4 flex items-center justify-between border-t border-rule-warm/50 pt-4">
               <span className="ui text-[10px] font-medium uppercase tracking-[0.24em] text-ink/45">
                 PizzaDAO · Est. 2021

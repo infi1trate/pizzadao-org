@@ -7,6 +7,10 @@ import CopyToken, { hexToRgb, cssVarName } from "@/components/CopyToken";
 import UseInFigma from "@/components/UseInFigma";
 import DoDont from "@/components/DoDont";
 import { ArrowUpRight, Download, Github, FileCode2, Terminal, Sparkles } from "lucide-react";
+import { track } from "@/lib/analytics/posthog";
+import { EVT } from "@/lib/analytics/events";
+import { useTrackOutbound } from "@/lib/analytics/useTrackOutbound";
+
 import moltoBenny from "@/assets/brand/molto-benny-color.png";
 import moltoBennyPrintRun from "@/assets/brand/molto-benny-print-run.jpg";
 import moltoBennyToken from "@/assets/brand/molto-benny-token.svg";
@@ -38,9 +42,11 @@ const SECTIONS = [
 ];
 
 const BrandSystemPage = () => {
+  const trackOutbound = useTrackOutbound("brand_system");
   useEffect(() => {
     document.title = "Brand System, PizzaDAO";
   }, []);
+
 
   return (
     <div className="min-h-screen bg-cream text-ink lg:pl-[180px]">
@@ -74,6 +80,10 @@ const BrandSystemPage = () => {
                 href="https://pizzadao.github.io/pizzadao-brand-kit/"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => {
+                  track(EVT.BRAND_ASSET_DOWNLOADED, { asset: "brand-kit", surface: "hero" });
+                  trackOutbound("Download assets", "https://pizzadao.github.io/pizzadao-brand-kit/", { surface: "hero" });
+                }}
                 className="btn-pill-lg bg-ink text-cream hover:bg-tomato"
               >
                 <Download className="h-4 w-4" />
@@ -83,11 +93,13 @@ const BrandSystemPage = () => {
                 href="https://github.com/pizzadao"
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => trackOutbound("GitHub", "https://github.com/pizzadao", { surface: "hero" })}
                 className="btn-pill-lg border border-ink/20 bg-cream text-ink hover:border-ink hover:bg-butter"
               >
                 <Github className="h-4 w-4" />
                 View GitHub
               </a>
+
               <a
                 href="#brand-md"
                 className="btn-pill-lg border border-ink/20 bg-cream text-ink hover:border-ink hover:bg-butter"
@@ -1072,6 +1084,7 @@ dont:  [all caps, corporate jargon]`}
                     href="https://github.com/pizzadao/pizzadao-brand-kit/blob/main/Brand.md"
                     target="_blank"
                     rel="noreferrer"
+                    onClick={() => track(EVT.BRAND_ASSET_DOWNLOADED, { asset: "brand_md", surface: "brand_md_section" })}
                     className="btn-pill bg-ink text-cream hover:bg-tomato"
                   >
                     <Download className="h-4 w-4" />
@@ -1081,12 +1094,14 @@ dont:  [all caps, corporate jargon]`}
                     href="https://github.com/pizzadao/pizzadao-brand-kit"
                     target="_blank"
                     rel="noreferrer"
+                    onClick={() => trackOutbound("Brand kit source", "https://github.com/pizzadao/pizzadao-brand-kit", { surface: "brand_md_section" })}
                     className="btn-pill border border-ink/20 bg-cream text-ink hover:border-ink hover:bg-butter"
                   >
                     <Github className="h-4 w-4" />
                     View source
                   </a>
                 </div>
+
               </article>
 
               {/* MCP */}
@@ -1362,10 +1377,12 @@ dont:  [all caps, corporate jargon]`}
                 href="https://t.me/+uF9BfD-pQz9kNTRh"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackOutbound("Graphic Review Telegram", "https://t.me/+uF9BfD-pQz9kNTRh", { surface: "flyers" })}
                 className="ui mt-6 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-cream transition-colors hover:bg-tomato"
               >
                 Open Graphic Review chat <ArrowUpRight className="h-4 w-4" />
               </a>
+
             </div>
 
             {/* Examples */}
