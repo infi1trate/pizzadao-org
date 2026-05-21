@@ -182,7 +182,7 @@ const BUILDS: Build[] = [
     mission: "Open RSVPs, chapter dashboards, and proof-of-attendance in one stack.",
     context: "Tested live during Global Pizza Party 2026 across ~30k attendees worldwide, running hundreds of simultaneous parties in dozens of cities.",
     detail: "Now the default RSVP and check-in layer for chapter events, with public APIs so any community — pizza or otherwise — can use it.",
-    img: party,
+    img: rsvPizza,
     demo: "https://rsv.pizza",
     featured: true,
     metric: [
