@@ -89,7 +89,7 @@ const Work = () => {
               <h2 className="font-display mt-5 text-[clamp(3rem,8.5vw,7rem)] font-extrabold leading-[0.86] tracking-[-0.01em]">
                 Three pillars.
                 <br />
-                <span className="handwritten text-tomato text-[1.05em]">One institution.</span>
+                <span className="handwritten whitespace-nowrap text-tomato text-[0.98em]">One institution.</span>
               </h2>
             </div>
             <div className="col-span-12 md:col-span-4 md:pl-8 md:pb-3">
