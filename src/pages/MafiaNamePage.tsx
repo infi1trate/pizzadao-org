@@ -810,9 +810,33 @@ function ToppingDrawer({ toppings, query, onPick }: { toppings: string[]; query:
 
 function CyclingStage({ pool, tick }: { pool: string[]; tick: number }) {
   const current = pool[tick % pool.length];
+  const NOTES = ["nah", "too obvious", "watch this guy", "capo material", "this one?", "earner", "skip it"];
+  // pick a slowly-rotating scribble note (changes every ~6 ticks)
+  const note = NOTES[Math.floor(tick / 6) % NOTES.length];
+  const crossed = pool[(tick + 3) % pool.length];
+  const crossed2 = pool[(tick + 7) % pool.length];
+
   return (
     <div className="relative grid place-items-center py-20 md:py-28">
       <p className="overline text-tomato/80">The family is deliberating</p>
+
+      {/* crossed-out candidates scribbled in margins */}
+      <span className="handwritten pointer-events-none absolute left-[8%] top-[18%] hidden rotate-[-8deg] text-[18px] text-ink/55 md:block">
+        <span className="relative">
+          {crossed}
+          <span aria-hidden className="absolute left-0 top-1/2 h-[2px] w-full bg-tomato/80" />
+        </span>
+      </span>
+      <span className="handwritten pointer-events-none absolute right-[10%] top-[28%] hidden rotate-[6deg] text-[16px] text-ink/45 md:block">
+        <span className="relative">
+          {crossed2}
+          <span aria-hidden className="absolute left-0 top-1/2 h-[2px] w-full bg-tomato/70" />
+        </span>
+      </span>
+      <span className="handwritten pointer-events-none absolute right-[14%] bottom-[20%] hidden rotate-[-4deg] text-[20px] text-tomato md:block">
+        {note}
+      </span>
+
       <div className="mt-6 h-[clamp(3rem,7vw,5.5rem)] overflow-hidden">
         <div key={tick} className="cycle-in font-display text-[clamp(2rem,6vw,5rem)] font-black leading-[0.95] tracking-[-0.015em] text-ink/80" style={{ filter: "blur(0.4px)" }}>
           {current}
