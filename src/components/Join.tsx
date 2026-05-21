@@ -90,9 +90,7 @@ const Join = () => {
           {/* Closing line */}
           <div className="mt-16 rounded-2xl border border-cream/40 py-12 text-center md:mt-20 md:py-16">
             <p className="font-display text-display-2 font-extrabold leading-[0.96]">
-              Pull up a chair.
-              <br />
-              <span className="text-butter">The pizza's hot.</span>
+              There's always room at the table.
             </p>
           </div>
         </div>
