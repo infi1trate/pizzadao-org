@@ -235,6 +235,9 @@ const PartnersPage = () => {
 
 
 
+      {/* Activation gallery — field photography from partner moments */}
+      <PartnerActivations />
+
       {/* Inquiry — warm close, hospitality cues */}
       <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-14 text-cream md:py-16">
         {/* Atmospheric warm glow — soft ember drift */}
