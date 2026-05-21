@@ -993,16 +993,44 @@ function FinaleScene({
   phase,
   finalName,
   description,
+  film,
+  topping,
+  avatarUrl,
+  avatarLoading,
+  onRegenerateAvatar,
   onShare,
   onReset,
 }: {
   phase: number;
   finalName: string;
   description?: string;
+  film: MafiaFilm | null;
+  topping: string | null;
+  avatarUrl: string | null;
+  avatarLoading: boolean;
+  onRegenerateAvatar: () => void;
   onShare: () => void;
   onReset: () => void;
 }) {
   const archive = useMemo(() => familyArchiveNo(finalName + new Date().toDateString()), [finalName]);
+
+  const downloadAvatar = async () => {
+    if (!avatarUrl) return;
+    try {
+      const res = await fetch(avatarUrl);
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${finalName.replace(/[^a-z0-9]+/gi, "_")}_pizzadao.png`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch {
+      // ignore
+    }
+  };
 
   return (
     <section className="relative z-10">
@@ -1012,10 +1040,9 @@ function FinaleScene({
         className={`pointer-events-none fixed inset-0 z-0 transition-opacity duration-700 ${phase >= 1 ? "opacity-100" : "opacity-0"}`}
         style={{
           background:
-            "radial-gradient(70% 60% at 50% 40%, transparent 30%, hsl(20 25% 8% / 0.55) 100%)",
+            "radial-gradient(70% 60% at 50% 40%, transparent 30%, hsl(20 25% 8% / 0.65) 100%)",
         }}
       />
-      {/* Ambient drifting dust */}
       <div aria-hidden className={`pointer-events-none fixed inset-0 z-0 transition-opacity duration-700 ${phase >= 1 ? "opacity-100" : "opacity-0"}`}>
         <div className="dust-drift absolute inset-0">
           <div className="film-flicker absolute inset-0 grain" />
@@ -1023,101 +1050,213 @@ function FinaleScene({
       </div>
 
       <div className="container relative z-10 py-12 md:py-20">
-        <div className={`relative overflow-hidden rounded-[32px] border border-ink/12 bg-cream p-8 text-center shadow-[0_40px_80px_-40px_hsl(20_30%_10%/0.55)] md:p-16 ${phase >= 2 ? "paper-shake" : ""}`}>
-          {/* warm spotlight */}
-          <div
+        {/* Dossier paper */}
+        <div
+          className={`relative mx-auto max-w-3xl ${phase >= 2 ? "paper-shake" : ""}`}
+          style={{ transform: "rotate(-0.4deg)" }}
+        >
+          {/* paperclip */}
+          <span
             aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-90"
-            style={{
-              background:
-                "radial-gradient(55% 45% at 50% 0%, hsl(46 100% 62% / 0.32), transparent 70%), radial-gradient(80% 70% at 50% 100%, hsl(0 93% 60% / 0.16), transparent 70%)",
-            }}
+            className="absolute -top-5 left-10 z-20 hidden h-14 w-7 rounded-full border-[3px] border-ink/30 shadow-[1px_2px_3px_hsl(20_20%_10%/0.25)] md:block"
+            style={{ borderBottomColor: "transparent" }}
           />
-          <div aria-hidden className="film-flicker pointer-events-none absolute inset-0 grain opacity-50" />
 
-          <div className="relative">
-            {/* Seal */}
-            <div className="mx-auto mb-8 inline-grid place-items-center">
+          <div
+            className="relative overflow-hidden rounded-[18px] border border-ink/15 bg-[hsl(40_38%_94%)] p-7 shadow-[0_50px_90px_-40px_hsl(20_30%_8%/0.7)] md:p-12"
+            style={{
+              backgroundImage:
+                "radial-gradient(120% 70% at 50% 0%, hsl(46 100% 62% / 0.18), transparent 60%), radial-gradient(80% 60% at 100% 100%, hsl(20 40% 25% / 0.08), transparent 70%)",
+            }}
+          >
+            <div aria-hidden className="film-flicker pointer-events-none absolute inset-0 grain opacity-60" />
+            {/* coffee stain */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -right-6 top-12 h-28 w-28 rounded-full opacity-[0.12]"
+              style={{ background: "radial-gradient(circle, hsl(20 50% 20%) 0%, transparent 70%)" }}
+            />
+            {/* fold line */}
+            <span aria-hidden className="pointer-events-none absolute inset-x-0 top-1/2 h-px bg-ink/8" />
+
+            {/* Header strip */}
+            <div className="relative flex items-center justify-between border-b border-ink/15 pb-4">
+              <p className="ui text-[9px] uppercase tracking-[0.32em] text-ink/55">
+                PizzaDAO · Family Record
+              </p>
+              <p className="ui text-[9px] uppercase tracking-[0.32em] text-ink/55">
+                Archive No. {archive}
+              </p>
+            </div>
+
+            {/* Top row: avatar + title */}
+            <div className="relative mt-8 grid grid-cols-1 gap-6 md:grid-cols-[200px_1fr] md:gap-10">
+              {/* Avatar — taped photo */}
+              <div className="relative mx-auto md:mx-0">
+                <span
+                  aria-hidden
+                  className="absolute -top-3 left-1/2 z-20 h-5 w-20 -translate-x-1/2 -rotate-3 bg-butter/80 shadow-sm"
+                  style={{ clipPath: "polygon(4% 0, 96% 0, 100% 100%, 0 100%)" }}
+                />
+                <div
+                  className={`relative grid h-44 w-44 place-items-center overflow-hidden rounded-full border-[4px] border-ink/85 bg-butter/40 shadow-[0_18px_30px_-14px_hsl(20_30%_10%/0.5)] ${phase >= 2 ? "seal-stamp" : "opacity-0"}`}
+                  style={{ transform: "rotate(-3deg)" }}
+                >
+                  {avatarUrl ? (
+                    <img src={avatarUrl} alt={`${finalName} mafia portrait`} className="h-full w-full object-cover" />
+                  ) : (
+                    <div className="grid place-items-center text-center text-ink/55">
+                      {avatarLoading ? (
+                        <>
+                          <div className="mb-2 h-6 w-6 animate-spin rounded-full border-2 border-tomato border-t-transparent" />
+                          <p className="ui text-[9px] uppercase tracking-[0.28em]">
+                            Painting<br />the portrait
+                          </p>
+                        </>
+                      ) : (
+                        <p className="ui text-[9px] uppercase tracking-[0.28em]">Portrait<br />pending</p>
+                      )}
+                    </div>
+                  )}
+                </div>
+                {/* Red approved stamp on top of photo */}
+                {phase >= 2 && (
+                  <span
+                    aria-hidden
+                    className="seal-stamp pointer-events-none absolute -right-3 bottom-2 inline-flex h-20 w-20 rotate-[-10deg] items-center justify-center rounded-full border-[3px] border-tomato/80 text-tomato"
+                  >
+                    <span className="ui text-center text-[8px] font-bold uppercase leading-tight tracking-[0.18em]">
+                      Made<br />{new Date().getFullYear()}
+                    </span>
+                  </span>
+                )}
+              </div>
+
+              <div className="min-w-0">
+                <p className={`ui text-[10px] uppercase tracking-[0.32em] text-tomato transition-opacity duration-500 ${phase >= 3 ? "opacity-100" : "opacity-0"}`}>
+                  Status · Made
+                </p>
+                <h1
+                  className={`font-display mt-3 text-[clamp(2rem,6vw,4.4rem)] font-black leading-[0.95] tracking-[-0.015em] text-ink transition-all duration-700 ${
+                    phase >= 4 ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0 blur-sm"
+                  }`}
+                >
+                  {finalName}
+                </h1>
+                <span
+                  aria-hidden
+                  className={`handwritten mt-2 inline-block rotate-[-3deg] text-[18px] text-tomato transition-opacity duration-500 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}
+                >
+                  approved — Benny
+                </span>
+
+                {description && (
+                  <p className={`mt-5 max-w-prose text-[15px] italic leading-relaxed text-ink/75 transition-opacity duration-700 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}>
+                    "{description}"
+                  </p>
+                )}
+              </div>
+            </div>
+
+            {/* Dossier rows */}
+            <div className={`relative mt-10 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-ink/15 pt-6 transition-opacity duration-700 md:grid-cols-4 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}>
+              <DossierField label="Film" value={film?.title ?? "—"} />
+              <DossierField label="Origin" value={film?.country ?? "—"} />
+              <DossierField label="Topping" value={topping ?? "—"} />
+              <DossierField label="Initiated" value={`${new Date().toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}`} />
+            </div>
+
+            {/* Footer stamp + signature */}
+            <div className={`relative mt-10 flex flex-wrap items-end justify-between gap-6 border-t border-ink/15 pt-6 transition-opacity duration-700 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}>
+              <div>
+                <p className="ui text-[9px] uppercase tracking-[0.32em] text-ink/45">
+                  Family registry · sealed
+                </p>
+                <p className="handwritten mt-2 text-[22px] text-ink/80" style={{ transform: "rotate(-2deg)" }}>
+                  — Benny
+                </p>
+              </div>
+              {/* mini seal */}
               <div className="relative">
                 {phase >= 2 && (
                   <>
-                    <span aria-hidden className="seal-spread absolute inset-0 rounded-full bg-tomato/30" />
-                    <span aria-hidden className="seal-spread absolute inset-0 rounded-full bg-tomato/15 [animation-delay:120ms]" />
+                    <span aria-hidden className="seal-spread absolute inset-0 rounded-full bg-tomato/25" />
+                    <span aria-hidden className="seal-spread absolute inset-0 rounded-full bg-tomato/10 [animation-delay:120ms]" />
                   </>
                 )}
                 <div
-                  className={`relative grid h-32 w-32 place-items-center rounded-full border-[3px] border-tomato bg-cream text-tomato shadow-[0_0_0_6px_hsl(0_93%_60%/0.10),inset_0_0_0_2px_hsl(0_93%_60%/0.15)] ${phase >= 2 ? "seal-stamp" : "opacity-0"}`}
+                  className={`relative grid h-24 w-24 place-items-center rounded-full border-[3px] border-tomato bg-cream text-tomato shadow-[0_0_0_5px_hsl(0_93%_60%/0.10)] ${phase >= 2 ? "seal-stamp" : "opacity-0"}`}
                   style={{
                     backgroundImage:
                       "radial-gradient(60% 60% at 30% 30%, hsl(0 93% 60% / 0.10), transparent 70%)",
                   }}
                 >
                   <div className="text-center leading-tight">
-                    <div className="ui text-[8px] uppercase tracking-[0.32em]">PizzaDAO</div>
-                    <div className="font-display mt-1 text-[13px] font-black uppercase tracking-[0.18em]">Made</div>
-                    <div className="ui mt-1 text-[8px] uppercase tracking-[0.32em]">{new Date().getFullYear()}</div>
+                    <div className="ui text-[7px] uppercase tracking-[0.32em]">PizzaDAO</div>
+                    <div className="font-display mt-0.5 text-[11px] font-black uppercase tracking-[0.18em]">Officially<br/>Made</div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <p className={`overline text-tomato transition-all duration-500 ${phase >= 3 ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}>
-              You've officially been made.
-            </p>
-
-            <h1
-              className={`font-display mt-5 text-[clamp(2.2rem,7vw,5.5rem)] font-black uppercase leading-[0.95] tracking-[-0.015em] transition-all duration-700 ${
-                phase >= 4 ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0 blur-sm"
-              }`}
+          {/* Actions */}
+          <div className={`mt-10 flex flex-wrap items-center justify-center gap-3 transition-all duration-500 ${phase >= 6 ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}>
+            <button
+              onClick={onShare}
+              className="btn-pill-lg group bg-tomato text-cream hover:bg-cream hover:text-ink"
             >
-              {finalName}
-            </h1>
-
-            {description && (
-              <p className={`mx-auto mt-6 max-w-xl text-[16px] italic leading-relaxed text-ink/75 transition-all duration-700 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}>
-                "{description}"
-              </p>
+              Share your name
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </button>
+            {avatarUrl && (
+              <button
+                onClick={downloadAvatar}
+                className="btn-pill-lg group border border-cream/30 bg-ink text-cream hover:bg-tomato"
+              >
+                Download avatar
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </button>
             )}
-
-            {/* Registry block */}
-            <div className={`mx-auto mt-10 max-w-md border-y border-ink/15 py-4 transition-opacity duration-700 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}>
-              <p className="ui text-[9px] uppercase tracking-[0.32em] text-ink/45">
-                PizzaDAO Family Registry
-              </p>
-              <p className="ui mt-2 text-[10px] uppercase tracking-[0.26em] text-ink/65">
-                Initiated · {new Date().getFullYear()} &nbsp;·&nbsp; Family Archive No. {archive}
-              </p>
-            </div>
-
-            <div className={`mt-10 flex flex-wrap items-center justify-center gap-3 transition-all duration-500 ${phase >= 6 ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}>
-              <a
-                href="https://discord.pizzadao.xyz/"
-                target="_blank"
-                rel="noreferrer"
-                className="btn-pill-lg group bg-ink text-cream hover:bg-tomato"
-              >
-                Join the Discord
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
-              <button
-                onClick={onShare}
-                className="btn-pill-lg group border border-ink/20 bg-cream text-ink hover:border-tomato hover:text-tomato"
-              >
-                Share your name
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </button>
-              <button
-                onClick={onReset}
-                className="btn-pill-lg group border border-ink/20 bg-transparent text-ink hover:border-tomato hover:text-tomato"
-              >
-                <X className="h-4 w-4" />
-                Start over
-              </button>
-            </div>
+            <button
+              onClick={onRegenerateAvatar}
+              disabled={avatarLoading}
+              className="btn-pill-lg group border border-cream/30 bg-transparent text-cream hover:border-tomato hover:text-tomato disabled:opacity-50"
+            >
+              <RefreshCw className={`h-4 w-4 ${avatarLoading ? "animate-spin" : ""}`} />
+              {avatarUrl ? "Re-draw portrait" : "Try portrait again"}
+            </button>
+            <a
+              href="https://discord.pizzadao.xyz/"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-pill-lg group border border-cream/30 bg-transparent text-cream hover:border-tomato hover:text-tomato"
+            >
+              Join the Discord
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </a>
+            <button
+              onClick={onReset}
+              className="btn-pill-lg group border border-cream/20 bg-transparent text-cream/80 hover:border-tomato hover:text-tomato"
+            >
+              <X className="h-4 w-4" />
+              Start over
+            </button>
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function DossierField({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <p className="ui text-[9px] uppercase tracking-[0.3em] text-ink/45">{label}</p>
+      <p className="font-display mt-1.5 text-[15px] font-black leading-tight tracking-tight text-ink">
+        {value}
+      </p>
+    </div>
   );
 }
 
