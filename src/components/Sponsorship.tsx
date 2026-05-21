@@ -127,7 +127,7 @@ const Sponsorship = () => {
               <h2 className="font-display mt-3 text-display-1 font-extrabold leading-[0.9] tracking-[0.005em] text-ink">
                 Why brands
                 <br />
-                <span className="text-ink-soft">partner with PizzaDAO.</span>
+                <span className="text-ink">partner with PizzaDAO.</span>
               </h2>
             </div>
             <div className="col-span-12 md:col-span-5 md:pl-8">
