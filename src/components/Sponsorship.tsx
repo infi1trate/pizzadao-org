@@ -88,8 +88,18 @@ const Sponsorship = () => {
   return (
     <section
       id="partner-with-us"
-      className="relative overflow-hidden bg-butter/25 pt-10 text-ink md:pt-14"
+      className="relative overflow-hidden bg-butter/25 pt-12 text-ink md:pt-14"
     >
+      {/* Top hairline + soft tonal bridge from cream hero above */}
+      <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/10" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-32"
+        style={{
+          background:
+            "linear-gradient(180deg, hsl(40 55% 93%) 0%, transparent 100%)",
+        }}
+      />
       {/* Faint geographic mesh — barely visible cartographic texture */}
       <div
         aria-hidden
@@ -237,12 +247,36 @@ const Sponsorship = () => {
         </div>
       </div>
 
-      {/* What we build together */}
-      <div className="paper-soft paper-drift mt-16 bg-cream-warm py-16 md:mt-24 md:py-20">
-        <div className="container">
-          <div className="relative border-t border-ink/40 pt-8 md:pt-10">
-            {/* IRL stamp, asymmetric overhang */}
-            <span aria-hidden className="ui absolute -top-3 left-4 bg-cream-warm px-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-tomato">
+      {/* What we build together — edge-to-edge cream-warm band, layered into flow */}
+      <div className="paper-soft paper-drift relative mt-12 overflow-hidden bg-cream-warm py-12 md:mt-16 md:py-16">
+        {/* Soft tonal transition at top — fades from butter/25 above into cream-warm */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-24"
+          style={{
+            background:
+              "linear-gradient(180deg, hsl(44 60% 92% / 0.9) 0%, transparent 100%)",
+          }}
+        />
+        {/* Edge darkening — subtle vignette pulling focus inward */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 50%, transparent 55%, hsl(30 30% 60% / 0.08) 100%)",
+          }}
+        />
+        {/* Understated grain */}
+        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.22]" />
+        {/* Hairline top + bottom rules — editorial section markers */}
+        <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/10" />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-ink/10" />
+
+        <div className="container relative">
+          <div className="relative pt-2 md:pt-4">
+            {/* IRL stamp — floats on the band, no opaque chip */}
+            <span aria-hidden className="ui absolute -top-1 left-0 text-[10px] font-semibold uppercase tracking-[0.22em] text-tomato">
               IRL ·  built in cities
             </span>
             <div className="grid grid-cols-12 items-end gap-x-8 gap-y-6 md:gap-x-12">
@@ -437,8 +471,17 @@ const Sponsorship = () => {
       </div>
 
 
-      {/* CTA band — warm, intentional, emotionally persuasive */}
-      <div className="relative mt-6 overflow-hidden bg-butter pb-10 md:mt-8 md:pb-14">
+      {/* CTA band — edge-to-edge butter, layered transition from cream-warm above */}
+      <div className="relative overflow-hidden bg-butter pb-12 pt-14 md:pb-16 md:pt-16">
+        {/* Top tonal bridge — cream-warm fading into butter */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-28"
+          style={{
+            background:
+              "linear-gradient(180deg, hsl(40 55% 93%) 0%, transparent 100%)",
+          }}
+        />
         {/* Warm gradient wash — richer at center, softer at edges */}
         <div
           aria-hidden
@@ -454,13 +497,19 @@ const Sponsorship = () => {
           className="pointer-events-none absolute -left-20 -top-20 h-[320px] w-[320px] rounded-full opacity-[0.14] blur-[90px]"
           style={{ background: "hsl(var(--tomato))" }}
         />
-        {/* Faint pizza-box checkered reference — top-right edge only, very subtle */}
+        {/* Edge darkening — soft vignette for printed dimensionality */}
         <div
           aria-hidden
-          className="checker-tape pointer-events-none absolute right-0 top-0 h-[4px] w-20 opacity-20 md:w-32"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 50%, transparent 55%, hsl(30 40% 35% / 0.10) 100%)",
+          }}
         />
+        {/* Top hairline — divides from cream-warm cleanly */}
+        <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/12" />
         {/* Subtle grain */}
-        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.25]" />
+        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.22]" />
 
         <div className="container relative">
           {/* Tighter, more editorial composition */}
