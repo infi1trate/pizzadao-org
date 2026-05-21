@@ -130,7 +130,7 @@ const Sponsorship = () => {
           </span>
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-5">
             <div className="col-span-12 md:col-span-7">
-              <p className="overline text-tomato">§ 06, Why it works</p>
+              <p className="overline text-tomato">§ 08, Why it works</p>
               <h2 className="font-display mt-3 text-display-1 font-extrabold leading-[0.9] tracking-[0.005em] text-ink">
                 Why brands
                 <br />
@@ -272,7 +272,7 @@ const Sponsorship = () => {
             </span>
             <div className="grid grid-cols-12 items-end gap-x-8 gap-y-6 md:gap-x-12">
               <div className="col-span-12 md:col-span-8">
-                <p className="overline text-tomato">§ 07, Possibilities</p>
+                <p className="overline text-tomato">Possibilities</p>
                 <h3 className="font-display mt-4 text-display-2 font-extrabold leading-[0.88] tracking-[-0.02em] md:mt-5">
                   What we build
                   <br />
