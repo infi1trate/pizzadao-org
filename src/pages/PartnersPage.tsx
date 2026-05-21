@@ -34,7 +34,7 @@ const PartnersPage = () => {
       <SiteNav solid />
 
       {/* Editorial hero — global cultural initiative */}
-      <section className="paper-soft paper-drift relative overflow-hidden bg-cream pt-10 md:pt-14">
+      <section className="paper-soft relative overflow-hidden bg-cream pt-10 md:pt-14">
         {/* Atmospheric warmth — cream → warm gradient */}
         <div
           aria-hidden
