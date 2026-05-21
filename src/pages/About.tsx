@@ -62,7 +62,7 @@ type ActProps = {
 
 const ActOpener = ({ number, title, subtitle }: ActProps) => (
   <div className="container">
-    <div className="flex items-center justify-between border-t border-ink/20 pb-10 pt-6">
+    <div className="flex items-center justify-between border-t border-ink/15 pb-10 pt-6">
       <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/50">
         Act {number}
       </span>
@@ -108,7 +108,7 @@ const About = () => {
               Est. 2021 · Ongoing
             </span>
           </div>
-          <div className="mt-8 border-t border-ink/30" />
+          <div className="mt-8 border-t border-ink/15" />
         </div>
 
         {/* Immersive composition — image + embedded headline */}
@@ -230,7 +230,7 @@ const About = () => {
       <section className="paper-soft paper-soft-dark relative overflow-hidden bg-ink py-24 text-cream md:py-32">
         {/* Archive timestamp band */}
         <div className="container">
-          <div className="flex items-center justify-between border-t border-cream/20 pb-10 pt-6">
+          <div className="flex items-center justify-between border-t border-cream/15 pb-10 pt-6">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-butter">
               Act II — The Ritual
             </span>
@@ -338,7 +338,7 @@ const About = () => {
       <section className="paper-soft relative overflow-hidden bg-cream py-24 md:py-32">
         <div className="container">
           {/* Archival band */}
-          <div className="flex items-center justify-between border-t border-ink/20 pb-10 pt-6">
+          <div className="flex items-center justify-between border-t border-ink/15 pb-10 pt-6">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-tomato">
               Act III — How It Runs
             </span>
@@ -484,7 +484,7 @@ const About = () => {
         <div className="container relative">
           {/* Archival header — minimal chrome */}
           <div className="flex items-center justify-between border-t border-cream/15 pb-16 pt-6 md:pb-24">
-            <span className="ui text-[10px] font-semibold uppercase tracking-[0.32em] text-tomato">
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-tomato">
               Act IV — The Archive
             </span>
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.24em] text-cream/40">
@@ -508,7 +508,7 @@ const About = () => {
                 Year after year, cities around the world kept gathering around
                 the same simple idea.
               </p>
-              <p className="ui mt-8 text-[10px] font-semibold uppercase tracking-[0.32em] text-cream/35">
+              <p className="ui mt-8 text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/35">
                 Selected frames · 17 cities · 4 years
               </p>
             </div>
@@ -519,7 +519,7 @@ const About = () => {
 
           {/* Closing field note */}
           <div className="mt-20 flex flex-wrap items-baseline justify-between gap-4 border-t border-cream/15 pt-6 md:mt-28">
-            <span className="ui text-[10px] font-semibold uppercase tracking-[0.32em] text-cream/40">
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/40">
               Field archive · ongoing
             </span>
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.24em] text-cream/30">
@@ -536,7 +536,7 @@ const About = () => {
          ──────────────────────────────────────────────────────────── */}
       <section className="paper-soft relative overflow-hidden bg-cream pt-24 md:pt-32">
         <div className="container">
-          <div className="flex items-center justify-between border-t border-ink/20 pb-12 pt-6">
+          <div className="flex items-center justify-between border-t border-ink/15 pb-12 pt-6">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-tomato">
               Act V — The Memory
             </span>
