@@ -237,12 +237,36 @@ const Sponsorship = () => {
         </div>
       </div>
 
-      {/* What we build together */}
-      <div className="paper-soft paper-drift mt-16 bg-cream-warm py-16 md:mt-24 md:py-20">
-        <div className="container">
-          <div className="relative border-t border-ink/40 pt-8 md:pt-10">
-            {/* IRL stamp, asymmetric overhang */}
-            <span aria-hidden className="ui absolute -top-3 left-4 bg-cream-warm px-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-tomato">
+      {/* What we build together — edge-to-edge cream-warm band, layered into flow */}
+      <div className="paper-soft paper-drift relative mt-12 overflow-hidden bg-cream-warm py-12 md:mt-16 md:py-16">
+        {/* Soft tonal transition at top — fades from butter/25 above into cream-warm */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-24"
+          style={{
+            background:
+              "linear-gradient(180deg, hsl(44 60% 92% / 0.9) 0%, transparent 100%)",
+          }}
+        />
+        {/* Edge darkening — subtle vignette pulling focus inward */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 50%, transparent 55%, hsl(30 30% 60% / 0.08) 100%)",
+          }}
+        />
+        {/* Understated grain */}
+        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.22]" />
+        {/* Hairline top + bottom rules — editorial section markers */}
+        <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/10" />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-ink/10" />
+
+        <div className="container relative">
+          <div className="relative pt-2 md:pt-4">
+            {/* IRL stamp — floats on the band, no opaque chip */}
+            <span aria-hidden className="ui absolute -top-1 left-0 text-[10px] font-semibold uppercase tracking-[0.22em] text-tomato">
               IRL ·  built in cities
             </span>
             <div className="grid grid-cols-12 items-end gap-x-8 gap-y-6 md:gap-x-12">
