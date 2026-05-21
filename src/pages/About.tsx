@@ -242,15 +242,6 @@ const About = () => {
 
         {/* Oversized MAY 22 + cinematic image composition */}
         <div className="relative">
-          {/* Oversized typographic marker */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 z-0 select-none overflow-hidden"
-          >
-            <div className="font-display whitespace-nowrap text-center text-[clamp(7rem,28vw,22rem)] font-extrabold leading-[0.78] tracking-[-0.04em] text-butter/[0.10]">
-              MAY 22
-            </div>
-          </div>
 
           {/* Full-bleed documentary image */}
           <figure className="relative z-10 mt-8 md:mt-16">
