@@ -11,39 +11,50 @@ type Slot = {
   offset?: number;  // baseline vertical offset (px)
 };
 
-// 22 hand-tuned slots driving the wall's rhythm.
-// Variation comes from spans, aspect, vertical offset, and parallax —
+// Hand-tuned slots driving the wall's rhythm.
+// Pacing is deliberately uneven: big anchor frames (crowds, overhead
+// tables) alternate with quiet verticals (intimate moments, single
+// figures) and short dense clusters (street chaos). Variation comes
+// from spans, aspect, vertical offset, tone, and parallax —
 // never random rotation. Length must be ≤ ARCHIVE.length.
 const SLOTS: Slot[] = [
-  { col: "md:col-start-1",  span: "md:col-span-7", row: "md:row-span-2", aspect: "aspect-[4/5]",  drift: 0.06, tone: "natural" },
-  { col: "md:col-start-8",  span: "md:col-span-5", row: "md:row-span-1", aspect: "aspect-[4/3]",  drift: 0.02, tone: "warm",    offset: 40 },
-  { col: "md:col-start-8",  span: "md:col-span-5", row: "md:row-span-1", aspect: "aspect-[5/4]",  drift: 0.10, tone: "warm" },
+  // ── OPENING — massive anchor + breath ──────────────────────────
+  // Big cinematic crowd shot, full-bleed left. Quiet vertical to its right.
+  { col: "md:col-start-1",  span: "md:col-span-8", row: "md:row-span-3", aspect: "aspect-[16/10]", drift: 0.05, tone: "natural" },
+  { col: "md:col-start-9",  span: "md:col-span-4", row: "md:row-span-2", aspect: "aspect-[3/4]",   drift: 0.09, tone: "warm",    offset: 60 },
+  { col: "md:col-start-9",  span: "md:col-span-4", row: "md:row-span-1", aspect: "aspect-[5/4]",   drift: 0.03, tone: "mono",    offset: 100 },
 
-  { col: "md:col-start-1",  span: "md:col-span-4", row: "md:row-span-1", aspect: "aspect-[3/4]",  drift: 0.04, tone: "cool",    offset: 80 },
-  { col: "md:col-start-5",  span: "md:col-span-8", row: "md:row-span-2", aspect: "aspect-[16/9]", drift: 0.08, tone: "natural" },
+  // ── DENSE CLUSTER — street chaos, varied tone ─────────────────
+  { col: "md:col-start-1",  span: "md:col-span-3", row: "md:row-span-1", aspect: "aspect-[3/4]",   drift: 0.06, tone: "cool",    offset: 110 },
+  { col: "md:col-start-4",  span: "md:col-span-5", row: "md:row-span-2", aspect: "aspect-[5/6]",   drift: 0.04, tone: "warm" },
+  { col: "md:col-start-9",  span: "md:col-span-4", row: "md:row-span-1", aspect: "aspect-[4/3]",   drift: 0.08, tone: "natural", offset: 40 },
 
-  { col: "md:col-start-1",  span: "md:col-span-5", row: "md:row-span-1", aspect: "aspect-[4/5]",  drift: 0.03, tone: "warm" },
-  { col: "md:col-start-6",  span: "md:col-span-3", row: "md:row-span-1", aspect: "aspect-[3/4]",  drift: 0.07, tone: "mono",    offset: 30 },
-  { col: "md:col-start-9",  span: "md:col-span-4", row: "md:row-span-1", aspect: "aspect-[4/5]",  drift: 0.05, tone: "natural" },
+  // ── QUIET BREATH — single small frame, lots of negative space ─
+  { col: "md:col-start-1",  span: "md:col-span-3", row: "md:row-span-1", aspect: "aspect-[1/1]",   drift: 0.02, tone: "mono",    offset: 80 },
+  { col: "md:col-start-9",  span: "md:col-span-3", row: "md:row-span-1", aspect: "aspect-[3/4]",   drift: 0.05, tone: "natural", offset: 30 },
 
-  { col: "md:col-start-1",  span: "md:col-span-3", row: "md:row-span-1", aspect: "aspect-[1/1]",  drift: 0.02, tone: "warm",    offset: 60 },
-  { col: "md:col-start-4",  span: "md:col-span-6", row: "md:row-span-2", aspect: "aspect-[3/2]",  drift: 0.09, tone: "natural" },
-  { col: "md:col-start-10", span: "md:col-span-3", row: "md:row-span-1", aspect: "aspect-[3/4]",  drift: 0.04, tone: "cool",    offset: 20 },
+  // ── BIG HORIZONTAL ANCHOR — overhead pizza table ──────────────
+  { col: "md:col-start-2",  span: "md:col-span-10", row: "md:row-span-2", aspect: "aspect-[21/9]", drift: 0.07, tone: "warm" },
 
-  { col: "md:col-start-1",  span: "md:col-span-6", row: "md:row-span-1", aspect: "aspect-[3/2]",  drift: 0.06, tone: "natural" },
-  { col: "md:col-start-7",  span: "md:col-span-3", row: "md:row-span-1", aspect: "aspect-[4/5]",  drift: 0.03, tone: "mono",    offset: 50 },
-  { col: "md:col-start-10", span: "md:col-span-3", row: "md:row-span-1", aspect: "aspect-[3/4]",  drift: 0.08, tone: "warm" },
+  // ── TRIPTYCH — three intimate verticals, similar height ───────
+  { col: "md:col-start-1",  span: "md:col-span-4", row: "md:row-span-2", aspect: "aspect-[3/4]",   drift: 0.03, tone: "natural", offset: 50 },
+  { col: "md:col-start-5",  span: "md:col-span-4", row: "md:row-span-2", aspect: "aspect-[3/4]",   drift: 0.06, tone: "mono",    offset: 20 },
+  { col: "md:col-start-9",  span: "md:col-span-4", row: "md:row-span-2", aspect: "aspect-[3/4]",   drift: 0.04, tone: "warm",    offset: 70 },
 
-  { col: "md:col-start-1",  span: "md:col-span-4", row: "md:row-span-1", aspect: "aspect-[4/3]",  drift: 0.05, tone: "natural", offset: 40 },
-  { col: "md:col-start-5",  span: "md:col-span-4", row: "md:row-span-1", aspect: "aspect-[4/5]",  drift: 0.07, tone: "warm" },
-  { col: "md:col-start-9",  span: "md:col-span-4", row: "md:row-span-1", aspect: "aspect-[4/3]",  drift: 0.04, tone: "cool" },
+  // ── ASYMMETRY — wide + tiny square ────────────────────────────
+  { col: "md:col-start-1",  span: "md:col-span-7", row: "md:row-span-1", aspect: "aspect-[2/1]",   drift: 0.05, tone: "cool" },
+  { col: "md:col-start-9",  span: "md:col-span-3", row: "md:row-span-1", aspect: "aspect-[1/1]",   drift: 0.08, tone: "natural", offset: 60 },
 
-  { col: "md:col-start-1",  span: "md:col-span-5", row: "md:row-span-1", aspect: "aspect-[3/2]",  drift: 0.06, tone: "natural", offset: 70 },
-  { col: "md:col-start-6",  span: "md:col-span-4", row: "md:row-span-2", aspect: "aspect-[3/4]",  drift: 0.03, tone: "warm" },
-  { col: "md:col-start-10", span: "md:col-span-3", row: "md:row-span-1", aspect: "aspect-[1/1]",  drift: 0.05, tone: "mono",    offset: 30 },
+  // ── NIGHT SECTION — denser, darker, low-light energy ──────────
+  { col: "md:col-start-1",  span: "md:col-span-5", row: "md:row-span-2", aspect: "aspect-[4/5]",   drift: 0.04, tone: "cool",    offset: 30 },
+  { col: "md:col-start-6",  span: "md:col-span-7", row: "md:row-span-1", aspect: "aspect-[16/9]",  drift: 0.07, tone: "natural" },
+  { col: "md:col-start-6",  span: "md:col-span-4", row: "md:row-span-1", aspect: "aspect-[4/3]",   drift: 0.03, tone: "warm",    offset: 20 },
+  { col: "md:col-start-10", span: "md:col-span-3", row: "md:row-span-1", aspect: "aspect-[3/4]",   drift: 0.06, tone: "mono",    offset: 50 },
 
-  { col: "md:col-start-1",  span: "md:col-span-3", row: "md:row-span-1", aspect: "aspect-[4/5]",  drift: 0.04, tone: "natural" },
-  { col: "md:col-start-10", span: "md:col-span-3", row: "md:row-span-1", aspect: "aspect-[4/3]",  drift: 0.06, tone: "warm",    offset: 50 },
+  // ── CLOSING — one wide horizon, one quiet square ──────────────
+  { col: "md:col-start-1",  span: "md:col-span-9", row: "md:row-span-2", aspect: "aspect-[21/10]", drift: 0.06, tone: "warm" },
+  { col: "md:col-start-10", span: "md:col-span-3", row: "md:row-span-1", aspect: "aspect-[1/1]",   drift: 0.04, tone: "mono",    offset: 100 },
+  { col: "md:col-start-10", span: "md:col-span-3", row: "md:row-span-1", aspect: "aspect-[3/4]",   drift: 0.05, tone: "natural", offset: 140 },
 ];
 
 const toneClass = (t?: Slot["tone"]) => {
