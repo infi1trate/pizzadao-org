@@ -2,9 +2,17 @@ import { useEffect } from "react";
 import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
 import ArchivalWall from "@/components/ArchivalWall";
+import { findPhoto } from "@/lib/pizzadaoPhotos";
 import timeline2010 from "@/assets/timeline-2010.jpg";
 import party from "@/assets/timeline-party.jpg";
 import community from "@/assets/community.jpg";
+
+// Real PizzaDAO archive photos for the hero scenes — with local fallbacks
+// in case the remote CDN is ever unreachable.
+const HERO_PHOTO   = findPhoto("Lagos")?.src       ?? party;
+const RITUAL_PHOTO = findPhoto("Buenos Aires")?.src ?? timeline2010;
+const FIELD_PHOTO  = findPhoto("Cape Town")?.src   ?? community;
+
 
 const ROLES = [
   { name: "Chapter leads", note: "Organize local events and shape the city experience." },
