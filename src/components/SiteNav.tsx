@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logoDark from "@/assets/logo-dark.svg";
 import logoLight from "@/assets/logo-light.svg";
+import { track } from "@/lib/analytics/posthog";
+import { EVT } from "@/lib/analytics/events";
+import { useTrackOutbound } from "@/lib/analytics/useTrackOutbound";
 
 const NAV = [
   { label: "About", href: "/about" },
@@ -10,10 +13,13 @@ const NAV = [
   { label: "Community", href: "/community" },
 ];
 
+
 type Props = { solid?: boolean };
 
 const SiteNav = ({ solid = false }: Props) => {
   const [open, setOpen] = useState(false);
+  const trackOutbound = useTrackOutbound("site_nav");
+
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
