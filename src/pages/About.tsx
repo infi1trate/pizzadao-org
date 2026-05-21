@@ -289,19 +289,6 @@ const About = () => {
             </div>
           </figure>
 
-          {/* Thin checkered divider */}
-          <div className="container mt-20 md:mt-28">
-            <div
-              aria-hidden="true"
-              className="h-2 w-full opacity-40"
-              style={{
-                backgroundImage:
-                  "linear-gradient(45deg, hsl(var(--butter)) 25%, transparent 25%, transparent 75%, hsl(var(--butter)) 75%), linear-gradient(45deg, hsl(var(--butter)) 25%, transparent 25%, transparent 75%, hsl(var(--butter)) 75%)",
-                backgroundSize: "8px 8px",
-                backgroundPosition: "0 0, 4px 4px",
-              }}
-            />
-          </div>
 
           {/* Long-form ritual narrative */}
           <div className="container">
