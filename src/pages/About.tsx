@@ -171,7 +171,7 @@ const About = () => {
           </figure>
         </div>
 
-        {/* Origin body — story, not specs */}
+        {/* Origin body — vivid, historical, emotionally specific */}
         <div className="container">
           <div className="mt-28 grid grid-cols-12 gap-x-6 gap-y-10 md:mt-36">
             <div className="col-span-12 md:col-span-4">
@@ -183,24 +183,31 @@ const About = () => {
             <div className="col-span-12 md:col-span-7 md:col-start-6">
               <div className="font-serif max-w-[60ch] space-y-5 text-lg leading-[1.7] text-ink/85 md:text-xl">
                 <p>
-                  During the pandemic, online communities were everywhere, but
-                  most of them stopped at the screen.
+                  During the pandemic, online communities exploded, but most of
+                  them still ended at the screen.
                 </p>
                 <p>
-                  PizzaDAO started with the opposite instinct: take something
-                  familiar, easy to share, and deeply human — then use the
-                  internet to coordinate it across the real world.
+                  PizzaDAO started with a simple experiment: send pizza to
+                  people we had never met and see what happened.
                 </p>
                 <p>
-                  At first, it was loose and strange. A few people, a few
-                  wallets, a few pizzas sent across borders.
+                  At first, it was small and disorganized. Late night Discord
+                  calls. People coordinating deliveries across borders.
+                  Organizers wondering if anyone would actually show up.
                 </p>
-                <p className="text-ink">Then people started showing up.</p>
+                <p>
+                  Then people kept showing up. Some cities had twenty people.
+                  Some took over entire blocks. Most organizers had never met
+                  in person before.
+                </p>
+                <p className="text-ink">
+                  That uncertainty became part of the culture.
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Pull quote that closes the act */}
+          {/* One pull quote that closes the act */}
           <div className="mt-24 grid grid-cols-12 gap-x-6 pb-28 md:mt-32 md:pb-36">
             <blockquote className="col-span-12 border-l-[3px] border-tomato py-2 pl-6 md:col-span-10 md:col-start-2 md:pl-10">
               <p className="font-display text-display-2 font-extrabold leading-[0.96] tracking-[-0.02em]">
