@@ -738,19 +738,6 @@ const About = () => {
 
 
 
-          {/* Reflection — quiet bridge before the close */}
-          <div className="mt-28 grid grid-cols-12 gap-x-6 gap-y-8 md:mt-36">
-            <div className="col-span-12 md:col-span-2">
-              <p className="overline text-tomato">Reflection</p>
-            </div>
-            <div className="col-span-12 md:col-span-9">
-              <p className="font-display text-[clamp(1.8rem,4vw,3rem)] font-extrabold leading-[1.1] tracking-[-0.015em] text-ink/90">
-                It was never really about the pizza.
-                <span className="text-ink/45"> It was about the table — and the
-                fact that the internet finally figured out how to set one.</span>
-              </p>
-            </div>
-          </div>
         </div>
 
         {/* Final close — documentary ending */}
