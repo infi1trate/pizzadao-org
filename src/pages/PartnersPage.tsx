@@ -156,9 +156,9 @@ const PartnersPage = () => {
       {/* Case studies consolidated into Sponsorship "What we've built" */}
 
       {/* Logo wall — premium social proof, gallery-like */}
-      <section className="paper-soft paper-drift relative overflow-hidden bg-cream py-16 md:py-20">
+      <section className="paper-soft paper-drift relative overflow-hidden bg-cream py-12 md:py-14">
         {/* Warm grain overlay */}
-        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.35]" />
+        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.32]" />
         {/* Faint gradient wash */}
         <div
           aria-hidden
@@ -168,19 +168,13 @@ const PartnersPage = () => {
               "linear-gradient(180deg, hsl(var(--cream)) 0%, hsl(44 60% 97%) 40%, hsl(var(--cream)) 100%)",
           }}
         />
-        {/* Extremely soft checkered treatment — single edge detail */}
-        <div
-          aria-hidden
-          className="checker-tape pointer-events-none absolute right-0 top-0 h-[4px] w-24 opacity-20 md:w-36"
-        />
-        <div
-          aria-hidden
-          className="checker-tape pointer-events-none absolute bottom-0 left-0 h-[4px] w-24 opacity-15 md:w-36"
-        />
+        {/* Section seam hairlines — tighter editorial join */}
+        <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/10" />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-ink/10" />
 
         <div className="container relative">
           {/* Editorial heading — minimal, confident */}
-          <div className="flex items-baseline justify-between gap-x-6">
+          <div className="relative flex items-baseline justify-between gap-x-6">
             <h2 className="font-display text-[clamp(1.6rem,3.2vw,2.6rem)] font-extrabold leading-[1] tracking-[-0.02em] text-ink">
               Selected collaborators
             </h2>
@@ -190,13 +184,20 @@ const PartnersPage = () => {
             >
               Trusted globally
             </span>
+            {/* Asymmetric handwritten annotation */}
+            <span
+              aria-hidden
+              className="handwritten absolute -top-5 left-[42%] -rotate-[4deg] text-[12px] text-tomato/80 md:left-[36%]"
+            >
+              ↘ a partial list
+            </span>
           </div>
 
           {/* Thin editorial rule */}
-          <div className="mt-6 h-px bg-ink/10 md:mt-8" />
+          <div className="mt-5 h-px bg-ink/10 md:mt-6" />
 
           {/* Logo grid — gallery spacing, monochrome default */}
-          <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10 md:mt-14 md:grid-cols-4 md:gap-x-12 md:gap-y-14">
+          <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-8 md:mt-10 md:grid-cols-4 md:gap-x-12 md:gap-y-10">
             {PARTNERS.map((p, i) => (
               <div
                 key={p.name}
