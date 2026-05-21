@@ -245,8 +245,7 @@ const About = () => {
         {/* Oversized MAY 22 + cinematic image composition */}
         <div className="relative">
 
-          {/* Full-bleed documentary image */}
-          <figure className="relative z-10 mt-8 md:mt-16">
+          <figure className="relative z-10 mt-10 md:mt-20">
             <div className="relative overflow-hidden bg-ink">
               <img
                 src={RITUAL_PHOTO}
@@ -254,25 +253,37 @@ const About = () => {
                 loading="lazy"
                 decoding="async"
                 width={2400}
-                height={1200}
+                height={1400}
                 onError={(e) => { (e.currentTarget as HTMLImageElement).src = timeline2010; }}
-                className="grain block aspect-[21/10] w-full object-cover opacity-90"
+                className="grain block aspect-[21/12] w-full object-cover opacity-80"
+                style={{ objectPosition: "50% 45%" }}
               />
-              {/* Cinematic vignette */}
+              {/* Deep cinematic vignette */}
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0"
                 style={{
                   background:
-                    "radial-gradient(ellipse at 50% 60%, transparent 35%, hsl(0 0% 0% / 0.55) 95%)",
+                    "radial-gradient(ellipse at 50% 55%, transparent 25%, hsl(0 0% 0% / 0.75) 95%)",
                 }}
               />
+              {/* Bottom-anchored darkness for typography readability */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, transparent 0%, hsl(0 0% 0% / 0.55) 70%, hsl(0 0% 0% / 0.85) 100%)",
+                }}
+              />
+              {/* Extra film grain pass */}
+              <div aria-hidden="true" className="paper-soft-dark pointer-events-none absolute inset-0 opacity-60" />
               {/* Title embedded into the frame */}
               <div className="absolute inset-x-0 bottom-0">
-                <div className="container pb-8 md:pb-14">
+                <div className="container pb-12 md:pb-20">
                   <h2
-                    className="font-display max-w-[16ch] text-[clamp(2.4rem,7.5vw,6rem)] font-extrabold leading-[0.86] tracking-[-0.025em] text-cream"
-                    style={{ textShadow: "0 2px 28px hsl(0 0% 0% / 0.55)" }}
+                    className="font-display max-w-[14ch] text-[clamp(2.8rem,9vw,7.5rem)] font-extrabold leading-[0.85] tracking-[-0.03em] text-cream"
+                    style={{ textShadow: "0 2px 40px hsl(0 0% 0% / 0.7)" }}
                   >
                     May 22 became
                     <br />
@@ -284,7 +295,7 @@ const About = () => {
 
             <div className="container">
               <figcaption className="mt-4 flex items-baseline justify-end">
-                <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/45">
+                <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/40">
                   Fig. II.01 — 22 · 05 · 2010
                 </span>
               </figcaption>
@@ -294,19 +305,18 @@ const About = () => {
 
           {/* Long-form ritual narrative */}
           <div className="container">
-            <div className="mt-16 grid grid-cols-12 gap-x-6 gap-y-10 md:mt-24">
-              <div className="col-span-12 md:col-span-5">
-                <p className="overline text-butter">The annual gathering</p>
-                <h3 className="font-display mt-5 text-display-2 font-extrabold leading-[0.9]">
+            <div className="mt-24 grid grid-cols-12 gap-x-6 gap-y-12 md:mt-40">
+              <div className="col-span-12 md:col-span-12">
+                <h3 className="font-display mx-auto max-w-[18ch] text-center text-[clamp(2.8rem,8.5vw,7rem)] font-extrabold leading-[0.88] tracking-[-0.03em]">
                   Every May 22,
                   <br />
                   somewhere,
                   <br />
-                  <span className="italic text-cream/70">a door opens.</span>
+                  <span className="italic text-cream/65">a door opens.</span>
                 </h3>
               </div>
-              <div className="col-span-12 md:col-span-6 md:col-start-7">
-                <div className="font-serif max-w-[58ch] space-y-5 text-lg leading-[1.7] text-cream/85 md:text-xl">
+              <div className="col-span-12 mt-12 md:col-span-7 md:col-start-4 md:mt-20">
+                <div className="font-serif space-y-6 text-lg leading-[1.75] text-cream/85 md:text-xl">
                   <p>
                     On May 22, 2010, two pizzas were bought for 10,000 BTC.
                     The story became symbolic because it proved something
