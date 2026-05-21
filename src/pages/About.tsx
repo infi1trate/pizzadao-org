@@ -178,7 +178,7 @@ const About = () => {
             <div className="col-span-12 md:col-span-4">
               <p className="overline text-tomato">How it started</p>
               <h2 className="font-display mt-5 text-[clamp(2rem,4.6vw,3.4rem)] font-extrabold leading-[0.94] tracking-[-0.02em]">
-                A Discord server, a holiday, and a hunch.
+                A Clubhouse room, a holiday, and a hunch.
               </h2>
 
               {/* Pinned polaroid trio — tactile field-archive warmth */}
