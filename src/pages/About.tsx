@@ -62,19 +62,15 @@ const About = () => {
       <SiteNav solid />
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
-      <section className="paper-soft relative bg-cream pt-16 md:pt-24">
-        <div className="container">
+      <section className="paper-soft relative bg-cream pt-10 md:pt-14">
+        <div className="container flex items-center justify-between pb-8">
           <p className="overline text-tomato">About PizzaDAO</p>
-          <h1 className="font-display mt-6 max-w-[18ch] text-[clamp(2.75rem,8.5vw,7.5rem)] font-extrabold leading-[0.88] tracking-[-0.025em]">
-            An institution built on a <span className="italic text-tomato">slice</span>.
-          </h1>
-          <p className="font-serif mt-8 max-w-[60ch] text-lg leading-[1.7] text-ink/75 md:text-xl">
-            PizzaDAO is a global community that gathers people around shared
-            tables, in hundreds of cities, every May 22.
-          </p>
+          <span className="ui hidden text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/40 md:inline">
+            Est. 2021 · Ongoing
+          </span>
         </div>
 
-        <figure className="container mt-16 md:mt-20">
+        <figure className="container">
           <div className="grain relative overflow-hidden rounded-sm bg-ink">
             <img
               src={HERO_PHOTO}
@@ -84,9 +80,32 @@ const About = () => {
               width={2400}
               height={1500}
               onError={(e) => { (e.currentTarget as HTMLImageElement).src = party; }}
-              style={{ objectPosition: "50% 42%" }}
-              className="block aspect-[3/2] w-full object-cover md:aspect-[21/9]"
+              style={{ objectPosition: "50% 38%" }}
+              className="block aspect-[4/5] w-full object-cover sm:aspect-[3/2] md:aspect-[16/10] lg:aspect-[2/1]"
             />
+
+            {/* Single deeper gradient — readable type, calm midtones */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to bottom, hsl(0 0% 0% / 0.32) 0%, hsl(0 0% 0% / 0.10) 32%, hsl(0 0% 0% / 0.15) 55%, hsl(0 0% 0% / 0.72) 100%)",
+              }}
+            />
+
+            {/* Headline embedded in scene with generous breathing room */}
+            <div className="absolute inset-0 flex items-end">
+              <div className="w-full px-6 pb-10 sm:px-10 sm:pb-14 md:px-16 md:pb-20 lg:px-24 lg:pb-24">
+                <h1
+                  className="font-display max-w-[16ch] font-extrabold leading-[0.86] tracking-[-0.025em] text-cream text-[clamp(2.25rem,7vw,6.5rem)]"
+                  style={{ textShadow: "0 2px 28px hsl(0 0% 0% / 0.55)" }}
+                >
+                  An institution built on a{" "}
+                  <span className="italic text-butter">slice</span>.
+                </h1>
+              </div>
+            </div>
           </div>
           <figcaption className="ui mt-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
             A chapter, mid-service · one night, many cities
