@@ -97,56 +97,72 @@ const SiteNav = ({ solid = false }: Props) => {
         </button>
       </div>
 
-      {open && (
-        <div className="md:hidden bg-cream">
-          <div className="container flex flex-col gap-0 border-t border-ink/15 py-2">
-            {NAV.map((n) => (
+      {/* Mobile overlay — full-screen editorial sheet */}
+      <div
+        className={`md:hidden fixed inset-0 z-40 bg-cream transition-[opacity,transform] duration-[420ms] ease-[cubic-bezier(0.22,0.61,0.24,1)] ${
+          open ? "opacity-100 translate-y-0 pointer-events-auto" : "pointer-events-none opacity-0 -translate-y-2"
+        }`}
+        style={{
+          paddingTop: "calc(env(safe-area-inset-top) + 4rem)",
+          paddingBottom: "calc(env(safe-area-inset-bottom) + 1.5rem)",
+        }}
+        aria-hidden={!open}
+      >
+        <div className="container flex h-full flex-col">
+          <p className="overline text-ink/45">Navigate</p>
+          <nav className="mt-6 flex flex-col">
+            {NAV.map((n, i) => (
               <Link
                 key={n.label}
                 to={n.href}
                 onClick={() => setOpen(false)}
-                className="ui flex min-h-[52px] items-center border-b border-ink/10 text-base font-semibold tracking-wide text-foreground/85 transition-colors hover:text-tomato"
+                className="font-display group flex min-h-[64px] items-center justify-between border-b border-rule-warm/60 text-[2rem] font-extrabold leading-none tracking-[-0.01em] text-ink transition-colors hover:text-tomato"
+                style={{
+                  transitionDelay: open ? `${80 + i * 40}ms` : "0ms",
+                }}
               >
-                {n.label}
+                <span>{n.label}</span>
+                <span className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/35 group-hover:text-tomato">
+                  0{i + 1}
+                </span>
               </Link>
             ))}
-            <div className="mt-4 flex flex-col gap-2">
-              <a
-                href="https://app.pizzadao.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-pill border border-ink/30 text-center text-ink/80 hover:border-ink hover:text-ink"
-                onClick={() => setOpen(false)}
-              >
-                Member login
-              </a>
-              <Link
-                to="/join"
-                onClick={() => setOpen(false)}
-                className="btn-pill bg-tomato text-cream text-center"
-              >
-                Join the Pizza Mafia →
-              </Link>
-            </div>
-            <div className="mt-2 flex gap-6 border-t border-ink/10 pt-4">
-              <Link
-                to="/privacy"
-                onClick={() => setOpen(false)}
-                className="ui text-xs uppercase tracking-[0.18em] text-ink/55 hover:text-tomato"
-              >
-                Privacy
-              </Link>
-              <Link
-                to="/terms"
-                onClick={() => setOpen(false)}
-                className="ui text-xs uppercase tracking-[0.18em] text-ink/55 hover:text-tomato"
-              >
-                Terms
-              </Link>
+          </nav>
+
+          <div className="mt-auto flex flex-col gap-3 pt-10">
+            <a
+              href="https://app.pizzadao.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-pill-lg border border-ink/30 text-center text-ink/80 hover:border-ink hover:text-ink"
+              onClick={() => setOpen(false)}
+            >
+              Member login
+            </a>
+            <Link
+              to="/join"
+              onClick={() => setOpen(false)}
+              className="btn-pill-lg bg-tomato text-cream text-center hover:bg-ink"
+            >
+              Join the Pizza Mafia →
+            </Link>
+            <div className="mt-4 flex items-center justify-between border-t border-rule-warm/50 pt-4">
+              <span className="ui text-[10px] font-medium uppercase tracking-[0.24em] text-ink/45">
+                PizzaDAO · Est. 2021
+              </span>
+              <div className="flex gap-5">
+                <Link to="/privacy" onClick={() => setOpen(false)} className="ui text-[10px] uppercase tracking-[0.18em] text-ink/55 hover:text-tomato">Privacy</Link>
+                <Link to="/terms" onClick={() => setOpen(false)} className="ui text-[10px] uppercase tracking-[0.18em] text-ink/55 hover:text-tomato">Terms</Link>
+              </div>
             </div>
           </div>
         </div>
-      )}
+      </div>
+    </header>
+  );
+};
+
+export default SiteNav;
     </header>
   );
 };
