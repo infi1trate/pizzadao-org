@@ -437,15 +437,42 @@ const About = () => {
       </section>
 
       {/* ── THESIS ───────────────────────────────────────────────── */}
-      <section className="bg-cream py-28 md:py-40">
+      <section className="relative overflow-hidden bg-cream py-28 md:py-40">
         <div className="container">
-          <p className="font-display text-ink font-extrabold leading-[0.95] tracking-[-0.025em] text-[clamp(2.5rem,8vw,7rem)]">
-            Pizza is{" "}
-            <span className="text-tomato">social infrastructure</span>.
-          </p>
-          <p className="font-serif mt-8 max-w-[44ch] text-lg leading-[1.55] text-ink/60 md:text-xl">
-            Familiar, affordable, understood almost anywhere.
-          </p>
+          <div className="grid grid-cols-12 gap-x-8 gap-y-10 items-center">
+            <div className="col-span-12 md:col-span-8">
+              <p className="font-display text-ink font-extrabold leading-[0.95] tracking-[-0.025em] text-[clamp(2.5rem,8vw,7rem)]">
+                Pizza is{" "}
+                <span className="text-tomato">social infrastructure</span>.
+              </p>
+              <p className="font-serif mt-8 max-w-[44ch] text-lg leading-[1.55] text-ink/60 md:text-xl">
+                Familiar, affordable, understood almost anywhere.
+              </p>
+            </div>
+
+            {/* Pinned thesis polaroid — humanizes the abstract claim */}
+            <figure className="col-span-12 md:col-span-4 md:col-start-9 mx-auto md:mx-0 w-[70%] sm:w-[55%] md:w-full max-w-[280px] -rotate-[3.5deg] transition-transform duration-500 hover:rotate-0">
+              <div className="grain relative overflow-hidden bg-cream p-2.5 pb-10 shadow-[0_18px_40px_-18px_hsl(0_0%_0%/0.45),0_4px_10px_-4px_hsl(0_0%_0%/0.25)]">
+                <div className="aspect-[4/5] overflow-hidden bg-ink">
+                  <img
+                    src={THESIS_PHOTO}
+                    alt="People sharing pizza on a city street"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover [filter:saturate(0.95)_contrast(1.06)_sepia(0.05)]"
+                  />
+                </div>
+                <figcaption className="handwritten absolute inset-x-2 bottom-1 text-center text-sm text-ink/75">
+                  strangers, 11 minutes later
+                </figcaption>
+              </div>
+              <span
+                aria-hidden
+                className="absolute -top-3 left-1/2 h-5 w-16 -translate-x-1/2 rotate-[3deg] bg-tomato/60 shadow-sm"
+                style={{ clipPath: "polygon(4% 0,96% 0,100% 100%,0 100%)" }}
+              />
+            </figure>
+          </div>
         </div>
       </section>
 
