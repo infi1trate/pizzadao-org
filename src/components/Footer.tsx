@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import logoLight from "@/assets/logo-light.svg";
 
 const cols = [
@@ -6,6 +7,44 @@ const cols = [
   { title: "Press", items: [{ label: "Brand System", href: "/brand-system" }, "Editorial Standards", { label: "Contact", href: "/contact" }, "Inquiries"] as Array<string | { label: string; href: string }> },
   { title: "Elsewhere", items: ["Instagram", "X / Twitter", "YouTube", "Newsletter"] },
 ];
+
+const PHRASES = [
+  "Pizza the planet",
+  "Slice by slice",
+  "See you May 22",
+  "The internet needed a table",
+  "People kept showing up",
+  "Every city does it differently",
+  "Global Pizza Party",
+  "Powered by mozzarella",
+  "Internet coordination, real-world pizza",
+  "Somewhere near you, pizza is already bringing people together",
+];
+
+const RotatingTagline = () => {
+  const [index, setIndex] = useState(0);
+  const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShow(false);
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % PHRASES.length);
+        setShow(true);
+      }, 600);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <span
+      className="ui text-[10px] font-medium uppercase tracking-[0.24em] text-cream/40 transition-opacity duration-500"
+      style={{ opacity: show ? 1 : 0 }}
+    >
+      {PHRASES[index]}
+    </span>
+  );
+};
 
 const Footer = () => {
   return (
@@ -38,9 +77,7 @@ const Footer = () => {
             </p>
             <div className="mt-8 flex items-baseline gap-3">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-tomato/70" />
-              <span className="ui text-[10px] font-medium uppercase tracking-[0.24em] text-cream/40">
-                Made worldwide · Est. 2021
-              </span>
+              <RotatingTagline />
             </div>
           </div>
 
