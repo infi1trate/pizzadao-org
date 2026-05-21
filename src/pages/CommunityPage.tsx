@@ -166,6 +166,7 @@ type Build = {
   detail: string;
   img: string | null;
   demo?: string;
+  embed?: string;
   featured?: boolean;
   metric?: { k: string; v: string }[];
 };
@@ -195,7 +196,7 @@ const BUILDS: Build[] = [
     context: "A traveling cabinet, an open game jam, and a growing library of pizza-themed games made by members — hardware, code, and pixel art, shipped together.",
     detail: "Started as a one-night build at a chapter meetup and grew into an ongoing collab between hardware tinkerers, indie devs, and visual artists. The catalog is open for any chapter to install or remix.",
     img: hackathon,
-    demo: "https://c-r-x-s-s.github.io/PizzaDAO-Arcade/",
+    embed: "https://c-r-x-s-s.github.io/PizzaDAO-Arcade/",
   },
   {
     name: "HourPay",
@@ -220,6 +221,7 @@ const BUILDS: Build[] = [
 const CommunityPage = () => {
   const [calOpen, setCalOpen] = useState(false);
   const [activeBuild, setActiveBuild] = useState<number | null>(null);
+  const [embedSite, setEmbedSite] = useState<{ name: string; url: string } | null>(null);
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [galleryIndex, setGalleryIndex] = useState(0);
   useEffect(() => {
@@ -1017,7 +1019,16 @@ const CommunityPage = () => {
                             </p>
 
                             <div className="mt-5 flex items-center justify-between gap-3 border-t border-ink/15 pt-4">
-                              {b.demo ? (
+                              {b.embed ? (
+                                <button
+                                  type="button"
+                                  onClick={() => setEmbedSite({ name: b.name, url: b.embed! })}
+                                  className="ui inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-cream transition-colors hover:bg-tomato"
+                                >
+                                  Open arcade
+                                  <ArrowUpRight className="h-4 w-4" />
+                                </button>
+                              ) : b.demo ? (
                                 <a
                                   href={b.demo}
                                   target="_blank"
@@ -1054,6 +1065,27 @@ const CommunityPage = () => {
         </div>
       </section>
 
+
+      {/* Embedded site modal (e.g. Arcade) */}
+      <Dialog open={embedSite !== null} onOpenChange={(o) => !o && setEmbedSite(null)}>
+        <DialogContent className="max-w-6xl bg-ink p-0 sm:rounded-lg overflow-hidden">
+          {embedSite && (
+            <div className="flex h-[85vh] flex-col">
+              <DialogHeader className="border-b border-cream/10 px-5 py-3">
+                <DialogTitle className="ui text-[11px] font-semibold uppercase tracking-[0.22em] text-cream">
+                  {embedSite.name}
+                </DialogTitle>
+              </DialogHeader>
+              <iframe
+                src={embedSite.url}
+                title={embedSite.name}
+                className="h-full w-full flex-1 bg-ink"
+                allow="autoplay; fullscreen; gamepad"
+              />
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
 
       {/* Project deep-dive modal */}
       <Dialog open={activeBuild !== null} onOpenChange={(o) => !o && setActiveBuild(null)}>
