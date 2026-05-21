@@ -1500,7 +1500,7 @@ const HERO_IMAGES: HeroTile[] = [
   { img: "/media/community-prayagraj-poster.jpg", caption: "Prayagraj · slice drop" },
   { img: "/media/community-amsterdam.jpg", caption: "Amsterdam · the whole crew" },
   { img: "/media/community-melbourne.jpg", caption: "Melbourne · panel night" },
-  { img: "/media/community-japan.jpg", caption: "Japan · pie in progress" },
+  { img: "https://raw.githubusercontent.com/PizzaDAO/dow-pizza-party/main/public/photos/lagos/2025/01.jpg", caption: "Lagos · first party" },
   { img: "/media/community-quito.jpg", caption: "Quito · Global Pizza Party" },
   { img: "/media/community-pizza-robots.jpg", caption: "NYC · Pizza Robots" },
 ];
