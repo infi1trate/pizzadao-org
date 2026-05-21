@@ -6,7 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import About from "./pages/About.tsx";
 import PartnersPage from "./pages/PartnersPage.tsx";
-import JoinPage from "./pages/JoinPage.tsx";
+import PartnersPage from "./pages/PartnersPage.tsx";
 import CommunityPage from "./pages/CommunityPage.tsx";
 import BrandSystemPage from "./pages/BrandSystemPage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
