@@ -480,7 +480,7 @@ const Sponsorship = () => {
 
 
       {/* CTA band — edge-to-edge butter, layered transition from cream-warm above */}
-      <div className="relative overflow-hidden bg-butter pb-12 pt-14 md:pb-16 md:pt-16">
+      <div className="relative overflow-hidden bg-butter pb-10 pt-12 md:pb-14 md:pt-14">
         {/* Top tonal bridge — cream-warm fading into butter */}
         <div
           aria-hidden
