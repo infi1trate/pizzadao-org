@@ -7,6 +7,10 @@ import CopyToken, { hexToRgb, cssVarName } from "@/components/CopyToken";
 import UseInFigma from "@/components/UseInFigma";
 import DoDont from "@/components/DoDont";
 import { ArrowUpRight, Download, Github, FileCode2, Terminal, Sparkles } from "lucide-react";
+import { track } from "@/lib/analytics/posthog";
+import { EVT } from "@/lib/analytics/events";
+import { useTrackOutbound } from "@/lib/analytics/useTrackOutbound";
+
 import moltoBenny from "@/assets/brand/molto-benny-color.png";
 import moltoBennyPrintRun from "@/assets/brand/molto-benny-print-run.jpg";
 import moltoBennyToken from "@/assets/brand/molto-benny-token.svg";
@@ -38,9 +42,11 @@ const SECTIONS = [
 ];
 
 const BrandSystemPage = () => {
+  const trackOutbound = useTrackOutbound("brand_system");
   useEffect(() => {
     document.title = "Brand System, PizzaDAO";
   }, []);
+
 
   return (
     <div className="min-h-screen bg-cream text-ink lg:pl-[180px]">
