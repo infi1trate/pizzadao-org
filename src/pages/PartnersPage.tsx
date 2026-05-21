@@ -156,16 +156,25 @@ const PartnersPage = () => {
       {/* Case studies consolidated into Sponsorship "What we've built" */}
 
       {/* Logo wall — premium social proof, gallery-like */}
-      <section className="paper-soft paper-drift relative overflow-hidden bg-cream py-12 md:py-14">
+      <section className="paper-soft paper-drift relative overflow-hidden bg-cream py-14 md:py-20">
         {/* Warm grain overlay */}
         <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.32]" />
-        {/* Faint gradient wash */}
+        {/* Soft tonal wash — warm editorial depth */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, hsl(var(--cream)) 0%, hsl(44 60% 97%) 40%, hsl(var(--cream)) 100%)",
+              "linear-gradient(180deg, hsl(44 60% 97%) 0%, hsl(var(--cream)) 40%, hsl(44 55% 96%) 100%)",
+          }}
+        />
+        {/* Faint vignette edge darkening */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 50%, transparent 60%, hsl(30 20% 50% / 0.04) 100%)",
           }}
         />
         {/* Section seam hairlines — tighter editorial join */}
@@ -174,30 +183,20 @@ const PartnersPage = () => {
 
         <div className="container relative">
           {/* Editorial heading — minimal, confident */}
-          <div className="relative flex items-baseline justify-between gap-x-6">
+          <div className="relative max-w-2xl">
             <h2 className="font-display text-[clamp(1.6rem,3.2vw,2.6rem)] font-extrabold leading-[1] tracking-[-0.02em] text-ink">
               Selected collaborators
             </h2>
-            <span
-              aria-hidden
-              className="ui hidden text-[10px] font-medium uppercase tracking-[0.24em] text-ink/30 md:block"
-            >
-              Trusted globally
-            </span>
-            {/* Asymmetric handwritten annotation */}
-            <span
-              aria-hidden
-              className="handwritten absolute -top-5 left-[42%] -rotate-[4deg] text-[12px] text-tomato/80 md:left-[36%]"
-            >
-              ↘ a partial list
-            </span>
+            <p className="font-serif mt-3 text-[15.5px] leading-[1.55] text-ink/60 md:text-[16px]">
+              Organizations we've collaborated with across culture, technology, and community.
+            </p>
           </div>
 
           {/* Thin editorial rule */}
-          <div className="mt-5 h-px bg-ink/10 md:mt-6" />
+          <div className="mt-7 h-px bg-ink/10 md:mt-8" />
 
           {/* Logo grid — gallery spacing, monochrome default */}
-          <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-8 md:mt-10 md:grid-cols-4 md:gap-x-12 md:gap-y-10">
+          <div className="mt-10 grid grid-cols-2 gap-x-10 gap-y-10 md:mt-12 md:grid-cols-4 md:gap-x-14 md:gap-y-12">
             {PARTNERS.map((p, i) => (
               <div
                 key={p.name}
@@ -205,13 +204,22 @@ const PartnersPage = () => {
                 style={{ animationDelay: `${i * 80}ms`, animationFillMode: "both" }}
               >
                 <span
-                  className="font-display text-[clamp(1.1rem,2vw,1.5rem)] font-semibold tracking-[-0.01em] text-ink/25 transition-all duration-700 ease-out group-hover:text-[color:var(--brand)] md:text-[clamp(1.2rem,1.8vw,1.65rem)]"
+                  className="font-display text-[clamp(1.25rem,2.4vw,1.7rem)] font-semibold tracking-[-0.01em] text-ink/30 transition-colors duration-700 ease-out group-hover:text-[color:var(--brand)] md:text-[clamp(1.35rem,2vw,1.85rem)]"
                   style={{ "--brand": p.color } as React.CSSProperties}
                 >
                   {p.name}
                 </span>
               </div>
             ))}
+          </div>
+
+          {/* Subtle editorial footer mark */}
+          <div className="mt-10 flex items-center gap-3 md:mt-12">
+            <div className="h-px flex-1 bg-ink/8" />
+            <span className="ui text-[10px] font-medium uppercase tracking-[0.24em] text-ink/30">
+              Trusted globally
+            </span>
+            <div className="h-px flex-1 bg-ink/8" />
           </div>
         </div>
       </section>
