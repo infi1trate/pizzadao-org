@@ -623,7 +623,7 @@ const CommunityPage = () => {
 
 
       {/* THIS WEEK, stylized weekly calendar + featured events */}
-      <ThisWeekSection onOpenCalendar={() => setCalOpen(true)} />
+      <ThisWeekSection onOpenCalendar={() => openCalendar("this_week")} />
 
       <Dialog open={calOpen} onOpenChange={setCalOpen}>
         <DialogContent className="max-w-4xl bg-cream p-0">
@@ -982,7 +982,7 @@ const CommunityPage = () => {
                           )}
                           <button
                             type="button"
-                            onClick={() => setActiveBuild(featuredIndex)}
+                            onClick={() => openBuild(featuredIndex)}
                             className="ui inline-flex items-center gap-2 rounded-full border border-ink/25 px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/80 transition-colors hover:border-ink hover:text-ink"
                           >
                             How it works
@@ -1058,7 +1058,7 @@ const CommunityPage = () => {
                               {b.embed ? (
                                 <button
                                   type="button"
-                                  onClick={() => setEmbedSite({ name: b.name, url: b.embed! })}
+                                  onClick={() => openEmbed({ name: b.name, url: b.embed! })}
                                   className="ui inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-cream transition-colors hover:bg-tomato"
                                 >
                                   Open arcade
@@ -1077,7 +1077,7 @@ const CommunityPage = () => {
                               ) : (
                                 <button
                                   type="button"
-                                  onClick={() => setActiveBuild(i)}
+                                  onClick={() => openBuild(i)}
                                   className="ui inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/75 transition-colors hover:text-tomato"
                                 >
                                   How it works
@@ -1173,7 +1173,8 @@ const CommunityPage = () => {
           { img: party,     cap: "Quito · global pizza party", meta: "Sep · chapter",     ratio: "1/1", rot: -1.0 },
           { img: hackathon, cap: "Amsterdam · the crew",       meta: "Feb · @nlcrew",     ratio: "4/5", rot: 1.1 },
         ];
-        const openAt = (idx: number) => {
+        const openAt = (idx: number, source: string) => {
+          track(EVT.COMMUNITY_GALLERY_OPENED, { index: idx, source });
           setGalleryIndex(idx);
           setGalleryOpen(true);
         };
@@ -1192,7 +1193,7 @@ const CommunityPage = () => {
                 </div>
                 <button
                   type="button"
-                  onClick={() => openAt(0)}
+                  onClick={() => openAt(0, "header")}
                   className="ui hidden shrink-0 items-center gap-2 border-b border-ink pb-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/80 transition-colors hover:border-tomato hover:text-tomato md:inline-flex"
                 >
                   Open community gallery
@@ -1212,7 +1213,7 @@ const CommunityPage = () => {
                   >
                     <button
                       type="button"
-                      onClick={() => openAt(i)}
+                      onClick={() => openAt(i, "tile")}
                       className="block w-full text-left"
                       aria-label={`Open ${p.cap}`}
                     >
@@ -1244,7 +1245,7 @@ const CommunityPage = () => {
               <div className="mt-6 flex justify-center md:hidden">
                 <button
                   type="button"
-                  onClick={() => openAt(0)}
+                  onClick={() => openAt(0, "mobile_cta")}
                   className="ui inline-flex items-center gap-2 border-b border-ink pb-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/80"
                 >
                   Open community gallery
@@ -1291,7 +1292,7 @@ const CommunityPage = () => {
                     <button
                       key={i}
                       type="button"
-                      onClick={() => setGalleryIndex(i)}
+                      onClick={() => navigateGallery(i)}
                       className={`relative h-16 w-20 shrink-0 overflow-hidden rounded-md transition-all ${
                         i === galleryIndex
                           ? "ring-2 ring-tomato"
