@@ -74,18 +74,13 @@ const Join = () => {
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
             {STEPS.map((s) => (
               <article
-                key={s.n}
+                key={s.title}
                 className={`flex flex-col rounded-2xl p-6 md:p-7 ${s.bg}`}
               >
-                <div className="flex items-baseline justify-between">
-                  <span className="ui text-[10px] font-semibold uppercase tracking-[0.18em] opacity-60">
-                    Step
-                  </span>
-                </div>
-                <h4 className="font-display mt-6 text-2xl font-extrabold leading-tight md:text-[1.625rem]">
+                <h4 className="font-display text-2xl font-extrabold leading-tight md:text-[1.625rem]">
                   {s.title}
                 </h4>
-                <p className="mt-3 flex-1 text-sm leading-relaxed opacity-85">
+                <p className="mt-2 text-sm leading-relaxed opacity-80">
                   {s.body}
                 </p>
               </article>
