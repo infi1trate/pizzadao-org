@@ -181,9 +181,6 @@ const Journal = () => {
                   height={1080}
                   className="block aspect-[5/4] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 />
-                <span className="ui absolute left-3 top-3 rounded-full bg-cream px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-ink">
-                  No. {String(i + 1).padStart(2, "0")}
-                </span>
               </figure>
               <p className="overline mt-5 text-tomato">{s.kicker}</p>
               <h4 className="font-display mt-3 text-2xl font-extrabold leading-[1.05] transition-colors group-hover:text-tomato md:text-[1.75rem]">
