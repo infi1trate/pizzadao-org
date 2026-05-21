@@ -110,13 +110,24 @@ const SiteNav = ({ solid = false }: Props) => {
                 {n.label}
               </Link>
             ))}
-            <Link
-              to="/join"
-              onClick={() => setOpen(false)}
-              className="btn-pill mt-4 mb-3 bg-tomato text-cream"
-            >
-              Join the Pizza Mafia →
-            </Link>
+            <div className="mt-4 flex flex-col gap-2">
+              <a
+                href="https://app.pizzadao.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-pill border border-ink/30 text-center text-ink/80 hover:border-ink hover:text-ink"
+                onClick={() => setOpen(false)}
+              >
+                Member login
+              </a>
+              <Link
+                to="/join"
+                onClick={() => setOpen(false)}
+                className="btn-pill bg-tomato text-cream text-center"
+              >
+                Join the Pizza Mafia →
+              </Link>
+            </div>
             <div className="mt-2 flex gap-6 border-t border-ink/10 pt-4">
               <Link
                 to="/privacy"
