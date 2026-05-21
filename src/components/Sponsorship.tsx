@@ -121,13 +121,6 @@ const Sponsorship = () => {
       {/* Masthead */}
       <div className="container relative">
         <div className="relative border-t-2 border-ink pt-6 md:pt-7">
-          {/* Offset Rock Salt annotation — restrained, single instance */}
-          <span
-            aria-hidden
-            className="handwritten absolute -top-4 right-2 -rotate-[6deg] text-tomato text-[13px] md:text-sm"
-          >
-            ↳ community-led, global IRL
-          </span>
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-5">
             <div className="col-span-12 md:col-span-7">
               <p className="overline text-tomato">Why it works</p>
@@ -431,10 +424,6 @@ const Sponsorship = () => {
                   {b.v}
                 </p>
 
-                {/* Rock Salt accent — always visible, subtle */}
-                <p className={`handwritten mt-7 ${b.tilt} text-tomato/80 text-[15px] leading-none`}>
-                  {b.accent}
-                </p>
 
                 {/* Annotation reveal on hover */}
                 <p className="ui mt-3 flex items-center gap-2 text-[10.5px] uppercase tracking-[0.22em] text-ink/55 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
@@ -497,11 +486,6 @@ const Sponsorship = () => {
               </h3>
               <p className="mt-3 max-w-lg text-[15px] leading-[1.55] text-ink/70 md:text-base">
                 Tell us what you're trying to do. We'll shape it into something worth showing up for.
-              </p>
-
-              {/* Handwritten annotation — restrained, single instance */}
-              <p className="handwritten mt-4 -rotate-[1.5deg] text-tomato/85 text-[14px]">
-                ↳ IRL matters
               </p>
             </div>
 
