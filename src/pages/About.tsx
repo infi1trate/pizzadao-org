@@ -170,7 +170,7 @@ const About = () => {
               § 01 — Origin · 2020–2021
             </span>
             <span className="ui hidden text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/35 md:inline">
-              Discord · #pizza-day
+              Clubhouse · The Room About Nothing
             </span>
           </div>
 
