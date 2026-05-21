@@ -451,7 +451,7 @@ const About = () => {
             </div>
 
             {/* Pinned thesis polaroid — humanizes the abstract claim */}
-            <figure className="col-span-12 md:col-span-4 md:col-start-9 mx-auto md:mx-0 w-[70%] sm:w-[55%] md:w-full max-w-[280px] -rotate-[3.5deg] transition-transform duration-500 hover:rotate-0">
+            <figure className="relative col-span-12 md:col-span-4 md:col-start-9 mx-auto md:mx-0 w-[70%] sm:w-[55%] md:w-full max-w-[280px] -rotate-[3.5deg] transition-transform duration-500 hover:rotate-0">
               <div className="grain relative overflow-hidden bg-cream p-2.5 pb-10 shadow-[0_18px_40px_-18px_hsl(0_0%_0%/0.45),0_4px_10px_-4px_hsl(0_0%_0%/0.25)]">
                 <div className="aspect-[4/5] overflow-hidden bg-ink">
                   <img
