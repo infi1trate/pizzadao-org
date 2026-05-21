@@ -219,7 +219,7 @@ const PartnersPage = () => {
 
 
       {/* Inquiry — warm close, hospitality cues */}
-      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-16 text-cream md:py-20">
+      <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-14 text-cream md:py-16">
         {/* Atmospheric warm glow — soft ember drift */}
         <div
           aria-hidden
