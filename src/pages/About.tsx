@@ -167,7 +167,26 @@ const About = () => {
         </div>
       </section>
 
+      {/* ── POSTER QUOTE ─────────────────────────────────────────── */}
+      <section className="bg-cream py-28 md:py-40">
+        <div className="container">
+          <figure className="mx-auto max-w-[68rem]">
+            <blockquote>
+              <p className="font-display text-ink font-extrabold leading-[0.95] tracking-[-0.025em] text-[clamp(2.5rem,7.5vw,6.5rem)]">
+                Pizza is the most{" "}
+                <span className="text-tomato">democratic</span> food on Earth.
+              </p>
+            </blockquote>
+            <figcaption className="ui mt-10 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/55">
+              <span className="h-px w-10 bg-ink/40" />
+              A founding principle
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
       {/* ── RITUAL ───────────────────────────────────────────────── */}
+
       <section className="relative bg-ink py-24 text-cream md:py-32">
         <div className="container">
           <div className="grid grid-cols-12 gap-x-8 gap-y-10">
