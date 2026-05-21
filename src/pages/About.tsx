@@ -333,6 +333,18 @@ const About = () => {
         </div>
       </section>
 
+      {/* ── THESIS ───────────────────────────────────────────────── */}
+      <section className="bg-cream py-28 md:py-40">
+        <div className="container">
+          <p className="font-display text-ink font-extrabold leading-[0.95] tracking-[-0.025em] text-[clamp(2.5rem,8vw,7rem)]">
+            Pizza is{" "}
+            <span className="text-tomato">social infrastructure</span>.
+          </p>
+          <p className="font-serif mt-8 max-w-[44ch] text-lg leading-[1.55] text-ink/60 md:text-xl">
+            Familiar, affordable, understood almost anywhere.
+          </p>
+        </div>
+      </section>
 
       {/* ── GLOBAL SCALE ─────────────────────────────────────────── */}
       <section className="relative bg-ink py-24 text-cream md:py-32">
