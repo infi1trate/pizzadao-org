@@ -349,8 +349,8 @@ const MafiaNamePage = () => {
             {!film ? (
               <CinematicInput
                 inputRef={filmInputRef}
-                label="§ 02 · The film"
-                placeholder="What mafia film speaks to you?"
+                label="§ 02 · Your movie"
+                placeholder="What's your mafia movie?"
                 value={query}
                 onChange={setQuery}
                 open={filmDrawerOpen}
@@ -372,8 +372,8 @@ const MafiaNamePage = () => {
               <div className="mt-14">
                 <CinematicInput
                   inputRef={toppingInputRef}
-                  label="§ 03 · The slice"
-                  placeholder="What belongs on your slice?"
+                  label="§ 03 · Your topping"
+                  placeholder="What's your topping?"
                   value={toppingQuery}
                   onChange={setToppingQuery}
                   open={toppingDrawerOpen}
