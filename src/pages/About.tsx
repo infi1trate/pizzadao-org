@@ -186,7 +186,7 @@ const About = () => {
                 {ORIGIN_POLAROIDS.map((p, i) => (
                   <figure
                     key={p.city}
-                    className={`relative ${p.tilt} ${p.offset} w-[36%] origin-top transition-transform duration-500 hover:rotate-0 hover:scale-[1.03]`}
+                    className={`relative ${p.tilt} ${p.offset} w-[48%] origin-top transition-transform duration-500 hover:rotate-0 hover:scale-[1.03]`}
                     style={{ zIndex: 10 - i }}
                   >
                     <div className="grain relative overflow-hidden bg-cream p-2 pb-8 shadow-[0_8px_20px_-10px_hsl(0_0%_0%/0.35),0_2px_5px_-2px_hsl(0_0%_0%/0.2)]">
