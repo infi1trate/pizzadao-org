@@ -61,6 +61,8 @@ const PartnersPage = () => {
           aria-hidden
           className="checker-tape pointer-events-none absolute bottom-0 left-0 h-[5px] w-32 opacity-25 md:w-48"
         />
+        {/* Photographic emotional texture — barely-there crowd warmth */}
+        <PhotoVeil variant="crowd" position="bottom-left" opacity={0.05} blend="multiply" />
 
         <div className="container relative">
           {/* Archival ref */}
