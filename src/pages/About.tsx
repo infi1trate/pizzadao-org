@@ -290,8 +290,49 @@ const About = () => {
             </div>
           </div>
 
+          {/* Contact-sheet strip — four faces of one global night */}
+          <div className="mt-24 md:mt-32">
+            <div className="mb-5 flex items-baseline justify-between">
+              <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/45">
+                Field contact sheet · May 22
+              </span>
+              <span className="ui hidden text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/30 md:inline">
+                Roll 03 / 12
+              </span>
+            </div>
+            <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3">
+              {RITUAL_STRIP.map((p, i) => (
+                <figure
+                  key={p.city}
+                  className="group relative overflow-hidden bg-ink ring-1 ring-cream/10"
+                  style={{ animationDelay: `${i * 80}ms` }}
+                >
+                  <div className="aspect-[4/5] overflow-hidden">
+                    <img
+                      src={p.src}
+                      alt={`${p.city}, May 22`}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover opacity-90 transition-all duration-700 [filter:saturate(0.85)_contrast(1.08)_sepia(0.08)] group-hover:scale-[1.04] group-hover:opacity-100"
+                    />
+                  </div>
+                  <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.3] mix-blend-overlay" />
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0"
+                    style={{ background: "linear-gradient(to top, hsl(0 0% 0% / 0.75) 0%, transparent 45%)" }}
+                  />
+                  <figcaption className="absolute inset-x-0 bottom-0 flex items-baseline justify-between px-3 pb-2.5">
+                    <span className="font-display text-xs font-extrabold tracking-tight text-cream">{p.city}</span>
+                    <span className="ui text-[9px] font-semibold uppercase tracking-[0.22em] text-cream/65">{p.stamp}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+
           {/* Quiet emotional accent — short, supportive, not informational */}
-          <div className="mt-28 flex justify-center md:mt-40">
+          <div className="mt-20 flex justify-center md:mt-28">
             <p className="handwritten -rotate-[1.5deg] text-butter text-[clamp(2rem,5vw,3.5rem)] leading-tight">
               Every May 22, a door opens.
             </p>
