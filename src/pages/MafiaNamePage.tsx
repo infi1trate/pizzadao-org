@@ -329,13 +329,13 @@ const MafiaNamePage = () => {
       {step !== "claim" && (
         <section className="relative z-10">
           <div className="container pt-2 pb-6 md:pt-4 md:pb-10">
-            <p className="overline text-tomato">§ 01 · A PizzaDAO ceremony</p>
+            <p className="overline text-tomato">§ 01 · PizzaDAO initiation</p>
             <h1 className="font-display mt-4 text-[clamp(2.5rem,7vw,5.5rem)] font-black leading-[0.9] tracking-[-0.015em]">
-              Tell us your taste.<br />
-              <span className="text-tomato">We'll tell you who you are.</span>
+              Claim your<br />
+              <span className="text-tomato">mafia name.</span>
             </h1>
             <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-ink/75">
-              A film. A topping. A name worthy of the family.
+              Choose a film. Choose a topping. The family handles the rest.
             </p>
           </div>
         </section>
