@@ -65,12 +65,12 @@ const Reach = () => {
         </div>
 
         {/* Metrics ledger, light, breathable */}
-        <div className="mt-12 grid grid-cols-1 overflow-hidden rounded-2xl border border-ink/12 bg-white/60 shadow-[var(--shadow-soft)] backdrop-blur-sm md:mt-16 md:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 overflow-hidden rounded-2xl border border-ink/15 bg-cream/70 shadow-[var(--shadow-soft)] backdrop-blur-sm md:mt-16 md:grid-cols-3">
           {METRICS.map((m, i) => (
             <div
               key={m.label}
               className={`relative px-6 py-10 md:px-8 md:py-12 ${
-                i > 0 ? "border-t border-ink/10 md:border-l md:border-t-0" : ""
+                i > 0 ? "border-t border-ink/15 md:border-l md:border-t-0" : ""
               }`}
             >
               <div className="ui text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/50">
