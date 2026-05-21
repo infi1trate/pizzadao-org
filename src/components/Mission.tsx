@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 const Mission = () => {
   return (
     <section id="mission" className="relative bg-butter text-ink">
-      <div className="container py-24 md:py-36">
+      <div className="container py-20 md:py-36">
         <div className="grid grid-cols-12 gap-x-6 gap-y-10">
           <div className="col-span-12 md:col-span-2">
             <p className="overline text-tomato">Mission</p>
