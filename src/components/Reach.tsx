@@ -65,7 +65,7 @@ const Reach = () => {
         </div>
 
         {/* Metrics ledger, light, breathable */}
-        <div className="mt-12 grid grid-cols-1 overflow-hidden rounded-3xl border border-ink/12 bg-white/60 shadow-[0_1px_0_hsl(var(--ink)/0.04),0_20px_60px_-30px_hsl(var(--ink)/0.18)] backdrop-blur-sm md:mt-16 md:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 overflow-hidden rounded-2xl border border-ink/12 bg-white/60 shadow-[var(--shadow-soft)] backdrop-blur-sm md:mt-16 md:grid-cols-3">
           {METRICS.map((m, i) => (
             <div
               key={m.label}
@@ -113,7 +113,7 @@ const Reach = () => {
               </p>
 
               {/* Active city panel, bright card */}
-              <div className="mt-8 rounded-2xl border border-ink/10 bg-white p-6 shadow-[0_1px_0_hsl(var(--ink)/0.04),0_20px_50px_-30px_hsl(var(--ink)/0.2)]">
+              <div className="mt-8 rounded-2xl border border-ink/10 bg-white p-6 shadow-[var(--shadow-soft)]">
                 {active ? (
                   <div className="fade-up">
                     <div className="overline text-tomato">Selected chapter</div>
@@ -143,7 +143,7 @@ const Reach = () => {
             </div>
 
             <div className="col-span-12 md:col-span-8">
-              <figure className="relative overflow-hidden rounded-3xl border border-ink/10 bg-white shadow-[0_1px_0_hsl(var(--ink)/0.04),0_30px_80px_-40px_hsl(var(--ink)/0.25)]">
+              <figure className="relative overflow-hidden rounded-2xl border border-ink/10 bg-white shadow-[var(--shadow-lifted)]">
                 {/* soft warm tint behind landmasses */}
                 <div
                   aria-hidden

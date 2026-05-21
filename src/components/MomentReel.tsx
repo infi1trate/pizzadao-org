@@ -70,7 +70,7 @@ const MomentReel = () => {
                   aria-hidden="true"
                 />
                 {/* Bezel */}
-                <div className="rounded-[2.75rem] bg-ink p-3 shadow-[0_50px_120px_-30px_hsl(0_0%_0%/0.55),0_20px_40px_-15px_hsl(0_0%_0%/0.35)] ring-1 ring-ink/10 md:p-3.5">
+                <div className="rounded-[2.75rem] bg-ink p-3 shadow-[var(--shadow-lifted)] ring-1 ring-ink/10 md:p-3.5">
                   <div className="relative aspect-[9/19.5] w-[260px] overflow-hidden rounded-[2.25rem] bg-ink md:w-[300px] lg:w-[320px]">
                     {/* Notch */}
                     <div className="absolute left-1/2 top-2 z-10 h-5 w-24 -translate-x-1/2 rounded-full bg-ink/95" />

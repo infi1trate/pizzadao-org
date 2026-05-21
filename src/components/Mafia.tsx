@@ -54,7 +54,7 @@ const Mafia = () => {
               <span>● Active members</span>
               <span>3,000+ worldwide</span>
             </div>
-            <div className="relative h-[32rem] overflow-hidden rounded-2xl border-2 border-ink bg-cream md:h-[38rem]">
+            <div className="relative h-[32rem] overflow-hidden rounded-2xl border border-ink/15 bg-cream md:h-[38rem]">
               <div className="mask-fade-y h-full overflow-hidden">
                 <div className="scroll-y-track">
                   {loop.map((n, i) => (
