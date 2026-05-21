@@ -73,7 +73,7 @@ const SiteNav = ({ solid = false }: Props) => {
             Member login
           </a>
           <Link
-            to="/join"
+            to="/get-your-mafia-name"
             className={`btn-pill ${
               onRed
                 ? "bg-cream text-ink hover:bg-butter"
@@ -139,7 +139,7 @@ const SiteNav = ({ solid = false }: Props) => {
               Member login
             </a>
             <Link
-              to="/join"
+              to="/get-your-mafia-name"
               onClick={() => setOpen(false)}
               className="btn-pill-lg bg-tomato text-cream text-center hover:bg-ink"
             >

@@ -23,9 +23,8 @@ export const POSTHOG_HOST: string =
 /** Routes that get 100% session-replay sampling (the rest get the global rate). */
 export const HIGH_INTENT_PATHS = [
   "/contact",
-  "/join",
-  "/partners",
   "/get-your-mafia-name",
+  "/partners",
 ];
 
 /** Global session-replay sampling rate (0–1). High-intent paths always record. */

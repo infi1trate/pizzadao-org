@@ -497,7 +497,7 @@ const CommunityPage = () => {
             ].map((c, i) => (
               <li key={c.title}>
                 <a
-                  href="/join"
+                  href="/get-your-mafia-name"
                   className={`group relative block rounded-lg px-2 py-5 transition-all duration-200 md:px-3 md:py-6 ${
                     c.active
                       ? "bg-butter/50 hover:-translate-y-0.5 hover:bg-butter/70"
@@ -1340,7 +1340,7 @@ const CommunityPage = () => {
                   </ul>
                 </div>
                 <a
-                  href="/join"
+                  href="/get-your-mafia-name"
                   className="ui mt-8 group/cta inline-flex items-center justify-between gap-3 rounded-full bg-butter px-6 py-4 text-[12px] font-semibold uppercase tracking-[0.22em] text-ink transition-all hover:bg-cream hover:shadow-[0_18px_40px_-12px_hsl(var(--butter)/0.6)]"
                 >
                   Claim your name
@@ -1364,7 +1364,7 @@ const CommunityPage = () => {
                       title: "Join Discord",
                       note: "The room is already loud. Someone will say hi.",
                       cta: "Open the door",
-                      href: "/join",
+                      href: "/get-your-mafia-name",
                       primary: true,
                     },
                     {
@@ -1380,7 +1380,7 @@ const CommunityPage = () => {
                       title: "Start a project",
                       note: "Pitch the experiment. Ship the weird thing.",
                       cta: "Pick a lane",
-                      href: "/join",
+                      href: "/get-your-mafia-name",
                       primary: false,
                     },
                   ].map((s, idx, arr) => (
@@ -1439,7 +1439,7 @@ const CommunityPage = () => {
             </div>
             <div className="col-span-12 flex flex-col gap-3 md:col-span-4 md:items-end">
               <a
-                href="/join"
+                href="/get-your-mafia-name"
                 className="btn-pill-lg bg-ink text-cream hover:bg-cream hover:text-ink"
               >
                 Join Discord →
@@ -1628,7 +1628,7 @@ const HeroSection = () => {
                   Feed. Organize. <span className="handwritten marker-bleed inline-block text-tomato text-[1.25em] leading-none -rotate-[3deg] translate-y-[0.05em]">show up.</span>
                 </p>
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row md:flex-col">
-                  <a href="/join" className="btn-pill-lg bg-tomato text-cream hover:bg-ink">
+                  <a href="/get-your-mafia-name" className="btn-pill-lg bg-tomato text-cream hover:bg-ink">
                     Join the Pizza Mafia →
                   </a>
                   <a href="#ways-in" className="btn-pill-lg border-2 border-ink/15 text-ink hover:border-ink hover:bg-cream/60">

@@ -6,7 +6,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import About from "./pages/About.tsx";
 import PartnersPage from "./pages/PartnersPage.tsx";
-import JoinPage from "./pages/JoinPage.tsx";
 import CommunityPage from "./pages/CommunityPage.tsx";
 import BrandSystemPage from "./pages/BrandSystemPage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
@@ -43,7 +42,7 @@ const App = () => (
           <Route path="/home" element={<PasswordGate><Index /></PasswordGate>} />
           <Route path="/about" element={<PasswordGate><About /></PasswordGate>} />
           <Route path="/partners" element={<PasswordGate><PartnersPage /></PasswordGate>} />
-          <Route path="/join" element={<PasswordGate><JoinPage /></PasswordGate>} />
+          
           <Route path="/community" element={<PasswordGate><CommunityPage /></PasswordGate>} />
           <Route path="/brand-system" element={<PasswordGate><BrandSystemPage /></PasswordGate>} />
           <Route path="/contact" element={<PasswordGate><ContactPage /></PasswordGate>} />
