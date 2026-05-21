@@ -42,7 +42,7 @@ The provider lives inside `<BrowserRouter>` in `src/App.tsx`.
 
 ## Event reference
 
-Domains: `comms.*`, `sales.*`, `ux.*`, `ui.*`, `mafia.*`, `transmission.*`.
+Domains: `comms.*`, `sales.*`, `ux.*`, `ui.*`, `mafia.*`, `community.*`, `transmission.*`.
 
 | Event | Trigger | Key properties |
 |---|---|---|
@@ -55,17 +55,32 @@ Domains: `comms.*`, `sales.*`, `ux.*`, `ui.*`, `mafia.*`, `transmission.*`.
 | `sales.contact_intent_selected` | intent chip toggled | `intent`, `selected`, `intents_count` |
 | `sales.contact_form_submitted` | submit success | `intents`, `intents_count`, `has_org`, `message_length` |
 | `sales.contact_form_failed` | validation or submit error | `reason`, `fields` or `message` |
+| `sales.partners_cta_clicked` | Partners page inquiry submit | `position`, `action` |
+| `sales.figma_kit_opened` | `UseInFigma` pill clicked | `href`, `label`, `source` |
+| `sales.brand_asset_downloaded` | brand-kit / Brand.md downloads | `asset`, `surface` |
 | `ux.gate_viewed` | password gate first render | `path` |
 | `ux.gate_submitted` | gate unlocked | `success`, `attempts`, `path` |
 | `ux.gate_failed` | wrong password | `attempts`, `path` |
 | `ux.404_hit` | NotFound mounted | `from_path`, `referrer` |
+| `ui.nav_link_clicked` | SiteNav internal nav | `label`, `to`, `surface` |
 | `mafia.started` | `/get-your-mafia-name` opened | — |
+| `mafia.intent_clicked` | "Get your mafia name" CTAs across the site | `label`, `surface` |
 | `mafia.movie_picked` | film selected | `movie_id`, `movie_title`, `custom` |
 | `mafia.topping_picked` | topping selected | `topping` |
 | `mafia.names_generated` | generation success | `count`, `movie`, `topping` |
 | `mafia.name_regenerated` | re-roll (2nd+ generate) | `attempt`, `movie`, `topping` |
 | `mafia.name_claimed` | claim insert success | `name`, `movie`, `topping`, `edited`, `generate_attempts` |
 | `mafia.generate_failed` | edge function error | `reason`, `movie`, `topping` |
+| `mafia.avatar_started` | avatar generation begins | `mafia_name`, `movie`, `topping`, `redraw` |
+| `mafia.avatar_generated` | avatar returned | `mafia_name`, `movie`, `topping`, `latency_ms`, `redraw` |
+| `mafia.avatar_failed` | edge function or empty image | `mafia_name`, `movie`, `topping`, `reason` |
+| `mafia.avatar_redrawn` | "Re-draw portrait" tapped | `mafia_name`, `movie`, `topping` |
+| `mafia.avatar_downloaded` | "Download avatar" tapped | `mafia_name`, `movie`, `topping` |
+| `community.build_viewed` | build deep-dive opened | `name`, `index`, `featured` |
+| `community.build_embed_opened` | embedded site modal opened (e.g. Arcade, rsv.pizza) | `name`, `url` |
+| `community.gallery_opened` | photo gallery lightbox opened | `index`, `source` |
+| `community.gallery_navigated` | thumbnail clicked inside lightbox | `from`, `to` |
+| `community.calendar_opened` | "View full calendar" tapped | `surface` |
 | `transmission.cta_clicked` | hero / closing CTA | `cta`, `position` |
 | `transmission.roll_name_clicked` | hero "get your mafia name" | `name` |
 
@@ -75,7 +90,7 @@ ones there first, then reference them from components.
 ## Session replay
 
 - Global sample rate: **10%** (set in `config.ts`).
-- High-intent routes (`/contact`, `/join`, `/partners`,
+- High-intent routes (`/contact`, `/community`, `/partners`,
   `/get-your-mafia-name`) force-record every session via
   `posthog.startSessionRecording()` after route change.
 - All `<input>` and `<textarea>` content is masked (`maskAllInputs: true`).
