@@ -1167,7 +1167,7 @@ const CommunityPage = () => {
           { img: hands,     cap: "Lagos · open kitchen",       meta: "Apr · @marina_l",   ratio: "4/5", rot: -1.2 },
           { img: party,     cap: "Berlin · long table",        meta: "Mar · @capo",       ratio: "3/4", rot: 0.8 },
           { img: hackathon, cap: "Tokyo · demo night",         meta: "Feb · @hiro.eth",   ratio: "1/1", rot: -0.6 },
-          { img: slice,     cap: "Lisbon · slice club, vol.47", meta: "Apr · chapter",    ratio: "5/4", rot: 1.4 },
+          { img: slice,     cap: "NFT LA · booth activation", meta: "Apr · chapter",    ratio: "5/4", rot: 1.4 },
           { img: pizzeria,  cap: "Naples · the oven, 03:00",   meta: "Jan · @margherita", ratio: "3/4", rot: -1.8 },
           { img: community, cap: "CDMX · block party",         meta: "Mar · @donmami",    ratio: "4/5", rot: 0.6 },
           { img: party,     cap: "Quito · global pizza party", meta: "Sep · chapter",     ratio: "1/1", rot: -1.0 },
