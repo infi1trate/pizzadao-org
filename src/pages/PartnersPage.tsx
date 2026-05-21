@@ -9,17 +9,25 @@ import { track } from "@/lib/analytics/posthog";
 import { EVT } from "@/lib/analytics/events";
 
 
+import paypalLogo from "@/assets/partners/paypal.png";
+import ledgerLogo from "@/assets/partners/ledger.png";
+import standWithCryptoLogo from "@/assets/partners/stand-with-crypto.png";
+import braveLogo from "@/assets/partners/brave.png";
+import openseaLogo from "@/assets/partners/opensea.png";
+import baseLogo from "@/assets/partners/base.png";
+import polygonLogo from "@/assets/partners/polygon.png";
+import ensLogo from "@/assets/partners/ens.png";
 
 
 const PARTNERS = [
-  { name: "PayPal", color: "#003087" },
-  { name: "Ledger", color: "#000000" },
-  { name: "Stand With Crypto", color: "#0052FF" },
-  { name: "Brave", color: "#FB542B" },
-  { name: "OpenSea", color: "#2081E2" },
-  { name: "Base", color: "#0052FF" },
-  { name: "Polygon", color: "#8247E5" },
-  { name: "ENS", color: "#5298FF" },
+  { name: "PayPal", color: "#003087", logo: paypalLogo },
+  { name: "Ledger", color: "#000000", logo: ledgerLogo },
+  { name: "Stand With Crypto", color: "#0052FF", logo: standWithCryptoLogo },
+  { name: "Brave", color: "#FB542B", logo: braveLogo },
+  { name: "OpenSea", color: "#2081E2", logo: openseaLogo },
+  { name: "Base", color: "#0052FF", logo: baseLogo },
+  { name: "Polygon", color: "#8247E5", logo: polygonLogo },
+  { name: "ENS", color: "#5298FF", logo: ensLogo },
 ];
 
 
@@ -205,19 +213,20 @@ const PartnersPage = () => {
           <div className="mt-7 h-px bg-ink/10 md:mt-8" />
 
           {/* Logo grid — gallery spacing, monochrome default */}
-          <div className="mt-10 grid grid-cols-2 gap-x-10 gap-y-10 md:mt-12 md:grid-cols-4 md:gap-x-14 md:gap-y-12">
+          <div className="mt-10 grid grid-cols-2 gap-x-10 gap-y-12 md:mt-12 md:grid-cols-4 md:gap-x-14 md:gap-y-14">
             {PARTNERS.map((p, i) => (
               <div
                 key={p.name}
                 className="group flex items-center justify-center animate-fade-in"
                 style={{ animationDelay: `${i * 80}ms`, animationFillMode: "both" }}
               >
-                <span
-                  className="font-display text-[clamp(1.25rem,2.4vw,1.7rem)] font-semibold tracking-[-0.01em] text-ink/30 transition-colors duration-700 ease-out group-hover:text-[color:var(--brand)] md:text-[clamp(1.35rem,2vw,1.85rem)]"
-                  style={{ "--brand": p.color } as React.CSSProperties}
-                >
-                  {p.name}
-                </span>
+                <img
+                  src={p.logo}
+                  alt={`${p.name} logo`}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-8 w-auto max-w-[80%] object-contain opacity-60 grayscale transition duration-700 ease-out [mix-blend-mode:multiply] group-hover:opacity-100 group-hover:grayscale-0 md:h-10"
+                />
               </div>
             ))}
           </div>
