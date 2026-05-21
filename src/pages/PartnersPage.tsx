@@ -213,19 +213,20 @@ const PartnersPage = () => {
           <div className="mt-7 h-px bg-ink/10 md:mt-8" />
 
           {/* Logo grid — gallery spacing, monochrome default */}
-          <div className="mt-10 grid grid-cols-2 gap-x-10 gap-y-10 md:mt-12 md:grid-cols-4 md:gap-x-14 md:gap-y-12">
+          <div className="mt-10 grid grid-cols-2 gap-x-10 gap-y-12 md:mt-12 md:grid-cols-4 md:gap-x-14 md:gap-y-14">
             {PARTNERS.map((p, i) => (
               <div
                 key={p.name}
                 className="group flex items-center justify-center animate-fade-in"
                 style={{ animationDelay: `${i * 80}ms`, animationFillMode: "both" }}
               >
-                <span
-                  className="font-display text-[clamp(1.25rem,2.4vw,1.7rem)] font-semibold tracking-[-0.01em] text-ink/30 transition-colors duration-700 ease-out group-hover:text-[color:var(--brand)] md:text-[clamp(1.35rem,2vw,1.85rem)]"
-                  style={{ "--brand": p.color } as React.CSSProperties}
-                >
-                  {p.name}
-                </span>
+                <img
+                  src={p.logo}
+                  alt={`${p.name} logo`}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-8 w-auto max-w-[80%] object-contain opacity-60 grayscale transition duration-700 ease-out [mix-blend-mode:multiply] group-hover:opacity-100 group-hover:grayscale-0 md:h-10"
+                />
               </div>
             ))}
           </div>
