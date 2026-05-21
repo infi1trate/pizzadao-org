@@ -313,6 +313,8 @@ const MafiaNamePage = () => {
     setToppingQuery("");
     setRevealPhase("idle");
     setFinalePhase(0);
+    setAvatarUrl(null);
+    setAvatarLoading(false);
   };
 
   const primary = names[0];
