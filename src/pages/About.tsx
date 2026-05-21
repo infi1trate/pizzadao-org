@@ -625,9 +625,6 @@ const About = () => {
                   >
                     {/* Clipping masthead */}
                     <div className="flex items-baseline gap-3 border-b border-ink/15 pb-3">
-                      <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/30">
-                        Clip · {String(i + 2).padStart(2, "0")}
-                      </span>
                       <span className="font-display text-sm font-extrabold tracking-tight text-ink transition-colors group-hover:text-tomato md:text-base">
                         {p.outlet}
                       </span>
