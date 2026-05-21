@@ -10,6 +10,7 @@ import hands from "@/assets/hands-pizza.jpg";
 import pizzeria from "@/assets/pizzeria.jpg";
 import hourpayStage from "@/assets/hourpay-stage.jpg";
 import secretPineapple from "@/assets/secret-pineapple.jpg";
+import rsvPizza from "@/assets/rsv-pizza.png";
 import slice from "@/assets/slice.jpg";
 
 const WAYS_IN = [
