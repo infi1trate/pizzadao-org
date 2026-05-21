@@ -62,7 +62,7 @@ type ActProps = {
 
 const ActOpener = ({ number, title, subtitle }: ActProps) => (
   <div className="container">
-    <div className="flex items-center justify-between border-t border-ink/20 pb-10 pt-6">
+    <div className="flex items-center justify-between border-t border-ink/15 pb-10 pt-6">
       <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/50">
         Act {number}
       </span>
@@ -108,7 +108,7 @@ const About = () => {
               Est. 2021 · Ongoing
             </span>
           </div>
-          <div className="mt-8 border-t border-ink/30" />
+          <div className="mt-8 border-t border-ink/15" />
         </div>
 
         {/* Immersive composition — image + embedded headline */}
@@ -230,7 +230,7 @@ const About = () => {
       <section className="paper-soft paper-soft-dark relative overflow-hidden bg-ink py-24 text-cream md:py-32">
         {/* Archive timestamp band */}
         <div className="container">
-          <div className="flex items-center justify-between border-t border-cream/20 pb-10 pt-6">
+          <div className="flex items-center justify-between border-t border-cream/15 pb-10 pt-6">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-butter">
               Act II — The Ritual
             </span>
@@ -242,15 +242,6 @@ const About = () => {
 
         {/* Oversized MAY 22 + cinematic image composition */}
         <div className="relative">
-          {/* Oversized typographic marker */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 z-0 select-none overflow-hidden"
-          >
-            <div className="font-display whitespace-nowrap text-center text-[clamp(7rem,28vw,22rem)] font-extrabold leading-[0.78] tracking-[-0.04em] text-butter/[0.10]">
-              MAY 22
-            </div>
-          </div>
 
           {/* Full-bleed documentary image */}
           <figure className="relative z-10 mt-8 md:mt-16">
@@ -298,19 +289,6 @@ const About = () => {
             </div>
           </figure>
 
-          {/* Thin checkered divider */}
-          <div className="container mt-20 md:mt-28">
-            <div
-              aria-hidden="true"
-              className="h-2 w-full opacity-40"
-              style={{
-                backgroundImage:
-                  "linear-gradient(45deg, hsl(var(--butter)) 25%, transparent 25%, transparent 75%, hsl(var(--butter)) 75%), linear-gradient(45deg, hsl(var(--butter)) 25%, transparent 25%, transparent 75%, hsl(var(--butter)) 75%)",
-                backgroundSize: "8px 8px",
-                backgroundPosition: "0 0, 4px 4px",
-              }}
-            />
-          </div>
 
           {/* Long-form ritual narrative */}
           <div className="container">
@@ -360,7 +338,7 @@ const About = () => {
       <section className="paper-soft relative overflow-hidden bg-cream py-24 md:py-32">
         <div className="container">
           {/* Archival band */}
-          <div className="flex items-center justify-between border-t border-ink/20 pb-10 pt-6">
+          <div className="flex items-center justify-between border-t border-ink/15 pb-10 pt-6">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-tomato">
               Act III — How It Runs
             </span>
@@ -396,15 +374,12 @@ const About = () => {
 
           {/* 3-column ledger — calm, structural, tactile */}
           <div className="grid grid-cols-1 border-t border-ink/15 md:grid-cols-3">
-            {ROLES.map((r, i) => (
+            {ROLES.map((r) => (
               <article
                 key={r.name}
-                className="border-b border-ink/10 py-10 md:border-b-0 md:border-l md:border-ink/10 md:py-12 md:px-10 md:first:border-l-0 md:first:pl-0"
+                className="border-b border-ink/15 py-10 md:border-b-0 md:border-l md:border-ink/15 md:py-12 md:px-10 md:first:border-l-0 md:first:pl-0"
               >
-                <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/40">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="font-display mt-5 text-[1.65rem] font-extrabold leading-[0.95] md:text-[1.75rem]">
+                <h3 className="font-display text-[1.65rem] font-extrabold leading-[0.95] md:text-[1.75rem]">
                   {r.name}
                 </h3>
                 <p className="font-serif mt-4 max-w-[32ch] text-base leading-[1.7] text-ink/70">
@@ -454,12 +429,6 @@ const About = () => {
           A bold editorial interruption. Definitive. Memorable. Grounded.
          ──────────────────────────────────────────────────────────── */}
       <section className="paper-soft relative overflow-hidden bg-cream py-32 md:py-48">
-        {/* Subtle checkered tape — thin, top edge only */}
-        <div
-          aria-hidden="true"
-          className="checker-tape absolute left-0 right-0 top-0 h-[4px] opacity-[0.18]"
-        />
-
         <div className="container relative">
           {/* Overline */}
           <p className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/40">
@@ -515,7 +484,7 @@ const About = () => {
         <div className="container relative">
           {/* Archival header — minimal chrome */}
           <div className="flex items-center justify-between border-t border-cream/15 pb-16 pt-6 md:pb-24">
-            <span className="ui text-[10px] font-semibold uppercase tracking-[0.32em] text-tomato">
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-tomato">
               Act IV — The Archive
             </span>
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.24em] text-cream/40">
@@ -539,7 +508,7 @@ const About = () => {
                 Year after year, cities around the world kept gathering around
                 the same simple idea.
               </p>
-              <p className="ui mt-8 text-[10px] font-semibold uppercase tracking-[0.32em] text-cream/35">
+              <p className="ui mt-8 text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/35">
                 Selected frames · 17 cities · 4 years
               </p>
             </div>
@@ -550,7 +519,7 @@ const About = () => {
 
           {/* Closing field note */}
           <div className="mt-20 flex flex-wrap items-baseline justify-between gap-4 border-t border-cream/15 pt-6 md:mt-28">
-            <span className="ui text-[10px] font-semibold uppercase tracking-[0.32em] text-cream/40">
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/40">
               Field archive · ongoing
             </span>
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.24em] text-cream/30">
@@ -567,7 +536,7 @@ const About = () => {
          ──────────────────────────────────────────────────────────── */}
       <section className="paper-soft relative overflow-hidden bg-cream pt-24 md:pt-32">
         <div className="container">
-          <div className="flex items-center justify-between border-t border-ink/20 pb-12 pt-6">
+          <div className="flex items-center justify-between border-t border-ink/15 pb-12 pt-6">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-tomato">
               Act V — The Memory
             </span>
@@ -628,12 +597,9 @@ const About = () => {
 
           {/* Editorial clippings — varied, archival, never a logo wall */}
           <div className="mt-24 md:mt-32">
-            <div className="flex items-baseline justify-between border-t border-ink/15 pt-6">
-              <p className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/45">
+            <div className="border-t border-ink/15 pt-6">
+              <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/45">
                 Further coverage
-              </p>
-              <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/30">
-                §
               </p>
             </div>
 
@@ -659,9 +625,6 @@ const About = () => {
                   >
                     {/* Clipping masthead */}
                     <div className="flex items-baseline gap-3 border-b border-ink/15 pb-3">
-                      <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/30">
-                        Clip · {String(i + 2).padStart(2, "0")}
-                      </span>
                       <span className="font-display text-sm font-extrabold tracking-tight text-ink transition-colors group-hover:text-tomato md:text-base">
                         {p.outlet}
                       </span>
