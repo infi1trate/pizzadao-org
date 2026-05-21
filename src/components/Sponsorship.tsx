@@ -394,7 +394,7 @@ const Sponsorship = () => {
                 {/* Corner stamp */}
                 <span
                   aria-hidden
-                  className={`ui absolute right-4 top-4 ${b.tilt} rounded-full border border-ink/25 px-2 py-[3px] text-[8.5px] font-semibold uppercase tracking-[0.22em] text-ink/45 transition-colors duration-500 group-hover:border-tomato/40 group-hover:text-tomato`}
+                  className={`ui absolute right-4 top-4 ${b.tilt} rounded-full border border-ink/15 px-2 py-[3px] text-[8.5px] font-semibold uppercase tracking-[0.22em] text-ink/55 transition-colors duration-500 group-hover:border-tomato/40 group-hover:text-tomato`}
                 >
                   {b.stamp}
                 </span>
