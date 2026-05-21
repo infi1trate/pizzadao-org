@@ -206,13 +206,13 @@ const Sponsorship = () => {
           </div>
 
           <ol className="col-span-12 md:col-span-8 md:pl-6">
-            <div className="border-t border-ink/10">
+            <div className="border-t border-ink/15">
               {VALUE_PROPS.map((vp, i) => {
                 const Icon = vp.icon;
                 return (
                   <li
                     key={vp.n}
-                    className="group relative border-b border-ink/10 py-5 md:py-6"
+                    className="group relative border-b border-ink/15 py-5 md:py-6"
                   >
                     <div className="grid grid-cols-12 items-start gap-x-4 gap-y-2">
                       <div className="col-span-12 md:col-span-5">
@@ -394,7 +394,7 @@ const Sponsorship = () => {
                 {/* Corner stamp */}
                 <span
                   aria-hidden
-                  className={`ui absolute right-4 top-4 ${b.tilt} rounded-full border border-ink/25 px-2 py-[3px] text-[8.5px] font-semibold uppercase tracking-[0.22em] text-ink/45 transition-colors duration-500 group-hover:border-tomato/40 group-hover:text-tomato`}
+                  className={`ui absolute right-4 top-4 ${b.tilt} rounded-full border border-ink/15 px-2 py-[3px] text-[8.5px] font-semibold uppercase tracking-[0.22em] text-ink/55 transition-colors duration-500 group-hover:border-tomato/40 group-hover:text-tomato`}
                 >
                   {b.stamp}
                 </span>
@@ -493,14 +493,14 @@ const Sponsorship = () => {
             <div className="col-span-12 flex flex-col gap-3 md:col-span-5 lg:col-span-4 md:items-end md:pb-1">
               <a
                 href="mailto:partnerships@pizzadao.org"
-                className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-tomato px-7 py-4 text-sm font-semibold tracking-[0.03em] text-cream shadow-[0_10px_30px_-12px_hsl(var(--tomato)/0.5),0_3px_8px_-4px_hsl(0_0%_0%/0.25)] transition-all duration-500 ease-out hover:-translate-y-[3px] hover:bg-tomato-deep hover:shadow-[0_20px_48px_-16px_hsl(var(--tomato)/0.65),0_6px_16px_-6px_hsl(0_0%_0%/0.3)] md:px-9 md:py-5"
+                className="btn-pill-lg group bg-tomato text-cream shadow-[var(--shadow-soft)] hover:-translate-y-[2px] hover:bg-tomato-deep hover:shadow-[var(--shadow-lifted)]"
               >
                 <span>Start a partnership brief</span>
                 <span aria-hidden className="transition-transform duration-500 ease-out group-hover:translate-x-1">→</span>
               </a>
               <a
                 href="#"
-                className="group relative inline-flex items-center justify-center gap-2.5 rounded-full border border-ink/50 bg-cream/40 px-7 py-4 text-sm font-semibold tracking-[0.03em] text-ink backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-[3px] hover:border-ink hover:bg-cream hover:shadow-[0_14px_36px_-14px_hsl(var(--ink)/0.2)] md:px-9 md:py-5"
+                className="btn-pill-lg group border border-ink/20 bg-transparent text-ink hover:-translate-y-[2px] hover:border-ink hover:bg-cream hover:shadow-[var(--shadow-soft)]"
               >
                 <span>Download partner deck</span>
                 <span aria-hidden className="transition-transform duration-500 ease-out group-hover:translate-x-1">↓</span>

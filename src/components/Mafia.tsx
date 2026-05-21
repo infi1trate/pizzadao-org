@@ -50,7 +50,8 @@ const Mafia = () => {
 
           {/* RIGHT, living membership wall */}
           <div className="col-span-12 md:col-span-6 md:pl-8">
-            <div className="ui mb-4 flex items-center justify-between border-b border-ink/25 pb-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/70">
+            <div className="ui mb-4 flex items-center justify-between border-b border-ink/15 pb-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/70">
+
               <span>● Active members</span>
               <span>3,000+ worldwide</span>
             </div>
@@ -60,7 +61,7 @@ const Mafia = () => {
                   {loop.map((n, i) => (
                     <div
                       key={`${n}-${i}`}
-                      className="group flex items-baseline justify-between border-b border-ink/10 px-6 py-4 transition-colors hover:bg-butter/60 md:px-7 md:py-5"
+                      className="group flex items-baseline justify-between border-b border-ink/15 px-6 py-4 transition-colors hover:bg-butter/60 md:px-7 md:py-5"
                     >
                     <div className="flex items-baseline gap-5 md:gap-6">
                       <span className="font-display text-2xl font-extrabold leading-tight tracking-[-0.005em] md:text-3xl">
