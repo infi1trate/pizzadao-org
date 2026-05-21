@@ -235,7 +235,17 @@ const About = () => {
       </section>
 
       {/* ── RITUAL ───────────────────────────────────────────────── */}
-      <section className="relative bg-ink text-cream">
+      <section className="relative overflow-hidden bg-ink text-cream">
+        {/* warm atmospheric wash — tomato/butter glow on deep ink */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(60% 50% at 18% 28%, hsl(14 75% 38% / 0.22), transparent 70%), radial-gradient(55% 45% at 88% 78%, hsl(40 85% 55% / 0.10), transparent 70%)",
+          }}
+        />
+        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.18] mix-blend-overlay" />
         {/* Full-bleed cinematic photograph */}
         <figure className="relative">
           <div className="grain relative overflow-hidden bg-ink">
