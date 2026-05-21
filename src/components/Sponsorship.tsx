@@ -487,11 +487,6 @@ const Sponsorship = () => {
               <p className="mt-3 max-w-lg text-[15px] leading-[1.55] text-ink/70 md:text-base">
                 Tell us what you're trying to do. We'll shape it into something worth showing up for.
               </p>
-
-              {/* Handwritten annotation — restrained, single instance */}
-              <p className="handwritten mt-4 -rotate-[1.5deg] text-tomato/85 text-[14px]">
-                ↳ IRL matters
-              </p>
             </div>
 
             {/* Right: buttons, aligned with baseline of headline */}
