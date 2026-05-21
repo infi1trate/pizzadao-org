@@ -594,14 +594,14 @@ const Sponsorship = () => {
 
 
       {/* CTA band — edge-to-edge butter, layered transition from cream-warm above */}
-      <div className="relative overflow-hidden bg-butter pb-10 pt-12 md:pb-14 md:pt-14">
+      <div className="relative overflow-hidden bg-butter pb-8 pt-10 md:pb-10 md:pt-11">
         {/* Top tonal bridge — cream-warm fading into butter */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-28"
+          className="pointer-events-none absolute inset-x-0 top-0 h-20"
           style={{
             background:
-              "linear-gradient(180deg, hsl(40 55% 93%) 0%, transparent 100%)",
+              "linear-gradient(180deg, hsl(40 55% 93% / 0.9) 0%, transparent 100%)",
           }}
         />
         {/* Warm gradient wash — richer at center, softer at edges */}
@@ -610,13 +610,13 @@ const Sponsorship = () => {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 40% 60%, hsl(44 95% 72% / 0.55) 0%, transparent 60%)",
+              "radial-gradient(ellipse at 42% 55%, hsl(44 95% 72% / 0.45) 0%, transparent 55%)",
           }}
         />
         {/* Secondary warm accent — toward upper-left */}
         <div
           aria-hidden
-          className="pointer-events-none absolute -left-20 -top-20 h-[320px] w-[320px] rounded-full opacity-[0.14] blur-[90px]"
+          className="pointer-events-none absolute -left-16 -top-16 h-[280px] w-[280px] rounded-full opacity-[0.12] blur-[80px]"
           style={{ background: "hsl(var(--tomato))" }}
         />
         {/* Edge darkening — soft vignette for printed dimensionality */}
@@ -625,21 +625,22 @@ const Sponsorship = () => {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 50%, transparent 55%, hsl(30 40% 35% / 0.10) 100%)",
+              "radial-gradient(ellipse at 50% 50%, transparent 58%, hsl(30 40% 35% / 0.08) 100%)",
           }}
         />
         {/* Top hairline — divides from cream-warm cleanly */}
         <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/12" />
-        {/* Subtle grain */}
+        {/* Subtle grain + halftone print texture */}
         <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.22]" />
+        <div aria-hidden className="halftone-soft pointer-events-none absolute inset-0" />
 
         <div className="container relative">
           {/* Tighter, more editorial composition */}
-          <div className="grid grid-cols-12 items-end gap-x-6 gap-y-5 md:gap-x-10">
-            {/* Left: headline + copy, tightly grouped */}
-            <div className="col-span-12 md:col-span-7 lg:col-span-8">
+          <div className="grid grid-cols-12 items-end gap-x-8 gap-y-6 md:gap-x-10">
+            {/* Left: headline + copy + annotations, tightly grouped */}
+            <div className="col-span-12 md:col-span-7 lg:col-span-7">
               <p className="overline text-tomato">Bespoke programs</p>
-              <h3 className="font-display mt-2 text-display-2 font-extrabold leading-[0.92] tracking-[-0.02em]">
+              <h3 className="font-display mt-2 text-display-2 font-extrabold leading-[0.9] tracking-[-0.02em]">
                 Let's build something
                 <br />
                 people actually{" "}
@@ -655,13 +656,26 @@ const Sponsorship = () => {
                 </span>
                 {" "}to.
               </h3>
-              <p className="mt-3 max-w-lg text-[15px] leading-[1.55] text-ink/70 md:text-base">
+              <p className="mt-3 max-w-md text-[15px] leading-[1.55] text-ink/70 md:text-base">
                 Tell us what you're trying to do. We'll shape it into something worth showing up for.
               </p>
+
+              {/* Subtle supporting annotations — editorial micro-labels */}
+              <ul className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1.5">
+                {["IRL matters", "shared moments", "community-first"].map((tag) => (
+                  <li
+                    key={tag}
+                    className="ui flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.22em] text-ink/45"
+                  >
+                    <span className="inline-block h-1 w-1 rounded-full bg-tomato/70" />
+                    {tag}
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            {/* Right: buttons, aligned with baseline of headline */}
-            <div className="col-span-12 flex flex-col gap-3 md:col-span-5 lg:col-span-4 md:items-end md:pb-1">
+            {/* Right: buttons, aligned with baseline of headline, more integrated */}
+            <div className="col-span-12 flex flex-col gap-2.5 md:col-span-5 lg:col-span-5 md:items-end md:pb-1">
               <a
                 href="mailto:partnerships@pizzadao.org"
                 className="btn-pill-lg group bg-tomato text-cream shadow-[var(--shadow-soft)] hover:-translate-y-[2px] hover:bg-tomato-deep hover:shadow-[var(--shadow-lifted)]"
