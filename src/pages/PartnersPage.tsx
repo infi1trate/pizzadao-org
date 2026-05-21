@@ -3,6 +3,7 @@ import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
 import Sponsorship from "@/components/Sponsorship";
 import PartnersGlobe from "@/components/PartnersGlobe";
+import PhotoVeil from "@/components/PhotoVeil";
 
 
 
@@ -60,6 +61,8 @@ const PartnersPage = () => {
           aria-hidden
           className="checker-tape pointer-events-none absolute bottom-0 left-0 h-[5px] w-32 opacity-25 md:w-48"
         />
+        {/* Photographic emotional texture — barely-there crowd warmth */}
+        <PhotoVeil variant="crowd" position="bottom-left" opacity={0.05} blend="multiply" />
 
         <div className="container relative">
           {/* Archival ref */}
@@ -180,6 +183,8 @@ const PartnersPage = () => {
         {/* Section seam hairlines — tighter editorial join */}
         <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/10" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-ink/10" />
+        {/* Photographic atmosphere — faint table-surface warmth at edge */}
+        <PhotoVeil variant="table" position="top-right" opacity={0.045} blend="multiply" />
 
         <div className="container relative">
           {/* Editorial heading — minimal, confident */}
@@ -252,6 +257,8 @@ const PartnersPage = () => {
         <div className="checker-tape-sm absolute left-0 top-0 h-[4px] w-24 opacity-35 md:w-40" aria-hidden />
         {/* Soft grain overlay */}
         <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.12]" />
+        {/* Photographic atmosphere — distant city lights, screen-blended into ink */}
+        <PhotoVeil variant="city" position="right" opacity={0.07} blend="screen" />
         {/* Bottom hairline */}
         <div className="absolute inset-x-0 bottom-0 h-px bg-cream/8" aria-hidden />
 

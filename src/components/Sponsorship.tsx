@@ -1,4 +1,5 @@
 import { MapPin, Sparkles, Waves, Radio, LayoutGrid } from "lucide-react";
+import PhotoVeil from "@/components/PhotoVeil";
 
 const VALUE_PROPS = [
   {
@@ -279,6 +280,8 @@ const Sponsorship = () => {
         {/* Hairline top + bottom rules — editorial section markers */}
         <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/10" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-ink/10" />
+        {/* Photographic warmth — hands at work, integrated into right edge */}
+        <PhotoVeil variant="hands" position="right" opacity={0.05} blend="multiply" />
 
         <div className="container relative">
           <div className="relative pt-2 md:pt-4">
@@ -633,6 +636,8 @@ const Sponsorship = () => {
         {/* Subtle grain + halftone print texture */}
         <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.22]" />
         <div aria-hidden className="halftone-soft pointer-events-none absolute inset-0" />
+        {/* Photographic warmth — distant crowd, integrated into left edge */}
+        <PhotoVeil variant="crowd" position="left" opacity={0.045} blend="multiply" />
 
         <div className="container relative">
           {/* Tighter, more editorial composition */}
