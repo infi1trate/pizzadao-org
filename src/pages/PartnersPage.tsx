@@ -3,6 +3,7 @@ import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
 import Sponsorship from "@/components/Sponsorship";
 import PartnersGlobe from "@/components/PartnersGlobe";
+import PartnerActivations from "@/components/PartnerActivations";
 import PhotoVeil from "@/components/PhotoVeil";
 import { track } from "@/lib/analytics/posthog";
 import { EVT } from "@/lib/analytics/events";
