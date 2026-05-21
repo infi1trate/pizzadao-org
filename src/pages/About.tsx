@@ -405,7 +405,7 @@ const About = () => {
       {/* ── HOW IT RUNS ──────────────────────────────────────────── */}
       <section className="bg-cream py-24 md:py-36">
         <div className="container">
-          <div className="flex items-baseline justify-between border-t border-ink/15 pb-12 pt-5">
+          <div className="flex items-baseline justify-between border-t border-ink/15 pb-14 pt-5 md:pb-20">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/45">
               § 03 — Operating notes
             </span>
@@ -417,76 +417,49 @@ const About = () => {
           <div className="grid grid-cols-12 gap-x-8 gap-y-10">
             <div className="col-span-12 md:col-span-5">
               <p className="overline text-tomato">How it runs</p>
-              <h2 className="font-display mt-5 text-[clamp(2rem,4.5vw,3.25rem)] font-extrabold leading-[0.95]">
+              <h2 className="font-display mt-5 text-[clamp(2.25rem,5vw,3.75rem)] font-extrabold leading-[0.92] tracking-[-0.02em]">
                 A small core, a global cast.
               </h2>
             </div>
             <div className="col-span-12 md:col-span-6 md:col-start-7">
-              <div className="font-serif max-w-[58ch] space-y-5 text-lg leading-[1.75] text-ink/80">
+              <div className="font-serif max-w-[58ch] space-y-5 text-lg leading-[1.7] text-ink/80 md:text-xl md:leading-[1.6]">
                 <p>
-                  A small group helps coordinate funding, timing, and shared
-                  standards. Everything else happens through local organizers,
-                  contributors, and people who decide to show up.
+                  A surprisingly small number of people help coordinate the
+                  infrastructure behind PizzaDAO each year.
                 </p>
-                <p className="text-ink">
-                  That structure lets every city feel different while still
-                  participating in the same global ritual.
+                <p>
+                  Everything else happens because local organizers,
+                  contributors, and strangers decide to participate.
                 </p>
+                <p className="text-ink">That's what makes it work.</p>
               </div>
             </div>
           </div>
 
-          {/* Quiet by-the-numbers strip — adds credibility without clutter */}
-          <dl className="mt-20 grid grid-cols-2 gap-x-8 gap-y-10 border-y border-ink/15 py-10 md:mt-24 md:grid-cols-4 md:gap-x-12 md:py-12">
+          {/* Four numbers — emotionally restrained, editorial */}
+          <dl className="mt-24 grid grid-cols-2 gap-x-8 gap-y-12 border-y border-ink/15 py-14 md:mt-32 md:grid-cols-4 md:gap-x-12 md:py-16">
             {[
-              { k: "Cities reached", v: "420+" },
-              { k: "Active chapters", v: "60+" },
-              { k: "Donated to local pizzerias", v: "$1M+" },
-              { k: "Annual ritual since", v: "2021" },
+              { k: "Cities", v: "420+" },
+              { k: "Countries", v: "60+" },
+              { k: "Funded", v: "$1M+" },
+              { k: "Since", v: "2021" },
             ].map((m) => (
               <div key={m.k}>
-                <dt className="ui text-[10px] font-semibold uppercase tracking-[0.24em] text-ink/45">
+                <dt className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/45">
                   {m.k}
                 </dt>
-                <dd className="font-display mt-3 text-[clamp(2rem,3.5vw,2.75rem)] font-extrabold leading-[0.95] tracking-[-0.02em]">
+                <dd className="font-display mt-4 text-[clamp(2.5rem,4.5vw,3.75rem)] font-extrabold leading-[0.92] tracking-[-0.025em]">
                   {m.v}
                 </dd>
               </div>
             ))}
           </dl>
-          <p className="handwritten -mt-2 rotate-[-1.2deg] text-right text-tomato text-xl md:text-2xl">
+          <p className="handwritten mt-4 rotate-[-1.2deg] text-right text-tomato text-xl md:text-2xl">
             …and counting →
-          </p>
-
-          {/* Roles ledger */}
-          <div className="mt-20 md:mt-28">
-            <p className="overline text-ink/55">Who does what</p>
-            <div className="mt-8 grid grid-cols-1 divide-y divide-ink/12 border-t border-ink/15 md:grid-cols-3 md:divide-x md:divide-y-0">
-              {ROLES.map((r, i) => (
-                <article key={r.name} className="py-8 md:px-8 md:py-10 md:first:pl-0 md:last:pr-0">
-                  <div className="flex items-baseline gap-3">
-                    <span className="ui text-[10px] font-semibold uppercase tracking-[0.24em] text-tomato">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="font-display text-2xl font-extrabold leading-tight">
-                      {r.name}
-                    </h3>
-                  </div>
-                  <p className="font-serif mt-4 max-w-[34ch] text-base leading-[1.7] text-ink/70">
-                    {r.note}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          {/* Closing operating principle — quiet, single line */}
-          <p className="font-serif mt-20 max-w-[52ch] text-base leading-[1.7] text-ink/60 md:mt-24 md:text-lg">
-            No one is in charge. Everyone shows up. That has stayed the same
-            since the first pizza went out.
           </p>
         </div>
       </section>
+
 
       {/* ── THESIS ───────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-cream py-28 md:py-40">
