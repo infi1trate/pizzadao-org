@@ -9,17 +9,25 @@ import { track } from "@/lib/analytics/posthog";
 import { EVT } from "@/lib/analytics/events";
 
 
+import paypalLogo from "@/assets/partners/paypal.png";
+import ledgerLogo from "@/assets/partners/ledger.png";
+import standWithCryptoLogo from "@/assets/partners/stand-with-crypto.png";
+import braveLogo from "@/assets/partners/brave.png";
+import openseaLogo from "@/assets/partners/opensea.png";
+import baseLogo from "@/assets/partners/base.png";
+import polygonLogo from "@/assets/partners/polygon.png";
+import ensLogo from "@/assets/partners/ens.png";
 
 
 const PARTNERS = [
-  { name: "PayPal", color: "#003087" },
-  { name: "Ledger", color: "#000000" },
-  { name: "Stand With Crypto", color: "#0052FF" },
-  { name: "Brave", color: "#FB542B" },
-  { name: "OpenSea", color: "#2081E2" },
-  { name: "Base", color: "#0052FF" },
-  { name: "Polygon", color: "#8247E5" },
-  { name: "ENS", color: "#5298FF" },
+  { name: "PayPal", color: "#003087", logo: paypalLogo },
+  { name: "Ledger", color: "#000000", logo: ledgerLogo },
+  { name: "Stand With Crypto", color: "#0052FF", logo: standWithCryptoLogo },
+  { name: "Brave", color: "#FB542B", logo: braveLogo },
+  { name: "OpenSea", color: "#2081E2", logo: openseaLogo },
+  { name: "Base", color: "#0052FF", logo: baseLogo },
+  { name: "Polygon", color: "#8247E5", logo: polygonLogo },
+  { name: "ENS", color: "#5298FF", logo: ensLogo },
 ];
 
 
