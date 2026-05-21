@@ -30,10 +30,6 @@ const STEPS = [
 ];
 
 const Join = () => {
-  const handleGetStarted = () => {
-    // Intent: trigger onboarding modal (modal implementation pending)
-    window.dispatchEvent(new CustomEvent("open-onboarding"));
-  };
 
   return (
     <section id="join" className="relative overflow-hidden bg-tomato text-cream">
