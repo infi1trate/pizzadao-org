@@ -1,4 +1,5 @@
 import { MapPin, Sparkles, Waves, Radio, LayoutGrid } from "lucide-react";
+import PhotoVeil from "@/components/PhotoVeil";
 
 const VALUE_PROPS = [
   {
