@@ -424,19 +424,92 @@ const About = () => {
       </section>
 
 
-      {/* ── CLOSE ────────────────────────────────────────────────── */}
-      <section className="relative bg-ink py-28 text-cream md:py-40">
-        <div className="container">
+      {/* ── CLOSE — printed poster ──────────────────────────────── */}
+      <section className="relative overflow-hidden bg-[hsl(var(--tomato))] py-32 text-cream md:py-48">
+        {/* L1 — coarse paper tooth: low frequency fibres, multiply for darker grain */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.38] mix-blend-multiply"
+          style={{
+            backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='520' height='520'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.011 0.017' numOctaves='2' seed='9' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.12  0 0 0 0 0.02  0 0 0 0 0.02  0 0 0 0.95 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>")`,
+            backgroundSize: "520px 520px",
+          }}
+        />
+        {/* L2 — high-frequency grain bite */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.32] mix-blend-overlay"
+          style={{
+            backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='280'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.88  0 0 0 0 0.72  0 0 0 1.25 -0.1'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>")`,
+            backgroundSize: "280px 280px",
+          }}
+        />
+        {/* L3 — warm screen-blend grain highlights, gives sparkle */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.12] mix-blend-screen"
+          style={{
+            backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='340' height='340'><filter id='h'><feTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='2' seed='5' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.92  0 0 0 0 0.78  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23h)'/></svg>")`,
+            backgroundSize: "340px 340px",
+          }}
+        />
+        {/* L4 — pigment pooling: uneven ink dispersion, screenprint-style blobs */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 mix-blend-multiply"
+          style={{
+            background: `
+              radial-gradient(40% 30% at 12% 20%, hsl(0 80% 30% / 0.42), transparent 70%),
+              radial-gradient(44% 34% at 88% 76%, hsl(0 80% 26% / 0.46), transparent 72%),
+              radial-gradient(32% 24% at 70% 16%, hsl(0 75% 34% / 0.24), transparent 70%),
+              radial-gradient(36% 28% at 20% 82%, hsl(0 75% 32% / 0.30), transparent 72%)`,
+          }}
+        />
+        {/* L5 — squeegee lift: warm cream wash where ink thinned */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 mix-blend-screen"
+          style={{
+            background: `radial-gradient(60% 45% at 28% 16%, hsl(44 90% 96% / 0.11), transparent 60%), radial-gradient(52% 40% at 80% 86%, hsl(20 90% 88% / 0.07), transparent 60%)`,
+          }}
+        />
+        {/* L6 — squeegee streak: faint vertical misregistration */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.10] mix-blend-multiply"
+          style={{
+            backgroundImage: `repeating-linear-gradient(180deg, hsl(0 80% 26% / 0.5) 0px, transparent 1.5px, transparent 7px)`,
+          }}
+        />
+        {/* L7 — paper-edge vignette */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 mix-blend-multiply"
+          style={{
+            background: `radial-gradient(120% 95% at 50% 50%, transparent 55%, hsl(0 80% 20% / 0.35) 100%)`,
+          }}
+        />
+        {/* L8 — torn-tape edge: hairline checker strip across the top */}
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-[3px] opacity-[0.18]"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(90deg, hsl(44 80% 92%) 0 8px, hsl(0 0% 8%) 8px 16px)",
+          }}
+        />
+
+        <div className="container relative">
           <div className="max-w-[64ch]">
-            <p className="handwritten mb-8 text-base text-butter md:text-lg">
+            <p className="handwritten mb-10 text-base text-[hsl(44_80%_92%_/0.85)] md:text-lg">
               People kept showing up.
             </p>
             <h2 className="font-display text-[clamp(2.25rem,6vw,4.75rem)] font-extrabold leading-[0.92] tracking-[-0.02em] text-cream">
-              If you have ever shown up to something like this, you understand it
-              immediately. If you haven't, May 22 is a good place to start.
+              If you have ever shown up to something like this, you understand
+              it immediately. If you haven't, May 22 is a good place to start.
             </h2>
 
-            <div className="mt-12 flex flex-col items-start gap-4 sm:flex-row">
+            <div className="mt-14 flex flex-col items-start gap-4 sm:flex-row">
               <a
                 href="/community"
                 className="btn-pill bg-cream text-ink hover:bg-butter"
@@ -445,7 +518,7 @@ const About = () => {
               </a>
               <a
                 href="/get-your-mafia-name"
-                className="btn-pill border border-cream/35 text-cream hover:border-cream/70"
+                className="btn-pill border border-[hsl(44_80%_92%_/0.4)] text-cream hover:border-[hsl(44_80%_92%_/0.7)]"
               >
                 Host an event
               </a>
@@ -453,6 +526,7 @@ const About = () => {
           </div>
         </div>
       </section>
+
 
       <Footer />
     </main>
