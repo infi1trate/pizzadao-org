@@ -617,28 +617,21 @@ const MafiaNamePage = () => {
                 <CyclingStage pool={cyclePool} tick={cycleTick} />
               )}
 
-              {revealPhase === "settled" && primary && (
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-                  {/* Primary featured */}
-                  <NameCard
-                    name={primary}
-                    index={0}
-                    primary
-                    isSelected={selectedIdx === 0}
-                    onSelect={() => { setSelectedIdx(0); setEditedName(primary.name); setEditing(false); }}
-                  />
-                  {/* Alternates */}
-                  <div className="flex flex-col gap-5">
-                    {alternates.map((n, i) => (
-                      <NameCard
-                        key={i + 1}
-                        name={n}
-                        index={i + 1}
-                        isSelected={selectedIdx === i + 1}
-                        onSelect={() => { setSelectedIdx(i + 1); setEditedName(n.name); setEditing(false); }}
-                      />
-                    ))}
-                  </div>
+              {revealPhase === "settled" && topThree.length > 0 && (
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-6 lg:gap-8">
+                  {topThree.map((n, i) => (
+                    <FamilyFileCard
+                      key={i}
+                      name={n}
+                      index={i}
+                      persona={CARD_PERSONALITIES[i]}
+                      avatarUrl={cardAvatars[i]}
+                      avatarLoading={cardAvatarLoading[i]}
+                      isSelected={selectedIdx === i}
+                      anySelected={selectedIdx !== null}
+                      onSelect={() => { setSelectedIdx(i); setEditedName(n.name); setEditing(false); }}
+                    />
+                  ))}
                 </div>
               )}
 
