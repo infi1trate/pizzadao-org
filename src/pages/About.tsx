@@ -10,6 +10,7 @@ import revealPhoto from "@/assets/timeline-founding.jpg";
 import aboutHero from "@/assets/about-hero.jpg";
 import may22Ritual from "@/assets/may22-ritual.jpg";
 import fieldNairobi from "@/assets/field-nairobi.jpg";
+import volcanoPizza from "@/assets/volcano-pizza.jpg";
 
 // Real PizzaDAO archive photos for the hero scenes — with local fallbacks
 // in case the remote CDN is ever unreachable.
@@ -381,6 +382,43 @@ const About = () => {
               Every May 22, a door opens.
             </p>
           </div>
+
+          {/* Field dispatch — playful marginalia, a single polaroid aside */}
+          <div className="mt-20 flex justify-center md:mt-28">
+            <figure
+              className="relative w-[78%] max-w-[420px] rotate-[2deg] bg-cream-warm p-3 pb-5 md:w-[38%] md:p-3.5 md:pb-6"
+              style={{
+                boxShadow:
+                  "0 1px 0 hsl(0 0% 0% / 0.12), 0 22px 48px -24px hsl(0 0% 0% / 0.6), 0 36px 90px -44px hsl(0 0% 0% / 0.5)",
+              }}
+            >
+              {/* Tape detail at top */}
+              <span
+                aria-hidden
+                className="absolute -top-3 left-1/2 h-5 w-20 -translate-x-1/2 -rotate-[3deg] bg-butter/70"
+                style={{ boxShadow: "0 2px 6px -2px hsl(0 0% 0% / 0.25)" }}
+              />
+              <div className="relative overflow-hidden bg-ink">
+                <img
+                  src={volcanoPizza}
+                  alt="Pizza cooked on volcanic rock at Pacaya volcano, Guatemala"
+                  loading="lazy"
+                  decoding="async"
+                  className="block aspect-[4/3] w-full object-cover [filter:saturate(0.92)_contrast(1.06)]"
+                />
+                <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.28] mix-blend-overlay" />
+              </div>
+              <figcaption className="mt-3 px-1 text-center">
+                <p className="handwritten text-ink/85 text-[1.05rem] leading-snug md:text-[1.15rem]">
+                  We've even served pizza on a volcano.
+                </p>
+                <p className="ui mt-2 text-[9px] font-semibold uppercase tracking-[0.24em] text-ink/45">
+                  Field dispatch · Pacaya, Guatemala · 2024
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+
         </div>
       </section>
 
