@@ -9,6 +9,7 @@ import community from "@/assets/community.jpg";
 import revealPhoto from "@/assets/timeline-founding.jpg";
 import aboutHero from "@/assets/about-hero.jpg";
 import may22Ritual from "@/assets/may22-ritual.jpg";
+import fieldNairobi from "@/assets/field-nairobi.jpg";
 
 // Real PizzaDAO archive photos for the hero scenes — with local fallbacks
 // in case the remote CDN is ever unreachable.
@@ -18,7 +19,7 @@ const RITUAL_PHOTO = may22Ritual;
 // Contact-strip — three faces of one global night, end of the Ritual section.
 const RITUAL_STRIP = [
   { src: findPhoto("Buenos Aires")?.src ?? party,    city: "Buenos Aires", stamp: "22.05 · 23:14" },
-  { src: findPhoto("Nairobi")?.src ?? community,     city: "Nairobi",      stamp: "22.05 · 19:02" },
+  { src: fieldNairobi,                               city: "Nairobi",      stamp: "22.05 · 19:02" },
   { src: findPhoto("Detroit")?.src ?? timeline2010,  city: "Detroit",      stamp: "22.05 · 21:47" },
   { src: findPhoto("Bangkok")?.src ?? party,         city: "Bangkok",      stamp: "23.05 · 01:30" },
 ];
