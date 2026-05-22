@@ -101,31 +101,31 @@ const Sponsorship = () => {
             "linear-gradient(180deg, hsl(40 55% 93%) 0%, transparent 100%)",
         }}
       />
-      {/* Faint geographic mesh — barely visible cartographic texture */}
+      {/* Organic tonal warmth — off-axis warm pool, no even grid */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.18]"
+        className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage:
-            "linear-gradient(hsl(var(--ink) / 0.10) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--ink) / 0.10) 1px, transparent 1px)",
-          backgroundSize: "56px 56px",
-          maskImage:
-            "radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%)",
+          background:
+            "radial-gradient(ellipse 70% 60% at 28% 38%, hsl(44 80% 80% / 0.35) 0%, transparent 65%)",
         }}
       />
+      {/* Soft cooler tonal shift toward the lower right — printed unevenness */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.10]"
+        className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage:
-            "radial-gradient(hsl(var(--ink) / 0.55) 1px, transparent 1.4px)",
-          backgroundSize: "18px 18px",
-          maskImage:
-            "radial-gradient(ellipse at 70% 60%, #000 0%, transparent 60%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse at 70% 60%, #000 0%, transparent 60%)",
+          background:
+            "radial-gradient(ellipse 55% 50% at 82% 78%, hsl(38 30% 78% / 0.22) 0%, transparent 60%)",
+        }}
+      />
+      {/* Edge wear — slight darkening at the page margins */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 50%, transparent 62%, hsl(30 30% 35% / 0.06) 100%)",
         }}
       />
 
@@ -598,46 +598,37 @@ const Sponsorship = () => {
 
       {/* CTA band — edge-to-edge butter, layered transition from cream-warm above */}
       <div className="relative overflow-hidden bg-butter pb-8 pt-10 md:pb-10 md:pt-11">
-        {/* Top tonal bridge — cream-warm fading into butter */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-20"
-          style={{
-            background:
-              "linear-gradient(180deg, hsl(40 55% 93% / 0.9) 0%, transparent 100%)",
-          }}
-        />
-        {/* Warm gradient wash — richer at center, softer at edges */}
+        {/* Organic warm tonal pool — off-center, no even gradient fade */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 42% 55%, hsl(44 95% 72% / 0.45) 0%, transparent 55%)",
+              "radial-gradient(ellipse 65% 70% at 38% 48%, hsl(44 95% 76% / 0.40) 0%, transparent 60%)",
           }}
         />
-        {/* Secondary warm accent — toward upper-left */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -left-16 -top-16 h-[280px] w-[280px] rounded-full opacity-[0.12] blur-[80px]"
-          style={{ background: "hsl(var(--tomato))" }}
-        />
-        {/* Edge darkening — soft vignette for printed dimensionality */}
+        {/* Counter-tone — subtle deeper butter at lower right for printed unevenness */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 50%, transparent 58%, hsl(30 40% 35% / 0.08) 100%)",
+              "radial-gradient(ellipse 55% 55% at 85% 80%, hsl(40 85% 60% / 0.18) 0%, transparent 60%)",
           }}
         />
-        {/* Top hairline — divides from cream-warm cleanly */}
+        {/* Edge wear — soft vignette for printed dimensionality */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 50%, transparent 58%, hsl(30 40% 30% / 0.10) 100%)",
+          }}
+        />
+        {/* Top hairline — clean editorial join */}
         <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/12" />
-        {/* Subtle grain + halftone print texture */}
-        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.22]" />
-        <div aria-hidden className="halftone-soft pointer-events-none absolute inset-0" />
-        {/* Photographic warmth — distant crowd, integrated into left edge */}
-        <PhotoVeil variant="crowd" position="left" opacity={0.045} blend="multiply" />
+        {/* Subtle paper grain only — no dot patterns */}
+        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.28]" />
 
         <div className="container relative">
           {/* Tighter, more editorial composition */}
