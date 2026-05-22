@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,14 +9,11 @@ import PartnersPage from "./pages/PartnersPage.tsx";
 import CommunityPage from "./pages/CommunityPage.tsx";
 import BrandSystemPage from "./pages/BrandSystemPage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
-import Transmission from "./pages/Transmission.tsx";
-import TransmissionDemo from "./pages/TransmissionDemo.tsx";
 import MafiaNamePage from "./pages/MafiaNamePage.tsx";
 import Privacy from "./pages/Privacy.tsx";
 import Terms from "./pages/Terms.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
-import PasswordGate from "./components/PasswordGate.tsx";
 import PostHogProvider from "./lib/analytics/PostHogProvider.tsx";
 
 const queryClient = new QueryClient();
