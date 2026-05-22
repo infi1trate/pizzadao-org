@@ -41,7 +41,7 @@ const SiteNav = ({ solid = false }: Props) => {
       }`}
     >
       <div className="container flex h-16 items-center justify-between md:h-[72px] lg:h-20">
-        <Link to="/" className="flex items-center" aria-label="PizzaDAO home">
+        <Link to="/home" className="flex items-center" aria-label="PizzaDAO home">
           <img
             src={onRed ? logoLight : logoDark}
             alt="PizzaDAO"
