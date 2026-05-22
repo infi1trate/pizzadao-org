@@ -519,19 +519,21 @@ const About = () => {
                   social
                 </span>
                 <br className="hidden sm:block" />{" "}
-                <span
-                  className="relative inline-block bg-clip-text text-transparent"
-                  style={{
-                    backgroundImage: `url(${THESIS_PHOTO})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center 40%",
-                    WebkitTextStroke: "1px hsl(var(--ink) / 0.15)",
-                    filter: "saturate(0.95) contrast(1.06)",
-                  }}
-                >
-                  infrastructure
+                <span className="whitespace-nowrap">
+                  <span
+                    className="relative inline-block bg-clip-text text-transparent"
+                    style={{
+                      backgroundImage: `url(${THESIS_PHOTO})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center 40%",
+                      WebkitTextStroke: "1px hsl(var(--ink) / 0.15)",
+                      filter: "saturate(0.95) contrast(1.06)",
+                    }}
+                  >
+                    infrastructure
+                  </span>
+                  <span style={{ color: "hsl(var(--ink))" }}>.</span>
                 </span>
-                <span style={{ color: "hsl(var(--ink))" }}>.</span>
               </h2>
 
               <p className="font-serif mt-10 max-w-[44ch] text-lg leading-[1.55] text-ink/70 md:mt-14 md:text-2xl md:leading-[1.4]">
