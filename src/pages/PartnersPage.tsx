@@ -20,17 +20,18 @@ import ensLogo from "@/assets/partners/ens.png";
 
 
 // `scale` optically normalizes logos so they read at the same visual weight.
-// Target: average ~= PayPal × 0.8. Container height controls the absolute size.
+// Tuned by eye, not by math — each mark balanced against PayPal as anchor.
 const PARTNERS = [
   { name: "PayPal", logo: paypalLogo, scale: 0.95 },
-  { name: "Ledger", logo: ledgerLogo, scale: 1.05 },
-  { name: "Stand With Crypto", logo: standWithCryptoLogo, scale: 1.05 },
+  { name: "Coinbase", logo: coinbaseLogo, scale: 0.62 },
+  { name: "Polygon", logo: polygonLogo, scale: 0.92 },
+  { name: "Ledger", logo: ledgerLogo, scale: 1.25 },
   { name: "Brave", logo: braveLogo, scale: 0.95 },
-  { name: "OpenSea", logo: openseaLogo, scale: 0.82 },
-  { name: "Coinbase", logo: coinbaseLogo, scale: 0.78 },
-  { name: "Polygon", logo: polygonLogo, scale: 0.95 },
-  { name: "ENS", logo: ensLogo, scale: 0.8 },
+  { name: "OpenSea", logo: openseaLogo, scale: 0.70 },
+  { name: "Stand With Crypto", logo: standWithCryptoLogo, scale: 1.0 },
+  { name: "ENS", logo: ensLogo, scale: 0.65 },
 ];
+
 
 
 const PartnersPage = () => {
@@ -156,84 +157,99 @@ const PartnersPage = () => {
       <Sponsorship />
 
       {/* Selected collaborators - editorial interlude, museum supporters wall */}
-      <section className="paper-soft relative overflow-hidden bg-cream pb-16 pt-14 md:pb-24 md:pt-20">
+      <section className="paper-soft relative overflow-hidden bg-cream pb-10 pt-10 md:pb-14 md:pt-14">
+        {/* Tonal continuity wash - soft warm paper bleeding into next section */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, hsl(var(--cream)) 0%, hsl(44 58% 96.5%) 55%, hsl(var(--cream)) 100%)",
+              "linear-gradient(180deg, hsl(var(--cream)) 0%, hsl(44 55% 96%) 50%, hsl(40 50% 94%) 100%)",
+          }}
+        />
+        {/* Faint warm grain overlay */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.035] mix-blend-multiply"
+          style={{
+            backgroundImage:
+              "radial-gradient(hsl(var(--ink)) 1px, transparent 1px)",
+            backgroundSize: "3px 3px",
           }}
         />
         <RegistrationMarks
           tone="ink"
-          opacity={0.1}
-          inset={20}
-          size={12}
+          opacity={0.09}
+          inset={18}
+          size={10}
           corners={["tl", "br"]}
           folio="§ B.02"
         />
 
         <div className="container relative">
-          {/* Asymmetric header - offset left, narrow column */}
-          <div className="grid grid-cols-12 gap-x-8">
-            <div className="col-span-12 md:col-span-5">
-              <p className="ui text-[10px] font-medium uppercase tracking-[0.28em] text-ink/45">
-                Selected collaborators
-              </p>
-              <p className="font-serif mt-4 text-[15.5px] leading-[1.55] text-ink/60 md:text-[16px]">
-                Organizations we've collaborated with across culture, technology, and community.
-              </p>
-            </div>
+          {/* Centered editorial header - stronger hierarchy */}
+          <div className="mx-auto max-w-[58ch] text-center">
+            <p className="ui text-[10px] font-semibold uppercase tracking-[0.3em] text-ink/50">
+              Selected collaborators
+            </p>
+            <h2 className="font-serif mt-3 text-[20px] leading-[1.4] text-ink/85 md:text-[24px] md:leading-[1.35]">
+              Organizations we've collaborated with across culture, technology, and community.
+            </h2>
+            {/* Soft hairline divider */}
+            <div
+              aria-hidden
+              className="mx-auto mt-7 h-px w-16 bg-ink/15 md:mt-9"
+            />
           </div>
 
-          {/* Loosely composed logo field - irregular rows, varied offsets */}
+          {/* Two-row centered composition - slightly asymmetric grouping */}
           {(() => {
-            const rows: { items: typeof PARTNERS; pl: string; gap: string; mt: string }[] = [
-              { items: PARTNERS.slice(0, 3), pl: "md:pl-[8%]",  gap: "gap-x-12 md:gap-x-20", mt: "mt-12 md:mt-16" },
-              { items: PARTNERS.slice(3, 5), pl: "md:pl-[2%]",  gap: "gap-x-16 md:gap-x-28", mt: "mt-10 md:mt-14" },
-              { items: PARTNERS.slice(5, 8), pl: "md:pl-[16%]", gap: "gap-x-12 md:gap-x-24", mt: "mt-10 md:mt-14" },
+            const rows: { items: typeof PARTNERS; gap: string; mt: string }[] = [
+              // Row 1: 4 marks - PayPal, Coinbase, Polygon, Ledger
+              { items: PARTNERS.slice(0, 4), gap: "gap-x-12 md:gap-x-20", mt: "mt-9 md:mt-12" },
+              // Row 2: 4 marks - Brave, OpenSea, Stand With Crypto, ENS
+              { items: PARTNERS.slice(4, 8), gap: "gap-x-12 md:gap-x-20", mt: "mt-9 md:mt-12" },
             ];
             let n = 0;
             return rows.map((row, ri) => (
               <div
                 key={ri}
-                className={`flex flex-wrap items-center justify-start gap-y-10 ${row.gap} ${row.pl} ${row.mt}`}
+                className={`flex flex-wrap items-center justify-center gap-y-9 ${row.gap} ${row.mt}`}
               >
                 {row.items.map((p) => {
                   const idx = n++;
                   return (
                     <div
                       key={p.name}
-                      className="group relative flex h-6 items-center animate-fade-in md:h-7"
-                      style={{ animationDelay: `${idx * 110}ms`, animationFillMode: "both" }}
+                      className="group relative flex h-8 items-center animate-fade-in md:h-9"
+                      style={{ animationDelay: `${idx * 90}ms`, animationFillMode: "both" }}
                     >
                       <div
                         className="relative flex h-full items-center"
-                        style={{ transform: `scale(${p.scale * 0.88})`, transformOrigin: "left center" }}
+                        style={{ transform: `scale(${p.scale})`, transformOrigin: "center" }}
                       >
                         <img
                           src={p.logo}
                           alt={`${p.name} logo`}
                           loading="lazy"
                           decoding="async"
-                          className="absolute inset-0 m-auto h-full w-auto object-contain opacity-0 transition-opacity duration-700 ease-out group-hover:opacity-80"
-                          style={{ minWidth: "90px" }}
+                          className="absolute inset-0 m-auto h-full w-auto object-contain opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-90"
+                          style={{ minWidth: "100px" }}
                         />
                         <div
                           aria-hidden
-                          className="h-full transition-opacity duration-700 ease-out group-hover:opacity-0"
+                          className="h-full transition-opacity duration-500 ease-out group-hover:opacity-0"
                           style={{
-                            width: "120px",
+                            width: "130px",
                             WebkitMaskImage: `url(${p.logo})`,
                             maskImage: `url(${p.logo})`,
                             WebkitMaskRepeat: "no-repeat",
                             maskRepeat: "no-repeat",
-                            WebkitMaskPosition: "left center",
-                            maskPosition: "left center",
+                            WebkitMaskPosition: "center",
+                            maskPosition: "center",
                             WebkitMaskSize: "contain",
                             maskSize: "contain",
-                            backgroundColor: "hsl(var(--ink) / 0.42)",
+                            backgroundColor: "hsl(var(--ink) / 0.62)",
                           }}
                         />
                       </div>
@@ -244,14 +260,18 @@ const PartnersPage = () => {
             ));
           })()}
 
-          {/* Tiny supporting annotation - offset right */}
-          <div className="mt-14 flex justify-end md:mt-20">
-            <p className="handwritten -rotate-[1.5deg] text-[14px] text-ink/40">
+          {/* Integrated editorial annotation - centered beneath logo field */}
+          <div className="mt-10 flex flex-col items-center gap-1 md:mt-14">
+            <p className="handwritten -rotate-[1.5deg] text-[14px] text-ink/45">
               ↳ trusted globally, city by city
+            </p>
+            <p className="ui text-[9.5px] font-medium uppercase tracking-[0.28em] text-ink/35">
+              IRL participation · since 2020
             </p>
           </div>
         </div>
       </section>
+
 
 
 
