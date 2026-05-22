@@ -44,9 +44,9 @@ const PartnersPage = () => {
     <main className="grain min-h-screen bg-cream text-ink">
       <SiteNav solid />
 
-      {/* Editorial hero — global cultural initiative */}
+      {/* Editorial hero - global cultural initiative */}
       <section className="paper-soft relative overflow-hidden bg-cream pt-10 md:pt-14">
-        {/* Atmospheric warmth — cream → warm gradient */}
+        {/* Atmospheric warmth - cream → warm gradient */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -55,9 +55,9 @@ const PartnersPage = () => {
               "linear-gradient(180deg, hsl(var(--cream)) 0%, hsl(44 70% 96%) 55%, hsl(40 55% 93%) 100%)",
           }}
         />
-        {/* Editorial crop marks — printer's register, art-directed corners */}
+        {/* Editorial crop marks - printer's register, art-directed corners */}
         <RegistrationMarks tone="ink" opacity={0.18} inset={22} size={14} folio="§ B.01" />
-        {/* Subtle checker corners — brand signature, intentional rhythm */}
+        {/* Subtle checker corners - brand signature, intentional rhythm */}
         <div
           aria-hidden
           className="checker-tape pointer-events-none absolute right-0 top-0 h-[5px] w-32 opacity-30 md:w-48"
@@ -116,14 +116,14 @@ const PartnersPage = () => {
               <div className="col-span-12 md:col-span-5 animate-fade-in" style={{ animationDelay: "120ms", animationFillMode: "both" }}>
                 <PartnersGlobe />
                 <p className="ui mt-3 text-center text-[10px] font-medium uppercase tracking-[0.24em] text-ink/40">
-                  Fig. i — Active chapters, 6 continents
+                  Fig. i - Active chapters, 6 continents
                 </p>
               </div>
             </div>
 
-            {/* Proof strip — editorial footer rail */}
+            {/* Proof strip - editorial footer rail */}
             <div className="relative mt-7 border-t border-ink/15 pt-4 md:mt-9 md:pt-5">
-              {/* Asymmetric IRL stamp — offset into the margin */}
+              {/* Asymmetric IRL stamp - offset into the margin */}
               <span
                 aria-hidden
                 className="handwritten absolute -top-3 right-0 -rotate-[8deg] text-[13px] text-tomato md:right-2"
@@ -159,9 +159,9 @@ const PartnersPage = () => {
 
       {/* Case studies consolidated into Sponsorship "What we've built" */}
 
-      {/* Logo wall — premium social proof, gallery-like */}
+      {/* Logo wall - premium social proof, gallery-like */}
       <section className="paper-soft paper-drift relative overflow-hidden bg-cream py-10 md:py-14">
-        {/* Soft tonal wash — warm editorial depth (keeps the section reading as paper) */}
+        {/* Soft tonal wash - warm editorial depth (keeps the section reading as paper) */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -170,10 +170,10 @@ const PartnersPage = () => {
               "linear-gradient(180deg, hsl(44 60% 97%) 0%, hsl(var(--cream)) 40%, hsl(44 55% 96%) 100%)",
           }}
         />
-        {/* Section seam hairlines — tighter editorial join */}
+        {/* Section seam hairlines - tighter editorial join */}
         <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/10" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-ink/10" />
-        {/* Editorial corner registration — folio in lower right */}
+        {/* Editorial corner registration - folio in lower right */}
         <RegistrationMarks
           tone="ink"
           opacity={0.14}
@@ -184,7 +184,7 @@ const PartnersPage = () => {
         />
 
         <div className="container relative">
-          {/* Editorial heading — minimal, confident */}
+          {/* Editorial heading - minimal, confident */}
           <div className="relative max-w-2xl">
             <h2 className="font-display text-[clamp(1.6rem,3.2vw,2.6rem)] font-extrabold leading-[1] tracking-[-0.02em] text-ink">
               Selected collaborators
@@ -197,7 +197,7 @@ const PartnersPage = () => {
           {/* Thin editorial rule */}
           <div className="mt-7 h-px bg-ink/10 md:mt-8" />
 
-          {/* Logo grid — monochrome ink silhouettes via CSS mask, colour on hover.
+          {/* Logo grid - monochrome ink silhouettes via CSS mask, colour on hover.
               No image boxes or background artifacts: the logo's alpha drives the mask. */}
           <div className="mt-9 grid grid-cols-2 gap-x-12 gap-y-10 md:mt-10 md:grid-cols-4 md:gap-x-14 md:gap-y-10">
             {PARTNERS.map((p, i) => (
@@ -210,7 +210,7 @@ const PartnersPage = () => {
                   className="relative flex h-full w-full items-center justify-center"
                   style={{ transform: `scale(${p.scale})`, transformOrigin: "center" }}
                 >
-                  {/* Colour version — gently fades in on hover */}
+                  {/* Colour version - gently fades in on hover */}
                   <img
                     src={p.logo}
                     alt={`${p.name} logo`}
@@ -218,7 +218,7 @@ const PartnersPage = () => {
                     decoding="async"
                     className="absolute inset-0 m-auto h-full w-auto max-w-[82%] object-contain opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
                   />
-                  {/* Ink silhouette — masked from the logo's own alpha channel */}
+                  {/* Ink silhouette - masked from the logo's own alpha channel */}
                   <div
                     aria-hidden
                     className="h-full w-full max-w-[82%] transition-opacity duration-500 ease-out group-hover:opacity-0"
@@ -253,12 +253,12 @@ const PartnersPage = () => {
 
 
 
-      {/* Activation gallery — field photography from partner moments */}
+      {/* Activation gallery - field photography from partner moments */}
       <PartnerActivations />
 
-      {/* Inquiry — warm close, hospitality cues */}
+      {/* Inquiry - warm close, hospitality cues */}
       <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-14 text-cream md:py-16">
-        {/* Single directional warm wash — anchored to where the headline sits,
+        {/* Single directional warm wash - anchored to where the headline sits,
             so the warmth reads as light on a page, not as a floating blob. */}
         <div
           aria-hidden
@@ -268,7 +268,7 @@ const PartnersPage = () => {
               "radial-gradient(ellipse 60% 70% at 18% 35%, hsl(var(--tomato) / 0.10) 0%, transparent 60%)",
           }}
         />
-        {/* Diagonal paper-fold crease — soft, intentional, runs through the gutter */}
+        {/* Diagonal paper-fold crease - soft, intentional, runs through the gutter */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -277,9 +277,9 @@ const PartnersPage = () => {
               "linear-gradient(112deg, transparent 47%, hsl(var(--cream) / 0.05) 49.5%, transparent 52%)",
           }}
         />
-        {/* Brand signature tape — single, deliberate */}
+        {/* Brand signature tape - single, deliberate */}
         <div className="checker-tape-sm absolute left-0 top-0 h-[4px] w-24 opacity-35 md:w-40" aria-hidden />
-        {/* Editorial registration marks — cream on ink, two corners only */}
+        {/* Editorial registration marks - cream on ink, two corners only */}
         <RegistrationMarks
           tone="cream"
           opacity={0.18}
@@ -295,7 +295,7 @@ const PartnersPage = () => {
           <div className="grid grid-cols-12 gap-x-8 gap-y-8 md:gap-x-14 md:gap-y-0">
             {/* Left: headline + copy, tightly grouped */}
             <div className="col-span-12 md:col-span-5 lg:col-span-5">
-              <p className="overline text-butter">§ B.02 — Inquiry</p>
+              <p className="overline text-butter">§ B.02 - Inquiry</p>
               <h2 className="font-display mt-4 text-display-2 font-extrabold leading-[0.88] tracking-[-0.025em]">
                 Tell us
                 <br />

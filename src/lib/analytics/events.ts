@@ -4,13 +4,13 @@
  * Naming convention: `domain.object_action` (lowercase).
  *
  * Domains:
- *   comms.*  — channels, copy, outbound, newsletter
- *   sales.*  — partner / brand-asset funnel
- *   ux.*     — funnel friction (gate, scroll, dead clicks, 404)
- *   ui.*     — component-level interactions
- *   mafia.*  — /get-your-mafia-name funnel (now the primary join surface)
- *   community.* — /community page engagement
- *   transmission.* — /pre-launch funnel
+ *   comms.*  - channels, copy, outbound, newsletter
+ *   sales.*  - partner / brand-asset funnel
+ *   ux.*     - funnel friction (gate, scroll, dead clicks, 404)
+ *   ui.*     - component-level interactions
+ *   mafia.*  - /get-your-mafia-name funnel (now the primary join surface)
+ *   community.* - /community page engagement
+ *   transmission.* - /pre-launch funnel
  */
 
 export const EVT = {

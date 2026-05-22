@@ -25,7 +25,7 @@ export function initPostHog(): void {
     return;
   }
 
-  // Respect Do Not Track — switch to memory persistence (no cookies).
+  // Respect Do Not Track - switch to memory persistence (no cookies).
   const dnt =
     typeof navigator !== "undefined" &&
     (navigator.doNotTrack === "1" ||

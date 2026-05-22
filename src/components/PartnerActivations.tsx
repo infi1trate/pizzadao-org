@@ -13,9 +13,9 @@ type Frame = {
   year: string;
   type: string;
   ref: string;
-  /** subtle, deliberate rotation — keeps the strip imperfect */
+  /** subtle, deliberate rotation - keeps the strip imperfect */
   rotate: string;
-  /** vertical nudge in px — varies the baseline so it reads as collage, not grid */
+  /** vertical nudge in px - varies the baseline so it reads as collage, not grid */
   yOffset: number;
 };
 
@@ -51,20 +51,20 @@ const PartnerActivations = () => {
         {/* Editorial header */}
         <div className="grid grid-cols-12 items-end gap-x-8 gap-y-3 border-b border-ink/15 pb-5 md:gap-x-12">
           <div className="col-span-12 md:col-span-8">
-            <p className="overline text-tomato">§ B.01.5 — Plates</p>
+            <p className="overline text-tomato">§ B.01.5 - Plates</p>
             <h2 className="font-display mt-2 text-[clamp(1.8rem,3.6vw,3rem)] font-extrabold leading-[1] tracking-[-0.02em] text-ink">
               Activation energy, from the field.
             </h2>
           </div>
           <div className="col-span-12 md:col-span-4">
             <p className="font-serif text-[14.5px] leading-[1.55] text-ink/65 md:text-[15.5px]">
-              A tight strip from the last two years — chapter nights, brand
+              A tight strip from the last two years - chapter nights, brand
               activations, partner moments. Captured by the people there.
             </p>
           </div>
         </div>
 
-        {/* Impact strip — overlapping frames, uniform crop, collaged baseline.
+        {/* Impact strip - overlapping frames, uniform crop, collaged baseline.
             Mobile: horizontal scroll-snap. Desktop: full-width flex with overlaps. */}
         <div className="relative mt-8 md:mt-10">
           <div
@@ -114,12 +114,12 @@ const PartnerActivations = () => {
                     aria-hidden
                     className="grain pointer-events-none absolute inset-0 opacity-[0.10] mix-blend-multiply"
                   />
-                  {/* Tiny edge stamp — ref number, like a contact-sheet mark */}
+                  {/* Tiny edge stamp - ref number, like a contact-sheet mark */}
                   <span className="ui absolute bottom-1.5 right-1.5 rounded-sm bg-cream/85 px-1.5 py-[2px] text-[8px] font-semibold uppercase tracking-[0.22em] text-ink/65 backdrop-blur-[1px]">
                     {f.ref}
                   </span>
                 </div>
-                {/* Compact metadata — city · year · type, single line, never wraps */}
+                {/* Compact metadata - city · year · type, single line, never wraps */}
                 <figcaption className="mt-2 flex items-baseline gap-2 whitespace-nowrap overflow-hidden">
                   <span className="font-serif text-[11.5px] font-semibold leading-tight text-ink/85">
                     {f.city}

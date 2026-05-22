@@ -1,5 +1,5 @@
 /**
- * RegistrationMarks — editorial crop / registration marks at the four corners
+ * RegistrationMarks - editorial crop / registration marks at the four corners
  * of a section. Reads as printer's marks on a press sheet, not as decoration.
  * Place inside a `relative` container; sits behind content (pointer-events-none).
  */
@@ -11,7 +11,7 @@ type Props = {
   inset?: number;
   /** mark size in px */
   size?: number;
-  /** which corners to render — defaults to all four */
+  /** which corners to render - defaults to all four */
   corners?: Array<"tl" | "tr" | "bl" | "br">;
   /** show a small folio mark (e.g. "§ B.04") near bottom-right */
   folio?: string;

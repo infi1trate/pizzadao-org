@@ -13,12 +13,12 @@ import fieldNairobi from "@/assets/field-nairobi.jpg";
 import volcanoPizza from "@/assets/volcano-pizza.jpg";
 import fieldSpain from "@/assets/field-spain.jpg";
 
-// Real PizzaDAO archive photos for the hero scenes — with local fallbacks
+// Real PizzaDAO archive photos for the hero scenes - with local fallbacks
 // in case the remote CDN is ever unreachable.
 const HERO_PHOTO   = aboutHero;
 const RITUAL_PHOTO = may22Ritual;
 
-// Contact-strip — three faces of one global night, end of the Ritual section.
+// Contact-strip - three faces of one global night, end of the Ritual section.
 const RITUAL_STRIP = [
   { src: findPhoto("Buenos Aires")?.src ?? party,    city: "Buenos Aires", stamp: "22.05 · 23:14" },
   { src: fieldNairobi,                               city: "Nairobi",      stamp: "22.05 · 19:02" },
@@ -98,7 +98,7 @@ const About = () => {
               className="block h-[88svh] min-h-[560px] w-full object-cover md:h-[100svh] md:min-h-[720px]"
             />
 
-            {/* Warm tomato/butter atmospheric tint — pushes color into the scene */}
+            {/* Warm tomato/butter atmospheric tint - pushes color into the scene */}
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 mix-blend-soft-light"
@@ -108,7 +108,7 @@ const About = () => {
               }}
             />
 
-            {/* Cinematic dual gradient — sky bloom + bottom anchor for type */}
+            {/* Cinematic dual gradient - sky bloom + bottom anchor for type */}
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0"
@@ -118,7 +118,7 @@ const About = () => {
               }}
             />
 
-            {/* Side vignette — pulls eye into the crowd */}
+            {/* Side vignette - pulls eye into the crowd */}
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0"
@@ -128,7 +128,7 @@ const About = () => {
               }}
             />
 
-            {/* High-frequency grain — analog bite */}
+            {/* High-frequency grain - analog bite */}
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 opacity-[0.22] mix-blend-overlay"
@@ -138,7 +138,7 @@ const About = () => {
               }}
             />
 
-            {/* Top micro-labels — sit over the scene under SiteNav */}
+            {/* Top micro-labels - sit over the scene under SiteNav */}
             <div className="absolute inset-x-0 top-0 z-10 px-6 pt-24 sm:px-10 md:px-16 md:pt-28 lg:px-20">
               <div className="flex items-baseline justify-between">
                 <p className="overline text-butter [text-shadow:0_1px_8px_hsl(0_0%_0%/0.6)]">
@@ -150,7 +150,7 @@ const About = () => {
               </div>
             </div>
 
-            {/* Headline anchored to the bottom — embedded in the scene */}
+            {/* Headline anchored to the bottom - embedded in the scene */}
             <div className="absolute inset-x-0 bottom-0 px-6 pb-14 sm:px-10 sm:pb-20 md:px-16 md:pb-24 lg:px-20 lg:pb-28">
               <h1
                 className="font-display max-w-[18ch] font-extrabold leading-[0.84] tracking-[-0.03em] text-cream text-[clamp(2.75rem,9vw,8.5rem)] animate-fade-in"
@@ -174,10 +174,10 @@ const About = () => {
       {/* ── ORIGIN ───────────────────────────────────────────────── */}
       <section className="bg-cream py-24 md:py-36">
         <div className="container">
-          {/* Tiny archive slip — field-note framing */}
+          {/* Tiny archive slip - field-note framing */}
           <div className="mb-10 flex items-baseline justify-between border-t border-ink/15 pt-5 md:mb-14">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/45">
-              § 01 — Origin · 2020–2021
+              § 01 - Origin · 2020–2021
             </span>
             <span className="ui hidden text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/35 md:inline">
               Clubhouse · The Room About Nothing
@@ -191,7 +191,7 @@ const About = () => {
                 A Clubhouse room, a holiday, and a hunch.
               </h2>
 
-              {/* Single archival polaroid — the reveal */}
+              {/* Single archival polaroid - the reveal */}
               <figure className="relative mt-14 hidden w-full origin-top -rotate-[1.2deg] transition-transform duration-500 hover:rotate-0 hover:scale-[1.02] md:block">
                 <div className="grain relative overflow-hidden bg-cream p-3 pb-10 shadow-[0_14px_36px_-14px_hsl(0_0%_0%/0.38),0_3px_8px_-3px_hsl(0_0%_0%/0.22)]">
                   <div className="aspect-[4/5] overflow-hidden bg-ink">
@@ -216,14 +216,14 @@ const About = () => {
               </figure>
             </div>
             <div className="col-span-12 md:col-span-7 md:col-start-6">
-              {/* Tiny dateline — restrained archival cue */}
+              {/* Tiny dateline - restrained archival cue */}
               <p className="ui mb-5 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/45">
                 <span aria-hidden className="h-px w-8 bg-ink/30" />
                 Filed · Spring 2021
               </p>
               <p className="font-serif text-xl leading-[1.5] text-ink md:text-[1.6rem] md:leading-[1.45]">
                 PizzaDAO started in 2021 inside a Clubhouse room called
-                <em> The Room About Nothing</em> — strangers behind 8-bit
+                <em> The Room About Nothing</em> - strangers behind 8-bit
                 avatars, trying to throw a party in cities they'd never been
                 to, for people they'd never met.
               </p>
@@ -236,21 +236,21 @@ const About = () => {
                   pizzas, on May 22, 2010.
                 </p>
                 <p>
-                  An admin named Snax kept saying — with absolute, slightly
-                  unreasonable certainty — that we should use digital art to
+                  An admin named Snax kept saying - with absolute, slightly
+                  unreasonable certainty - that we should use digital art to
                   buy real pizza for strangers, in every city we could reach.
                   A few weeks later we were actually doing it. Three hundred
                   artists contributed pizza toppings. A Hollywood effects
                   artist helped wire them into ten thousand algorithmically
                   generated NFTs, randomness verified on-chain. On Pi Day
                   2021, reservations opened. Five hours later, half a million
-                  dollars had come in. The project — RarePizzas — would
+                  dollars had come in. The project - RarePizzas - would
                   eventually raise around $1.3M, all of it pointed at pizza.
                 </p>
                 <p>
                   Then May 22 came. People walked outside. Strangers
                   introduced themselves. Photos started coming in from Lagos,
-                  Seoul, Manila, Brooklyn — pizza boxes on sidewalks, kids
+                  Seoul, Manila, Brooklyn - pizza boxes on sidewalks, kids
                   dancing in the street, organizers grinning at their phones
                   because the thing they'd been typing about for months had
                   a face now.
@@ -272,7 +272,7 @@ const About = () => {
       </section>
 {/* ── RITUAL ───────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-ink text-cream">
-        {/* warm atmospheric wash — tomato/butter glow on deep ink */}
+        {/* warm atmospheric wash - tomato/butter glow on deep ink */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -336,7 +336,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* Contact-sheet strip — four faces of one global night */}
+          {/* Contact-sheet strip - four faces of one global night */}
           <div className="mt-24 md:mt-32">
             <div className="mb-5 flex items-baseline justify-between">
               <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/45">
@@ -377,14 +377,14 @@ const About = () => {
             </div>
           </div>
 
-          {/* Quiet emotional accent — short, supportive, not informational */}
+          {/* Quiet emotional accent - short, supportive, not informational */}
           <div className="mt-20 flex justify-center md:mt-28">
             <p className="handwritten -rotate-[1.5deg] text-butter text-[clamp(2rem,5vw,3.5rem)] leading-tight">
               Every May 22, a door opens.
             </p>
           </div>
 
-          {/* Field dispatch — playful marginalia, a single polaroid aside */}
+          {/* Field dispatch - playful marginalia, a single polaroid aside */}
           <div className="mt-20 flex justify-center md:mt-28">
             <figure
               className="relative w-[78%] max-w-[420px] rotate-[2deg] bg-cream-warm p-3 pb-5 md:w-[38%] md:p-3.5 md:pb-6"
@@ -428,7 +428,7 @@ const About = () => {
         <div className="container">
           <div className="flex items-baseline justify-between border-t border-ink/15 pb-14 pt-5 md:pb-20">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/45">
-              § 03 — Operating notes
+              § 03 - Operating notes
             </span>
             <span className="ui hidden text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/35 md:inline">
               Lightweight by design
@@ -457,7 +457,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* Four numbers — emotionally restrained, editorial */}
+          {/* Four numbers - emotionally restrained, editorial */}
           <dl className="mt-24 grid grid-cols-2 gap-x-8 gap-y-12 border-y border-ink/15 py-14 md:mt-32 md:grid-cols-4 md:gap-x-12 md:py-16">
             {[
               { k: "Cities", v: "400+" },
@@ -482,9 +482,9 @@ const About = () => {
       </section>
 
 
-      {/* ── THESIS — "social infrastructure" ─────────────────────── */}
+      {/* ── THESIS - "social infrastructure" ─────────────────────── */}
       <section className="relative overflow-hidden bg-cream py-32 md:py-44">
-        {/* warm cream wash + grain — atmosphere, not decoration */}
+        {/* warm cream wash + grain - atmosphere, not decoration */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -498,7 +498,7 @@ const About = () => {
         <div className="container relative">
           <div className="mb-10 flex items-baseline justify-between md:mb-14">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/45">
-              § 04 — Why it works
+              § 04 - Why it works
             </span>
           </div>
 
@@ -534,14 +534,14 @@ const About = () => {
               </p>
             </div>
 
-            {/* Supporting polaroid — archival, human, integrated */}
+            {/* Supporting polaroid - archival, human, integrated */}
             <div className="col-span-12 md:col-span-5">
               <figure className="relative mx-auto w-[86%] origin-top -rotate-[2deg] transition-transform duration-500 hover:rotate-0 hover:scale-[1.01] md:mx-0 md:ml-auto md:w-full md:max-w-[420px]">
                 <div className="grain relative overflow-hidden bg-cream p-3 pb-10 shadow-[0_18px_44px_-16px_hsl(0_0%_0%/0.38),0_4px_12px_-4px_hsl(0_0%_0%/0.22)]">
                   <div className="aspect-[4/5] overflow-hidden bg-ink">
                     <img
                       src={THESIS_PHOTO}
-                      alt="PizzaDAO members coordinating across cities — a quiet moment of global organization"
+                      alt="PizzaDAO members coordinating across cities - a quiet moment of global organization"
                       loading="lazy"
                       decoding="async"
                       className="h-full w-full object-cover [filter:saturate(0.9)_contrast(1.05)_sepia(0.06)]"
@@ -564,7 +564,7 @@ const About = () => {
       </section>
 
 
-      {/* ── POSTER QUOTE — "democratic food" ─────────────────────── */}
+      {/* ── POSTER QUOTE - "democratic food" ─────────────────────── */}
       <section className="relative overflow-hidden bg-[hsl(var(--tomato))] py-32 text-cream md:py-44">
         {/* paper tooth + grain bite + pigment pooling */}
         <div
@@ -594,7 +594,7 @@ const About = () => {
         <div className="container relative">
           <div className="mb-10 flex items-baseline justify-between md:mb-14">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/70">
-              § 02 — Founding principle
+              § 02 - Founding principle
             </span>
           </div>
 
@@ -616,14 +616,14 @@ const About = () => {
 
           <div className="mt-10 flex items-center gap-6 md:mt-14">
             <p className="handwritten max-w-[20ch] -rotate-[1.5deg] text-butter text-2xl md:text-3xl">
-              (yes, really — try it.)
+              (yes, really - try it.)
             </p>
           </div>
         </div>
       </section>
 
 
-      {/* ── PRESS — media evidence archive ─────────────────────── */}
+      {/* ── PRESS - media evidence archive ─────────────────────── */}
       <section className="relative overflow-hidden bg-ink py-24 text-cream md:py-32">
         <div
           aria-hidden
@@ -635,7 +635,7 @@ const About = () => {
           <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3 border-b border-cream/15 pb-5">
             <p className="overline text-tomato">The record</p>
             <p className="ui text-[10px] font-semibold tracking-[0.28em] text-cream/45">
-              § Media archive · 2021—2024
+              § Media archive · 2021-2024
             </p>
           </div>
 
@@ -647,7 +647,7 @@ const About = () => {
             <p className="font-serif col-span-12 max-w-[40ch] text-base leading-[1.65] text-cream/65 md:col-span-4 md:col-start-9 md:text-lg">
               Cameras arrived. Reporters showed up to kitchens at midnight.
               What started as a single transaction kept showing up in the
-              record — in print, on tape, on the news.
+              record - in print, on tape, on the news.
             </p>
           </div>
 
@@ -661,11 +661,11 @@ const About = () => {
                 className="group block"
                 aria-label="Watch the VICE documentary on PizzaDAO"
               >
-                {/* Archival film frame — 4:3, not 16:9 */}
+                {/* Archival film frame - 4:3, not 16:9 */}
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-ink ring-1 ring-cream/10">
                   <img
                     src={VICE_POSTER}
-                    alt="VICE documentary still — PizzaDAO, the global Bitcoin Pizza Day"
+                    alt="VICE documentary still - PizzaDAO, the global Bitcoin Pizza Day"
                     loading="lazy"
                     decoding="async"
                     className="absolute inset-0 h-full w-full object-cover [filter:saturate(0.82)_contrast(1.1)_sepia(0.06)] transition-transform duration-[1200ms] ease-out group-hover:scale-[1.02]"
@@ -684,7 +684,7 @@ const About = () => {
                     aria-hidden
                     className="grain pointer-events-none absolute inset-0 opacity-[0.28] mix-blend-overlay"
                   />
-                  {/* Play mark — smaller, more archival */}
+                  {/* Play mark - smaller, more archival */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span className="flex h-14 w-14 items-center justify-center rounded-full border border-cream/60 bg-ink/35 backdrop-blur-sm transition-all duration-500 group-hover:scale-105 group-hover:border-cream group-hover:bg-tomato/60 md:h-16 md:w-16">
                       <svg viewBox="0 0 24 24" className="ml-0.5 h-5 w-5 fill-cream md:h-6 md:w-6" aria-hidden>
@@ -692,7 +692,7 @@ const About = () => {
                       </svg>
                     </span>
                   </div>
-                  {/* Corner stamp — single, restrained */}
+                  {/* Corner stamp - single, restrained */}
                   <div className="absolute left-3 top-3 md:left-4 md:top-4">
                     <span className="ui text-[10px] font-semibold tracking-[0.28em] text-cream/70">
                       VICE · Motherboard
@@ -710,7 +710,7 @@ const About = () => {
               </figcaption>
             </div>
 
-            {/* Archival context — editorial sidebar */}
+            {/* Archival context - editorial sidebar */}
             <div className="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4">
               <div className="flex items-center gap-3 border-t border-cream/10 pt-5">
                 <span aria-hidden className="h-px w-6 bg-cream/25" />
@@ -721,7 +721,7 @@ const About = () => {
               <p className="font-serif mt-4 max-w-[52ch] text-base leading-[1.6] text-cream/60 md:text-lg md:leading-[1.55]">
                 VICE Motherboard followed the ritual across three continents.
                 The result is a short documentary that treats the story as
-                cultural evidence — not a brand piece. PizzaDAO appears
+                cultural evidence - not a brand piece. PizzaDAO appears
                 as one thread in a larger fabric.
               </p>
             </div>
@@ -819,9 +819,9 @@ const About = () => {
       </section>
 
       
-      {/* ── CLOSE — printed poster ──────────────────────────────── */}
+      {/* ── CLOSE - printed poster ──────────────────────────────── */}
       <section className="relative overflow-hidden bg-[hsl(var(--tomato))] py-36 text-cream md:py-56">
-        {/* Paper tooth — soft, low-frequency fibres */}
+        {/* Paper tooth - soft, low-frequency fibres */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-[0.22] mix-blend-multiply"
@@ -830,7 +830,7 @@ const About = () => {
             backgroundSize: "520px 520px",
           }}
         />
-        {/* Fine ink grain — single restrained layer */}
+        {/* Fine ink grain - single restrained layer */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-[0.16] mix-blend-overlay"
@@ -839,7 +839,7 @@ const About = () => {
             backgroundSize: "300px 300px",
           }}
         />
-        {/* Soft paper-edge vignette — gentle, not heavy */}
+        {/* Soft paper-edge vignette - gentle, not heavy */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 mix-blend-multiply"

@@ -1018,7 +1018,7 @@ const BrandSystemPage = () => {
                     <span className="ui ml-auto rounded-full bg-butter/30 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-butter">CTA</span>
                   </div>
                 }
-                note="Pair each lead color with Cream or Char. Don't stack two saturated brand colors against each other — it kills legibility."
+                note="Pair each lead color with Cream or Char. Don't stack two saturated brand colors against each other - it kills legibility."
               />
 
             </div>
@@ -1177,7 +1177,7 @@ dont:  [all caps, corporate jargon]`}
                   <UseInFigma href="https://www.figma.com/community/file/pizzadao-layouts" label="Open layout templates" />
                 </div>
                 <p className="text-base leading-relaxed text-ink/75 md:text-lg max-w-[60ch]">
-                  Selected sightings from chapters across the network. Posters, merch, projections, packaging — Benny in the wild, 2024–2026.
+                  Selected sightings from chapters across the network. Posters, merch, projections, packaging - Benny in the wild, 2024–2026.
                 </p>
               </div>
             </div>

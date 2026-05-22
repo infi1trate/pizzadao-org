@@ -61,7 +61,7 @@ export const MAFIA_FILMS: MafiaFilm[] = [
   { id: "pope-greenwich", title: "The Pope of Greenwich Village", year: 1984, country: "USA", characters: ["Charlie", "Paulie"], tone: ["greenwich village", "80s", "cousins", "scheme"], overview: "Two cousins in the Village pull a score that goes very wrong." },
 ];
 
-// Wikipedia page slugs — used to fetch poster thumbnails via the free Wikipedia REST API.
+// Wikipedia page slugs - used to fetch poster thumbnails via the free Wikipedia REST API.
 // Disambiguated where needed to avoid landing on a non-film page.
 export const FILM_WIKI_SLUG: Record<string, string> = {
   "godfather": "The_Godfather",

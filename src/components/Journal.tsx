@@ -207,7 +207,7 @@ const Journal = () => {
                 <span className="handwritten text-ink/65 text-[1.05em]">When it's ready.</span>
               </h3>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-ink/70 md:text-lg">
-                An occasional dispatch — the best new writing, dispatches from
+                An occasional dispatch - the best new writing, dispatches from
                 chapters, and one thing about pizza you didn't know yesterday.
                 No fixed schedule. No tracking. Unsubscribe anytime.
               </p>

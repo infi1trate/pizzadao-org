@@ -41,7 +41,7 @@ const PageHero = ({
     );
   };
 
-  // Stack italic across two lines when it contains the accent word — drops
+  // Stack italic across two lines when it contains the accent word - drops
   // the trailing word onto its own line for editorial emphasis.
   const renderItalic = (text: string) => {
     const parts = text.trim().split(/\s+/);
@@ -59,7 +59,7 @@ const PageHero = ({
 
   return (
     <section className="paper-soft paper-drift relative overflow-hidden bg-cream pt-12 md:pt-20">
-      {/* Cinematic atmosphere — layered warm wash, ambient and slow */}
+      {/* Cinematic atmosphere - layered warm wash, ambient and slow */}
       <div
         aria-hidden
         className="pointer-events-none absolute -right-32 -top-32 h-[640px] w-[640px] rounded-full opacity-[0.09] blur-[120px] hero-glow"
@@ -134,9 +134,9 @@ const PageHero = ({
           {meta && (
             <div className="mt-20 md:mt-44">
               <div className="flex items-baseline justify-between pb-6">
-                <p className="overline text-ink/45">Programme — by the numbers</p>
+                <p className="overline text-ink/45">Programme - by the numbers</p>
                 <p className="ui hidden text-[9.5px] font-medium uppercase tracking-[0.24em] text-ink/35 md:block">
-                  Fig. i — Reach, 2020–2025
+                  Fig. i - Reach, 2020–2025
                 </p>
               </div>
               <dl className="grid grid-cols-2 gap-x-6 gap-y-10 border-t border-ink/15 pt-10 md:grid-cols-4 md:gap-x-16 md:gap-y-16 md:pt-16">

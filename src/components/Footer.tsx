@@ -49,7 +49,7 @@ const RotatingTagline = () => {
 const Footer = () => {
   return (
     <footer className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink text-cream">
-      {/* Restrained warm atmosphere — establishment, not promotion */}
+      {/* Restrained warm atmosphere - establishment, not promotion */}
       <div
         aria-hidden
         className="pointer-events-none absolute -left-32 -top-24 h-[440px] w-[440px] rounded-full opacity-[0.08] blur-[120px]"
@@ -60,7 +60,7 @@ const Footer = () => {
         className="pointer-events-none absolute -right-24 bottom-0 h-[360px] w-[360px] rounded-full opacity-[0.06] blur-[100px]"
         style={{ background: "hsl(var(--butter))" }}
       />
-      {/* Soft grain — calm texture */}
+      {/* Soft grain - calm texture */}
       <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.10]" />
       {/* Faint edge rule */}
       <div className="absolute inset-x-0 top-0 h-px bg-cream/8" aria-hidden />
@@ -108,7 +108,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom bar — calm, established */}
+        {/* Bottom bar - calm, established */}
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-cream/8 pt-6 md:flex-row md:items-center">
           <span className="ui text-[10px] font-medium uppercase tracking-[0.24em] text-cream/35">
             © {new Date().getFullYear()} PizzaDAO · A global cultural programme

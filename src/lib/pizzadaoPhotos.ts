@@ -1,6 +1,6 @@
 // Curated PizzaDAO event photography sourced from the public Pizza Day
 // archive: https://github.com/PizzaDAO/dow-pizza-party/tree/main/public/photos
-// Hotlinked via raw.githubusercontent.com — the same source the
+// Hotlinked via raw.githubusercontent.com - the same source the
 // Global Pizza Party 2026 gallery uses.
 
 export interface PizzaPhoto {
@@ -9,7 +9,7 @@ export interface PizzaPhoto {
   country: string;
   flag: string;
   year: number;
-  /** Optional editorial caption — only some frames get one. */
+  /** Optional editorial caption - only some frames get one. */
   note?: string;
 }
 
@@ -26,47 +26,47 @@ const photo = (
 });
 
 /**
- * Curated archival selection — interleaved across continents so the
+ * Curated archival selection - interleaved across continents so the
  * wall feels globally alive frame by frame, not region by region.
  * Order pairs scale to mood: big anchor crowds, intimate verticals,
  * dense street clusters, quiet single figures. Order is editorial,
  * not alphabetical.
  */
 export const ARCHIVE: PizzaPhoto[] = [
-  // 01 — opening anchor: massive crowd
+  // 01 - opening anchor: massive crowd
   photo("lagos",         "01.jpg",  { city: "Lagos",          country: "Nigeria",      flag: "🇳🇬", year: 2025, note: "First party in Lagos" }),
-  // 02–03 — quiet verticals beside the anchor
+  // 02–03 - quiet verticals beside the anchor
   photo("buenos-aires",  "03.jpg",  { city: "Buenos Aires",   country: "Argentina",    flag: "🇦🇷", year: 2025, note: "Tango and margherita" }),
   photo("bangkok",       "01.jpg",  { city: "Bangkok",        country: "Thailand",     flag: "🇹🇭", year: 2025, note: "Streetside pies" }),
 
-  // 04–06 — dense cluster: street chaos across three continents
+  // 04–06 - dense cluster: street chaos across three continents
   photo("bogota",        "03.jpg",  { city: "Bogotá",         country: "Colombia",     flag: "🇨🇴", year: 2025, note: "Andean altitude bites" }),
   photo("cape-town",     "01.jpg",  { city: "Cape Town",      country: "South Africa", flag: "🇿🇦", year: 2025, note: "Table Mountain views" }),
   photo("beijing",       "01.jpg",  { city: "Beijing",        country: "China",        flag: "🇨🇳", year: 2025 }),
 
-  // 07–08 — quiet breath
+  // 07–08 - quiet breath
   photo("detroit",       "04.jpg",  { city: "Detroit",        country: "USA",          flag: "🇺🇸", year: 2025 }),
   photo("kampala",       "02.jpg",  { city: "Kampala",        country: "Uganda",       flag: "🇺🇬", year: 2025 }),
 
-  // 09 — big horizontal anchor: overhead pizza table
+  // 09 - big horizontal anchor: overhead pizza table
   photo("new-york-city", "01.png",  { city: "New York",       country: "USA",          flag: "🇺🇸", year: 2025, note: "Brooklyn rooftop" }),
 
-  // 10–12 — intimate triptych across continents
+  // 10–12 - intimate triptych across continents
   photo("nairobi",       "01.jpg",  { city: "Nairobi",        country: "Kenya",        flag: "🇰🇪", year: 2025, note: "Under open skies" }),
   photo("chandigarh",    "03.jpg",  { city: "Chandigarh",     country: "India",        flag: "🇮🇳", year: 2025 }),
   photo("rio-de-janeiro","02.jpg",  { city: "Rio de Janeiro", country: "Brazil",       flag: "🇧🇷", year: 2025, note: "Carioca celebrations" }),
 
-  // 13–14 — asymmetric pair
+  // 13–14 - asymmetric pair
   photo("johannesburg",  "02.jpg",  { city: "Johannesburg",   country: "South Africa", flag: "🇿🇦", year: 2025 }),
   photo("bangalore",     "01.jpg",  { city: "Bangalore",      country: "India",        flag: "🇮🇳", year: 2025 }),
 
-  // 15–18 — night section: low-light energy
+  // 15–18 - night section: low-light energy
   photo("medellin",      "01.jpg",  { city: "Medellín",       country: "Colombia",     flag: "🇨🇴", year: 2025 }),
   photo("los-angeles",   "04.jpg",  { city: "Los Angeles",    country: "USA",          flag: "🇺🇸", year: 2025 }),
   photo("mwanza",        "01.jpg",  { city: "Mwanza",         country: "Tanzania",     flag: "🇹🇿", year: 2025 }),
   photo("halifax",       "03.jpg",  { city: "Halifax",        country: "Canada",       flag: "🇨🇦", year: 2025 }),
 
-  // 19–21 — closing horizon + quiet outros
+  // 19–21 - closing horizon + quiet outros
   photo("chicago",       "02.jpg",  { city: "Chicago",        country: "USA",          flag: "🇺🇸", year: 2025 }),
   photo("ahmedabad",     "01.jpg",  { city: "Ahmedabad",      country: "India",        flag: "🇮🇳", year: 2025 }),
   photo("quito",         "02.jpg",  { city: "Quito",          country: "Ecuador",      flag: "🇪🇨", year: 2025 }),

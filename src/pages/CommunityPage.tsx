@@ -184,7 +184,7 @@ const BUILDS: Build[] = [
     hook: "Event infrastructure for global, decentralized gatherings.",
     mission: "Open RSVPs, chapter dashboards, and proof-of-attendance in one stack.",
     context: "Tested live during Global Pizza Party 2026 across ~30k attendees worldwide, running hundreds of simultaneous parties in dozens of cities.",
-    detail: "Now the default RSVP and check-in layer for chapter events, with public APIs so any community — pizza or otherwise — can use it.",
+    detail: "Now the default RSVP and check-in layer for chapter events, with public APIs so any community - pizza or otherwise - can use it.",
     img: rsvPizza,
     demo: "https://rsv.pizza",
     featured: true,
@@ -199,7 +199,7 @@ const BUILDS: Build[] = [
     tag: "Arcade",
     hook: "Pizza games, built and shipped by members.",
     mission: "Community-built pizza games and a roving arcade cabinet.",
-    context: "A traveling cabinet, an open game jam, and a growing library of pizza-themed games made by members — hardware, code, and pixel art, shipped together.",
+    context: "A traveling cabinet, an open game jam, and a growing library of pizza-themed games made by members - hardware, code, and pixel art, shipped together.",
     detail: "Started as a one-night build at a chapter meetup and grew into an ongoing collab between hardware tinkerers, indie devs, and visual artists. The catalog is open for any chapter to install or remix.",
     img: hackathon,
     embed: "https://c-r-x-s-s.github.io/PizzaDAO-Arcade/",
@@ -218,7 +218,7 @@ const BUILDS: Build[] = [
     tag: "Hackathon",
     hook: "Anonymous receipts, itemized and verifiable.",
     mission: "Cryptographically anonymized, itemized receipts.",
-    context: "A hackathon-winning prototype exploring how to prove what was purchased without revealing who bought it — useful for sponsorships, reimbursements, and public-goods accounting.",
+    context: "A hackathon-winning prototype exploring how to prove what was purchased without revealing who bought it - useful for sponsorships, reimbursements, and public-goods accounting.",
     detail: "Combines zero-knowledge proofs with itemized receipt schemas so chapters can transparently report spending without doxxing members or vendors.",
     img: secretPineapple,
   },
@@ -396,10 +396,10 @@ const CommunityPage = () => {
             </div>
           </div>
 
-          {/* Board grid — sticky-note cards, slight rotation on desktop only */}
+          {/* Board grid - sticky-note cards, slight rotation on desktop only */}
           <div className="mt-12 grid grid-cols-1 gap-5 md:mt-16 md:grid-cols-2 md:gap-7 lg:grid-cols-3">
             {WAYS_IN.map((w, i) => {
-              // Alternate paper tones — warm, lightly imperfect
+              // Alternate paper tones - warm, lightly imperfect
               const tones = [
                 "bg-cream",
                 "bg-butter/55",
@@ -416,11 +416,11 @@ const CommunityPage = () => {
                 "bg-tomato",
                 "bg-ink",
               ];
-              // Tighter, more believable rotation — like notes set down by a person
+              // Tighter, more believable rotation - like notes set down by a person
               const rots = ["md:-rotate-[0.9deg]", "md:rotate-[0.5deg]", "md:-rotate-[0.4deg]", "md:rotate-[0.8deg]", "md:-rotate-[0.6deg]", "md:rotate-[0.3deg]"];
-              // Variable offset — one card (index 2) overlaps into its neighbor on desktop
+              // Variable offset - one card (index 2) overlaps into its neighbor on desktop
               const offsets = ["md:translate-y-1", "md:-translate-y-2", "md:translate-y-3 md:-translate-x-2", "md:-translate-y-1", "md:translate-y-2", "md:-translate-y-1"];
-              // Subtle scale variance — one is hero-sized
+              // Subtle scale variance - one is hero-sized
               const scales = ["md:scale-100", "md:scale-[0.97]", "md:scale-[1.04] md:z-10", "md:scale-[0.98]", "md:scale-100", "md:scale-[0.99]"];
 
               return (
@@ -428,7 +428,7 @@ const CommunityPage = () => {
                   key={w.title}
                   className={`paper-soft group relative flex flex-col rounded-[10px] ${tones[i % tones.length]} ${rots[i % rots.length]} ${offsets[i % offsets.length]} ${scales[i % scales.length]} p-6 md:p-7 shadow-[0_1px_0_hsl(var(--ink)/0.04),0_2px_4px_-2px_hsl(var(--ink)/0.12),0_22px_36px_-26px_hsl(var(--ink)/0.45)] ring-1 ring-ink/[0.06] transition-all duration-300 hover:-translate-y-0.5 hover:rotate-0 hover:shadow-[0_2px_6px_-2px_hsl(var(--ink)/0.18),0_36px_60px_-26px_hsl(var(--ink)/0.5)]`}
                   style={{
-                    // soft paper grain — fibrous noise, very low opacity
+                    // soft paper grain - fibrous noise, very low opacity
                     backgroundImage:
                       "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23p)' opacity='0.07'/></svg>\")",
                     backgroundBlendMode: "multiply",
@@ -477,7 +477,7 @@ const CommunityPage = () => {
         </div>
       </section>
 
-      {/* OPEN CALLS — current ways to jump in (extension of Find your lane) */}
+      {/* OPEN CALLS - current ways to jump in (extension of Find your lane) */}
       <section className="bg-cream pb-16 pt-4 md:pb-24 md:pt-6">
         <div className="container">
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-4">
@@ -506,7 +506,7 @@ const CommunityPage = () => {
               {
                 tags: ["Pizza", "Operations"],
                 title: "Pizzaiolos, operators & pizza builders",
-                note: "Share the real shop-floor problems — we'll bring builders alongside you.",
+                note: "Share the real shop-floor problems - we'll bring builders alongside you.",
                 signal: "looking for collaborators",
               },
               {
@@ -525,7 +525,7 @@ const CommunityPage = () => {
               {
                 tags: ["Events", "IRL"],
                 title: "Community organizers & event architects",
-                note: "Host pizza experiences worth remembering — meetups, hackathons, dinners, art shows.",
+                note: "Host pizza experiences worth remembering - meetups, hackathons, dinners, art shows.",
                 signal: "live opportunity",
               },
             ].map((c, i) => (
@@ -820,7 +820,7 @@ const CommunityPage = () => {
         </div>
       </div>
 
-      {/* RHYTHM BREAK — cinematic interruption, softened, intentionally overlapping next slab */}
+      {/* RHYTHM BREAK - cinematic interruption, softened, intentionally overlapping next slab */}
       <div className="relative z-20 -mb-10 overflow-visible bg-cream py-20 md:-mb-16 md:py-28">
         <div
           aria-hidden
@@ -835,7 +835,7 @@ const CommunityPage = () => {
             § Interlude
           </p>
           <p className="handwritten px-2 text-center text-tomato/85 leading-[0.78] -rotate-[2deg] text-[clamp(3.5rem,18.5vw,16rem)] [text-shadow:0_1px_0_hsl(var(--cream)),0_0_40px_hsl(var(--butter)/0.45)]">
-            but enough talk —
+            but enough talk -
           </p>
           <p className="font-display mt-8 text-center text-[clamp(1.1rem,2.2vw,1.6rem)] font-extrabold leading-tight text-ink/80">
             here's what members actually built.
@@ -864,7 +864,7 @@ const CommunityPage = () => {
               <div className="col-span-12 md:col-span-4 md:pl-8">
                 <p className="text-base leading-relaxed text-cream/80 md:text-lg">
                   PizzaDAO is quietly becoming infrastructure for pizza
-                  culture — event tooling, payroll experiments, cryptography
+                  culture - event tooling, payroll experiments, cryptography
                   research, and the arcade hardware that travels between
                   chapters.
                 </p>
@@ -885,7 +885,7 @@ const CommunityPage = () => {
 
             return (
               <>
-                {/* FEATURED PROJECT — infrastructure spotlight */}
+                {/* FEATURED PROJECT - infrastructure spotlight */}
                 <article className="group relative mt-10 md:mt-14">
                   {/* ambient warmth behind the card */}
                   <div
@@ -910,7 +910,7 @@ const CommunityPage = () => {
                           )}
                           <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-ink/0" />
 
-                          {/* top-left tag stack — infrastructure credibility */}
+                          {/* top-left tag stack - infrastructure credibility */}
                           <div className="absolute left-5 top-5 flex max-w-[calc(100%-2.5rem)] flex-wrap items-center gap-2">
                             <span className={`ui rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] ${tagTone[featured.tag]}`}>
                               {featured.tag}
@@ -993,7 +993,7 @@ const CommunityPage = () => {
                   </div>
                 </article>
 
-                {/* SUPPORTING PROJECTS — quieter, footnote-style row */}
+                {/* SUPPORTING PROJECTS - quieter, footnote-style row */}
                 <div className="mt-10 md:mt-14">
                   <div className="mb-5 flex items-end justify-between border-b border-cream/20 pb-3">
                     <p className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/55">
@@ -1202,7 +1202,7 @@ const CommunityPage = () => {
               </div>
             </div>
 
-            {/* Masonry strip — varied crops, slight stagger */}
+            {/* Masonry strip - varied crops, slight stagger */}
             <div className="container mt-8 md:mt-10">
               <div className="columns-2 gap-3 md:columns-4 md:gap-4">
                 {GALLERY.map((p, i) => (
@@ -1254,7 +1254,7 @@ const CommunityPage = () => {
               </div>
             </div>
 
-            {/* MVP gallery modal — large versions + thumbnails */}
+            {/* MVP gallery modal - large versions + thumbnails */}
             <Dialog open={galleryOpen} onOpenChange={setGalleryOpen}>
               <DialogContent className="max-w-5xl bg-ink p-0 text-cream">
                 <DialogHeader className="border-b border-cream/15 px-6 py-4">
@@ -1310,7 +1310,7 @@ const CommunityPage = () => {
         );
       })()}
 
-      {/* Asymmetric rhythm break — quiet handwritten margin annotation, off-center */}
+      {/* Asymmetric rhythm break - quiet handwritten margin annotation, off-center */}
       <div className="relative overflow-hidden bg-cream py-6 md:py-10">
         <div className="container">
           <p
@@ -1322,7 +1322,7 @@ const CommunityPage = () => {
       </div>
 
 
-      {/* INITIATION — name ritual + 3-path action bridge, one section */}
+      {/* INITIATION - name ritual + 3-path action bridge, one section */}
       <section className="bg-butter py-16 text-ink md:py-24">
         <div className="container">
           <div className="border-t-2 border-ink pt-8 md:pt-10">
@@ -1346,7 +1346,7 @@ const CommunityPage = () => {
           {/* Name ritual + 3 action paths, visually linked */}
           <div className="paper-soft mt-10 overflow-hidden rounded-3xl bg-cream shadow-[0_30px_80px_-40px_hsl(var(--ink)/0.5)] md:mt-14">
             <div className="grid grid-cols-1 md:grid-cols-12">
-              {/* The name ritual — receipt / stamp energy, not form energy */}
+              {/* The name ritual - receipt / stamp energy, not form energy */}
               <div className="paper-soft paper-soft-dark relative flex flex-col justify-between bg-ink p-7 text-cream md:col-span-5 md:p-10">
                 <div>
                   <p className="overline inline-flex items-center gap-2 text-butter">
@@ -1361,7 +1361,7 @@ const CommunityPage = () => {
                     alias the Mafia will know you by.
                   </p>
 
-                  {/* Sample names — collectible/stamped feel */}
+                  {/* Sample names - collectible/stamped feel */}
                   <ul className="mt-7 flex flex-wrap gap-2">
                     {["Don Pepperoni", "Sister Marinara", "Capo Crust", "Vinnie Calzone"].map((n, i) => (
                       <li
@@ -1383,7 +1383,7 @@ const CommunityPage = () => {
                 </a>
               </div>
 
-              {/* 3 action paths — softer dividers, ritual flow, not table chrome */}
+              {/* 3 action paths - softer dividers, ritual flow, not table chrome */}
               <div className="md:col-span-7">
                 <div className="flex h-full flex-col">
                   <div className="flex items-baseline justify-between px-6 pb-3 pt-6 md:px-10 md:pt-8">
@@ -1459,7 +1459,7 @@ const CommunityPage = () => {
         </div>
       </section>
 
-      {/* CTA — the punchline */}
+      {/* CTA - the punchline */}
       <section className="bg-tomato py-16 text-cream md:py-24">
         <div className="container">
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
@@ -1578,17 +1578,17 @@ const HERO_IMAGES: HeroTile[] = [
 // Layout for collage tiles, percentages relative to collage box.
 // Intentionally imperfect overlap. Two tiles allowed to break the row.
 const TILE_LAYOUTS = [
-  // ANCHOR — dominant editorial centerpiece, smaller so supporting cards breathe.
+  // ANCHOR - dominant editorial centerpiece, smaller so supporting cards breathe.
   { top: "5%",  left: "31%", w: "39%", aspect: "5/6",   rot: -1.5, z: 4, delay: 80  },
-  // upper-left support — larger, readable
+  // upper-left support - larger, readable
   { top: "3%",  left: "-1%", w: "26%", aspect: "4/5",   rot: -5,   z: 3, delay: 220 },
   // upper-right support
   { top: "1%",  left: "73%", w: "26%", aspect: "3/4",   rot: 5,    z: 3, delay: 360 },
   // lower-left medium
   { top: "60%", left: "1%",  w: "26%", aspect: "5/4",   rot: -3,   z: 5, delay: 500 },
-  // lower-right medium — pulled up + slightly narrower so it never clips the container floor
+  // lower-right medium - pulled up + slightly narrower so it never clips the container floor
   { top: "52%", left: "76%", w: "22%", aspect: "4/5",   rot: 4,    z: 6, delay: 640 },
-  // tiny accent — pulled up + smaller so it sits safely above the floor
+  // tiny accent - pulled up + smaller so it sits safely above the floor
   { top: "78%", left: "42%", w: "12%", aspect: "1/1",   rot: -6,   z: 7, delay: 820 },
 ];
 
@@ -1602,7 +1602,7 @@ const HeroSection = () => {
 
   return (
     <section className="relative overflow-hidden bg-cream pt-24 md:pt-32">
-      {/* Warm radial gradient — slightly stronger for warmth */}
+      {/* Warm radial gradient - slightly stronger for warmth */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -1649,7 +1649,7 @@ const HeroSection = () => {
               </p>
             </div>
             <div className="col-span-12 md:col-span-4 md:pl-8">
-              {/* Soft warm panel — integrated, not utility */}
+              {/* Soft warm panel - integrated, not utility */}
               <div
                 className="paper-soft relative rounded-3xl px-6 py-7 md:px-7 md:py-8"
                 style={{
@@ -1674,7 +1674,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Organic collage — container scales by aspect ratio so tile heights (which key off width)
+          {/* Organic collage - container scales by aspect ratio so tile heights (which key off width)
               can never exceed the floor. Overflow stays hidden as a safety net. */}
           <div className="relative mt-14 aspect-[4/3] w-full overflow-hidden md:mt-20 md:aspect-[5/3] [contain:layout_paint] [&_figure]:will-change-transform">
 
@@ -1890,14 +1890,14 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
             <div className="col-span-12 md:col-span-4 md:pl-8">
               <p className="text-base leading-relaxed text-ink/75 md:text-lg">
                 Open calls, chapter syncs, long tables. The shared rhythm
-                that holds the Mafia together — pinned for the next seven days.
+                that holds the Mafia together - pinned for the next seven days.
               </p>
             </div>
           </div>
         </div>
 
         <div className="mt-12 grid grid-cols-12 gap-6 md:mt-16 md:gap-8">
-          {/* Calendar — printed poster aesthetic */}
+          {/* Calendar - printed poster aesthetic */}
           <div className="col-span-12 md:col-span-5">
             <div
               className="paper-soft relative rounded-2xl bg-cream-warm p-6 shadow-[0_24px_60px_-30px_hsl(var(--ink)/0.35)] md:p-8"
@@ -1908,7 +1908,7 @@ const ThisWeekSection = ({ onOpenCalendar }: { onOpenCalendar: () => void }) => 
                   Next 7 days · {monthLabel}
                 </p>
                 <p className="ui text-[10px] tabular-nums text-ink/40">
-                  {String(weekStart).padStart(2, "0")} — {String(weekEnd).padStart(2, "0")}
+                  {String(weekStart).padStart(2, "0")} - {String(weekEnd).padStart(2, "0")}
                 </p>
               </div>
               <h3 className="font-display mt-3 text-3xl font-extrabold leading-[0.95] md:text-4xl">

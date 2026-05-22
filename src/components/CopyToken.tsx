@@ -6,7 +6,7 @@ interface CopyTokenProps {
   label: string;
   /** The value users see and what gets copied */
   value: string;
-  /** Visual variant — light text on dark surface vs dark on light */
+  /** Visual variant - light text on dark surface vs dark on light */
   tone?: "dark" | "light";
 }
 

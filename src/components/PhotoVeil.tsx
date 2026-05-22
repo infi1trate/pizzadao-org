@@ -17,7 +17,7 @@ type Position =
 interface PhotoVeilProps {
   variant: Variant;
   position?: Position;
-  /** 0..1 — keep extremely low (0.04–0.10). */
+  /** 0..1 - keep extremely low (0.04–0.10). */
   opacity?: number;
   /** "multiply" for cream surfaces, "screen" for dark/ink surfaces. */
   blend?: "multiply" | "screen" | "soft-light";
@@ -42,7 +42,7 @@ const POS: Record<Position, string> = {
 };
 
 /**
- * Photographic emotional texture — monochrome, heavily blurred, low-opacity.
+ * Photographic emotional texture - monochrome, heavily blurred, low-opacity.
  * Sits as an aria-hidden absolute layer inside a `relative overflow-hidden` parent.
  * Never dominates: integrates as tonal atmosphere only.
  */

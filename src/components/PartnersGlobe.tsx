@@ -1,5 +1,5 @@
 /**
- * PartnersGlobe — premium global systems visualization for the Partners hero.
+ * PartnersGlobe - premium global systems visualization for the Partners hero.
  *
  * Editorial register: Monocle infographic / Apple systems diagram.
  * Not interactive. Slow rotation. No tooltips, no clicks.
@@ -27,7 +27,7 @@ const CITIES: City[] = (citiesData as Array<{ name: string; coords: unknown }>)
   .filter((c) => Array.isArray(c.coords) && (c.coords as number[]).length === 2)
   .map((c) => ({ name: c.name, coords: c.coords as [number, number] }));
 
-// Anchor cities — intentional, not data-dense. These are the only larger dots.
+// Anchor cities - intentional, not data-dense. These are the only larger dots.
 const ANCHORS = new Set([
   "New York", "London", "Lagos", "Tokyo",
   "São Paulo", "Sao Paulo", "Sydney", "Mumbai", "Mexico City",
@@ -39,7 +39,7 @@ const hash = (s: string) => {
   for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
   return Math.abs(h);
 };
-// A sparser secondary tier — small ink dots, intentional clusters only.
+// A sparser secondary tier - small ink dots, intentional clusters only.
 const MID = new Set(
   CITIES.filter((c) => !ANCHORS.has(c.name) && hash(c.name) % 5 === 0).map((c) => c.name),
 );
@@ -126,7 +126,7 @@ const PartnersGlobe = () => {
       if (!p) return [];
       const d = Math.hypot(p[0] - CX, p[1] - CY);
       const vis = Math.max(0, 1 - d / R);
-      // slow per-label breathing tied to rotation — each whisper appears at its own pace
+      // slow per-label breathing tied to rotation - each whisper appears at its own pace
       const breath = 0.5 + 0.5 * Math.sin((yaw * Math.PI) / 90 + i * 1.37);
       const opacity = Math.max(0, (vis - 0.18) * 1.6) * Math.max(0, breath - 0.35) * 1.4;
       return [{ ...a, i, px: p[0], py: p[1], opacity: Math.min(1, opacity) }];
@@ -159,7 +159,7 @@ const PartnersGlobe = () => {
             "inset -22px -30px 60px -22px hsl(28 30% 18% / 0.22), inset 16px 18px 42px -18px hsl(var(--cream) / 0.85), 0 28px 70px -28px hsl(0 0% 0% / 0.32)",
         }}
       >
-        {/* Directional shading — soft terminator toward lower-right */}
+        {/* Directional shading - soft terminator toward lower-right */}
         <div
           className="absolute inset-0"
           style={{
@@ -167,7 +167,7 @@ const PartnersGlobe = () => {
               "radial-gradient(circle at 72% 76%, hsl(28 25% 12% / 0.18), transparent 58%)",
           }}
         />
-        {/* Specular highlight — soft matte, no gloss */}
+        {/* Specular highlight - soft matte, no gloss */}
         <div
           className="absolute inset-0"
           style={{
@@ -176,7 +176,7 @@ const PartnersGlobe = () => {
           }}
         />
 
-        {/* Vector overlay — graticule, continents, arcs, dots */}
+        {/* Vector overlay - graticule, continents, arcs, dots */}
         <svg
           viewBox={`0 0 ${VB} ${VB}`}
           className="absolute inset-0 h-full w-full"
@@ -188,7 +188,7 @@ const PartnersGlobe = () => {
           </defs>
 
           <g clipPath="url(#sphereClip)">
-            {/* Graticule — hairline, rotates with globe */}
+            {/* Graticule - hairline, rotates with globe */}
             <path
               d={graticulePath}
               fill="none"
@@ -196,7 +196,7 @@ const PartnersGlobe = () => {
               strokeWidth="0.18"
             />
 
-            {/* Continental silhouettes — soft warm ink, multiply blend */}
+            {/* Continental silhouettes - soft warm ink, multiply blend */}
             <g style={{ mixBlendMode: "multiply" }}>
               <path
                 d={landPath}
@@ -209,7 +209,7 @@ const PartnersGlobe = () => {
               />
             </g>
 
-            {/* City dots — three tiers, anchors dominate but all chapters render */}
+            {/* City dots - three tiers, anchors dominate but all chapters render */}
             <g fill="hsl(var(--ink))">
               {projected.map((p) => {
                 const r = p.tier === 2 ? 1.05 : p.tier === 1 ? 0.55 : 0.28;
@@ -227,7 +227,7 @@ const PartnersGlobe = () => {
               })}
             </g>
 
-            {/* Annotated whispers — small white speech bubbles near anchor cities */}
+            {/* Annotated whispers - small white speech bubbles near anchor cities */}
             <g
               style={{
                 fontFamily: "'Asap', ui-sans-serif, system-ui, sans-serif",
@@ -241,7 +241,7 @@ const PartnersGlobe = () => {
                 const PAD_X = 1.3;
                 const PAD_Y = 0.95;
                 const TEXT_H = 1.85;
-                // Approximate glyph width — Asap medium at this size
+                // Approximate glyph width - Asap medium at this size
                 const textW = l.text.length * 0.95;
                 const bubbleW = textW + PAD_X * 2;
                 const bubbleH = TEXT_H + PAD_Y * 2;
@@ -304,7 +304,7 @@ const PartnersGlobe = () => {
           </g>
         </svg>
 
-        {/* Tactile grain — softens the perfection of the render */}
+        {/* Tactile grain - softens the perfection of the render */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 rounded-full grain"

@@ -258,7 +258,7 @@ const MafiaNamePage = () => {
         });
       }
     } catch (e: any) {
-      // Silent — dossier still works without avatar
+      // Silent - dossier still works without avatar
       console.warn("avatar gen failed", e);
       track(EVT.MAFIA_AVATAR_FAILED, {
         mafia_name: chosenName,
@@ -319,7 +319,7 @@ const MafiaNamePage = () => {
 
   const shareName = async () => {
     if (!finalName) return;
-    const text = `I've been made. They call me ${finalName}. — PizzaDAO`;
+    const text = `I've been made. They call me ${finalName}. - PizzaDAO`;
     if (navigator.share) {
       try {
         await navigator.share({ title: "My PizzaDAO mafia name", text });
@@ -350,7 +350,7 @@ const MafiaNamePage = () => {
   const primary = names[0];
   const alternates = names.slice(1, 3);
 
-  // Names used during the cycling animation — pull characters from canon for flavor
+  // Names used during the cycling animation - pull characters from canon for flavor
   const cyclePool = useMemo(() => {
     const chars = MAFIA_FILMS.flatMap((f) => f.characters);
     const fragments = [
@@ -453,7 +453,7 @@ const MafiaNamePage = () => {
         </section>
       )}
 
-      {/* STEP 3: NAMES — ceremonial reveal */}
+      {/* STEP 3: NAMES - ceremonial reveal */}
       {step === "names" && film && topping && (
         <section className="relative z-10">
           <div className="container pb-24">
@@ -1134,7 +1134,7 @@ function FinaleScene({
 
             {/* Top row: avatar + title */}
             <div className="relative mt-8 grid grid-cols-1 gap-6 md:grid-cols-[200px_1fr] md:gap-10">
-              {/* Avatar — taped photo */}
+              {/* Avatar - taped photo */}
               <div className="relative mx-auto md:mx-0">
                 <span
                   aria-hidden
@@ -1190,7 +1190,7 @@ function FinaleScene({
                   aria-hidden
                   className={`handwritten mt-2 inline-block rotate-[-3deg] text-[18px] text-tomato transition-opacity duration-500 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}
                 >
-                  approved — Benny
+                  approved - Benny
                 </span>
 
                 {description && (
@@ -1203,9 +1203,9 @@ function FinaleScene({
 
             {/* Dossier rows */}
             <div className={`relative mt-10 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-ink/15 pt-6 transition-opacity duration-700 md:grid-cols-4 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}>
-              <DossierField label="Film" value={film?.title ?? "—"} />
-              <DossierField label="Origin" value={film?.country ?? "—"} />
-              <DossierField label="Topping" value={topping ?? "—"} />
+              <DossierField label="Film" value={film?.title ?? "-"} />
+              <DossierField label="Origin" value={film?.country ?? "-"} />
+              <DossierField label="Topping" value={topping ?? "-"} />
               <DossierField label="Initiated" value={`${new Date().toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}`} />
             </div>
 
@@ -1216,7 +1216,7 @@ function FinaleScene({
                   Family registry · sealed
                 </p>
                 <p className="handwritten mt-2 text-[22px] text-ink/80" style={{ transform: "rotate(-2deg)" }}>
-                  — Benny
+                  - Benny
                 </p>
               </div>
               {/* mini seal */}
