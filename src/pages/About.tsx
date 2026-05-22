@@ -32,9 +32,13 @@ const THESIS_PHOTO = findPhoto("Rio de Janeiro")?.src ?? findPhoto("Medellín")?
 // ── Press archive ─────────────────────────────────────────────
 // Featured: the VICE documentary. Below: the publications that
 // went on the record. Treated as evidence, not marketing.
-const VICE_VIDEO_ID = "t_Vaxas1u88";
-const VICE_VIDEO_HREF = `https://www.youtube.com/watch?v=${VICE_VIDEO_ID}`;
-const VICE_POSTER = `https://img.youtube.com/vi/${VICE_VIDEO_ID}/maxresdefault.jpg`;
+const VICE_VIDEO_HREF = "https://www.youtube.com/watch?v=t_Vaxas1u88";
+// Documentary still - not the YouTube poster. A real crowd frame from the
+// archive carries the editorial atmosphere the embed couldn't.
+const VICE_STILL =
+  findPhoto("New York")?.src ??
+  findPhoto("Lagos")?.src ??
+  party;
 
 type PressEntry = {
   outlet: string;
