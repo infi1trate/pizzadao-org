@@ -357,8 +357,34 @@ const PartnersPage = () => {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
+            {/* Right: form, tighter and aligned */}
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                if (submitting) return;
+                setSubmitError(null);
+                setSubmitting(true);
                 track(EVT.PARTNERS_CTA_CLICKED, { position: "inquiry_form", action: "submit" });
-                setSubmitted(true);
+                try {
+                  const { error } = await supabase.functions.invoke("submit-contact", {
+                    body: {
+                      name: form.name.trim(),
+                      organization: form.brand.trim() || undefined,
+                      email: form.email.trim(),
+                      message: form.brief.trim(),
+                      intents: ["Partnership"],
+                    },
+                  });
+                  if (error) throw error;
+                  setSubmitted(true);
+                } catch (err) {
+                  console.error(err);
+                  setSubmitError(
+                    "Something went wrong sending your brief. Please try again or email partnerships@pizzadao.org directly.",
+                  );
+                } finally {
+                  setSubmitting(false);
+                }
               }}
               className="col-span-12 grid grid-cols-2 gap-x-5 gap-y-6 md:col-span-7 md:pl-8 lg:pl-12"
             >
@@ -380,6 +406,8 @@ const PartnersPage = () => {
                     <input
                       type="text"
                       required
+                      value={form.brand}
+                      onChange={(e) => setForm((f) => ({ ...f, brand: e.target.value }))}
                       className="ui mt-2.5 w-full border-0 border-b border-cream/20 bg-transparent px-0 py-2.5 text-sm text-cream placeholder:text-cream/25 transition-colors focus:border-butter focus:outline-none"
                       placeholder="Company name"
                     />
@@ -391,6 +419,8 @@ const PartnersPage = () => {
                     <input
                       type="text"
                       required
+                      value={form.name}
+                      onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
                       className="ui mt-2.5 w-full border-0 border-b border-cream/20 bg-transparent px-0 py-2.5 text-sm text-cream placeholder:text-cream/25 transition-colors focus:border-butter focus:outline-none"
                       placeholder="Full name"
                     />
@@ -402,6 +432,8 @@ const PartnersPage = () => {
                     <input
                       type="email"
                       required
+                      value={form.email}
+                      onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                       className="ui mt-2.5 w-full border-0 border-b border-cream/20 bg-transparent px-0 py-2.5 text-sm text-cream placeholder:text-cream/25 transition-colors focus:border-butter focus:outline-none"
                       placeholder="you@company.com"
                     />
@@ -413,22 +445,31 @@ const PartnersPage = () => {
                     <textarea
                       required
                       rows={3}
+                      value={form.brief}
+                      onChange={(e) => setForm((f) => ({ ...f, brief: e.target.value }))}
                       className="ui mt-2.5 w-full border-0 border-b border-cream/20 bg-transparent px-0 py-2.5 text-sm text-cream placeholder:text-cream/25 transition-colors focus:border-butter focus:outline-none"
                       placeholder="What you're trying to achieve, where, by when."
                     />
                   </div>
+                  {submitError && (
+                    <div role="alert" className="col-span-2 ui text-xs text-butter">
+                      {submitError}
+                    </div>
+                  )}
                   <div className="relative col-span-2 mt-2 flex flex-col-reverse items-start gap-4 md:flex-row md:items-center md:justify-between md:gap-6">
                     <button
                       type="submit"
-                      className="group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-tomato px-7 py-4 text-sm font-semibold tracking-[0.03em] text-cream shadow-[0_10px_28px_-10px_hsl(var(--tomato)/0.6),0_3px_8px_-4px_hsl(0_0%_0%/0.3)] transition-all duration-500 ease-out hover:-translate-y-[3px] hover:bg-butter hover:text-ink hover:shadow-[0_18px_48px_-14px_hsl(var(--butter)/0.5),0_6px_14px_-6px_hsl(0_0%_0%/0.35)] md:px-9 md:py-5"
+                      disabled={submitting}
+                      className="group relative inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-tomato px-7 py-4 text-sm font-semibold tracking-[0.03em] text-cream shadow-[0_10px_28px_-10px_hsl(var(--tomato)/0.6),0_3px_8px_-4px_hsl(0_0%_0%/0.3)] transition-all duration-500 ease-out hover:-translate-y-[3px] hover:bg-butter hover:text-ink hover:shadow-[0_18px_48px_-14px_hsl(var(--butter)/0.5),0_6px_14px_-6px_hsl(0_0%_0%/0.35)] disabled:cursor-not-allowed disabled:opacity-60 md:px-9 md:py-5"
                     >
-                      <span>Request a partnership brief</span>
+                      <span>{submitting ? "Sending…" : "Request a partnership brief"}</span>
                       <span aria-hidden className="transition-transform duration-500 ease-out group-hover:translate-x-1">→</span>
                     </button>
                   </div>
                 </>
               )}
             </form>
+
           </div>
         </div>
       </section>
