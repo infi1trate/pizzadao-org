@@ -275,6 +275,53 @@ const MafiaNamePage = () => {
     }
   };
 
+  const generateCardAvatars = async (
+    namesList: GeneratedName[],
+    chosenFilm: MafiaFilm,
+    chosenTopping: string,
+  ) => {
+    const slice = namesList.slice(0, 3);
+    setCardAvatars([null, null, null]);
+    setCardAvatarLoading(slice.map(() => true).concat(Array(3 - slice.length).fill(false)).slice(0, 3));
+    await Promise.all(
+      slice.map(async (n, i) => {
+        try {
+          const personaTone = [
+            ...(chosenFilm.tone ?? []),
+            CARD_PERSONALITIES[i]?.toneHint ?? "",
+          ].filter(Boolean);
+          const { data, error } = await supabase.functions.invoke("generate-mafia-avatar", {
+            body: {
+              name: n.name,
+              topping: chosenTopping,
+              filmTitle: chosenFilm.title,
+              filmTone: personaTone,
+            },
+          });
+          if (error) throw error;
+          const img = (data as any)?.image;
+          if (img) {
+            setCardAvatars((prev) => {
+              const next = [...prev];
+              next[i] = img;
+              return next;
+            });
+          }
+        } catch (e) {
+          // silent — card still works without avatar
+        } finally {
+          setCardAvatarLoading((prev) => {
+            const next = [...prev];
+            next[i] = false;
+            return next;
+          });
+        }
+      }),
+    );
+  };
+
+
+
 
   const handleClaim = async () => {
     if (!film || !topping || selectedIdx === null) return;
