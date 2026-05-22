@@ -27,9 +27,11 @@ const CITIES: City[] = (citiesData as Array<{ name: string; coords: unknown }>)
   .filter((c) => Array.isArray(c.coords) && (c.coords as number[]).length === 2)
   .map((c) => ({ name: c.name, coords: c.coords as [number, number] }));
 
-const MARQUEE = new Set([
+// Anchor cities — intentional, not data-dense. These are the only larger dots.
+const ANCHORS = new Set([
   "New York", "London", "Lagos", "Tokyo",
   "São Paulo", "Sao Paulo", "Sydney", "Mumbai", "Mexico City",
+  "Milan", "Berlin", "Istanbul",
 ]);
 
 const hash = (s: string) => {
@@ -37,18 +39,24 @@ const hash = (s: string) => {
   for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
   return Math.abs(h);
 };
+// A sparser secondary tier — small ink dots, intentional clusters only.
 const MID = new Set(
-  CITIES.filter((c) => !MARQUEE.has(c.name) && hash(c.name) % 9 === 0).map((c) => c.name),
+  CITIES.filter((c) => !ANCHORS.has(c.name) && hash(c.name) % 5 === 0).map((c) => c.name),
 );
 
-const ARC_PAIRS: Array<[string, string]> = [
-  ["New York", "London"],
-  ["London", "Lagos"],
-  ["Tokyo", "Sydney"],
-  ["Mumbai", "Tokyo"],
-  ["New York", "Mexico City"],
-  ["Lagos", "São Paulo"],
-  ["London", "Mumbai"],
+// Hand-annotated whispers near specific cities. Sentence case, never shouty.
+type Annotation = { city: string; text: string; dx: number; dy: number; anchor?: "start" | "end" };
+const ANNOTATIONS: Annotation[] = [
+  { city: "Milan",       text: "ciao from milan",     dx:  3, dy: -2 },
+  { city: "Mexico City", text: "hola from cdmx",      dx: -3, dy:  3, anchor: "end" },
+  { city: "Tokyo",       text: "gm from tokyo",       dx:  3, dy: -2 },
+  { city: "New York",    text: "irl > ads",           dx: -3, dy: -2, anchor: "end" },
+  { city: "Lagos",       text: "shared slices",       dx:  3, dy:  3 },
+  { city: "London",      text: "one bite at a time",  dx:  3, dy: -2 },
+  { city: "São Paulo",   text: "pizza the planet",    dx: -3, dy:  3, anchor: "end" },
+  { city: "Mumbai",      text: "community first",     dx:  3, dy: -2 },
+  { city: "Berlin",      text: "geteilte stücke",     dx:  3, dy: -2 },
+  { city: "Istanbul",    text: "selam, dilim hazır",  dx: -3, dy:  3, anchor: "end" },
 ];
 
 const VB = 100;
