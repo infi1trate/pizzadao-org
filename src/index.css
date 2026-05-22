@@ -222,6 +222,24 @@
     letter-spacing: 0;
     line-height: 1.1;
   }
+  /* Tablet safety: handwritten marker type at iPad widths often collides with
+     headlines because Rock Salt is wider than its declared metrics. Trim a hair
+     of size + tighten tracking only at md so accents stay inside their gutters. */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .handwritten {
+      font-size: 0.94em;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  /* Tablet body measure — caps paragraph width to ~60ch at md so prose doesn't
+     stretch into uncomfortably long lines on iPad landscape. Opt-in only. */
+  .measure-tablet {
+    max-width: 60ch;
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .measure-tablet { max-width: 56ch; }
+  }
 
   /* Hand-drawn underline */
   .underline-scribble {

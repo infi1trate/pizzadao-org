@@ -40,16 +40,16 @@ const SiteNav = ({ solid = false }: Props) => {
           : "bg-cream/90 backdrop-blur shadow-[0_1px_0_0_hsl(var(--ink)/0.10)]"
       }`}
     >
-      <div className="container flex h-16 items-center justify-between md:h-20">
+      <div className="container flex h-16 items-center justify-between md:h-[72px] lg:h-20">
         <Link to="/" className="flex items-center" aria-label="PizzaDAO home">
           <img
             src={onRed ? logoLight : logoDark}
             alt="PizzaDAO"
-            className="h-6 w-auto md:h-7"
+            className="h-6 w-auto md:h-[26px] lg:h-7"
           />
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-5 md:flex lg:gap-7">
           {NAV.map((n) => (
             <Link
               key={n.label}
@@ -66,7 +66,7 @@ const SiteNav = ({ solid = false }: Props) => {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-2 md:flex lg:gap-3">
           <a
             href="https://app.pizzadao.org"
             target="_blank"
