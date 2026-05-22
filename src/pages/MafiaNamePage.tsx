@@ -496,8 +496,8 @@ const MafiaNamePage = () => {
             {!film ? (
               <CinematicInput
                 inputRef={filmInputRef}
-                label="§ 02 · Your movie"
-                placeholder="What's your mafia movie?"
+                label="§ 02 · The vibe"
+                placeholder="What kind of operation is this?"
                 value={query}
                 onChange={setQuery}
                 open={filmDrawerOpen}
