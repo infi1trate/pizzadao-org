@@ -186,37 +186,29 @@ const About = () => {
                 A Clubhouse room, a holiday, and a hunch.
               </h2>
 
-              {/* Pinned polaroid trio — tactile field-archive warmth */}
-              <div className="mt-14 hidden md:flex md:items-start md:gap-3">
-                {ORIGIN_POLAROIDS.map((p, i) => (
-                  <figure
-                    key={p.city}
-                    className={`relative ${p.tilt} ${p.offset} w-[48%] origin-top transition-transform duration-500 hover:rotate-0 hover:scale-[1.03]`}
-                    style={{ zIndex: 10 - i }}
-                  >
-                    <div className="grain relative overflow-hidden bg-cream p-2 pb-8 shadow-[0_8px_20px_-10px_hsl(0_0%_0%/0.35),0_2px_5px_-2px_hsl(0_0%_0%/0.2)]">
-                      <div className="aspect-square overflow-hidden bg-ink">
-                        <img
-                          src={p.src}
-                          alt={`${p.city} — early PizzaDAO gathering`}
-                          loading="lazy"
-                          decoding="async"
-                          className="h-full w-full object-cover [filter:saturate(0.92)_contrast(1.04)_sepia(0.06)]"
-                        />
-                      </div>
-                      <figcaption className="handwritten absolute inset-x-2 bottom-1 text-center text-xs leading-tight text-ink/70">
-                        {p.city} · {p.note}
-                      </figcaption>
-                    </div>
-                    {/* paper tape */}
-                    <span
-                      aria-hidden
-                      className="absolute -top-2 left-1/2 h-4 w-12 -translate-x-1/2 rotate-[-4deg] bg-butter/70 opacity-80 shadow-sm"
-                      style={{ clipPath: "polygon(4% 0,96% 0,100% 100%,0 100%)" }}
+              {/* Single archival polaroid — the reveal */}
+              <figure className="relative mt-14 hidden w-full origin-top -rotate-[1.2deg] transition-transform duration-500 hover:rotate-0 hover:scale-[1.02] md:block">
+                <div className="grain relative overflow-hidden bg-cream p-3 pb-10 shadow-[0_14px_36px_-14px_hsl(0_0%_0%/0.38),0_3px_8px_-3px_hsl(0_0%_0%/0.22)]">
+                  <div className="aspect-[4/5] overflow-hidden bg-ink">
+                    <img
+                      src={revealPhoto}
+                      alt="Late-night gathering of the first PizzaDAO members, huddled around laptops and pizza"
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover [filter:saturate(0.88)_contrast(1.06)_sepia(0.08)]"
                     />
-                  </figure>
-                ))}
-              </div>
+                  </div>
+                  <figcaption className="handwritten absolute inset-x-3 bottom-2.5 text-center text-sm leading-tight text-ink/70">
+                    The founding · late 2021
+                  </figcaption>
+                </div>
+                {/* paper tape */}
+                <span
+                  aria-hidden
+                  className="absolute -top-2.5 left-1/2 h-5 w-14 -translate-x-1/2 rotate-[-3deg] bg-butter/70 opacity-80 shadow-sm"
+                  style={{ clipPath: "polygon(4% 0,96% 0,100% 100%,0 100%)" }}
+                />
+              </figure>
             </div>
             <div className="col-span-12 md:col-span-7 md:col-start-6">
               {/* Tiny dateline — restrained archival cue */}
