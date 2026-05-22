@@ -550,7 +550,7 @@ const MafiaNamePage = () => {
           <div className="container pb-24">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <button
-                onClick={() => { setStep("topping"); setTopping(null); setNames([]); setSelectedIdx(null); setRevealPhase("idle"); }}
+                onClick={() => { setStep("film"); setFilm(null); setNames([]); setSelectedIdx(null); setRevealPhase("idle"); }}
                 className="ui inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.22em] text-ink/55 hover:text-tomato"
               >
                 <ArrowLeft className="h-3 w-3" />
