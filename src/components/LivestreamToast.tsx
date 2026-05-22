@@ -190,11 +190,20 @@ const LivestreamToast = () => {
             </span>
           </div>
           <button
-            onClick={dismiss}
+            type="button"
+            onPointerDown={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              dismiss();
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+              dismiss();
+            }}
             aria-label="Dismiss"
-            className="grid h-6 w-6 place-items-center rounded-full text-cream/80 hover:bg-cream/10 hover:text-cream"
+            className="-mr-1 grid h-9 w-9 shrink-0 place-items-center rounded-full text-cream/80 hover:bg-cream/10 hover:text-cream touch-manipulation"
           >
-            <X className="h-3.5 w-3.5" />
+            <X className="h-4 w-4" />
           </button>
         </div>
 
