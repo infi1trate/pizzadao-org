@@ -236,26 +236,26 @@ const MafiaNamePage = () => {
     }
   };
 
-  const handleSelectFilm = (f: MafiaFilm) => {
+  const handleSelectTopping = (t: string) => {
+    setTopping(t);
+    setToppingQuery("");
+    setToppingDrawerOpen(false);
+    setStep("film");
+    setTimeout(() => filmInputRef.current?.focus(), 200);
+    track(EVT.MAFIA_TOPPING_PICKED, { topping: t });
+  };
+
+  const handleSelectFilm = async (f: MafiaFilm) => {
     setFilm(f);
     setQuery("");
     setFilmDrawerOpen(false);
-    setStep("topping");
-    setTimeout(() => toppingInputRef.current?.focus(), 200);
+    setStep("names");
     track(EVT.MAFIA_MOVIE_PICKED, {
       movie_id: f.id,
       movie_title: f.title,
       custom: f.id.startsWith("custom:"),
     });
-  };
-
-  const handleSelectTopping = async (t: string) => {
-    setTopping(t);
-    setToppingQuery("");
-    setToppingDrawerOpen(false);
-    setStep("names");
-    track(EVT.MAFIA_TOPPING_PICKED, { topping: t });
-    if (film) await generate(film, t);
+    if (topping) await generate(f, topping);
   };
 
   const generateAvatar = async (chosenName: string, opts: { redraw?: boolean } = {}) => {
