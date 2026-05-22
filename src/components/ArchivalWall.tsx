@@ -16,50 +16,28 @@ type Slot = {
   tilt?: number;
 };
 
-// Dense, overlapping, cinematic slot composition.
-// Big anchors carry emotional weight; tiny verticals create
-// intimacy; full-bleed wides act as breath. Negative offsets
-// overlap neighbors so the wall reads as one continuous archive
-// instead of a tidy grid.
+// Curated, cinematic slot composition. Fewer frames, stronger focal
+// hierarchy, more breathing room. Big anchors carry weight; a few
+// intimate verticals break the rhythm. Offsets are restrained so the
+// wall reads as an art-directed archive — never a collage.
 const SLOTS: Slot[] = [
-  // ── ACT I — Arrival. A massive crowd anchor + intimate side frames.
-  { col: "md:col-start-1",  span: "md:col-span-9",  row: "md:row-span-4", aspect: "aspect-[16/10]", drift: 0.05, tone: "warm",    z: 2 },
-  { col: "md:col-start-9",  span: "md:col-span-4",  row: "md:row-span-2", aspect: "aspect-[3/4]",   drift: 0.10, tone: "night",   offset: 60, z: 3 },
-  { col: "md:col-start-10", span: "md:col-span-3",  row: "md:row-span-2", aspect: "aspect-[4/5]",   drift: 0.04, tone: "mono",    offset: -20, z: 1 },
+  // ── ACT I — Arrival. One cinematic anchor + one intimate vertical.
+  { col: "md:col-start-1",  span: "md:col-span-8",  row: "md:row-span-4", aspect: "aspect-[16/10]", drift: 0.05, tone: "warm",    z: 2 },
+  { col: "md:col-start-9",  span: "md:col-span-4",  row: "md:row-span-4", aspect: "aspect-[3/4]",   drift: 0.08, tone: "night",   offset: 28, z: 3, tilt: -0.4 },
 
-  // ── ACT II — Tight pulse: small verticals overlapping a mid wide.
-  { col: "md:col-start-1",  span: "md:col-span-3",  row: "md:row-span-2", aspect: "aspect-[3/4]",   drift: 0.07, tone: "cool",    offset: -30, z: 3, tilt: -0.6 },
-  { col: "md:col-start-4",  span: "md:col-span-5",  row: "md:row-span-3", aspect: "aspect-[4/5]",   drift: 0.03, tone: "warm",    offset: 40,  z: 2 },
-  { col: "md:col-start-9",  span: "md:col-span-4",  row: "md:row-span-2", aspect: "aspect-[4/3]",   drift: 0.08, tone: "natural", offset: -40, z: 4 },
+  // ── ACT II — Faces. Three verticals, evenly weighted, quietly aligned.
+  { col: "md:col-start-1",  span: "md:col-span-4",  row: "md:row-span-3", aspect: "aspect-[3/4]",   drift: 0.04, tone: "natural", offset: 36, z: 2 },
+  { col: "md:col-start-5",  span: "md:col-span-4",  row: "md:row-span-3", aspect: "aspect-[3/4]",   drift: 0.06, tone: "mono",    offset: -10, z: 3 },
+  { col: "md:col-start-9",  span: "md:col-span-4",  row: "md:row-span-3", aspect: "aspect-[3/4]",   drift: 0.05, tone: "warm",    offset: 44, z: 2, tilt: 0.5 },
 
-  { col: "md:col-start-1",  span: "md:col-span-3",  row: "md:row-span-2", aspect: "aspect-[1/1]",   drift: 0.02, tone: "mono",    offset: 90,  z: 2, tilt: 0.5 },
-  { col: "md:col-start-9",  span: "md:col-span-3",  row: "md:row-span-2", aspect: "aspect-[3/4]",   drift: 0.05, tone: "night",   offset: 30,  z: 3 },
-  { col: "md:col-start-12", span: "md:col-span-1",  row: "md:row-span-1", aspect: "aspect-[3/4]",   drift: 0.06, tone: "warm",    offset: 120, z: 1 },
-
-  // ── ACT III — Cinematic breath. Full-bleed wide, then a vertical break.
+  // ── ACT III — Cinematic breath. One full-bleed horizon.
   { col: "md:col-start-1",  span: "md:col-span-12", row: "md:row-span-3", aspect: "aspect-[21/9]",  drift: 0.06, tone: "warm",    z: 2 },
-  { col: "md:col-start-2",  span: "md:col-span-2",  row: "md:row-span-2", aspect: "aspect-[3/4]",   drift: 0.04, tone: "night",   offset: -50, z: 4, tilt: -0.8 },
 
-  // ── ACT IV — Faces. Three verticals tightly grouped + asymmetric anchor.
-  { col: "md:col-start-1",  span: "md:col-span-4",  row: "md:row-span-3", aspect: "aspect-[3/4]",   drift: 0.03, tone: "natural", offset: 60, z: 2 },
-  { col: "md:col-start-5",  span: "md:col-span-4",  row: "md:row-span-3", aspect: "aspect-[3/4]",   drift: 0.06, tone: "mono",    offset: 20, z: 3 },
-  { col: "md:col-start-9",  span: "md:col-span-4",  row: "md:row-span-3", aspect: "aspect-[3/4]",   drift: 0.04, tone: "warm",    offset: 90, z: 2 },
-  { col: "md:col-start-11", span: "md:col-span-2",  row: "md:row-span-1", aspect: "aspect-[1/1]",   drift: 0.09, tone: "night",   offset: -30, z: 4, tilt: 0.7 },
-
-  // ── ACT V — Chaos cluster. Tight overlapping squares + a wide.
-  { col: "md:col-start-1",  span: "md:col-span-7",  row: "md:row-span-2", aspect: "aspect-[2/1]",   drift: 0.05, tone: "cool",    z: 2 },
-  { col: "md:col-start-6",  span: "md:col-span-3",  row: "md:row-span-2", aspect: "aspect-[4/5]",   drift: 0.07, tone: "warm",    offset: -40, z: 4, tilt: -0.5 },
-  { col: "md:col-start-9",  span: "md:col-span-4",  row: "md:row-span-2", aspect: "aspect-[1/1]",   drift: 0.08, tone: "natural", offset: 50, z: 3 },
-
-  // ── ACT VI — Closing. Tall vertical anchor, wide horizon, tiny detail.
-  { col: "md:col-start-1",  span: "md:col-span-5",  row: "md:row-span-4", aspect: "aspect-[4/5]",   drift: 0.04, tone: "night",   offset: 30, z: 3 },
-  { col: "md:col-start-6",  span: "md:col-span-7",  row: "md:row-span-2", aspect: "aspect-[16/9]",  drift: 0.07, tone: "natural", z: 2 },
-  { col: "md:col-start-6",  span: "md:col-span-4",  row: "md:row-span-2", aspect: "aspect-[4/3]",   drift: 0.03, tone: "warm",    offset: 30, z: 3 },
-  { col: "md:col-start-10", span: "md:col-span-3",  row: "md:row-span-2", aspect: "aspect-[3/4]",   drift: 0.06, tone: "mono",    offset: 60, z: 2, tilt: 0.6 },
-
-  // ── CODA — Two small intimate frames sitting just above the close.
-  { col: "md:col-start-2",  span: "md:col-span-3",  row: "md:row-span-1", aspect: "aspect-[1/1]",   drift: 0.05, tone: "night",   offset: -20, z: 4, tilt: -0.4 },
-  { col: "md:col-start-10", span: "md:col-span-2",  row: "md:row-span-1", aspect: "aspect-[3/4]",   drift: 0.04, tone: "warm",    offset: 100, z: 3 },
+  // ── ACT IV — Closing. Tall anchor, wide companion, one quiet detail.
+  { col: "md:col-start-1",  span: "md:col-span-5",  row: "md:row-span-4", aspect: "aspect-[4/5]",   drift: 0.04, tone: "night",   offset: 24, z: 3 },
+  { col: "md:col-start-6",  span: "md:col-span-7",  row: "md:row-span-3", aspect: "aspect-[16/9]",  drift: 0.07, tone: "natural", z: 2 },
+  { col: "md:col-start-6",  span: "md:col-span-4",  row: "md:row-span-2", aspect: "aspect-[4/3]",   drift: 0.03, tone: "cool",    offset: 30, z: 3, tilt: -0.4 },
+  { col: "md:col-start-10", span: "md:col-span-3",  row: "md:row-span-2", aspect: "aspect-[3/4]",   drift: 0.06, tone: "mono",    offset: 50, z: 2, tilt: 0.5 },
 ];
 
 const toneClass = (t?: Slot["tone"]) => {
