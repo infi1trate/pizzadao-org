@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Sponsorship from "@/components/Sponsorship";
 import PartnersGlobe from "@/components/PartnersGlobe";
 import PartnerActivations from "@/components/PartnerActivations";
-import PhotoVeil from "@/components/PhotoVeil";
+import RegistrationMarks from "@/components/RegistrationMarks";
 import { track } from "@/lib/analytics/posthog";
 import { EVT } from "@/lib/analytics/events";
 
@@ -53,18 +53,9 @@ const PartnersPage = () => {
               "linear-gradient(180deg, hsl(var(--cream)) 0%, hsl(44 70% 96%) 55%, hsl(40 55% 93%) 100%)",
           }}
         />
-        {/* Hero ambient glows */}
-        <div
-          aria-hidden
-          className="hero-glow pointer-events-none absolute -right-32 -top-32 h-[640px] w-[640px] rounded-full opacity-[0.09] blur-[120px]"
-          style={{ background: "hsl(var(--tomato))" }}
-        />
-        <div
-          aria-hidden
-          className="hero-glow pointer-events-none absolute -left-40 top-1/3 h-[520px] w-[520px] rounded-full opacity-[0.10] blur-[140px]"
-          style={{ background: "hsl(var(--butter))", animationDelay: "-4s" }}
-        />
-        {/* Subtle checker corners — top-right + bottom-left only */}
+        {/* Editorial crop marks — printer's register, art-directed corners */}
+        <RegistrationMarks tone="ink" opacity={0.18} inset={22} size={14} folio="§ B.01" />
+        {/* Subtle checker corners — brand signature, intentional rhythm */}
         <div
           aria-hidden
           className="checker-tape pointer-events-none absolute right-0 top-0 h-[5px] w-32 opacity-30 md:w-48"
@@ -73,8 +64,6 @@ const PartnersPage = () => {
           aria-hidden
           className="checker-tape pointer-events-none absolute bottom-0 left-0 h-[5px] w-32 opacity-25 md:w-48"
         />
-        {/* Photographic emotional texture — barely-there crowd warmth */}
-        <PhotoVeil variant="crowd" position="bottom-left" opacity={0.05} blend="multiply" />
 
         <div className="container relative">
           {/* Archival ref */}
@@ -172,9 +161,7 @@ const PartnersPage = () => {
 
       {/* Logo wall — premium social proof, gallery-like */}
       <section className="paper-soft paper-drift relative overflow-hidden bg-cream py-14 md:py-20">
-        {/* Warm grain overlay */}
-        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.32]" />
-        {/* Soft tonal wash — warm editorial depth */}
+        {/* Soft tonal wash — warm editorial depth (keeps the section reading as paper) */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -183,20 +170,18 @@ const PartnersPage = () => {
               "linear-gradient(180deg, hsl(44 60% 97%) 0%, hsl(var(--cream)) 40%, hsl(44 55% 96%) 100%)",
           }}
         />
-        {/* Faint vignette edge darkening */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse at 50% 50%, transparent 60%, hsl(30 20% 50% / 0.04) 100%)",
-          }}
-        />
         {/* Section seam hairlines — tighter editorial join */}
         <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/10" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-ink/10" />
-        {/* Photographic atmosphere — faint table-surface warmth at edge */}
-        <PhotoVeil variant="table" position="top-right" opacity={0.045} blend="multiply" />
+        {/* Editorial corner registration — folio in lower right */}
+        <RegistrationMarks
+          tone="ink"
+          opacity={0.14}
+          inset={20}
+          size={12}
+          corners={["tl", "tr", "br"]}
+          folio="§ B.02"
+        />
 
         <div className="container relative">
           {/* Editorial heading — minimal, confident */}
@@ -249,32 +234,36 @@ const PartnersPage = () => {
 
       {/* Inquiry — warm close, hospitality cues */}
       <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-14 text-cream md:py-16">
-        {/* Atmospheric warm glow — soft ember drift */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -left-32 -top-32 h-[600px] w-[600px] rounded-full opacity-[0.14] blur-[120px]"
-          style={{ background: "hsl(var(--tomato))" }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-20 bottom-0 h-[420px] w-[420px] rounded-full opacity-[0.10] blur-[100px]"
-          style={{ background: "hsl(var(--butter))" }}
-        />
-        {/* Soft gradient drift — restrained warmth wash */}
+        {/* Single directional warm wash — anchored to where the headline sits,
+            so the warmth reads as light on a page, not as a floating blob. */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 30% 50%, hsl(var(--tomato) / 0.06) 0%, transparent 55%)",
+              "radial-gradient(ellipse 60% 70% at 18% 35%, hsl(var(--tomato) / 0.10) 0%, transparent 60%)",
           }}
         />
-        {/* Faint tablecloth texture — single short tape */}
+        {/* Diagonal paper-fold crease — soft, intentional, runs through the gutter */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(112deg, transparent 47%, hsl(var(--cream) / 0.05) 49.5%, transparent 52%)",
+          }}
+        />
+        {/* Brand signature tape — single, deliberate */}
         <div className="checker-tape-sm absolute left-0 top-0 h-[4px] w-24 opacity-35 md:w-40" aria-hidden />
-        {/* Soft grain overlay */}
-        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.12]" />
-        {/* Photographic atmosphere — distant city lights, screen-blended into ink */}
-        <PhotoVeil variant="city" position="right" opacity={0.07} blend="screen" />
+        {/* Editorial registration marks — cream on ink, two corners only */}
+        <RegistrationMarks
+          tone="cream"
+          opacity={0.18}
+          inset={20}
+          size={12}
+          corners={["tr", "bl"]}
+          folio="§ B.03"
+        />
         {/* Bottom hairline */}
         <div className="absolute inset-x-0 bottom-0 h-px bg-cream/8" aria-hidden />
 
