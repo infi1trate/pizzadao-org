@@ -90,7 +90,7 @@ const TransmissionDemo = () => {
             <a href="https://discord.pizzadao.xyz/" target="_blank" rel="noreferrer" className="ui text-sm text-ink/80 transition-colors hover:text-tomato">
               Discord
             </a>
-            <a href="https://x.com/pizza_dao" target="_blank" rel="noreferrer" className="ui text-sm text-ink/80 transition-colors hover:text-tomato">
+            <a href="https://x.com/Pizza_DAO" target="_blank" rel="noreferrer" className="ui text-sm text-ink/80 transition-colors hover:text-tomato">
               X
             </a>
           </nav>
@@ -231,7 +231,7 @@ const TransmissionDemo = () => {
           </span>
           <div className="ui flex items-center gap-6 text-[11px] uppercase tracking-[0.22em]">
             <a href="https://discord.pizzadao.xyz/" target="_blank" rel="noreferrer" className="hover:text-tomato">Discord</a>
-            <a href="https://x.com/pizza_dao" target="_blank" rel="noreferrer" className="hover:text-tomato">X</a>
+            <a href="https://x.com/Pizza_DAO" target="_blank" rel="noreferrer" className="hover:text-tomato">X</a>
             <span>Global Pizza Party</span>
           </div>
         </div>

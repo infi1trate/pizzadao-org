@@ -128,10 +128,10 @@ const Transmission = () => {
               Discord
             </a>
             <a
-              href="https://x.com/pizza_dao"
+              href="https://x.com/Pizza_DAO"
               target="_blank"
               rel="noreferrer"
-              onClick={() => trackOutbound("X", "https://x.com/pizza_dao", { surface: "nav" })}
+              onClick={() => trackOutbound("X", "https://x.com/Pizza_DAO", { surface: "nav" })}
               className="ui text-sm text-ink/80 transition-colors hover:text-tomato"
             >
               X
@@ -318,10 +318,10 @@ const Transmission = () => {
               Discord
             </a>
             <a
-              href="https://x.com/pizza_dao"
+              href="https://x.com/Pizza_DAO"
               target="_blank"
               rel="noreferrer"
-              onClick={() => trackOutbound("X", "https://x.com/pizza_dao", { surface: "footer" })}
+              onClick={() => trackOutbound("X", "https://x.com/Pizza_DAO", { surface: "footer" })}
               className="hover:text-tomato"
             >
               X
