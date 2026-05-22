@@ -107,7 +107,8 @@ const familyArchiveNo = (seed: string) => {
 };
 
 const MafiaNamePage = () => {
-  const [step, setStep] = useState<Step>("film");
+  // Flow order: pick topping FIRST (primary identity), then movie (tone reference), then name.
+  const [step, setStep] = useState<Step>("topping");
   const [film, setFilm] = useState<MafiaFilm | null>(null);
   const [topping, setTopping] = useState<string | null>(null);
   const [query, setQuery] = useState("");
