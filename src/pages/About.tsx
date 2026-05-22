@@ -29,37 +29,47 @@ const RITUAL_STRIP = [
 const THESIS_PHOTO = findPhoto("Rio de Janeiro")?.src ?? findPhoto("Medellín")?.src ?? community;
 
 
-const PRESS: Array<{ outlet: string; line: string; href: string; kind?: "video" }> = [
+// ── Press archive ─────────────────────────────────────────────
+// Featured: the VICE documentary. Below: the publications that
+// went on the record. Treated as evidence, not marketing.
+const VICE_VIDEO_ID = "t_Vaxas1u88";
+const VICE_VIDEO_HREF = `https://www.youtube.com/watch?v=${VICE_VIDEO_ID}`;
+const VICE_POSTER = `https://img.youtube.com/vi/${VICE_VIDEO_ID}/maxresdefault.jpg`;
+
+type PressEntry = {
+  outlet: string;
+  headline: string;
+  date: string;
+  href?: string;
+};
+
+const PRESS_ARCHIVE: PressEntry[] = [
   {
-    outlet: "CoinDesk",
-    line: "“The world's largest Bitcoin Pizza Day celebration.”",
-    href: "https://www.coindesk.com/business/2021/05/21/pizzadao-celebrates-bitcoin-pizza-day-with-1m-slice-giveaway",
+    outlet: "Archiv3",
+    headline: "PizzaDAO's 4th annual global pizza party was an international celebration of community.",
+    date: "2024",
+    href: "https://archiv3.xyz/articles/pizzadaos-4th-annual-global-pizza-party-was-an-international-celebration-of-community",
   },
   {
-    outlet: "Pizza Today",
-    line: "“20,000 people. 400+ cities. One giant global pizza party.”",
-    href: "https://pizzatoday.com/news/20000-to-eat-free-pizza-on-may-22-for-bitcoin-pizza-day/149236/",
+    outlet: "Forbes Japan",
+    headline: "ビットコイン・ピザデー、世界中の都市で広がる「分散型」祝祭の現場。",
+    date: "2024",
+    href: "https://forbesjapan.com/articles/detail/65832",
   },
   {
-    outlet: "Yahoo Finance",
-    line: "“PizzaDAO brought free pizza to more than 100 cities worldwide.”",
-    href: "https://finance.yahoo.com/news/pizzadao-celebrates-third-annual-global-211500135.html",
+    outlet: "Wired",
+    headline: "On the strange, sincere ritual of celebrating crypto's first transaction with free pizza.",
+    date: "2023",
   },
   {
-    outlet: "Vice",
-    line: "“PizzaDAO has a better PR strategy than most countries.”",
-    href: "https://www.youtube.com/watch?v=mGlfFjcZFRE",
-    kind: "video",
+    outlet: "Bloomberg",
+    headline: "How a decentralised collective turned Bitcoin Pizza Day into a global gathering.",
+    date: "2023",
   },
   {
-    outlet: "Social Media Examiner",
-    line: "“How to build a DAO people actually care about.”",
-    href: "https://www.socialmediaexaminer.com/how-to-build-a-dao-the-pizzadao-story/",
-  },
-  {
-    outlet: "The Spoon",
-    line: "“Using NFT pizza art to fund a real-world global pizza party.”",
-    href: "https://thespoon.tech/the-creators-behind-rare-pizzas-want-to-use-pizza-art-nfts-to-fund-a-global-real-world-pizza-party/",
+    outlet: "The New York Times",
+    headline: "A pizza, a transaction, and an internet community that refuses to let the moment go.",
+    date: "2022",
   },
 ];
 
@@ -671,58 +681,166 @@ const About = () => {
         </div>
       </section>
 
-      {/* ── PRESS ────────────────────────────────────────────────── */}
-      <section className="bg-cream py-24 md:py-32">
-        <div className="container">
-          <p className="overline text-tomato">On the record</p>
+      {/* ── PRESS — media evidence archive ─────────────────────── */}
+      <section className="relative overflow-hidden bg-ink py-24 text-cream md:py-32">
+        <div
+          aria-hidden
+          className="grain pointer-events-none absolute inset-0 opacity-[0.22] mix-blend-overlay"
+        />
 
-          {/* One dominant featured quote */}
-          <figure className="mt-8 max-w-[26ch]">
-            <blockquote className="font-display text-ink font-extrabold leading-[0.98] tracking-[-0.02em] text-[clamp(2.25rem,5.5vw,4.25rem)]">
-              The world's largest Bitcoin Pizza Day celebration.
-            </blockquote>
-            <figcaption className="ui mt-6 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/55">
-              <span className="h-px w-8 bg-ink/40" />
-              CoinDesk · 2021
+        <div className="container relative">
+          {/* Archive header */}
+          <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3 border-b border-cream/15 pb-5">
+            <p className="overline text-tomato">The record</p>
+            <p className="ui text-[10px] font-semibold tracking-[0.28em] text-cream/45">
+              § Media archive · 2021—2024
+            </p>
+          </div>
+
+          {/* Section lede */}
+          <div className="mt-10 grid grid-cols-12 gap-x-8 gap-y-6">
+            <h2 className="font-display col-span-12 text-[clamp(2rem,4.6vw,3.5rem)] font-extrabold leading-[1.02] tracking-[-0.015em] text-cream md:col-span-7">
+              The year people realised it was real.
+            </h2>
+            <p className="font-serif col-span-12 max-w-[40ch] text-base leading-[1.65] text-cream/65 md:col-span-4 md:col-start-9 md:text-lg">
+              Cameras arrived. Reporters showed up to kitchens at midnight.
+              What started as a single transaction kept showing up in the
+              record — in print, on tape, on the news.
+            </p>
+          </div>
+
+          {/* ── FEATURED: VICE documentary ──────────────────────── */}
+          <figure className="mt-16 md:mt-20">
+            <a
+              href={VICE_VIDEO_HREF}
+              target="_blank"
+              rel="noreferrer"
+              className="group block"
+              aria-label="Watch the VICE documentary on PizzaDAO"
+            >
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-ink">
+                <img
+                  src={VICE_POSTER}
+                  alt="VICE documentary still — PizzaDAO, the global Bitcoin Pizza Day"
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover [filter:saturate(0.85)_contrast(1.08)] transition-transform duration-[1400ms] ease-out group-hover:scale-[1.015]"
+                />
+                {/* Letterbox bars — documentary framing */}
+                <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[6%] bg-ink" />
+                <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[6%] bg-ink" />
+                {/* Vignette */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse at 50% 55%, transparent 50%, hsl(0 0% 0% / 0.55) 100%)",
+                  }}
+                />
+                {/* Grain */}
+                <div
+                  aria-hidden
+                  className="grain pointer-events-none absolute inset-0 opacity-[0.32] mix-blend-overlay"
+                />
+                {/* Play mark */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="flex h-20 w-20 items-center justify-center rounded-full border border-cream/70 bg-ink/40 backdrop-blur-sm transition-all duration-500 group-hover:scale-105 group-hover:border-cream group-hover:bg-tomato/70 md:h-24 md:w-24">
+                    <svg viewBox="0 0 24 24" className="ml-1 h-7 w-7 fill-cream md:h-8 md:w-8" aria-hidden>
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </span>
+                </div>
+                {/* Corner stamps */}
+                <div className="absolute left-4 top-4 flex items-center gap-2 md:left-6 md:top-6">
+                  <span className="h-2 w-2 animate-pulse rounded-full bg-tomato" />
+                  <span className="ui text-[10px] font-semibold tracking-[0.32em] text-cream/85">
+                    REC · VICE
+                  </span>
+                </div>
+                <div className="absolute bottom-6 right-4 md:bottom-8 md:right-6">
+                  <span className="ui text-[10px] font-semibold tracking-[0.28em] text-cream/75">
+                    Documentary · 16:24
+                  </span>
+                </div>
+              </div>
+            </a>
+            <figcaption className="mt-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+              <span className="font-display text-lg font-extrabold tracking-tight text-cream md:text-xl">
+                VICE — Inside PizzaDAO's global Bitcoin Pizza Day
+              </span>
+              <span className="ui text-[10px] font-semibold tracking-[0.24em] text-cream/45">
+                youtube.com/watch ↗
+              </span>
             </figcaption>
           </figure>
 
-          {/* Clean stacked press list — single hierarchy */}
-          <div className="mt-20 md:mt-28">
-            <div className="flex items-baseline justify-between border-t border-ink/20 pt-5">
-              <span className="ui text-[10px] font-semibold uppercase tracking-[0.24em] text-ink/45">
-                Further coverage
+          {/* ── PULL QUOTE ──────────────────────────────────────── */}
+          <figure className="mt-24 grid grid-cols-12 gap-x-8 md:mt-32">
+            <div aria-hidden className="col-span-12 mb-6 h-px bg-cream/15 md:col-span-12" />
+            <blockquote className="font-display col-span-12 text-[clamp(2rem,5.2vw,4rem)] font-extrabold leading-[0.98] tracking-[-0.02em] text-cream md:col-span-10">
+              <span className="text-tomato">“</span>An international celebration of community.<span className="text-tomato">”</span>
+            </blockquote>
+            <figcaption className="ui col-span-12 mt-6 flex items-center gap-3 text-[10px] font-semibold tracking-[0.28em] text-cream/55">
+              <span className="h-px w-8 bg-cream/35" />
+              Archiv3 · 2024
+            </figcaption>
+          </figure>
+
+          {/* ── ARTICLE STRIPS ──────────────────────────────────── */}
+          <div className="mt-24 md:mt-32">
+            <div className="flex items-baseline justify-between border-t border-cream/20 pt-5">
+              <span className="ui text-[10px] font-semibold tracking-[0.28em] text-cream/55">
+                Filed coverage
               </span>
-              <span className="ui text-[10px] font-semibold uppercase tracking-[0.24em] text-ink/35">
-                {String(PRESS.length - 1).padStart(2, "0")} clippings
+              <span className="ui text-[10px] font-semibold tracking-[0.28em] text-cream/35">
+                {String(PRESS_ARCHIVE.length).padStart(2, "0")} entries
               </span>
             </div>
 
-            <ul className="divide-y divide-ink/10">
-              {PRESS.slice(1).map((p) => (
-                <li key={p.outlet}>
-                  <a
-                    href={p.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group grid grid-cols-12 items-baseline gap-x-6 gap-y-1 py-7 md:py-8"
-                  >
-                    <span className="font-display col-span-12 text-sm font-extrabold tracking-tight text-ink transition-colors group-hover:text-tomato md:col-span-3">
-                      {p.outlet}
-                    </span>
-                    <p className="font-serif col-span-12 text-base leading-[1.55] text-ink/75 md:col-span-8 md:text-lg">
-                      {p.line.replace(/^[“"]|[”"]$/g, "")}
-                    </p>
-                    <span className="hidden text-ink/30 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-tomato md:col-span-1 md:flex md:justify-end">
-                      ↗
-                    </span>
-                  </a>
-                </li>
-              ))}
+            <ul className="divide-y divide-cream/10">
+              {PRESS_ARCHIVE.map((p, i) => {
+                const Tag = p.href ? "a" : "div";
+                const interactive = !!p.href;
+                return (
+                  <li key={p.outlet}>
+                    <Tag
+                      {...(p.href
+                        ? { href: p.href, target: "_blank", rel: "noreferrer" }
+                        : {})}
+                      className={`grid grid-cols-12 items-baseline gap-x-6 gap-y-2 py-7 md:py-9 ${
+                        interactive ? "group" : ""
+                      }`}
+                    >
+                      <span className="ui col-span-2 text-[10px] font-semibold tracking-[0.28em] text-cream/35 md:col-span-1">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="font-display col-span-10 text-base font-extrabold tracking-tight text-cream transition-colors group-hover:text-tomato md:col-span-3 md:text-lg">
+                        {p.outlet}
+                      </span>
+                      <p className="font-serif col-span-12 text-base leading-[1.55] text-cream/75 md:col-span-6 md:text-lg">
+                        {p.headline}
+                      </p>
+                      <span className="ui col-span-12 flex items-center justify-between text-[10px] font-semibold tracking-[0.24em] text-cream/40 md:col-span-2 md:justify-end md:gap-3">
+                        <span>{p.date}</span>
+                        {interactive ? (
+                          <span className="text-cream/40 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-tomato">
+                            ↗
+                          </span>
+                        ) : (
+                          <span className="text-cream/25">on file</span>
+                        )}
+                      </span>
+                    </Tag>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
       </section>
+
+
 
 
       {/* ── CLOSE — printed poster ──────────────────────────────── */}
