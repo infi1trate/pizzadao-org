@@ -606,7 +606,7 @@ const MafiaNamePage = () => {
               />
 
               {revealPhase === "cycling" && (
-                <CyclingStage pool={cyclePool} tick={cycleTick} />
+                <CyclingStage pool={cyclePool} tick={cycleTick} attempt={generateCountRef.current} />
               )}
 
               {revealPhase === "settled" && topThree.length > 0 && (
