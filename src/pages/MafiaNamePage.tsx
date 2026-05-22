@@ -107,7 +107,8 @@ const familyArchiveNo = (seed: string) => {
 };
 
 const MafiaNamePage = () => {
-  const [step, setStep] = useState<Step>("film");
+  // Flow order: pick topping FIRST (primary identity), then movie (tone reference), then name.
+  const [step, setStep] = useState<Step>("topping");
   const [film, setFilm] = useState<MafiaFilm | null>(null);
   const [topping, setTopping] = useState<string | null>(null);
   const [query, setQuery] = useState("");
@@ -235,26 +236,26 @@ const MafiaNamePage = () => {
     }
   };
 
-  const handleSelectFilm = (f: MafiaFilm) => {
+  const handleSelectTopping = (t: string) => {
+    setTopping(t);
+    setToppingQuery("");
+    setToppingDrawerOpen(false);
+    setStep("film");
+    setTimeout(() => filmInputRef.current?.focus(), 200);
+    track(EVT.MAFIA_TOPPING_PICKED, { topping: t });
+  };
+
+  const handleSelectFilm = async (f: MafiaFilm) => {
     setFilm(f);
     setQuery("");
     setFilmDrawerOpen(false);
-    setStep("topping");
-    setTimeout(() => toppingInputRef.current?.focus(), 200);
+    setStep("names");
     track(EVT.MAFIA_MOVIE_PICKED, {
       movie_id: f.id,
       movie_title: f.title,
       custom: f.id.startsWith("custom:"),
     });
-  };
-
-  const handleSelectTopping = async (t: string) => {
-    setTopping(t);
-    setToppingQuery("");
-    setToppingDrawerOpen(false);
-    setStep("names");
-    track(EVT.MAFIA_TOPPING_PICKED, { topping: t });
-    if (film) await generate(film, t);
+    if (topping) await generate(f, topping);
   };
 
   const generateAvatar = async (chosenName: string, opts: { redraw?: boolean } = {}) => {
@@ -414,7 +415,7 @@ const MafiaNamePage = () => {
 
 
   const reset = () => {
-    setStep("film");
+    setStep("topping");
     setFilm(null);
     setTopping(null);
     setNames([]);
@@ -475,64 +476,68 @@ const MafiaNamePage = () => {
       {step !== "claim" && (
         <section className="relative z-10">
           <div className="container pt-2 pb-6 md:pt-4 md:pb-10">
-            <p className="overline text-tomato">§ 01 · PizzaDAO initiation</p>
+            <p className="overline text-tomato">§ 01 · PizzaDAO</p>
             <h1 className="font-display mt-4 max-w-[14ch] text-[clamp(2.5rem,7vw,5.5rem)] font-black leading-[0.9] tracking-[-0.015em] [text-wrap:balance]">
-              Enter the{" "}
-              <span className="text-tomato">PizzaDAO underworld.</span>
+              Claim your{" "}
+              <span className="text-tomato">mafia name.</span>
             </h1>
 
             <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-ink/75">
-              Pick the vibe. Choose your topping. The pizza decides who you are.
+              Choose a topping. Choose a movie. The family handles the rest.
             </p>
           </div>
         </section>
       )}
 
-      {/* STEP 1 / 2: cinematic inputs */}
-      {(step === "film" || step === "topping") && (
+      {/* STEP 1 / 2: pick your topping (primary), then your movie (secondary) */}
+      {(step === "topping" || step === "film") && (
         <section className="relative z-10">
           <div className="container pb-24">
-            {/* FILM input or selected card */}
-            {!film ? (
+            {/* TOPPING — primary identity (HERO) */}
+            {!topping ? (
               <CinematicInput
-                inputRef={filmInputRef}
-                label="§ 02 · The vibe"
-                placeholder="What kind of operation is this?"
-                value={query}
-                onChange={setQuery}
-                open={filmDrawerOpen}
-                onOpen={() => setFilmDrawerOpen(true)}
-                onClose={() => setFilmDrawerOpen(false)}
+                inputRef={toppingInputRef}
+                label="§ 02 · Your topping"
+                placeholder="What's your topping?"
+                value={toppingQuery}
+                onChange={setToppingQuery}
+                open={toppingDrawerOpen}
+                onOpen={() => setToppingDrawerOpen(true)}
+                onClose={() => setToppingDrawerOpen(false)}
               >
-                <FilmDrawer
-                  films={filteredFilms}
-                  query={query}
-                  onPick={handleSelectFilm}
+                <ToppingDrawer
+                  toppings={filteredToppings}
+                  query={toppingQuery}
+                  onPick={handleSelectTopping}
                 />
               </CinematicInput>
             ) : (
-              <SelectedFilmCard film={film} onChange={() => { setFilm(null); setStep("film"); setTimeout(() => filmInputRef.current?.focus(), 100); }} />
+              <SelectedToppingCard topping={topping} onChange={() => { setTopping(null); setStep("topping"); setTimeout(() => toppingInputRef.current?.focus(), 100); }} />
             )}
 
-            {/* TOPPING input (only once film picked) */}
-            {step === "topping" && (
-              <div className="mt-14">
+            {/* MOVIE — secondary tone reference (smaller) */}
+            {step === "film" && (
+              <div className="mt-12">
                 <CinematicInput
-                  inputRef={toppingInputRef}
-                  label="§ 03 · Your topping (this is you)"
-                  placeholder="What's your topping?"
-                  value={toppingQuery}
-                  onChange={setToppingQuery}
-                  open={toppingDrawerOpen}
-                  onOpen={() => setToppingDrawerOpen(true)}
-                  onClose={() => setToppingDrawerOpen(false)}
+                  inputRef={filmInputRef}
+                  label="§ 03 · Your mafia movie"
+                  placeholder="Pick a movie."
+                  value={query}
+                  onChange={setQuery}
+                  open={filmDrawerOpen}
+                  onOpen={() => setFilmDrawerOpen(true)}
+                  onClose={() => setFilmDrawerOpen(false)}
+                  size="small"
                 >
-                  <ToppingDrawer
-                    toppings={filteredToppings}
-                    query={toppingQuery}
-                    onPick={handleSelectTopping}
+                  <FilmDrawer
+                    films={filteredFilms}
+                    query={query}
+                    onPick={handleSelectFilm}
                   />
                 </CinematicInput>
+                <p className="ui mt-3 text-[10px] uppercase tracking-[0.24em] text-ink/40">
+                  Tone reference only — flavors the cadence of your name.
+                </p>
               </div>
             )}
           </div>
@@ -545,7 +550,7 @@ const MafiaNamePage = () => {
           <div className="container pb-24">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <button
-                onClick={() => { setStep("topping"); setTopping(null); setNames([]); setSelectedIdx(null); setRevealPhase("idle"); }}
+                onClick={() => { setStep("film"); setFilm(null); setNames([]); setSelectedIdx(null); setRevealPhase("idle"); }}
                 className="ui inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.22em] text-ink/55 hover:text-tomato"
               >
                 <ArrowLeft className="h-3 w-3" />
@@ -768,6 +773,7 @@ function CinematicInput({
   onOpen,
   onClose,
   children,
+  size = "large",
 }: {
   inputRef: React.RefObject<HTMLInputElement>;
   label: string;
@@ -778,7 +784,20 @@ function CinematicInput({
   onOpen: () => void;
   onClose: () => void;
   children: React.ReactNode;
+  size?: "large" | "small";
 }) {
+  const inputTextClass =
+    size === "small"
+      ? "font-display w-full bg-transparent text-[clamp(1.05rem,2.2vw,1.6rem)] font-black leading-tight tracking-tight text-ink placeholder:text-ink/30 focus:outline-none"
+      : "font-display w-full bg-transparent text-[clamp(1.4rem,3.2vw,2.4rem)] font-black leading-tight tracking-tight text-ink placeholder:text-ink/30 focus:outline-none";
+  const padClass =
+    size === "small"
+      ? "relative flex items-center gap-3 px-4 py-3.5 md:gap-4 md:px-6 md:py-4"
+      : "relative flex items-center gap-4 px-5 py-5 md:gap-6 md:px-8 md:py-7";
+  const iconClass =
+    size === "small"
+      ? "h-4 w-4 shrink-0 text-ink/35 md:h-5 md:w-5"
+      : "h-5 w-5 shrink-0 text-ink/35 md:h-6 md:w-6";
   return (
     <div className="relative">
       <p className="overline text-tomato">{label}</p>
@@ -796,15 +815,15 @@ function CinematicInput({
         />
         <div aria-hidden className="pointer-events-none absolute inset-0 grain opacity-40" />
 
-        <label className="relative flex items-center gap-4 px-5 py-5 md:gap-6 md:px-8 md:py-7">
-          <Search className="h-5 w-5 shrink-0 text-ink/35 md:h-6 md:w-6" />
+        <label className={padClass}>
+          <Search className={iconClass} />
           <input
             ref={inputRef}
             value={value}
             onChange={(e) => { onChange(e.target.value); if (!open) onOpen(); }}
             onFocus={onOpen}
             placeholder={placeholder}
-            className="font-display w-full bg-transparent text-[clamp(1.4rem,3.2vw,2.4rem)] font-black leading-tight tracking-tight text-ink placeholder:text-ink/30 focus:outline-none"
+            className={inputTextClass}
           />
           {open && (
             <button
@@ -818,13 +837,13 @@ function CinematicInput({
         </label>
       </div>
 
-      {/* contextual drawer */}
+      {/* contextual drawer — scrolls internally so ingredient grid never gets clipped */}
       <div
         className={`overflow-hidden transition-[max-height,opacity,margin] duration-500 ease-[cubic-bezier(0.2,0.9,0.3,1)] ${
-          open ? "mt-5 max-h-[70vh] opacity-100" : "mt-0 max-h-0 opacity-0"
+          open ? "mt-5 max-h-[78vh] opacity-100" : "mt-0 max-h-0 opacity-0"
         }`}
       >
-        <div className="rounded-[24px] border border-ink/10 bg-card/60 p-4 backdrop-blur md:p-6">
+        <div className="max-h-[74vh] overflow-y-auto overscroll-contain rounded-[24px] border border-ink/10 bg-card/60 p-4 backdrop-blur md:p-6">
           {children}
         </div>
       </div>
@@ -899,6 +918,45 @@ function SelectedFilmCard({ film, onChange }: { film: MafiaFilm; onChange: () =>
     </div>
   );
 }
+
+function SelectedToppingCard({ topping, onChange }: { topping: string; onChange: () => void }) {
+  const img = TOPPING_IMAGE[topping];
+  return (
+    <div>
+      <p className="overline text-tomato">§ 02 · Your topping</p>
+      <div className="mt-4 flex items-center justify-between gap-6 rounded-[28px] border border-ink/12 bg-cream p-5 shadow-[0_30px_60px_-40px_hsl(46_100%_50%/0.35)] md:p-6">
+        <div className="flex min-w-0 items-center gap-5 md:gap-6">
+          {img ? (
+            <img
+              src={img}
+              alt=""
+              className="h-20 w-20 shrink-0 rounded-2xl object-cover shadow-[0_12px_24px_-14px_hsl(20_30%_15%/0.5)] md:h-24 md:w-24"
+            />
+          ) : (
+            <span className="grid h-20 w-20 shrink-0 place-items-center rounded-2xl bg-ink/5 text-4xl md:h-24 md:w-24">
+              {TOPPING_EMOJI[topping] ?? "🍕"}
+            </span>
+          )}
+          <div className="min-w-0">
+            <h3 className="font-display text-[clamp(1.6rem,3.8vw,2.6rem)] font-black leading-[0.95] tracking-[-0.01em] text-ink">
+              {topping}
+            </h3>
+            <p className="ui mt-2 text-[11px] uppercase tracking-[0.22em] text-ink/50">
+              {toppingDescriptor(topping)}
+            </p>
+          </div>
+        </div>
+        <button
+          onClick={onChange}
+          className="ui shrink-0 rounded-full border border-ink/20 px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-ink/60 hover:border-tomato hover:text-tomato"
+        >
+          Change
+        </button>
+      </div>
+    </div>
+  );
+}
+
 
 const FEATURED_TOPPINGS = [
   "Pepperoni",
