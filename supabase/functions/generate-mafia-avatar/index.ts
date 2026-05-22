@@ -1,77 +1,94 @@
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 
-const STYLE = `Vintage 1930s rubber-hose mafia cartoon portrait. Hand-drawn underground comic energy — like a slightly unhinged pizza-mafia cartoonist sketched it in the back of a Brooklyn print shop. Circular crop on warm cream background with a thick, slightly uneven dark navy border ring (imperfect, ink-bleed feel).
+const STYLE = `Vintage 1930s rubber-hose cartoon portrait of an ANTHROPOMORPHIC NEIGHBORHOOD ANIMAL — a member of a strange global pizza social club / lodge. Hand-drawn underground comic energy crossed with old union-hall poster art, inked risograph print work, and an old pizza shop mascot painted on a brick wall. Circular crop on warm cream background with a thick, slightly uneven dark navy border ring (imperfect, ink-bleed feel, like a hand-stamped membership badge).
 
 CHARACTER (most important):
-- exaggerated oversized nose (Roman, crooked, bulbous, broken — pick one and commit)
-- asymmetrical face: one eye squinting, the other wider; crooked mouth
-- weird memorable proportions (tiny head + huge collar, or huge head + tiny shoulders)
-- caricature, NOT mascot
-- expressive eccentric accessories: lopsided fedora with a bent feather, oversized pinkie ring, fat cigar, gold tooth, scar, eye patch — choose unexpected combos
-- pinstripe suit with hand-drawn imperfect stripes, a wide tie or bowtie
+- the subject IS an animal (raccoon, pigeon, rat, alley cat, bulldog, turtle, crow, fox, possum, duck, frog, sausage-smoking turkey, scrappy mutt, mystic owl — pick ONE and commit)
+- anthropomorphic: animal head + shoulders, dressed like a human neighborhood lodge member
+- silhouette must be strongly readable at small size — the animal species is instantly recognizable
+- expressive, slightly cursed, charmingly suspicious — like a regular at a 3am pizza counter
+- subtle social-club mafia energy (NOT criminal, NOT aggressive, NOT ethnic caricature)
+- wardrobe hints: rumpled trench coat, old jacket, lopsided fedora or flat cap, pinky ring on a paw, wide tie or bowtie, lapel pin, social-club sash
+- a single quiet prop is allowed: a sausage held like a cigar with curling smoke, an espresso cup, a folded napkin, a wooden matchstick, a tiny pizza box
 
 LINE & TEXTURE:
-- thick uneven black outlines (rubber-hose limbs feel even though it's a portrait)
-- visible ink wobble, slight smudges, paper grain showing through
+- thick uneven black ink outlines with visible wobble, smudges, paper grain
+- rubber-hose limb feeling even in a portrait crop
 - flat shading with hatching/cross-hatching in shadows
-- muted vintage palette: cream, mustard, oxblood, charcoal, faded teal
-- avoid clean vector edges, avoid Pixar 3D, avoid symmetrical mascot faces, avoid generic NFT clip-art
+- muted vintage palette: cream, mustard, oxblood, charcoal, faded teal, dusty brick
+- tactile risograph misregistration, subtle off-print color halos
+- avoid clean vector edges, avoid Pixar 3D polish, avoid furry-art rendering, avoid anime, avoid glossy lighting, avoid photoreal fur detail
 
-PIZZA REFERENCE (subtle and secondary — one or two, never more):
+PIZZA REFERENCE (subtle and secondary — one, never more):
 - a tiny pepperoni pin on the lapel, OR
 - a sausage held like a cigar with curling smoke, OR
 - an anchovy-shaped tie clip, OR
 - a marinara splatter on the collar, OR
-- a topping-shaped boutonnière
+- a topping-shaped boutonnière, OR
+- a small pizza-slice lodge medallion on a chain
 
-COMPOSITION: single character, head-and-shoulders, centered, square 1:1.
-NEGATIVE: no text, no logos, no watermarks, no real-world celebrities, no clean vector, no symmetrical anime, no chibi, no Pixar polish.`;
+COMPOSITION: single anthropomorphic animal character, head-and-shoulders, centered, square 1:1, consistent framing across the whole portrait ecosystem.
+
+NEGATIVE: no humans, no human faces, no real-world celebrities, no text, no logos, no watermarks, no clean vector, no symmetrical anime mascot, no chibi, no Pixar polish, no furry-art rendering, no aggressive crime imagery, no weapons, no ethnic stereotypes, no gendered human cues.`;
 
 const TOPPING_MOTIF: Record<string, string> = {
-  Pepperoni: "red pepperoni pin on lapel, spicy hot-headed expression, red accents",
-  Mushroom: "earthy brown palette, a small mushroom in hatband, suspicious squint",
-  Basil: "fresh basil sprig in lapel, green accents, calm honest face",
-  Mozzarella: "soft cream tones, melted cheese drip on tie, loyal soft smile",
-  Anchovy: "slick-back hair, tiny anchovy charm on chain, smug salty grin",
-  Sausage: "fat sausage in mouth like a cigar with curling smoke, heavy proud face",
-  "Hot honey": "honey drip on lapel, golden chain, sweet chaotic smirk",
+  Pepperoni: "red pepperoni pin on lapel, warm red accents, a quietly hot-headed look",
+  Mushroom: "earthy brown palette, a small mushroom tucked in the hatband, suspicious squint",
+  Basil: "fresh basil sprig in lapel, faded green accents, calm honest face",
+  Mozzarella: "soft cream tones, a tiny mozzarella drip on the tie, loyal soft expression",
+  Anchovy: "slicked-back fur/feathers, tiny anchovy charm on a chain, smug salty grin",
+  Sausage: "a fat sausage held like a cigar with curling smoke, heavy proud face",
+  "Hot honey": "honey drip on lapel, thin gold chain, sweet chaotic smirk",
   Ricotta: "soft creamy palette, gentle holy expression",
   Garlic: "garlic clove pin, sharp focused stare",
   Onion: "watery determined eyes, onion brooch",
   Olives: "olive pinned to fedora, bitter patient stare",
-  Prosciutto: "elegant cured tones, prosciutto-pink pocket square",
+  Prosciutto: "elegant cured pink tones, prosciutto-pink pocket square",
   Pineapple: "tiny pineapple charm, controversial sunny grin",
-  "Jalapeño": "green jalapeño pin, quick unpredictable smirk, beads of sweat",
+  "Jalapeño": "green jalapeño pin, quick unpredictable smirk, a bead of sweat",
   "Banana peppers": "yellow pepper accents, cheerful sneaky grin",
-  Soppressata: "spicy red salami slice as boutonnière, feared scowl",
-  Meatball: "round face, meatball brooch, familiar violent smile",
+  Soppressata: "spicy red salami slice as boutonnière, weathered scowl",
+  Meatball: "rounded face, meatball brooch, familiar gentle smile",
   "Roasted red pepper": "smoky red tones, charming smoky smile",
   Truffle: "rare dark truffle in lapel, whispering pose, expensive aura",
-  Artichoke: "armored artichoke pin, roman stubborn stare",
+  Artichoke: "armored artichoke pin, stubborn old-world stare",
   Eggplant: "deep purple velvet tones, sicilian calm",
   "Broccoli rabe": "bitter green sprig in lapel, honest weathered face",
   "Chili crisp": "oily red drips on tie, loud modern energy",
   Burrata: "soft luxurious cream tones, creamy soft smile",
-  Oregano: "dried oregano sprinkled on shoulders, grandmotherly sicilian aura",
+  Oregano: "dried oregano sprinkled on shoulders, grandmotherly aura",
   Parmesan: "aged sharp expression, parmesan rind pin",
-  Tomato: "ripe red tomato boutonnière, the boss of all toppings",
+  Tomato: "ripe red tomato boutonnière, the quiet boss of all toppings",
   "Spicy salami": "hot red salami slice on lapel, dangerous cured grin",
 };
 
 const FILM_MOOD: Record<string, string> = {
-  operatic: "cinematic operatic gravitas",
-  sicilian: "old-country sicilian warmth",
-  brooklyn: "brooklyn wiseguy swagger",
-  noir: "moody noir shadows",
-  yakuza: "stoic yakuza poise",
-  triad: "neon-tinted hong kong cool",
-  prohibition: "1920s prohibition era",
-  miami: "80s miami pastel heat",
-  irish: "irish mob grit",
-  french: "smoky french-noir cool",
-  napoli: "naples camorra grit",
-  rio: "rio favela heat",
+  operatic: "cinematic operatic gravitas, lodge-hall stillness",
+  sicilian: "old-country sicilian warmth, sun-faded social club",
+  brooklyn: "brooklyn corner-shop swagger",
+  noir: "moody noir shadows, single bare bulb",
+  yakuza: "stoic poise, quiet ceremony",
+  triad: "neon-tinted late-night cool",
+  prohibition: "1920s prohibition speakeasy hush",
+  miami: "80s miami pastel heat, faded awning",
+  irish: "neighborhood pub grit",
+  french: "smoky cafe-noir cool",
+  napoli: "naples back-alley warmth",
+  rio: "rio street-corner heat",
 };
+
+// Recurring "families" of neighborhood animal characters.
+const ANIMAL_FAMILIES = [
+  "raccoon", "pigeon", "rat", "alley cat", "bulldog", "turtle",
+  "crow", "fox", "possum", "duck", "frog", "sausage-smoking turkey",
+  "scrappy neighborhood mutt", "mystic owl", "weary goat", "stout badger",
+];
+
+function hashString(s: string): number {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0;
+  return Math.abs(h);
+}
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
@@ -87,9 +104,17 @@ Deno.serve(async (req) => {
 
     const motif = TOPPING_MOTIF[topping] ?? "a small pizza slice pin on lapel";
     const toneKey = (Array.isArray(filmTone) ? filmTone : [filmTone]).find((t: string) => t && FILM_MOOD[t?.toLowerCase?.()]) ?? "";
-    const mood = FILM_MOOD[String(toneKey).toLowerCase()] ?? "classic mafia gravitas";
+    const mood = FILM_MOOD[String(toneKey).toLowerCase()] ?? "quiet pizza-lodge gravitas";
 
-    const prompt = `${STYLE}\n\nTOPPING DETAILS: ${motif}.\nMOOD: ${mood}.\nINSPIRATION: feel of the film "${filmTitle ?? "—"}" but DO NOT depict any real actor or copyrighted character — invent an original cartoon character that channels the vibe of the alias "${name ?? "—"}".`;
+    // Deterministic animal pick per alias — keeps the ecosystem coherent and re-rolls stable per name.
+    const animal = ANIMAL_FAMILIES[hashString(String(name ?? "") + "|" + String(topping ?? "")) % ANIMAL_FAMILIES.length];
+
+    const prompt = `${STYLE}
+
+ANIMAL FAMILY (commit to this species, no hybrids): ${animal}.
+TOPPING DETAILS: ${motif}.
+MOOD: ${mood}.
+INSPIRATION: channel the atmosphere (not the cast) of "${filmTitle ?? "—"}" for the alias "${name ?? "—"}" — invent an original anthropomorphic ${animal} lodge member. Do NOT depict any real actor, human, or copyrighted character. Strictly an animal portrait.`;
 
     const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -129,7 +154,7 @@ Deno.serve(async (req) => {
       });
     }
 
-    return new Response(JSON.stringify({ image: imageUrl }), {
+    return new Response(JSON.stringify({ image: imageUrl, animal }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (e) {
