@@ -222,6 +222,16 @@ const ArchivalFrame = ({ photo, slot, index }: FrameProps) => {
           </div>
         </figcaption>
       </div>
+      <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 flex items-baseline justify-between gap-2 px-3 pb-2.5 md:px-4 md:pb-3">
+        <span className="handwritten text-ink/80 text-[0.95rem] leading-none md:text-base">
+          <span aria-hidden className="mr-1">{current.flag}</span>
+          {current.city}
+        </span>
+        <span className="ui text-[9px] font-semibold uppercase tracking-[0.24em] text-ink/45">
+          {current.year}
+        </span>
+      </figcaption>
+      </div>
     </figure>
   );
 };
