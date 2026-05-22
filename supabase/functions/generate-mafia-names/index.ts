@@ -83,7 +83,7 @@ Generate exactly 3 PizzaDAO neighborhood aliases as the JSON array described.
 - "${topping}" anchors every alias — let its personality steer archetype, gender energy, and rhythm.
 - "${movie.title}" only provides cadence and atmosphere. Do NOT use its character names or surnames.
 - The 3 names MUST use 3 different structures from the allowed list. No 3 Tonys/Paulies/Vinnys.
-- Mix masculine, feminine, ambiguous, and pure-alias energy. Some funny, some stylish, some mysterious.
+- Mix masculine, feminine, ambiguous, and pure-alias energy. Some funny, some stylish, some mysterious.`;
 
     const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
