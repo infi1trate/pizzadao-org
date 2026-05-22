@@ -152,19 +152,11 @@ const PartnersPage = () => {
         </div>
       </section>
 
-      {/* Transitional narrative - soft separator from metrics rail */}
-      <section className="relative bg-cream">
-        <div className="container">
-          <div className="border-t border-ink/[0.07] py-8 md:py-10">
-            <p className="font-serif mx-auto max-w-[54ch] text-center text-[14px] italic leading-[1.6] text-ink/50 md:text-[15px]">
-              Built city by city, with organizations that believe in real-world participation.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Reuse homepage Sponsorship section for value props + CTA */}
+      <Sponsorship />
 
       {/* Selected collaborators - editorial interlude, museum supporters wall */}
-      <section className="paper-soft relative overflow-hidden bg-cream pb-24 pt-10 md:pb-32 md:pt-14">
+      <section className="paper-soft relative overflow-hidden bg-cream pb-16 pt-14 md:pb-24 md:pt-20">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -198,15 +190,15 @@ const PartnersPage = () => {
           {/* Loosely composed logo field - irregular rows, varied offsets */}
           {(() => {
             const rows: { items: typeof PARTNERS; pl: string; gap: string; mt: string }[] = [
-              { items: PARTNERS.slice(0, 3), pl: "md:pl-[10%]", gap: "gap-x-14 md:gap-x-24", mt: "mt-16 md:mt-24" },
-              { items: PARTNERS.slice(3, 5), pl: "md:pl-[2%]",  gap: "gap-x-20 md:gap-x-36", mt: "mt-14 md:mt-20" },
-              { items: PARTNERS.slice(5, 8), pl: "md:pl-[20%]", gap: "gap-x-16 md:gap-x-28", mt: "mt-14 md:mt-20" },
+              { items: PARTNERS.slice(0, 3), pl: "md:pl-[8%]",  gap: "gap-x-12 md:gap-x-20", mt: "mt-12 md:mt-16" },
+              { items: PARTNERS.slice(3, 5), pl: "md:pl-[2%]",  gap: "gap-x-16 md:gap-x-28", mt: "mt-10 md:mt-14" },
+              { items: PARTNERS.slice(5, 8), pl: "md:pl-[16%]", gap: "gap-x-12 md:gap-x-24", mt: "mt-10 md:mt-14" },
             ];
             let n = 0;
             return rows.map((row, ri) => (
               <div
                 key={ri}
-                className={`flex flex-wrap items-center justify-start gap-y-12 ${row.gap} ${row.pl} ${row.mt}`}
+                className={`flex flex-wrap items-center justify-start gap-y-10 ${row.gap} ${row.pl} ${row.mt}`}
               >
                 {row.items.map((p) => {
                   const idx = n++;
@@ -218,7 +210,7 @@ const PartnersPage = () => {
                     >
                       <div
                         className="relative flex h-full items-center"
-                        style={{ transform: `scale(${p.scale * 0.82})`, transformOrigin: "left center" }}
+                        style={{ transform: `scale(${p.scale * 0.88})`, transformOrigin: "left center" }}
                       >
                         <img
                           src={p.logo}
@@ -241,7 +233,7 @@ const PartnersPage = () => {
                             maskPosition: "left center",
                             WebkitMaskSize: "contain",
                             maskSize: "contain",
-                            backgroundColor: "hsl(var(--ink) / 0.38)",
+                            backgroundColor: "hsl(var(--ink) / 0.42)",
                           }}
                         />
                       </div>
@@ -253,7 +245,7 @@ const PartnersPage = () => {
           })()}
 
           {/* Tiny supporting annotation - offset right */}
-          <div className="mt-20 flex justify-end md:mt-28">
+          <div className="mt-14 flex justify-end md:mt-20">
             <p className="handwritten -rotate-[1.5deg] text-[14px] text-ink/40">
               ↳ trusted globally, city by city
             </p>
@@ -261,10 +253,6 @@ const PartnersPage = () => {
         </div>
       </section>
 
-      {/* Reuse homepage Sponsorship section for value props + CTA */}
-      <Sponsorship />
-
-      {/* Case studies consolidated into Sponsorship "What we've built" */}
 
 
 
