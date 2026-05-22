@@ -22,14 +22,14 @@ import ensLogo from "@/assets/partners/ens.png";
 // `scale` optically normalizes logos so they read at the same visual weight.
 // Target: average ~= PayPal × 0.8. Container height controls the absolute size.
 const PARTNERS = [
-  { name: "PayPal", logo: paypalLogo, scale: 1.0 },
-  { name: "Ledger", logo: ledgerLogo, scale: 0.85 },
-  { name: "Stand With Crypto", logo: standWithCryptoLogo, scale: 1.1 },
-  { name: "Brave", logo: braveLogo, scale: 1.0 },
-  { name: "OpenSea", logo: openseaLogo, scale: 1.0 },
-  { name: "Coinbase", logo: coinbaseLogo, scale: 0.95 },
-  { name: "Polygon", logo: polygonLogo, scale: 1.0 },
-  { name: "ENS", logo: ensLogo, scale: 0.95 },
+  { name: "PayPal", logo: paypalLogo, scale: 0.95 },
+  { name: "Ledger", logo: ledgerLogo, scale: 1.05 },
+  { name: "Stand With Crypto", logo: standWithCryptoLogo, scale: 1.05 },
+  { name: "Brave", logo: braveLogo, scale: 0.95 },
+  { name: "OpenSea", logo: openseaLogo, scale: 0.82 },
+  { name: "Coinbase", logo: coinbaseLogo, scale: 0.78 },
+  { name: "Polygon", logo: polygonLogo, scale: 0.95 },
+  { name: "ENS", logo: ensLogo, scale: 0.8 },
 ];
 
 
