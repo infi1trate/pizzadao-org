@@ -27,9 +27,11 @@ const CITIES: City[] = (citiesData as Array<{ name: string; coords: unknown }>)
   .filter((c) => Array.isArray(c.coords) && (c.coords as number[]).length === 2)
   .map((c) => ({ name: c.name, coords: c.coords as [number, number] }));
 
-const MARQUEE = new Set([
+// Anchor cities — intentional, not data-dense. These are the only larger dots.
+const ANCHORS = new Set([
   "New York", "London", "Lagos", "Tokyo",
   "São Paulo", "Sao Paulo", "Sydney", "Mumbai", "Mexico City",
+  "Milan", "Berlin", "Istanbul",
 ]);
 
 const hash = (s: string) => {
@@ -37,18 +39,24 @@ const hash = (s: string) => {
   for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
   return Math.abs(h);
 };
+// A sparser secondary tier — small ink dots, intentional clusters only.
 const MID = new Set(
-  CITIES.filter((c) => !MARQUEE.has(c.name) && hash(c.name) % 9 === 0).map((c) => c.name),
+  CITIES.filter((c) => !ANCHORS.has(c.name) && hash(c.name) % 5 === 0).map((c) => c.name),
 );
 
-const ARC_PAIRS: Array<[string, string]> = [
-  ["New York", "London"],
-  ["London", "Lagos"],
-  ["Tokyo", "Sydney"],
-  ["Mumbai", "Tokyo"],
-  ["New York", "Mexico City"],
-  ["Lagos", "São Paulo"],
-  ["London", "Mumbai"],
+// Hand-annotated whispers near specific cities. Sentence case, never shouty.
+type Annotation = { city: string; text: string; dx: number; dy: number; anchor?: "start" | "end" };
+const ANNOTATIONS: Annotation[] = [
+  { city: "Milan",       text: "ciao from milan",     dx:  3, dy: -2 },
+  { city: "Mexico City", text: "hola from cdmx",      dx: -3, dy:  3, anchor: "end" },
+  { city: "Tokyo",       text: "gm from tokyo",       dx:  3, dy: -2 },
+  { city: "New York",    text: "irl > ads",           dx: -3, dy: -2, anchor: "end" },
+  { city: "Lagos",       text: "shared slices",       dx:  3, dy:  3 },
+  { city: "London",      text: "one bite at a time",  dx:  3, dy: -2 },
+  { city: "São Paulo",   text: "pizza the planet",    dx: -3, dy:  3, anchor: "end" },
+  { city: "Mumbai",      text: "community first",     dx:  3, dy: -2 },
+  { city: "Berlin",      text: "geteilte stücke",     dx:  3, dy: -2 },
+  { city: "Istanbul",    text: "selam, dilim hazır",  dx: -3, dy:  3, anchor: "end" },
 ];
 
 const VB = 100;
@@ -86,7 +94,7 @@ const PartnersGlobe = () => {
   }, []);
 
   // Projection rebuilt per frame (cheap)
-  const { landPath, graticulePath, arcs, projected } = useMemo(() => {
+  const { landPath, graticulePath, projected, labels } = useMemo(() => {
     const projection = geoOrthographic()
       .scale(R)
       .translate([CX, CY])
@@ -97,36 +105,34 @@ const PartnersGlobe = () => {
     const landPath = path(LAND_FEATURE) ?? "";
     const graticulePath = path(GRATICULE) ?? "";
 
-    const arcs = ARC_PAIRS.flatMap(([an, bn]) => {
-      const a = CITIES.find((c) => c.name === an);
-      const b = CITIES.find((c) => c.name === bn);
-      if (!a || !b) return [];
-      const d = path({
-        type: "LineString",
-        coordinates: [a.coords, b.coords],
-      });
-      if (!d) return [];
-      return [{ id: `${an}-${bn}`, d }];
-    });
-
     const projected = CITIES.flatMap((c, i) => {
-      // `projection(point)` still returns coordinates for cities on the far
-      // side of an orthographic globe. Those backside points read as a second
-      // dot layer moving against the planet, so use the same clipped path pass
-      // as continents/graticule before rendering any city marker.
-      const visiblePoint = path({
-        type: "Point",
-        coordinates: c.coords,
-      });
+      const visiblePoint = path({ type: "Point", coordinates: c.coords });
       if (!visiblePoint) return [];
-
       const p = projection(c.coords);
       if (!p) return [];
-      const tier = MARQUEE.has(c.name) ? 2 : MID.has(c.name) ? 1 : 0;
-      return [{ i, name: c.name, px: p[0], py: p[1], tier }];
+      const tier = ANCHORS.has(c.name) ? 2 : MID.has(c.name) ? 1 : 0;
+      // distance from sphere center; used to fade dots near the limb
+      const d = Math.hypot(p[0] - CX, p[1] - CY);
+      const vis = Math.max(0, 1 - d / R);
+      return [{ i, name: c.name, px: p[0], py: p[1], tier, vis }];
     });
 
-    return { landPath, graticulePath, arcs, projected };
+    const labels = ANNOTATIONS.flatMap((a, i) => {
+      const city = CITIES.find((c) => c.name === a.city);
+      if (!city) return [];
+      const visiblePoint = path({ type: "Point", coordinates: city.coords });
+      if (!visiblePoint) return [];
+      const p = projection(city.coords);
+      if (!p) return [];
+      const d = Math.hypot(p[0] - CX, p[1] - CY);
+      const vis = Math.max(0, 1 - d / R);
+      // slow per-label breathing tied to rotation — each whisper appears at its own pace
+      const breath = 0.5 + 0.5 * Math.sin((yaw * Math.PI) / 90 + i * 1.37);
+      const opacity = Math.max(0, (vis - 0.18) * 1.6) * Math.max(0, breath - 0.35) * 1.4;
+      return [{ ...a, i, px: p[0], py: p[1], opacity: Math.min(1, opacity) }];
+    });
+
+    return { landPath, graticulePath, projected, labels };
   }, [yaw]);
 
   return (
@@ -203,84 +209,68 @@ const PartnersGlobe = () => {
               />
             </g>
 
-            {/* Network arcs — faint coordination layer */}
-            <g
-              fill="none"
-              stroke="hsl(var(--tomato))"
-              strokeWidth="0.32"
-              strokeLinecap="round"
-              opacity="0.42"
-            >
-              {arcs.map((a) => (
-                <path key={a.id} d={a.d} />
-              ))}
+            {/* City dots — quiet ink, two tiers, no red pulses */}
+            <g fill="hsl(var(--ink))">
+              {projected.map((p) => {
+                if (p.tier === 0) return null; // drop the noisy floor — more intentional clustering
+                const r = p.tier === 2 ? 1.05 : 0.55;
+                const op = (p.tier === 2 ? 0.92 : 0.6) * (0.35 + 0.65 * p.vis);
+                return (
+                  <circle
+                    key={p.i}
+                    cx={p.px}
+                    cy={p.py}
+                    r={r}
+                    opacity={op}
+                  />
+                );
+              })}
             </g>
 
-            {/* City dots — 3-tier hierarchy */}
-            <g>
-              {projected.map((p) => {
-                if (p.tier === 0) {
-                  return (
-                    <circle
-                      key={p.i}
-                      cx={p.px}
-                      cy={p.py}
-                      r={0.5}
-                      fill="hsl(var(--ink))"
-                      opacity={0.5}
-                    />
-                  );
-                }
-                if (p.tier === 1) {
-                  return (
-                    <circle
-                      key={p.i}
-                      cx={p.px}
-                      cy={p.py}
-                      r={0.9}
-                      fill="hsl(var(--ink))"
-                      opacity={0.75}
-                    />
-                  );
-                }
-                // tier 2 — marquee
+            {/* Hand-annotated whispers — appear softly near clusters as the globe turns */}
+            <g
+              style={{
+                fontFamily: "'Rock Salt', 'Asap', cursive",
+                fontSize: "2.1px",
+                letterSpacing: "0.02px",
+              }}
+              fill="hsl(var(--ink))"
+            >
+              {labels.map((l) => {
+                if (l.opacity < 0.04) return null;
                 return (
-                  <g key={p.i}>
-                    <circle
-                      cx={p.px}
-                      cy={p.py}
-                      r={2.4}
-                      fill="hsl(var(--tomato) / 0.18)"
-                    >
-                      <animate
-                        attributeName="r"
-                        values="1.6;3.4;1.6"
-                        dur="4.2s"
-                        begin={`${(p.i % 5) * 0.6}s`}
-                        repeatCount="indefinite"
-                      />
-                      <animate
-                        attributeName="opacity"
-                        values="0.45;0;0.45"
-                        dur="4.2s"
-                        begin={`${(p.i % 5) * 0.6}s`}
-                        repeatCount="indefinite"
-                      />
-                    </circle>
-                    <circle
-                      cx={p.px}
-                      cy={p.py}
-                      r={1.3}
-                      fill="hsl(var(--tomato))"
-                      stroke="hsl(var(--cream))"
-                      strokeWidth="0.35"
+                  <g key={l.i} opacity={l.opacity}>
+                    {/* tiny tether from dot to label */}
+                    <line
+                      x1={l.px}
+                      y1={l.py}
+                      x2={l.px + l.dx * 0.55}
+                      y2={l.py + l.dy * 0.55}
+                      stroke="hsl(var(--ink))"
+                      strokeWidth="0.12"
+                      opacity="0.55"
                     />
+                    <text
+                      x={l.px + l.dx}
+                      y={l.py + l.dy}
+                      textAnchor={l.anchor ?? "start"}
+                      style={{ transform: `rotate(${(l.i % 2 ? -1 : 1) * 1.5}deg)`, transformOrigin: `${l.px + l.dx}px ${l.py + l.dy}px` }}
+                    >
+                      {l.text}
+                    </text>
                   </g>
                 );
               })}
             </g>
           </g>
         </svg>
+
+        {/* Tactile grain — softens the perfection of the render */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 rounded-full grain"
+          style={{ mixBlendMode: "multiply", opacity: 0.55 }}
+        />
       </div>
     </div>
   );
