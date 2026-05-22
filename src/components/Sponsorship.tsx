@@ -256,7 +256,7 @@ const Sponsorship = () => {
       </div>
 
       {/* What we build together — edge-to-edge cream-warm band, layered into flow */}
-      <div className="paper-soft paper-drift relative mt-10 overflow-hidden bg-cream-warm py-10 md:mt-12 md:py-14">
+      <div className="paper-soft paper-drift relative mt-7 overflow-hidden bg-cream-warm py-8 md:mt-9 md:py-11">
         {/* Soft tonal transition at top — fades from butter/25 above into cream-warm */}
         <div
           aria-hidden
