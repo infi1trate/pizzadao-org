@@ -88,7 +88,7 @@ const CARD_PERSONALITIES: {
     toneHint: "smooth, charming, calculating, sharp dresser",
     fileNo: "03",
     rotation: -0.6,
-    yOffset: "md:translate-y-2",
+    yOffset: "lg:translate-y-2",
   },
 ];
 
