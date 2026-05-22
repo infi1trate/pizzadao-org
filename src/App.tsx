@@ -30,27 +30,20 @@ const App = () => (
         <PostHogProvider>
           <ScrollToTop />
           <Routes>
-            {/* Public pre-launch teaser */}
-            <Route path="/pre-launch" element={<Transmission />} />
-
-          {/* Root redirects to the pre-launch page until full launch */}
-          <Route path="/" element={<Navigate to="/pre-launch" replace />} />
-
-          {/* Everything else is gated */}
-          <Route path="/pre-launch-demo" element={<PasswordGate><TransmissionDemo /></PasswordGate>} />
-          <Route path="/get-your-mafia-name" element={<PasswordGate><MafiaNamePage /></PasswordGate>} />
-          <Route path="/home" element={<PasswordGate><Index /></PasswordGate>} />
-          <Route path="/about" element={<PasswordGate><About /></PasswordGate>} />
-          <Route path="/partners" element={<PasswordGate><PartnersPage /></PasswordGate>} />
-          
-          <Route path="/community" element={<PasswordGate><CommunityPage /></PasswordGate>} />
-          <Route path="/brand-system" element={<PasswordGate><BrandSystemPage /></PasswordGate>} />
-          <Route path="/contact" element={<PasswordGate><ContactPage /></PasswordGate>} />
+          {/* Public routes */}
+          <Route path="/" element={<Index />} />
+          <Route path="/home" element={<Index />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/partners" element={<PartnersPage />} />
+          <Route path="/community" element={<CommunityPage />} />
+          <Route path="/brand-system" element={<BrandSystemPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/get-your-mafia-name" element={<MafiaNamePage />} />
           {/* Public legal pages */}
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<PasswordGate><NotFound /></PasswordGate>} />
+          <Route path="*" element={<NotFound />} />
           </Routes>
         </PostHogProvider>
       </BrowserRouter>
