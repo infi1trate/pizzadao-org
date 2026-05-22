@@ -152,104 +152,119 @@ const PartnersPage = () => {
         </div>
       </section>
 
+      {/* Transitional narrative - soft separator from metrics rail */}
+      <section className="relative bg-cream">
+        <div className="container">
+          <div className="border-t border-ink/[0.07] py-8 md:py-10">
+            <p className="font-serif mx-auto max-w-[54ch] text-center text-[14px] italic leading-[1.6] text-ink/50 md:text-[15px]">
+              Built city by city, with organizations that believe in real-world participation.
+            </p>
+          </div>
+        </div>
+      </section>
 
-
-      {/* Reuse homepage Sponsorship section for value props + CTA */}
-      <Sponsorship />
-
-      {/* Case studies consolidated into Sponsorship "What we've built" */}
-
-      {/* Logo wall - premium social proof, gallery-like */}
-      <section className="paper-soft paper-drift relative overflow-hidden bg-cream py-20 md:py-28">
-        {/* Soft tonal wash - warm editorial depth (keeps the section reading as paper) */}
+      {/* Selected collaborators - editorial interlude, museum supporters wall */}
+      <section className="paper-soft relative overflow-hidden bg-cream pb-24 pt-10 md:pb-32 md:pt-14">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, hsl(44 60% 97%) 0%, hsl(var(--cream)) 40%, hsl(44 55% 96%) 100%)",
+              "linear-gradient(180deg, hsl(var(--cream)) 0%, hsl(44 58% 96.5%) 55%, hsl(var(--cream)) 100%)",
           }}
         />
-        {/* Section seam hairlines - tighter editorial join */}
-        <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/[0.06]" />
-        <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-ink/[0.06]" />
-        {/* Editorial corner registration - folio in lower right */}
         <RegistrationMarks
           tone="ink"
-          opacity={0.12}
+          opacity={0.1}
           inset={20}
           size={12}
-          corners={["tl", "tr", "br"]}
+          corners={["tl", "br"]}
           folio="§ B.02"
         />
 
         <div className="container relative">
-          {/* Editorial heading - minimal, confident */}
-          <div className="relative max-w-2xl">
-            <h2 className="font-display text-[clamp(1.5rem,2.8vw,2.3rem)] font-extrabold leading-[1] tracking-[-0.02em] text-ink">
-              Selected collaborators
-            </h2>
-            <p className="font-serif mt-3 text-[15px] leading-[1.55] text-ink/55 md:text-[15.5px]">
-              Organizations we've collaborated with across culture, technology, and community.
-            </p>
+          {/* Asymmetric header - offset left, narrow column */}
+          <div className="grid grid-cols-12 gap-x-8">
+            <div className="col-span-12 md:col-span-5">
+              <p className="ui text-[10px] font-medium uppercase tracking-[0.28em] text-ink/45">
+                Selected collaborators
+              </p>
+              <p className="font-serif mt-4 text-[15.5px] leading-[1.55] text-ink/60 md:text-[16px]">
+                Organizations we've collaborated with across culture, technology, and community.
+              </p>
+            </div>
           </div>
 
-          {/* Thin editorial rule */}
-          <div className="mt-10 h-px bg-ink/[0.06] md:mt-12" />
-
-          {/* Logo grid - monochrome ink silhouettes via CSS mask, colour on hover.
-              No image boxes or background artifacts: the logo's alpha drives the mask. */}
-          <div className="mt-14 grid grid-cols-2 gap-x-16 gap-y-14 md:mt-20 md:grid-cols-4 md:gap-x-24 md:gap-y-16">
-            {PARTNERS.map((p, i) => (
+          {/* Loosely composed logo field - irregular rows, varied offsets */}
+          {(() => {
+            const rows: { items: typeof PARTNERS; pl: string; gap: string; mt: string }[] = [
+              { items: PARTNERS.slice(0, 3), pl: "md:pl-[10%]", gap: "gap-x-14 md:gap-x-24", mt: "mt-16 md:mt-24" },
+              { items: PARTNERS.slice(3, 5), pl: "md:pl-[2%]",  gap: "gap-x-20 md:gap-x-36", mt: "mt-14 md:mt-20" },
+              { items: PARTNERS.slice(5, 8), pl: "md:pl-[20%]", gap: "gap-x-16 md:gap-x-28", mt: "mt-14 md:mt-20" },
+            ];
+            let n = 0;
+            return rows.map((row, ri) => (
               <div
-                key={p.name}
-                className="group relative flex h-7 items-center justify-center animate-fade-in md:h-8"
-                style={{ animationDelay: `${i * 90}ms`, animationFillMode: "both" }}
+                key={ri}
+                className={`flex flex-wrap items-center justify-start gap-y-12 ${row.gap} ${row.pl} ${row.mt}`}
               >
-                <div
-                  className="relative flex h-full w-full items-center justify-center"
-                  style={{ transform: `scale(${p.scale})`, transformOrigin: "center" }}
-                >
-                  {/* Colour version - gently fades in on hover */}
-                  <img
-                    src={p.logo}
-                    alt={`${p.name} logo`}
-                    loading="lazy"
-                    decoding="async"
-                    className="absolute inset-0 m-auto h-full w-auto max-w-[78%] object-contain opacity-0 transition-opacity duration-700 ease-out group-hover:opacity-90"
-                  />
-                  {/* Ink silhouette - masked from the logo's own alpha channel */}
-                  <div
-                    aria-hidden
-                    className="h-full w-full max-w-[78%] transition-opacity duration-700 ease-out group-hover:opacity-0"
-                    style={{
-                      WebkitMaskImage: `url(${p.logo})`,
-                      maskImage: `url(${p.logo})`,
-                      WebkitMaskRepeat: "no-repeat",
-                      maskRepeat: "no-repeat",
-                      WebkitMaskPosition: "center",
-                      maskPosition: "center",
-                      WebkitMaskSize: "contain",
-                      maskSize: "contain",
-                      backgroundColor: "hsl(var(--ink) / 0.5)",
-                    }}
-                  />
-                </div>
+                {row.items.map((p) => {
+                  const idx = n++;
+                  return (
+                    <div
+                      key={p.name}
+                      className="group relative flex h-6 items-center animate-fade-in md:h-7"
+                      style={{ animationDelay: `${idx * 110}ms`, animationFillMode: "both" }}
+                    >
+                      <div
+                        className="relative flex h-full items-center"
+                        style={{ transform: `scale(${p.scale * 0.82})`, transformOrigin: "left center" }}
+                      >
+                        <img
+                          src={p.logo}
+                          alt={`${p.name} logo`}
+                          loading="lazy"
+                          decoding="async"
+                          className="absolute inset-0 m-auto h-full w-auto object-contain opacity-0 transition-opacity duration-700 ease-out group-hover:opacity-80"
+                          style={{ minWidth: "90px" }}
+                        />
+                        <div
+                          aria-hidden
+                          className="h-full transition-opacity duration-700 ease-out group-hover:opacity-0"
+                          style={{
+                            width: "120px",
+                            WebkitMaskImage: `url(${p.logo})`,
+                            maskImage: `url(${p.logo})`,
+                            WebkitMaskRepeat: "no-repeat",
+                            maskRepeat: "no-repeat",
+                            WebkitMaskPosition: "left center",
+                            maskPosition: "left center",
+                            WebkitMaskSize: "contain",
+                            maskSize: "contain",
+                            backgroundColor: "hsl(var(--ink) / 0.38)",
+                          }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            ))}
-          </div>
+            ));
+          })()}
 
-
-          {/* Subtle editorial footer mark */}
-          <div className="mt-16 flex items-center gap-3 md:mt-20">
-            <div className="h-px flex-1 bg-ink/[0.06]" />
-            <span className="ui text-[10px] font-medium tracking-[0.24em] text-ink/30">
-              Trusted globally
-            </span>
-            <div className="h-px flex-1 bg-ink/[0.06]" />
+          {/* Tiny supporting annotation - offset right */}
+          <div className="mt-20 flex justify-end md:mt-28">
+            <p className="handwritten -rotate-[1.5deg] text-[14px] text-ink/40">
+              ↳ trusted globally, city by city
+            </p>
           </div>
         </div>
       </section>
+
+      {/* Reuse homepage Sponsorship section for value props + CTA */}
+      <Sponsorship />
+
+      {/* Case studies consolidated into Sponsorship "What we've built" */}
 
 
 
