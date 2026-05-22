@@ -32,9 +32,13 @@ const THESIS_PHOTO = findPhoto("Rio de Janeiro")?.src ?? findPhoto("Medellín")?
 // ── Press archive ─────────────────────────────────────────────
 // Featured: the VICE documentary. Below: the publications that
 // went on the record. Treated as evidence, not marketing.
-const VICE_VIDEO_ID = "t_Vaxas1u88";
-const VICE_VIDEO_HREF = `https://www.youtube.com/watch?v=${VICE_VIDEO_ID}`;
-const VICE_POSTER = `https://img.youtube.com/vi/${VICE_VIDEO_ID}/maxresdefault.jpg`;
+const VICE_VIDEO_HREF = "https://www.youtube.com/watch?v=t_Vaxas1u88";
+// Documentary still - not the YouTube poster. A real crowd frame from the
+// archive carries the editorial atmosphere the embed couldn't.
+const VICE_STILL =
+  findPhoto("New York")?.src ??
+  findPhoto("Lagos")?.src ??
+  party;
 
 type PressEntry = {
   outlet: string;
@@ -651,24 +655,33 @@ const About = () => {
             </p>
           </div>
 
-          {/* ── FEATURED: VICE documentary (archival clipping) ──── */}
-          <figure className="mt-14 grid grid-cols-12 gap-x-8 gap-y-8 md:mt-18">
-            <div className="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4">
+          {/* ── FEATURED: VICE documentary (archival editorial card) ──── */}
+          <figure className="mt-14 grid grid-cols-12 items-center gap-x-8 gap-y-8 md:mt-18 md:gap-y-10">
+            {/* LEFT - cinematic documentary still */}
+            <div className="col-span-12 md:col-span-7">
               <a
                 href={VICE_VIDEO_HREF}
                 target="_blank"
                 rel="noreferrer"
                 className="group block"
-                aria-label="Watch the VICE documentary on PizzaDAO"
+                aria-label="Watch the VICE Motherboard segment on PizzaDAO"
               >
-                {/* Archival film frame - 4:3, not 16:9 */}
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-ink ring-1 ring-cream/10">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-ink ring-1 ring-cream/10 md:aspect-[5/4]">
                   <img
-                    src={VICE_POSTER}
-                    alt="VICE documentary still - PizzaDAO, the global Bitcoin Pizza Day"
+                    src={VICE_STILL}
+                    alt="Documentary still - a PizzaDAO gathering captured for VICE Motherboard"
                     loading="lazy"
                     decoding="async"
-                    className="absolute inset-0 h-full w-full object-cover [filter:saturate(0.82)_contrast(1.1)_sepia(0.06)] transition-transform duration-[1200ms] ease-out group-hover:scale-[1.02]"
+                    className="absolute inset-0 h-full w-full object-cover [filter:saturate(0.78)_contrast(1.12)_sepia(0.08)] transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02]"
+                  />
+                  {/* Tonal wash */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, hsl(0 0% 0% / 0.10) 0%, transparent 35%, hsl(0 0% 0% / 0.55) 100%)",
+                    }}
                   />
                   {/* Soft vignette */}
                   <div
@@ -676,68 +689,64 @@ const About = () => {
                     className="pointer-events-none absolute inset-0"
                     style={{
                       background:
-                        "radial-gradient(ellipse at 50% 52%, transparent 58%, hsl(0 0% 0% / 0.50) 100%)",
+                        "radial-gradient(ellipse at 50% 52%, transparent 55%, hsl(0 0% 0% / 0.55) 100%)",
                     }}
                   />
                   {/* Grain */}
                   <div
                     aria-hidden
-                    className="grain pointer-events-none absolute inset-0 opacity-[0.28] mix-blend-overlay"
+                    className="grain pointer-events-none absolute inset-0 opacity-[0.32] mix-blend-overlay"
                   />
-                  {/* Play mark - smaller, more archival */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="flex h-14 w-14 items-center justify-center rounded-full border border-cream/60 bg-ink/35 backdrop-blur-sm transition-all duration-500 group-hover:scale-105 group-hover:border-cream group-hover:bg-tomato/60 md:h-16 md:w-16">
-                      <svg viewBox="0 0 24 24" className="ml-0.5 h-5 w-5 fill-cream md:h-6 md:w-6" aria-hidden>
+                  {/* Minimal play indicator - small, bottom-left, archival */}
+                  <div className="absolute bottom-4 left-4 flex items-center gap-2.5 md:bottom-5 md:left-5">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full border border-cream/55 bg-ink/40 backdrop-blur-sm transition-all duration-500 group-hover:border-cream group-hover:bg-tomato/70">
+                      <svg viewBox="0 0 24 24" className="ml-0.5 h-3.5 w-3.5 fill-cream" aria-hidden>
                         <path d="M8 5v14l11-7z" />
                       </svg>
                     </span>
-                  </div>
-                  {/* Corner stamp - single, restrained */}
-                  <div className="absolute left-3 top-3 md:left-4 md:top-4">
-                    <span className="ui text-[10px] font-semibold tracking-[0.28em] text-cream/70">
-                      VICE · Motherboard
+                    <span className="ui text-[10px] font-semibold tracking-[0.28em] text-cream/75">
+                      16:24 · Documentary
                     </span>
                   </div>
                 </div>
+                <figcaption className="ui mt-3 flex items-center gap-2 text-[10px] font-semibold tracking-[0.28em] text-cream/40">
+                  <span aria-hidden className="h-px w-5 bg-cream/25" />
+                  Frame 014 · Archival still
+                </figcaption>
               </a>
-              <figcaption className="mt-5 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-                <span className="font-display text-base font-extrabold tracking-tight text-cream md:text-lg">
-                  Inside PizzaDAO's global Bitcoin Pizza Day
-                </span>
-                <span className="ui text-[10px] font-semibold tracking-[0.24em] text-cream/40">
-                  Documentary · 16:24
-                </span>
-              </figcaption>
             </div>
 
-            {/* Archival context - editorial sidebar */}
-            <div className="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4">
-              <div className="flex items-center gap-3 border-t border-cream/10 pt-5">
-                <span aria-hidden className="h-px w-6 bg-cream/25" />
-                <p className="ui text-[10px] font-semibold tracking-[0.28em] text-cream/40">
-                  Featured in
+            {/* RIGHT - editorial information block */}
+            <div className="col-span-12 md:col-span-5">
+              <div className="md:pl-2 lg:pl-6">
+                <div className="flex items-center gap-3">
+                  <span aria-hidden className="h-px w-6 bg-tomato/70" />
+                  <p className="ui text-[10px] font-semibold tracking-[0.32em] text-cream/55">
+                    VICE / Motherboard
+                  </p>
+                </div>
+                <blockquote className="font-display mt-5 text-[clamp(1.5rem,2.8vw,2.15rem)] font-extrabold leading-[1.08] tracking-[-0.015em] text-cream">
+                  <span className="text-tomato">"</span>An international celebration of community.<span className="text-tomato">"</span>
+                </blockquote>
+                <p className="font-serif mt-5 max-w-[42ch] text-[15px] leading-[1.65] text-cream/65 md:text-base md:leading-[1.6]">
+                  VICE documented PizzaDAO as part of a broader story
+                  exploring internet-native coordination, culture, and
+                  real-world gatherings.
                 </p>
+                <a
+                  href={VICE_VIDEO_HREF}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="ui mt-7 inline-flex items-center gap-2 border-b border-cream/30 pb-1 text-[11px] font-semibold tracking-[0.24em] text-cream/85 transition-colors duration-300 hover:border-tomato hover:text-tomato"
+                >
+                  Watch the segment
+                  <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+                </a>
               </div>
-              <p className="font-serif mt-4 max-w-[52ch] text-base leading-[1.6] text-cream/60 md:text-lg md:leading-[1.55]">
-                VICE Motherboard followed the ritual across three continents.
-                The result is a short documentary that treats the story as
-                cultural evidence - not a brand piece. PizzaDAO appears
-                as one thread in a larger fabric.
-              </p>
             </div>
           </figure>
 
-          {/* ── PULL QUOTE ──────────────────────────────────────── */}
-          <figure className="mt-16 grid grid-cols-12 gap-x-8 md:mt-20">
-            <div aria-hidden className="col-span-12 mb-5 h-px bg-cream/15 md:col-span-12" />
-            <blockquote className="font-display col-span-12 text-[clamp(1.75rem,4.2vw,3.25rem)] font-extrabold leading-[1.02] tracking-[-0.02em] text-cream md:col-span-10">
-              <span className="text-tomato">"</span>An international celebration of community.<span className="text-tomato">"</span>
-            </blockquote>
-            <figcaption className="ui col-span-12 mt-5 flex items-center gap-3 text-[10px] font-semibold tracking-[0.28em] text-cream/55">
-              <span className="h-px w-8 bg-cream/35" />
-              Archiv3 · 2024
-            </figcaption>
-          </figure>
+
 
           {/* ── ARTICLE STRIPS ──────────────────────────────────── */}
           <div className="mt-24 md:mt-32">
