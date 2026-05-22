@@ -6,6 +6,7 @@ import { findPhoto } from "@/lib/pizzadaoPhotos";
 import timeline2010 from "@/assets/timeline-2010.jpg";
 import party from "@/assets/timeline-party.jpg";
 import community from "@/assets/community.jpg";
+import revealPhoto from "@/assets/timeline-founding.jpg";
 
 // Real PizzaDAO archive photos for the hero scenes — with local fallbacks
 // in case the remote CDN is ever unreachable.
