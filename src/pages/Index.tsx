@@ -27,6 +27,7 @@ const Index = () => {
       <Journal />
       <Join />
       <Footer />
+      <LivestreamToast />
     </main>
   );
 };
