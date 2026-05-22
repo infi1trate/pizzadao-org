@@ -87,7 +87,7 @@ const FRAMES: Frame[] = [
 
 const PartnerActivations = () => {
   return (
-    <section className="paper-soft relative overflow-hidden bg-cream py-16 md:py-24">
+    <section className="paper-soft relative overflow-hidden bg-cream py-12 md:py-16">
       {/* Soft warm wash */}
       <div
         aria-hidden
