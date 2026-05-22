@@ -132,6 +132,8 @@ const MafiaNamePage = () => {
   const [cardAvatarLoading, setCardAvatarLoading] = useState<boolean[]>([false, false, false]);
 
   const generateCountRef = useRef(0);
+  const previousNamesRef = useRef<string[]>([]);
+  const lastKeyRef = useRef<string>("");
   const filmInputRef = useRef<HTMLInputElement>(null);
   const toppingInputRef = useRef<HTMLInputElement>(null);
 
