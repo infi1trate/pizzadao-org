@@ -406,16 +406,12 @@ const MafiaNamePage = () => {
 
   const shareName = async () => {
     if (!finalName) return;
-    const text = `I've been made. They call me ${finalName}. - PizzaDAO`;
-    if (navigator.share) {
-      try {
-        await navigator.share({ title: "My PizzaDAO mafia name", text });
-        return;
-      } catch {}
-    }
-    await navigator.clipboard.writeText(text);
-    toast({ title: "Copied share text", description: text });
+    const text = `Just got made.\n\n${finalName} 🍕\n\npizzadao.org`;
+    const url = "https://pizzadao.org/get-your-mafia-name";
+    const intent = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    window.open(intent, "_blank", "noopener,noreferrer");
   };
+
 
   const reset = () => {
     setStep("film");
