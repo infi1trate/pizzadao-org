@@ -519,7 +519,7 @@ const MafiaNamePage = () => {
               <div className="mt-14">
                 <CinematicInput
                   inputRef={toppingInputRef}
-                  label="§ 03 · Your topping"
+                  label="§ 03 · Your topping (this is you)"
                   placeholder="What's your topping?"
                   value={toppingQuery}
                   onChange={setToppingQuery}
