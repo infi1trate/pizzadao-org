@@ -54,7 +54,7 @@ const MomentReel = () => {
 
 
             <a
-              href="https://instagram.com/pizzadao"
+              href="https://www.instagram.com/Pizza_DAO/"
               target="_blank"
               rel="noreferrer"
               className="ui mt-6 inline-flex items-center gap-2 border-b border-ink pb-1 text-xs font-semibold tracking-[0.04em] text-ink hover:border-tomato hover:text-tomato"
