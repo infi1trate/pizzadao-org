@@ -13,12 +13,6 @@ import revealPhoto from "@/assets/timeline-founding.jpg";
 const HERO_PHOTO   = findPhoto("Lagos")?.src       ?? party;
 const RITUAL_PHOTO = findPhoto("Buenos Aires")?.src ?? timeline2010;
 
-// Small documentary polaroids — pinned to the origin column for warmth.
-const ORIGIN_POLAROIDS = [
-  { src: findPhoto("New York")?.src ?? party, city: "New York", note: "NFTNYC · the reveal", tilt: "-rotate-[2.6deg]", offset: "translate-y-0" },
-  { src: findPhoto("Lagos")?.src ?? findPhoto("Nairobi")?.src ?? timeline2010, city: "Lagos", note: "may 22 · first party", tilt: "rotate-[1.8deg]", offset: "translate-y-3" },
-];
-
 // Contact-strip — three faces of one global night, end of the Ritual section.
 const RITUAL_STRIP = [
   { src: findPhoto("Buenos Aires")?.src ?? party,    city: "Buenos Aires", stamp: "22.05 · 23:14" },
