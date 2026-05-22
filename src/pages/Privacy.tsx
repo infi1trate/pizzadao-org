@@ -10,7 +10,7 @@ const sections: LegalSection[] = [
           PizzaDAO is a global community built around pizza, generosity, and
           the people who show up. This Privacy Policy explains what
           information we collect when you visit our websites, attend our
-          events, or participate in our digital experiences — and what we do
+          events, or participate in our digital experiences - and what we do
           with it.
         </p>
         <p>
@@ -33,7 +33,7 @@ const sections: LegalSection[] = [
         <ul className="list-disc space-y-2 pl-6 marker:text-tomato">
           <li>
             <strong className="text-ink">Contact details</strong> you give us
-            voluntarily — for example, your email address when you sign up
+            voluntarily - for example, your email address when you sign up
             for the newsletter or RSVP to an event.
           </li>
           <li>
@@ -47,8 +47,8 @@ const sections: LegalSection[] = [
             meetup, or another PizzaDAO program.
           </li>
           <li>
-            <strong className="text-ink">Basic device data</strong> — your
-            IP, browser, and pages viewed — collected automatically by our
+            <strong className="text-ink">Basic device data</strong> - your
+            IP, browser, and pages viewed - collected automatically by our
             hosting and analytics tools.
           </li>
         </ul>
@@ -63,7 +63,7 @@ const sections: LegalSection[] = [
         <p>We use information to:</p>
         <ul className="list-disc space-y-2 pl-6 marker:text-tomato">
           <li>Operate the website and our community programs.</li>
-          <li>Send the things you asked for — newsletters, event invites, updates.</li>
+          <li>Send the things you asked for - newsletters, event invites, updates.</li>
           <li>Improve our content and understand which programs help most.</li>
           <li>Keep the community safe and enforce our code of conduct.</li>
           <li>Comply with legal obligations where applicable.</li>
@@ -88,7 +88,7 @@ const sections: LegalSection[] = [
         </p>
         <p>
           We use <strong className="text-ink">PostHog</strong> as our product
-          analytics tool to measure how the site is used in aggregate —
+          analytics tool to measure how the site is used in aggregate -
           which pages are visited, which calls to action are clicked, and
           where people get stuck. PostHog may also record a small sample of
           anonymised session replays so we can fix usability issues. All form
@@ -110,7 +110,7 @@ const sections: LegalSection[] = [
       <>
         <p>
           We share information only with service providers who help us
-          operate — for example, our email platform, our hosting provider, or
+          operate - for example, our email platform, our hosting provider, or
           event partners running a local pizza party with us. These providers
           are bound to use the information only for the purpose we asked.
         </p>
@@ -161,8 +161,8 @@ const sections: LegalSection[] = [
           <strong className="text-ink">HELP</strong> for assistance.
         </p>
         <p>
-          Your mobile information — including your phone number and the
-          fact that you opted in — will not be shared with third parties or
+          Your mobile information - including your phone number and the
+          fact that you opted in - will not be shared with third parties or
           affiliates for marketing or promotional purposes. SMS consent is
           not transferred, sold, or shared with third parties. PizzaDAO only
           uses submitted phone numbers to operate the intended messaging

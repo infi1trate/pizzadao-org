@@ -1,8 +1,8 @@
 /**
- * CinematicGlobe — dark, atmospheric, slow.
+ * CinematicGlobe - dark, atmospheric, slow.
  *
  * A quieter cousin of PartnersGlobe used as the signature visual moment
- * of the About page. No dashboards, no tooltips by default — just a
+ * of the About page. No dashboards, no tooltips by default - just a
  * planet breathing in the dark with soft pulses where chapters gather.
  * Hovering a marquee city reveals a faint label, nothing more.
  */
@@ -42,7 +42,7 @@ const CinematicGlobe = () => {
     let start: number | null = null;
     const tick = (t: number) => {
       if (start === null) start = t;
-      // ~150s per full revolution — slower, more cinematic
+      // ~150s per full revolution - slower, more cinematic
       setYaw(((t - start) / 150000) * 360);
       rafRef.current = requestAnimationFrame(tick);
     };
@@ -93,7 +93,7 @@ const CinematicGlobe = () => {
         }}
       />
 
-      {/* Sphere — deep, oceanic, lit from upper left */}
+      {/* Sphere - deep, oceanic, lit from upper left */}
       <div
         className="absolute inset-0 overflow-hidden rounded-full"
         style={{
@@ -201,7 +201,7 @@ const CinematicGlobe = () => {
           );
         })}
 
-        {/* Hover label — single, restrained */}
+        {/* Hover label - single, restrained */}
         {hover &&
           projected
             .filter((p) => p.name === hover && p.z > 0.05)

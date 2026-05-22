@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import logoDark from "@/assets/logo-dark.svg";
 
 /**
- * /pre-launch-demo — duplicate of /pre-launch (Transmission) for testing.
+ * /pre-launch-demo - duplicate of /pre-launch (Transmission) for testing.
  * Behind the password gate. The "Get your mafia name" CTA links to /get-your-mafia-name.
  */
 

@@ -219,9 +219,9 @@ const LegalLayout = ({
       <section className="relative z-10 pb-20 pt-8 md:pb-32 md:pt-16">
         <div className="container">
           <div className="mx-auto max-w-[1100px] md:grid md:grid-cols-12 md:gap-x-10">
-            {/* TOC — sticky desktop, accordion mobile */}
+            {/* TOC - sticky desktop, accordion mobile */}
             <aside className="md:col-span-3">
-              {/* Mobile accordion — sticky just below the nav for easy thumb access */}
+              {/* Mobile accordion - sticky just below the nav for easy thumb access */}
               <div className="sticky top-16 z-20 -mx-4 bg-cream/90 px-4 backdrop-blur supports-[backdrop-filter]:bg-cream/75 md:hidden">
                 <button
                   type="button"
@@ -342,7 +342,7 @@ const LegalLayout = ({
                 </h3>
                 <p className="font-serif mt-4 text-[16px] leading-[1.7] text-ink/75 md:text-lg md:leading-relaxed">
                   We read everything. Reach us by email or come hang out in
-                  Discord — most policy questions get answered there first.
+                  Discord - most policy questions get answered there first.
                 </p>
                 <div className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:gap-3">
                   <a

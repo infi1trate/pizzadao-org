@@ -8,32 +8,32 @@ type Slot = {
   aspect: string;
   drift?: number;
   tone?: "warm" | "cool" | "mono" | "natural" | "night";
-  /** Vertical offset in px — used to break the grid and create overlap. */
+  /** Vertical offset in px - used to break the grid and create overlap. */
   offset?: number;
-  /** Stacking order — higher = pulled in front of overlapping neighbors. */
+  /** Stacking order - higher = pulled in front of overlapping neighbors. */
   z?: number;
-  /** Subtle rotation in degrees — adds documentary unevenness. */
+  /** Subtle rotation in degrees - adds documentary unevenness. */
   tilt?: number;
 };
 
 // Curated, cinematic slot composition. Fewer frames, stronger focal
 // hierarchy, more breathing room. Big anchors carry weight; a few
 // intimate verticals break the rhythm. Offsets are restrained so the
-// wall reads as an art-directed archive — never a collage.
+// wall reads as an art-directed archive - never a collage.
 const SLOTS: Slot[] = [
-  // ── ACT I — Arrival. One cinematic anchor + one intimate vertical.
+  // ── ACT I - Arrival. One cinematic anchor + one intimate vertical.
   { col: "md:col-start-1",  span: "md:col-span-8",  row: "md:row-span-4", aspect: "aspect-[16/10]", drift: 0.05, tone: "warm",    z: 2 },
   { col: "md:col-start-9",  span: "md:col-span-4",  row: "md:row-span-4", aspect: "aspect-[3/4]",   drift: 0.08, tone: "night",   offset: 28, z: 3, tilt: -0.4 },
 
-  // ── ACT II — Faces. Three verticals, evenly weighted, quietly aligned.
+  // ── ACT II - Faces. Three verticals, evenly weighted, quietly aligned.
   { col: "md:col-start-1",  span: "md:col-span-4",  row: "md:row-span-3", aspect: "aspect-[3/4]",   drift: 0.04, tone: "natural", offset: 36, z: 2 },
   { col: "md:col-start-5",  span: "md:col-span-4",  row: "md:row-span-3", aspect: "aspect-[3/4]",   drift: 0.06, tone: "mono",    offset: -10, z: 3 },
   { col: "md:col-start-9",  span: "md:col-span-4",  row: "md:row-span-3", aspect: "aspect-[3/4]",   drift: 0.05, tone: "warm",    offset: 44, z: 2, tilt: 0.5 },
 
-  // ── ACT III — Cinematic breath. One full-bleed horizon.
+  // ── ACT III - Cinematic breath. One full-bleed horizon.
   { col: "md:col-start-1",  span: "md:col-span-12", row: "md:row-span-3", aspect: "aspect-[21/9]",  drift: 0.06, tone: "warm",    z: 2 },
 
-  // ── ACT IV — Closing. Tall anchor, wide companion, one quiet detail.
+  // ── ACT IV - Closing. Tall anchor, wide companion, one quiet detail.
   { col: "md:col-start-1",  span: "md:col-span-5",  row: "md:row-span-4", aspect: "aspect-[4/5]",   drift: 0.04, tone: "night",   offset: 24, z: 3 },
   { col: "md:col-start-6",  span: "md:col-span-7",  row: "md:row-span-3", aspect: "aspect-[16/9]",  drift: 0.07, tone: "natural", z: 2 },
   { col: "md:col-start-6",  span: "md:col-span-4",  row: "md:row-span-2", aspect: "aspect-[4/3]",   drift: 0.03, tone: "cool",    offset: 30, z: 3, tilt: -0.4 },
@@ -72,7 +72,7 @@ interface FrameProps {
 
 /**
  * A single archival frame. When `photo` changes, the incoming image
- * cross-fades on top of the outgoing one — never a hard cut.
+ * cross-fades on top of the outgoing one - never a hard cut.
  */
 const ArchivalFrame = ({ photo, slot, index }: FrameProps) => {
   const ref = useRef<HTMLElement | null>(null);
@@ -147,7 +147,7 @@ const ArchivalFrame = ({ photo, slot, index }: FrameProps) => {
         <img
           key={current.src}
           src={current.src}
-          alt={`${current.city}, ${current.country} — PizzaDAO gathering`}
+          alt={`${current.city}, ${current.country} - PizzaDAO gathering`}
           loading={index < 3 ? "eager" : "lazy"}
           decoding="async"
           className={`absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-[1.025] ${filter}`}

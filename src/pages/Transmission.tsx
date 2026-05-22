@@ -7,7 +7,7 @@ import { EVT } from "@/lib/analytics/events";
 import { useTrackOutbound } from "@/lib/analytics/useTrackOutbound";
 
 /**
- * /transmission — standalone editorial placeholder.
+ * /transmission - standalone editorial placeholder.
  * Cream paper, vibrant red, butter accents. Movement identity, not app UI.
  */
 
@@ -99,7 +99,7 @@ const Transmission = () => {
         }}
       />
 
-      {/* Local keyframes — restrained */}
+      {/* Local keyframes - restrained */}
       <style>{`
         @keyframes softFade {
           from { opacity: 0; transform: translateY(8px); }
@@ -111,7 +111,7 @@ const Transmission = () => {
         }
       `}</style>
 
-      {/* Nav — quiet, editorial */}
+      {/* Nav - quiet, editorial */}
       <header className="relative z-20">
         <div className="container flex h-16 items-center justify-between md:h-20">
           <Link to="/" className="flex items-center gap-3" aria-label="PizzaDAO home">
@@ -140,7 +140,7 @@ const Transmission = () => {
         </div>
       </header>
 
-      {/* HERO — editorial, asymmetric */}
+      {/* HERO - editorial, asymmetric */}
       <section className="relative z-10">
         <div className="container grid grid-cols-12 gap-x-6 gap-y-12 pb-20 pt-8 md:gap-y-16 md:pb-28 md:pt-12">
           {/* Headline + supporting column */}
@@ -191,7 +191,7 @@ const Transmission = () => {
             </p>
           </div>
 
-          {/* Editorial media frame — big, cinematic, no HUD */}
+          {/* Editorial media frame - big, cinematic, no HUD */}
           <figure className="col-span-12">
             <div className="relative overflow-hidden rounded-3xl bg-ink/5">
               <div className="relative aspect-[16/10] md:aspect-[21/9]">
@@ -220,7 +220,7 @@ const Transmission = () => {
         </div>
       </section>
 
-      {/* Photography strip — humanity */}
+      {/* Photography strip - humanity */}
       <section className="relative z-10">
         <div className="container py-20 md:py-28">
           <div className="grid grid-cols-12 gap-x-6 gap-y-10">
@@ -269,7 +269,7 @@ const Transmission = () => {
         </div>
       </section>
 
-      {/* Closing — butter band, calm anticipation */}
+      {/* Closing - butter band, calm anticipation */}
       <section className="relative z-10 bg-butter text-ink">
         <div className="container grid grid-cols-12 gap-x-6 gap-y-8 py-20 md:py-24">
           <div className="col-span-12 md:col-span-7">

@@ -1,7 +1,7 @@
 /**
  * PostHog configuration.
  *
- * PostHog's project API key (phc_…) is a *publishable* client key — safe to
+ * PostHog's project API key (phc_…) is a *publishable* client key - safe to
  * ship in the bundle. Two ways to provide it:
  *
  *   1. Add to `.env` (preferred):
@@ -10,7 +10,7 @@
  *
  *   2. Or hardcode below.
  *
- * If neither is set, analytics is a silent no-op — the site still works.
+ * If neither is set, analytics is a silent no-op - the site still works.
  */
 
 export const POSTHOG_KEY: string =

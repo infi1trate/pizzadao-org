@@ -106,7 +106,7 @@ const SiteNav = ({ solid = false }: Props) => {
         </button>
       </div>
 
-      {/* Mobile overlay — full-screen editorial sheet */}
+      {/* Mobile overlay - full-screen editorial sheet */}
       <div
         className={`md:hidden fixed inset-0 z-40 bg-cream transition-[opacity,transform] duration-[420ms] ease-[cubic-bezier(0.22,0.61,0.24,1)] ${
           open ? "opacity-100 translate-y-0 pointer-events-auto" : "pointer-events-none opacity-0 -translate-y-2"

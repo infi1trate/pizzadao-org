@@ -45,7 +45,7 @@
     --destructive: var(--tomato);
     --destructive-foreground: var(--cream);
 
-    /* Warm institutional gray — replaces near-black borders site-wide */
+    /* Warm institutional gray - replaces near-black borders site-wide */
     --border: 30 12% 78%;
     --input: 30 12% 78%;
     --ring: var(--ink);
@@ -53,14 +53,14 @@
 
     --radius: 1rem;
 
-    /* Motion tokens — cinematic, weighted, restrained */
+    /* Motion tokens - cinematic, weighted, restrained */
     --ease-editorial: cubic-bezier(0.22, 0.61, 0.24, 1);
     --ease-filmic:   cubic-bezier(0.16, 0.84, 0.32, 1);
     --dur-fast: 280ms;
     --dur-base: 520ms;
     --dur-slow: 900ms;
 
-    /* Soft ambient elevation — replaces SaaS drop shadows */
+    /* Soft ambient elevation - replaces SaaS drop shadows */
     --shadow-soft:   0 1px 2px hsl(30 20% 12% / 0.04), 0 8px 28px -18px hsl(30 20% 12% / 0.18);
     --shadow-lifted: 0 2px 4px hsl(30 20% 12% / 0.05), 0 18px 48px -24px hsl(30 20% 12% / 0.22);
 
@@ -109,7 +109,7 @@
     text-rendering: optimizeLegibility;
     position: relative;
   }
-  /* Site-wide ultra-faint paper grain — printed institution, not pattern */
+  /* Site-wide ultra-faint paper grain - printed institution, not pattern */
   body::before {
     content: "";
     position: fixed;
@@ -140,7 +140,7 @@
     font-family: 'Asap', system-ui, sans-serif;
     font-feature-settings: "kern", "liga";
   }
-  /* Touch device parity — neutralize desktop hover transforms/shadows on tablets
+  /* Touch device parity - neutralize desktop hover transforms/shadows on tablets
      and phones so the site doesn't get stuck in a half-hover state after a tap. */
   @media (hover: none) and (pointer: coarse) {
     a, button { -webkit-tap-highlight-color: hsl(var(--tomato) / 0.15); }
@@ -154,13 +154,13 @@
   }
   ::selection { background: hsl(var(--tomato)); color: hsl(var(--cream)); }
 
-  /* Editorial transition default — cinematic, never bouncy */
+  /* Editorial transition default - cinematic, never bouncy */
   a, button, [role="button"] {
     transition-timing-function: var(--ease-editorial);
     transition-duration: var(--dur-fast);
   }
 
-  /* Sitewide button radius safeguard — utilities can still opt into larger pills */
+  /* Sitewide button radius safeguard - utilities can still opt into larger pills */
   button, [role="button"] {
     border-radius: var(--button-radius, 0.5rem);
   }
@@ -215,7 +215,7 @@
   }
   .fade-up { animation: fadeUp 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 
-  /* Handwritten accents — use sparingly */
+  /* Handwritten accents - use sparingly */
   .handwritten {
     font-family: 'Rock Salt', 'Asap', cursive;
     font-weight: 400;
@@ -232,7 +232,7 @@
     }
   }
 
-  /* Tablet body measure — caps paragraph width to ~60ch at md so prose doesn't
+  /* Tablet body measure - caps paragraph width to ~60ch at md so prose doesn't
      stretch into uncomfortably long lines on iPad landscape. Opt-in only. */
   .measure-tablet {
     max-width: 60ch;
@@ -272,7 +272,7 @@
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
 
-  /* Soft tactile paper noise — Community-page surfaces only.
+  /* Soft tactile paper noise - Community-page surfaces only.
      Apply by adding the class to cards/containers. Tuned for "matte paper"
      emotional register: visible after a beat, never patterned. */
   .paper-soft {
@@ -289,7 +289,7 @@
     border-radius: inherit;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24  0 0 0 0 0.14  0 0 0 0 0.02  0 0 0 0.78 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>");
   }
-  /* Soft tonal wash — adds analog warmth/depth on top of grain. */
+  /* Soft tonal wash - adds analog warmth/depth on top of grain. */
   .paper-soft::after {
     content: "";
     position: absolute; inset: 0;
@@ -302,7 +302,7 @@
     mix-blend-mode: multiply;
     opacity: 0.85;
   }
-  /* Inverse for dark surfaces — warm light grain over ink */
+  /* Inverse for dark surfaces - warm light grain over ink */
   .paper-soft-dark::before {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='pd'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.92  0 0 0 0 0.78  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23pd)'/></svg>");
     mix-blend-mode: screen;
@@ -311,7 +311,7 @@
   .paper-soft-dark::after { display: none; }
   .paper-soft > * { position: relative; z-index: 1; }
 
-  /* Ultra-light photocopy print noise — adds a faint toner-fleck breath.
+  /* Ultra-light photocopy print noise - adds a faint toner-fleck breath.
      Pair with .paper-soft on light surfaces, or use alone on flat blocks. */
   .print-noise { position: relative; isolation: isolate; }
   .print-noise::after {
@@ -325,7 +325,7 @@
   }
   .print-noise > * { position: relative; z-index: 1; }
 
-  /* Faint halftone — soft printed-dot field. Tuned to read as "press"
+  /* Faint halftone - soft printed-dot field. Tuned to read as "press"
      rather than pattern. Best on cream / butter / tinted blocks. */
   .halftone-soft { position: relative; isolation: isolate; }
   .halftone-soft::after {
@@ -340,7 +340,7 @@
   }
   .halftone-soft > * { position: relative; z-index: 1; }
 
-  /* Ink spread — extremely soft ink-bleed gradient on edges of dark blocks. */
+  /* Ink spread - extremely soft ink-bleed gradient on edges of dark blocks. */
   .ink-spread { position: relative; isolation: isolate; }
   .ink-spread::after {
     content: "";
@@ -354,7 +354,7 @@
   }
   .ink-spread > * { position: relative; z-index: 1; }
 
-  /* Print-shop crop marks — tiny L's at the four corners, outside the box.
+  /* Print-shop crop marks - tiny L's at the four corners, outside the box.
      Use on figures / posters / flyer cards. Subtle, never decorative. */
   .crop-marks { position: relative; }
   .crop-marks::before,
@@ -379,7 +379,7 @@
   .crop-marks-dark::before { border-color: hsl(var(--cream) / 0.45); }
   .crop-marks-dark::after  { border-color: hsl(var(--cream) / 0.45); }
 
-  /* Registration crosshair — 4-color print alignment mark. Tiny, monochrome. */
+  /* Registration crosshair - 4-color print alignment mark. Tiny, monochrome. */
   .reg-mark {
     display: inline-block;
     width: 14px; height: 14px;
@@ -397,7 +397,7 @@
   .reg-mark::before { left: 50%; top: -3px; bottom: -3px; width: 1px; transform: translateX(-50%); }
   .reg-mark::after  { top: 50%; left: -3px; right: -3px; height: 1px; transform: translateY(-50%); }
 
-  /* Production stamp — soft outlined label, rotated, low-contrast. */
+  /* Production stamp - soft outlined label, rotated, low-contrast. */
   .prod-stamp {
     display: inline-flex;
     align-items: center;
@@ -418,7 +418,7 @@
     color: hsl(var(--cream) / 0.65);
   }
 
-  /* Tape corner — translucent washi tape strip, anchored to a corner. */
+  /* Tape corner - translucent washi tape strip, anchored to a corner. */
   .tape-corner { position: relative; }
   .tape-corner::after {
     content: "";
@@ -434,8 +434,8 @@
   }
 
 
-  /* Marker bleed — applies a soft analog ink halo to handwritten/red type.
-     Ultra-tight, opaque core, faint warm edge — not a glow. */
+  /* Marker bleed - applies a soft analog ink halo to handwritten/red type.
+     Ultra-tight, opaque core, faint warm edge - not a glow. */
   .marker-bleed {
     text-shadow:
       0 0 0.6px hsl(var(--tomato) / 0.95),
@@ -456,7 +456,7 @@
   }
   .live-pulse { animation: liveRowPulse 2.8s ease-in-out infinite; }
 
-  /* Pizzeria checker tape — subtle tablecloth nod for dividers/edge accents.
+  /* Pizzeria checker tape - subtle tablecloth nod for dividers/edge accents.
      Use sparingly: thin strips, tape ends, hover edges. Never as filler bg. */
   .checker-tape {
     background-image:
@@ -479,7 +479,7 @@
     background-color: hsl(var(--cream));
   }
 
-  /* Taped photo — a slightly rotated figure with translucent tape corners. */
+  /* Taped photo - a slightly rotated figure with translucent tape corners. */
   .taped {
     position: relative;
   }
@@ -497,14 +497,14 @@
   .taped::before { top: -10px; left: 8%; transform: rotate(-6deg); }
   .taped::after  { top: -10px; right: 8%; transform: rotate(5deg); }
 
-  /* Ambient texture drift — extremely subtle, cinematic. */
+  /* Ambient texture drift - extremely subtle, cinematic. */
   @keyframes grainDrift {
     0%   { background-position: 0 0; }
     100% { background-position: 320px 240px; }
   }
   .paper-soft.paper-drift::before { animation: grainDrift 32s linear infinite; }
 
-  /* Hero ambient warmth — slow, almost imperceptible breathing */
+  /* Hero ambient warmth - slow, almost imperceptible breathing */
   @keyframes heroGlow {
     0%, 100% { transform: translate3d(0,0,0) scale(1); opacity: 0.09; }
     50%      { transform: translate3d(0,-12px,0) scale(1.04); opacity: 0.13; }
@@ -519,7 +519,7 @@
   }
   .photo-hover:hover { transform: scale(1.018) translateY(-2px); filter: saturate(1.05); }
 
-  /* Margin annotation — looks like a marker note in the gutter */
+  /* Margin annotation - looks like a marker note in the gutter */
   .margin-note {
     font-family: 'Rock Salt', 'Asap', cursive;
     color: hsl(var(--tomato));
@@ -530,7 +530,7 @@
     display: inline-block;
   }
 
-  /* Ink stamp — looks like a hand-stamped archival mark */
+  /* Ink stamp - looks like a hand-stamped archival mark */
   .stamp {
     display: inline-flex;
     align-items: center;
@@ -555,10 +555,10 @@
   }
 
   /* ============================================================
-     Global hardening utilities — applied via existing classnames
+     Global hardening utilities - applied via existing classnames
      ============================================================ */
 
-  /* Unified editorial surface — soft warm border + ambient depth.
+  /* Unified editorial surface - soft warm border + ambient depth.
      Use on cards/panels/modules to replace ad-hoc borders+shadows. */
   .surface-editorial {
     background: hsl(var(--card));
@@ -590,25 +590,25 @@
     transition-timing-function: var(--ease-editorial);
   }
 
-  /* Editorial divider — warm hairline, replaces hard black rules where used */
+  /* Editorial divider - warm hairline, replaces hard black rules where used */
   .rule-warm { border-top: 1px solid hsl(var(--rule-warm) / 0.55); }
 }
 
 /* ================================================================
    GLOBAL MOBILE HARDENING
    Applied site-wide via existing classnames. Goal: cinematic editorial
-   rhythm on handheld — calmer spacing, larger touch, safer handwritten
+   rhythm on handheld - calmer spacing, larger touch, safer handwritten
    accents, and one dominant type moment per viewport.
    ================================================================ */
 @layer utilities {
   @media (max-width: 767px) {
-    /* Container — safe-area gutters for notched devices */
+    /* Container - safe-area gutters for notched devices */
     .container {
       padding-left: max(1.25rem, env(safe-area-inset-left));
       padding-right: max(1.25rem, env(safe-area-inset-right));
     }
 
-    /* Touch ergonomics — comfortable targets everywhere */
+    /* Touch ergonomics - comfortable targets everywhere */
     a, button, [role="button"], summary, label[for] {
       -webkit-tap-highlight-color: hsl(var(--tomato) / 0.18);
     }
@@ -625,13 +625,13 @@
       font-size: 1rem;
     }
 
-    /* Typography — softer letter-spacing + balanced line-heights on phones */
+    /* Typography - softer letter-spacing + balanced line-heights on phones */
     h1, h2, h3, .display { letter-spacing: -0.015em; }
     h1 { line-height: 0.92; }
     h2, h3 { line-height: 0.96; }
     p { line-height: 1.65; }
 
-    /* Handwritten accent safety — never clip, never crowd UI */
+    /* Handwritten accent safety - never clip, never crowd UI */
     .handwritten {
       display: inline-block;
       padding: 0.02em 0.05em;
@@ -639,16 +639,16 @@
     }
     .underline-scribble { background-size: 100% 0.36em; }
 
-    /* Card surfaces — unified radius rhythm */
+    /* Card surfaces - unified radius rhythm */
     .rounded-2xl, .rounded-xl, .rounded-3xl, .surface-editorial {
       border-radius: 1.1rem;
     }
 
-    /* Hairline rules — warmer, softer on small screens */
+    /* Hairline rules - warmer, softer on small screens */
     .border-ink\/15, .border-ink\/20 { border-color: hsl(var(--rule-warm) / 0.55); }
     .border-cream\/15, .border-cream\/20 { border-color: hsl(var(--cream) / 0.18); }
 
-    /* Section rhythm — calmer breathing room.
+    /* Section rhythm - calmer breathing room.
        Normalizes the most common section padding patterns. */
     .py-20 { padding-top: 4.5rem; padding-bottom: 4.5rem; }
     .py-24 { padding-top: 5rem;   padding-bottom: 5rem; }
@@ -659,19 +659,19 @@
     .pt-24, .pt-28 { padding-top: 5rem; }
     .pb-24, .pb-28 { padding-bottom: 5rem; }
 
-    /* Grid gaps — tighter card stacks, more breathing between major rows */
+    /* Grid gaps - tighter card stacks, more breathing between major rows */
     .gap-y-10 { row-gap: 2.25rem; }
     .gap-y-12 { row-gap: 2.75rem; }
     .gap-y-16 { row-gap: 3.25rem; }
     .gap-5  { gap: 0.875rem; }
     .gap-6  { gap: 1rem; }
 
-    /* Texture — keep the paper warmth alive on OLED phones */
+    /* Texture - keep the paper warmth alive on OLED phones */
     body::before { opacity: 0.045; }
     .grain::after { opacity: 0.075; }
     .paper-soft::before { opacity: 0.20; }
 
-    /* Motion — reduce jitter on touch */
+    /* Motion - reduce jitter on touch */
     .photo-hover:hover { transform: none; filter: none; }
     .hero-glow { animation-duration: 22s; }
   }

@@ -63,7 +63,7 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          You keep ownership of the content you post — photos from a pizza
+          You keep ownership of the content you post - photos from a pizza
           party, comments in the forum, posts in Discord, contributions to
           the journal. By posting it through our Services, you grant
           PizzaDAO a non-exclusive, worldwide, royalty-free license to host,
@@ -85,8 +85,8 @@ const sections: LegalSection[] = [
         The PizzaDAO name, logos, brand system, written content, and
         site design are protected by intellectual property laws and remain
         the property of PizzaDAO and its contributors. You may reference us
-        in good-faith editorial coverage. For other uses — partnerships,
-        merch, redistribution — please see our brand system or write to us
+        in good-faith editorial coverage. For other uses - partnerships,
+        merch, redistribution - please see our brand system or write to us
         first.
       </p>
     ),
@@ -97,8 +97,8 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          PizzaDAO programs — Global Pizza Party, community grants, field
-          reports, residencies — may have their own rules in addition to
+          PizzaDAO programs - Global Pizza Party, community grants, field
+          reports, residencies - may have their own rules in addition to
           these Terms. Where there's a conflict, the program-specific rules
           control for that program.
         </p>
@@ -177,7 +177,7 @@ const sections: LegalSection[] = [
     body: (
       <p>
         Our Services link to third-party sites and integrate with
-        third-party tools — Discord, social networks, wallets, video
+        third-party tools - Discord, social networks, wallets, video
         platforms, and others. We don't control those services and aren't
         responsible for their content or practices. Your use of them is
         governed by their own terms.
@@ -191,7 +191,7 @@ const sections: LegalSection[] = [
       <p>
         Nothing on this site or in our community channels is financial,
         legal, or tax advice. Conversations about tokens, wallets, or
-        governance are educational and reflect community perspectives — they
+        governance are educational and reflect community perspectives - they
         are not recommendations. Do your own research and consult qualified
         professionals where appropriate.
       </p>

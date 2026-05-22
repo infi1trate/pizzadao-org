@@ -101,7 +101,7 @@ const Sponsorship = () => {
             "linear-gradient(180deg, hsl(40 55% 93%) 0%, transparent 100%)",
         }}
       />
-      {/* Organic tonal warmth — off-axis warm pool, no even grid */}
+      {/* Organic tonal warmth - off-axis warm pool, no even grid */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -110,7 +110,7 @@ const Sponsorship = () => {
             "radial-gradient(ellipse 70% 60% at 28% 38%, hsl(44 80% 80% / 0.35) 0%, transparent 65%)",
         }}
       />
-      {/* Soft cooler tonal shift toward the lower right — printed unevenness */}
+      {/* Soft cooler tonal shift toward the lower right - printed unevenness */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -119,7 +119,7 @@ const Sponsorship = () => {
             "radial-gradient(ellipse 55% 50% at 82% 78%, hsl(38 30% 78% / 0.22) 0%, transparent 60%)",
         }}
       />
-      {/* Edge wear — slight darkening at the page margins */}
+      {/* Edge wear - slight darkening at the page margins */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -147,16 +147,16 @@ const Sponsorship = () => {
               </p>
               <p className="mt-2 text-[15px] leading-[1.6] text-ink/65">
                 PizzaDAO is a 500-city network of independently organized
-                chapters. Brands plug into a real, repeating, IRL community —
+                chapters. Brands plug into a real, repeating, IRL community -
                 not a list, not a mailshot, not a pop-up.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Proof ledger — operational credibility, slight overlap with masthead */}
+        {/* Proof ledger - operational credibility, slight overlap with masthead */}
         <div className="relative mt-5 rounded-2xl border border-ink/15 bg-cream shadow-[var(--shadow-lifted)] md:mt-6">
-          {/* Asymmetric annotation — slight tension off the corner */}
+          {/* Asymmetric annotation - slight tension off the corner */}
           <span
             aria-hidden
             className="handwritten absolute -top-3 right-4 -rotate-[6deg] text-[12px] text-tomato md:right-6"
@@ -189,7 +189,7 @@ const Sponsorship = () => {
           </dl>
         </div>
 
-        {/* Trust rail — small operational signals beneath the ledger */}
+        {/* Trust rail - small operational signals beneath the ledger */}
         <ul className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] font-medium text-ink/55">
           <li className="ui uppercase tracking-[0.18em]">
             <span className="mr-2 inline-block h-1.5 w-1.5 -translate-y-[1px] rounded-full bg-tomato align-middle" />
@@ -208,7 +208,7 @@ const Sponsorship = () => {
 
 
 
-      {/* Value props — refined capabilities overview */}
+      {/* Value props - refined capabilities overview */}
       <div className="container mt-8 md:mt-12">
         <div className="grid grid-cols-12 gap-x-6 gap-y-5">
           <div className="col-span-12 md:col-span-4">
@@ -255,9 +255,9 @@ const Sponsorship = () => {
         </div>
       </div>
 
-      {/* What we build together — edge-to-edge cream-warm band, layered into flow */}
+      {/* What we build together - edge-to-edge cream-warm band, layered into flow */}
       <div className="paper-soft paper-drift relative mt-7 overflow-hidden bg-cream-warm py-8 md:mt-9 md:py-11">
-        {/* Soft tonal transition at top — fades from butter/25 above into cream-warm */}
+        {/* Soft tonal transition at top - fades from butter/25 above into cream-warm */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-x-0 top-0 h-24"
@@ -266,7 +266,7 @@ const Sponsorship = () => {
               "linear-gradient(180deg, hsl(44 60% 92% / 0.9) 0%, transparent 100%)",
           }}
         />
-        {/* Edge darkening — subtle vignette pulling focus inward */}
+        {/* Edge darkening - subtle vignette pulling focus inward */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -277,15 +277,15 @@ const Sponsorship = () => {
         />
         {/* Understated grain */}
         <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.22]" />
-        {/* Hairline top + bottom rules — editorial section markers */}
+        {/* Hairline top + bottom rules - editorial section markers */}
         <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/10" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-ink/10" />
-        {/* Photographic warmth — hands at work, integrated into right edge */}
+        {/* Photographic warmth - hands at work, integrated into right edge */}
         <PhotoVeil variant="hands" position="right" opacity={0.05} blend="multiply" />
 
         <div className="container relative">
           <div className="relative pt-2 md:pt-4">
-            {/* IRL stamp — floats on the band, no opaque chip */}
+            {/* IRL stamp - floats on the band, no opaque chip */}
             <span aria-hidden className="ui absolute -top-1 left-0 text-[10px] font-semibold uppercase tracking-[0.22em] text-tomato">
               IRL ·  built in cities
             </span>
@@ -339,7 +339,7 @@ const Sponsorship = () => {
                     <ellipse cx="200" cy="130" rx="60" ry="90" />
                     <ellipse cx="200" cy="130" rx="20" ry="90" />
                     <path d="M30 130h340M40 80h320M40 180h320M40 50h320M40 210h320" />
-                    {/* network dots — chapter cities */}
+                    {/* network dots - chapter cities */}
                     <g fill="currentColor" stroke="none">
                       <circle cx="80" cy="80" r="2" />
                       <circle cx="135" cy="55" r="1.6" />
@@ -471,7 +471,7 @@ const Sponsorship = () => {
                     borderBottomRightRadius: featured ? "14px" : i % 2 === 0 ? "12px" : "18px",
                   }}
                 >
-                  {/* Inner grain — tactile paper feel */}
+                  {/* Inner grain - tactile paper feel */}
                   <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.22]" />
                   {/* Soft warm wash for emotional energy */}
                   <div
@@ -487,7 +487,7 @@ const Sponsorship = () => {
                   {/* Decorative motif fragment */}
                   {featured ? b.motifLg : b.motif}
 
-                  {/* Featured ribbon — tiny editorial mark */}
+                  {/* Featured ribbon - tiny editorial mark */}
                   {featured && (
                     <span
                       aria-hidden
@@ -574,7 +574,7 @@ const Sponsorship = () => {
                   {/* Spacer pushes annotation to bottom on featured */}
                   {featured && <div className="flex-1" aria-hidden />}
 
-                  {/* Annotation — always visible on featured, reveal on others */}
+                  {/* Annotation - always visible on featured, reveal on others */}
                   <p
                     className={`ui mt-4 flex items-center gap-2 text-[10.5px] uppercase tracking-[0.22em] ${
                       featured
@@ -596,9 +596,9 @@ const Sponsorship = () => {
       </div>
 
 
-      {/* CTA band — edge-to-edge butter, layered transition from cream-warm above */}
+      {/* CTA band - edge-to-edge butter, layered transition from cream-warm above */}
       <div className="relative overflow-hidden bg-butter pb-8 pt-10 md:pb-10 md:pt-11">
-        {/* Organic warm tonal pool — off-center, no even gradient fade */}
+        {/* Organic warm tonal pool - off-center, no even gradient fade */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -607,7 +607,7 @@ const Sponsorship = () => {
               "radial-gradient(ellipse 65% 70% at 38% 48%, hsl(44 95% 76% / 0.40) 0%, transparent 60%)",
           }}
         />
-        {/* Counter-tone — subtle deeper butter at lower right for printed unevenness */}
+        {/* Counter-tone - subtle deeper butter at lower right for printed unevenness */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -616,7 +616,7 @@ const Sponsorship = () => {
               "radial-gradient(ellipse 55% 55% at 85% 80%, hsl(40 85% 60% / 0.18) 0%, transparent 60%)",
           }}
         />
-        {/* Edge wear — soft vignette for printed dimensionality */}
+        {/* Edge wear - soft vignette for printed dimensionality */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -625,9 +625,9 @@ const Sponsorship = () => {
               "radial-gradient(ellipse at 50% 50%, transparent 58%, hsl(30 40% 30% / 0.10) 100%)",
           }}
         />
-        {/* Top hairline — clean editorial join */}
+        {/* Top hairline - clean editorial join */}
         <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/12" />
-        {/* Subtle paper grain only — no dot patterns */}
+        {/* Subtle paper grain only - no dot patterns */}
         <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.28]" />
 
         <div className="container relative">
@@ -656,7 +656,7 @@ const Sponsorship = () => {
                 Tell us what you're trying to do. We'll shape it into something worth showing up for.
               </p>
 
-              {/* Subtle supporting annotations — editorial micro-labels */}
+              {/* Subtle supporting annotations - editorial micro-labels */}
               <ul className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1.5">
                 {["IRL matters", "shared moments", "community-first"].map((tag) => (
                   <li

@@ -6,7 +6,7 @@ const MomentReel = () => {
       id="moments"
       className="relative isolate overflow-hidden bg-butter text-ink"
     >
-      {/* Ambient WenPizza video layer — same source as the phone, softened and yellow-tinted */}
+      {/* Ambient WenPizza video layer - same source as the phone, softened and yellow-tinted */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-butter">
         <video
           src="https://www.dropbox.com/scl/fi/c2zu0k44nsh753zaaseri/Video-Apr-26-2023-1-18-01-AM.mov?rlkey=bqnbkqjqxdm2nze2xeqgdcjnx&raw=1"
