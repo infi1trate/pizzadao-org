@@ -134,12 +134,16 @@ const ArchivalFrame = ({ photo, slot, index }: FrameProps) => {
       }}
     >
       <div
-        className={`relative overflow-hidden bg-ink ${slot.aspect}`}
+        className="relative flex h-full w-full flex-col bg-cream-warm p-2 pb-10 md:p-2.5 md:pb-12"
         style={{
           boxShadow:
-            "0 1px 0 hsl(0 0% 0% / 0.08), 0 18px 40px -22px hsl(0 0% 0% / 0.55), 0 32px 80px -40px hsl(0 0% 0% / 0.45)",
+            "0 1px 0 hsl(0 0% 0% / 0.10), 0 18px 40px -22px hsl(0 0% 0% / 0.55), 0 32px 80px -40px hsl(0 0% 0% / 0.45)",
         }}
       >
+      <div
+        className={`relative overflow-hidden bg-ink ${slot.aspect}`}
+      >
+
         <img
           key={current.src}
           src={current.src}
