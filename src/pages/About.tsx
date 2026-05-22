@@ -293,41 +293,10 @@ const About = () => {
               "radial-gradient(42% 32% at 14% 22%, hsl(0 80% 28% / 0.42), transparent 70%), radial-gradient(46% 34% at 86% 78%, hsl(0 80% 24% / 0.46), transparent 72%)",
           }}
         />
-        {/* checker tape — top & bottom */}
-        <div
-          aria-hidden
-          className="absolute inset-x-0 top-0 h-[10px] opacity-[0.85]"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(90deg, hsl(44 90% 92%) 0 16px, hsl(0 0% 8%) 16px 32px)",
-          }}
-        />
-        <div
-          aria-hidden
-          className="absolute inset-x-0 bottom-0 h-[10px] opacity-[0.85]"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(90deg, hsl(44 90% 92%) 0 16px, hsl(0 0% 8%) 16px 32px)",
-          }}
-        />
-        {/* paper-edge vignette */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 mix-blend-multiply"
-          style={{
-            background:
-              "radial-gradient(120% 95% at 50% 50%, transparent 55%, hsl(0 80% 18% / 0.35) 100%)",
-          }}
-        />
-
         <div className="container relative">
-          {/* tiny corner stamp */}
           <div className="mb-10 flex items-baseline justify-between md:mb-14">
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/70">
               § 02 — Founding principle
-            </span>
-            <span className="ui hidden rotate-[1.5deg] border border-cream/40 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-cream/75 md:inline-block">
-              Stamped · 22.05
             </span>
           </div>
 
@@ -343,30 +312,14 @@ const About = () => {
               >
                 democratic
               </span>{" "}
-              food on{" "}
-              <span className="relative inline-block">
-                Earth
-                <span
-                  aria-hidden
-                  className="absolute -bottom-1 left-0 right-0 h-[0.18em] -rotate-[1deg]"
-                  style={{
-                    background:
-                      "repeating-linear-gradient(90deg, hsl(44 90% 92% / 0.95) 0 10px, transparent 10px 18px)",
-                  }}
-                />
-              </span>
-              .
+              food on Earth.
             </p>
           </blockquote>
 
-          <div className="mt-10 flex items-center justify-between gap-6 md:mt-14">
+          <div className="mt-10 flex items-center gap-6 md:mt-14">
             <p className="handwritten max-w-[20ch] -rotate-[1.5deg] text-butter text-2xl md:text-3xl">
               (yes, really — try it.)
             </p>
-            <span className="ui hidden items-baseline gap-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/65 md:flex">
-              <span className="h-px w-10 bg-cream/40" />
-              From the field manual
-            </span>
           </div>
         </div>
       </section>
