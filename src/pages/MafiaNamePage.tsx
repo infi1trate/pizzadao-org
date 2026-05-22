@@ -57,6 +57,62 @@ const TOPPING_DESCRIPTOR: Record<string, string> = {
 const toppingDescriptor = (t: string) =>
   TOPPING_DESCRIPTOR[t] ?? "off-canon · your call · respected";
 
+// Three distinct personas — each card carries one. Order matches names[0..2].
+const CARD_PERSONALITIES: {
+  id: string;
+  label: string;
+  margin: string;
+  marginAlt: string;
+  stamp: string;
+  stampSelected: string;
+  toneHint: string;
+  fileNo: string;
+  rotation: number;
+  stampPos: string;
+  yOffset: string;
+}[] = [
+  {
+    id: "classic",
+    label: "Old guard",
+    margin: "trusted",
+    marginAlt: "this guy",
+    stamp: "Sworn in",
+    stampSelected: "Made",
+    toneHint: "classic, controlled, respected, quiet authority",
+    fileNo: "01",
+    rotation: -1.2,
+    stampPos: "-right-3 -top-3 rotate-[-8deg]",
+    yOffset: "md:translate-y-0",
+  },
+  {
+    id: "wildcard",
+    label: "Wildcard",
+    margin: "dangerous",
+    marginAlt: "watch this one",
+    stamp: "Loose cannon",
+    stampSelected: "Made",
+    toneHint: "chaotic, unpredictable, feared, wild eyes",
+    fileNo: "02",
+    rotation: 0.9,
+    stampPos: "-left-4 top-6 rotate-[7deg]",
+    yOffset: "md:translate-y-6",
+  },
+  {
+    id: "operator",
+    label: "Slick operator",
+    margin: "earner",
+    marginAlt: "smooth",
+    stamp: "On the books",
+    stampSelected: "Made",
+    toneHint: "smooth, charming, calculating, sharp dresser",
+    fileNo: "03",
+    rotation: -0.6,
+    stampPos: "right-4 bottom-4 rotate-[-12deg]",
+    yOffset: "md:translate-y-2",
+  },
+];
+
+
 const filmAtmosphere = (f: MafiaFilm) => {
   const t = f.tone[0] ?? "personal";
   return t.charAt(0).toUpperCase() + t.slice(1) + ".";
@@ -91,6 +147,8 @@ const MafiaNamePage = () => {
   const [finalePhase, setFinalePhase] = useState(0);
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [avatarLoading, setAvatarLoading] = useState(false);
+  const [cardAvatars, setCardAvatars] = useState<(string | null)[]>([null, null, null]);
+  const [cardAvatarLoading, setCardAvatarLoading] = useState<boolean[]>([false, false, false]);
 
   const generateCountRef = useRef(0);
   const filmInputRef = useRef<HTMLInputElement>(null);
@@ -173,6 +231,8 @@ const MafiaNamePage = () => {
       await new Promise((r) => setTimeout(r, wait));
       setNames(generated);
       setRevealPhase("settled");
+      // Fire 3 avatar generations in parallel — each card gets its own persona
+      generateCardAvatars(generated, chosenFilm, chosenTopping);
       track(EVT.MAFIA_NAMES_GENERATED, {
         count: generated.length,
         movie: chosenFilm.title,
@@ -271,6 +331,53 @@ const MafiaNamePage = () => {
     }
   };
 
+  const generateCardAvatars = async (
+    namesList: GeneratedName[],
+    chosenFilm: MafiaFilm,
+    chosenTopping: string,
+  ) => {
+    const slice = namesList.slice(0, 3);
+    setCardAvatars([null, null, null]);
+    setCardAvatarLoading(slice.map(() => true).concat(Array(3 - slice.length).fill(false)).slice(0, 3));
+    await Promise.all(
+      slice.map(async (n, i) => {
+        try {
+          const personaTone = [
+            ...(chosenFilm.tone ?? []),
+            CARD_PERSONALITIES[i]?.toneHint ?? "",
+          ].filter(Boolean);
+          const { data, error } = await supabase.functions.invoke("generate-mafia-avatar", {
+            body: {
+              name: n.name,
+              topping: chosenTopping,
+              filmTitle: chosenFilm.title,
+              filmTone: personaTone,
+            },
+          });
+          if (error) throw error;
+          const img = (data as any)?.image;
+          if (img) {
+            setCardAvatars((prev) => {
+              const next = [...prev];
+              next[i] = img;
+              return next;
+            });
+          }
+        } catch (e) {
+          // silent — card still works without avatar
+        } finally {
+          setCardAvatarLoading((prev) => {
+            const next = [...prev];
+            next[i] = false;
+            return next;
+          });
+        }
+      }),
+    );
+  };
+
+
+
 
   const handleClaim = async () => {
     if (!film || !topping || selectedIdx === null) return;
@@ -296,8 +403,13 @@ const MafiaNamePage = () => {
       });
       setClaimed(true);
       setStep("claim");
-      // Fire avatar generation in parallel with the ceremony
-      generateAvatar(chosen);
+      // If we already generated this card's avatar, use it; otherwise generate now
+      const existing = selectedIdx !== null ? cardAvatars[selectedIdx] : null;
+      if (existing) {
+        setAvatarUrl(existing);
+      } else {
+        generateAvatar(chosen);
+      }
     } catch (e: any) {
       toast({
         title: "Could not seal the envelope",
@@ -345,10 +457,12 @@ const MafiaNamePage = () => {
     setFinalePhase(0);
     setAvatarUrl(null);
     setAvatarLoading(false);
+    setCardAvatars([null, null, null]);
+    setCardAvatarLoading([false, false, false]);
   };
 
-  const primary = names[0];
-  const alternates = names.slice(1, 3);
+  const topThree = names.slice(0, 3);
+
 
   // Names used during the cycling animation - pull characters from canon for flavor
   const cyclePool = useMemo(() => {
@@ -501,28 +615,21 @@ const MafiaNamePage = () => {
                 <CyclingStage pool={cyclePool} tick={cycleTick} />
               )}
 
-              {revealPhase === "settled" && primary && (
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-                  {/* Primary featured */}
-                  <NameCard
-                    name={primary}
-                    index={0}
-                    primary
-                    isSelected={selectedIdx === 0}
-                    onSelect={() => { setSelectedIdx(0); setEditedName(primary.name); setEditing(false); }}
-                  />
-                  {/* Alternates */}
-                  <div className="flex flex-col gap-5">
-                    {alternates.map((n, i) => (
-                      <NameCard
-                        key={i + 1}
-                        name={n}
-                        index={i + 1}
-                        isSelected={selectedIdx === i + 1}
-                        onSelect={() => { setSelectedIdx(i + 1); setEditedName(n.name); setEditing(false); }}
-                      />
-                    ))}
-                  </div>
+              {revealPhase === "settled" && topThree.length > 0 && (
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-6 lg:gap-8">
+                  {topThree.map((n, i) => (
+                    <FamilyFileCard
+                      key={i}
+                      name={n}
+                      index={i}
+                      persona={CARD_PERSONALITIES[i]}
+                      avatarUrl={cardAvatars[i]}
+                      avatarLoading={cardAvatarLoading[i]}
+                      isSelected={selectedIdx === i}
+                      anySelected={selectedIdx !== null}
+                      onSelect={() => { setSelectedIdx(i); setEditedName(n.name); setEditing(false); }}
+                    />
+                  ))}
                 </div>
               )}
 
@@ -1035,76 +1142,154 @@ function CyclingStage({ pool, tick }: { pool: string[]; tick: number }) {
   );
 }
 
-function NameCard({
+function FamilyFileCard({
   name,
   index,
-  primary,
+  persona,
+  avatarUrl,
+  avatarLoading,
   isSelected,
+  anySelected,
   onSelect,
 }: {
   name: GeneratedName;
   index: number;
-  primary?: boolean;
+  persona: typeof CARD_PERSONALITIES[number];
+  avatarUrl: string | null;
+  avatarLoading: boolean;
   isSelected: boolean;
+  anySelected: boolean;
   onSelect: () => void;
 }) {
+  const dimmed = anySelected && !isSelected;
+  // Polaroid tilt alternates direction per card for imperfect collectible feel
+  const polaroidTilt = [-3.5, 2.4, -1.8][index] ?? 0;
+  const margin = isSelected ? persona.marginAlt : persona.margin;
+
   return (
     <button
       onClick={onSelect}
-      className={`group relative flex flex-col overflow-hidden rounded-[24px] border bg-cream p-6 text-left transition-all duration-300 md:p-8 ${
-        primary ? "md:col-span-2 md:row-span-1" : ""
-      } ${
-        isSelected
-          ? "-translate-y-1 border-tomato/70 shadow-[0_30px_60px_-30px_hsl(0_93%_60%/0.55)]"
-          : "border-ink/10 hover:-translate-y-0.5 hover:border-ink/25 hover:shadow-[0_18px_38px_-24px_hsl(0_0%_0%/0.35)]"
-      }`}
       style={{
-        backgroundImage: isSelected
-          ? "radial-gradient(80% 60% at 50% 0%, hsl(46 100% 62% / 0.10), transparent 70%)"
-          : undefined,
+        transform: `rotate(${isSelected ? 0 : persona.rotation}deg)`,
       }}
+      className={`group relative flex flex-col rounded-[22px] border bg-cream p-5 pt-6 text-left transition-all duration-500 md:p-6 md:pt-7 ${persona.yOffset} ${
+        isSelected
+          ? "-translate-y-2 border-tomato/70 shadow-[0_36px_70px_-28px_hsl(0_93%_60%/0.55)] z-10"
+          : "border-ink/12 hover:-translate-y-1.5 hover:rotate-0 hover:border-ink/30 hover:shadow-[0_22px_45px_-22px_hsl(0_0%_0%/0.4)]"
+      } ${dimmed ? "opacity-90" : "opacity-100"}`}
     >
-      <div aria-hidden className="pointer-events-none absolute inset-0 grain opacity-30" />
+      {/* Layered paper texture */}
+      <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[22px] grain opacity-40" />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 rounded-[22px]"
+        style={{
+          backgroundImage:
+            "radial-gradient(120% 80% at 0% 0%, hsl(40 35% 92% / 0.6), transparent 55%), radial-gradient(120% 80% at 100% 100%, hsl(28 30% 80% / 0.25), transparent 55%)",
+        }}
+      />
+      {/* Subtle edge wear */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 rounded-[22px]"
+        style={{
+          boxShadow:
+            "inset 0 0 0 1px hsl(28 25% 18% / 0.04), inset 0 -22px 32px -28px hsl(28 30% 18% / 0.22)",
+        }}
+      />
+      {/* Warm spotlight on hover/selected */}
+      <span
+        aria-hidden
+        className={`pointer-events-none absolute inset-0 rounded-[22px] transition-opacity duration-500 ${
+          isSelected ? "opacity-100" : "opacity-0 group-hover:opacity-70 group-focus-visible:opacity-70"
+        }`}
+        style={{
+          background:
+            "radial-gradient(70% 55% at 50% 0%, hsl(46 100% 62% / 0.14), transparent 70%)",
+        }}
+      />
 
+      {/* Header — file number + persona */}
       <div className="relative flex items-center justify-between">
-        <p className="ui text-[10px] uppercase tracking-[0.28em] text-ink/45">
-          {primary ? "The chosen name" : `Alternate · No. ${index}`}
+        <p className="ui text-[10px] uppercase tracking-[0.28em] text-ink/50">
+          § Family file no. {persona.fileNo}
         </p>
-        {isSelected && (
-          <span className="ui rounded-full border border-tomato/40 bg-tomato/10 px-2.5 py-0.5 text-[9px] uppercase tracking-[0.24em] text-tomato">
-            Yours
-          </span>
-        )}
+        <span className="ui rounded-full border border-ink/15 px-2 py-0.5 text-[9px] uppercase tracking-[0.22em] text-ink/55">
+          {persona.label}
+        </span>
       </div>
 
-      <h3
-        className={`font-display relative mt-4 font-black leading-[1.02] tracking-[-0.01em] text-ink ${
-          primary
-            ? "text-[clamp(2rem,4.6vw,3.6rem)]"
-            : "text-[clamp(1.4rem,2.2vw,1.9rem)]"
-        }`}
-      >
+      {/* Avatar slot — polaroid-style portrait */}
+      <div className="relative mt-5 flex justify-center">
+        <span
+          className="relative block w-[78%] max-w-[240px] rounded-[6px] border border-ink/10 bg-cream p-2 shadow-[0_14px_28px_-18px_hsl(20_30%_15%/0.5)]"
+          style={{ transform: `rotate(${polaroidTilt}deg)` }}
+        >
+          {/* tape strips */}
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -top-2 left-6 h-3 w-12 rotate-[-6deg] rounded-[2px] bg-butter/70 opacity-80 shadow-sm"
+          />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -top-1.5 right-5 h-2.5 w-10 rotate-[8deg] rounded-[2px] bg-butter/60 opacity-70 shadow-sm"
+          />
+          <span className="relative block aspect-square w-full overflow-hidden rounded-[3px] bg-ink/10">
+            {avatarUrl ? (
+              <img
+                src={avatarUrl}
+                alt=""
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+              />
+            ) : avatarLoading ? (
+              <span className="grid h-full w-full place-items-center bg-gradient-to-br from-ink/10 to-ink/20">
+                <span className="ui text-[10px] uppercase tracking-[0.22em] text-ink/40 animate-pulse">
+                  Developing...
+                </span>
+              </span>
+            ) : (
+              <span className="grid h-full w-full place-items-center bg-ink/10 text-3xl text-ink/30">
+                ?
+              </span>
+            )}
+            {/* portrait vignette */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(120% 80% at 50% 110%, hsl(20 50% 10% / 0.4), transparent 60%)",
+              }}
+            />
+          </span>
+        </span>
+      </div>
+
+      {/* Alias */}
+      <h3 className="font-display relative mt-5 text-[clamp(1.5rem,2.2vw,2rem)] font-black leading-[1.02] tracking-[-0.01em] text-ink">
         {name.name}
-        {/* signature underline on selected */}
         <span
           aria-hidden
           className={`absolute -bottom-1 left-0 h-[3px] bg-tomato transition-all duration-500 ${
-            isSelected ? "w-[68%] opacity-100" : "w-0 opacity-0"
+            isSelected ? "w-[72%] opacity-100" : "w-0 opacity-0"
           }`}
           style={{ borderRadius: 2 }}
         />
       </h3>
 
-      <p className={`relative mt-4 leading-relaxed text-ink/75 ${primary ? "text-[16px] max-w-prose" : "text-[14px]"}`}>
+      {/* Descriptor */}
+      <p className="relative mt-3 text-[14px] leading-relaxed text-ink/75">
         {name.explanation}
       </p>
 
-      {primary && name.style_tags?.length > 0 && (
-        <div className="relative mt-6 flex flex-wrap gap-2">
-          {name.style_tags.map((tag) => (
+      {/* Tags */}
+      {name.style_tags?.length > 0 && (
+        <div className="relative mt-4 flex flex-wrap gap-1.5">
+          {name.style_tags.slice(0, 4).map((tag) => (
             <span
               key={tag}
-              className="ui rounded-full border border-ink/15 px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-ink/55"
+              className="ui rounded-full border border-ink/15 bg-cream/60 px-2 py-0.5 text-[9.5px] uppercase tracking-[0.18em] text-ink/55"
             >
               {tag}
             </span>
@@ -1112,27 +1297,34 @@ function NameCard({
         </div>
       )}
 
-      {/* stamp effect on selection */}
-      {isSelected && primary && (
-        <span
-          aria-hidden
-          className="seal-stamp pointer-events-none absolute -right-3 -top-3 inline-flex h-20 w-20 rotate-[-6deg] items-center justify-center rounded-full border-[3px] border-tomato/80 text-tomato"
-        >
-          <span className="ui text-center text-[8px] font-bold uppercase leading-tight tracking-[0.18em]">
-            Family<br />Approved
-          </span>
+      {/* Round wax stamp — position varies per card */}
+      <span
+        aria-hidden
+        className={`seal-stamp pointer-events-none absolute ${persona.stampPos} inline-flex h-16 w-16 items-center justify-center rounded-full border-[2.5px] text-tomato transition-all duration-500 ${
+          isSelected
+            ? "scale-110 border-tomato/85 opacity-100"
+            : "scale-90 border-tomato/35 opacity-60 group-hover:opacity-85 group-focus-visible:opacity-85"
+        }`}
+      >
+        <span className="ui text-center text-[8px] font-bold uppercase leading-tight tracking-[0.16em]">
+          {isSelected ? persona.stampSelected : persona.stamp.split(" ").map((w, i, a) => (
+            <span key={i}>
+              {w}
+              {i < a.length - 1 && <br />}
+            </span>
+          ))}
         </span>
-      )}
+      </span>
 
-      {/* handwritten margin note when selected */}
-      {isSelected && (
-        <span
-          aria-hidden
-          className="handwritten pointer-events-none absolute -bottom-3 right-4 rotate-[-6deg] text-[18px] text-tomato"
-        >
-          {primary ? "this guy" : "keep it"}
-        </span>
-      )}
+      {/* Handwritten margin note */}
+      <span
+        aria-hidden
+        className={`handwritten pointer-events-none absolute -bottom-3 right-5 rotate-[-6deg] text-[17px] transition-all duration-500 ${
+          isSelected ? "text-tomato opacity-100" : "text-ink/45 opacity-80"
+        }`}
+      >
+        {margin}
+      </span>
     </button>
   );
 }
