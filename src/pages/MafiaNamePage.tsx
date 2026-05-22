@@ -564,7 +564,7 @@ const MafiaNamePage = () => {
             <div className="mt-10 text-center md:mt-14">
               <p className="overline text-tomato">§ 04 · The naming</p>
               <h2 className="font-display mx-auto mt-4 max-w-3xl text-[clamp(2rem,5vw,3.5rem)] font-black leading-[0.95] tracking-[-0.01em]">
-                The family has spoken.
+                The pizza has spoken.
               </h2>
               <p className="ui mt-4 text-[12px] uppercase tracking-[0.28em] text-ink/45">
                 One of these belongs to you.
