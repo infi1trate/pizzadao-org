@@ -60,54 +60,34 @@ const toppingDescriptor = (t: string) =>
 // Three distinct personas — each card carries one. Order matches names[0..2].
 const CARD_PERSONALITIES: {
   id: string;
-  label: string;
   margin: string;
-  marginAlt: string;
-  stamp: string;
-  stampSelected: string;
   toneHint: string;
   fileNo: string;
   rotation: number;
-  stampPos: string;
   yOffset: string;
 }[] = [
   {
     id: "classic",
-    label: "Old guard",
     margin: "trusted",
-    marginAlt: "this guy",
-    stamp: "Sworn in",
-    stampSelected: "Made",
     toneHint: "classic, controlled, respected, quiet authority",
     fileNo: "01",
     rotation: -1.2,
-    stampPos: "-right-3 -top-3 rotate-[-8deg]",
     yOffset: "md:translate-y-0",
   },
   {
     id: "wildcard",
-    label: "Wildcard",
     margin: "dangerous",
-    marginAlt: "watch this one",
-    stamp: "Loose cannon",
-    stampSelected: "Made",
     toneHint: "chaotic, unpredictable, feared, wild eyes",
     fileNo: "02",
     rotation: 0.9,
-    stampPos: "-left-4 top-6 rotate-[7deg]",
     yOffset: "md:translate-y-6",
   },
   {
     id: "operator",
-    label: "Slick operator",
-    margin: "earner",
-    marginAlt: "smooth",
-    stamp: "On the books",
-    stampSelected: "Made",
+    margin: "real earner",
     toneHint: "smooth, charming, calculating, sharp dresser",
     fileNo: "03",
     rotation: -0.6,
-    stampPos: "right-4 bottom-4 rotate-[-12deg]",
     yOffset: "md:translate-y-2",
   },
 ];
