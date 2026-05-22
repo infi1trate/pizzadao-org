@@ -22,14 +22,14 @@ import ensLogo from "@/assets/partners/ens.png";
 // `scale` optically normalizes logos so they read at the same visual weight.
 // Target: average ~= PayPal × 0.8. Container height controls the absolute size.
 const PARTNERS = [
-  { name: "PayPal", logo: paypalLogo, scale: 1.0 },
-  { name: "Ledger", logo: ledgerLogo, scale: 0.85 },
-  { name: "Stand With Crypto", logo: standWithCryptoLogo, scale: 1.1 },
-  { name: "Brave", logo: braveLogo, scale: 1.0 },
-  { name: "OpenSea", logo: openseaLogo, scale: 1.0 },
-  { name: "Coinbase", logo: coinbaseLogo, scale: 0.95 },
-  { name: "Polygon", logo: polygonLogo, scale: 1.0 },
-  { name: "ENS", logo: ensLogo, scale: 0.95 },
+  { name: "PayPal", logo: paypalLogo, scale: 0.95 },
+  { name: "Ledger", logo: ledgerLogo, scale: 1.05 },
+  { name: "Stand With Crypto", logo: standWithCryptoLogo, scale: 1.05 },
+  { name: "Brave", logo: braveLogo, scale: 0.95 },
+  { name: "OpenSea", logo: openseaLogo, scale: 0.82 },
+  { name: "Coinbase", logo: coinbaseLogo, scale: 0.78 },
+  { name: "Polygon", logo: polygonLogo, scale: 0.95 },
+  { name: "ENS", logo: ensLogo, scale: 0.8 },
 ];
 
 
@@ -160,7 +160,7 @@ const PartnersPage = () => {
       {/* Case studies consolidated into Sponsorship "What we've built" */}
 
       {/* Logo wall - premium social proof, gallery-like */}
-      <section className="paper-soft paper-drift relative overflow-hidden bg-cream py-10 md:py-14">
+      <section className="paper-soft paper-drift relative overflow-hidden bg-cream py-20 md:py-28">
         {/* Soft tonal wash - warm editorial depth (keeps the section reading as paper) */}
         <div
           aria-hidden
@@ -171,12 +171,12 @@ const PartnersPage = () => {
           }}
         />
         {/* Section seam hairlines - tighter editorial join */}
-        <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/10" />
-        <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-ink/10" />
+        <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/[0.06]" />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-ink/[0.06]" />
         {/* Editorial corner registration - folio in lower right */}
         <RegistrationMarks
           tone="ink"
-          opacity={0.14}
+          opacity={0.12}
           inset={20}
           size={12}
           corners={["tl", "tr", "br"]}
@@ -186,25 +186,25 @@ const PartnersPage = () => {
         <div className="container relative">
           {/* Editorial heading - minimal, confident */}
           <div className="relative max-w-2xl">
-            <h2 className="font-display text-[clamp(1.6rem,3.2vw,2.6rem)] font-extrabold leading-[1] tracking-[-0.02em] text-ink">
+            <h2 className="font-display text-[clamp(1.5rem,2.8vw,2.3rem)] font-extrabold leading-[1] tracking-[-0.02em] text-ink">
               Selected collaborators
             </h2>
-            <p className="font-serif mt-3 text-[15.5px] leading-[1.55] text-ink/60 md:text-[16px]">
+            <p className="font-serif mt-3 text-[15px] leading-[1.55] text-ink/55 md:text-[15.5px]">
               Organizations we've collaborated with across culture, technology, and community.
             </p>
           </div>
 
           {/* Thin editorial rule */}
-          <div className="mt-7 h-px bg-ink/10 md:mt-8" />
+          <div className="mt-10 h-px bg-ink/[0.06] md:mt-12" />
 
           {/* Logo grid - monochrome ink silhouettes via CSS mask, colour on hover.
               No image boxes or background artifacts: the logo's alpha drives the mask. */}
-          <div className="mt-9 grid grid-cols-2 gap-x-12 gap-y-10 md:mt-10 md:grid-cols-4 md:gap-x-14 md:gap-y-10">
+          <div className="mt-14 grid grid-cols-2 gap-x-16 gap-y-14 md:mt-20 md:grid-cols-4 md:gap-x-24 md:gap-y-16">
             {PARTNERS.map((p, i) => (
               <div
                 key={p.name}
-                className="group relative flex h-9 items-center justify-center animate-fade-in md:h-11"
-                style={{ animationDelay: `${i * 70}ms`, animationFillMode: "both" }}
+                className="group relative flex h-7 items-center justify-center animate-fade-in md:h-8"
+                style={{ animationDelay: `${i * 90}ms`, animationFillMode: "both" }}
               >
                 <div
                   className="relative flex h-full w-full items-center justify-center"
@@ -216,12 +216,12 @@ const PartnersPage = () => {
                     alt={`${p.name} logo`}
                     loading="lazy"
                     decoding="async"
-                    className="absolute inset-0 m-auto h-full w-auto max-w-[82%] object-contain opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
+                    className="absolute inset-0 m-auto h-full w-auto max-w-[78%] object-contain opacity-0 transition-opacity duration-700 ease-out group-hover:opacity-90"
                   />
                   {/* Ink silhouette - masked from the logo's own alpha channel */}
                   <div
                     aria-hidden
-                    className="h-full w-full max-w-[82%] transition-opacity duration-500 ease-out group-hover:opacity-0"
+                    className="h-full w-full max-w-[78%] transition-opacity duration-700 ease-out group-hover:opacity-0"
                     style={{
                       WebkitMaskImage: `url(${p.logo})`,
                       maskImage: `url(${p.logo})`,
@@ -231,7 +231,7 @@ const PartnersPage = () => {
                       maskPosition: "center",
                       WebkitMaskSize: "contain",
                       maskSize: "contain",
-                      backgroundColor: "hsl(var(--ink) / 0.72)",
+                      backgroundColor: "hsl(var(--ink) / 0.5)",
                     }}
                   />
                 </div>
@@ -241,12 +241,12 @@ const PartnersPage = () => {
 
 
           {/* Subtle editorial footer mark */}
-          <div className="mt-10 flex items-center gap-3 md:mt-12">
-            <div className="h-px flex-1 bg-ink/8" />
-            <span className="ui text-[10px] font-medium uppercase tracking-[0.24em] text-ink/30">
+          <div className="mt-16 flex items-center gap-3 md:mt-20">
+            <div className="h-px flex-1 bg-ink/[0.06]" />
+            <span className="ui text-[10px] font-medium tracking-[0.24em] text-ink/30">
               Trusted globally
             </span>
-            <div className="h-px flex-1 bg-ink/8" />
+            <div className="h-px flex-1 bg-ink/[0.06]" />
           </div>
         </div>
       </section>
