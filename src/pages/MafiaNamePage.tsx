@@ -919,6 +919,45 @@ function SelectedFilmCard({ film, onChange }: { film: MafiaFilm; onChange: () =>
   );
 }
 
+function SelectedToppingCard({ topping, onChange }: { topping: string; onChange: () => void }) {
+  const img = TOPPING_IMAGE[topping];
+  return (
+    <div>
+      <p className="overline text-tomato">§ 02 · Your topping</p>
+      <div className="mt-4 flex items-center justify-between gap-6 rounded-[28px] border border-ink/12 bg-cream p-5 shadow-[0_30px_60px_-40px_hsl(46_100%_50%/0.35)] md:p-6">
+        <div className="flex min-w-0 items-center gap-5 md:gap-6">
+          {img ? (
+            <img
+              src={img}
+              alt=""
+              className="h-20 w-20 shrink-0 rounded-2xl object-cover shadow-[0_12px_24px_-14px_hsl(20_30%_15%/0.5)] md:h-24 md:w-24"
+            />
+          ) : (
+            <span className="grid h-20 w-20 shrink-0 place-items-center rounded-2xl bg-ink/5 text-4xl md:h-24 md:w-24">
+              {TOPPING_EMOJI[topping] ?? "🍕"}
+            </span>
+          )}
+          <div className="min-w-0">
+            <h3 className="font-display text-[clamp(1.6rem,3.8vw,2.6rem)] font-black leading-[0.95] tracking-[-0.01em] text-ink">
+              {topping}
+            </h3>
+            <p className="ui mt-2 text-[11px] uppercase tracking-[0.22em] text-ink/50">
+              {toppingDescriptor(topping)}
+            </p>
+          </div>
+        </div>
+        <button
+          onClick={onChange}
+          className="ui shrink-0 rounded-full border border-ink/20 px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-ink/60 hover:border-tomato hover:text-tomato"
+        >
+          Change
+        </button>
+      </div>
+    </div>
+  );
+}
+
+
 const FEATURED_TOPPINGS = [
   "Pepperoni",
   "Mushroom",
