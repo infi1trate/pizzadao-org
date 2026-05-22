@@ -157,14 +157,17 @@ Generate exactly 3 PizzaDAO neighborhood aliases as the JSON array described.
       if (match) names = JSON.parse(match[0]);
     }
 
+    const prevNorm = new Set(prevList.map((n) => n.trim().toLowerCase()));
     names = names
       .filter((n) => n && typeof n.name === "string")
-      .slice(0, 3)
       .map((n) => ({
         name: String(n.name).slice(0, 120),
         explanation: String(n.explanation ?? "").slice(0, 240),
         style_tags: Array.isArray(n.style_tags) ? n.style_tags.slice(0, 5).map(String) : [],
-      }));
+      }))
+      // Drop any exact repeats from previous rolls in this session.
+      .filter((n) => !prevNorm.has(n.name.trim().toLowerCase()))
+      .slice(0, 3);
 
     if (names.length === 0) {
       return new Response(JSON.stringify({ error: "Could not generate names." }), {
