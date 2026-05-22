@@ -162,9 +162,7 @@ const PartnersPage = () => {
 
       {/* Logo wall — premium social proof, gallery-like */}
       <section className="paper-soft paper-drift relative overflow-hidden bg-cream py-14 md:py-20">
-        {/* Warm grain overlay */}
-        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.32]" />
-        {/* Soft tonal wash — warm editorial depth */}
+        {/* Soft tonal wash — warm editorial depth (keeps the section reading as paper) */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -173,20 +171,18 @@ const PartnersPage = () => {
               "linear-gradient(180deg, hsl(44 60% 97%) 0%, hsl(var(--cream)) 40%, hsl(44 55% 96%) 100%)",
           }}
         />
-        {/* Faint vignette edge darkening */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse at 50% 50%, transparent 60%, hsl(30 20% 50% / 0.04) 100%)",
-          }}
-        />
         {/* Section seam hairlines — tighter editorial join */}
         <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/10" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-ink/10" />
-        {/* Photographic atmosphere — faint table-surface warmth at edge */}
-        <PhotoVeil variant="table" position="top-right" opacity={0.045} blend="multiply" />
+        {/* Editorial corner registration — folio in lower right */}
+        <RegistrationMarks
+          tone="ink"
+          opacity={0.14}
+          inset={20}
+          size={12}
+          corners={["tl", "tr", "br"]}
+          folio="§ B.02"
+        />
 
         <div className="container relative">
           {/* Editorial heading — minimal, confident */}
