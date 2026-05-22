@@ -72,7 +72,7 @@ const CARD_PERSONALITIES: {
     toneHint: "classic, controlled, respected, quiet authority",
     fileNo: "01",
     rotation: -1.2,
-    yOffset: "md:translate-y-0",
+    yOffset: "lg:translate-y-0",
   },
   {
     id: "wildcard",
@@ -80,7 +80,7 @@ const CARD_PERSONALITIES: {
     toneHint: "chaotic, unpredictable, feared, wild eyes",
     fileNo: "02",
     rotation: 0.9,
-    yOffset: "md:translate-y-6",
+    yOffset: "lg:translate-y-6",
   },
   {
     id: "operator",
@@ -88,7 +88,7 @@ const CARD_PERSONALITIES: {
     toneHint: "smooth, charming, calculating, sharp dresser",
     fileNo: "03",
     rotation: -0.6,
-    yOffset: "md:translate-y-2",
+    yOffset: "lg:translate-y-2",
   },
 ];
 
@@ -476,10 +476,11 @@ const MafiaNamePage = () => {
         <section className="relative z-10">
           <div className="container pt-2 pb-6 md:pt-4 md:pb-10">
             <p className="overline text-tomato">§ 01 · PizzaDAO initiation</p>
-            <h1 className="font-display mt-4 text-[clamp(2.5rem,7vw,5.5rem)] font-black leading-[0.9] tracking-[-0.015em]">
-              Claim your<br />
+            <h1 className="font-display mt-4 max-w-[14ch] text-[clamp(2.5rem,7vw,5.5rem)] font-black leading-[0.9] tracking-[-0.015em] [text-wrap:balance]">
+              Claim your{" "}
               <span className="text-tomato">mafia name.</span>
             </h1>
+
             <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-ink/75">
               Choose a film. Choose a topping. The family handles the rest.
             </p>
@@ -587,7 +588,7 @@ const MafiaNamePage = () => {
               )}
 
               {revealPhase === "settled" && topThree.length > 0 && (
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-3 lg:gap-6 xl:gap-8">
                   {topThree.map((n, i) => (
                     <FamilyFileCard
                       key={i}
@@ -1202,7 +1203,7 @@ function FamilyFileCard({
       </div>
 
       {/* Alias */}
-      <h3 className="font-display relative mt-4 text-[clamp(1.5rem,2.2vw,2rem)] font-black leading-[1.02] tracking-[-0.01em] text-ink">
+      <h3 className="font-display relative mt-4 text-[clamp(1.35rem,1.6vw,1.85rem)] font-black leading-[1.05] tracking-[-0.01em] text-ink [text-wrap:balance]">
         {name.name}
         <span
           aria-hidden
