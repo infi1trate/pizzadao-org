@@ -587,7 +587,7 @@ const MafiaNamePage = () => {
               )}
 
               {revealPhase === "settled" && topThree.length > 0 && (
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-3 lg:gap-6 xl:gap-8">
                   {topThree.map((n, i) => (
                     <FamilyFileCard
                       key={i}
