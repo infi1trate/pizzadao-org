@@ -122,7 +122,7 @@ const Journal = () => {
             rel="noreferrer"
             className="group block"
           >
-            <figure className="grain relative overflow-hidden rounded-2xl">
+            <figure className="grain relative overflow-hidden rounded-2xl" data-benny="true">
               <img
                 src={lead}
                 alt="Pizza party gathering, lit warmly, strangers becoming neighbors"
@@ -172,7 +172,7 @@ const Journal = () => {
         <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2">
           {SECONDARY.map((s, i) => (
             <a key={s.title} href={s.href} target={s.href.startsWith("http") ? "_blank" : undefined} rel={s.href.startsWith("http") ? "noreferrer" : undefined} className="group flex flex-col">
-              <figure className="grain relative overflow-hidden rounded-2xl">
+              <figure className="grain relative overflow-hidden rounded-2xl" data-benny="true">
                 <img
                   src={s.img}
                   alt={s.title}

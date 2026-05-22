@@ -54,7 +54,7 @@ const Hero = () => {
 
         {/* Contained hero image */}
         <figure className="mt-12 md:mt-16">
-          <div className="overflow-hidden rounded-2xl">
+          <div className="relative overflow-hidden rounded-2xl" data-benny="true">
             <img
               src={heroCrowd}
               alt="A packed Bitcoin Pizza Day crowd glowing under amber stage lights at a global PizzaDAO event"
