@@ -1144,76 +1144,154 @@ function CyclingStage({ pool, tick }: { pool: string[]; tick: number }) {
   );
 }
 
-function NameCard({
+function FamilyFileCard({
   name,
   index,
-  primary,
+  persona,
+  avatarUrl,
+  avatarLoading,
   isSelected,
+  anySelected,
   onSelect,
 }: {
   name: GeneratedName;
   index: number;
-  primary?: boolean;
+  persona: typeof CARD_PERSONALITIES[number];
+  avatarUrl: string | null;
+  avatarLoading: boolean;
   isSelected: boolean;
+  anySelected: boolean;
   onSelect: () => void;
 }) {
+  const dimmed = anySelected && !isSelected;
+  // Polaroid tilt alternates direction per card for imperfect collectible feel
+  const polaroidTilt = [-3.5, 2.4, -1.8][index] ?? 0;
+  const margin = isSelected ? persona.marginAlt : persona.margin;
+
   return (
     <button
       onClick={onSelect}
-      className={`group relative flex flex-col overflow-hidden rounded-[24px] border bg-cream p-6 text-left transition-all duration-300 md:p-8 ${
-        primary ? "md:col-span-2 md:row-span-1" : ""
-      } ${
-        isSelected
-          ? "-translate-y-1 border-tomato/70 shadow-[0_30px_60px_-30px_hsl(0_93%_60%/0.55)]"
-          : "border-ink/10 hover:-translate-y-0.5 hover:border-ink/25 hover:shadow-[0_18px_38px_-24px_hsl(0_0%_0%/0.35)]"
-      }`}
       style={{
-        backgroundImage: isSelected
-          ? "radial-gradient(80% 60% at 50% 0%, hsl(46 100% 62% / 0.10), transparent 70%)"
-          : undefined,
+        transform: `rotate(${isSelected ? 0 : persona.rotation}deg)`,
       }}
+      className={`group relative flex flex-col rounded-[22px] border bg-cream p-5 pt-6 text-left transition-all duration-500 md:p-6 md:pt-7 ${persona.yOffset} ${
+        isSelected
+          ? "-translate-y-2 border-tomato/70 shadow-[0_36px_70px_-28px_hsl(0_93%_60%/0.55)] z-10"
+          : "border-ink/12 hover:-translate-y-1.5 hover:rotate-0 hover:border-ink/30 hover:shadow-[0_22px_45px_-22px_hsl(0_0%_0%/0.4)]"
+      } ${dimmed ? "opacity-90" : "opacity-100"}`}
     >
-      <div aria-hidden className="pointer-events-none absolute inset-0 grain opacity-30" />
+      {/* Layered paper texture */}
+      <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[22px] grain opacity-40" />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 rounded-[22px]"
+        style={{
+          backgroundImage:
+            "radial-gradient(120% 80% at 0% 0%, hsl(40 35% 92% / 0.6), transparent 55%), radial-gradient(120% 80% at 100% 100%, hsl(28 30% 80% / 0.25), transparent 55%)",
+        }}
+      />
+      {/* Subtle edge wear */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 rounded-[22px]"
+        style={{
+          boxShadow:
+            "inset 0 0 0 1px hsl(28 25% 18% / 0.04), inset 0 -22px 32px -28px hsl(28 30% 18% / 0.22)",
+        }}
+      />
+      {/* Warm spotlight on hover/selected */}
+      <span
+        aria-hidden
+        className={`pointer-events-none absolute inset-0 rounded-[22px] transition-opacity duration-500 ${
+          isSelected ? "opacity-100" : "opacity-0 group-hover:opacity-70 group-focus-visible:opacity-70"
+        }`}
+        style={{
+          background:
+            "radial-gradient(70% 55% at 50% 0%, hsl(46 100% 62% / 0.14), transparent 70%)",
+        }}
+      />
 
+      {/* Header — file number + persona */}
       <div className="relative flex items-center justify-between">
-        <p className="ui text-[10px] uppercase tracking-[0.28em] text-ink/45">
-          {primary ? "The chosen name" : `Alternate · No. ${index}`}
+        <p className="ui text-[10px] uppercase tracking-[0.28em] text-ink/50">
+          § Family file no. {persona.fileNo}
         </p>
-        {isSelected && (
-          <span className="ui rounded-full border border-tomato/40 bg-tomato/10 px-2.5 py-0.5 text-[9px] uppercase tracking-[0.24em] text-tomato">
-            Yours
-          </span>
-        )}
+        <span className="ui rounded-full border border-ink/15 px-2 py-0.5 text-[9px] uppercase tracking-[0.22em] text-ink/55">
+          {persona.label}
+        </span>
       </div>
 
-      <h3
-        className={`font-display relative mt-4 font-black leading-[1.02] tracking-[-0.01em] text-ink ${
-          primary
-            ? "text-[clamp(2rem,4.6vw,3.6rem)]"
-            : "text-[clamp(1.4rem,2.2vw,1.9rem)]"
-        }`}
-      >
+      {/* Avatar slot — polaroid-style portrait */}
+      <div className="relative mt-5 flex justify-center">
+        <span
+          className="relative block w-[78%] max-w-[240px] rounded-[6px] border border-ink/10 bg-cream p-2 shadow-[0_14px_28px_-18px_hsl(20_30%_15%/0.5)]"
+          style={{ transform: `rotate(${polaroidTilt}deg)` }}
+        >
+          {/* tape strips */}
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -top-2 left-6 h-3 w-12 rotate-[-6deg] rounded-[2px] bg-butter/70 opacity-80 shadow-sm"
+          />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -top-1.5 right-5 h-2.5 w-10 rotate-[8deg] rounded-[2px] bg-butter/60 opacity-70 shadow-sm"
+          />
+          <span className="relative block aspect-square w-full overflow-hidden rounded-[3px] bg-ink/10">
+            {avatarUrl ? (
+              <img
+                src={avatarUrl}
+                alt=""
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+              />
+            ) : avatarLoading ? (
+              <span className="grid h-full w-full place-items-center bg-gradient-to-br from-ink/10 to-ink/20">
+                <span className="ui text-[10px] uppercase tracking-[0.22em] text-ink/40 animate-pulse">
+                  Developing...
+                </span>
+              </span>
+            ) : (
+              <span className="grid h-full w-full place-items-center bg-ink/10 text-3xl text-ink/30">
+                ?
+              </span>
+            )}
+            {/* portrait vignette */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(120% 80% at 50% 110%, hsl(20 50% 10% / 0.4), transparent 60%)",
+              }}
+            />
+          </span>
+        </span>
+      </div>
+
+      {/* Alias */}
+      <h3 className="font-display relative mt-5 text-[clamp(1.5rem,2.2vw,2rem)] font-black leading-[1.02] tracking-[-0.01em] text-ink">
         {name.name}
-        {/* signature underline on selected */}
         <span
           aria-hidden
           className={`absolute -bottom-1 left-0 h-[3px] bg-tomato transition-all duration-500 ${
-            isSelected ? "w-[68%] opacity-100" : "w-0 opacity-0"
+            isSelected ? "w-[72%] opacity-100" : "w-0 opacity-0"
           }`}
           style={{ borderRadius: 2 }}
         />
       </h3>
 
-      <p className={`relative mt-4 leading-relaxed text-ink/75 ${primary ? "text-[16px] max-w-prose" : "text-[14px]"}`}>
+      {/* Descriptor */}
+      <p className="relative mt-3 text-[14px] leading-relaxed text-ink/75">
         {name.explanation}
       </p>
 
-      {primary && name.style_tags?.length > 0 && (
-        <div className="relative mt-6 flex flex-wrap gap-2">
-          {name.style_tags.map((tag) => (
+      {/* Tags */}
+      {name.style_tags?.length > 0 && (
+        <div className="relative mt-4 flex flex-wrap gap-1.5">
+          {name.style_tags.slice(0, 4).map((tag) => (
             <span
               key={tag}
-              className="ui rounded-full border border-ink/15 px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-ink/55"
+              className="ui rounded-full border border-ink/15 bg-cream/60 px-2 py-0.5 text-[9.5px] uppercase tracking-[0.18em] text-ink/55"
             >
               {tag}
             </span>
@@ -1221,27 +1299,34 @@ function NameCard({
         </div>
       )}
 
-      {/* stamp effect on selection */}
-      {isSelected && primary && (
-        <span
-          aria-hidden
-          className="seal-stamp pointer-events-none absolute -right-3 -top-3 inline-flex h-20 w-20 rotate-[-6deg] items-center justify-center rounded-full border-[3px] border-tomato/80 text-tomato"
-        >
-          <span className="ui text-center text-[8px] font-bold uppercase leading-tight tracking-[0.18em]">
-            Family<br />Approved
-          </span>
+      {/* Round wax stamp — position varies per card */}
+      <span
+        aria-hidden
+        className={`seal-stamp pointer-events-none absolute ${persona.stampPos} inline-flex h-16 w-16 items-center justify-center rounded-full border-[2.5px] text-tomato transition-all duration-500 ${
+          isSelected
+            ? "scale-110 border-tomato/85 opacity-100"
+            : "scale-90 border-tomato/35 opacity-60 group-hover:opacity-85 group-focus-visible:opacity-85"
+        }`}
+      >
+        <span className="ui text-center text-[8px] font-bold uppercase leading-tight tracking-[0.16em]">
+          {isSelected ? persona.stampSelected : persona.stamp.split(" ").map((w, i, a) => (
+            <span key={i}>
+              {w}
+              {i < a.length - 1 && <br />}
+            </span>
+          ))}
         </span>
-      )}
+      </span>
 
-      {/* handwritten margin note when selected */}
-      {isSelected && (
-        <span
-          aria-hidden
-          className="handwritten pointer-events-none absolute -bottom-3 right-4 rotate-[-6deg] text-[18px] text-tomato"
-        >
-          {primary ? "this guy" : "keep it"}
-        </span>
-      )}
+      {/* Handwritten margin note */}
+      <span
+        aria-hidden
+        className={`handwritten pointer-events-none absolute -bottom-3 right-5 rotate-[-6deg] text-[17px] transition-all duration-500 ${
+          isSelected ? "text-tomato opacity-100" : "text-ink/45 opacity-80"
+        }`}
+      >
+        {margin}
+      </span>
     </button>
   );
 }
