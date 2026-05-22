@@ -1,43 +1,67 @@
-## Where to put it
+## Scope
 
-The strongest spot is right **after the Ritual section's closing line** ("Every May 22, a door opens.") and **before "How It Runs"** — a small editorial breath between the ritual and the operations chapters. Treating it as a single tilted polaroid "field dispatch" makes it feel like marginalia from the archive, not another data point in the contact sheet.
+Four focused fixes on `/partners`. No new features, no backend.
 
-Why not the Field Contact Sheet itself: that strip is a tight 4-up grid representing one global night across continents. Slotting a 5th tile would break its rhythm and dilute its meaning. A standalone aside lets the volcano photo land as a punchline rather than just another city.
+---
 
-Why not the Archive Wall: the wall is the emotional crescendo at the end. Dropping a punchline there flattens it.
+### 1. Globe annotations → white speech bubbles
 
-## The aside
+`src/components/PartnersGlobe.tsx` currently renders annotations as Rock Salt handwritten text (lines 231–264). Replace with small, white, rounded speech-bubble labels:
 
-A small, off-grid polaroid moment — taped, slightly rotated, with a Rock Salt handwritten caption. Reads like a journal entry someone left between chapters.
+- Drop the `Rock Salt` font; switch to the project UI sans (matches our `.ui` class — small caps off, sentence case, ~2.1px in viewBox units).
+- Each annotation becomes a `<g>` with:
+  - A rounded `<rect>` filled `hsl(var(--cream))` (near-white) with very soft shadow (`filter: drop-shadow(0 0.3px 0.6px rgba(0,0,0,0.25))`) and 0.08 ink stroke at 25% opacity.
+  - A tiny pointer triangle from the bubble toward the city dot.
+  - The text inside, ink-colored, no rotation.
+- Bubble width measured from text length (approx via `text.length * 1.05px + 2.4px` padding); height fixed (~3.2px).
+- Keep the existing breathing/visibility math so bubbles still fade in/out gracefully near the limb and stagger as the globe rotates.
+- Pointer + bubble offset uses existing `dx/dy/anchor` so positions stay art-directed.
 
-```text
-                    ┌──────────────────┐
-                    │                  │
-                    │   [volcano       │
-                    │    pizza photo]  │
-                    │                  │
-                    │                  │
-                    └──────────────────┘
-                       Pacaya · 2024
-              "We've even served pizza
-                    on a volcano."
-```
+### 2. Restore lost city dots on the globe
 
-Visual treatment:
-- Cream polaroid frame matching the Archive wall polaroids (consistency).
-- Rotated ~2°, taped corner, taking ~38% width on desktop, full-width on mobile.
-- Caption uses the existing `handwritten` (Rock Salt) class — short, warm, single line. Dateline below in the tiny ui overline style ("Field dispatch · Pacaya volcano, Guatemala · 2024").
-- Sits inside a narrow container with generous vertical space (mt-20 md:mt-28) so it reads as a deliberate pause, not decoration.
+`PartnersGlobe.tsx` line 215 currently does `if (p.tier === 0) return null;`, which **drops ~329 of the 421 cities** in `pizzadao-cities.json`. Only anchors (12) + MID-tier (hash%5, ~80) render. The reference project (Global Pizza Party 2026) lists ~445 cities — our 421-entry dataset is intact, the globe is just hiding them.
 
-## Implementation steps
+Fix: render tier 0 as a faint floor layer.
 
-1. Copy `user-uploads://4.jpeg` to `src/assets/volcano-pizza.jpg`.
-2. In `src/pages/About.tsx`, import the asset alongside the other hero/ritual images.
-3. Insert a new block immediately after the "Every May 22, a door opens." line (around line 383) and before the closing `</section>` of the Ritual section — a centered figure with the polaroid styling, handwritten caption, and small dateline overline.
-4. Keep tone consistent with the rest of the page: no exclamation marks beyond the handwritten quote, no badges, no extra microcopy.
+- Tier 0: `r = 0.28`, opacity `0.32 * (0.4 + 0.6 * vis)`, ink color.
+- Tier 1 (MID): unchanged — `r = 0.55`, opacity `~0.6`.
+- Tier 2 (ANCHORS): unchanged — `r = 1.05`, opacity `~0.92`.
 
-## Out of scope
+Net effect: all 421 chapters become visible as a quiet constellation, anchors still dominate the hierarchy.
 
-- No new section header, no new section divider.
-- No changes to the Field Contact Sheet grid.
-- No changes to the Archive wall.
+### 3. Hero ↔ "Why brands partner" breathing room
+
+`Sponsorship.tsx` line 92 opens with `pt-7 md:pt-9` (very tight). Increase to `pt-16 md:pt-24` and keep the existing soft tonal bridge so the join still feels intentional, not abrupt. The hero's own `paper-soft` section already has bottom padding via its content; we only widen the gap on the Sponsorship side so nothing else shifts.
+
+### 4. Collaborator logos — smaller & uniform
+
+Target: average logo size ≈ current PayPal × 0.8.
+
+In `src/pages/PartnersPage.tsx`:
+
+- Shrink container from `h-14 md:h-16` to `h-9 md:h-11`.
+- Tighten per-logo `scale` values so they cluster around `1.0` instead of swinging 0.78–1.40:
+
+  ```text
+  PayPal           1.00
+  Coinbase         0.95   (pure wordmark)
+  Ledger           0.85   (bracketed wordmark, wide)
+  Brave            1.00   (icon + word)
+  OpenSea          1.00   (icon + word)
+  Polygon          1.00   (icon + word)
+  ENS              0.95   (icon + word)
+  Stand With Crypto 1.10  (stacked 3-line block; still needs a small bump)
+  ```
+
+- Reduce row gap slightly (`gap-y-12 → gap-y-10`) so the smaller logos don't float in too much vertical air.
+- Keep the mask-based monochrome / colour-on-hover behavior unchanged.
+
+---
+
+## Files touched
+
+- `src/components/PartnersGlobe.tsx` — speech-bubble annotations + restore tier-0 dots
+- `src/components/Sponsorship.tsx` — top padding
+- `src/pages/PartnersPage.tsx` — logo container height, scale map, row gap
+
+No data files, no new assets, no routing or analytics changes.

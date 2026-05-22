@@ -89,7 +89,7 @@ const Sponsorship = () => {
   return (
     <section
       id="partner-with-us"
-      className="relative overflow-hidden bg-butter/25 pt-7 text-ink md:pt-9"
+      className="relative overflow-hidden bg-butter/25 pt-16 text-ink md:pt-24"
     >
       {/* Top hairline + soft tonal bridge from cream hero above */}
       <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/10" />

@@ -19,18 +19,17 @@ import polygonLogo from "@/assets/partners/polygon.png";
 import ensLogo from "@/assets/partners/ens.png";
 
 
-// `scale` optically normalizes logos with very different aspect ratios so they
-// read at the same visual weight in the grid (stacked marks like SWC need to
-// shrink; pure wordmarks like PayPal/Coinbase/Ledger can sit taller).
+// `scale` optically normalizes logos so they read at the same visual weight.
+// Target: average ~= PayPal × 0.8. Container height controls the absolute size.
 const PARTNERS = [
-  { name: "PayPal", logo: paypalLogo, scale: 0.95 },
-  { name: "Ledger", logo: ledgerLogo, scale: 0.78 },
-  { name: "Stand With Crypto", logo: standWithCryptoLogo, scale: 1.4 },
-  { name: "Brave", logo: braveLogo, scale: 1.15 },
-  { name: "OpenSea", logo: openseaLogo, scale: 0.95 },
-  { name: "Coinbase", logo: coinbaseLogo, scale: 0.85 },
+  { name: "PayPal", logo: paypalLogo, scale: 1.0 },
+  { name: "Ledger", logo: ledgerLogo, scale: 0.85 },
+  { name: "Stand With Crypto", logo: standWithCryptoLogo, scale: 1.1 },
+  { name: "Brave", logo: braveLogo, scale: 1.0 },
+  { name: "OpenSea", logo: openseaLogo, scale: 1.0 },
+  { name: "Coinbase", logo: coinbaseLogo, scale: 0.95 },
   { name: "Polygon", logo: polygonLogo, scale: 1.0 },
-  { name: "ENS", logo: ensLogo, scale: 0.85 },
+  { name: "ENS", logo: ensLogo, scale: 0.95 },
 ];
 
 
@@ -200,11 +199,11 @@ const PartnersPage = () => {
 
           {/* Logo grid — monochrome ink silhouettes via CSS mask, colour on hover.
               No image boxes or background artifacts: the logo's alpha drives the mask. */}
-          <div className="mt-9 grid grid-cols-2 gap-x-12 gap-y-12 md:mt-10 md:grid-cols-4 md:gap-x-14 md:gap-y-14">
+          <div className="mt-9 grid grid-cols-2 gap-x-12 gap-y-10 md:mt-10 md:grid-cols-4 md:gap-x-14 md:gap-y-10">
             {PARTNERS.map((p, i) => (
               <div
                 key={p.name}
-                className="group relative flex h-14 items-center justify-center animate-fade-in md:h-16"
+                className="group relative flex h-9 items-center justify-center animate-fade-in md:h-11"
                 style={{ animationDelay: `${i * 70}ms`, animationFillMode: "both" }}
               >
                 <div
