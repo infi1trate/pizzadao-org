@@ -231,8 +231,8 @@ const MafiaNamePage = () => {
       await new Promise((r) => setTimeout(r, wait));
       setNames(generated);
       setRevealPhase("settled");
-      // Fire 3 avatar generations in parallel — each card gets its own persona
-      generateCardAvatars(generated, chosenFilm, chosenTopping);
+      // Avatars are NOT pre-generated for each card.
+      // The avatar is earned — it is only generated after the user claims a name.
       track(EVT.MAFIA_NAMES_GENERATED, {
         count: generated.length,
         movie: chosenFilm.title,
