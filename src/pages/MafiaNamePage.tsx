@@ -1139,8 +1139,6 @@ function FamilyFileCard({
   name,
   index,
   persona,
-  avatarUrl,
-  avatarLoading,
   isSelected,
   anySelected,
   onSelect,
@@ -1148,16 +1146,20 @@ function FamilyFileCard({
   name: GeneratedName;
   index: number;
   persona: typeof CARD_PERSONALITIES[number];
-  avatarUrl: string | null;
-  avatarLoading: boolean;
   isSelected: boolean;
   anySelected: boolean;
   onSelect: () => void;
 }) {
   const dimmed = anySelected && !isSelected;
-  // Polaroid tilt alternates direction per card for imperfect collectible feel
-  const polaroidTilt = [-3.5, 2.4, -1.8][index] ?? 0;
   const margin = isSelected ? persona.marginAlt : persona.margin;
+  // Monogram from the alias initials — a tiny dossier mark, not an avatar
+  const initials = name.name
+    .replace(/["'"]/g, "")
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? "")
+    .join("");
 
   return (
     <button
@@ -1212,52 +1214,37 @@ function FamilyFileCard({
         </span>
       </div>
 
-      {/* Avatar slot — polaroid-style portrait */}
-      <div className="relative mt-5 flex justify-center">
+      {/* Symbolic dossier mark — NOT an avatar.
+          The portrait is earned only after the name is claimed. */}
+      <div className="relative mt-5 flex items-center gap-4 border-y border-dashed border-ink/15 py-4">
+        {/* Monogram stamp — a hand-inked seal stand-in */}
         <span
-          className="relative block w-[78%] max-w-[240px] rounded-[6px] border border-ink/10 bg-cream p-2 shadow-[0_14px_28px_-18px_hsl(20_30%_15%/0.5)]"
-          style={{ transform: `rotate(${polaroidTilt}deg)` }}
+          aria-hidden
+          className="relative grid h-16 w-16 shrink-0 place-items-center rounded-full border-[2px] border-ink/55 bg-cream/70 text-ink"
+          style={{ transform: "rotate(-4deg)", boxShadow: "inset 0 0 0 1px hsl(28 25% 18% / 0.08)" }}
         >
-          {/* tape strips */}
-          <span
-            aria-hidden
-            className="pointer-events-none absolute -top-2 left-6 h-3 w-12 rotate-[-6deg] rounded-[2px] bg-butter/70 opacity-80 shadow-sm"
-          />
-          <span
-            aria-hidden
-            className="pointer-events-none absolute -top-1.5 right-5 h-2.5 w-10 rotate-[8deg] rounded-[2px] bg-butter/60 opacity-70 shadow-sm"
-          />
-          <span className="relative block aspect-square w-full overflow-hidden rounded-[3px] bg-ink/10">
-            {avatarUrl ? (
-              <img
-                src={avatarUrl}
-                alt=""
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-              />
-            ) : avatarLoading ? (
-              <span className="grid h-full w-full place-items-center bg-gradient-to-br from-ink/10 to-ink/20">
-                <span className="ui text-[10px] uppercase tracking-[0.22em] text-ink/40 animate-pulse">
-                  Developing...
-                </span>
-              </span>
-            ) : (
-              <span className="grid h-full w-full place-items-center bg-ink/10 text-3xl text-ink/30">
-                ?
-              </span>
-            )}
-            {/* portrait vignette */}
-            <span
-              aria-hidden
-              className="pointer-events-none absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(120% 80% at 50% 110%, hsl(20 50% 10% / 0.4), transparent 60%)",
-              }}
-            />
+          <span aria-hidden className="pointer-events-none absolute inset-0 rounded-full grain opacity-50" />
+          <span className="font-display relative text-[20px] font-black tracking-tight">
+            {initials || "—"}
           </span>
         </span>
+
+        <div className="min-w-0 flex-1">
+          <p className="ui text-[9px] uppercase tracking-[0.28em] text-ink/45">
+            Portrait
+          </p>
+          <p className="ui mt-1 text-[10px] uppercase tracking-[0.22em] text-ink/55">
+            Sealed · awaits your claim
+          </p>
+          <span
+            aria-hidden
+            className="handwritten mt-1 inline-block rotate-[-3deg] text-[13px] text-tomato/80"
+          >
+            {isSelected ? "made" : persona.margin}
+          </span>
+        </div>
       </div>
+
 
       {/* Alias */}
       <h3 className="font-display relative mt-5 text-[clamp(1.5rem,2.2vw,2rem)] font-black leading-[1.02] tracking-[-0.01em] text-ink">
