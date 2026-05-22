@@ -1,6 +1,31 @@
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 
-const STYLE = `Vintage rubber-hose cartoon mafia portrait, circular crop on warm cream background with a thick dark navy border ring. Thick black outlines, flat shading, warm muted vintage palette (cream, mustard, oxblood, charcoal). Expressive mischievous face, pinstripe suit with tie, fedora with feather. Slight wear, hand-drawn imperfections. No text, no logos, no watermarks. Single character, head-and-shoulders, centered, square 1:1 composition. Style references: classic Fleischer cartoons, Looney Tunes mobsters, vintage pizza mascots.`;
+const STYLE = `Vintage 1930s rubber-hose mafia cartoon portrait. Hand-drawn underground comic energy — like a slightly unhinged pizza-mafia cartoonist sketched it in the back of a Brooklyn print shop. Circular crop on warm cream background with a thick, slightly uneven dark navy border ring (imperfect, ink-bleed feel).
+
+CHARACTER (most important):
+- exaggerated oversized nose (Roman, crooked, bulbous, broken — pick one and commit)
+- asymmetrical face: one eye squinting, the other wider; crooked mouth
+- weird memorable proportions (tiny head + huge collar, or huge head + tiny shoulders)
+- caricature, NOT mascot
+- expressive eccentric accessories: lopsided fedora with a bent feather, oversized pinkie ring, fat cigar, gold tooth, scar, eye patch — choose unexpected combos
+- pinstripe suit with hand-drawn imperfect stripes, a wide tie or bowtie
+
+LINE & TEXTURE:
+- thick uneven black outlines (rubber-hose limbs feel even though it's a portrait)
+- visible ink wobble, slight smudges, paper grain showing through
+- flat shading with hatching/cross-hatching in shadows
+- muted vintage palette: cream, mustard, oxblood, charcoal, faded teal
+- avoid clean vector edges, avoid Pixar 3D, avoid symmetrical mascot faces, avoid generic NFT clip-art
+
+PIZZA REFERENCE (subtle and secondary — one or two, never more):
+- a tiny pepperoni pin on the lapel, OR
+- a sausage held like a cigar with curling smoke, OR
+- an anchovy-shaped tie clip, OR
+- a marinara splatter on the collar, OR
+- a topping-shaped boutonnière
+
+COMPOSITION: single character, head-and-shoulders, centered, square 1:1.
+NEGATIVE: no text, no logos, no watermarks, no real-world celebrities, no clean vector, no symmetrical anime, no chibi, no Pixar polish.`;
 
 const TOPPING_MOTIF: Record<string, string> = {
   Pepperoni: "red pepperoni pin on lapel, spicy hot-headed expression, red accents",
