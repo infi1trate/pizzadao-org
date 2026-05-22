@@ -231,8 +231,8 @@ const MafiaNamePage = () => {
       await new Promise((r) => setTimeout(r, wait));
       setNames(generated);
       setRevealPhase("settled");
-      // Fire 3 avatar generations in parallel — each card gets its own persona
-      generateCardAvatars(generated, chosenFilm, chosenTopping);
+      // Avatars are NOT pre-generated for each card.
+      // The avatar is earned — it is only generated after the user claims a name.
       track(EVT.MAFIA_NAMES_GENERATED, {
         count: generated.length,
         movie: chosenFilm.title,
@@ -403,13 +403,8 @@ const MafiaNamePage = () => {
       });
       setClaimed(true);
       setStep("claim");
-      // If we already generated this card's avatar, use it; otherwise generate now
-      const existing = selectedIdx !== null ? cardAvatars[selectedIdx] : null;
-      if (existing) {
-        setAvatarUrl(existing);
-      } else {
-        generateAvatar(chosen);
-      }
+      // Avatar is only generated *after* the name is claimed.
+      generateAvatar(chosen);
     } catch (e: any) {
       toast({
         title: "Could not seal the envelope",
@@ -623,8 +618,6 @@ const MafiaNamePage = () => {
                       name={n}
                       index={i}
                       persona={CARD_PERSONALITIES[i]}
-                      avatarUrl={cardAvatars[i]}
-                      avatarLoading={cardAvatarLoading[i]}
                       isSelected={selectedIdx === i}
                       anySelected={selectedIdx !== null}
                       onSelect={() => { setSelectedIdx(i); setEditedName(n.name); setEditing(false); }}
@@ -1146,8 +1139,6 @@ function FamilyFileCard({
   name,
   index,
   persona,
-  avatarUrl,
-  avatarLoading,
   isSelected,
   anySelected,
   onSelect,
@@ -1155,16 +1146,20 @@ function FamilyFileCard({
   name: GeneratedName;
   index: number;
   persona: typeof CARD_PERSONALITIES[number];
-  avatarUrl: string | null;
-  avatarLoading: boolean;
   isSelected: boolean;
   anySelected: boolean;
   onSelect: () => void;
 }) {
   const dimmed = anySelected && !isSelected;
-  // Polaroid tilt alternates direction per card for imperfect collectible feel
-  const polaroidTilt = [-3.5, 2.4, -1.8][index] ?? 0;
   const margin = isSelected ? persona.marginAlt : persona.margin;
+  // Monogram from the alias initials — a tiny dossier mark, not an avatar
+  const initials = name.name
+    .replace(/["'"]/g, "")
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? "")
+    .join("");
 
   return (
     <button
@@ -1219,52 +1214,37 @@ function FamilyFileCard({
         </span>
       </div>
 
-      {/* Avatar slot — polaroid-style portrait */}
-      <div className="relative mt-5 flex justify-center">
+      {/* Symbolic dossier mark — NOT an avatar.
+          The portrait is earned only after the name is claimed. */}
+      <div className="relative mt-5 flex items-center gap-4 border-y border-dashed border-ink/15 py-4">
+        {/* Monogram stamp — a hand-inked seal stand-in */}
         <span
-          className="relative block w-[78%] max-w-[240px] rounded-[6px] border border-ink/10 bg-cream p-2 shadow-[0_14px_28px_-18px_hsl(20_30%_15%/0.5)]"
-          style={{ transform: `rotate(${polaroidTilt}deg)` }}
+          aria-hidden
+          className="relative grid h-16 w-16 shrink-0 place-items-center rounded-full border-[2px] border-ink/55 bg-cream/70 text-ink"
+          style={{ transform: "rotate(-4deg)", boxShadow: "inset 0 0 0 1px hsl(28 25% 18% / 0.08)" }}
         >
-          {/* tape strips */}
-          <span
-            aria-hidden
-            className="pointer-events-none absolute -top-2 left-6 h-3 w-12 rotate-[-6deg] rounded-[2px] bg-butter/70 opacity-80 shadow-sm"
-          />
-          <span
-            aria-hidden
-            className="pointer-events-none absolute -top-1.5 right-5 h-2.5 w-10 rotate-[8deg] rounded-[2px] bg-butter/60 opacity-70 shadow-sm"
-          />
-          <span className="relative block aspect-square w-full overflow-hidden rounded-[3px] bg-ink/10">
-            {avatarUrl ? (
-              <img
-                src={avatarUrl}
-                alt=""
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-              />
-            ) : avatarLoading ? (
-              <span className="grid h-full w-full place-items-center bg-gradient-to-br from-ink/10 to-ink/20">
-                <span className="ui text-[10px] uppercase tracking-[0.22em] text-ink/40 animate-pulse">
-                  Developing...
-                </span>
-              </span>
-            ) : (
-              <span className="grid h-full w-full place-items-center bg-ink/10 text-3xl text-ink/30">
-                ?
-              </span>
-            )}
-            {/* portrait vignette */}
-            <span
-              aria-hidden
-              className="pointer-events-none absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(120% 80% at 50% 110%, hsl(20 50% 10% / 0.4), transparent 60%)",
-              }}
-            />
+          <span aria-hidden className="pointer-events-none absolute inset-0 rounded-full grain opacity-50" />
+          <span className="font-display relative text-[20px] font-black tracking-tight">
+            {initials || "—"}
           </span>
         </span>
+
+        <div className="min-w-0 flex-1">
+          <p className="ui text-[9px] uppercase tracking-[0.28em] text-ink/45">
+            Portrait
+          </p>
+          <p className="ui mt-1 text-[10px] uppercase tracking-[0.22em] text-ink/55">
+            Sealed · awaits your claim
+          </p>
+          <span
+            aria-hidden
+            className="handwritten mt-1 inline-block rotate-[-3deg] text-[13px] text-tomato/80"
+          >
+            {isSelected ? "made" : persona.margin}
+          </span>
+        </div>
       </div>
+
 
       {/* Alias */}
       <h3 className="font-display relative mt-5 text-[clamp(1.5rem,2.2vw,2rem)] font-black leading-[1.02] tracking-[-0.01em] text-ink">
@@ -1395,58 +1375,50 @@ function FinaleScene({
         </div>
       </div>
 
-      <div className="container relative z-10 py-12 md:py-20">
+      <div className="container relative z-10 py-10 md:py-14">
         {/* Dossier paper */}
         <div
-          className={`relative mx-auto max-w-3xl ${phase >= 2 ? "paper-shake" : ""}`}
+          className={`relative mx-auto max-w-2xl ${phase >= 2 ? "paper-shake" : ""}`}
           style={{ transform: "rotate(-0.4deg)" }}
         >
-          {/* paperclip */}
-          <span
-            aria-hidden
-            className="absolute -top-5 left-10 z-20 hidden h-14 w-7 rounded-full border-[3px] border-ink/30 shadow-[1px_2px_3px_hsl(20_20%_10%/0.25)] md:block"
-            style={{ borderBottomColor: "transparent" }}
-          />
-
           <div
-            className="relative overflow-hidden rounded-[18px] border border-ink/15 bg-[hsl(40_38%_94%)] p-7 shadow-[0_50px_90px_-40px_hsl(20_30%_8%/0.7)] md:p-12"
+            className="relative overflow-hidden rounded-[16px] border border-ink/15 bg-[hsl(40_38%_94%)] p-5 shadow-[0_50px_90px_-40px_hsl(20_30%_8%/0.7)] md:p-8"
             style={{
               backgroundImage:
-                "radial-gradient(120% 70% at 50% 0%, hsl(46 100% 62% / 0.18), transparent 60%), radial-gradient(80% 60% at 100% 100%, hsl(20 40% 25% / 0.08), transparent 70%)",
+                "radial-gradient(120% 70% at 50% 0%, hsl(46 100% 62% / 0.15), transparent 60%), radial-gradient(80% 60% at 100% 100%, hsl(20 40% 25% / 0.08), transparent 70%)",
             }}
           >
             <div aria-hidden className="film-flicker pointer-events-none absolute inset-0 grain opacity-60" />
             {/* coffee stain */}
             <span
               aria-hidden
-              className="pointer-events-none absolute -right-6 top-12 h-28 w-28 rounded-full opacity-[0.12]"
+              className="pointer-events-none absolute -right-6 top-12 h-24 w-24 rounded-full opacity-[0.12]"
               style={{ background: "radial-gradient(circle, hsl(20 50% 20%) 0%, transparent 70%)" }}
             />
-            {/* fold line */}
-            <span aria-hidden className="pointer-events-none absolute inset-x-0 top-1/2 h-px bg-ink/8" />
 
-            {/* Header strip */}
-            <div className="relative flex items-center justify-between border-b border-ink/15 pb-4">
-              <p className="ui text-[9px] uppercase tracking-[0.32em] text-ink/55">
+            {/* TOP ROW: paperclip · family record label · archive # */}
+            <div className="relative flex items-center gap-3 pb-3">
+              <span
+                aria-hidden
+                className="inline-block h-5 w-3 shrink-0 rounded-full border-[2px] border-ink/45"
+                style={{ borderBottomColor: "transparent", transform: "rotate(-12deg)" }}
+              />
+              <p className="ui flex-1 truncate text-[10px] uppercase tracking-[0.32em] text-ink/60">
                 PizzaDAO · Family Record
               </p>
-              <p className="ui text-[9px] uppercase tracking-[0.32em] text-ink/55">
-                Archive No. {archive}
+              <p className="ui shrink-0 text-[10px] uppercase tracking-[0.32em] text-ink/55">
+                № {archive}
               </p>
             </div>
+            <div className="relative h-px bg-ink/20" />
 
-            {/* Top row: avatar + title */}
-            <div className="relative mt-8 grid grid-cols-1 gap-6 md:grid-cols-[200px_1fr] md:gap-10">
-              {/* Avatar - taped photo */}
-              <div className="relative mx-auto md:mx-0">
-                <span
-                  aria-hidden
-                  className="absolute -top-3 left-1/2 z-20 h-5 w-20 -translate-x-1/2 -rotate-3 bg-butter/80 shadow-sm"
-                  style={{ clipPath: "polygon(4% 0, 96% 0, 100% 100%, 0 100%)" }}
-                />
+            {/* MAIN BODY: avatar | alias + approval + descriptor */}
+            <div className="relative mt-6 grid grid-cols-[110px_1fr] gap-5 md:grid-cols-[160px_1fr] md:gap-8">
+              {/* Avatar */}
+              <div className="relative">
                 <div
-                  className={`relative grid h-44 w-44 place-items-center overflow-hidden rounded-full border-[4px] border-ink/85 bg-butter/40 shadow-[0_18px_30px_-14px_hsl(20_30%_10%/0.5)] ${phase >= 2 ? "seal-stamp" : "opacity-0"}`}
-                  style={{ transform: "rotate(-3deg)" }}
+                  className={`relative grid aspect-square w-full place-items-center overflow-hidden rounded-full border-[3px] border-ink/85 bg-butter/40 shadow-[0_16px_28px_-14px_hsl(20_30%_10%/0.5)] ${phase >= 2 ? "seal-stamp" : "opacity-0"}`}
+                  style={{ transform: "rotate(-2deg)" }}
                 >
                   {avatarUrl ? (
                     <img src={avatarUrl} alt={`${finalName} mafia portrait`} className="h-full w-full object-cover" />
@@ -1454,36 +1426,26 @@ function FinaleScene({
                     <div className="grid place-items-center text-center text-ink/55">
                       {avatarLoading ? (
                         <>
-                          <div className="mb-2 h-6 w-6 animate-spin rounded-full border-2 border-tomato border-t-transparent" />
-                          <p className="ui text-[9px] uppercase tracking-[0.28em]">
-                            Painting<br />the portrait
+                          <div className="mb-1.5 h-5 w-5 animate-spin rounded-full border-2 border-tomato border-t-transparent" />
+                          <p className="ui text-[8.5px] uppercase tracking-[0.28em]">
+                            Inking<br />portrait
                           </p>
                         </>
                       ) : (
-                        <p className="ui text-[9px] uppercase tracking-[0.28em]">Portrait<br />pending</p>
+                        <p className="ui text-[8.5px] uppercase tracking-[0.28em]">Portrait<br />pending</p>
                       )}
                     </div>
                   )}
                 </div>
-                {/* Red approved stamp on top of photo */}
-                {phase >= 2 && (
-                  <span
-                    aria-hidden
-                    className="seal-stamp pointer-events-none absolute -right-3 bottom-2 inline-flex h-20 w-20 rotate-[-10deg] items-center justify-center rounded-full border-[3px] border-tomato/80 text-tomato"
-                  >
-                    <span className="ui text-center text-[8px] font-bold uppercase leading-tight tracking-[0.18em]">
-                      Made<br />{new Date().getFullYear()}
-                    </span>
-                  </span>
-                )}
               </div>
 
-              <div className="min-w-0">
-                <p className={`ui text-[10px] uppercase tracking-[0.32em] text-tomato transition-opacity duration-500 ${phase >= 3 ? "opacity-100" : "opacity-0"}`}>
+              {/* Alias + approval + descriptor */}
+              <div className="min-w-0 flex flex-col justify-center">
+                <p className={`ui text-[9.5px] uppercase tracking-[0.32em] text-tomato transition-opacity duration-500 ${phase >= 3 ? "opacity-100" : "opacity-0"}`}>
                   Status · Made
                 </p>
                 <h1
-                  className={`font-display mt-3 text-[clamp(2rem,6vw,4.4rem)] font-black leading-[0.95] tracking-[-0.015em] text-ink transition-all duration-700 ${
+                  className={`font-display mt-2 text-[clamp(1.6rem,4.4vw,3rem)] font-black leading-[0.95] tracking-[-0.015em] text-ink transition-all duration-700 ${
                     phase >= 4 ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0 blur-sm"
                   }`}
                 >
@@ -1491,59 +1453,71 @@ function FinaleScene({
                 </h1>
                 <span
                   aria-hidden
-                  className={`handwritten mt-2 inline-block rotate-[-3deg] text-[18px] text-tomato transition-opacity duration-500 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}
+                  className={`handwritten mt-1.5 inline-block rotate-[-3deg] text-[15px] text-tomato transition-opacity duration-500 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}
                 >
-                  approved - Benny
+                  approved — Benny
                 </span>
-
                 {description && (
-                  <p className={`mt-5 max-w-prose text-[15px] italic leading-relaxed text-ink/75 transition-opacity duration-700 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}>
+                  <p className={`mt-3 max-w-prose text-[13.5px] italic leading-snug text-ink/75 transition-opacity duration-700 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}>
                     "{description}"
                   </p>
                 )}
               </div>
             </div>
 
-            {/* Dossier rows */}
-            <div className={`relative mt-10 grid grid-cols-2 gap-x-6 gap-y-4 border-t border-ink/15 pt-6 transition-opacity duration-700 md:grid-cols-4 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}>
-              <DossierField label="Film" value={film?.title ?? "-"} />
-              <DossierField label="Origin" value={film?.country ?? "-"} />
-              <DossierField label="Topping" value={topping ?? "-"} />
+            {/* COMPACT METADATA ROW */}
+            <div className={`relative mt-6 grid grid-cols-2 gap-x-5 gap-y-3 border-t border-ink/15 pt-4 transition-opacity duration-700 md:grid-cols-4 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}>
+              <DossierField label="Film" value={film?.title ?? "—"} />
+              <DossierField label="Topping" value={topping ?? "—"} />
               <DossierField label="Initiated" value={`${new Date().toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}`} />
+              <DossierField label="Archive" value={`№ ${archive}`} />
             </div>
 
-            {/* Footer stamp + signature */}
-            <div className={`relative mt-10 flex flex-wrap items-end justify-between gap-6 border-t border-ink/15 pt-6 transition-opacity duration-700 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}>
-              <div>
-                <p className="ui text-[9px] uppercase tracking-[0.32em] text-ink/45">
-                  Family registry · sealed
-                </p>
-                <p className="handwritten mt-2 text-[22px] text-ink/80" style={{ transform: "rotate(-2deg)" }}>
-                  - Benny
-                </p>
-              </div>
-              {/* mini seal */}
-              <div className="relative">
-                {phase >= 2 && (
-                  <>
-                    <span aria-hidden className="seal-spread absolute inset-0 rounded-full bg-tomato/25" />
-                    <span aria-hidden className="seal-spread absolute inset-0 rounded-full bg-tomato/10 [animation-delay:120ms]" />
-                  </>
-                )}
-                <div
-                  className={`relative grid h-24 w-24 place-items-center rounded-full border-[3px] border-tomato bg-cream text-tomato shadow-[0_0_0_5px_hsl(0_93%_60%/0.10)] ${phase >= 2 ? "seal-stamp" : "opacity-0"}`}
+            {/* ONE stamped badge — physically applied, distressed, imperfect circle */}
+            {phase >= 2 && (
+              <span
+                aria-hidden
+                className="seal-stamp pointer-events-none absolute right-3 top-[42%] z-20 md:right-5"
+                style={{ transform: "rotate(-9deg)" }}
+              >
+                <span aria-hidden className="seal-spread absolute inset-0 -m-2 rounded-full bg-tomato/20" />
+                <span
+                  className="relative grid h-[86px] w-[86px] place-items-center text-tomato md:h-[104px] md:w-[104px]"
                   style={{
                     backgroundImage:
-                      "radial-gradient(60% 60% at 30% 30%, hsl(0 93% 60% / 0.10), transparent 70%)",
+                      "radial-gradient(60% 60% at 35% 30%, hsl(0 93% 60% / 0.16), transparent 70%)",
+                    border: "3px solid hsl(0 93% 45% / 0.85)",
+                    boxShadow:
+                      "inset 0 0 0 2px hsl(0 93% 45% / 0.30), inset 0 6px 14px -6px hsl(0 93% 30% / 0.45), 0 8px 14px -8px hsl(20 40% 10% / 0.4)",
+                    borderRadius: "49% 51% 52% 48% / 50% 49% 51% 50%",
+                    filter: "contrast(1.05)",
                   }}
                 >
-                  <div className="text-center leading-tight">
-                    <div className="ui text-[7px] uppercase tracking-[0.32em]">PizzaDAO</div>
-                    <div className="font-display mt-0.5 text-[11px] font-black uppercase tracking-[0.18em]">Officially<br/>Made</div>
+                  {/* paper-absorption distress */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 grain"
+                    style={{ borderRadius: "inherit", mixBlendMode: "multiply", opacity: 0.7 }}
+                  />
+                  {/* uneven ink bleed pockets */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                      borderRadius: "inherit",
+                      backgroundImage:
+                        "radial-gradient(20% 18% at 70% 25%, hsl(0 93% 30% / 0.35), transparent 70%), radial-gradient(15% 14% at 25% 75%, hsl(0 93% 30% / 0.30), transparent 70%), radial-gradient(8% 8% at 80% 80%, hsl(0 93% 30% / 0.45), transparent 70%)",
+                      mixBlendMode: "multiply",
+                    }}
+                  />
+                  <div className="relative text-center leading-tight">
+                    <div className="font-display text-[10.5px] font-black uppercase tracking-[0.18em] md:text-[12px]">Officially</div>
+                    <div className="font-display text-[15px] font-black uppercase tracking-[0.14em] md:text-[18px]">Made</div>
+                    <div className="ui mt-0.5 text-[7.5px] uppercase tracking-[0.32em] opacity-80">PizzaDAO</div>
                   </div>
-                </div>
-              </div>
-            </div>
+                </span>
+              </span>
+            )}
           </div>
 
           {/* Actions */}
