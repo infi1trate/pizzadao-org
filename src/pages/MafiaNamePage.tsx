@@ -403,8 +403,13 @@ const MafiaNamePage = () => {
       });
       setClaimed(true);
       setStep("claim");
-      // Fire avatar generation in parallel with the ceremony
-      generateAvatar(chosen);
+      // If we already generated this card's avatar, use it; otherwise generate now
+      const existing = selectedIdx !== null ? cardAvatars[selectedIdx] : null;
+      if (existing) {
+        setAvatarUrl(existing);
+      } else {
+        generateAvatar(chosen);
+      }
     } catch (e: any) {
       toast({
         title: "Could not seal the envelope",
