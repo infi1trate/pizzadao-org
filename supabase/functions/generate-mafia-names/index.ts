@@ -66,16 +66,18 @@ Deno.serve(async (req) => {
       });
     }
 
-    const userPrompt = `Movie title: ${movie.title}
-Movie year: ${movie.year ?? "unknown"}
+    const userPrompt = `Atmosphere film: ${movie.title}
+Year: ${movie.year ?? "unknown"}
 Country / region: ${movie.country ?? "unknown"}
 Overview: ${movie.overview ?? "—"}
-Key characters: ${(movie.characters ?? []).join(", ") || "—"}
 Tone / keywords: ${(movie.tone ?? []).join(", ") || "—"}
-Selected topping: ${topping}
+Initiate's topping (THE IDENTITY): ${topping}
 ${customNote ? `Custom user note: ${customNote}` : ""}
 
-Generate exactly 3 PizzaDAO mafia aliases as the JSON array described. Remember: the topping "${topping}" is the defining nickname — make it sticky and iconic. The movie shapes only the surname and cadence.`;
+Generate exactly 3 PizzaDAO underworld aliases as the JSON array described.
+- The topping "${topping}" IS the person — it must lead every name.
+- "${movie.title}" only provides cadence, swagger, and mood. Do NOT use its character names or surnames. No "fan fiction" of the cast.
+- Keep names short and sayable: PizzaDAO mythology first, mafia film flavor second.`;
 
     const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
