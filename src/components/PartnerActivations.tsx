@@ -24,7 +24,7 @@ const FRAMES: Frame[] = [
   { src: img04, alt: "Guests sharing pizza at a pink-themed brand activation.",          city: "Miami",      year: "'24", type: "Brand activation", ref: "PL.04", rotate: "rotate-[0.6deg]",   yOffset: 14 },
   { src: img02, alt: "Pixel-glasses portrait, slice in hand, night light.",              city: "Berlin",     year: "'23", type: "Chapter night",    ref: "PL.02", rotate: "-rotate-[0.5deg]",  yOffset: 6  },
   { src: img01, alt: "Chapter holding decorated pies in front of a red storefront.",     city: "Buenos Aires", year: "'24", type: "Chapter meet",   ref: "PL.01", rotate: "rotate-[0.7deg]",   yOffset: 22 },
-  { src: img06, alt: "Pizzaiolo holding a fresh margherita by a tiled oven.",            city: "Naples",     year: "'23", type: "Partner moment",   ref: "PL.06", rotate: "-rotate-[0.6deg]",  yOffset: 8  },
+  { src: img06, alt: "Pizzaiolo holding a fresh margherita by a tiled oven.",            city: "San Francisco", year: "'23", type: "Partner moment",   ref: "PL.06", rotate: "-rotate-[0.6deg]",  yOffset: 8  },
   { src: img05, alt: "Four people backstage holding slices, smiling.",                   city: "Los Angeles", year: "'24", type: "Brand activation",ref: "PL.05", rotate: "rotate-[0.5deg]",   yOffset: 18 },
   { src: img07, alt: "Team posing on a red carpet at the World Pizza Games.",            city: "Las Vegas",  year: "'24", type: "Partner moment",   ref: "PL.07", rotate: "-rotate-[0.4deg]",  yOffset: 2  },
 ];
