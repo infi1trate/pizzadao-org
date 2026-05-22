@@ -72,7 +72,7 @@ const CARD_PERSONALITIES: {
     toneHint: "classic, controlled, respected, quiet authority",
     fileNo: "01",
     rotation: -1.2,
-    yOffset: "md:translate-y-0",
+    yOffset: "lg:translate-y-0",
   },
   {
     id: "wildcard",
