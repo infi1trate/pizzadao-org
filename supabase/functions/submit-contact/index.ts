@@ -1,4 +1,5 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.0';
+import { sendLovableEmail } from 'npm:@lovable.dev/email-js';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -7,6 +8,8 @@ const corsHeaders = {
 };
 
 const TO_EMAIL = 'hello@pizzadao.org';
+const FROM_EMAIL = 'PizzaDAO <hello@pizzadao.org>';
+const SENDER_DOMAIN = 'notify.pizzadao.org';
 
 const escapeHtml = (s: string) =>
   s.replace(/&/g, '&amp;')
@@ -121,14 +124,24 @@ Deno.serve(async (req) => {
         `Email: ${email}\n\n` +
         `Message:\n${message}\n`;
 
-      const { send } = await import('npm:@lovable.dev/email-js@latest');
-      await send({
+      const apiKey = Deno.env.get('LOVABLE_API_KEY');
+      if (!apiKey) {
+        throw new Error('Missing email API key');
+      }
+
+      await sendLovableEmail({
         to: TO_EMAIL,
+        from: FROM_EMAIL,
         replyTo: email,
+        sender_domain: SENDER_DOMAIN,
         subject: `New PizzaDAO note from ${name}${intents.length ? ` (${intents[0]})` : ''}`,
         html,
         text,
-      });
+        purpose: 'transactional',
+        label: 'contact-form-notification',
+        idempotency_key: `contact-${row.id}-team-notification`,
+        message_id: `contact-${row.id}-team-notification`,
+      }, { apiKey });
       emailed = true;
     } catch (e) {
       console.error('email send failed (submission still stored):', e);
