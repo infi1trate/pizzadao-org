@@ -10,24 +10,27 @@ import { EVT } from "@/lib/analytics/events";
 
 
 import paypalLogo from "@/assets/partners/paypal.png";
-import ledgerLogo from "@/assets/partners/ledger.png";
+import ledgerLogo from "@/assets/partners/ledger.svg";
 import standWithCryptoLogo from "@/assets/partners/stand-with-crypto.png";
 import braveLogo from "@/assets/partners/brave.png";
 import openseaLogo from "@/assets/partners/opensea.png";
-import baseLogo from "@/assets/partners/base.png";
+import coinbaseLogo from "@/assets/partners/coinbase.png";
 import polygonLogo from "@/assets/partners/polygon.png";
 import ensLogo from "@/assets/partners/ens.png";
 
 
+// `scale` optically normalizes logos with very different aspect ratios so they
+// read at the same visual weight in the grid (stacked marks like SWC need to
+// shrink; pure wordmarks like PayPal/Coinbase/Ledger can sit taller).
 const PARTNERS = [
-  { name: "PayPal", color: "#003087", logo: paypalLogo },
-  { name: "Ledger", color: "#000000", logo: ledgerLogo },
-  { name: "Stand With Crypto", color: "#0052FF", logo: standWithCryptoLogo },
-  { name: "Brave", color: "#FB542B", logo: braveLogo },
-  { name: "OpenSea", color: "#2081E2", logo: openseaLogo },
-  { name: "Base", color: "#0052FF", logo: baseLogo },
-  { name: "Polygon", color: "#8247E5", logo: polygonLogo },
-  { name: "ENS", color: "#5298FF", logo: ensLogo },
+  { name: "PayPal", logo: paypalLogo, scale: 0.95 },
+  { name: "Ledger", logo: ledgerLogo, scale: 0.78 },
+  { name: "Stand With Crypto", logo: standWithCryptoLogo, scale: 1.4 },
+  { name: "Brave", logo: braveLogo, scale: 1.15 },
+  { name: "OpenSea", logo: openseaLogo, scale: 0.95 },
+  { name: "Coinbase", logo: coinbaseLogo, scale: 0.85 },
+  { name: "Polygon", logo: polygonLogo, scale: 1.0 },
+  { name: "ENS", logo: ensLogo, scale: 0.85 },
 ];
 
 
@@ -197,37 +200,42 @@ const PartnersPage = () => {
 
           {/* Logo grid — monochrome ink silhouettes via CSS mask, colour on hover.
               No image boxes or background artifacts: the logo's alpha drives the mask. */}
-          <div className="mt-9 grid grid-cols-2 gap-x-12 gap-y-10 md:mt-10 md:grid-cols-4 md:gap-x-14 md:gap-y-12">
+          <div className="mt-9 grid grid-cols-2 gap-x-12 gap-y-12 md:mt-10 md:grid-cols-4 md:gap-x-14 md:gap-y-14">
             {PARTNERS.map((p, i) => (
               <div
                 key={p.name}
-                className="group relative flex h-9 items-center justify-center animate-fade-in md:h-11"
+                className="group relative flex h-14 items-center justify-center animate-fade-in md:h-16"
                 style={{ animationDelay: `${i * 70}ms`, animationFillMode: "both" }}
               >
-                {/* Colour version — gently fades in on hover */}
-                <img
-                  src={p.logo}
-                  alt={`${p.name} logo`}
-                  loading="lazy"
-                  decoding="async"
-                  className="absolute inset-0 m-auto h-full w-auto max-w-[78%] object-contain opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
-                />
-                {/* Ink silhouette — masked from the logo's own alpha channel */}
                 <div
-                  aria-hidden
-                  className="h-full w-full max-w-[78%] transition-opacity duration-500 ease-out group-hover:opacity-0"
-                  style={{
-                    WebkitMaskImage: `url(${p.logo})`,
-                    maskImage: `url(${p.logo})`,
-                    WebkitMaskRepeat: "no-repeat",
-                    maskRepeat: "no-repeat",
-                    WebkitMaskPosition: "center",
-                    maskPosition: "center",
-                    WebkitMaskSize: "contain",
-                    maskSize: "contain",
-                    backgroundColor: "hsl(var(--ink) / 0.72)",
-                  }}
-                />
+                  className="relative flex h-full w-full items-center justify-center"
+                  style={{ transform: `scale(${p.scale})`, transformOrigin: "center" }}
+                >
+                  {/* Colour version — gently fades in on hover */}
+                  <img
+                    src={p.logo}
+                    alt={`${p.name} logo`}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 m-auto h-full w-auto max-w-[82%] object-contain opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
+                  />
+                  {/* Ink silhouette — masked from the logo's own alpha channel */}
+                  <div
+                    aria-hidden
+                    className="h-full w-full max-w-[82%] transition-opacity duration-500 ease-out group-hover:opacity-0"
+                    style={{
+                      WebkitMaskImage: `url(${p.logo})`,
+                      maskImage: `url(${p.logo})`,
+                      WebkitMaskRepeat: "no-repeat",
+                      maskRepeat: "no-repeat",
+                      WebkitMaskPosition: "center",
+                      maskPosition: "center",
+                      WebkitMaskSize: "contain",
+                      maskSize: "contain",
+                      backgroundColor: "hsl(var(--ink) / 0.72)",
+                    }}
+                  />
+                </div>
               </div>
             ))}
           </div>
