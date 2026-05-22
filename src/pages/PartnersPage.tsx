@@ -7,6 +7,8 @@ import PartnerActivations from "@/components/PartnerActivations";
 import RegistrationMarks from "@/components/RegistrationMarks";
 import { track } from "@/lib/analytics/posthog";
 import { EVT } from "@/lib/analytics/events";
+import { supabase } from "@/integrations/supabase/client";
+
 
 
 import paypalLogo from "@/assets/partners/paypal.png";
