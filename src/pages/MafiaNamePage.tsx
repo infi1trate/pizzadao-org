@@ -463,8 +463,6 @@ const MafiaNamePage = () => {
 
   const topThree = names.slice(0, 3);
 
-  const primary = names[0];
-  const alternates = names.slice(1, 3);
 
   // Names used during the cycling animation - pull characters from canon for flavor
   const cyclePool = useMemo(() => {
