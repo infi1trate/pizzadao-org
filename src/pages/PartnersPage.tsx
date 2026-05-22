@@ -195,24 +195,43 @@ const PartnersPage = () => {
           {/* Thin editorial rule */}
           <div className="mt-7 h-px bg-ink/10 md:mt-8" />
 
-          {/* Logo grid — gallery spacing, monochrome default */}
-          <div className="mt-10 grid grid-cols-2 gap-x-10 gap-y-12 md:mt-12 md:grid-cols-4 md:gap-x-14 md:gap-y-14">
+          {/* Logo grid — monochrome ink silhouettes via CSS mask, colour on hover.
+              No image boxes or background artifacts: the logo's alpha drives the mask. */}
+          <div className="mt-9 grid grid-cols-2 gap-x-12 gap-y-10 md:mt-10 md:grid-cols-4 md:gap-x-14 md:gap-y-12">
             {PARTNERS.map((p, i) => (
               <div
                 key={p.name}
-                className="group flex items-center justify-center animate-fade-in"
-                style={{ animationDelay: `${i * 80}ms`, animationFillMode: "both" }}
+                className="group relative flex h-9 items-center justify-center animate-fade-in md:h-11"
+                style={{ animationDelay: `${i * 70}ms`, animationFillMode: "both" }}
               >
+                {/* Colour version — gently fades in on hover */}
                 <img
                   src={p.logo}
                   alt={`${p.name} logo`}
                   loading="lazy"
                   decoding="async"
-                  className="h-8 w-auto max-w-[80%] object-contain opacity-60 grayscale transition duration-700 ease-out [mix-blend-mode:multiply] group-hover:opacity-100 group-hover:grayscale-0 md:h-10"
+                  className="absolute inset-0 m-auto h-full w-auto max-w-[78%] object-contain opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
+                />
+                {/* Ink silhouette — masked from the logo's own alpha channel */}
+                <div
+                  aria-hidden
+                  className="h-full w-full max-w-[78%] transition-opacity duration-500 ease-out group-hover:opacity-0"
+                  style={{
+                    WebkitMaskImage: `url(${p.logo})`,
+                    maskImage: `url(${p.logo})`,
+                    WebkitMaskRepeat: "no-repeat",
+                    maskRepeat: "no-repeat",
+                    WebkitMaskPosition: "center",
+                    maskPosition: "center",
+                    WebkitMaskSize: "contain",
+                    maskSize: "contain",
+                    backgroundColor: "hsl(var(--ink) / 0.72)",
+                  }}
                 />
               </div>
             ))}
           </div>
+
 
           {/* Subtle editorial footer mark */}
           <div className="mt-10 flex items-center gap-3 md:mt-12">
