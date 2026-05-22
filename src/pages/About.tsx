@@ -12,6 +12,7 @@ import may22Ritual from "@/assets/may22-ritual.jpg";
 import fieldNairobi from "@/assets/field-nairobi.jpg";
 import volcanoPizza from "@/assets/volcano-pizza.jpg";
 import fieldSpain from "@/assets/field-spain.jpg";
+import viceLogo from "@/assets/press/vice-logo.png";
 
 // Real PizzaDAO archive photos for the hero scenes - with local fallbacks
 // in case the remote CDN is ever unreachable.
