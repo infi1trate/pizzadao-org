@@ -94,7 +94,7 @@ const PartnersGlobe = () => {
   }, []);
 
   // Projection rebuilt per frame (cheap)
-  const { landPath, graticulePath, arcs, projected } = useMemo(() => {
+  const { landPath, graticulePath, projected, labels } = useMemo(() => {
     const projection = geoOrthographic()
       .scale(R)
       .translate([CX, CY])
@@ -105,36 +105,34 @@ const PartnersGlobe = () => {
     const landPath = path(LAND_FEATURE) ?? "";
     const graticulePath = path(GRATICULE) ?? "";
 
-    const arcs = ARC_PAIRS.flatMap(([an, bn]) => {
-      const a = CITIES.find((c) => c.name === an);
-      const b = CITIES.find((c) => c.name === bn);
-      if (!a || !b) return [];
-      const d = path({
-        type: "LineString",
-        coordinates: [a.coords, b.coords],
-      });
-      if (!d) return [];
-      return [{ id: `${an}-${bn}`, d }];
-    });
-
     const projected = CITIES.flatMap((c, i) => {
-      // `projection(point)` still returns coordinates for cities on the far
-      // side of an orthographic globe. Those backside points read as a second
-      // dot layer moving against the planet, so use the same clipped path pass
-      // as continents/graticule before rendering any city marker.
-      const visiblePoint = path({
-        type: "Point",
-        coordinates: c.coords,
-      });
+      const visiblePoint = path({ type: "Point", coordinates: c.coords });
       if (!visiblePoint) return [];
-
       const p = projection(c.coords);
       if (!p) return [];
-      const tier = MARQUEE.has(c.name) ? 2 : MID.has(c.name) ? 1 : 0;
-      return [{ i, name: c.name, px: p[0], py: p[1], tier }];
+      const tier = ANCHORS.has(c.name) ? 2 : MID.has(c.name) ? 1 : 0;
+      // distance from sphere center; used to fade dots near the limb
+      const d = Math.hypot(p[0] - CX, p[1] - CY);
+      const vis = Math.max(0, 1 - d / R);
+      return [{ i, name: c.name, px: p[0], py: p[1], tier, vis }];
     });
 
-    return { landPath, graticulePath, arcs, projected };
+    const labels = ANNOTATIONS.flatMap((a, i) => {
+      const city = CITIES.find((c) => c.name === a.city);
+      if (!city) return [];
+      const visiblePoint = path({ type: "Point", coordinates: city.coords });
+      if (!visiblePoint) return [];
+      const p = projection(city.coords);
+      if (!p) return [];
+      const d = Math.hypot(p[0] - CX, p[1] - CY);
+      const vis = Math.max(0, 1 - d / R);
+      // slow per-label breathing tied to rotation — each whisper appears at its own pace
+      const breath = 0.5 + 0.5 * Math.sin((yaw * Math.PI) / 90 + i * 1.37);
+      const opacity = Math.max(0, (vis - 0.18) * 1.6) * Math.max(0, breath - 0.35) * 1.4;
+      return [{ ...a, i, px: p[0], py: p[1], opacity: Math.min(1, opacity) }];
+    });
+
+    return { landPath, graticulePath, projected, labels };
   }, [yaw]);
 
   return (
