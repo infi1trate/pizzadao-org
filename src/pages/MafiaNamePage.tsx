@@ -415,7 +415,7 @@ const MafiaNamePage = () => {
 
 
   const reset = () => {
-    setStep("film");
+    setStep("topping");
     setFilm(null);
     setTopping(null);
     setNames([]);
