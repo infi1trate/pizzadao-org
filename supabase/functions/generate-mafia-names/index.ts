@@ -69,7 +69,7 @@ Tone / keywords: ${(movie.tone ?? []).join(", ") || "—"}
 Selected topping: ${topping}
 ${customNote ? `Custom user note: ${customNote}` : ""}
 
-Generate exactly 3 PizzaDAO mafia names as the JSON array described.`;
+Generate exactly 3 PizzaDAO mafia aliases as the JSON array described. Remember: the topping "${topping}" is the defining nickname — make it sticky and iconic. The movie shapes only the surname and cadence.`;
 
     const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
