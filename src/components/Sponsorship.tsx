@@ -101,31 +101,31 @@ const Sponsorship = () => {
             "linear-gradient(180deg, hsl(40 55% 93%) 0%, transparent 100%)",
         }}
       />
-      {/* Faint geographic mesh — barely visible cartographic texture */}
+      {/* Organic tonal warmth — off-axis warm pool, no even grid */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.18]"
+        className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage:
-            "linear-gradient(hsl(var(--ink) / 0.10) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--ink) / 0.10) 1px, transparent 1px)",
-          backgroundSize: "56px 56px",
-          maskImage:
-            "radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse at 50% 30%, #000 30%, transparent 75%)",
+          background:
+            "radial-gradient(ellipse 70% 60% at 28% 38%, hsl(44 80% 80% / 0.35) 0%, transparent 65%)",
         }}
       />
+      {/* Soft cooler tonal shift toward the lower right — printed unevenness */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.10]"
+        className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage:
-            "radial-gradient(hsl(var(--ink) / 0.55) 1px, transparent 1.4px)",
-          backgroundSize: "18px 18px",
-          maskImage:
-            "radial-gradient(ellipse at 70% 60%, #000 0%, transparent 60%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse at 70% 60%, #000 0%, transparent 60%)",
+          background:
+            "radial-gradient(ellipse 55% 50% at 82% 78%, hsl(38 30% 78% / 0.22) 0%, transparent 60%)",
+        }}
+      />
+      {/* Edge wear — slight darkening at the page margins */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 50%, transparent 62%, hsl(30 30% 35% / 0.06) 100%)",
         }}
       />
 
