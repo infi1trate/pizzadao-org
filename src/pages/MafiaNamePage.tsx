@@ -1547,20 +1547,30 @@ function FinaleScene({
           <div className={`mt-10 flex flex-wrap items-center justify-center gap-3 transition-all duration-500 ${phase >= 6 ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}>
             <button
               onClick={onShare}
-              className="btn-pill-lg group bg-tomato text-cream hover:bg-cream hover:text-ink"
+              className="btn-pill-lg group whitespace-nowrap bg-tomato text-cream hover:bg-cream hover:text-ink"
             >
-              Share your name
+              Share on X
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </button>
             {avatarUrl && (
-              <button
-                onClick={downloadAvatar}
-                className="btn-pill-lg group border border-cream/30 bg-ink text-cream hover:bg-tomato"
-              >
-                Download avatar
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </button>
+              <>
+                <button
+                  onClick={downloadAvatar}
+                  className="btn-pill-lg group whitespace-nowrap border border-cream/30 bg-ink text-cream hover:bg-tomato"
+                >
+                  Download avatar
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </button>
+                <button
+                  onClick={copyImage}
+                  className="btn-pill-lg group whitespace-nowrap border border-cream/30 bg-transparent text-cream hover:border-tomato hover:text-tomato"
+                >
+                  <Copy className="h-4 w-4" />
+                  Copy image
+                </button>
+              </>
             )}
+
             <button
               onClick={onRegenerateAvatar}
               disabled={avatarLoading}
