@@ -722,10 +722,18 @@ const About = () => {
               <div className="md:pl-2 lg:pl-6">
                 <div className="flex items-center gap-3">
                   <span aria-hidden className="h-px w-6 bg-tomato/70" />
-                  <p className="ui text-[10px] font-semibold tracking-[0.32em] text-cream/55">
-                    VICE / Motherboard
-                  </p>
+                  <img
+                    src={viceLogo}
+                    alt="VICE"
+                    className="h-4 w-auto opacity-85 [filter:invert(1)_brightness(1.05)] md:h-[18px]"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span className="ui text-[10px] font-semibold tracking-[0.32em] text-cream/45">
+                    / Motherboard
+                  </span>
                 </div>
+
                 <blockquote className="font-display mt-5 text-[clamp(1.5rem,2.8vw,2.15rem)] font-extrabold leading-[1.08] tracking-[-0.015em] text-cream">
                   <span className="text-tomato">"</span>An international celebration of community.<span className="text-tomato">"</span>
                 </blockquote>
