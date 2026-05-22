@@ -93,6 +93,7 @@ const PartnerActivations = () => {
                 }}
               >
                 <div
+                  data-benny="true"
                   className="relative overflow-hidden bg-ink/5 shadow-[0_14px_30px_-18px_hsl(0_0%_0%/0.40),0_2px_5px_-2px_hsl(0_0%_0%/0.18)] ring-1 ring-ink/10"
                 >
                   <img

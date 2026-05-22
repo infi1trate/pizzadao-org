@@ -127,7 +127,7 @@ const Work = () => {
                       reverse ? "md:col-start-6" : ""
                     }`}
                   >
-                    <div className="grain relative overflow-hidden rounded-2xl">
+                    <div className="grain relative overflow-hidden rounded-2xl" data-benny="true">
                       <img
                         src={p.img}
                         alt={p.imgAlt}

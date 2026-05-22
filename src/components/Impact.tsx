@@ -5,7 +5,7 @@ const Impact = () => {
     <section className="bg-ink py-20 text-cream md:py-32">
       <div className="container">
         <div className="grid grid-cols-12 gap-x-6 gap-y-10">
-          <div className="col-span-12 md:col-span-5">
+          <div className="relative col-span-12 overflow-hidden md:col-span-5" data-benny="true">
             <img
               src={party}
               alt="Public pizza party at night with neon lighting"

@@ -113,7 +113,7 @@ const PageHero = ({
 
               {tapedImage && (
                 <figure className="taped mt-10 hidden w-[72%] -rotate-[2.2deg] bg-cream-warm p-3 pb-4 shadow-[0_28px_56px_-26px_hsl(0_0%_0%/0.4),0_6px_18px_-8px_hsl(0_0%_0%/0.18)] transition-transform duration-700 hover:rotate-0 md:ml-auto md:block">
-                  <div className="paper-soft">
+                  <div className="paper-soft relative overflow-hidden" data-benny="true">
                     <img
                       src={tapedImage.src}
                       alt={tapedImage.alt}

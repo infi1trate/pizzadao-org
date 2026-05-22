@@ -14,6 +14,7 @@ import Privacy from "./pages/Privacy.tsx";
 import Terms from "./pages/Terms.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
+import BennyPeek from "./components/BennyPeek.tsx";
 import PostHogProvider from "./lib/analytics/PostHogProvider.tsx";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
       <BrowserRouter>
         <PostHogProvider>
           <ScrollToTop />
+          <BennyPeek />
           <Routes>
           {/* Public routes */}
           <Route path="/" element={<Index />} />

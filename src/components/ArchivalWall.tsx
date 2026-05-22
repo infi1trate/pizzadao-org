@@ -211,6 +211,7 @@ const ArchivalFrame = ({ photo, slot, index, onOpen }: FrameProps) => {
         }}
       >
       <div
+        data-benny="true"
         className={`relative overflow-hidden bg-ink ${slot.aspect}`}
       >
 
