@@ -209,84 +209,68 @@ const PartnersGlobe = () => {
               />
             </g>
 
-            {/* Network arcs — faint coordination layer */}
-            <g
-              fill="none"
-              stroke="hsl(var(--tomato))"
-              strokeWidth="0.32"
-              strokeLinecap="round"
-              opacity="0.42"
-            >
-              {arcs.map((a) => (
-                <path key={a.id} d={a.d} />
-              ))}
+            {/* City dots — quiet ink, two tiers, no red pulses */}
+            <g fill="hsl(var(--ink))">
+              {projected.map((p) => {
+                if (p.tier === 0) return null; // drop the noisy floor — more intentional clustering
+                const r = p.tier === 2 ? 1.05 : 0.55;
+                const op = (p.tier === 2 ? 0.92 : 0.6) * (0.35 + 0.65 * p.vis);
+                return (
+                  <circle
+                    key={p.i}
+                    cx={p.px}
+                    cy={p.py}
+                    r={r}
+                    opacity={op}
+                  />
+                );
+              })}
             </g>
 
-            {/* City dots — 3-tier hierarchy */}
-            <g>
-              {projected.map((p) => {
-                if (p.tier === 0) {
-                  return (
-                    <circle
-                      key={p.i}
-                      cx={p.px}
-                      cy={p.py}
-                      r={0.5}
-                      fill="hsl(var(--ink))"
-                      opacity={0.5}
-                    />
-                  );
-                }
-                if (p.tier === 1) {
-                  return (
-                    <circle
-                      key={p.i}
-                      cx={p.px}
-                      cy={p.py}
-                      r={0.9}
-                      fill="hsl(var(--ink))"
-                      opacity={0.75}
-                    />
-                  );
-                }
-                // tier 2 — marquee
+            {/* Hand-annotated whispers — appear softly near clusters as the globe turns */}
+            <g
+              style={{
+                fontFamily: "'Rock Salt', 'Asap', cursive",
+                fontSize: "2.1px",
+                letterSpacing: "0.02px",
+              }}
+              fill="hsl(var(--ink))"
+            >
+              {labels.map((l) => {
+                if (l.opacity < 0.04) return null;
                 return (
-                  <g key={p.i}>
-                    <circle
-                      cx={p.px}
-                      cy={p.py}
-                      r={2.4}
-                      fill="hsl(var(--tomato) / 0.18)"
-                    >
-                      <animate
-                        attributeName="r"
-                        values="1.6;3.4;1.6"
-                        dur="4.2s"
-                        begin={`${(p.i % 5) * 0.6}s`}
-                        repeatCount="indefinite"
-                      />
-                      <animate
-                        attributeName="opacity"
-                        values="0.45;0;0.45"
-                        dur="4.2s"
-                        begin={`${(p.i % 5) * 0.6}s`}
-                        repeatCount="indefinite"
-                      />
-                    </circle>
-                    <circle
-                      cx={p.px}
-                      cy={p.py}
-                      r={1.3}
-                      fill="hsl(var(--tomato))"
-                      stroke="hsl(var(--cream))"
-                      strokeWidth="0.35"
+                  <g key={l.i} opacity={l.opacity}>
+                    {/* tiny tether from dot to label */}
+                    <line
+                      x1={l.px}
+                      y1={l.py}
+                      x2={l.px + l.dx * 0.55}
+                      y2={l.py + l.dy * 0.55}
+                      stroke="hsl(var(--ink))"
+                      strokeWidth="0.12"
+                      opacity="0.55"
                     />
+                    <text
+                      x={l.px + l.dx}
+                      y={l.py + l.dy}
+                      textAnchor={l.anchor ?? "start"}
+                      style={{ transform: `rotate(${(l.i % 2 ? -1 : 1) * 1.5}deg)`, transformOrigin: `${l.px + l.dx}px ${l.py + l.dy}px` }}
+                    >
+                      {l.text}
+                    </text>
                   </g>
                 );
               })}
             </g>
           </g>
         </svg>
+
+        {/* Tactile grain — softens the perfection of the render */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 rounded-full grain"
+          style={{ mixBlendMode: "multiply", opacity: 0.55 }}
+        />
       </div>
     </div>
   );
