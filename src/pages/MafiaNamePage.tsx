@@ -1202,7 +1202,7 @@ function FamilyFileCard({
       </div>
 
       {/* Alias */}
-      <h3 className="font-display relative mt-4 text-[clamp(1.5rem,2.2vw,2rem)] font-black leading-[1.02] tracking-[-0.01em] text-ink">
+      <h3 className="font-display relative mt-4 text-[clamp(1.35rem,1.6vw,1.85rem)] font-black leading-[1.05] tracking-[-0.01em] text-ink [text-wrap:balance]">
         {name.name}
         <span
           aria-hidden
