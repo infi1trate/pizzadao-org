@@ -235,32 +235,36 @@ const PartnersPage = () => {
 
       {/* Inquiry — warm close, hospitality cues */}
       <section className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink py-14 text-cream md:py-16">
-        {/* Atmospheric warm glow — soft ember drift */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -left-32 -top-32 h-[600px] w-[600px] rounded-full opacity-[0.14] blur-[120px]"
-          style={{ background: "hsl(var(--tomato))" }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-20 bottom-0 h-[420px] w-[420px] rounded-full opacity-[0.10] blur-[100px]"
-          style={{ background: "hsl(var(--butter))" }}
-        />
-        {/* Soft gradient drift — restrained warmth wash */}
+        {/* Single directional warm wash — anchored to where the headline sits,
+            so the warmth reads as light on a page, not as a floating blob. */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 30% 50%, hsl(var(--tomato) / 0.06) 0%, transparent 55%)",
+              "radial-gradient(ellipse 60% 70% at 18% 35%, hsl(var(--tomato) / 0.10) 0%, transparent 60%)",
           }}
         />
-        {/* Faint tablecloth texture — single short tape */}
+        {/* Diagonal paper-fold crease — soft, intentional, runs through the gutter */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(112deg, transparent 47%, hsl(var(--cream) / 0.05) 49.5%, transparent 52%)",
+          }}
+        />
+        {/* Brand signature tape — single, deliberate */}
         <div className="checker-tape-sm absolute left-0 top-0 h-[4px] w-24 opacity-35 md:w-40" aria-hidden />
-        {/* Soft grain overlay */}
-        <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-[0.12]" />
-        {/* Photographic atmosphere — distant city lights, screen-blended into ink */}
-        <PhotoVeil variant="city" position="right" opacity={0.07} blend="screen" />
+        {/* Editorial registration marks — cream on ink, two corners only */}
+        <RegistrationMarks
+          tone="cream"
+          opacity={0.18}
+          inset={20}
+          size={12}
+          corners={["tr", "bl"]}
+          folio="§ B.03"
+        />
         {/* Bottom hairline */}
         <div className="absolute inset-x-0 bottom-0 h-px bg-cream/8" aria-hidden />
 
