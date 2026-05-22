@@ -209,12 +209,12 @@ const PartnersGlobe = () => {
               />
             </g>
 
-            {/* City dots — quiet ink, two tiers, no red pulses */}
+            {/* City dots — three tiers, anchors dominate but all chapters render */}
             <g fill="hsl(var(--ink))">
               {projected.map((p) => {
-                if (p.tier === 0) return null; // drop the noisy floor — more intentional clustering
-                const r = p.tier === 2 ? 1.05 : 0.55;
-                const op = (p.tier === 2 ? 0.92 : 0.6) * (0.35 + 0.65 * p.vis);
+                const r = p.tier === 2 ? 1.05 : p.tier === 1 ? 0.55 : 0.28;
+                const base = p.tier === 2 ? 0.92 : p.tier === 1 ? 0.6 : 0.32;
+                const op = base * (0.4 + 0.6 * p.vis);
                 return (
                   <circle
                     key={p.i}
@@ -227,34 +227,73 @@ const PartnersGlobe = () => {
               })}
             </g>
 
-            {/* Hand-annotated whispers — appear softly near clusters as the globe turns */}
+            {/* Annotated whispers — small white speech bubbles near anchor cities */}
             <g
               style={{
-                fontFamily: "'Rock Salt', 'Asap', cursive",
-                fontSize: "2.1px",
-                letterSpacing: "0.02px",
+                fontFamily: "'Asap', ui-sans-serif, system-ui, sans-serif",
+                fontSize: "1.85px",
+                letterSpacing: "0.01px",
+                fontWeight: 500,
               }}
-              fill="hsl(var(--ink))"
             >
               {labels.map((l) => {
                 if (l.opacity < 0.04) return null;
+                const PAD_X = 1.3;
+                const PAD_Y = 0.95;
+                const TEXT_H = 1.85;
+                // Approximate glyph width — Asap medium at this size
+                const textW = l.text.length * 0.95;
+                const bubbleW = textW + PAD_X * 2;
+                const bubbleH = TEXT_H + PAD_Y * 2;
+                const anchor = l.anchor ?? "start";
+                // Position bubble so its inner edge sits at (l.px + l.dx, l.py + l.dy)
+                const tipX = l.px + l.dx * 0.45;
+                const tipY = l.py + l.dy * 0.45;
+                const bubbleX =
+                  anchor === "end"
+                    ? l.px + l.dx - bubbleW
+                    : l.px + l.dx;
+                const bubbleY = l.py + l.dy - bubbleH / 2;
+                // Pointer triangle from bubble edge → city dot
+                const pointerBaseX =
+                  anchor === "end" ? bubbleX + bubbleW : bubbleX;
+                const pointerBaseY = bubbleY + bubbleH / 2;
+                const pointerTipX = tipX;
+                const pointerTipY = tipY;
+                const perpDx = anchor === "end" ? 0.5 : -0.5;
                 return (
-                  <g key={l.i} opacity={l.opacity}>
-                    {/* tiny tether from dot to label */}
-                    <line
-                      x1={l.px}
-                      y1={l.py}
-                      x2={l.px + l.dx * 0.55}
-                      y2={l.py + l.dy * 0.55}
-                      stroke="hsl(var(--ink))"
-                      strokeWidth="0.12"
-                      opacity="0.55"
+                  <g
+                    key={l.i}
+                    opacity={l.opacity}
+                    style={{
+                      filter:
+                        "drop-shadow(0 0.25px 0.45px hsl(28 30% 12% / 0.28))",
+                    }}
+                  >
+                    {/* Pointer triangle */}
+                    <path
+                      d={`M ${pointerBaseX} ${pointerBaseY - 0.45} L ${pointerTipX} ${pointerTipY} L ${pointerBaseX} ${pointerBaseY + 0.45} Z`}
+                      fill="hsl(var(--cream))"
+                      stroke="hsl(var(--ink) / 0.18)"
+                      strokeWidth="0.08"
+                    />
+                    {/* Bubble body */}
+                    <rect
+                      x={bubbleX}
+                      y={bubbleY}
+                      width={bubbleW}
+                      height={bubbleH}
+                      rx={bubbleH / 2}
+                      ry={bubbleH / 2}
+                      fill="hsl(var(--cream))"
+                      stroke="hsl(var(--ink) / 0.18)"
+                      strokeWidth="0.08"
                     />
                     <text
-                      x={l.px + l.dx}
-                      y={l.py + l.dy}
-                      textAnchor={l.anchor ?? "start"}
-                      style={{ transform: `rotate(${(l.i % 2 ? -1 : 1) * 1.5}deg)`, transformOrigin: `${l.px + l.dx}px ${l.py + l.dy}px` }}
+                      x={bubbleX + bubbleW / 2}
+                      y={bubbleY + bubbleH / 2 + TEXT_H * 0.35}
+                      textAnchor="middle"
+                      fill="hsl(var(--ink))"
                     >
                       {l.text}
                     </text>
