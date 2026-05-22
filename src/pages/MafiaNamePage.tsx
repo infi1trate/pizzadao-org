@@ -182,10 +182,19 @@ const MafiaNamePage = () => {
     setNames([]);
     setSelectedIdx(null);
     setRevealPhase("cycling");
+
+    // Reset reroll history when the inputs change so escalation tracks only this combo.
+    const key = `${chosenFilm.id}::${chosenTopping}`;
+    if (lastKeyRef.current !== key) {
+      lastKeyRef.current = key;
+      generateCountRef.current = 0;
+      previousNamesRef.current = [];
+    }
     generateCountRef.current += 1;
-    if (generateCountRef.current > 1) {
+    const attempt = generateCountRef.current;
+    if (attempt > 1) {
       track(EVT.MAFIA_NAME_REGENERATED, {
-        attempt: generateCountRef.current,
+        attempt,
         movie: chosenFilm.title,
         topping: chosenTopping,
       });
@@ -203,6 +212,8 @@ const MafiaNamePage = () => {
             overview: chosenFilm.overview,
           },
           topping: chosenTopping,
+          attempt,
+          previousNames: previousNamesRef.current.slice(-24),
         },
       });
       if (error) throw error;
@@ -214,12 +225,16 @@ const MafiaNamePage = () => {
       await new Promise((r) => setTimeout(r, wait));
       setNames(generated);
       setRevealPhase("settled");
-      // Avatars are NOT pre-generated for each card.
-      // The avatar is earned — it is only generated after the user claims a name.
+      // Record names so future rerolls in this session don't repeat them.
+      previousNamesRef.current = [
+        ...previousNamesRef.current,
+        ...generated.map((g: any) => String(g?.name ?? "")).filter(Boolean),
+      ];
       track(EVT.MAFIA_NAMES_GENERATED, {
         count: generated.length,
         movie: chosenFilm.title,
         topping: chosenTopping,
+        attempt,
       });
     } catch (e: any) {
       setRevealPhase("idle");
