@@ -353,11 +353,7 @@ const PartnersPage = () => {
               </p>
             </div>
 
-            {/* Right: form, tighter and aligned */}
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-            {/* Right: form, tighter and aligned */}
+
             <form
               onSubmit={async (e) => {
                 e.preventDefault();
