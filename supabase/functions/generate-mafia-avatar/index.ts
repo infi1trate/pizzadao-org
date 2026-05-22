@@ -114,10 +114,11 @@ Deno.serve(async (req) => {
 
     const prompt = `${STYLE}
 
-ANIMAL FAMILY (commit to this species, no hybrids): ${animal}.
-TOPPING DETAILS: ${motif}.
-MOOD: ${mood}.
-INSPIRATION: channel the atmosphere (not the cast) of "${filmTitle ?? "—"}" for the alias "${name ?? "—"}" — invent an original anthropomorphic ${animal} lodge member. Do NOT depict any real actor, human, or copyrighted character. Strictly an animal portrait.`;
+TOPPING (THE IDENTITY — lead with this, it dominates the portrait): ${topping}.
+TOPPING PERSONALITY & VISUAL DOMINANCE: ${motif}.
+ANIMAL VESSEL (commit to this species, no hybrids — chosen to match the topping's energy): ${animal}.
+MAFIA COSTUME LAYER (atmosphere only, minimal): ${mood}.
+INSPIRATION: channel only the ATMOSPHERE (not the cast, not the surnames, not any characters) of "${filmTitle ?? "—"}" for the PizzaDAO underworld initiate "${name ?? "—"}". The topping must read first, the animal second, the mafia flavor third. Do NOT depict any real actor, human, or copyrighted character. Strictly an ingredient-led animal portrait.`;
 
     const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
