@@ -265,67 +265,7 @@ const About = () => {
           </div>
         </div>
       </section>
-
-      {/* ── POSTER QUOTE — "democratic food" ─────────────────────── */}
-      <section className="relative overflow-hidden bg-[hsl(var(--tomato))] py-32 text-cream md:py-44">
-        {/* paper tooth + grain bite + pigment pooling */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.32] mix-blend-multiply"
-          style={{
-            backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='480' height='480'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.012 0.018' numOctaves='2' seed='7' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.12  0 0 0 0 0.02  0 0 0 0 0.02  0 0 0 0.95 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>")`,
-            backgroundSize: "480px 480px",
-          }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.28] mix-blend-overlay"
-          style={{
-            backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.88  0 0 0 0 0.72  0 0 0 1.2 -0.1'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>")`,
-            backgroundSize: "260px 260px",
-          }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 mix-blend-multiply"
-          style={{
-            background:
-              "radial-gradient(42% 32% at 14% 22%, hsl(0 80% 28% / 0.42), transparent 70%), radial-gradient(46% 34% at 86% 78%, hsl(0 80% 24% / 0.46), transparent 72%)",
-          }}
-        />
-        <div className="container relative">
-          <div className="mb-10 flex items-baseline justify-between md:mb-14">
-            <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/70">
-              § 02 — Founding principle
-            </span>
-          </div>
-
-          <blockquote className="relative">
-            <p
-              className="font-display font-extrabold leading-[0.86] tracking-[-0.035em] text-cream text-[clamp(3rem,11vw,10rem)]"
-              style={{ textShadow: "0 2px 24px hsl(0 0% 0% / 0.35)" }}
-            >
-              Pizza is the most{" "}
-              <span
-                className="italic text-butter"
-                style={{ textShadow: "0 2px 18px hsl(0 0% 0% / 0.45)" }}
-              >
-                democratic
-              </span>{" "}
-              food on Earth.
-            </p>
-          </blockquote>
-
-          <div className="mt-10 flex items-center gap-6 md:mt-14">
-            <p className="handwritten max-w-[20ch] -rotate-[1.5deg] text-butter text-2xl md:text-3xl">
-              (yes, really — try it.)
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* ── RITUAL ───────────────────────────────────────────────── */}
+{/* ── RITUAL ───────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-ink text-cream">
         {/* warm atmospheric wash — tomato/butter glow on deep ink */}
         <div
@@ -582,29 +522,64 @@ const About = () => {
       </section>
 
 
-      {/* ── GLOBAL SCALE ─────────────────────────────────────────── */}
-      <section className="relative bg-ink py-24 text-cream md:py-32">
-        <div className="container">
-          <div className="grid grid-cols-12 gap-x-8 gap-y-8">
-            <div className="col-span-12 md:col-span-7">
-              <p className="overline text-tomato">The archive</p>
-              <h2 className="font-display mt-5 text-[clamp(2.25rem,5.5vw,4rem)] font-extrabold leading-[0.92]">
-                People kept showing up.
-              </h2>
-            </div>
-            <div className="col-span-12 md:col-span-4 md:col-start-9">
-              <p className="font-serif max-w-[36ch] text-lg leading-[1.7] text-cream/75">
-                Year after year, cities around the world kept gathering around
-                the same simple idea.
-              </p>
-            </div>
+      {/* ── POSTER QUOTE — "democratic food" ─────────────────────── */}
+      <section className="relative overflow-hidden bg-[hsl(var(--tomato))] py-32 text-cream md:py-44">
+        {/* paper tooth + grain bite + pigment pooling */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.32] mix-blend-multiply"
+          style={{
+            backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='480' height='480'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.012 0.018' numOctaves='2' seed='7' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.12  0 0 0 0 0.02  0 0 0 0 0.02  0 0 0 0.95 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>")`,
+            backgroundSize: "480px 480px",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.28] mix-blend-overlay"
+          style={{
+            backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.88  0 0 0 0 0.72  0 0 0 1.2 -0.1'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>")`,
+            backgroundSize: "260px 260px",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 mix-blend-multiply"
+          style={{
+            background:
+              "radial-gradient(42% 32% at 14% 22%, hsl(0 80% 28% / 0.42), transparent 70%), radial-gradient(46% 34% at 86% 78%, hsl(0 80% 24% / 0.46), transparent 72%)",
+          }}
+        />
+        <div className="container relative">
+          <div className="mb-10 flex items-baseline justify-between md:mb-14">
+            <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-cream/70">
+              § 02 — Founding principle
+            </span>
           </div>
 
-          <div className="mt-16 md:mt-20">
-            <ArchivalWall />
+          <blockquote className="relative">
+            <p
+              className="font-display font-extrabold leading-[0.86] tracking-[-0.035em] text-cream text-[clamp(3rem,11vw,10rem)]"
+              style={{ textShadow: "0 2px 24px hsl(0 0% 0% / 0.35)" }}
+            >
+              Pizza is the most{" "}
+              <span
+                className="italic text-butter"
+                style={{ textShadow: "0 2px 18px hsl(0 0% 0% / 0.45)" }}
+              >
+                democratic
+              </span>{" "}
+              food on Earth.
+            </p>
+          </blockquote>
+
+          <div className="mt-10 flex items-center gap-6 md:mt-14">
+            <p className="handwritten max-w-[20ch] -rotate-[1.5deg] text-butter text-2xl md:text-3xl">
+              (yes, really — try it.)
+            </p>
           </div>
         </div>
       </section>
+
 
       {/* ── PRESS — media evidence archive ─────────────────────── */}
       <section className="relative overflow-hidden bg-ink py-24 text-cream md:py-32">
@@ -767,7 +742,31 @@ const About = () => {
 
 
 
+{/* ── GLOBAL SCALE ─────────────────────────────────────────── */}
+      <section className="relative bg-ink py-24 text-cream md:py-32">
+        <div className="container">
+          <div className="grid grid-cols-12 gap-x-8 gap-y-8">
+            <div className="col-span-12 md:col-span-7">
+              <p className="overline text-tomato">The archive</p>
+              <h2 className="font-display mt-5 text-[clamp(2.25rem,5.5vw,4rem)] font-extrabold leading-[0.92]">
+                People kept showing up.
+              </h2>
+            </div>
+            <div className="col-span-12 md:col-span-4 md:col-start-9">
+              <p className="font-serif max-w-[36ch] text-lg leading-[1.7] text-cream/75">
+                Year after year, cities around the world kept gathering around
+                the same simple idea.
+              </p>
+            </div>
+          </div>
 
+          <div className="mt-16 md:mt-20">
+            <ArchivalWall />
+          </div>
+        </div>
+      </section>
+
+      
       {/* ── CLOSE — printed poster ──────────────────────────────── */}
       <section className="relative overflow-hidden bg-[hsl(var(--tomato))] py-36 text-cream md:py-56">
         {/* Paper tooth — soft, low-frequency fibres */}
