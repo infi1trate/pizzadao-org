@@ -158,7 +158,7 @@ const PartnersPage = () => {
       {/* Case studies consolidated into Sponsorship "What we've built" */}
 
       {/* Logo wall — premium social proof, gallery-like */}
-      <section className="paper-soft paper-drift relative overflow-hidden bg-cream py-14 md:py-20">
+      <section className="paper-soft paper-drift relative overflow-hidden bg-cream py-10 md:py-14">
         {/* Soft tonal wash — warm editorial depth (keeps the section reading as paper) */}
         <div
           aria-hidden
