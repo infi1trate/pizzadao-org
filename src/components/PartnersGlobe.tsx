@@ -126,11 +126,14 @@ const PartnersGlobe = () => {
       if (!p) return [];
       const d = Math.hypot(p[0] - CX, p[1] - CY);
       const vis = Math.max(0, 1 - d / R);
-      // slow per-label breathing tied to rotation - each whisper appears at its own pace
-      const breath = 0.5 + 0.5 * Math.sin((yaw * Math.PI) / 90 + i * 1.37);
-      const opacity = Math.max(0, (vis - 0.18) * 1.6) * Math.max(0, breath - 0.35) * 1.4;
-      return [{ ...a, i, px: p[0], py: p[1], opacity: Math.min(1, opacity) }];
+      // Slow per-label heartbeat - long "on" window so each bubble lingers
+      // long enough to read. Cycle ~22s, ~60% on, staggered by index.
+      const cyclePos = (((yaw / 360) * 6 + i * 0.37) % 1 + 1) % 1;
+      const onWindow = cyclePos > 0.18 && cyclePos < 0.78;
+      const visible = vis > 0.32 && onWindow;
+      return [{ ...a, i, px: p[0], py: p[1], visible }];
     });
+
 
     return { landPath, graticulePath, projected, labels };
   }, [yaw]);
