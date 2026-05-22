@@ -476,64 +476,68 @@ const MafiaNamePage = () => {
       {step !== "claim" && (
         <section className="relative z-10">
           <div className="container pt-2 pb-6 md:pt-4 md:pb-10">
-            <p className="overline text-tomato">§ 01 · PizzaDAO initiation</p>
+            <p className="overline text-tomato">§ 01 · PizzaDAO</p>
             <h1 className="font-display mt-4 max-w-[14ch] text-[clamp(2.5rem,7vw,5.5rem)] font-black leading-[0.9] tracking-[-0.015em] [text-wrap:balance]">
-              Enter the{" "}
-              <span className="text-tomato">PizzaDAO underworld.</span>
+              Claim your{" "}
+              <span className="text-tomato">mafia name.</span>
             </h1>
 
             <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-ink/75">
-              Pick the vibe. Choose your topping. The pizza decides who you are.
+              Choose a topping. Choose a movie. The family handles the rest.
             </p>
           </div>
         </section>
       )}
 
-      {/* STEP 1 / 2: cinematic inputs */}
-      {(step === "film" || step === "topping") && (
+      {/* STEP 1 / 2: pick your topping (primary), then your movie (secondary) */}
+      {(step === "topping" || step === "film") && (
         <section className="relative z-10">
           <div className="container pb-24">
-            {/* FILM input or selected card */}
-            {!film ? (
+            {/* TOPPING — primary identity (HERO) */}
+            {!topping ? (
               <CinematicInput
-                inputRef={filmInputRef}
-                label="§ 02 · The vibe"
-                placeholder="What kind of operation is this?"
-                value={query}
-                onChange={setQuery}
-                open={filmDrawerOpen}
-                onOpen={() => setFilmDrawerOpen(true)}
-                onClose={() => setFilmDrawerOpen(false)}
+                inputRef={toppingInputRef}
+                label="§ 02 · Your topping"
+                placeholder="What's your topping?"
+                value={toppingQuery}
+                onChange={setToppingQuery}
+                open={toppingDrawerOpen}
+                onOpen={() => setToppingDrawerOpen(true)}
+                onClose={() => setToppingDrawerOpen(false)}
               >
-                <FilmDrawer
-                  films={filteredFilms}
-                  query={query}
-                  onPick={handleSelectFilm}
+                <ToppingDrawer
+                  toppings={filteredToppings}
+                  query={toppingQuery}
+                  onPick={handleSelectTopping}
                 />
               </CinematicInput>
             ) : (
-              <SelectedFilmCard film={film} onChange={() => { setFilm(null); setStep("film"); setTimeout(() => filmInputRef.current?.focus(), 100); }} />
+              <SelectedToppingCard topping={topping} onChange={() => { setTopping(null); setStep("topping"); setTimeout(() => toppingInputRef.current?.focus(), 100); }} />
             )}
 
-            {/* TOPPING input (only once film picked) */}
-            {step === "topping" && (
-              <div className="mt-14">
+            {/* MOVIE — secondary tone reference (smaller) */}
+            {step === "film" && (
+              <div className="mt-12">
                 <CinematicInput
-                  inputRef={toppingInputRef}
-                  label="§ 03 · Your topping (this is you)"
-                  placeholder="What's your topping?"
-                  value={toppingQuery}
-                  onChange={setToppingQuery}
-                  open={toppingDrawerOpen}
-                  onOpen={() => setToppingDrawerOpen(true)}
-                  onClose={() => setToppingDrawerOpen(false)}
+                  inputRef={filmInputRef}
+                  label="§ 03 · Your mafia movie"
+                  placeholder="Pick a movie."
+                  value={query}
+                  onChange={setQuery}
+                  open={filmDrawerOpen}
+                  onOpen={() => setFilmDrawerOpen(true)}
+                  onClose={() => setFilmDrawerOpen(false)}
+                  size="small"
                 >
-                  <ToppingDrawer
-                    toppings={filteredToppings}
-                    query={toppingQuery}
-                    onPick={handleSelectTopping}
+                  <FilmDrawer
+                    films={filteredFilms}
+                    query={query}
+                    onPick={handleSelectFilm}
                   />
                 </CinematicInput>
+                <p className="ui mt-3 text-[10px] uppercase tracking-[0.24em] text-ink/40">
+                  Tone reference only — flavors the cadence of your name.
+                </p>
               </div>
             )}
           </div>
