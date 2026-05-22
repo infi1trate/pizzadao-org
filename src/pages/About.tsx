@@ -609,79 +609,89 @@ const About = () => {
             </p>
           </div>
 
-          {/* ── FEATURED: VICE documentary ──────────────────────── */}
-          <figure className="mt-16 md:mt-20">
-            <a
-              href={VICE_VIDEO_HREF}
-              target="_blank"
-              rel="noreferrer"
-              className="group block"
-              aria-label="Watch the VICE documentary on PizzaDAO"
-            >
-              <div className="relative aspect-[16/9] w-full overflow-hidden bg-ink">
-                <img
-                  src={VICE_POSTER}
-                  alt="VICE documentary still — PizzaDAO, the global Bitcoin Pizza Day"
-                  loading="lazy"
-                  decoding="async"
-                  className="absolute inset-0 h-full w-full object-cover [filter:saturate(0.85)_contrast(1.08)] transition-transform duration-[1400ms] ease-out group-hover:scale-[1.015]"
-                />
-                {/* Letterbox bars — documentary framing */}
-                <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[6%] bg-ink" />
-                <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[6%] bg-ink" />
-                {/* Vignette */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0"
-                  style={{
-                    background:
-                      "radial-gradient(ellipse at 50% 55%, transparent 50%, hsl(0 0% 0% / 0.55) 100%)",
-                  }}
-                />
-                {/* Grain */}
-                <div
-                  aria-hidden
-                  className="grain pointer-events-none absolute inset-0 opacity-[0.32] mix-blend-overlay"
-                />
-                {/* Play mark */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="flex h-20 w-20 items-center justify-center rounded-full border border-cream/70 bg-ink/40 backdrop-blur-sm transition-all duration-500 group-hover:scale-105 group-hover:border-cream group-hover:bg-tomato/70 md:h-24 md:w-24">
-                    <svg viewBox="0 0 24 24" className="ml-1 h-7 w-7 fill-cream md:h-8 md:w-8" aria-hidden>
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </span>
+          {/* ── FEATURED: VICE documentary (archival clipping) ──── */}
+          <figure className="mt-14 grid grid-cols-12 gap-x-8 gap-y-8 md:mt-18">
+            <div className="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4">
+              <a
+                href={VICE_VIDEO_HREF}
+                target="_blank"
+                rel="noreferrer"
+                className="group block"
+                aria-label="Watch the VICE documentary on PizzaDAO"
+              >
+                {/* Archival film frame — 4:3, not 16:9 */}
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-ink ring-1 ring-cream/10">
+                  <img
+                    src={VICE_POSTER}
+                    alt="VICE documentary still — PizzaDAO, the global Bitcoin Pizza Day"
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover [filter:saturate(0.82)_contrast(1.1)_sepia(0.06)] transition-transform duration-[1200ms] ease-out group-hover:scale-[1.02]"
+                  />
+                  {/* Soft vignette */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                      background:
+                        "radial-gradient(ellipse at 50% 52%, transparent 58%, hsl(0 0% 0% / 0.50) 100%)",
+                    }}
+                  />
+                  {/* Grain */}
+                  <div
+                    aria-hidden
+                    className="grain pointer-events-none absolute inset-0 opacity-[0.28] mix-blend-overlay"
+                  />
+                  {/* Play mark — smaller, more archival */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="flex h-14 w-14 items-center justify-center rounded-full border border-cream/60 bg-ink/35 backdrop-blur-sm transition-all duration-500 group-hover:scale-105 group-hover:border-cream group-hover:bg-tomato/60 md:h-16 md:w-16">
+                      <svg viewBox="0 0 24 24" className="ml-0.5 h-5 w-5 fill-cream md:h-6 md:w-6" aria-hidden>
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </span>
+                  </div>
+                  {/* Corner stamp — single, restrained */}
+                  <div className="absolute left-3 top-3 md:left-4 md:top-4">
+                    <span className="ui text-[10px] font-semibold tracking-[0.28em] text-cream/70">
+                      VICE · Motherboard
+                    </span>
+                  </div>
                 </div>
-                {/* Corner stamps */}
-                <div className="absolute left-4 top-4 flex items-center gap-2 md:left-6 md:top-6">
-                  <span className="h-2 w-2 animate-pulse rounded-full bg-tomato" />
-                  <span className="ui text-[10px] font-semibold tracking-[0.32em] text-cream/85">
-                    REC · VICE
-                  </span>
-                </div>
-                <div className="absolute bottom-6 right-4 md:bottom-8 md:right-6">
-                  <span className="ui text-[10px] font-semibold tracking-[0.28em] text-cream/75">
-                    Documentary · 16:24
-                  </span>
-                </div>
+              </a>
+              <figcaption className="mt-5 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                <span className="font-display text-base font-extrabold tracking-tight text-cream md:text-lg">
+                  Inside PizzaDAO's global Bitcoin Pizza Day
+                </span>
+                <span className="ui text-[10px] font-semibold tracking-[0.24em] text-cream/40">
+                  Documentary · 16:24
+                </span>
+              </figcaption>
+            </div>
+
+            {/* Archival context — editorial sidebar */}
+            <div className="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4">
+              <div className="flex items-center gap-3 border-t border-cream/10 pt-5">
+                <span aria-hidden className="h-px w-6 bg-cream/25" />
+                <p className="ui text-[10px] font-semibold tracking-[0.28em] text-cream/40">
+                  Featured in
+                </p>
               </div>
-            </a>
-            <figcaption className="mt-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-              <span className="font-display text-lg font-extrabold tracking-tight text-cream md:text-xl">
-                VICE — Inside PizzaDAO's global Bitcoin Pizza Day
-              </span>
-              <span className="ui text-[10px] font-semibold tracking-[0.24em] text-cream/45">
-                youtube.com/watch ↗
-              </span>
-            </figcaption>
+              <p className="font-serif mt-4 max-w-[52ch] text-base leading-[1.6] text-cream/60 md:text-lg md:leading-[1.55]">
+                VICE Motherboard followed the ritual across three continents.
+                The result is a short documentary that treats the story as
+                cultural evidence — not a brand piece. PizzaDAO appears
+                as one thread in a larger fabric.
+              </p>
+            </div>
           </figure>
 
           {/* ── PULL QUOTE ──────────────────────────────────────── */}
-          <figure className="mt-24 grid grid-cols-12 gap-x-8 md:mt-32">
-            <div aria-hidden className="col-span-12 mb-6 h-px bg-cream/15 md:col-span-12" />
-            <blockquote className="font-display col-span-12 text-[clamp(2rem,5.2vw,4rem)] font-extrabold leading-[0.98] tracking-[-0.02em] text-cream md:col-span-10">
-              <span className="text-tomato">“</span>An international celebration of community.<span className="text-tomato">”</span>
+          <figure className="mt-16 grid grid-cols-12 gap-x-8 md:mt-20">
+            <div aria-hidden className="col-span-12 mb-5 h-px bg-cream/15 md:col-span-12" />
+            <blockquote className="font-display col-span-12 text-[clamp(1.75rem,4.2vw,3.25rem)] font-extrabold leading-[1.02] tracking-[-0.02em] text-cream md:col-span-10">
+              <span className="text-tomato">"</span>An international celebration of community.<span className="text-tomato">"</span>
             </blockquote>
-            <figcaption className="ui col-span-12 mt-6 flex items-center gap-3 text-[10px] font-semibold tracking-[0.28em] text-cream/55">
+            <figcaption className="ui col-span-12 mt-5 flex items-center gap-3 text-[10px] font-semibold tracking-[0.28em] text-cream/55">
               <span className="h-px w-8 bg-cream/35" />
               Archiv3 · 2024
             </figcaption>
