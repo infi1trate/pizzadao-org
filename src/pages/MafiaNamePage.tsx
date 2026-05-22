@@ -618,8 +618,6 @@ const MafiaNamePage = () => {
                       name={n}
                       index={i}
                       persona={CARD_PERSONALITIES[i]}
-                      avatarUrl={cardAvatars[i]}
-                      avatarLoading={cardAvatarLoading[i]}
                       isSelected={selectedIdx === i}
                       anySelected={selectedIdx !== null}
                       onSelect={() => { setSelectedIdx(i); setEditedName(n.name); setEditing(false); }}
