@@ -7,7 +7,9 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: { DEFAULT: "1.25rem", md: "2rem", lg: "2.5rem" },
+      // Tablet (md, 768–1023) gets its own gutter step so iPad portrait/landscape
+      // breathe like a magazine spread rather than a compressed desktop.
+      padding: { DEFAULT: "1.25rem", sm: "1.5rem", md: "2.25rem", lg: "2.5rem" },
       screens: { "2xl": "1440px" },
     },
     extend: {
@@ -17,11 +19,12 @@ export default {
         serif: ["'Asap'", "system-ui", "sans-serif"],
       },
       fontSize: {
-        // Editorial scale — mobile floors tuned for premium readability
-        "mega": ["clamp(3.25rem, 14vw, 14rem)", { lineHeight: "0.88", letterSpacing: "-0.01em" }],
-        "display-1": ["clamp(2.5rem, 9vw, 8rem)", { lineHeight: "0.92", letterSpacing: "-0.01em" }],
-        "display-2": ["clamp(2rem, 6vw, 5rem)", { lineHeight: "0.96", letterSpacing: "-0.01em" }],
-        "headline": ["clamp(1.625rem, 3.4vw, 3rem)", { lineHeight: "1.05", letterSpacing: "-0.005em" }],
+        // Editorial scale — tuned so iPad (768–1023) sits between desktop ambition
+        // and mobile floor. vw caps prevent runaway headlines at tablet widths.
+        "mega":      ["clamp(3.25rem, min(14vw, 11rem), 14rem)", { lineHeight: "0.88", letterSpacing: "-0.01em" }],
+        "display-1": ["clamp(2.5rem,  min(9vw,  6.5rem), 8rem)", { lineHeight: "0.92", letterSpacing: "-0.01em" }],
+        "display-2": ["clamp(2rem,    min(6vw,  4.25rem), 5rem)", { lineHeight: "0.96", letterSpacing: "-0.01em" }],
+        "headline":  ["clamp(1.625rem, min(3.4vw, 2.5rem), 3rem)", { lineHeight: "1.05", letterSpacing: "-0.005em" }],
       },
       colors: {
         border: "hsl(var(--border))",
