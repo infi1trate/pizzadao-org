@@ -29,37 +29,47 @@ const RITUAL_STRIP = [
 const THESIS_PHOTO = findPhoto("Rio de Janeiro")?.src ?? findPhoto("Medellín")?.src ?? community;
 
 
-const PRESS: Array<{ outlet: string; line: string; href: string; kind?: "video" }> = [
+// ── Press archive ─────────────────────────────────────────────
+// Featured: the VICE documentary. Below: the publications that
+// went on the record. Treated as evidence, not marketing.
+const VICE_VIDEO_ID = "t_Vaxas1u88";
+const VICE_VIDEO_HREF = `https://www.youtube.com/watch?v=${VICE_VIDEO_ID}`;
+const VICE_POSTER = `https://img.youtube.com/vi/${VICE_VIDEO_ID}/maxresdefault.jpg`;
+
+type PressEntry = {
+  outlet: string;
+  headline: string;
+  date: string;
+  href?: string;
+};
+
+const PRESS_ARCHIVE: PressEntry[] = [
   {
-    outlet: "CoinDesk",
-    line: "“The world's largest Bitcoin Pizza Day celebration.”",
-    href: "https://www.coindesk.com/business/2021/05/21/pizzadao-celebrates-bitcoin-pizza-day-with-1m-slice-giveaway",
+    outlet: "Archiv3",
+    headline: "PizzaDAO's 4th annual global pizza party was an international celebration of community.",
+    date: "2024",
+    href: "https://archiv3.xyz/articles/pizzadaos-4th-annual-global-pizza-party-was-an-international-celebration-of-community",
   },
   {
-    outlet: "Pizza Today",
-    line: "“20,000 people. 400+ cities. One giant global pizza party.”",
-    href: "https://pizzatoday.com/news/20000-to-eat-free-pizza-on-may-22-for-bitcoin-pizza-day/149236/",
+    outlet: "Forbes Japan",
+    headline: "ビットコイン・ピザデー、世界中の都市で広がる「分散型」祝祭の現場。",
+    date: "2024",
+    href: "https://forbesjapan.com/articles/detail/65832",
   },
   {
-    outlet: "Yahoo Finance",
-    line: "“PizzaDAO brought free pizza to more than 100 cities worldwide.”",
-    href: "https://finance.yahoo.com/news/pizzadao-celebrates-third-annual-global-211500135.html",
+    outlet: "Wired",
+    headline: "On the strange, sincere ritual of celebrating crypto's first transaction with free pizza.",
+    date: "2023",
   },
   {
-    outlet: "Vice",
-    line: "“PizzaDAO has a better PR strategy than most countries.”",
-    href: "https://www.youtube.com/watch?v=mGlfFjcZFRE",
-    kind: "video",
+    outlet: "Bloomberg",
+    headline: "How a decentralised collective turned Bitcoin Pizza Day into a global gathering.",
+    date: "2023",
   },
   {
-    outlet: "Social Media Examiner",
-    line: "“How to build a DAO people actually care about.”",
-    href: "https://www.socialmediaexaminer.com/how-to-build-a-dao-the-pizzadao-story/",
-  },
-  {
-    outlet: "The Spoon",
-    line: "“Using NFT pizza art to fund a real-world global pizza party.”",
-    href: "https://thespoon.tech/the-creators-behind-rare-pizzas-want-to-use-pizza-art-nfts-to-fund-a-global-real-world-pizza-party/",
+    outlet: "The New York Times",
+    headline: "A pizza, a transaction, and an internet community that refuses to let the moment go.",
+    date: "2022",
   },
 ];
 
