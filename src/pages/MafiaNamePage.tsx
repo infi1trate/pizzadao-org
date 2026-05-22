@@ -60,54 +60,34 @@ const toppingDescriptor = (t: string) =>
 // Three distinct personas — each card carries one. Order matches names[0..2].
 const CARD_PERSONALITIES: {
   id: string;
-  label: string;
   margin: string;
-  marginAlt: string;
-  stamp: string;
-  stampSelected: string;
   toneHint: string;
   fileNo: string;
   rotation: number;
-  stampPos: string;
   yOffset: string;
 }[] = [
   {
     id: "classic",
-    label: "Old guard",
     margin: "trusted",
-    marginAlt: "this guy",
-    stamp: "Sworn in",
-    stampSelected: "Made",
     toneHint: "classic, controlled, respected, quiet authority",
     fileNo: "01",
     rotation: -1.2,
-    stampPos: "-right-3 -top-3 rotate-[-8deg]",
     yOffset: "md:translate-y-0",
   },
   {
     id: "wildcard",
-    label: "Wildcard",
     margin: "dangerous",
-    marginAlt: "watch this one",
-    stamp: "Loose cannon",
-    stampSelected: "Made",
     toneHint: "chaotic, unpredictable, feared, wild eyes",
     fileNo: "02",
     rotation: 0.9,
-    stampPos: "-left-4 top-6 rotate-[7deg]",
     yOffset: "md:translate-y-6",
   },
   {
     id: "operator",
-    label: "Slick operator",
-    margin: "earner",
-    marginAlt: "smooth",
-    stamp: "On the books",
-    stampSelected: "Made",
+    margin: "real earner",
     toneHint: "smooth, charming, calculating, sharp dresser",
     fileNo: "03",
     rotation: -0.6,
-    stampPos: "right-4 bottom-4 rotate-[-12deg]",
     yOffset: "md:translate-y-2",
   },
 ];
@@ -1151,7 +1131,6 @@ function FamilyFileCard({
   onSelect: () => void;
 }) {
   const dimmed = anySelected && !isSelected;
-  const margin = isSelected ? persona.marginAlt : persona.margin;
   // Monogram from the alias initials — a tiny dossier mark, not an avatar
   const initials = name.name
     .replace(/["'"]/g, "")
@@ -1167,17 +1146,17 @@ function FamilyFileCard({
       style={{
         transform: `rotate(${isSelected ? 0 : persona.rotation}deg)`,
       }}
-      className={`group relative flex flex-col rounded-[22px] border bg-cream p-5 pt-6 text-left transition-all duration-500 md:p-6 md:pt-7 ${persona.yOffset} ${
+      className={`group relative flex flex-col rounded-[20px] border bg-cream p-4 pt-5 text-left transition-all duration-500 md:p-5 md:pt-6 ${persona.yOffset} ${
         isSelected
           ? "-translate-y-2 border-tomato/70 shadow-[0_36px_70px_-28px_hsl(0_93%_60%/0.55)] z-10"
           : "border-ink/12 hover:-translate-y-1.5 hover:rotate-0 hover:border-ink/30 hover:shadow-[0_22px_45px_-22px_hsl(0_0%_0%/0.4)]"
       } ${dimmed ? "opacity-90" : "opacity-100"}`}
     >
       {/* Layered paper texture */}
-      <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[22px] grain opacity-40" />
+      <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[20px] grain opacity-40" />
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-[22px]"
+        className="pointer-events-none absolute inset-0 rounded-[20px]"
         style={{
           backgroundImage:
             "radial-gradient(120% 80% at 0% 0%, hsl(40 35% 92% / 0.6), transparent 55%), radial-gradient(120% 80% at 100% 100%, hsl(28 30% 80% / 0.25), transparent 55%)",
@@ -1186,7 +1165,7 @@ function FamilyFileCard({
       {/* Subtle edge wear */}
       <span
         aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-[22px]"
+        className="pointer-events-none absolute inset-0 rounded-[20px]"
         style={{
           boxShadow:
             "inset 0 0 0 1px hsl(28 25% 18% / 0.04), inset 0 -22px 32px -28px hsl(28 30% 18% / 0.22)",
@@ -1195,7 +1174,7 @@ function FamilyFileCard({
       {/* Warm spotlight on hover/selected */}
       <span
         aria-hidden
-        className={`pointer-events-none absolute inset-0 rounded-[22px] transition-opacity duration-500 ${
+        className={`pointer-events-none absolute inset-0 rounded-[20px] transition-opacity duration-500 ${
           isSelected ? "opacity-100" : "opacity-0 group-hover:opacity-70 group-focus-visible:opacity-70"
         }`}
         style={{
@@ -1204,50 +1183,30 @@ function FamilyFileCard({
         }}
       />
 
-      {/* Header — file number + persona */}
-      <div className="relative flex items-center justify-between">
+      {/* Header — file number only */}
+      <div className="relative">
         <p className="ui text-[10px] uppercase tracking-[0.28em] text-ink/50">
           § Family file no. {persona.fileNo}
         </p>
-        <span className="ui rounded-full border border-ink/15 px-2 py-0.5 text-[9px] uppercase tracking-[0.22em] text-ink/55">
-          {persona.label}
-        </span>
       </div>
 
-      {/* Symbolic dossier mark — NOT an avatar.
-          The portrait is earned only after the name is claimed. */}
-      <div className="relative mt-5 flex items-center gap-4 border-y border-dashed border-ink/15 py-4">
-        {/* Monogram stamp — a hand-inked seal stand-in */}
+      {/* Implied portrait — monogram seal, no narration */}
+      <div className="relative mt-4 flex items-center gap-3">
         <span
           aria-hidden
-          className="relative grid h-16 w-16 shrink-0 place-items-center rounded-full border-[2px] border-ink/55 bg-cream/70 text-ink"
-          style={{ transform: "rotate(-4deg)", boxShadow: "inset 0 0 0 1px hsl(28 25% 18% / 0.08)" }}
+          className="relative grid h-14 w-14 shrink-0 place-items-center rounded-full border-[1.5px] border-dashed border-ink/35 bg-cream/60 text-ink/70"
+          style={{ transform: "rotate(-4deg)" }}
         >
-          <span aria-hidden className="pointer-events-none absolute inset-0 rounded-full grain opacity-50" />
-          <span className="font-display relative text-[20px] font-black tracking-tight">
+          <span aria-hidden className="pointer-events-none absolute inset-0 rounded-full grain opacity-40" />
+          <span className="font-display relative text-[18px] font-black tracking-tight">
             {initials || "—"}
           </span>
         </span>
-
-        <div className="min-w-0 flex-1">
-          <p className="ui text-[9px] uppercase tracking-[0.28em] text-ink/45">
-            Portrait
-          </p>
-          <p className="ui mt-1 text-[10px] uppercase tracking-[0.22em] text-ink/55">
-            Sealed · awaits your claim
-          </p>
-          <span
-            aria-hidden
-            className="handwritten mt-1 inline-block rotate-[-3deg] text-[13px] text-tomato/80"
-          >
-            {isSelected ? "made" : persona.margin}
-          </span>
-        </div>
+        <span className="h-px flex-1 bg-ink/10" />
       </div>
 
-
       {/* Alias */}
-      <h3 className="font-display relative mt-5 text-[clamp(1.5rem,2.2vw,2rem)] font-black leading-[1.02] tracking-[-0.01em] text-ink">
+      <h3 className="font-display relative mt-4 text-[clamp(1.5rem,2.2vw,2rem)] font-black leading-[1.02] tracking-[-0.01em] text-ink">
         {name.name}
         <span
           aria-hidden
@@ -1259,13 +1218,13 @@ function FamilyFileCard({
       </h3>
 
       {/* Descriptor */}
-      <p className="relative mt-3 text-[14px] leading-relaxed text-ink/75">
+      <p className="relative mt-2.5 text-[14px] leading-relaxed text-ink/75">
         {name.explanation}
       </p>
 
-      {/* Tags */}
+      {/* Tags — capped at 4, kept flavorful */}
       {name.style_tags?.length > 0 && (
-        <div className="relative mt-4 flex flex-wrap gap-1.5">
+        <div className="relative mt-3 flex flex-wrap gap-1.5">
           {name.style_tags.slice(0, 4).map((tag) => (
             <span
               key={tag}
@@ -1277,37 +1236,20 @@ function FamilyFileCard({
         </div>
       )}
 
-      {/* Round wax stamp — position varies per card */}
-      <span
-        aria-hidden
-        className={`seal-stamp pointer-events-none absolute ${persona.stampPos} inline-flex h-16 w-16 items-center justify-center rounded-full border-[2.5px] text-tomato transition-all duration-500 ${
-          isSelected
-            ? "scale-110 border-tomato/85 opacity-100"
-            : "scale-90 border-tomato/35 opacity-60 group-hover:opacity-85 group-focus-visible:opacity-85"
-        }`}
-      >
-        <span className="ui text-center text-[8px] font-bold uppercase leading-tight tracking-[0.16em]">
-          {isSelected ? persona.stampSelected : persona.stamp.split(" ").map((w, i, a) => (
-            <span key={i}>
-              {w}
-              {i < a.length - 1 && <br />}
-            </span>
-          ))}
-        </span>
-      </span>
-
-      {/* Handwritten margin note */}
+      {/* The single handwritten annotation — the only human voice on the card */}
       <span
         aria-hidden
         className={`handwritten pointer-events-none absolute -bottom-3 right-5 rotate-[-6deg] text-[17px] transition-all duration-500 ${
           isSelected ? "text-tomato opacity-100" : "text-ink/45 opacity-80"
         }`}
       >
-        {margin}
+        {persona.margin}
       </span>
     </button>
   );
 }
+
+
 
 function FinaleScene({
   phase,
