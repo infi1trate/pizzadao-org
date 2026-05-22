@@ -134,12 +134,16 @@ const ArchivalFrame = ({ photo, slot, index }: FrameProps) => {
       }}
     >
       <div
-        className={`relative overflow-hidden bg-ink ${slot.aspect}`}
+        className="relative flex h-full w-full flex-col bg-cream-warm p-2 pb-10 md:p-2.5 md:pb-12"
         style={{
           boxShadow:
-            "0 1px 0 hsl(0 0% 0% / 0.08), 0 18px 40px -22px hsl(0 0% 0% / 0.55), 0 32px 80px -40px hsl(0 0% 0% / 0.45)",
+            "0 1px 0 hsl(0 0% 0% / 0.10), 0 18px 40px -22px hsl(0 0% 0% / 0.55), 0 32px 80px -40px hsl(0 0% 0% / 0.45)",
         }}
       >
+      <div
+        className={`relative overflow-hidden bg-ink ${slot.aspect}`}
+      >
+
         <img
           key={current.src}
           src={current.src}
@@ -217,6 +221,16 @@ const ArchivalFrame = ({ photo, slot, index }: FrameProps) => {
             )}
           </div>
         </figcaption>
+      </div>
+      <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 flex items-baseline justify-between gap-2 px-3 pb-2.5 md:px-4 md:pb-3">
+        <span className="handwritten text-ink/80 text-[0.95rem] leading-none md:text-base">
+          <span aria-hidden className="mr-1">{current.flag}</span>
+          {current.city}
+        </span>
+        <span className="ui text-[9px] font-semibold uppercase tracking-[0.24em] text-ink/45">
+          {current.year}
+        </span>
+      </figcaption>
       </div>
     </figure>
   );
