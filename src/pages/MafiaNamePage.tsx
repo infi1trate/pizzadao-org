@@ -403,13 +403,8 @@ const MafiaNamePage = () => {
       });
       setClaimed(true);
       setStep("claim");
-      // If we already generated this card's avatar, use it; otherwise generate now
-      const existing = selectedIdx !== null ? cardAvatars[selectedIdx] : null;
-      if (existing) {
-        setAvatarUrl(existing);
-      } else {
-        generateAvatar(chosen);
-      }
+      // Avatar is only generated *after* the name is claimed.
+      generateAvatar(chosen);
     } catch (e: any) {
       toast({
         title: "Could not seal the envelope",
