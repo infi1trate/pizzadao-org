@@ -34,6 +34,7 @@ export function initPostHog(): void {
 
   posthog.init(POSTHOG_KEY, {
     api_host: POSTHOG_HOST,
+    defaults: "2026-01-30",
     capture_pageview: false, // we capture manually on SPA route changes
     capture_pageleave: true,
     autocapture: true,

@@ -14,7 +14,8 @@
  */
 
 export const POSTHOG_KEY: string =
-  (import.meta.env.VITE_PUBLIC_POSTHOG_KEY as string | undefined) ?? "";
+  (import.meta.env.VITE_PUBLIC_POSTHOG_KEY as string | undefined) ??
+  "phc_uyECptFtHGgkh2TQojmCGnapnicPg9Q8o7zgSpcNFL8i";
 
 export const POSTHOG_HOST: string =
   (import.meta.env.VITE_PUBLIC_POSTHOG_HOST as string | undefined) ??
