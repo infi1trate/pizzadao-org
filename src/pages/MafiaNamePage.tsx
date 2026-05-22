@@ -576,10 +576,10 @@ const MafiaNamePage = () => {
               <button
                 onClick={() => film && topping && generate(film, topping)}
                 disabled={loadingNames}
-                className="ui inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.22em] text-ink/65 hover:text-tomato disabled:opacity-40"
+                className="ui inline-flex items-center gap-2 whitespace-nowrap text-[12px] uppercase tracking-[0.22em] text-ink/65 hover:text-tomato disabled:opacity-40"
               >
                 <RefreshCw className={`h-3.5 w-3.5 ${loadingNames ? "animate-spin" : ""}`} />
-                Re-cast
+                {generateCountRef.current <= 1 ? "Re-cast" : generateCountRef.current === 2 ? "Look deeper" : "Pull another file"}
               </button>
             </div>
 
