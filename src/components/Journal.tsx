@@ -9,12 +9,12 @@ import { EVT } from "@/lib/analytics/events";
 
 const SECONDARY = [
   {
-    kicker: "Essay",
-    title: "Pizza is infrastructure: a love letter to neighborhood economies.",
-    author: "M. Calderón",
-    meta: "12 min read",
-    img: j1,
-    href: "#",
+    kicker: "Rare Pizzas",
+    title: "Yes, Cheese! What we slather on the sauce at Rare Pizzas.",
+    author: "JoBlank",
+    meta: "Medium · 9 min",
+    img: "https://miro.medium.com/v2/resize:fit:1200/format:webp/1*cT59q32F-znhT94o_8Bu8A.jpeg",
+    href: "https://medium.com/pizzadao/yes-cheese-f80648a01ff3",
   },
   {
     kicker: "Field Notes",
@@ -23,6 +23,22 @@ const SECONDARY = [
     meta: "Dispatch · 8 min",
     img: jAi,
     href: "https://pizzadao.org/articles/how-pizzadao-leverages-ai-community-to-code",
+  },
+  {
+    kicker: "Rare Pizzas",
+    title: "Lost in the Sauce: what goes into the Rare Pizzas sauce.",
+    author: "Don Snausages",
+    meta: "Medium · 4 min",
+    img: "https://miro.medium.com/v2/resize:fit:1200/format:webp/1*7Op7o3Zb_xBWUoQzq_Fkew.png",
+    href: "https://medium.com/pizzadao/what-goes-into-the-rare-pizzas-sauce-22610e9228f0",
+  },
+  {
+    kicker: "Philosophy",
+    title: "Blockchain meets ontology: the Turing-incomplete loop of metaphysical certainty.",
+    author: "T. Dylan Daniel",
+    meta: "Medium · 10 min",
+    img: "https://miro.medium.com/v2/resize:fit:1200/format:webp/0*tiakepu7JZiYXeXG.png",
+    href: "https://medium.com/pizzadao/blockchain-meets-ontology-the-turing-incomplete-loop-of-metaphysical-certainty-b7ddbfdefe48",
   },
 ];
 
