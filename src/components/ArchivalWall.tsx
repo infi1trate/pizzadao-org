@@ -338,7 +338,7 @@ const Lightbox = ({
       aria-modal="true"
       aria-label={`${photo.city}, ${photo.country}`}
       onClick={onClose}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/95 px-4 py-10 backdrop-blur-md animate-fade-in md:px-12"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/95 px-4 py-10 backdrop-blur-md md:px-12"
     >
       {/* Atmospheric backdrop texture */}
       <div
