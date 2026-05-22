@@ -1479,7 +1479,7 @@ function FinaleScene({
             {phase >= 2 && (
               <span
                 aria-hidden
-                className="seal-stamp pointer-events-none absolute right-3 top-[40%] z-20 md:right-5"
+                className="seal-stamp pointer-events-none absolute right-2 top-[62%] z-20 md:right-5 md:top-[40%]"
                 style={{ transform: "rotate(-11deg)" }}
               >
                 <span aria-hidden className="seal-spread absolute inset-0 -m-2 rounded-full bg-tomato/15" />
@@ -1494,7 +1494,7 @@ function FinaleScene({
                   }}
                 />
                 <span
-                  className="relative grid h-[86px] w-[86px] place-items-center text-tomato md:h-[100px] md:w-[100px]"
+                  className="relative grid h-[68px] w-[68px] place-items-center text-tomato sm:h-[78px] sm:w-[78px] md:h-[100px] md:w-[100px]"
                   style={{
                     backgroundImage:
                       "radial-gradient(60% 60% at 32% 28%, hsl(0 93% 60% / 0.18), transparent 70%), radial-gradient(40% 40% at 75% 75%, hsl(0 93% 40% / 0.12), transparent 70%)",
