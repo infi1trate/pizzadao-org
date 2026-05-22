@@ -5,6 +5,7 @@ import Sponsorship from "@/components/Sponsorship";
 import PartnersGlobe from "@/components/PartnersGlobe";
 import PartnerActivations from "@/components/PartnerActivations";
 import PhotoVeil from "@/components/PhotoVeil";
+import RegistrationMarks from "@/components/RegistrationMarks";
 import { track } from "@/lib/analytics/posthog";
 import { EVT } from "@/lib/analytics/events";
 
