@@ -1,65 +1,68 @@
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 
-const STYLE = `Vintage 1930s rubber-hose cartoon portrait of an ANTHROPOMORPHIC NEIGHBORHOOD ANIMAL — a member of a strange global pizza social club / lodge. Hand-drawn underground comic energy crossed with old union-hall poster art, inked risograph print work, and an old pizza shop mascot painted on a brick wall. Circular crop on warm cream background with a thick, slightly uneven dark navy border ring (imperfect, ink-bleed feel, like a hand-stamped membership badge).
+const STYLE = `Vintage 1930s rubber-hose cartoon portrait of an ANTHROPOMORPHIC NEIGHBORHOOD ANIMAL — an initiate of the strange PizzaDAO underworld, a weird global pizza social club / lodge. Hand-drawn underground comic energy crossed with old union-hall poster art, inked risograph print work, and an old pizza shop mascot painted on a brick wall. Circular crop on warm cream background with a thick, slightly uneven dark navy border ring (imperfect, ink-bleed feel, like a hand-stamped membership badge).
 
-CHARACTER (most important):
-- the subject IS an animal (raccoon, pigeon, rat, alley cat, bulldog, turtle, crow, fox, possum, duck, frog, sausage-smoking turkey, scrappy mutt, mystic owl — pick ONE and commit)
-- anthropomorphic: animal head + shoulders, dressed like a human neighborhood lodge member
-- silhouette must be strongly readable at small size — the animal species is instantly recognizable
+THE TOPPING IS THE CHARACTER (most important):
+- The pizza topping/ingredient IS the personality, the silhouette, the energy, the FACE of this portrait.
+- The animal species is a vessel for the topping's vibe — pick the species whose energy matches the ingredient.
+- The mafia/lodge styling is COSTUME — theater layered on top of an ingredient-first identity. It should never dominate.
+- Goal: someone seeing this portrait reads the TOPPING first, the animal second, the mafia flavor third.
+
+CHARACTER (vessel):
+- anthropomorphic neighborhood animal (raccoon, pigeon, rat, alley cat, bulldog, turtle, crow, fox, possum, duck, frog, sausage-smoking turkey, scrappy mutt, mystic owl — pick ONE and commit)
 - expressive, slightly cursed, charmingly suspicious — like a regular at a 3am pizza counter
-- subtle social-club mafia energy (NOT criminal, NOT aggressive, NOT ethnic caricature)
-- wardrobe hints: rumpled trench coat, old jacket, lopsided fedora or flat cap, pinky ring on a paw, wide tie or bowtie, lapel pin, social-club sash
-- a single quiet prop is allowed: a sausage held like a cigar with curling smoke, an espresso cup, a folded napkin, a wooden matchstick, a tiny pizza box
+- subtle social-club lodge energy (NOT criminal, NOT aggressive, NOT ethnic caricature)
+- light wardrobe accent only (rumpled collar, lopsided cap, lapel pin, social-club sash) — kept minimal so the topping leads
 
 LINE & TEXTURE:
 - thick uneven black ink outlines with visible wobble, smudges, paper grain
 - rubber-hose limb feeling even in a portrait crop
 - flat shading with hatching/cross-hatching in shadows
-- muted vintage palette: cream, mustard, oxblood, charcoal, faded teal, dusty brick
+- muted vintage palette: cream, mustard, oxblood, charcoal, faded teal, dusty brick — bent toward the topping's color signature
 - tactile risograph misregistration, subtle off-print color halos
 - avoid clean vector edges, avoid Pixar 3D polish, avoid furry-art rendering, avoid anime, avoid glossy lighting, avoid photoreal fur detail
 
-PIZZA REFERENCE (subtle and secondary — one, never more):
-- a tiny pepperoni pin on the lapel, OR
-- a sausage held like a cigar with curling smoke, OR
-- an anchovy-shaped tie clip, OR
-- a marinara splatter on the collar, OR
-- a topping-shaped boutonnière, OR
-- a small pizza-slice lodge medallion on a chain
+TOPPING DOMINANCE (the entire portrait must read as the ingredient):
+- the topping's color signature floods the palette and lighting
+- the topping appears prominently (held, worn, growing out of the hat, dripping, smoked, pinned huge on the lapel, or fused into the character's features)
+- the character's expression embodies the ingredient's personality — not generic mob swagger
+- if forced to pick between "more mafia" and "more topping", always go MORE TOPPING
 
 COMPOSITION: single anthropomorphic animal character, head-and-shoulders, centered, square 1:1, consistent framing across the whole portrait ecosystem.
 
-NEGATIVE: no humans, no human faces, no real-world celebrities, no text, no logos, no watermarks, no clean vector, no symmetrical anime mascot, no chibi, no Pixar polish, no furry-art rendering, no aggressive crime imagery, no weapons, no ethnic stereotypes, no gendered human cues.`;
+NEGATIVE: no humans, no human faces, no real-world celebrities, no text, no logos, no watermarks, no clean vector, no symmetrical anime mascot, no chibi, no Pixar polish, no furry-art rendering, no aggressive crime imagery, no weapons, no ethnic stereotypes, no gendered human cues, no generic mobsters with a tiny pizza accessory — the topping must dominate.`;
 
+// Ingredient-first personalities — the topping IS the character.
+// Each entry: dominant palette + features fused with the ingredient + a personality core.
 const TOPPING_MOTIF: Record<string, string> = {
-  Pepperoni: "red pepperoni pin on lapel, warm red accents, a quietly hot-headed look",
-  Mushroom: "earthy brown palette, a small mushroom tucked in the hatband, suspicious squint",
-  Basil: "fresh basil sprig in lapel, faded green accents, calm honest face",
-  Mozzarella: "soft cream tones, a tiny mozzarella drip on the tie, loyal soft expression",
-  Anchovy: "slicked-back fur/feathers, tiny anchovy charm on a chain, smug salty grin",
-  Sausage: "a fat sausage held like a cigar with curling smoke, heavy proud face",
-  "Hot honey": "honey drip on lapel, thin gold chain, sweet chaotic smirk",
-  Ricotta: "soft creamy palette, gentle holy expression",
-  Garlic: "garlic clove pin, sharp focused stare",
-  Onion: "watery determined eyes, onion brooch",
-  Olives: "olive pinned to fedora, bitter patient stare",
-  Prosciutto: "elegant cured pink tones, prosciutto-pink pocket square",
-  Pineapple: "tiny pineapple charm, controversial sunny grin",
-  "Jalapeño": "green jalapeño pin, quick unpredictable smirk, a bead of sweat",
-  "Banana peppers": "yellow pepper accents, cheerful sneaky grin",
-  Soppressata: "spicy red salami slice as boutonnière, weathered scowl",
-  Meatball: "rounded face, meatball brooch, familiar gentle smile",
-  "Roasted red pepper": "smoky red tones, charming smoky smile",
-  Truffle: "rare dark truffle in lapel, whispering pose, expensive aura",
-  Artichoke: "armored artichoke pin, stubborn old-world stare",
-  Eggplant: "deep purple velvet tones, sicilian calm",
-  "Broccoli rabe": "bitter green sprig in lapel, honest weathered face",
-  "Chili crisp": "oily red drips on tie, loud modern energy",
-  Burrata: "soft luxurious cream tones, creamy soft smile",
-  Oregano: "dried oregano sprinkled on shoulders, grandmotherly aura",
-  Parmesan: "aged sharp expression, parmesan rind pin",
-  Tomato: "ripe red tomato boutonnière, the quiet boss of all toppings",
-  "Spicy salami": "hot red salami slice on lapel, dangerous cured grin",
+  Pepperoni: "saturated red-orange palette, loud and aggressive charisma, charred pepperoni-disc texture on the cheeks, spicy charismatic grin, oily shine, hot-headed neighborhood pride — pepperoni dominates the entire portrait",
+  Mushroom: "earthy umber and damp moss palette, asymmetrical mushroom-cap silhouette on the head, weird soft-but-dangerous stillness, suspicious squint, gentle decay, fungal poetry — mushroom is the whole vibe",
+  Basil: "fresh leafy greens drowning the palette, calm honest big-basil presence, basil leaves growing from the collar/hatband, sicilian grandmother warmth, herbal halo",
+  Mozzarella: "soft cream and pale ivory palette, loyal soft-faced expression, melting mozzarella drip woven into the silhouette, gentle stretchy energy, everywhere-everyman vibe",
+  Anchovy: "slicked oily palette, suspicious fishy gleam in the eye, anchovy silhouette pinned huge across the chest, sharp salty grin, old-school brine, smug and tiny and dangerous",
+  Sausage: "heavy proud brown-red palette, sausage held like a cigar with thick curling smoke, brooklyn corner-shop weight, smoked-meat haze around the face",
+  "Hot honey": "warm gold and chili-red palette, sticky honey dripping down the collar and chin, flashy chaotic smirk, gold-tooth glint, sweet-dangerous energy radiating off the portrait",
+  Ricotta: "soft creamy off-white palette, gentle holy quiet, ricotta dollop motif, sicilian-grandmother stillness",
+  Garlic: "bone-white and bruise-purple palette, sharp aggressive stare, garlic-bulb knuckles or garlic-cluster necklace, pungent intensity, dangerous focus",
+  Onion: "watery determined eyes, papery onion-skin texture on the wardrobe, layered stubborn loyalty, faint tear",
+  Olives: "muted olive-green and brine palette, bitter patient stare, olive pit centered between the eyes, sicilian endurance",
+  Prosciutto: "elegant cured-pink palette, thin draped prosciutto slice across the shoulders like a sash, expensive lazy confidence",
+  Pineapple: "sunny tropical yellow palette, controversial bright grin, pineapple crown sprouting from the head, brave chaotic warmth",
+  "Jalapeño": "vivid jalapeño-green palette, quick unpredictable smirk, bead of sweat, fresh chili pinned to the lapel, hot-quick energy",
+  "Banana peppers": "cheerful tangy yellow palette, sneaky-friendly grin, banana-pepper rings as collar accent",
+  Soppressata: "spicy oxblood-red palette, weathered scowl, soppressata slice covering the chest like armor, cured-feared old-world weight",
+  Meatball: "rounded warm-brown palette, familiar gentle smile, meatball-shaped silhouette, nonna's-kitchen comfort with a bruise underneath",
+  "Roasted red pepper": "smoky charred-red palette, charming smoky smile, roasted-pepper sheen on the skin",
+  Truffle: "rare dark earth palette, whispering pose, truffle slices fanned across the lapel, expensive secret aura",
+  Artichoke: "armored green palette, stubborn old-roman stare, artichoke-leaf scales layered as wardrobe armor",
+  Eggplant: "deep velvet purple palette, sicilian calm, glossy eggplant-skin sheen on the head/shoulders",
+  "Broccoli rabe": "bitter green palette, honest weathered face, broccoli-rabe sprigs sprouting from the collar",
+  "Chili crisp": "loud oily red-orange palette, modern reckless energy, chili-crisp flakes scattered across the face and shoulders, glossy spice glaze",
+  Burrata: "luxurious soft-white palette, creamy soft smile, burrata milk gently spilling from the collar, indulgent calm",
+  Oregano: "dried earthy green-brown palette, grandmotherly aura, dried oregano leaves dusted across the shoulders",
+  Parmesan: "aged ivory-gold palette, sharp proud expression, parmesan-rind texture on the skin, crystalline age",
+  Tomato: "ripe red palette flooding everything, the quiet boss of all toppings, tomato sheen on the face, foundational warmth",
+  "Spicy salami": "hot cured-red palette, dangerous cured grin, spicy salami slice pinned huge to the lapel, hot-pepper flecks",
 };
 
 const FILM_MOOD: Record<string, string> = {
@@ -111,10 +114,11 @@ Deno.serve(async (req) => {
 
     const prompt = `${STYLE}
 
-ANIMAL FAMILY (commit to this species, no hybrids): ${animal}.
-TOPPING DETAILS: ${motif}.
-MOOD: ${mood}.
-INSPIRATION: channel the atmosphere (not the cast) of "${filmTitle ?? "—"}" for the alias "${name ?? "—"}" — invent an original anthropomorphic ${animal} lodge member. Do NOT depict any real actor, human, or copyrighted character. Strictly an animal portrait.`;
+TOPPING (THE IDENTITY — lead with this, it dominates the portrait): ${topping}.
+TOPPING PERSONALITY & VISUAL DOMINANCE: ${motif}.
+ANIMAL VESSEL (commit to this species, no hybrids — chosen to match the topping's energy): ${animal}.
+MAFIA COSTUME LAYER (atmosphere only, minimal): ${mood}.
+INSPIRATION: channel only the ATMOSPHERE (not the cast, not the surnames, not any characters) of "${filmTitle ?? "—"}" for the PizzaDAO underworld initiate "${name ?? "—"}". The topping must read first, the animal second, the mafia flavor third. Do NOT depict any real actor, human, or copyrighted character. Strictly an ingredient-led animal portrait.`;
 
     const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",

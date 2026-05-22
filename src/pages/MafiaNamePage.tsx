@@ -477,12 +477,12 @@ const MafiaNamePage = () => {
           <div className="container pt-2 pb-6 md:pt-4 md:pb-10">
             <p className="overline text-tomato">§ 01 · PizzaDAO initiation</p>
             <h1 className="font-display mt-4 max-w-[14ch] text-[clamp(2.5rem,7vw,5.5rem)] font-black leading-[0.9] tracking-[-0.015em] [text-wrap:balance]">
-              Claim your{" "}
-              <span className="text-tomato">mafia name.</span>
+              Enter the{" "}
+              <span className="text-tomato">PizzaDAO underworld.</span>
             </h1>
 
             <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-ink/75">
-              Choose a film. Choose a topping. The family handles the rest.
+              Pick the vibe. Choose your topping. The pizza decides who you are.
             </p>
           </div>
         </section>
@@ -496,8 +496,8 @@ const MafiaNamePage = () => {
             {!film ? (
               <CinematicInput
                 inputRef={filmInputRef}
-                label="§ 02 · Your movie"
-                placeholder="What's your mafia movie?"
+                label="§ 02 · The vibe"
+                placeholder="What kind of operation is this?"
                 value={query}
                 onChange={setQuery}
                 open={filmDrawerOpen}
@@ -519,7 +519,7 @@ const MafiaNamePage = () => {
               <div className="mt-14">
                 <CinematicInput
                   inputRef={toppingInputRef}
-                  label="§ 03 · Your topping"
+                  label="§ 03 · Your topping (this is you)"
                   placeholder="What's your topping?"
                   value={toppingQuery}
                   onChange={setToppingQuery}
@@ -564,7 +564,7 @@ const MafiaNamePage = () => {
             <div className="mt-10 text-center md:mt-14">
               <p className="overline text-tomato">§ 04 · The naming</p>
               <h2 className="font-display mx-auto mt-4 max-w-3xl text-[clamp(2rem,5vw,3.5rem)] font-black leading-[0.95] tracking-[-0.01em]">
-                The family has spoken.
+                The pizza has spoken.
               </h2>
               <p className="ui mt-4 text-[12px] uppercase tracking-[0.28em] text-ink/45">
                 One of these belongs to you.
