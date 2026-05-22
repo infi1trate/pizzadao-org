@@ -518,79 +518,64 @@ const About = () => {
             <span className="ui text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/45">
               § 04 — Why it works
             </span>
-            <span className="ui hidden text-[10px] font-semibold uppercase tracking-[0.28em] text-ink/35 md:inline">
-              Manifesto · plate 04
-            </span>
           </div>
 
-          <div className="relative">
-            {/* Photo-filled "infrastructure" — image-fragment inside type */}
-            <h2 className="font-display font-extrabold leading-[0.84] tracking-[-0.035em] text-ink text-[clamp(3rem,12vw,11rem)]">
-              Pizza is{" "}
-              <span
-                className="italic"
-                style={{ color: "hsl(var(--tomato))" }}
-              >
-                social
-              </span>
-              <br className="hidden sm:block" />{" "}
-              <span
-                className="relative inline-block bg-clip-text text-transparent"
-                style={{
-                  backgroundImage: `url(${THESIS_PHOTO})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center 40%",
-                  WebkitTextStroke: "1px hsl(var(--ink) / 0.15)",
-                  filter: "saturate(0.95) contrast(1.06)",
-                }}
-              >
-                infrastructure
-              </span>
-              <span style={{ color: "hsl(var(--ink))" }}>.</span>
-            </h2>
+          {/* Headline + supporting image as a single composed row */}
+          <div className="grid grid-cols-12 gap-x-8 gap-y-12">
+            <div className="col-span-12 md:col-span-7">
+              <h2 className="font-display font-extrabold leading-[0.84] tracking-[-0.035em] text-ink text-[clamp(3rem,12vw,11rem)]">
+                Pizza is{" "}
+                <span
+                  className="italic"
+                  style={{ color: "hsl(var(--tomato))" }}
+                >
+                  social
+                </span>
+                <br className="hidden sm:block" />{" "}
+                <span
+                  className="relative inline-block bg-clip-text text-transparent"
+                  style={{
+                    backgroundImage: `url(${THESIS_PHOTO})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center 40%",
+                    WebkitTextStroke: "1px hsl(var(--ink) / 0.15)",
+                    filter: "saturate(0.95) contrast(1.06)",
+                  }}
+                >
+                  infrastructure
+                </span>
+                <span style={{ color: "hsl(var(--ink))" }}>.</span>
+              </h2>
 
-            {/* Pinned thumb that ALSO labels the photo word — playful pointer */}
-            <figure className="pointer-events-none absolute right-2 -top-6 hidden w-[150px] -rotate-[6deg] md:block lg:right-6 lg:-top-10 lg:w-[180px]">
-              <div className="grain relative overflow-hidden bg-cream p-2 pb-7 shadow-[0_14px_30px_-12px_hsl(0_0%_0%/0.4)]">
-                <div className="aspect-square overflow-hidden bg-ink">
-                  <img
-                    src={THESIS_PHOTO}
-                    alt=""
-                    aria-hidden
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover [filter:saturate(0.95)_contrast(1.06)_sepia(0.05)]"
-                  />
-                </div>
-                <figcaption className="handwritten absolute inset-x-2 bottom-0.5 text-center text-[11px] text-ink/70">
-                  ↓ this word, ↑ this scene
-                </figcaption>
-              </div>
-              <span
-                aria-hidden
-                className="absolute -top-2 left-1/2 h-4 w-12 -translate-x-1/2 rotate-[3deg] bg-butter/80 shadow-sm"
-                style={{ clipPath: "polygon(4% 0,96% 0,100% 100%,0 100%)" }}
-              />
-            </figure>
-          </div>
-
-          {/* Subtitle row + checker accent + handwritten kicker */}
-          <div className="mt-12 grid grid-cols-12 gap-x-8 gap-y-8 md:mt-16">
-            <p className="font-serif col-span-12 max-w-[44ch] text-lg leading-[1.55] text-ink/70 md:col-span-7 md:text-2xl md:leading-[1.4]">
-              Familiar, affordable, understood almost anywhere.
-            </p>
-            <div className="col-span-12 flex items-center gap-4 md:col-span-5 md:justify-end">
-              <span
-                aria-hidden
-                className="h-[10px] w-32 opacity-90"
-                style={{
-                  backgroundImage:
-                    "repeating-linear-gradient(90deg, hsl(var(--tomato)) 0 12px, hsl(var(--ink)) 12px 24px)",
-                }}
-              />
-              <p className="handwritten -rotate-[2deg] text-tomato text-2xl md:text-3xl">
-                a great equalizer.
+              <p className="font-serif mt-10 max-w-[44ch] text-lg leading-[1.55] text-ink/70 md:mt-14 md:text-2xl md:leading-[1.4]">
+                Familiar, affordable, understood almost anywhere.
               </p>
+            </div>
+
+            {/* Supporting polaroid — archival, human, integrated */}
+            <div className="col-span-12 md:col-span-5">
+              <figure className="relative mx-auto w-[86%] origin-top -rotate-[2deg] transition-transform duration-500 hover:rotate-0 hover:scale-[1.01] md:mx-0 md:ml-auto md:w-full md:max-w-[420px]">
+                <div className="grain relative overflow-hidden bg-cream p-3 pb-10 shadow-[0_18px_44px_-16px_hsl(0_0%_0%/0.38),0_4px_12px_-4px_hsl(0_0%_0%/0.22)]">
+                  <div className="aspect-[4/5] overflow-hidden bg-ink">
+                    <img
+                      src={THESIS_PHOTO}
+                      alt="PizzaDAO members coordinating across cities — a quiet moment of global organization"
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover [filter:saturate(0.9)_contrast(1.05)_sepia(0.06)]"
+                    />
+                  </div>
+                  <figcaption className="handwritten absolute inset-x-3 bottom-2.5 text-center text-sm leading-tight text-ink/70">
+                    Behind the scenes · every city
+                  </figcaption>
+                </div>
+                {/* paper tape */}
+                <span
+                  aria-hidden
+                  className="absolute -top-2.5 left-1/2 h-5 w-14 -translate-x-1/2 rotate-[-3deg] bg-butter/70 opacity-80 shadow-sm"
+                  style={{ clipPath: "polygon(4% 0,96% 0,100% 100%,0 100%)" }}
+                />
+              </figure>
             </div>
           </div>
         </div>
