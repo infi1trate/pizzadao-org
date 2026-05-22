@@ -80,7 +80,7 @@ const CARD_PERSONALITIES: {
     toneHint: "chaotic, unpredictable, feared, wild eyes",
     fileNo: "02",
     rotation: 0.9,
-    yOffset: "md:translate-y-6",
+    yOffset: "lg:translate-y-6",
   },
   {
     id: "operator",
