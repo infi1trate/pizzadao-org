@@ -823,63 +823,174 @@ function SelectedFilmCard({ film, onChange }: { film: MafiaFilm; onChange: () =>
   );
 }
 
+const FEATURED_TOPPINGS = [
+  "Pepperoni",
+  "Mushroom",
+  "Anchovy",
+  "Basil",
+  "Hot honey",
+  "Sausage",
+  "Pineapple",
+  "Truffle",
+] as const;
+
+const TOPPING_ANNOTATION: Record<string, string> = {
+  Pepperoni: "classic",
+  Mushroom: "earthy",
+  Anchovy: "dangerous",
+  Basil: "respect",
+  "Hot honey": "wild",
+  Sausage: "trusted",
+  Pineapple: "brave",
+  Truffle: "good choice",
+};
+
 function ToppingDrawer({ toppings, query, onPick }: { toppings: string[]; query: string; onPick: (t: string) => void }) {
+  const q = query.trim().toLowerCase();
+  const featured = FEATURED_TOPPINGS.filter((t) =>
+    toppings.some((x) => x === t)
+  );
+  const supporting = toppings.filter(
+    (t) => !FEATURED_TOPPINGS.includes(t as typeof FEATURED_TOPPINGS[number])
+  );
+
   return (
     <div className="relative">
-      {/* faint checkercloth */}
+      {/* Faded fabric — softened checkercloth: two low-opacity diagonal washes
+          blurred together, no hard repeating grid */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -m-2 rounded-2xl opacity-[0.07]"
+        className="pointer-events-none absolute inset-0 -m-3 rounded-3xl"
         style={{
           backgroundImage:
-            "linear-gradient(45deg, hsl(0 93% 60%) 25%, transparent 25%, transparent 75%, hsl(0 93% 60%) 75%), linear-gradient(45deg, hsl(0 93% 60%) 25%, transparent 25%, transparent 75%, hsl(0 93% 60%) 75%)",
-          backgroundSize: "22px 22px",
-          backgroundPosition: "0 0, 11px 11px",
+            "radial-gradient(120% 80% at 20% 0%, hsl(0 93% 60% / 0.06), transparent 60%), radial-gradient(120% 80% at 80% 100%, hsl(20 60% 40% / 0.05), transparent 60%), repeating-linear-gradient(45deg, hsl(0 93% 60% / 0.035) 0 14px, transparent 14px 28px), repeating-linear-gradient(-45deg, hsl(0 93% 60% / 0.025) 0 14px, transparent 14px 28px)",
+          filter: "blur(0.3px)",
         }}
       />
-      <p className="relative ui text-[10px] uppercase tracking-[0.28em] text-ink/45">
-        {query ? "Matches" : "From the kitchen"}
-      </p>
-      <div className="relative mt-5 flex flex-wrap gap-3">
-        {toppings.map((t, i) => {
-          const img = TOPPING_IMAGE[t];
-          // imperfect rhythm: tiny rotation per chip
-          const rot = ((i * 13) % 5) - 2;
-          return (
-            <button
-              key={t}
-              onClick={() => onPick(t)}
-              style={{ transform: `rotate(${rot * 0.3}deg)` }}
-              className="group inline-flex items-center gap-3 rounded-full border border-ink/15 bg-cream py-2 pl-2 pr-5 text-left shadow-[0_8px_18px_-12px_hsl(20_30%_15%/0.35)] transition-all hover:-translate-y-0.5 hover:rotate-0 hover:border-tomato hover:shadow-[0_14px_28px_-12px_hsl(0_93%_60%/0.5)]"
-            >
-              <span className="grid h-11 w-11 place-items-center overflow-hidden rounded-full bg-ink/5 text-xl ring-1 ring-ink/10">
-                {img ? (
-                  <img src={img} alt="" loading="lazy" className="h-full w-full object-cover" />
-                ) : (
-                  <span>{TOPPING_EMOJI[t] ?? "🍕"}</span>
-                )}
-              </span>
-              <span className="font-display text-[17px] font-black tracking-tight text-ink">{t}</span>
-            </button>
-          );
-        })}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -m-3 rounded-3xl grain"
+        style={{ mixBlendMode: "multiply", opacity: 0.5 }}
+      />
 
-        {query.trim() && !toppings.some((t) => t.toLowerCase() === query.trim().toLowerCase()) && (
-          <button
-            onClick={() => onPick(query.trim())}
-            className="inline-flex items-center gap-2 rounded-full border-2 border-dashed border-tomato/40 bg-tomato/5 px-5 py-2.5 text-tomato hover:bg-tomato/10"
-          >
-            <Sparkles className="h-4 w-4" />
-            <span className="font-display text-[16px] font-black">Use "{query.trim()}"</span>
-          </button>
-        )}
-      </div>
-      <p className="relative ui mt-5 text-[10px] uppercase tracking-[0.24em] text-ink/35">
+      <p className="relative ui text-[10px] uppercase tracking-[0.28em] text-ink/45">
+        {q ? "Matches" : "The headliners"}
+      </p>
+
+      {/* FEATURED — large character-portrait cards */}
+      {featured.length > 0 && (
+        <div className="relative mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+          {featured.map((t, i) => {
+            const img = TOPPING_IMAGE[t];
+            const annotation = TOPPING_ANNOTATION[t] ?? "respect";
+            const rot = ((i * 7) % 5) - 2;
+            return (
+              <button
+                key={t}
+                onClick={() => onPick(t)}
+                style={{ transform: `rotate(${rot * 0.25}deg)` }}
+                className="group relative flex flex-col overflow-visible rounded-[20px] border border-ink/10 bg-cream text-left shadow-[0_14px_30px_-18px_hsl(20_30%_15%/0.4)] transition-all duration-300 hover:-translate-y-1.5 hover:rotate-0 hover:scale-[1.03] hover:border-tomato/60 hover:shadow-[0_28px_50px_-18px_hsl(0_93%_60%/0.45)] focus-visible:-translate-y-1.5 focus-visible:rotate-0 focus-visible:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tomato/60"
+              >
+                {/* Warm glow on hover */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -inset-2 -z-10 rounded-[24px] opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
+                  style={{
+                    background:
+                      "radial-gradient(60% 60% at 50% 40%, hsl(46 100% 62% / 0.6), transparent 70%)",
+                  }}
+                />
+                {/* Square ingredient portrait — consistent crop */}
+                <span className="relative block aspect-square w-full overflow-hidden rounded-t-[20px] bg-ink/5">
+                  {img ? (
+                    <img
+                      src={img}
+                      alt=""
+                      loading="lazy"
+                      className="h-full w-full scale-[1.04] object-cover transition-transform duration-500 group-hover:scale-[1.1]"
+                    />
+                  ) : (
+                    <span className="grid h-full w-full place-items-center text-5xl">
+                      {TOPPING_EMOJI[t] ?? "🍕"}
+                    </span>
+                  )}
+                  {/* Warm cinematic vignette */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                      background:
+                        "radial-gradient(120% 80% at 30% 20%, hsl(46 80% 75% / 0.18), transparent 55%), radial-gradient(120% 80% at 80% 100%, hsl(20 50% 10% / 0.35), transparent 60%)",
+                    }}
+                  />
+                  {/* Handwritten annotation — appears on hover/focus */}
+                  <span
+                    aria-hidden
+                    className="handwritten pointer-events-none absolute -top-3 right-2 rotate-[-8deg] rounded-full bg-cream px-2.5 py-1 text-[12px] text-tomato opacity-0 shadow-[0_6px_14px_-8px_hsl(0_93%_60%/0.5)] transition-all duration-300 group-hover:-top-4 group-hover:opacity-100 group-focus-visible:-top-4 group-focus-visible:opacity-100"
+                  >
+                    {annotation}
+                  </span>
+                </span>
+                <span className="flex flex-col gap-0.5 px-3 py-3">
+                  <span className="font-display text-[16px] font-black leading-tight tracking-tight text-ink">
+                    {t}
+                  </span>
+                  <span className="ui text-[9.5px] uppercase tracking-[0.18em] text-ink/45">
+                    {toppingDescriptor(t)}
+                  </span>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {/* SUPPORTING — smaller, calmer chips */}
+      {supporting.length > 0 && (
+        <>
+          <p className="relative ui mt-10 text-[10px] uppercase tracking-[0.28em] text-ink/40">
+            From the back of the kitchen
+          </p>
+          <div className="relative mt-4 flex flex-wrap gap-2.5">
+            {supporting.map((t, i) => {
+              const rot = ((i * 11) % 5) - 2;
+              return (
+                <button
+                  key={t}
+                  onClick={() => onPick(t)}
+                  style={{ transform: `rotate(${rot * 0.2}deg)` }}
+                  className="group inline-flex items-center gap-2 rounded-full border border-ink/12 bg-cream/80 px-3.5 py-1.5 text-left shadow-[0_4px_10px_-8px_hsl(20_30%_15%/0.35)] transition-all hover:-translate-y-0.5 hover:rotate-0 hover:border-tomato/60 hover:bg-cream hover:shadow-[0_10px_20px_-10px_hsl(0_93%_60%/0.4)]"
+                >
+                  <span className="text-sm leading-none">
+                    {TOPPING_EMOJI[t] ?? "·"}
+                  </span>
+                  <span className="font-display text-[13.5px] font-bold tracking-tight text-ink/85">
+                    {t}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </>
+      )}
+
+      {q && !toppings.some((t) => t.toLowerCase() === q) && (
+        <button
+          onClick={() => onPick(query.trim())}
+          className="relative mt-6 inline-flex items-center gap-2 rounded-full border-2 border-dashed border-tomato/40 bg-tomato/5 px-5 py-2.5 text-tomato hover:bg-tomato/10"
+        >
+          <Sparkles className="h-4 w-4" />
+          <span className="font-display text-[16px] font-black">Use "{query.trim()}"</span>
+        </button>
+      )}
+
+      <p className="relative ui mt-8 text-[10px] uppercase tracking-[0.24em] text-ink/35">
         Tap to choose · or type your own
       </p>
     </div>
   );
 }
+
 
 function CyclingStage({ pool, tick }: { pool: string[]; tick: number }) {
   const current = pool[tick % pool.length];
