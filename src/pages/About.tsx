@@ -8,11 +8,12 @@ import party from "@/assets/timeline-party.jpg";
 import community from "@/assets/community.jpg";
 import revealPhoto from "@/assets/timeline-founding.jpg";
 import aboutHero from "@/assets/about-hero.jpg";
+import may22Ritual from "@/assets/may22-ritual.jpg";
 
 // Real PizzaDAO archive photos for the hero scenes — with local fallbacks
 // in case the remote CDN is ever unreachable.
 const HERO_PHOTO   = aboutHero;
-const RITUAL_PHOTO = findPhoto("Buenos Aires")?.src ?? timeline2010;
+const RITUAL_PHOTO = may22Ritual;
 
 // Contact-strip — three faces of one global night, end of the Ritual section.
 const RITUAL_STRIP = [
