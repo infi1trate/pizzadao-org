@@ -460,7 +460,7 @@ const MafiaNamePage = () => {
 
       <header className="relative z-20">
         <div className="container flex h-16 items-center justify-between md:h-20">
-          <Link to="/pre-launch-demo" className="flex items-center gap-3" aria-label="Back to PizzaDAO">
+          <Link to="/home" className="flex items-center gap-3" aria-label="PizzaDAO home">
             <img src={logoDark} alt="PizzaDAO" className="h-6 w-auto md:h-7" />
           </Link>
           <Link
