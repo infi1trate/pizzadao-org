@@ -27,8 +27,8 @@ const CHANNELS: { k: string; v: string; href: string; note: string }[] = [
   },
   {
     k: "X / Twitter",
-    v: "@pizza_dao",
-    href: "https://x.com/pizza_dao",
+    v: "@Pizza_DAO",
+    href: "https://x.com/Pizza_DAO",
     note: "Field reports, party photos, occasional pizza opinions.",
   },
   {

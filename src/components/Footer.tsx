@@ -5,7 +5,7 @@ const cols = [
   { title: "Sections", items: ["About", "Our Work", "Partners", "Journal", "Join"] },
   { title: "Programs", items: ["Global Pizza Party", "Community Grants", "Field Reports", "Residencies"] },
   { title: "Press", items: [{ label: "Brand System", href: "/brand-system" }, "Editorial Standards", { label: "Contact", href: "/contact" }, "Inquiries"] as Array<string | { label: string; href: string }> },
-  { title: "Elsewhere", items: ["Instagram", "X / Twitter", "YouTube", "Newsletter"] },
+  { title: "Elsewhere", items: [{ label: "Instagram", href: "https://www.instagram.com/Pizza_DAO/" }, { label: "X / Twitter", href: "https://x.com/Pizza_DAO" }, { label: "YouTube", href: "https://www.youtube.com/@PizzaDAO" }, "Newsletter"] as Array<string | { label: string; href: string }> },
 ];
 
 const PHRASES = [
