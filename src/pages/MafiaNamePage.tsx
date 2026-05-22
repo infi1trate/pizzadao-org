@@ -1622,7 +1622,7 @@ function FinaleScene({
                 </button>
                 <button
                   onClick={copyImage}
-                  className="btn-pill-lg group whitespace-nowrap border border-cream/30 bg-transparent text-cream hover:border-tomato hover:text-tomato"
+                  className="btn-pill-lg group whitespace-nowrap border border-ink/30 bg-transparent text-ink hover:border-tomato hover:text-tomato"
                 >
                   <Copy className="h-4 w-4" />
                   Copy image
@@ -1633,7 +1633,7 @@ function FinaleScene({
             <button
               onClick={onRegenerateAvatar}
               disabled={avatarLoading}
-              className="btn-pill-lg group border border-cream/30 bg-transparent text-cream hover:border-tomato hover:text-tomato disabled:opacity-50"
+              className="btn-pill-lg group border border-ink/30 bg-transparent text-ink hover:border-tomato hover:text-tomato disabled:opacity-50"
             >
               <RefreshCw className={`h-4 w-4 ${avatarLoading ? "animate-spin" : ""}`} />
               {avatarUrl ? "Re-draw portrait" : "Try portrait again"}
@@ -1642,18 +1642,19 @@ function FinaleScene({
               href="https://discord.pizzadao.xyz/"
               target="_blank"
               rel="noreferrer"
-              className="btn-pill-lg group border border-cream/30 bg-transparent text-cream hover:border-tomato hover:text-tomato"
+              className="btn-pill-lg group border border-ink/30 bg-transparent text-ink hover:border-tomato hover:text-tomato"
             >
               Join the Discord
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
             <button
               onClick={onReset}
-              className="btn-pill-lg group border border-cream/20 bg-transparent text-cream/80 hover:border-tomato hover:text-tomato"
+              className="btn-pill-lg group border border-ink/20 bg-transparent text-ink/70 hover:border-tomato hover:text-tomato"
             >
               <X className="h-4 w-4" />
               Start over
             </button>
+
           </div>
         </div>
       </div>
