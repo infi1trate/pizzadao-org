@@ -1144,13 +1144,22 @@ function ToppingDrawer({ toppings, query, onPick }: { toppings: string[]; query:
 }
 
 
-function CyclingStage({ pool, tick }: { pool: string[]; tick: number }) {
+function CyclingStage({ pool, tick, attempt = 1 }: { pool: string[]; tick: number; attempt?: number }) {
   const current = pool[tick % pool.length];
   const NOTES = ["nah", "too obvious", "watch this guy", "capo material", "this one?", "earner", "skip it"];
   // pick a slowly-rotating scribble note (changes every ~6 ticks)
   const note = NOTES[Math.floor(tick / 6) % NOTES.length];
   const crossed = pool[(tick + 3) % pool.length];
   const crossed2 = pool[(tick + 7) % pool.length];
+
+  const overline =
+    attempt <= 1
+      ? "The family is deliberating"
+      : attempt === 2
+      ? "Looking deeper…"
+      : attempt === 3
+      ? "Pulling another file…"
+      : "Found something stranger…";
 
   return (
     <div className="relative grid place-items-center py-20 md:py-28">
