@@ -1,67 +1,65 @@
-## Scope
+## Benny Pop-Up — Playful Site-Wide Easter Egg
 
-Four focused fixes on `/partners`. No new features, no backend.
+Benny (the pizza mascot from the uploaded image) will occasionally rise up from inside random photo containers, peek/wave, then duck back down. It's a delightful sighting, never disruptive, and never in conversion or task flows.
 
----
+### Asset
+- The uploaded `bennytop.png` is **already pre-cropped to just the top half of Benny** (head, eyes, waving hand, pizza box). Save it as `src/assets/benny-peek.png` and use it as-is — no overflow clipping trick needed. He literally is the "peek".
+- Because the sprite's natural bottom edge is his torso/box, we anchor him to the **bottom of the container** and animate `translateY` from `100%` (fully hidden below) to `0%` (resting on the container floor with his head poking up). Ducking returns him to `100%`.
 
-### 1. Globe annotations → white speech bubbles
+### New component: `src/components/BennyPeek.tsx`
+A self-mounting controller that:
+1. On mount, scans the DOM for opted-in photo containers (`[data-benny="true"]`).
+2. Filters to those currently in the viewport (IntersectionObserver).
+3. Every 18–35s (randomized), picks one eligible container at random and triggers a pop:
+   - Slide up via Framer Motion: `y: 100% → 0%` with spring `stiffness: 180, damping: 18`.
+   - Hold ~1.6s with a tiny idle bob (`y: [0, -4, 0]` ×2) and a single wave (rotate ±6°).
+   - Duck back: `y: 0% → 100%`, spring `stiffness: 220, damping: 22`.
+4. Renders Benny via a React portal into the chosen container as an absolutely-positioned `<img>`:
+   - `position: absolute; left/right: random third; bottom: 0; pointer-events: auto;`
+   - Height capped at ~55% of container height, min 120px, max 280px.
+   - Ensures container has `position: relative` and `overflow: hidden` (added inline if missing — most already do).
+5. Behavior rules:
+   - Respects `prefers-reduced-motion` → renders nothing.
+   - Pauses when `document.hidden`.
+   - Only one Benny on screen at a time.
+   - Session cap: max 6 appearances per page visit; min 8s between appearances.
+   - Skips containers smaller than 160×160px.
+   - Click on Benny = he ducks immediately (no nav, no modal, no sound).
+6. Mounted once globally in `src/App.tsx` inside `<BrowserRouter>`; internally short-circuits on excluded routes via `useLocation()`.
 
-`src/components/PartnersGlobe.tsx` currently renders annotations as Rock Salt handwritten text (lines 231–264). Replace with small, white, rounded speech-bubble labels:
+### Excluded routes (critical paths)
+- `/get-your-mafia-name`
+- `/contact`
+- `/partners`
+- `/privacy`, `/terms`
+- Defensive pattern guard for future `/checkout`-like paths
 
-- Drop the `Rock Salt` font; switch to the project UI sans (matches our `.ui` class — small caps off, sentence case, ~2.1px in viewBox units).
-- Each annotation becomes a `<g>` with:
-  - A rounded `<rect>` filled `hsl(var(--cream))` (near-white) with very soft shadow (`filter: drop-shadow(0 0.3px 0.6px rgba(0,0,0,0.25))`) and 0.08 ink stroke at 25% opacity.
-  - A tiny pointer triangle from the bubble toward the city dot.
-  - The text inside, ink-colored, no rotation.
-- Bubble width measured from text length (approx via `text.length * 1.05px + 2.4px` padding); height fixed (~3.2px).
-- Keep the existing breathing/visibility math so bubbles still fade in/out gracefully near the limb and stagger as the globe rotates.
-- Pointer + bubble offset uses existing `dx/dy/anchor` so positions stay art-directed.
+### Opt-in photo containers (add `data-benny="true"`)
+Non-critical, image-driven surfaces only:
+- `src/components/Hero.tsx`
+- `src/components/Impact.tsx`
+- `src/components/MomentReel.tsx`
+- `src/components/Journal.tsx`
+- `src/components/ArchivalWall.tsx`
+- `src/components/Work.tsx`
+- `src/components/PartnerActivations.tsx`
+- `src/pages/About.tsx`
+- `src/pages/CommunityPage.tsx`
+- `src/pages/BrandSystemPage.tsx`
+- `src/components/PageHero.tsx`
 
-### 2. Restore lost city dots on the globe
+We will NOT tag containers inside MafiaNamePage, ContactPage, PartnersPage form area, or Footer.
 
-`PartnersGlobe.tsx` line 215 currently does `if (p.tier === 0) return null;`, which **drops ~329 of the 421 cities** in `pizzadao-cities.json`. Only anchors (12) + MID-tier (hash%5, ~80) render. The reference project (Global Pizza Party 2026) lists ~445 cities — our 421-entry dataset is intact, the globe is just hiding them.
+### Accessibility
+- `aria-hidden="true"` on the sprite (decorative).
+- Reduced-motion → fully disabled.
+- No layout shift: portal child is absolutely positioned.
 
-Fix: render tier 0 as a faint floor layer.
+### Files to add / edit
+- ADD `src/assets/benny-peek.png` (copied from upload — already top-cropped)
+- ADD `src/components/BennyPeek.tsx`
+- EDIT `src/App.tsx` — mount `<BennyPeek />` once globally
+- EDIT the component files listed above — add `data-benny="true"` to existing photo wrappers; ensure `relative overflow-hidden` is present (most already have it)
 
-- Tier 0: `r = 0.28`, opacity `0.32 * (0.4 + 0.6 * vis)`, ink color.
-- Tier 1 (MID): unchanged — `r = 0.55`, opacity `~0.6`.
-- Tier 2 (ANCHORS): unchanged — `r = 1.05`, opacity `~0.92`.
-
-Net effect: all 421 chapters become visible as a quiet constellation, anchors still dominate the hierarchy.
-
-### 3. Hero ↔ "Why brands partner" breathing room
-
-`Sponsorship.tsx` line 92 opens with `pt-7 md:pt-9` (very tight). Increase to `pt-16 md:pt-24` and keep the existing soft tonal bridge so the join still feels intentional, not abrupt. The hero's own `paper-soft` section already has bottom padding via its content; we only widen the gap on the Sponsorship side so nothing else shifts.
-
-### 4. Collaborator logos — smaller & uniform
-
-Target: average logo size ≈ current PayPal × 0.8.
-
-In `src/pages/PartnersPage.tsx`:
-
-- Shrink container from `h-14 md:h-16` to `h-9 md:h-11`.
-- Tighten per-logo `scale` values so they cluster around `1.0` instead of swinging 0.78–1.40:
-
-  ```text
-  PayPal           1.00
-  Coinbase         0.95   (pure wordmark)
-  Ledger           0.85   (bracketed wordmark, wide)
-  Brave            1.00   (icon + word)
-  OpenSea          1.00   (icon + word)
-  Polygon          1.00   (icon + word)
-  ENS              0.95   (icon + word)
-  Stand With Crypto 1.10  (stacked 3-line block; still needs a small bump)
-  ```
-
-- Reduce row gap slightly (`gap-y-12 → gap-y-10`) so the smaller logos don't float in too much vertical air.
-- Keep the mask-based monochrome / colour-on-hover behavior unchanged.
-
----
-
-## Files touched
-
-- `src/components/PartnersGlobe.tsx` — speech-bubble annotations + restore tier-0 dots
-- `src/components/Sponsorship.tsx` — top padding
-- `src/pages/PartnersPage.tsx` — logo container height, scale map, row gap
-
-No data files, no new assets, no routing or analytics changes.
+### Out of scope
+- No sound, no analytics events, no new routes, no copy changes, no redesign of any container.
