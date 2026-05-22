@@ -140,9 +140,17 @@
     font-family: 'Asap', system-ui, sans-serif;
     font-feature-settings: "kern", "liga";
   }
-  /* Generous tap targets on touch devices */
+  /* Touch device parity — neutralize desktop hover transforms/shadows on tablets
+     and phones so the site doesn't get stuck in a half-hover state after a tap. */
   @media (hover: none) and (pointer: coarse) {
     a, button { -webkit-tap-highlight-color: hsl(var(--tomato) / 0.15); }
+    /* Strip any :hover-only transform/scale/translate. Color/opacity hovers
+       are left intact because they double as focus affordances. */
+    *:hover {
+      transform: none !important;
+    }
+    /* Allow opt-out for components that genuinely need hover transforms on touch */
+    .allow-touch-hover:hover { transform: revert !important; }
   }
   ::selection { background: hsl(var(--tomato)); color: hsl(var(--cream)); }
 
