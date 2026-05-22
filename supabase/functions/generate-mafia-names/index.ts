@@ -119,6 +119,8 @@ Generate exactly 3 PizzaDAO neighborhood aliases as the JSON array described.
           { role: "system", content: SYSTEM_PROMPT },
           { role: "user", content: userPrompt },
         ],
+        // Escalate temperature with each reroll so the archive gets stranger.
+        temperature: Math.min(1.15, 0.85 + (attempt - 1) * 0.1),
         response_format: { type: "json_object" },
       }),
     });
