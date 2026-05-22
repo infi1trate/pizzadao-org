@@ -11,6 +11,7 @@ import aboutHero from "@/assets/about-hero.jpg";
 import may22Ritual from "@/assets/may22-ritual.jpg";
 import fieldNairobi from "@/assets/field-nairobi.jpg";
 import volcanoPizza from "@/assets/volcano-pizza.jpg";
+import fieldSpain from "@/assets/field-spain.jpg";
 
 // Real PizzaDAO archive photos for the hero scenes — with local fallbacks
 // in case the remote CDN is ever unreachable.
@@ -22,7 +23,7 @@ const RITUAL_STRIP = [
   { src: findPhoto("Buenos Aires")?.src ?? party,    city: "Buenos Aires", stamp: "22.05 · 23:14" },
   { src: fieldNairobi,                               city: "Nairobi",      stamp: "22.05 · 19:02" },
   { src: findPhoto("Detroit")?.src ?? timeline2010,  city: "Detroit",      stamp: "22.05 · 21:47" },
-  { src: findPhoto("Bangkok")?.src ?? party,         city: "Bangkok",      stamp: "23.05 · 01:30" },
+  { src: fieldSpain,                                 city: "Spain",        stamp: "22.05 · 22:10" },
 ];
 
 const THESIS_PHOTO = findPhoto("Rio de Janeiro")?.src ?? findPhoto("Medellín")?.src ?? community;
