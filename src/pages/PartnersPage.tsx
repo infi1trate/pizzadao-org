@@ -23,12 +23,12 @@ import ensLogo from "@/assets/partners/ens.png";
 // Tuned by eye, not by math — each mark balanced against PayPal as anchor.
 const PARTNERS = [
   { name: "PayPal", logo: paypalLogo, scale: 0.95 },
-  { name: "Coinbase", logo: coinbaseLogo, scale: 0.62 },
-  { name: "Polygon", logo: polygonLogo, scale: 0.92 },
-  { name: "Ledger", logo: ledgerLogo, scale: 1.25 },
+  { name: "Coinbase", logo: coinbaseLogo, scale: 0.68 },
+  { name: "Polygon", logo: polygonLogo, scale: 1.06 },
+  { name: "Ledger", logo: ledgerLogo, scale: 1.12 },
   { name: "Brave", logo: braveLogo, scale: 0.95 },
-  { name: "OpenSea", logo: openseaLogo, scale: 0.70 },
-  { name: "Stand With Crypto", logo: standWithCryptoLogo, scale: 1.0 },
+  { name: "OpenSea", logo: openseaLogo, scale: 0.77 },
+  { name: "Stand With Crypto", logo: standWithCryptoLogo, scale: 0.95 },
   { name: "ENS", logo: ensLogo, scale: 0.65 },
 ];
 
@@ -157,7 +157,7 @@ const PartnersPage = () => {
       <Sponsorship />
 
       {/* Selected collaborators - editorial interlude, museum supporters wall */}
-      <section className="paper-soft relative overflow-hidden bg-cream pb-10 pt-10 md:pb-14 md:pt-14">
+      <section className="paper-soft relative overflow-hidden bg-cream pb-14 pt-10 md:pb-20 md:pt-14">
         {/* Tonal continuity wash - soft warm paper bleeding into next section */}
         <div
           aria-hidden
@@ -261,7 +261,7 @@ const PartnersPage = () => {
           })()}
 
           {/* Integrated editorial annotation - centered beneath logo field */}
-          <div className="mt-10 flex flex-col items-center gap-1 md:mt-14">
+          <div className="mt-12 flex flex-col items-center gap-1 md:mt-16">
             <p className="handwritten -rotate-[1.5deg] text-[14px] text-ink/45">
               ↳ trusted globally, city by city
             </p>
