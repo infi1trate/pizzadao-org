@@ -122,7 +122,7 @@ const PartnersPage = () => {
             </div>
 
             {/* Proof strip - editorial footer rail */}
-            <div className="relative mt-7 border-t border-ink/15 pt-4 md:mt-9 md:pt-5">
+            <div className="relative mt-7 border-t border-ink/15 pt-4 pb-8 md:mt-9 md:pt-5 md:pb-12">
               {/* Asymmetric IRL stamp - offset into the margin */}
               <span
                 aria-hidden
