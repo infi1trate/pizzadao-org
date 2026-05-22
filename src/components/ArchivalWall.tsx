@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ARCHIVE, type PizzaPhoto } from "@/lib/pizzadaoPhotos";
 
 type Slot = {
@@ -64,22 +64,34 @@ const shuffle = <T,>(arr: T[]): T[] => {
   return a;
 };
 
+// Constrain photo drag to small, tactile, print-on-a-table range.
+const DRAG_MAX = 22;
+
 interface FrameProps {
   photo: PizzaPhoto;
   slot: Slot;
   index: number;
+  onOpen: (photo: PizzaPhoto) => void;
 }
 
 /**
  * A single archival frame. When `photo` changes, the incoming image
  * cross-fades on top of the outgoing one - never a hard cut.
+ * Also supports a small tactile drag (constrained), and a click to
+ * open the cinematic lightbox.
  */
-const ArchivalFrame = ({ photo, slot, index }: FrameProps) => {
+const ArchivalFrame = ({ photo, slot, index, onOpen }: FrameProps) => {
   const ref = useRef<HTMLElement | null>(null);
   const [drift, setDrift] = useState(0);
   const [current, setCurrent] = useState(photo);
   const [incoming, setIncoming] = useState<PizzaPhoto | null>(null);
   const [fading, setFading] = useState(false);
+
+  // Drag state - kept in refs to avoid re-renders during pointer move.
+  const dragStart = useRef<{ x: number; y: number; dx: number; dy: number } | null>(null);
+  const moved = useRef(false);
+  const [offsetXY, setOffsetXY] = useState({ x: 0, y: 0 });
+  const [dragging, setDragging] = useState(false);
 
   // Parallax drift on scroll
   useEffect(() => {
@@ -120,6 +132,44 @@ const ArchivalFrame = ({ photo, slot, index }: FrameProps) => {
     };
   }, [photo, current.src]);
 
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    // Ignore non-primary buttons.
+    if (e.button !== 0 && e.pointerType === "mouse") return;
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    dragStart.current = { x: e.clientX, y: e.clientY, dx: offsetXY.x, dy: offsetXY.y };
+    moved.current = false;
+  };
+
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!dragStart.current) return;
+    const dx = e.clientX - dragStart.current.x;
+    const dy = e.clientY - dragStart.current.y;
+    if (!moved.current && Math.hypot(dx, dy) > 4) {
+      moved.current = true;
+      setDragging(true);
+    }
+    if (!moved.current) return;
+    const clamp = (v: number) => Math.max(-DRAG_MAX, Math.min(DRAG_MAX, v));
+    setOffsetXY({
+      x: clamp(dragStart.current.dx + dx),
+      y: clamp(dragStart.current.dy + dy),
+    });
+  };
+
+  const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    const was = dragStart.current;
+    dragStart.current = null;
+    setDragging(false);
+    try {
+      (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+    } catch {
+      /* noop */
+    }
+    if (was && !moved.current) {
+      onOpen(current);
+    }
+  };
+
   const filter = toneClass(slot.tone);
   const tilt = slot.tilt ?? 0;
 
@@ -128,16 +178,36 @@ const ArchivalFrame = ({ photo, slot, index }: FrameProps) => {
       ref={ref}
       className={`group relative col-span-12 ${slot.col} ${slot.span} ${slot.row}`}
       style={{
-        transform: `translateY(${(slot.offset ?? 0) + drift}px) rotate(${tilt}deg)`,
+        transform: `translate(${offsetXY.x}px, ${(slot.offset ?? 0) + drift + offsetXY.y}px) rotate(${
+          tilt + (dragging ? (offsetXY.x / DRAG_MAX) * 0.8 : 0)
+        }deg)`,
         willChange: "transform",
-        zIndex: slot.z ?? 1,
+        zIndex: dragging ? 50 : slot.z ?? 1,
+        transition: dragging
+          ? "none"
+          : "transform 600ms cubic-bezier(.22,.61,.36,1)",
       }}
     >
       <div
-        className="relative flex h-full w-full flex-col bg-cream-warm p-2 pb-10 md:p-2.5 md:pb-12"
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerUp}
+        role="button"
+        tabIndex={0}
+        aria-label={`Open ${current.city}, ${current.country}`}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            onOpen(current);
+          }
+        }}
+        className="relative flex h-full w-full cursor-grab touch-none select-none flex-col bg-cream-warm p-2 pb-10 outline-none focus-visible:ring-2 focus-visible:ring-tomato/70 active:cursor-grabbing md:p-2.5 md:pb-12"
         style={{
-          boxShadow:
-            "0 1px 0 hsl(0 0% 0% / 0.10), 0 18px 40px -22px hsl(0 0% 0% / 0.55), 0 32px 80px -40px hsl(0 0% 0% / 0.45)",
+          boxShadow: dragging
+            ? "0 6px 0 hsl(0 0% 0% / 0.12), 0 36px 70px -22px hsl(0 0% 0% / 0.65), 0 60px 120px -40px hsl(0 0% 0% / 0.55)"
+            : "0 1px 0 hsl(0 0% 0% / 0.10), 0 18px 40px -22px hsl(0 0% 0% / 0.55), 0 32px 80px -40px hsl(0 0% 0% / 0.45)",
+          transition: "box-shadow 300ms ease-out",
         }}
       >
       <div
@@ -150,6 +220,7 @@ const ArchivalFrame = ({ photo, slot, index }: FrameProps) => {
           alt={`${current.city}, ${current.country} - PizzaDAO gathering`}
           loading={index < 3 ? "eager" : "lazy"}
           decoding="async"
+          draggable={false}
           className={`absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-[1.025] ${filter}`}
         />
         {incoming && (
@@ -160,6 +231,7 @@ const ArchivalFrame = ({ photo, slot, index }: FrameProps) => {
             aria-hidden
             loading="lazy"
             decoding="async"
+            draggable={false}
             className={`absolute inset-0 h-full w-full object-cover ${filter}`}
             style={{
               opacity: fading ? 1 : 0,
@@ -236,6 +308,108 @@ const ArchivalFrame = ({ photo, slot, index }: FrameProps) => {
   );
 };
 
+/** Cinematic lightbox - image-first, no chrome. */
+const Lightbox = ({
+  photo,
+  onClose,
+}: {
+  photo: PizzaPhoto | null;
+  onClose: () => void;
+}) => {
+  useEffect(() => {
+    if (!photo) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [photo, onClose]);
+
+  if (!photo) return null;
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${photo.city}, ${photo.country}`}
+      onClick={onClose}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/95 px-4 py-10 backdrop-blur-md animate-fade-in md:px-12"
+    >
+      {/* Atmospheric backdrop texture */}
+      <div
+        aria-hidden
+        className="grain pointer-events-none absolute inset-0 opacity-[0.22] mix-blend-overlay"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 50%, transparent 40%, hsl(0 0% 0% / 0.85) 100%)",
+        }}
+      />
+
+      {/* Quiet close */}
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          onClose();
+        }}
+        aria-label="Close"
+        className="absolute right-5 top-5 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-cream/30 bg-ink/40 text-cream/80 backdrop-blur-sm transition-colors hover:border-cream hover:text-cream md:right-8 md:top-8"
+      >
+        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+          <path d="M6 6l12 12M18 6l-12 12" strokeLinecap="round" />
+        </svg>
+      </button>
+
+      <figure
+        onClick={(e) => e.stopPropagation()}
+        className="relative z-[1] flex max-h-full max-w-[1280px] flex-col items-center"
+      >
+        <div className="relative overflow-hidden bg-ink shadow-[0_60px_140px_-30px_hsl(0_0%_0%/0.9)]">
+          <img
+            src={photo.src}
+            alt={`${photo.city}, ${photo.country} - PizzaDAO gathering`}
+            className="block max-h-[78vh] w-auto max-w-full object-contain [filter:saturate(0.92)_contrast(1.06)]"
+          />
+          <div
+            aria-hidden
+            className="grain pointer-events-none absolute inset-0 opacity-[0.18] mix-blend-overlay"
+          />
+        </div>
+        <figcaption className="mt-5 flex w-full items-baseline justify-between gap-6 text-cream">
+          <div className="flex items-baseline gap-3">
+            <span className="font-display text-lg font-extrabold tracking-tight md:text-2xl">
+              <span aria-hidden className="mr-2">{photo.flag}</span>
+              {photo.city}
+            </span>
+            <span className="ui text-[10px] font-semibold tracking-[0.28em] text-cream/55">
+              {photo.country}
+            </span>
+          </div>
+          <div className="flex items-baseline gap-4">
+            {photo.note && (
+              <span className="font-serif hidden text-sm italic text-cream/70 md:inline">
+                {photo.note}
+              </span>
+            )}
+            <span className="ui text-[10px] font-semibold tracking-[0.28em] text-cream/55">
+              {photo.year}
+            </span>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  );
+};
+
 const ArchivalWall = () => {
   // Shuffle the full archive once on mount so every visit cuts the
   // same global ritual differently.
@@ -243,10 +417,18 @@ const ArchivalWall = () => {
   const [photos, setPhotos] = useState<PizzaPhoto[]>(() =>
     initialDeck.slice(0, SLOTS.length),
   );
+  const [open, setOpen] = useState<PizzaPhoto | null>(null);
+  const [shuffling, setShuffling] = useState(false);
+  const manualAt = useRef(0);
 
-  // Subtle living-archive rotation. Two frames cycle every ~5s,
-  // staggered so the wall is always quietly evolving without ever
-  // calling attention to itself. Respects prefers-reduced-motion.
+  const reshuffle = useCallback(() => {
+    setShuffling(true);
+    manualAt.current = Date.now();
+    setPhotos(shuffle(ARCHIVE).slice(0, SLOTS.length));
+    window.setTimeout(() => setShuffling(false), 900);
+  }, []);
+
+  // Subtle living-archive rotation. Pauses briefly after manual shuffle.
   useEffect(() => {
     if (typeof window === "undefined") return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -255,12 +437,13 @@ const ArchivalWall = () => {
 
     let lastSlot = -1;
     const swapOne = () => {
+      // Give the user a calm beat after a manual shuffle.
+      if (Date.now() - manualAt.current < 8000) return;
       setPhotos((prev) => {
         const visibleSrcs = new Set(prev.map((p) => p.src));
         const pool = ARCHIVE.filter((p) => !visibleSrcs.has(p.src));
         if (!pool.length) return prev;
         const next = pool[Math.floor(Math.random() * pool.length)];
-        // Avoid hitting the same slot twice in a row.
         let slotIndex = Math.floor(Math.random() * prev.length);
         if (slotIndex === lastSlot) {
           slotIndex = (slotIndex + 1) % prev.length;
@@ -277,19 +460,47 @@ const ArchivalWall = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-2 gap-2.5 md:auto-rows-[86px] md:grid-cols-12 md:gap-3.5 lg:auto-rows-[108px]">
-      {SLOTS.map((slot, i) => {
-        const photo = photos[i];
-        if (!photo) return null;
-        return (
-          <ArchivalFrame
-            key={i}
-            slot={slot}
-            index={i}
-            photo={photo}
-          />
-        );
-      })}
+    <div>
+      {/* Quiet interaction strip - sits above the wall as an editorial caption. */}
+      <div className="mb-6 flex items-center justify-between gap-4 border-t border-cream/15 pt-4 md:mb-8">
+        <span className="ui text-[10px] font-semibold tracking-[0.28em] text-cream/40">
+          A living archive · drag a frame · tap to open
+        </span>
+        <button
+          type="button"
+          onClick={reshuffle}
+          disabled={shuffling}
+          className="ui group inline-flex items-center gap-2 whitespace-nowrap text-[11px] font-semibold tracking-[0.24em] text-cream/80 transition-colors hover:text-tomato disabled:opacity-60"
+        >
+          <span
+            aria-hidden
+            className={`inline-block h-3.5 w-3.5 transition-transform duration-700 ease-out ${shuffling ? "rotate-180" : "group-hover:rotate-90"}`}
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M3 7h13l-3-3M21 17H8l3 3" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+          Pull from the pile
+        </button>
+      </div>
+
+      <div className="grid grid-cols-2 gap-2.5 md:auto-rows-[86px] md:grid-cols-12 md:gap-3.5 lg:auto-rows-[108px]">
+        {SLOTS.map((slot, i) => {
+          const photo = photos[i];
+          if (!photo) return null;
+          return (
+            <ArchivalFrame
+              key={i}
+              slot={slot}
+              index={i}
+              photo={photo}
+              onOpen={setOpen}
+            />
+          );
+        })}
+      </div>
+
+      <Lightbox photo={open} onClose={() => setOpen(null)} />
     </div>
   );
 };
