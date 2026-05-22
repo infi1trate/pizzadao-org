@@ -1163,7 +1163,7 @@ function CyclingStage({ pool, tick, attempt = 1 }: { pool: string[]; tick: numbe
 
   return (
     <div className="relative grid place-items-center py-20 md:py-28">
-      <p className="overline text-tomato/80">The family is deliberating</p>
+      <p className="overline text-tomato/80">{overline}</p>
 
       {/* crossed-out candidates scribbled in margins */}
       <span className="handwritten pointer-events-none absolute left-[8%] top-[18%] hidden rotate-[-8deg] text-[18px] text-ink/55 md:block">
