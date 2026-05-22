@@ -773,6 +773,7 @@ function CinematicInput({
   onOpen,
   onClose,
   children,
+  size = "large",
 }: {
   inputRef: React.RefObject<HTMLInputElement>;
   label: string;
@@ -783,7 +784,20 @@ function CinematicInput({
   onOpen: () => void;
   onClose: () => void;
   children: React.ReactNode;
+  size?: "large" | "small";
 }) {
+  const inputTextClass =
+    size === "small"
+      ? "font-display w-full bg-transparent text-[clamp(1.05rem,2.2vw,1.6rem)] font-black leading-tight tracking-tight text-ink placeholder:text-ink/30 focus:outline-none"
+      : "font-display w-full bg-transparent text-[clamp(1.4rem,3.2vw,2.4rem)] font-black leading-tight tracking-tight text-ink placeholder:text-ink/30 focus:outline-none";
+  const padClass =
+    size === "small"
+      ? "relative flex items-center gap-3 px-4 py-3.5 md:gap-4 md:px-6 md:py-4"
+      : "relative flex items-center gap-4 px-5 py-5 md:gap-6 md:px-8 md:py-7";
+  const iconClass =
+    size === "small"
+      ? "h-4 w-4 shrink-0 text-ink/35 md:h-5 md:w-5"
+      : "h-5 w-5 shrink-0 text-ink/35 md:h-6 md:w-6";
   return (
     <div className="relative">
       <p className="overline text-tomato">{label}</p>
@@ -801,15 +815,15 @@ function CinematicInput({
         />
         <div aria-hidden className="pointer-events-none absolute inset-0 grain opacity-40" />
 
-        <label className="relative flex items-center gap-4 px-5 py-5 md:gap-6 md:px-8 md:py-7">
-          <Search className="h-5 w-5 shrink-0 text-ink/35 md:h-6 md:w-6" />
+        <label className={padClass}>
+          <Search className={iconClass} />
           <input
             ref={inputRef}
             value={value}
             onChange={(e) => { onChange(e.target.value); if (!open) onOpen(); }}
             onFocus={onOpen}
             placeholder={placeholder}
-            className="font-display w-full bg-transparent text-[clamp(1.4rem,3.2vw,2.4rem)] font-black leading-tight tracking-tight text-ink placeholder:text-ink/30 focus:outline-none"
+            className={inputTextClass}
           />
           {open && (
             <button
@@ -823,13 +837,13 @@ function CinematicInput({
         </label>
       </div>
 
-      {/* contextual drawer */}
+      {/* contextual drawer — scrolls internally so ingredient grid never gets clipped */}
       <div
         className={`overflow-hidden transition-[max-height,opacity,margin] duration-500 ease-[cubic-bezier(0.2,0.9,0.3,1)] ${
-          open ? "mt-5 max-h-[70vh] opacity-100" : "mt-0 max-h-0 opacity-0"
+          open ? "mt-5 max-h-[78vh] opacity-100" : "mt-0 max-h-0 opacity-0"
         }`}
       >
-        <div className="rounded-[24px] border border-ink/10 bg-card/60 p-4 backdrop-blur md:p-6">
+        <div className="max-h-[74vh] overflow-y-auto overscroll-contain rounded-[24px] border border-ink/10 bg-card/60 p-4 backdrop-blur md:p-6">
           {children}
         </div>
       </div>
