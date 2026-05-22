@@ -54,18 +54,9 @@ const PartnersPage = () => {
               "linear-gradient(180deg, hsl(var(--cream)) 0%, hsl(44 70% 96%) 55%, hsl(40 55% 93%) 100%)",
           }}
         />
-        {/* Hero ambient glows */}
-        <div
-          aria-hidden
-          className="hero-glow pointer-events-none absolute -right-32 -top-32 h-[640px] w-[640px] rounded-full opacity-[0.09] blur-[120px]"
-          style={{ background: "hsl(var(--tomato))" }}
-        />
-        <div
-          aria-hidden
-          className="hero-glow pointer-events-none absolute -left-40 top-1/3 h-[520px] w-[520px] rounded-full opacity-[0.10] blur-[140px]"
-          style={{ background: "hsl(var(--butter))", animationDelay: "-4s" }}
-        />
-        {/* Subtle checker corners — top-right + bottom-left only */}
+        {/* Editorial crop marks — printer's register, art-directed corners */}
+        <RegistrationMarks tone="ink" opacity={0.18} inset={22} size={14} folio="§ B.01" />
+        {/* Subtle checker corners — brand signature, intentional rhythm */}
         <div
           aria-hidden
           className="checker-tape pointer-events-none absolute right-0 top-0 h-[5px] w-32 opacity-30 md:w-48"
@@ -74,8 +65,6 @@ const PartnersPage = () => {
           aria-hidden
           className="checker-tape pointer-events-none absolute bottom-0 left-0 h-[5px] w-32 opacity-25 md:w-48"
         />
-        {/* Photographic emotional texture — barely-there crowd warmth */}
-        <PhotoVeil variant="crowd" position="bottom-left" opacity={0.05} blend="multiply" />
 
         <div className="container relative">
           {/* Archival ref */}
