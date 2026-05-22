@@ -747,17 +747,6 @@ const About = () => {
           </figure>
 
 
-          {/* ── PULL QUOTE ──────────────────────────────────────── */}
-          <figure className="mt-16 grid grid-cols-12 gap-x-8 md:mt-20">
-            <div aria-hidden className="col-span-12 mb-5 h-px bg-cream/15 md:col-span-12" />
-            <blockquote className="font-display col-span-12 text-[clamp(1.75rem,4.2vw,3.25rem)] font-extrabold leading-[1.02] tracking-[-0.02em] text-cream md:col-span-10">
-              <span className="text-tomato">"</span>An international celebration of community.<span className="text-tomato">"</span>
-            </blockquote>
-            <figcaption className="ui col-span-12 mt-5 flex items-center gap-3 text-[10px] font-semibold tracking-[0.28em] text-cream/55">
-              <span className="h-px w-8 bg-cream/35" />
-              Archiv3 · 2024
-            </figcaption>
-          </figure>
 
           {/* ── ARTICLE STRIPS ──────────────────────────────────── */}
           <div className="mt-24 md:mt-32">
