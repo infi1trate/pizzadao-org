@@ -89,13 +89,13 @@ const Sponsorship = () => {
   return (
     <section
       id="partner-with-us"
-      className="relative overflow-hidden bg-butter/25 pt-12 text-ink md:pt-14"
+      className="relative overflow-hidden bg-butter/25 pt-7 text-ink md:pt-9"
     >
       {/* Top hairline + soft tonal bridge from cream hero above */}
       <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-ink/10" />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-32"
+        className="pointer-events-none absolute inset-x-0 top-0 h-20"
         style={{
           background:
             "linear-gradient(180deg, hsl(40 55% 93%) 0%, transparent 100%)",
@@ -256,7 +256,7 @@ const Sponsorship = () => {
       </div>
 
       {/* What we build together — edge-to-edge cream-warm band, layered into flow */}
-      <div className="paper-soft paper-drift relative mt-10 overflow-hidden bg-cream-warm py-10 md:mt-12 md:py-14">
+      <div className="paper-soft paper-drift relative mt-7 overflow-hidden bg-cream-warm py-8 md:mt-9 md:py-11">
         {/* Soft tonal transition at top — fades from butter/25 above into cream-warm */}
         <div
           aria-hidden

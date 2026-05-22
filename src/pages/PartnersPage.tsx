@@ -120,7 +120,7 @@ const PartnersPage = () => {
             </div>
 
             {/* Proof strip — editorial footer rail */}
-            <div className="relative mt-10 border-t border-ink/15 pt-5 md:mt-12 md:pt-6">
+            <div className="relative mt-7 border-t border-ink/15 pt-4 md:mt-9 md:pt-5">
               {/* Asymmetric IRL stamp — offset into the margin */}
               <span
                 aria-hidden
@@ -128,7 +128,7 @@ const PartnersPage = () => {
               >
                 ↘ measured IRL
               </span>
-              <dl className="grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-4 md:gap-x-12">
+              <dl className="grid grid-cols-2 gap-x-8 gap-y-5 md:grid-cols-4 md:gap-x-12">
                 {[
                   { k: "Cities", v: "500+" },
                   { k: "Countries", v: "100+" },
@@ -146,8 +146,6 @@ const PartnersPage = () => {
                 ))}
               </dl>
             </div>
-
-            <div className="h-4 md:h-6" />
           </div>
         </div>
       </section>
@@ -160,7 +158,7 @@ const PartnersPage = () => {
       {/* Case studies consolidated into Sponsorship "What we've built" */}
 
       {/* Logo wall — premium social proof, gallery-like */}
-      <section className="paper-soft paper-drift relative overflow-hidden bg-cream py-14 md:py-20">
+      <section className="paper-soft paper-drift relative overflow-hidden bg-cream py-10 md:py-14">
         {/* Soft tonal wash — warm editorial depth (keeps the section reading as paper) */}
         <div
           aria-hidden
