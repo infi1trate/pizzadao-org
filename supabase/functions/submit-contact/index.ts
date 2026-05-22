@@ -137,8 +137,10 @@ Deno.serve(async (req) => {
         subject: `New PizzaDAO note from ${name}${intents.length ? ` (${intents[0]})` : ''}`,
         html,
         text,
+        purpose: 'transactional',
         label: 'contact-form-notification',
         idempotency_key: `contact-${row.id}-team-notification`,
+        unsubscribe_token: `contact-notification-${row.id}`,
         message_id: `contact-${row.id}-team-notification`,
       }, { apiKey });
       emailed = true;
