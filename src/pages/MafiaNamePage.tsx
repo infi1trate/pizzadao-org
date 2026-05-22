@@ -406,16 +406,12 @@ const MafiaNamePage = () => {
 
   const shareName = async () => {
     if (!finalName) return;
-    const text = `I've been made. They call me ${finalName}. - PizzaDAO`;
-    if (navigator.share) {
-      try {
-        await navigator.share({ title: "My PizzaDAO mafia name", text });
-        return;
-      } catch {}
-    }
-    await navigator.clipboard.writeText(text);
-    toast({ title: "Copied share text", description: text });
+    const text = `Just got made.\n\n${finalName} 🍕\n\npizzadao.org`;
+    const url = "https://pizzadao.org/get-your-mafia-name";
+    const intent = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    window.open(intent, "_blank", "noopener,noreferrer");
   };
+
 
   const reset = () => {
     setStep("film");
@@ -1299,6 +1295,35 @@ function FinaleScene({
     }
   };
 
+  const copyImage = async () => {
+    if (!avatarUrl) return;
+    try {
+      const res = await fetch(avatarUrl);
+      const blob = await res.blob();
+      const pngBlob: Blob = blob.type === "image/png"
+        ? blob
+        : await new Promise<Blob>((resolve) => {
+            const img = new Image();
+            img.crossOrigin = "anonymous";
+            img.onload = () => {
+              const c = document.createElement("canvas");
+              c.width = img.width;
+              c.height = img.height;
+              c.getContext("2d")!.drawImage(img, 0, 0);
+              c.toBlob((b) => resolve(b || blob), "image/png");
+            };
+            img.src = URL.createObjectURL(blob);
+          });
+      // @ts-ignore — ClipboardItem types vary across TS lib versions
+      await navigator.clipboard.write([new ClipboardItem({ "image/png": pngBlob })]);
+      toast({ title: "Portrait copied", description: "Paste it anywhere — Discord, X, chats." });
+    } catch {
+      toast({ title: "Couldn't copy image", description: "Try downloading instead." });
+    }
+  };
+
+
+
 
   return (
     <section className="relative z-10">
@@ -1324,13 +1349,41 @@ function FinaleScene({
           style={{ transform: "rotate(-0.4deg)" }}
         >
           <div
-            className="relative overflow-hidden rounded-[16px] border border-ink/15 bg-[hsl(40_38%_94%)] p-5 shadow-[0_50px_90px_-40px_hsl(20_30%_8%/0.7)] md:p-8"
+            className="relative overflow-hidden rounded-[14px] border border-ink/15 bg-[hsl(40_38%_94%)] p-5 shadow-[0_50px_90px_-40px_hsl(20_30%_8%/0.7)] md:p-7"
             style={{
               backgroundImage:
-                "radial-gradient(120% 70% at 50% 0%, hsl(46 100% 62% / 0.15), transparent 60%), radial-gradient(80% 60% at 100% 100%, hsl(20 40% 25% / 0.08), transparent 70%)",
+                "radial-gradient(120% 70% at 50% 0%, hsl(46 100% 62% / 0.13), transparent 60%), radial-gradient(80% 60% at 100% 100%, hsl(20 40% 25% / 0.08), transparent 70%)",
             }}
           >
-            <div aria-hidden className="film-flicker pointer-events-none absolute inset-0 grain opacity-60" />
+            {/* Layered materiality: fibrous stock + offset print noise + ambient grain */}
+            <div aria-hidden className="film-flicker pointer-events-none absolute inset-0 grain opacity-50" />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                backgroundImage:
+                  "repeating-linear-gradient(92deg, hsl(28 20% 15% / 0.018) 0 1px, transparent 1px 3px), repeating-linear-gradient(2deg, hsl(28 20% 15% / 0.015) 0 1px, transparent 1px 4px)",
+                mixBlendMode: "multiply",
+              }}
+            />
+            {/* soft vignette lighting */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(120% 90% at 50% 0%, transparent 55%, hsl(20 30% 8% / 0.12) 100%)",
+              }}
+            />
+            {/* edge wear */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 rounded-[14px]"
+              style={{
+                boxShadow:
+                  "inset 0 0 0 1px hsl(28 25% 18% / 0.05), inset 0 -22px 28px -24px hsl(28 30% 18% / 0.25), inset 0 22px 28px -28px hsl(40 35% 95% / 0.6)",
+              }}
+            />
             {/* coffee stain */}
             <span
               aria-hidden
@@ -1339,7 +1392,7 @@ function FinaleScene({
             />
 
             {/* TOP ROW: paperclip · family record label · archive # */}
-            <div className="relative flex items-center gap-3 pb-3">
+            <div className="relative flex items-center gap-3 pb-2.5">
               <span
                 aria-hidden
                 className="inline-block h-5 w-3 shrink-0 rounded-full border-[2px] border-ink/45"
@@ -1354,8 +1407,8 @@ function FinaleScene({
             </div>
             <div className="relative h-px bg-ink/20" />
 
-            {/* MAIN BODY: avatar | alias + approval + descriptor */}
-            <div className="relative mt-6 grid grid-cols-[110px_1fr] gap-5 md:grid-cols-[160px_1fr] md:gap-8">
+            {/* MAIN BODY: avatar | alias + approval + descriptor — tightened */}
+            <div className="relative mt-4 grid grid-cols-[104px_1fr] gap-4 md:mt-5 md:grid-cols-[150px_1fr] md:gap-6">
               {/* Avatar */}
               <div className="relative">
                 <div
@@ -1378,16 +1431,22 @@ function FinaleScene({
                       )}
                     </div>
                   )}
+                  {/* photocopy softness on the portrait itself */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 rounded-full grain opacity-30"
+                    style={{ mixBlendMode: "multiply" }}
+                  />
                 </div>
               </div>
 
-              {/* Alias + approval + descriptor */}
+              {/* Alias + approval + descriptor — denser */}
               <div className="min-w-0 flex flex-col justify-center">
                 <p className={`ui text-[9.5px] uppercase tracking-[0.32em] text-tomato transition-opacity duration-500 ${phase >= 3 ? "opacity-100" : "opacity-0"}`}>
                   Status · Made
                 </p>
                 <h1
-                  className={`font-display mt-2 text-[clamp(1.6rem,4.4vw,3rem)] font-black leading-[0.95] tracking-[-0.015em] text-ink transition-all duration-700 ${
+                  className={`font-display mt-1.5 text-[clamp(1.6rem,4.4vw,3rem)] font-black leading-[0.95] tracking-[-0.015em] text-ink transition-all duration-700 ${
                     phase >= 4 ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0 blur-sm"
                   }`}
                 >
@@ -1395,51 +1454,72 @@ function FinaleScene({
                 </h1>
                 <span
                   aria-hidden
-                  className={`handwritten mt-1.5 inline-block rotate-[-3deg] text-[15px] text-tomato transition-opacity duration-500 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}
+                  className={`handwritten mt-1 inline-block rotate-[-3deg] text-[15px] text-tomato transition-opacity duration-500 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}
                 >
                   approved — Benny
                 </span>
                 {description && (
-                  <p className={`mt-3 max-w-prose text-[13.5px] italic leading-snug text-ink/75 transition-opacity duration-700 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}>
+                  <p className={`mt-2 max-w-prose text-[13.5px] italic leading-snug text-ink/75 transition-opacity duration-700 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}>
                     "{description}"
                   </p>
                 )}
               </div>
             </div>
 
-            {/* COMPACT METADATA ROW */}
-            <div className={`relative mt-6 grid grid-cols-2 gap-x-5 gap-y-3 border-t border-ink/15 pt-4 transition-opacity duration-700 md:grid-cols-4 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}>
+            {/* COMPACT METADATA ROW — tightened */}
+            <div className={`relative mt-4 grid grid-cols-2 gap-x-5 gap-y-2.5 border-t border-ink/15 pt-3 transition-opacity duration-700 md:grid-cols-4 ${phase >= 5 ? "opacity-100" : "opacity-0"}`}>
               <DossierField label="Film" value={film?.title ?? "—"} />
               <DossierField label="Topping" value={topping ?? "—"} />
               <DossierField label="Initiated" value={`${new Date().toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}`} />
               <DossierField label="Archive" value={`№ ${archive}`} />
             </div>
 
-            {/* ONE stamped badge — physically applied, distressed, imperfect circle */}
+            {/* ONE stamped badge — embossed, uneven pressure, hand-stamped feel */}
             {phase >= 2 && (
               <span
                 aria-hidden
-                className="seal-stamp pointer-events-none absolute right-3 top-[42%] z-20 md:right-5"
-                style={{ transform: "rotate(-9deg)" }}
+                className="seal-stamp pointer-events-none absolute right-3 top-[40%] z-20 md:right-5"
+                style={{ transform: "rotate(-11deg)" }}
               >
-                <span aria-hidden className="seal-spread absolute inset-0 -m-2 rounded-full bg-tomato/20" />
+                <span aria-hidden className="seal-spread absolute inset-0 -m-2 rounded-full bg-tomato/15" />
+                {/* embossed shadow beneath the stamp (paper indent) */}
                 <span
-                  className="relative grid h-[86px] w-[86px] place-items-center text-tomato md:h-[104px] md:w-[104px]"
+                  aria-hidden
+                  className="pointer-events-none absolute -inset-1"
+                  style={{
+                    borderRadius: "49% 51% 52% 48% / 50% 49% 51% 50%",
+                    boxShadow:
+                      "0 2px 0 hsl(40 35% 80% / 0.5), 0 10px 18px -10px hsl(20 40% 10% / 0.45)",
+                  }}
+                />
+                <span
+                  className="relative grid h-[86px] w-[86px] place-items-center text-tomato md:h-[100px] md:w-[100px]"
                   style={{
                     backgroundImage:
-                      "radial-gradient(60% 60% at 35% 30%, hsl(0 93% 60% / 0.16), transparent 70%)",
-                    border: "3px solid hsl(0 93% 45% / 0.85)",
+                      "radial-gradient(60% 60% at 32% 28%, hsl(0 93% 60% / 0.18), transparent 70%), radial-gradient(40% 40% at 75% 75%, hsl(0 93% 40% / 0.12), transparent 70%)",
+                    border: "3px solid hsl(0 93% 45% / 0.82)",
                     boxShadow:
-                      "inset 0 0 0 2px hsl(0 93% 45% / 0.30), inset 0 6px 14px -6px hsl(0 93% 30% / 0.45), 0 8px 14px -8px hsl(20 40% 10% / 0.4)",
-                    borderRadius: "49% 51% 52% 48% / 50% 49% 51% 50%",
-                    filter: "contrast(1.05)",
+                      "inset 0 0 0 2px hsl(0 93% 45% / 0.28), inset 0 6px 14px -6px hsl(0 93% 30% / 0.5), inset 0 -4px 10px -6px hsl(40 35% 95% / 0.35), 0 6px 12px -8px hsl(20 40% 10% / 0.4)",
+                    borderRadius: "48% 52% 53% 47% / 51% 48% 52% 49%",
+                    filter: "contrast(1.06) saturate(1.04)",
                   }}
                 >
                   {/* paper-absorption distress */}
                   <span
                     aria-hidden
                     className="pointer-events-none absolute inset-0 grain"
-                    style={{ borderRadius: "inherit", mixBlendMode: "multiply", opacity: 0.7 }}
+                    style={{ borderRadius: "inherit", mixBlendMode: "multiply", opacity: 0.75 }}
+                  />
+                  {/* uneven pressure: faded patches where ink barely touched */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                      borderRadius: "inherit",
+                      backgroundImage:
+                        "radial-gradient(25% 20% at 18% 22%, hsl(40 35% 94% / 0.55), transparent 70%), radial-gradient(18% 16% at 85% 60%, hsl(40 35% 94% / 0.45), transparent 70%)",
+                      mixBlendMode: "screen",
+                    }}
                   />
                   {/* uneven ink bleed pockets */}
                   <span
@@ -1448,7 +1528,7 @@ function FinaleScene({
                     style={{
                       borderRadius: "inherit",
                       backgroundImage:
-                        "radial-gradient(20% 18% at 70% 25%, hsl(0 93% 30% / 0.35), transparent 70%), radial-gradient(15% 14% at 25% 75%, hsl(0 93% 30% / 0.30), transparent 70%), radial-gradient(8% 8% at 80% 80%, hsl(0 93% 30% / 0.45), transparent 70%)",
+                        "radial-gradient(20% 18% at 70% 25%, hsl(0 93% 30% / 0.38), transparent 70%), radial-gradient(15% 14% at 25% 75%, hsl(0 93% 30% / 0.32), transparent 70%), radial-gradient(8% 8% at 80% 80%, hsl(0 93% 30% / 0.5), transparent 70%)",
                       mixBlendMode: "multiply",
                     }}
                   />
@@ -1462,24 +1542,35 @@ function FinaleScene({
             )}
           </div>
 
+
           {/* Actions */}
           <div className={`mt-10 flex flex-wrap items-center justify-center gap-3 transition-all duration-500 ${phase >= 6 ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}>
             <button
               onClick={onShare}
-              className="btn-pill-lg group bg-tomato text-cream hover:bg-cream hover:text-ink"
+              className="btn-pill-lg group whitespace-nowrap bg-tomato text-cream hover:bg-cream hover:text-ink"
             >
-              Share your name
+              Share on X
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </button>
             {avatarUrl && (
-              <button
-                onClick={downloadAvatar}
-                className="btn-pill-lg group border border-cream/30 bg-ink text-cream hover:bg-tomato"
-              >
-                Download avatar
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </button>
+              <>
+                <button
+                  onClick={downloadAvatar}
+                  className="btn-pill-lg group whitespace-nowrap border border-cream/30 bg-ink text-cream hover:bg-tomato"
+                >
+                  Download avatar
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </button>
+                <button
+                  onClick={copyImage}
+                  className="btn-pill-lg group whitespace-nowrap border border-cream/30 bg-transparent text-cream hover:border-tomato hover:text-tomato"
+                >
+                  <Copy className="h-4 w-4" />
+                  Copy image
+                </button>
+              </>
             )}
+
             <button
               onClick={onRegenerateAvatar}
               disabled={avatarLoading}
