@@ -1586,10 +1586,10 @@ const TILE_LAYOUTS = [
   { top: "1%",  left: "73%", w: "26%", aspect: "3/4",   rot: 5,    z: 3, delay: 360 },
   // lower-left medium
   { top: "60%", left: "1%",  w: "26%", aspect: "5/4",   rot: -3,   z: 5, delay: 500 },
-  // lower-right medium (Melbourne slot) — enlarged so it stops getting buried
-  { top: "55%", left: "72%", w: "27%", aspect: "4/5",   rot: 4,    z: 6, delay: 640 },
-  // tiny accent — tucked below anchor, doesn't cover supports
-  { top: "82%", left: "40%", w: "15%", aspect: "1/1",   rot: -6,   z: 7, delay: 820 },
+  // lower-right medium — pulled up + slightly narrower so it never clips the container floor
+  { top: "52%", left: "76%", w: "22%", aspect: "4/5",   rot: 4,    z: 6, delay: 640 },
+  // tiny accent — pulled up + smaller so it sits safely above the floor
+  { top: "78%", left: "42%", w: "12%", aspect: "1/1",   rot: -6,   z: 7, delay: 820 },
 ];
 
 
@@ -1674,8 +1674,9 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Organic collage — overflow clipped to prevent collision with stats below */}
-          <div className="relative mt-14 h-[520px] w-full overflow-hidden md:mt-20 md:h-[720px] [contain:layout_paint] [&_figure]:will-change-transform">
+          {/* Organic collage — container scales by aspect ratio so tile heights (which key off width)
+              can never exceed the floor. Overflow stays hidden as a safety net. */}
+          <div className="relative mt-14 aspect-[4/3] w-full overflow-hidden md:mt-20 md:aspect-[5/3] [contain:layout_paint] [&_figure]:will-change-transform">
 
             {tiles.map((t, i) => (
               <figure
