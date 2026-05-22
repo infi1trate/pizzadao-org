@@ -1295,6 +1295,35 @@ function FinaleScene({
     }
   };
 
+  const copyImage = async () => {
+    if (!avatarUrl) return;
+    try {
+      const res = await fetch(avatarUrl);
+      const blob = await res.blob();
+      const pngBlob: Blob = blob.type === "image/png"
+        ? blob
+        : await new Promise<Blob>((resolve) => {
+            const img = new Image();
+            img.crossOrigin = "anonymous";
+            img.onload = () => {
+              const c = document.createElement("canvas");
+              c.width = img.width;
+              c.height = img.height;
+              c.getContext("2d")!.drawImage(img, 0, 0);
+              c.toBlob((b) => resolve(b || blob), "image/png");
+            };
+            img.src = URL.createObjectURL(blob);
+          });
+      // @ts-ignore — ClipboardItem types vary across TS lib versions
+      await navigator.clipboard.write([new ClipboardItem({ "image/png": pngBlob })]);
+      toast({ title: "Portrait copied", description: "Paste it anywhere — Discord, X, chats." });
+    } catch {
+      toast({ title: "Couldn't copy image", description: "Try downloading instead." });
+    }
+  };
+
+
+
 
   return (
     <section className="relative z-10">
