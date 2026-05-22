@@ -457,7 +457,11 @@ const MafiaNamePage = () => {
     setFinalePhase(0);
     setAvatarUrl(null);
     setAvatarLoading(false);
+    setCardAvatars([null, null, null]);
+    setCardAvatarLoading([false, false, false]);
   };
+
+  const topThree = names.slice(0, 3);
 
   const primary = names[0];
   const alternates = names.slice(1, 3);
