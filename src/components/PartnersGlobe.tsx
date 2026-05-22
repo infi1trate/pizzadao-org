@@ -230,85 +230,6 @@ const PartnersGlobe = () => {
               })}
             </g>
 
-            {/* Annotated whispers - classic white speech bubbles with pop in/out */}
-            <g
-              style={{
-                fontFamily: "'Asap', ui-sans-serif, system-ui, sans-serif",
-                fontSize: "3px",
-                letterSpacing: "0.02px",
-                fontWeight: 600,
-              }}
-            >
-              {labels.map((l) => {
-                const PAD_X = 1.9;
-                const PAD_Y = 1.4;
-                const TEXT_H = 3;
-                // Approximate glyph width for Asap semibold at this size
-                const textW = l.text.length * 1.55;
-                const bubbleW = textW + PAD_X * 2;
-                const bubbleH = TEXT_H + PAD_Y * 2;
-                const anchor = l.anchor ?? "start";
-                const tipX = l.px + l.dx * 0.45;
-                const tipY = l.py + l.dy * 0.45;
-                const bubbleX =
-                  anchor === "end"
-                    ? l.px + l.dx - bubbleW
-                    : l.px + l.dx;
-                const bubbleY = l.py + l.dy - bubbleH / 2;
-                const pointerBaseX =
-                  anchor === "end" ? bubbleX + bubbleW : bubbleX;
-                const pointerBaseY = bubbleY + bubbleH / 2;
-                const pointerTipX = tipX;
-                const pointerTipY = tipY;
-                // Origin near the city dot so the bubble pops outward from it
-                const originX = pointerBaseX;
-                const originY = pointerBaseY;
-                return (
-                  <g
-                    key={l.i}
-                    style={{
-                      transformBox: "fill-box",
-                      transformOrigin: `${originX}px ${originY}px`,
-                      transform: l.visible ? "scale(1)" : "scale(0.25)",
-                      opacity: l.visible ? 1 : 0,
-                      transition: l.visible
-                        ? "transform 420ms cubic-bezier(.34,1.7,.54,1), opacity 180ms ease-out"
-                        : "transform 220ms cubic-bezier(.55,0,.7,.4), opacity 200ms ease-in",
-                      filter:
-                        "drop-shadow(0 0.45px 0.3px hsl(0 0% 0% / 0.22)) drop-shadow(0 1.2px 1.4px hsl(0 0% 0% / 0.28))",
-                    }}
-                  >
-                    {/* Pointer triangle */}
-                    <path
-                      d={`M ${pointerBaseX} ${pointerBaseY - 0.85} L ${pointerTipX} ${pointerTipY} L ${pointerBaseX} ${pointerBaseY + 0.85} Z`}
-                      fill="#ffffff"
-                      stroke="hsl(28 25% 18% / 0.22)"
-                      strokeWidth="0.1"
-                    />
-                    {/* Bubble body - classic rounded white */}
-                    <rect
-                      x={bubbleX}
-                      y={bubbleY}
-                      width={bubbleW}
-                      height={bubbleH}
-                      rx={bubbleH / 2}
-                      ry={bubbleH / 2}
-                      fill="#ffffff"
-                      stroke="hsl(28 25% 18% / 0.22)"
-                      strokeWidth="0.1"
-                    />
-                    <text
-                      x={bubbleX + bubbleW / 2}
-                      y={bubbleY + bubbleH / 2 + TEXT_H * 0.34}
-                      textAnchor="middle"
-                      fill="hsl(var(--ink))"
-                    >
-                      {l.text}
-                    </text>
-                  </g>
-                );
-              })}
-            </g>
 
           </g>
         </svg>
@@ -320,6 +241,89 @@ const PartnersGlobe = () => {
           style={{ mixBlendMode: "multiply", opacity: 0.55 }}
         />
       </div>
+
+      {/* Speech bubbles overlay - rendered OUTSIDE the sphere's overflow-hidden
+          and outside the clipPath so they are never cropped by the globe edge. */}
+      <svg
+        viewBox={`0 0 ${VB} ${VB}`}
+        className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
+      >
+        <g
+          style={{
+            fontFamily: "'Asap', ui-sans-serif, system-ui, sans-serif",
+            fontSize: "3px",
+            letterSpacing: "0.02px",
+            fontWeight: 600,
+          }}
+        >
+          {labels.map((l) => {
+            const PAD_X = 1.9;
+            const PAD_Y = 1.4;
+            const TEXT_H = 3;
+            const textW = l.text.length * 1.55;
+            const bubbleW = textW + PAD_X * 2;
+            const bubbleH = TEXT_H + PAD_Y * 2;
+            const anchor = l.anchor ?? "start";
+            const tipX = l.px + l.dx * 0.45;
+            const tipY = l.py + l.dy * 0.45;
+            const bubbleX =
+              anchor === "end"
+                ? l.px + l.dx - bubbleW
+                : l.px + l.dx;
+            const bubbleY = l.py + l.dy - bubbleH / 2;
+            const pointerBaseX =
+              anchor === "end" ? bubbleX + bubbleW : bubbleX;
+            const pointerBaseY = bubbleY + bubbleH / 2;
+            const pointerTipX = tipX;
+            const pointerTipY = tipY;
+            const originX = pointerBaseX;
+            const originY = pointerBaseY;
+            return (
+              <g
+                key={l.i}
+                style={{
+                  transformBox: "fill-box",
+                  transformOrigin: `${originX}px ${originY}px`,
+                  transform: l.visible ? "scale(1)" : "scale(0.25)",
+                  opacity: l.visible ? 1 : 0,
+                  transition: l.visible
+                    ? "transform 420ms cubic-bezier(.34,1.7,.54,1), opacity 180ms ease-out"
+                    : "transform 220ms cubic-bezier(.55,0,.7,.4), opacity 200ms ease-in",
+                  filter:
+                    "drop-shadow(0 0.45px 0.3px hsl(0 0% 0% / 0.22)) drop-shadow(0 1.2px 1.4px hsl(0 0% 0% / 0.28))",
+                }}
+              >
+                <path
+                  d={`M ${pointerBaseX} ${pointerBaseY - 0.85} L ${pointerTipX} ${pointerTipY} L ${pointerBaseX} ${pointerBaseY + 0.85} Z`}
+                  fill="#ffffff"
+                  stroke="hsl(28 25% 18% / 0.22)"
+                  strokeWidth="0.1"
+                />
+                <rect
+                  x={bubbleX}
+                  y={bubbleY}
+                  width={bubbleW}
+                  height={bubbleH}
+                  rx={bubbleH / 2}
+                  ry={bubbleH / 2}
+                  fill="#ffffff"
+                  stroke="hsl(28 25% 18% / 0.22)"
+                  strokeWidth="0.1"
+                />
+                <text
+                  x={bubbleX + bubbleW / 2}
+                  y={bubbleY + bubbleH / 2 + TEXT_H * 0.34}
+                  textAnchor="middle"
+                  fill="hsl(var(--ink))"
+                >
+                  {l.text}
+                </text>
+              </g>
+            );
+          })}
+        </g>
+      </svg>
+
     </div>
   );
 };
