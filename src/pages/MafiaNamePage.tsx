@@ -132,6 +132,8 @@ const MafiaNamePage = () => {
   const [cardAvatarLoading, setCardAvatarLoading] = useState<boolean[]>([false, false, false]);
 
   const generateCountRef = useRef(0);
+  const previousNamesRef = useRef<string[]>([]);
+  const lastKeyRef = useRef<string>("");
   const filmInputRef = useRef<HTMLInputElement>(null);
   const toppingInputRef = useRef<HTMLInputElement>(null);
 
@@ -180,10 +182,19 @@ const MafiaNamePage = () => {
     setNames([]);
     setSelectedIdx(null);
     setRevealPhase("cycling");
+
+    // Reset reroll history when the inputs change so escalation tracks only this combo.
+    const key = `${chosenFilm.id}::${chosenTopping}`;
+    if (lastKeyRef.current !== key) {
+      lastKeyRef.current = key;
+      generateCountRef.current = 0;
+      previousNamesRef.current = [];
+    }
     generateCountRef.current += 1;
-    if (generateCountRef.current > 1) {
+    const attempt = generateCountRef.current;
+    if (attempt > 1) {
       track(EVT.MAFIA_NAME_REGENERATED, {
-        attempt: generateCountRef.current,
+        attempt,
         movie: chosenFilm.title,
         topping: chosenTopping,
       });
@@ -201,6 +212,8 @@ const MafiaNamePage = () => {
             overview: chosenFilm.overview,
           },
           topping: chosenTopping,
+          attempt,
+          previousNames: previousNamesRef.current.slice(-24),
         },
       });
       if (error) throw error;
@@ -212,12 +225,16 @@ const MafiaNamePage = () => {
       await new Promise((r) => setTimeout(r, wait));
       setNames(generated);
       setRevealPhase("settled");
-      // Avatars are NOT pre-generated for each card.
-      // The avatar is earned — it is only generated after the user claims a name.
+      // Record names so future rerolls in this session don't repeat them.
+      previousNamesRef.current = [
+        ...previousNamesRef.current,
+        ...generated.map((g: any) => String(g?.name ?? "")).filter(Boolean),
+      ];
       track(EVT.MAFIA_NAMES_GENERATED, {
         count: generated.length,
         movie: chosenFilm.title,
         topping: chosenTopping,
+        attempt,
       });
     } catch (e: any) {
       setRevealPhase("idle");
@@ -559,10 +576,10 @@ const MafiaNamePage = () => {
               <button
                 onClick={() => film && topping && generate(film, topping)}
                 disabled={loadingNames}
-                className="ui inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.22em] text-ink/65 hover:text-tomato disabled:opacity-40"
+                className="ui inline-flex items-center gap-2 whitespace-nowrap text-[12px] uppercase tracking-[0.22em] text-ink/65 hover:text-tomato disabled:opacity-40"
               >
                 <RefreshCw className={`h-3.5 w-3.5 ${loadingNames ? "animate-spin" : ""}`} />
-                Re-cast
+                {generateCountRef.current <= 1 ? "Re-cast" : generateCountRef.current === 2 ? "Look deeper" : "Pull another file"}
               </button>
             </div>
 
@@ -589,7 +606,7 @@ const MafiaNamePage = () => {
               />
 
               {revealPhase === "cycling" && (
-                <CyclingStage pool={cyclePool} tick={cycleTick} />
+                <CyclingStage pool={cyclePool} tick={cycleTick} attempt={generateCountRef.current} />
               )}
 
               {revealPhase === "settled" && topThree.length > 0 && (
@@ -1127,7 +1144,7 @@ function ToppingDrawer({ toppings, query, onPick }: { toppings: string[]; query:
 }
 
 
-function CyclingStage({ pool, tick }: { pool: string[]; tick: number }) {
+function CyclingStage({ pool, tick, attempt = 1 }: { pool: string[]; tick: number; attempt?: number }) {
   const current = pool[tick % pool.length];
   const NOTES = ["nah", "too obvious", "watch this guy", "capo material", "this one?", "earner", "skip it"];
   // pick a slowly-rotating scribble note (changes every ~6 ticks)
@@ -1135,9 +1152,18 @@ function CyclingStage({ pool, tick }: { pool: string[]; tick: number }) {
   const crossed = pool[(tick + 3) % pool.length];
   const crossed2 = pool[(tick + 7) % pool.length];
 
+  const overline =
+    attempt <= 1
+      ? "The family is deliberating"
+      : attempt === 2
+      ? "Looking deeper…"
+      : attempt === 3
+      ? "Pulling another file…"
+      : "Found something stranger…";
+
   return (
     <div className="relative grid place-items-center py-20 md:py-28">
-      <p className="overline text-tomato/80">The family is deliberating</p>
+      <p className="overline text-tomato/80">{overline}</p>
 
       {/* crossed-out candidates scribbled in margins */}
       <span className="handwritten pointer-events-none absolute left-[8%] top-[18%] hidden rotate-[-8deg] text-[18px] text-ink/55 md:block">

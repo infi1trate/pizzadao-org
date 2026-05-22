@@ -54,7 +54,7 @@ Deno.serve(async (req) => {
 
   try {
     const body = await req.json();
-    const { movie, topping, customNote } = body ?? {};
+    const { movie, topping, customNote, attempt: rawAttempt, previousNames } = body ?? {};
 
     if (!movie?.title || !topping) {
       return new Response(JSON.stringify({ error: "movie and topping required" }), {
@@ -71,6 +71,23 @@ Deno.serve(async (req) => {
       });
     }
 
+    const attempt = Math.max(1, Math.min(20, Number(rawAttempt) || 1));
+    const prevList: string[] = Array.isArray(previousNames)
+      ? previousNames.map((n: unknown) => String(n)).filter(Boolean).slice(-24)
+      : [];
+
+    // Escalating creative curve — each reroll digs deeper into the archive.
+    const escalation =
+      attempt <= 1
+        ? `CREATIVE TIER 1 — GROUNDED. Names should feel believable, sayable, neighborhood-classic. Examples in spirit: Pepperoni Vito, Big Basil, Mozzarella Mike. Keep at least one [Topping] [Short Name] but vary the other two structures.`
+        : attempt === 2
+        ? `CREATIVE TIER 2 — STYLISH. The first roll was the obvious file. Dig deeper now. More personality, more flavor, more rhythm. Examples in spirit: Garlic Lips, Ricotta Rose, Cherry Heat, The Mushroom Queen. Avoid plain [Topping] [Tony/Paulie/Vinny/Vito/Mike] entirely.`
+        : `CREATIVE TIER 3 — BIZARRE NEIGHBORHOOD LEGENDS. The archive is open. Pull the strange ones: mononyms, color+topping, texture+topping, body-part nicknames, eccentric titles. Examples in spirit: Velvet Knife, Burnt Crust, Sunday Sauce, Chili Silk, Black Olive Betty, The Red Mushroom, Pepperflake. NO [Topping] [MaleFirstName] patterns at all. Lean weird, specific, memorable.`;
+
+    const avoidBlock = prevList.length
+      ? `\nALREADY USED THIS SESSION (forbidden — do not return these, do not return obvious variations, do not mirror their cadence or structure):\n- ${prevList.join("\n- ")}`
+      : "";
+
     const userPrompt = `Atmosphere film: ${movie.title}
 Year: ${movie.year ?? "unknown"}
 Country / region: ${movie.country ?? "unknown"}
@@ -79,11 +96,16 @@ Tone / keywords: ${(movie.tone ?? []).join(", ") || "—"}
 Initiate's topping (THE IDENTITY): ${topping}
 ${customNote ? `Custom user note: ${customNote}` : ""}
 
+Reroll attempt number: ${attempt}
+${escalation}
+${avoidBlock}
+
 Generate exactly 3 PizzaDAO neighborhood aliases as the JSON array described.
 - "${topping}" anchors every alias — let its personality steer archetype, gender energy, and rhythm.
 - "${movie.title}" only provides cadence and atmosphere. Do NOT use its character names or surnames.
 - The 3 names MUST use 3 different structures from the allowed list. No 3 Tonys/Paulies/Vinnys.
-- Mix masculine, feminine, ambiguous, and pure-alias energy. Some funny, some stylish, some mysterious.`;
+- Mix masculine, feminine, ambiguous, and pure-alias energy. Some funny, some stylish, some mysterious.
+- Zero repetition with the forbidden list above — no near-duplicates, no rhyming twins, no same-shape echoes.`;
 
     const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -97,6 +119,8 @@ Generate exactly 3 PizzaDAO neighborhood aliases as the JSON array described.
           { role: "system", content: SYSTEM_PROMPT },
           { role: "user", content: userPrompt },
         ],
+        // Escalate temperature with each reroll so the archive gets stranger.
+        temperature: Math.min(1.15, 0.85 + (attempt - 1) * 0.1),
         response_format: { type: "json_object" },
       }),
     });
@@ -133,14 +157,17 @@ Generate exactly 3 PizzaDAO neighborhood aliases as the JSON array described.
       if (match) names = JSON.parse(match[0]);
     }
 
+    const prevNorm = new Set(prevList.map((n) => n.trim().toLowerCase()));
     names = names
       .filter((n) => n && typeof n.name === "string")
-      .slice(0, 3)
       .map((n) => ({
         name: String(n.name).slice(0, 120),
         explanation: String(n.explanation ?? "").slice(0, 240),
         style_tags: Array.isArray(n.style_tags) ? n.style_tags.slice(0, 5).map(String) : [],
-      }));
+      }))
+      // Drop any exact repeats from previous rolls in this session.
+      .filter((n) => !prevNorm.has(n.name.trim().toLowerCase()))
+      .slice(0, 3);
 
     if (names.length === 0) {
       return new Response(JSON.stringify({ error: "Could not generate names." }), {
