@@ -1,35 +1,36 @@
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 
-const STYLE = `Vintage 1930s rubber-hose cartoon portrait of an ANTHROPOMORPHIC NEIGHBORHOOD ANIMAL — a member of a strange global pizza social club / lodge. Hand-drawn underground comic energy crossed with old union-hall poster art, inked risograph print work, and an old pizza shop mascot painted on a brick wall. Circular crop on warm cream background with a thick, slightly uneven dark navy border ring (imperfect, ink-bleed feel, like a hand-stamped membership badge).
+const STYLE = `Vintage 1930s rubber-hose cartoon portrait of an ANTHROPOMORPHIC NEIGHBORHOOD ANIMAL — an initiate of the strange PizzaDAO underworld, a weird global pizza social club / lodge. Hand-drawn underground comic energy crossed with old union-hall poster art, inked risograph print work, and an old pizza shop mascot painted on a brick wall. Circular crop on warm cream background with a thick, slightly uneven dark navy border ring (imperfect, ink-bleed feel, like a hand-stamped membership badge).
 
-CHARACTER (most important):
-- the subject IS an animal (raccoon, pigeon, rat, alley cat, bulldog, turtle, crow, fox, possum, duck, frog, sausage-smoking turkey, scrappy mutt, mystic owl — pick ONE and commit)
-- anthropomorphic: animal head + shoulders, dressed like a human neighborhood lodge member
-- silhouette must be strongly readable at small size — the animal species is instantly recognizable
+THE TOPPING IS THE CHARACTER (most important):
+- The pizza topping/ingredient IS the personality, the silhouette, the energy, the FACE of this portrait.
+- The animal species is a vessel for the topping's vibe — pick the species whose energy matches the ingredient.
+- The mafia/lodge styling is COSTUME — theater layered on top of an ingredient-first identity. It should never dominate.
+- Goal: someone seeing this portrait reads the TOPPING first, the animal second, the mafia flavor third.
+
+CHARACTER (vessel):
+- anthropomorphic neighborhood animal (raccoon, pigeon, rat, alley cat, bulldog, turtle, crow, fox, possum, duck, frog, sausage-smoking turkey, scrappy mutt, mystic owl — pick ONE and commit)
 - expressive, slightly cursed, charmingly suspicious — like a regular at a 3am pizza counter
-- subtle social-club mafia energy (NOT criminal, NOT aggressive, NOT ethnic caricature)
-- wardrobe hints: rumpled trench coat, old jacket, lopsided fedora or flat cap, pinky ring on a paw, wide tie or bowtie, lapel pin, social-club sash
-- a single quiet prop is allowed: a sausage held like a cigar with curling smoke, an espresso cup, a folded napkin, a wooden matchstick, a tiny pizza box
+- subtle social-club lodge energy (NOT criminal, NOT aggressive, NOT ethnic caricature)
+- light wardrobe accent only (rumpled collar, lopsided cap, lapel pin, social-club sash) — kept minimal so the topping leads
 
 LINE & TEXTURE:
 - thick uneven black ink outlines with visible wobble, smudges, paper grain
 - rubber-hose limb feeling even in a portrait crop
 - flat shading with hatching/cross-hatching in shadows
-- muted vintage palette: cream, mustard, oxblood, charcoal, faded teal, dusty brick
+- muted vintage palette: cream, mustard, oxblood, charcoal, faded teal, dusty brick — bent toward the topping's color signature
 - tactile risograph misregistration, subtle off-print color halos
 - avoid clean vector edges, avoid Pixar 3D polish, avoid furry-art rendering, avoid anime, avoid glossy lighting, avoid photoreal fur detail
 
-PIZZA REFERENCE (subtle and secondary — one, never more):
-- a tiny pepperoni pin on the lapel, OR
-- a sausage held like a cigar with curling smoke, OR
-- an anchovy-shaped tie clip, OR
-- a marinara splatter on the collar, OR
-- a topping-shaped boutonnière, OR
-- a small pizza-slice lodge medallion on a chain
+TOPPING DOMINANCE (the entire portrait must read as the ingredient):
+- the topping's color signature floods the palette and lighting
+- the topping appears prominently (held, worn, growing out of the hat, dripping, smoked, pinned huge on the lapel, or fused into the character's features)
+- the character's expression embodies the ingredient's personality — not generic mob swagger
+- if forced to pick between "more mafia" and "more topping", always go MORE TOPPING
 
 COMPOSITION: single anthropomorphic animal character, head-and-shoulders, centered, square 1:1, consistent framing across the whole portrait ecosystem.
 
-NEGATIVE: no humans, no human faces, no real-world celebrities, no text, no logos, no watermarks, no clean vector, no symmetrical anime mascot, no chibi, no Pixar polish, no furry-art rendering, no aggressive crime imagery, no weapons, no ethnic stereotypes, no gendered human cues.`;
+NEGATIVE: no humans, no human faces, no real-world celebrities, no text, no logos, no watermarks, no clean vector, no symmetrical anime mascot, no chibi, no Pixar polish, no furry-art rendering, no aggressive crime imagery, no weapons, no ethnic stereotypes, no gendered human cues, no generic mobsters with a tiny pizza accessory — the topping must dominate.`;
 
 const TOPPING_MOTIF: Record<string, string> = {
   Pepperoni: "red pepperoni pin on lapel, warm red accents, a quietly hot-headed look",
