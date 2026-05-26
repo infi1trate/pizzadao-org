@@ -10,7 +10,6 @@ import Sponsorship from "@/components/Sponsorship";
 import Journal from "@/components/Journal";
 import Join from "@/components/Join";
 import Footer from "@/components/Footer";
-import LivestreamToast from "@/components/LivestreamToast";
 
 const Index = () => {
   return (
