@@ -10,7 +10,7 @@ import CommunityPage from "./pages/CommunityPage.tsx";
 import BrandSystemPage from "./pages/BrandSystemPage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
 import MafiaNamePage from "./pages/MafiaNamePage.tsx";
-import PizzaPartySliced from "./pages/PizzaPartySliced.tsx";
+
 import Privacy from "./pages/Privacy.tsx";
 import Terms from "./pages/Terms.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -39,7 +39,7 @@ const App = () => (
           <Route path="/brand-system" element={<BrandSystemPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/get-your-mafia-name" element={<MafiaNamePage />} />
-          <Route path="/pizza-party-sliced" element={<PizzaPartySliced />} />
+          
           {/* Public legal pages */}
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
