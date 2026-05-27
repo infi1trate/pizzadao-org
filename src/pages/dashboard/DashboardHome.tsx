@@ -6,6 +6,7 @@ import { useNextMove } from "./useNextMove";
 import Path from "./path/Path";
 import YourWeek from "./week/YourWeek";
 import Destinations from "./destinations/Destinations";
+import NukeAccount from "./NukeAccount";
 
 /**
  * Dashboard Home — three states:
@@ -50,6 +51,8 @@ const DashboardHome = () => {
         <div className="mt-10">
           <MakingMemberCard />
         </div>
+
+        <NukeAccount />
       </section>
     );
   }
@@ -76,6 +79,7 @@ const ReturningHome = () => {
       <YourWeek />
       {/* 4 — quiet doors */}
       <Destinations />
+      <NukeAccount />
     </section>
   );
 };
