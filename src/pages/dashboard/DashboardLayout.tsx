@@ -1,6 +1,8 @@
 import { Outlet, NavLink, useLocation } from "react-router-dom";
 import { Home, Calendar, Users, Award, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
+import StatusStrip from "./StatusStrip";
+import { useMemberStatus } from "./useMemberStatus";
 
 /**
  * Members-only dashboard shell.
@@ -22,6 +24,7 @@ const nav = [
 const DashboardLayout = () => {
   const { pathname } = useLocation();
   const active = nav.find((n) => (n.end ? pathname === n.to : pathname.startsWith(n.to)));
+  const memberStatus = useMemberStatus();
 
   return (
     <div className="min-h-[100svh] bg-cream text-ink">
@@ -46,6 +49,8 @@ const DashboardLayout = () => {
           </div>
         </div>
       </header>
+
+      <StatusStrip status={memberStatus} />
 
       <div className="mx-auto flex max-w-[1280px] gap-8 px-5 py-8 md:px-8 md:py-12">
         {/* Side rail — restrained, soft pills, no heavy lines */}
