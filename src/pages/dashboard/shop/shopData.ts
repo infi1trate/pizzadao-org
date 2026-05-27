@@ -220,7 +220,7 @@ export function getItem(id: string): ShopItem | undefined {
 // ---------------------------------------------------------------------------
 // "Logged-in" balance (placeholder)
 
-export const ME_BALANCE = 480;
+export const ME_BALANCE: number = 480;
 
 // ---------------------------------------------------------------------------
 // Tabs
