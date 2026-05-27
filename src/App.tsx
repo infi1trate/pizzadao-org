@@ -15,6 +15,7 @@ import DashboardHome from "./pages/dashboard/DashboardHome.tsx";
 import DashboardPlaceholder from "./pages/dashboard/DashboardPlaceholder.tsx";
 import PathPage from "./pages/dashboard/path/PathPage.tsx";
 import FeedPage from "./pages/dashboard/feed/FeedPage.tsx";
+import EventsPage from "./pages/dashboard/events/EventsPage.tsx";
 
 import Privacy from "./pages/Privacy.tsx";
 import Terms from "./pages/Terms.tsx";
@@ -50,7 +51,7 @@ const App = () => (
             <Route index element={<DashboardHome />} />
             <Route path="path"        element={<PathPage />} />
             <Route path="feed"        element={<FeedPage />} />
-            <Route path="events"      element={<DashboardPlaceholder />} />
+            <Route path="events"      element={<EventsPage />} />
             <Route path="family"      element={<DashboardPlaceholder />} />
             <Route path="bounties"    element={<DashboardPlaceholder />} />
             <Route path="shop"        element={<DashboardPlaceholder />} />
