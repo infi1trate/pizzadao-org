@@ -3,6 +3,7 @@ import { Check, Lock, ArrowRight, Hourglass } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LEVELS, type Level, type Mission, type MissionStatus } from "./levels";
 import { usePath } from "./usePath";
+import ConceptExplainer from "../explainers/ConceptExplainer";
 
 /**
  * The Path — vertical leveling trail (Lv.1 → Lv.10).
@@ -251,9 +252,12 @@ const Path = () => {
   return (
     <section className="mt-12">
       <header className="mb-6">
-        <p className="ui text-[11px] uppercase tracking-[0.22em] text-ink/55">
-          § The Path
-        </p>
+        <div className="flex items-center gap-2">
+          <p className="ui text-[11px] uppercase tracking-[0.22em] text-ink/55">
+            § The Path
+          </p>
+          <ConceptExplainer concept="levels" />
+        </div>
         <h2 className="font-display mt-2 text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-[1] tracking-tight">
           Your path from{" "}
           <span className="handwritten text-tomato">Pizza Trainee</span> to{" "}
