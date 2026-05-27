@@ -18,6 +18,8 @@ import FeedPage from "./pages/dashboard/feed/FeedPage.tsx";
 import EventsPage from "./pages/dashboard/events/EventsPage.tsx";
 import FamilyPage from "./pages/dashboard/family/FamilyPage.tsx";
 import MemberProfilePage from "./pages/dashboard/family/MemberProfilePage.tsx";
+import BountiesPage from "./pages/dashboard/bounties/BountiesPage.tsx";
+import BountyDetailPage from "./pages/dashboard/bounties/BountyDetailPage.tsx";
 
 import Privacy from "./pages/Privacy.tsx";
 import Terms from "./pages/Terms.tsx";
@@ -56,7 +58,8 @@ const App = () => (
             <Route path="events"      element={<EventsPage />} />
             <Route path="family"      element={<FamilyPage />} />
             <Route path="family/:id"  element={<MemberProfilePage />} />
-            <Route path="bounties"    element={<DashboardPlaceholder />} />
+            <Route path="bounties"      element={<BountiesPage />} />
+            <Route path="bounties/:id"  element={<BountyDetailPage />} />
             <Route path="shop"        element={<DashboardPlaceholder />} />
             <Route path="arcade"      element={<DashboardPlaceholder />} />
             <Route path="recognition" element={<DashboardPlaceholder />} />
