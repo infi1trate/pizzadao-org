@@ -1,24 +1,16 @@
-## Remove /pizza-party-sliced page
+Add a developer-friendly reset button at the bottom of `/dashboard` that clears all local onboarding, path, and demo state and reloads the page.
 
-Delete the entire Pizza Party Sliced recap page and its related components.
+## Scope
 
-### Files to delete
-- `src/pages/PizzaPartySliced.tsx`
-- `src/components/sliced/AwardsSection.tsx`
-- `src/components/sliced/BonusGameRecap.tsx`
-- `src/components/sliced/HeroSection.tsx`
-- `src/components/sliced/LocalSlice.tsx`
-- `src/components/sliced/MetricsReveal.tsx`
-- `src/components/sliced/PartnerImpact.tsx`
-- `src/components/sliced/PhotoWall.tsx`
-- `src/components/sliced/ShareGenerator.tsx`
-- `src/components/sliced/SignalMap.tsx`
-- `src/components/sliced/data.ts`
-- `src/components/sliced/useReveal.ts`
+1. **New component:** `src/pages/dashboard/NukeAccount.tsx`
+   - Collects every dashboard `localStorage` key (`pd-onboarding-v1`, `pd-celebrated`, `pd-welcome-bonus`, `pd-made`, `pd-pep`, `pd-path-v1`, `pd-next-move-demo`).
+   - One-click confirmation → clears keys → `window.location.reload()`.
+   - Styled very quietly: small pill, muted ink, border, no shadow. Bottom-center of the page. Must not compete with the primary action hierarchy.
 
-### Files to edit
-- `src/App.tsx` — remove `import PizzaPartySliced` and the `/pizza-party-sliced` route
+2. **Integrate into `DashboardHome.tsx`**
+   - Render `<NukeAccount />` at the bottom of the **new-member state** (after `MakingMemberCard`) and the **returning-member state** (after `<Destinations />`).
+   - Skip the one-time celebration state.
 
-### Verification
-- Confirm no other references to `pizza-party-sliced` exist in the codebase
-- Build passes after removal
+## Files changed
+- `src/pages/dashboard/NukeAccount.tsx` (new)
+- `src/pages/dashboard/DashboardHome.tsx` (add `<NukeAccount />` in two places)
