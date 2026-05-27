@@ -69,6 +69,7 @@ const ReturningHome = () => {
       </div>
       <Path />
       <YourWeek />
+      <Destinations />
     </section>
   );
 };
