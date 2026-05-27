@@ -65,6 +65,7 @@ const ReturningHome = () => {
       <div className="mt-4">
         <NextMoveCard move={move} />
       </div>
+      <Path />
     </section>
   );
 };
