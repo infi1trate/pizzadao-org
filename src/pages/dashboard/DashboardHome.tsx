@@ -3,6 +3,7 @@ import MadeCelebration from "./onboarding/MadeCelebration";
 import { useOnboarding } from "./onboarding/useOnboarding";
 import NextMoveCard from "./NextMoveCard";
 import { useNextMove } from "./useNextMove";
+import Path from "./path/Path";
 
 /**
  * Dashboard Home — three states:
