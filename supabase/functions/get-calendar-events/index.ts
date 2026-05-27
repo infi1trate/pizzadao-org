@@ -97,9 +97,10 @@ Deno.serve(async (req) => {
     });
   } catch (e) {
     const msg = e instanceof Error ? e.message : 'unknown';
-    // Return 200 with empty list so the dashboard renders its calm empty state
-    // instead of an error banner. The real error is surfaced in `error`.
-    return new Response(JSON.stringify({ error: msg, events: [] }), {
+    console.error('get-calendar-events error:', msg);
+    // Always 200 so supabase-js doesn't throw; dashboard renders empty state.
+    return new Response(JSON.stringify({ events: [], warning: msg }), {
+      status: 200,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   }
