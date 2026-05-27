@@ -88,18 +88,21 @@ const StatusStrip = ({ status }: Props) => {
         <span aria-hidden className="hidden h-6 w-px bg-[hsl(var(--rule-warm))]/60 sm:block" />
 
         {/* $PEP balance */}
-        <button
-          type="button"
-          onClick={() => navigate("/dashboard/pep")}
-          className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-[hsl(var(--rule-warm))]/60 bg-cream px-3 py-1.5 transition-colors hover:border-ink/30 hover:bg-butter/30"
-          aria-label={`${formatPep(status.pep)} PEP balance. Open shop.`}
-        >
-          <PepperoniMark className="h-[18px] w-[18px]" />
-          <span className="ui text-[13px] font-semibold tabular-nums text-ink">
-            {formatPep(status.pep)}
-          </span>
-          <span className="ui text-[11px] font-medium text-ink/50">$PEP</span>
-        </button>
+        <div className="inline-flex shrink-0 items-center gap-1.5">
+          <button
+            type="button"
+            onClick={() => navigate("/dashboard/pep")}
+            className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-[hsl(var(--rule-warm))]/60 bg-cream px-3 py-1.5 transition-colors hover:border-ink/30 hover:bg-butter/30"
+            aria-label={`${formatPep(status.pep)} PEP balance. Open shop.`}
+          >
+            <PepperoniMark className="h-[18px] w-[18px]" />
+            <span className="ui text-[13px] font-semibold tabular-nums text-ink">
+              {formatPep(status.pep)}
+            </span>
+            <span className="ui text-[11px] font-medium text-ink/50">$PEP</span>
+          </button>
+          <ConceptExplainer concept="pep" />
+        </div>
 
         {/* Streak — quiet, ambient */}
         <div
