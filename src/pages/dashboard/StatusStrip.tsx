@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Flame } from "lucide-react";
 import { cn } from "@/lib/utils";
+import ConceptExplainer from "./explainers/ConceptExplainer";
 
 /**
  * Ambient dashboard status strip — Duolingo-style.
