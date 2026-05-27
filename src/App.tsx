@@ -12,6 +12,7 @@ import ContactPage from "./pages/ContactPage.tsx";
 import MafiaNamePage from "./pages/MafiaNamePage.tsx";
 import DashboardLayout from "./pages/dashboard/DashboardLayout.tsx";
 import DashboardHome from "./pages/dashboard/DashboardHome.tsx";
+import DashboardPlaceholder from "./pages/dashboard/DashboardPlaceholder.tsx";
 
 import Privacy from "./pages/Privacy.tsx";
 import Terms from "./pages/Terms.tsx";
