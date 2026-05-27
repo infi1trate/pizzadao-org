@@ -97,8 +97,9 @@ Deno.serve(async (req) => {
     });
   } catch (e) {
     const msg = e instanceof Error ? e.message : 'unknown';
+    // Return 200 with empty list so the dashboard renders its calm empty state
+    // instead of an error banner. The real error is surfaced in `error`.
     return new Response(JSON.stringify({ error: msg, events: [] }), {
-      status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   }
