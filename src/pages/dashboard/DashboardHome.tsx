@@ -6,6 +6,7 @@ import { useNextMove } from "./useNextMove";
 import Path from "./path/Path";
 import YourWeek from "./week/YourWeek";
 import Destinations from "./destinations/Destinations";
+import NukeAccount from "./NukeAccount";
 
 /**
  * Dashboard Home — three states:
