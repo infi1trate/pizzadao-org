@@ -91,7 +91,7 @@ const StatusStrip = ({ status }: Props) => {
         <div className="inline-flex shrink-0 items-center gap-1.5">
           <button
             type="button"
-            onClick={() => navigate("/dashboard/pep")}
+            onClick={() => navigate("/dashboard/shop")}
             className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-[hsl(var(--rule-warm))]/60 bg-cream px-3 py-1.5 transition-colors hover:border-ink/30 hover:bg-butter/30"
             aria-label={`${formatPep(status.pep)} PEP balance. Open shop.`}
           >
