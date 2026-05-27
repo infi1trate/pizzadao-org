@@ -1,6 +1,8 @@
 import { Outlet, NavLink, useLocation } from "react-router-dom";
 import { Home, Calendar, Users, Award, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
+import StatusStrip from "./StatusStrip";
+import { useMemberStatus } from "./useMemberStatus";
 
 /**
  * Members-only dashboard shell.
