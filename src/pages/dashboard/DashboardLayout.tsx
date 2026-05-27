@@ -24,6 +24,7 @@ const nav = [
 const DashboardLayout = () => {
   const { pathname } = useLocation();
   const active = nav.find((n) => (n.end ? pathname === n.to : pathname.startsWith(n.to)));
+  const memberStatus = useMemberStatus();
 
   return (
     <div className="min-h-[100svh] bg-cream text-ink">
