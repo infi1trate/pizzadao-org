@@ -45,6 +45,15 @@ const App = () => (
           {/* Members dashboard (sections filled in subsequent prompts) */}
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<DashboardHome />} />
+            <Route path="events"      element={<DashboardPlaceholder />} />
+            <Route path="family"      element={<DashboardPlaceholder />} />
+            <Route path="bounties"    element={<DashboardPlaceholder />} />
+            <Route path="shop"        element={<DashboardPlaceholder />} />
+            <Route path="arcade"      element={<DashboardPlaceholder />} />
+            <Route path="recognition" element={<DashboardPlaceholder />} />
+            <Route path="profile"     element={<DashboardPlaceholder />} />
+            <Route path="settings"    element={<DashboardPlaceholder />} />
+            <Route path="connections" element={<DashboardPlaceholder />} />
           </Route>
           
           {/* Public legal pages */}
