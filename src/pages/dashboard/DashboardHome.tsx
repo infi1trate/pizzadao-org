@@ -4,6 +4,7 @@ import { useOnboarding } from "./onboarding/useOnboarding";
 import NextMoveCard from "./NextMoveCard";
 import { useNextMove } from "./useNextMove";
 import Path from "./path/Path";
+import YourWeek from "./week/YourWeek";
 
 /**
  * Dashboard Home — three states:
