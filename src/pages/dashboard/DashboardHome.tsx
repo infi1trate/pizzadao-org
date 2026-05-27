@@ -1,20 +1,29 @@
 import MakingMemberCard from "./onboarding/MakingMemberCard";
+import MadeCelebration from "./onboarding/MadeCelebration";
 import { useOnboarding } from "./onboarding/useOnboarding";
 
 /**
- * Dashboard Home.
+ * Dashboard Home — three states:
+ *   1. Onboarding (5/5 not yet complete)     → greeting + MakingMemberCard
+ *   2. The "You're made" moment (once)        → MadeCelebration
+ *   3. Returning made member                  → full dashboard (filled next prompt)
  *
- * New members (onboarding incomplete) see ONLY:
- *   1. A warm Benny greeting
- *   2. The "Becoming a Made Member" card
- *
- * Status strip, leaderboard, $PEP, bounties, shop, missions L2+, vouches-given
- * are all hidden until the family has "made" them. Understanding accrues
- * through doing — never a wall of explanatory text.
+ * The status strip and the rest of the feature set stay hidden until state 3.
  */
 const DashboardHome = () => {
-  const { done } = useOnboarding();
+  const { done, showCelebration, finishCelebration } = useOnboarding();
 
+  // State 2 — one-time celebration. Card transforms in place; the surrounding
+  // page chrome stays put so the moment feels grounded, not modal.
+  if (showCelebration) {
+    return (
+      <section className="pb-28 md:pb-0">
+        <MadeCelebration onEnter={finishCelebration} />
+      </section>
+    );
+  }
+
+  // State 1 — new member, still walking the 5 steps.
   if (!done) {
     return (
       <section className="pb-28 md:pb-0">
@@ -38,14 +47,15 @@ const DashboardHome = () => {
     );
   }
 
-  // Made-member home — placeholder until the next prompt fills it in.
+  // State 3 — returning member home. Placeholder until the next prompt.
   return (
     <section className="pb-28 md:pb-0">
       <p className="ui text-[11px] uppercase tracking-[0.22em] text-tomato">
         § Members
       </p>
       <h1 className="font-display mt-3 text-[clamp(2.25rem,5vw,3.5rem)] font-extrabold leading-[0.92] tracking-tight">
-        You&rsquo;re <span className="handwritten text-tomato">in</span>.
+        Welcome back to{" "}
+        <span className="handwritten text-tomato">the family</span>.
       </h1>
       <p className="mt-4 max-w-[52ch] text-[17px] leading-relaxed text-ink/70">
         Your single next move lands here.
