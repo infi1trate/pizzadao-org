@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Outlet, NavLink, useLocation, useNavigate, Link } from "react-router-dom";
-import { Lock } from "lucide-react";
+import { Lock, Menu, X as XIcon } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
@@ -67,9 +67,102 @@ const DashboardLayout = () => {
    lightly: hairline under the bar, layered soft shadow, cream surface.
    ──────────────────────────────────────────────────────────────────────── */
 const TopNav = ({ isMade, justMade }: { isMade: boolean; justMade: boolean }) => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  // Close the mobile sheet whenever the route changes.
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
+  // Lock body scroll while the mobile sheet is open.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) =>
+      e.key === "Escape" && setMobileOpen(false);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [mobileOpen]);
+
+  const renderItem = (
+    { to, label, end }: (typeof nav)[number],
+    variant: "desktop" | "mobile",
+  ) => {
+    const locked = !isMade && to !== "/dashboard";
+    const base =
+      variant === "desktop"
+        ? "ui shrink-0 whitespace-nowrap rounded-full px-3.5 py-1.5 text-[14px] font-medium"
+        : "ui flex items-center justify-between w-full rounded-2xl px-4 py-3 text-[16px] font-medium";
+
+    if (locked) {
+      return (
+        <button
+          key={to}
+          type="button"
+          aria-disabled
+          title="Unlocks when you're made"
+          onClick={() => {
+            setMobileOpen(false);
+            toast(`${label} unlocks once you're made.`, {
+              description: "Finish the 5 steps to open the kitchen.",
+            });
+          }}
+          className={cn(
+            base,
+            "text-ink/30 cursor-not-allowed",
+            variant === "desktop" && "inline-flex items-center gap-1.5",
+          )}
+        >
+          <span className={variant === "mobile" ? "flex items-center gap-2" : "contents"}>
+            <Lock className="h-3.5 w-3.5" strokeWidth={2.25} aria-hidden />
+            <span className="whitespace-nowrap">{label}</span>
+          </span>
+        </button>
+      );
+    }
+    return (
+      <NavLink
+        key={to}
+        to={to}
+        end={end}
+        className={({ isActive }) =>
+          cn(
+            base,
+            "transition-colors",
+            isActive
+              ? "bg-butter text-ink shadow-[0_1px_0_hsl(40_50%_70%/0.5)_inset,0_1px_2px_hsl(30_25%_12%/0.1)]"
+              : "text-ink/65 hover:bg-ink/[0.04] hover:text-ink",
+          )
+        }
+      >
+        {label}
+      </NavLink>
+    );
+  };
+
   return (
     <header className="sticky top-0 z-30 border-b border-[hsl(var(--rule-warm))]/50 bg-[hsl(46_85%_94%)]/92 backdrop-blur-md shadow-[0_1px_0_hsl(0_0%_100%/0.6)_inset,0_1px_2px_hsl(30_25%_12%/0.05),0_10px_24px_-18px_hsl(30_25%_12%/0.22)]">
       <div className="mx-auto flex max-w-[1280px] items-center gap-4 px-5 py-3 md:gap-6 md:px-8">
+        {/* Mobile hamburger — visible <md only */}
+        <button
+          type="button"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen((v) => !v)}
+          className="md:hidden inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-cream ring-1 ring-ink/10 text-ink/75 hover:text-ink hover:bg-butter/40 transition-colors"
+        >
+          {mobileOpen ? (
+            <XIcon className="h-4 w-4" strokeWidth={2} />
+          ) : (
+            <Menu className="h-4 w-4" strokeWidth={2} />
+          )}
+        </button>
+
         {/* Mark */}
         <Link to="/dashboard" className="flex shrink-0 items-center gap-2.5">
           <span
@@ -83,57 +176,38 @@ const TopNav = ({ isMade, justMade }: { isMade: boolean; justMade: boolean }) =>
           </span>
         </Link>
 
-        {/* Nav items — horizontally scrollable on small screens.
-            When not made, every item besides Home is locked. */}
+        {/* Desktop nav — hidden on small screens (mobile uses the sheet) */}
         <nav
           className={cn(
-            "-mx-2 flex min-w-0 flex-1 items-center gap-1 overflow-x-auto px-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+            "hidden md:flex -mx-2 min-w-0 flex-1 items-center gap-1 overflow-x-auto px-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
             justMade && "[&>*]:animate-fade-in",
           )}
         >
-          {nav.map(({ to, label, end }) => {
-            const locked = !isMade && to !== "/dashboard";
-            if (locked) {
-              return (
-                <button
-                  key={to}
-                  type="button"
-                  aria-disabled
-                  title="Unlocks when you're made"
-                  onClick={() =>
-                    toast(`${label} unlocks once you're made.`, {
-                      description: "Finish the 5 steps to open the kitchen.",
-                    })
-                  }
-                  className="ui shrink-0 inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-1.5 text-[14px] font-medium text-ink/30 cursor-not-allowed"
-                >
-                  <Lock className="h-3 w-3" strokeWidth={2.25} aria-hidden />
-                  <span className="whitespace-nowrap">{label}</span>
-                </button>
-              );
-            }
-            return (
-              <NavLink
-                key={to}
-                to={to}
-                end={end}
-                className={({ isActive }) =>
-                  cn(
-                    "ui shrink-0 whitespace-nowrap rounded-full px-3.5 py-1.5 text-[14px] font-medium transition-colors",
-                    isActive
-                      ? "bg-butter text-ink shadow-[0_1px_0_hsl(40_50%_70%/0.5)_inset,0_1px_2px_hsl(30_25%_12%/0.1)]"
-                      : "text-ink/65 hover:bg-ink/[0.04] hover:text-ink",
-                  )
-                }
-              >
-                {label}
-              </NavLink>
-            );
-          })}
+          {nav.map((item) => renderItem(item, "desktop"))}
         </nav>
+
+        {/* Spacer on mobile so the avatar stays on the right */}
+        <span className="flex-1 md:hidden" />
 
         <AvatarMenu />
       </div>
+
+      {/* Mobile sheet */}
+      {mobileOpen && (
+        <div
+          className="md:hidden fixed inset-0 top-[57px] z-40 bg-ink/40 animate-fade-in"
+          onClick={() => setMobileOpen(false)}
+        >
+          <div
+            className="absolute inset-x-0 top-0 bg-[hsl(46_85%_94%)] border-b border-[hsl(var(--rule-warm))]/60 shadow-[0_10px_24px_-12px_hsl(30_25%_12%/0.25)]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <nav className="mx-auto flex max-w-[1280px] flex-col gap-1.5 px-5 py-5">
+              {nav.map((item) => renderItem(item, "mobile"))}
+            </nav>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
