@@ -79,6 +79,7 @@ const ReturningHome = () => {
       <YourWeek />
       {/* 4 — quiet doors */}
       <Destinations />
+      <NukeAccount />
     </section>
   );
 };
