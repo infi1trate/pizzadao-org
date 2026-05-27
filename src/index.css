@@ -592,6 +592,96 @@
 
   /* Editorial divider - warm hairline, replaces hard black rules where used */
   .rule-warm { border-top: 1px solid hsl(var(--rule-warm) / 0.55); }
+
+  /* ============================================================
+     DASHBOARD WINDOW CHROME
+     Each dashboard card is a "window" sitting on a warm desk.
+     Layered shadow + hairline title bar + soft pill corners.
+     Tones: cream (default), butter (warmth), paper, ink (dark).
+     ============================================================ */
+  .window {
+    position: relative;
+    border-radius: 28px;
+    background: hsl(var(--cream));
+    border: 1px solid hsl(var(--rule-warm) / 0.55);
+    box-shadow:
+      0 1px 0 hsl(var(--cream-warm)) inset,
+      0 1px 2px hsl(30 25% 12% / 0.05),
+      0 12px 28px -18px hsl(30 25% 12% / 0.22),
+      0 36px 64px -40px hsl(30 25% 12% / 0.28);
+    transition:
+      box-shadow var(--dur-base) var(--ease-editorial),
+      transform var(--dur-base) var(--ease-editorial);
+  }
+  .window-butter { background: hsl(46 100% 88%); border-color: hsl(40 50% 70% / 0.45); }
+  .window-paper  { background: hsl(44 60% 96%); border-color: hsl(var(--rule-warm) / 0.45); }
+  .window-ink {
+    background: hsl(var(--ink));
+    border-color: hsl(0 0% 100% / 0.08);
+    color: hsl(var(--cream));
+  }
+  .window:hover {
+    box-shadow:
+      0 1px 0 hsl(var(--cream-warm)) inset,
+      0 2px 4px hsl(30 25% 12% / 0.06),
+      0 18px 40px -20px hsl(30 25% 12% / 0.26),
+      0 50px 80px -44px hsl(30 25% 12% / 0.32);
+  }
+
+  .window-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.875rem 1.25rem;
+    border-bottom: 1px solid hsl(var(--rule-warm) / 0.45);
+  }
+  .window-ink .window-bar { border-bottom-color: hsl(var(--cream) / 0.12); }
+  .window-bar-label {
+    font-family: 'Asap', system-ui, sans-serif;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: hsl(var(--ink) / 0.55);
+  }
+  .window-ink .window-bar-label { color: hsl(var(--cream) / 0.6); }
+
+  .window-body { padding: 1.5rem; }
+  @media (min-width: 768px) { .window-body { padding: 2rem; } }
+
+  .window-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 6px 8px;
+    border-radius: 9999px;
+    color: hsl(var(--ink) / 0.35);
+    transition: color var(--dur-fast) var(--ease-editorial),
+                background var(--dur-fast) var(--ease-editorial);
+  }
+  .window-dots:hover { color: hsl(var(--ink) / 0.7); background: hsl(var(--ink) / 0.04); }
+  .window-ink .window-dots { color: hsl(var(--cream) / 0.4); }
+  .window-ink .window-dots:hover { color: hsl(var(--cream) / 0.85); background: hsl(var(--cream) / 0.06); }
+  .window-dots i {
+    display: inline-block;
+    width: 3px; height: 3px;
+    border-radius: 9999px;
+    background: currentColor;
+  }
+
+  .window-sticker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px; height: 22px;
+    border-radius: 9999px;
+    background: hsl(var(--butter));
+    color: hsl(var(--ink));
+    box-shadow: 0 1px 0 hsl(var(--ink) / 0.06) inset,
+                0 1px 2px hsl(30 25% 12% / 0.12);
+    font-size: 12px;
+    line-height: 1;
+  }
 }
 
 /* ================================================================
