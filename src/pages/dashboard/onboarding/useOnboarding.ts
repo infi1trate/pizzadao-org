@@ -64,6 +64,9 @@ export const useOnboarding = () => {
     }
     localStorage.setItem(CELEBRATED_KEY, "1");
     localStorage.setItem("pd-made", "1");
+    // One-shot signal so the next render of the layout/home can play
+    // the "kitchen just opened" reveal animation.
+    try { sessionStorage.setItem("pd-just-made", "1"); } catch { /* ignore */ }
     setCelebrated(true);
   }, []);
 
