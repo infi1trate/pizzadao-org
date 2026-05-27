@@ -41,6 +41,11 @@ const App = () => (
           <Route path="/brand-system" element={<BrandSystemPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/get-your-mafia-name" element={<MafiaNamePage />} />
+
+          {/* Members dashboard (sections filled in subsequent prompts) */}
+          <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route index element={<DashboardHome />} />
+          </Route>
           
           {/* Public legal pages */}
           <Route path="/privacy" element={<Privacy />} />
