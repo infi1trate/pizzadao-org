@@ -15,6 +15,7 @@ import DashboardHome from "./pages/dashboard/DashboardHome.tsx";
 import DashboardPlaceholder from "./pages/dashboard/DashboardPlaceholder.tsx";
 import PathPage from "./pages/dashboard/path/PathPage.tsx";
 import FeedPage from "./pages/dashboard/feed/FeedPage.tsx";
+import EventsPage from "./pages/dashboard/events/EventsPage.tsx";
 
 import Privacy from "./pages/Privacy.tsx";
 import Terms from "./pages/Terms.tsx";
