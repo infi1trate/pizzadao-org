@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Outlet, NavLink, useLocation, useNavigate, Link } from "react-router-dom";
+import { Lock } from "lucide-react";
+import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import StatusStrip from "./StatusStrip";
@@ -8,10 +10,13 @@ import { useMemberStatus } from "./useMemberStatus";
 /**
  * Members dashboard shell — the "OS menu bar" of the kitchen.
  *
- * Top nav (horizontal) holds the seven rooms. The Path (missions/leveling)
- * is intentionally NOT here — it's reached by tapping the Level pill in the
- * status strip below. The avatar on the right opens a dropdown that holds
- * profile / settings / connected accounts / sign out.
+ * Two top-level states:
+ *   - Pre-made (no member status yet) → only Home is active; the rest of
+ *     the rooms are dimmed with small lock icons, the status strip is
+ *     hidden. The kitchen is intentionally a sheltered antechamber.
+ *   - Made → full kitchen unlocked. On the FIRST render after the
+ *     celebration finishes, a one-shot "kitchen just opened" reveal
+ *     animation plays on the top nav and status strip.
  */
 
 const nav = [
@@ -24,14 +29,28 @@ const nav = [
   { to: "/dashboard/recognition", label: "Recognition" },
 ];
 
+const useJustMadeReveal = (isMade: boolean) => {
+  const [justMade, setJustMade] = useState(false);
+  useEffect(() => {
+    if (!isMade) return;
+    try {
+      if (sessionStorage.getItem("pd-just-made") === "1") {
+        setJustMade(true);
+        sessionStorage.removeItem("pd-just-made");
+      }
+    } catch { /* ignore */ }
+  }, [isMade]);
+  return justMade;
+};
+
 const DashboardLayout = () => {
-  const { pathname } = useLocation();
-  const active = nav.find((n) => (n.end ? pathname === n.to : pathname.startsWith(n.to)));
   const memberStatus = useMemberStatus();
+  const isMade = memberStatus !== null;
+  const justMade = useJustMadeReveal(isMade);
 
   return (
     <div className="min-h-[100svh] bg-[hsl(44_70%_96%)] text-ink">
-      <TopNav />
+      <TopNav isMade={isMade} justMade={justMade} />
       <StatusStrip status={memberStatus} />
 
       <div className="mx-auto max-w-[1280px] px-5 py-8 md:px-8 md:py-12">
@@ -47,7 +66,7 @@ const DashboardLayout = () => {
    Top nav — the "menu bar" of the OS. Window-chrome metaphor applied
    lightly: hairline under the bar, layered soft shadow, cream surface.
    ──────────────────────────────────────────────────────────────────────── */
-const TopNav = () => {
+const TopNav = ({ isMade, justMade }: { isMade: boolean; justMade: boolean }) => {
   return (
     <header className="sticky top-0 z-30 border-b border-[hsl(var(--rule-warm))]/50 bg-[hsl(46_85%_94%)]/92 backdrop-blur-md shadow-[0_1px_0_hsl(0_0%_100%/0.6)_inset,0_1px_2px_hsl(30_25%_12%/0.05),0_10px_24px_-18px_hsl(30_25%_12%/0.22)]">
       <div className="mx-auto flex max-w-[1280px] items-center gap-4 px-5 py-3 md:gap-6 md:px-8">
@@ -64,25 +83,53 @@ const TopNav = () => {
           </span>
         </Link>
 
-        {/* Nav items — horizontally scrollable on small screens */}
-        <nav className="-mx-2 flex min-w-0 flex-1 items-center gap-1 overflow-x-auto px-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {nav.map(({ to, label, end }) => (
-            <NavLink
-              key={to}
-              to={to}
-              end={end}
-              className={({ isActive }) =>
-                cn(
-                  "ui shrink-0 whitespace-nowrap rounded-full px-3.5 py-1.5 text-[14px] font-medium transition-colors",
-                  isActive
-                    ? "bg-butter text-ink shadow-[0_1px_0_hsl(40_50%_70%/0.5)_inset,0_1px_2px_hsl(30_25%_12%/0.1)]"
-                    : "text-ink/65 hover:bg-ink/[0.04] hover:text-ink",
-                )
-              }
-            >
-              {label}
-            </NavLink>
-          ))}
+        {/* Nav items — horizontally scrollable on small screens.
+            When not made, every item besides Home is locked. */}
+        <nav
+          className={cn(
+            "-mx-2 flex min-w-0 flex-1 items-center gap-1 overflow-x-auto px-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+            justMade && "[&>*]:animate-fade-in",
+          )}
+        >
+          {nav.map(({ to, label, end }) => {
+            const locked = !isMade && to !== "/dashboard";
+            if (locked) {
+              return (
+                <button
+                  key={to}
+                  type="button"
+                  aria-disabled
+                  title="Unlocks when you're made"
+                  onClick={() =>
+                    toast(`${label} unlocks once you're made.`, {
+                      description: "Finish the 5 steps to open the kitchen.",
+                    })
+                  }
+                  className="ui shrink-0 inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-1.5 text-[14px] font-medium text-ink/30 cursor-not-allowed"
+                >
+                  <Lock className="h-3 w-3" strokeWidth={2.25} aria-hidden />
+                  <span className="whitespace-nowrap">{label}</span>
+                </button>
+              );
+            }
+            return (
+              <NavLink
+                key={to}
+                to={to}
+                end={end}
+                className={({ isActive }) =>
+                  cn(
+                    "ui shrink-0 whitespace-nowrap rounded-full px-3.5 py-1.5 text-[14px] font-medium transition-colors",
+                    isActive
+                      ? "bg-butter text-ink shadow-[0_1px_0_hsl(40_50%_70%/0.5)_inset,0_1px_2px_hsl(30_25%_12%/0.1)]"
+                      : "text-ink/65 hover:bg-ink/[0.04] hover:text-ink",
+                  )
+                }
+              >
+                {label}
+              </NavLink>
+            );
+          })}
         </nav>
 
         <AvatarMenu />
