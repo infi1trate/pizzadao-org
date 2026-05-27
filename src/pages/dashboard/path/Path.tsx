@@ -96,9 +96,11 @@ const MissionRow = ({ mission, status, reward, isPrimary, onSubmit }: MissionRow
             disabled={!evidence.trim()}
             className={cn(
               "btn-pill inline-flex whitespace-nowrap disabled:opacity-50",
+              // Path lives below the hero in the hierarchy — keep the only red
+              // for the "Do this next" CTA. Path's primary action is ink.
               isPrimary
-                ? "bg-tomato text-cream hover:bg-tomato-deep"
-                : "bg-ink text-cream hover:bg-tomato",
+                ? "bg-ink text-cream hover:bg-ink/85"
+                : "bg-ink/[0.08] text-ink hover:bg-ink/[0.14]",
             )}
             style={{ ["--button-radius" as never]: "9999px" }}
           >
