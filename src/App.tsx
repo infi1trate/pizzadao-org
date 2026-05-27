@@ -47,6 +47,7 @@ const App = () => (
           {/* Members dashboard (sections filled in subsequent prompts) */}
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<DashboardHome />} />
+            <Route path="path"        element={<PathPage />} />
             <Route path="events"      element={<DashboardPlaceholder />} />
             <Route path="family"      element={<DashboardPlaceholder />} />
             <Route path="bounties"    element={<DashboardPlaceholder />} />
