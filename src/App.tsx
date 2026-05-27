@@ -51,7 +51,7 @@ const App = () => (
             <Route index element={<DashboardHome />} />
             <Route path="path"        element={<PathPage />} />
             <Route path="feed"        element={<FeedPage />} />
-            <Route path="events"      element={<DashboardPlaceholder />} />
+            <Route path="events"      element={<EventsPage />} />
             <Route path="family"      element={<DashboardPlaceholder />} />
             <Route path="bounties"    element={<DashboardPlaceholder />} />
             <Route path="shop"        element={<DashboardPlaceholder />} />
