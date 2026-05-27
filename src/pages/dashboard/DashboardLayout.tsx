@@ -27,17 +27,19 @@ const DashboardLayout = () => {
   const memberStatus = useMemberStatus();
 
   return (
-    <div className="min-h-[100svh] bg-cream text-ink">
-      {/* Quiet top bar — keeps the dashboard distinct from the marketing site */}
-      <header className="sticky top-0 z-30 border-b border-[hsl(var(--rule-warm))]/40 bg-cream/85 backdrop-blur-md">
+    <div className="min-h-[100svh] bg-[hsl(44_70%_96%)] text-ink">
+      {/* Warm top bar — feels like the door to the kitchen, not a SaaS chrome */}
+      <header className="sticky top-0 z-30 border-b border-[hsl(var(--rule-warm))]/40 bg-[hsl(44_75%_97%)]/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1280px] items-center justify-between px-5 py-3.5 md:px-8">
           <NavLink to="/dashboard" className="flex items-center gap-2.5">
             <span
               aria-hidden
-              className="inline-block h-7 w-7 rounded-full bg-tomato shadow-[0_1px_2px_hsl(0_0%_8%/0.12)]"
-            />
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-butter ring-1 ring-ink/10 shadow-[0_1px_2px_hsl(30_25%_12%/0.12),0_2px_0_hsl(40_50%_70%/0.5)_inset]"
+            >
+              <span className="block h-3 w-3 rounded-full bg-tomato" />
+            </span>
             <span className="font-display text-[17px] font-extrabold tracking-tight">
-              PizzaDAO <span className="text-ink/45 font-medium">/ members</span>
+              PizzaDAO <span className="text-ink/45 font-medium">/ kitchen</span>
             </span>
           </NavLink>
 
@@ -45,7 +47,7 @@ const DashboardLayout = () => {
             <span className="ui text-[12px] text-ink/55">
               {active ? active.label : "Members"}
             </span>
-            <div className="h-7 w-7 rounded-full bg-butter ring-1 ring-ink/10" aria-hidden />
+            <div className="h-8 w-8 rounded-full bg-butter ring-1 ring-ink/10 shadow-[0_1px_2px_hsl(30_25%_12%/0.1)]" aria-hidden />
           </div>
         </div>
       </header>
