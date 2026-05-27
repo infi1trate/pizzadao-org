@@ -1,7 +1,7 @@
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
-import Window from "./components/Window";
-import { useNextMove, formatReward, type NextMove } from "./useNextMove";
+import Window from "../components/Window";
+import { useNextMove, formatReward, type NextMove } from "../useNextMove";
 
 /**
  * "Your next move" — left half of the home split hero.
