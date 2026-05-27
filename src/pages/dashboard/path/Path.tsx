@@ -3,6 +3,7 @@ import { Check, Lock, ArrowRight, Hourglass } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LEVELS, type Level, type Mission, type MissionStatus } from "./levels";
 import { usePath } from "./usePath";
+import ConceptExplainer from "../explainers/ConceptExplainer";
 
 /**
  * The Path — vertical leveling trail (Lv.1 → Lv.10).
