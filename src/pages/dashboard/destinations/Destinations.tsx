@@ -6,19 +6,28 @@
 
 import { Link } from "react-router-dom";
 import { ArrowRight, Briefcase, ShieldCheck, ShoppingBag, Users } from "lucide-react";
+import ConceptExplainer, { type ConceptKey } from "../explainers/ConceptExplainer";
 
-const tiles = [
+const tiles: Array<{
+  label: string;
+  line: string;
+  href: string;
+  icon: typeof Briefcase;
+  concept?: ConceptKey;
+}> = [
   {
     label: "Bounties",
     line: "Open jobs anyone can claim. First to finish gets paid.",
     href: "/dashboard/bounties",
     icon: Briefcase,
+    concept: "bounties",
   },
   {
     label: "Vouches",
     line: "Who in the family vouches for you. Your reputation, made visible.",
     href: "/dashboard/vouches",
     icon: ShieldCheck,
+    concept: "vouches",
   },
   {
     label: "Shop",
