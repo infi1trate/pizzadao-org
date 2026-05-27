@@ -1,6 +1,8 @@
 import MakingMemberCard from "./onboarding/MakingMemberCard";
 import MadeCelebration from "./onboarding/MadeCelebration";
 import { useOnboarding } from "./onboarding/useOnboarding";
+import NextMoveCard from "./NextMoveCard";
+import { useNextMove } from "./useNextMove";
 
 /**
  * Dashboard Home — three states:
@@ -47,19 +49,21 @@ const DashboardHome = () => {
     );
   }
 
-  // State 3 — returning member home. Placeholder until the next prompt.
+  // State 3 — returning made member. One smart "Do this next" card.
+  return <ReturningHome />;
+};
+
+const ReturningHome = () => {
+  const move = useNextMove();
   return (
     <section className="pb-28 md:pb-0">
       <p className="ui text-[11px] uppercase tracking-[0.22em] text-tomato">
-        § Members
+        § Your next move
       </p>
-      <h1 className="font-display mt-3 text-[clamp(2.25rem,5vw,3.5rem)] font-extrabold leading-[0.92] tracking-tight">
-        Welcome back to{" "}
-        <span className="handwritten text-tomato">the family</span>.
-      </h1>
-      <p className="mt-4 max-w-[52ch] text-[17px] leading-relaxed text-ink/70">
-        Your single next move lands here.
-      </p>
+      <h1 className="sr-only">Do this next</h1>
+      <div className="mt-4">
+        <NextMoveCard move={move} />
+      </div>
     </section>
   );
 };
