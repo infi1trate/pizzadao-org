@@ -50,6 +50,8 @@ const DashboardLayout = () => {
         </div>
       </header>
 
+      <StatusStrip status={memberStatus} />
+
       <div className="mx-auto flex max-w-[1280px] gap-8 px-5 py-8 md:px-8 md:py-12">
         {/* Side rail — restrained, soft pills, no heavy lines */}
         <aside className="hidden w-56 shrink-0 md:block">
