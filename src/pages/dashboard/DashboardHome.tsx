@@ -51,6 +51,8 @@ const DashboardHome = () => {
         <div className="mt-10">
           <MakingMemberCard />
         </div>
+
+        <NukeAccount />
       </section>
     );
   }
