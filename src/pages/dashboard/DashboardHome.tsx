@@ -29,9 +29,11 @@ const DashboardHome = () => {
   }
 
   // State 1 — new member, still walking the 5 steps.
+  // Only the greeting and the 5-step card. Deferral list (status strip,
+  // leaderboard, $PEP, bounties, shop, missions Lv.2+, vouches) stays hidden.
   if (!done) {
     return (
-      <section className="pb-28 md:pb-0">
+      <section className="animate-fade-in pb-28 md:pb-0">
         <p className="ui text-[11px] uppercase tracking-[0.22em] text-tomato">
           § A note from Benny
         </p>
@@ -59,16 +61,20 @@ const DashboardHome = () => {
 const ReturningHome = () => {
   const move = useNextMove();
   return (
-    <section className="pb-28 md:pb-0">
+    <section className="animate-fade-in pb-28 md:pb-0">
       <p className="ui text-[11px] uppercase tracking-[0.22em] text-tomato">
         § Your next move
       </p>
       <h1 className="sr-only">Do this next</h1>
+      {/* 1 — the one loud thing */}
       <div className="mt-4">
         <NextMoveCard move={move} />
       </div>
+      {/* 2 — growth spine, calm */}
       <Path />
+      {/* 3 — calendar, quieter still */}
       <YourWeek />
+      {/* 4 — quiet doors */}
       <Destinations />
     </section>
   );
