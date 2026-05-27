@@ -16,6 +16,8 @@ import DashboardPlaceholder from "./pages/dashboard/DashboardPlaceholder.tsx";
 import PathPage from "./pages/dashboard/path/PathPage.tsx";
 import FeedPage from "./pages/dashboard/feed/FeedPage.tsx";
 import EventsPage from "./pages/dashboard/events/EventsPage.tsx";
+import FamilyPage from "./pages/dashboard/family/FamilyPage.tsx";
+import MemberProfilePage from "./pages/dashboard/family/MemberProfilePage.tsx";
 
 import Privacy from "./pages/Privacy.tsx";
 import Terms from "./pages/Terms.tsx";
@@ -52,7 +54,8 @@ const App = () => (
             <Route path="path"        element={<PathPage />} />
             <Route path="feed"        element={<FeedPage />} />
             <Route path="events"      element={<EventsPage />} />
-            <Route path="family"      element={<DashboardPlaceholder />} />
+            <Route path="family"      element={<FamilyPage />} />
+            <Route path="family/:id"  element={<MemberProfilePage />} />
             <Route path="bounties"    element={<DashboardPlaceholder />} />
             <Route path="shop"        element={<DashboardPlaceholder />} />
             <Route path="arcade"      element={<DashboardPlaceholder />} />
