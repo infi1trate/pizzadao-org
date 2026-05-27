@@ -23,6 +23,7 @@ import BountyDetailPage from "./pages/dashboard/bounties/BountyDetailPage.tsx";
 import ShopPage from "./pages/dashboard/shop/ShopPage.tsx";
 import ShopItemPage from "./pages/dashboard/shop/ShopItemPage.tsx";
 import ArcadePage from "./pages/dashboard/arcade/ArcadePage.tsx";
+import RecognitionPage from "./pages/dashboard/recognition/RecognitionPage.tsx";
 
 import Privacy from "./pages/Privacy.tsx";
 import Terms from "./pages/Terms.tsx";
@@ -66,7 +67,7 @@ const App = () => (
             <Route path="shop"          element={<ShopPage />} />
             <Route path="shop/:id"      element={<ShopItemPage />} />
             <Route path="arcade"      element={<ArcadePage />} />
-            <Route path="recognition" element={<DashboardPlaceholder />} />
+            <Route path="recognition" element={<RecognitionPage />} />
             <Route path="profile"     element={<DashboardPlaceholder />} />
             <Route path="settings"    element={<DashboardPlaceholder />} />
             <Route path="connections" element={<DashboardPlaceholder />} />
