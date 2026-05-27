@@ -67,6 +67,7 @@ const ReturningHome = () => {
         <NextMoveCard move={move} />
       </div>
       <Path />
+      <YourWeek />
     </section>
   );
 };
