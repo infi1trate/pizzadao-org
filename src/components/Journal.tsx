@@ -103,8 +103,9 @@ const Journal = () => {
             </div>
             <div className="col-span-12 md:col-span-5 md:pl-8">
               <p className="text-base leading-relaxed text-ink/75 md:text-lg">
-                Field reports, essays, and quiet research from the edges of
-                the pizza world. Curated, not constant.
+                Field reports, essays, and research from the edges of
+                the pizza world.
+
               </p>
               <div className="mt-5 flex flex-wrap items-center gap-3">
                 <a href="#" className="btn-pill bg-ink text-cream hover:bg-tomato">
