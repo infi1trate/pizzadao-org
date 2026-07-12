@@ -35,11 +35,6 @@ const Mafia = () => {
               chefs, artists, and operators who keep the PizzaDAO dough spinning.
 
             </p>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-ink/65">
-              The names beside this column, pseudonyms, partial truths,
-              gentle inside jokes, are members of the worldwide cast keeping
-              the slice moving forward.
-            </p>
             <a
               href="#join"
               className="btn-pill-lg group mt-12 bg-ink text-cream hover:bg-tomato"
