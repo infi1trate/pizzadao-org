@@ -29,10 +29,11 @@ const Mafia = () => {
               <span className="text-tomato">Pizza Mafia.</span>
             </h2>
             <p className="mt-10 max-w-md text-lg leading-relaxed text-ink/85 md:text-xl">
-              The Mafia started in a Clubhouse room in 2021, a few people
-              talking about pizza, the internet, and what a good party could
-              do. Five years later it is a worldwide cast of organizers,
-              chefs, artists, and quiet operators who keep PizzaDAO alive.
+              The Pizza Mafia started in a Clubhouse room in 2021 with a few
+              people talking about pizza, the internet, and bringing the world
+              together. Five years later it is a worldwide cast of organizers,
+              chefs, artists, and operators who keep the PizzaDAO dough spinning.
+
             </p>
             <p className="mt-5 max-w-md text-base leading-relaxed text-ink/65">
               The names beside this column, pseudonyms, partial truths,
