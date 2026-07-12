@@ -16,9 +16,8 @@ const Mission = () => {
             </h2>
 
             <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-x-6">
-              <p className="text-lg leading-relaxed text-ink/80 md:col-span-7 md:text-xl">
-                Hundreds of cities. One shared slice.
-              </p>
+              <div className="md:col-span-7" aria-hidden />
+
               <div className="md:col-span-5 md:pl-6 md:pt-2">
                 <a
                   href="/about"
