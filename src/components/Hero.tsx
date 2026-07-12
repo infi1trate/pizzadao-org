@@ -26,8 +26,7 @@ const Hero = () => {
 
           <div className="col-span-12 md:col-span-3 md:pt-6">
             <p className="text-lg leading-snug text-cream/95 md:text-[17px] md:leading-relaxed">
-              PizzaDAO brings people together through pizza, internet
-              culture, and community.
+              PizzaDAO brings people together around pizza.
             </p>
             <p className="ui mt-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-cream/70">
               Community first. <span className="text-butter">Pizza always.</span>
