@@ -673,19 +673,15 @@ const Sponsorship = () => {
             {/* Right: buttons, aligned with baseline of headline, more integrated */}
             <div className="col-span-12 flex flex-col gap-2.5 md:col-span-5 lg:col-span-5 md:items-end md:pb-1">
               <a
-                href="mailto:partnerships@pizzadao.org"
+                href="https://t.me/snack_man"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-pill-lg group bg-tomato text-cream shadow-[var(--shadow-soft)] hover:-translate-y-[2px] hover:bg-tomato-deep hover:shadow-[var(--shadow-lifted)]"
               >
-                <span>Start a partnership brief</span>
+                <span>Reach out to partner</span>
                 <span aria-hidden className="transition-transform duration-500 ease-out group-hover:translate-x-1">→</span>
               </a>
-              <a
-                href="#"
-                className="btn-pill-lg group border border-ink/20 bg-transparent text-ink hover:-translate-y-[2px] hover:border-ink hover:bg-cream hover:shadow-[var(--shadow-soft)]"
-              >
-                <span>Download partner deck</span>
-                <span aria-hidden className="transition-transform duration-500 ease-out group-hover:translate-x-1">↓</span>
-              </a>
+
             </div>
           </div>
         </div>
