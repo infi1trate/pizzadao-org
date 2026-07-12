@@ -54,13 +54,8 @@ const Reach = () => {
                 shown up.
               </h2>
             </div>
-            <div className="col-span-12 md:col-span-5 md:pl-8">
-              <p className="text-base leading-relaxed text-ink/75 md:text-lg">
-                Each marker is a real city, a real table, and a real chapter
-                bringing people together over a slice. {CITIES.length} cities
-                and counting.
-              </p>
-            </div>
+            <div className="col-span-12 md:col-span-5 md:pl-8" />
+
           </div>
         </div>
 
