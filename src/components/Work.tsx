@@ -41,7 +41,7 @@ const PILLARS: Pillar[] = [
     kicker: "Year-round Programming",
     title: "Community Building",
     lede:
-      "Art, hackathons, conferences, side events, and the unglamorous work of keeping a global community together.",
+      "Art, hackathons, conferences, side events, and all the toppings that keep the global community moving together.",
     body:
       "Between flagship moments, PizzaDAO funds and produces the connective tissue of the network, local meetups, residencies, gallery shows, and side events at every major culture and tech gathering.",
     pull:
