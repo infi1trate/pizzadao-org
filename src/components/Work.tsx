@@ -95,9 +95,10 @@ const Work = () => {
             </div>
             <div className="col-span-12 md:col-span-4 md:pl-8 md:pb-3">
               <p className="text-base leading-relaxed text-ink/75 md:text-lg">
-                PizzaDAO's work is organized around three long-term commitments
-               , a flagship cultural moment, the daily labor of community, and
-                the infrastructure that keeps independent hospitality alive.
+                PizzaDAO's work is organized around three long-term commitments:
+                a flagship global moment, ongoing community building, and
+                creating infrastructure for independent pizzerias.
+
               </p>
             </div>
           </div>
