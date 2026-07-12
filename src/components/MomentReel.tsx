@@ -47,9 +47,9 @@ const MomentReel = () => {
               Real slices.
             </h2>
             <p className="mt-6 max-w-md text-base leading-relaxed text-ink/80 md:text-lg">
-              Clips from chapter parties, hackathon kitchens, and the small
-              rituals that hold a global community together. Sound on
-              optional. Energy mandatory.
+              Clips from chapter parties, hackathon kitchens, and the sauce
+              that brings a global community together.
+
             </p>
 
 
