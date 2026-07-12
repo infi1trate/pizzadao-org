@@ -21,7 +21,7 @@ const PILLARS: Pillar[] = [
     kicker: "Flagship Activation",
     title: "Global Pizza Party",
     lede:
-      "A worldwide annual celebration of Bitcoin Pizza Day, held in hundreds of cities, on the same weekend, every year.",
+      "A worldwide annual celebration of Bitcoin Pizza Day, held in hundreds of cities, on May 22, every year.",
     body:
       "What began as a single party in 2021 is now the largest decentralized food event on Earth. Independent organizers bake together across continents, funded by the DAO and powered by their own neighborhoods.",
     pull:
