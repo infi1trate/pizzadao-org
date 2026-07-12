@@ -25,7 +25,7 @@ const PILLARS: Pillar[] = [
     body:
       "What began as a single party in 2021 is now the largest decentralized food event on Earth. Independent organizers bake together across continents, funded by the DAO and powered by their own neighborhoods.",
     pull:
-      "One weekend. Hundreds of cities. A single ritual repeated in every language.",
+      "One day. Hundreds of cities. A ritual across the whole world.",
     img: party,
     imgAlt: "Global Pizza Party 2026 poster, May 22, in a city near you",
     meta: [
