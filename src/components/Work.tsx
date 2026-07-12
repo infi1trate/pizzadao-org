@@ -23,7 +23,7 @@ const PILLARS: Pillar[] = [
     lede:
       "A worldwide annual celebration of Bitcoin Pizza Day, held in hundreds of cities, on May 22, every year.",
     body:
-      "What began as a single party in 2021 is now the largest decentralized food event on Earth. Independent organizers bake together across continents, funded by the DAO and powered by their own neighborhoods.",
+      "What began as a distributed giveaway directly from pizzerias in 2021 is now the largest decentralized food event on Earth. Independent organizers bake together across continents, funded by the DAO and powered by their own neighborhoods.",
     pull:
       "One day. Hundreds of cities. A ritual across the whole world.",
     img: party,
