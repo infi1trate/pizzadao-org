@@ -4,7 +4,7 @@ import logoLight from "@/assets/logo-light.svg";
 const cols = [
   { title: "Sections", items: ["About", "Our Work", { label: "Partners", href: "/partners" }, "Journal", "Join"] as Array<string | { label: string; href: string }> },
   { title: "Programs", items: ["Global Pizza Party"] },
-  { title: "Press", items: [{ label: "Brand System", href: "/brand-system" }, "Editorial Standards", { label: "Contact", href: "/contact" }, "Inquiries"] as Array<string | { label: string; href: string }> },
+  { title: "Press", items: [{ label: "Brand System", href: "https://pizzadao.xyz/brand" }, "Editorial Standards", { label: "Contact", href: "/contact" }, "Inquiries"] as Array<string | { label: string; href: string }> },
   { title: "Elsewhere", items: [{ label: "Instagram", href: "https://www.instagram.com/Pizza_DAO/" }, { label: "X / Twitter", href: "https://x.com/Pizza_DAO" }, { label: "YouTube", href: "https://www.youtube.com/@PizzaDAO" }, "Newsletter"] as Array<string | { label: string; href: string }> },
 ];
 
