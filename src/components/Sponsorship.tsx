@@ -312,13 +312,14 @@ const Sponsorship = () => {
               {
                 k: "Global Moments",
                 v: "Large-scale activations across hundreds of cities, built to create shared global experiences. One brief, one weekend, hundreds of independent chapters showing up in parallel.",
-                note: "500+ cities, one weekend",
+                note: "400+ cities, one weekend",
                 accent: "global",
                 stamp: "WORLDWIDE",
                 tilt: "-rotate-[1.2deg]",
                 featured: true,
                 stats: [
-                  { k: "Cities", v: "500+" },
+                  { k: "Cities", v: "400+" },
+
                   { k: "Continents", v: "6" },
                   { k: "Lead time", v: "8 wks" },
                 ],
