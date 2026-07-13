@@ -334,7 +334,8 @@ const About = () => {
                 </p>
                 <p>
                   Some events are massive. Some are improvised. Some run out
-                  of boxes. Some last all night.
+                  of pizza. Some last all night.
+
                 </p>
                 <p className="text-cream">People keep coming back anyway.</p>
               </div>
