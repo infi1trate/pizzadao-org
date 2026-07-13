@@ -35,7 +35,7 @@ const VALUE_PROPS = [
 ];
 
 const PROOF: { k: string; v: string; sub?: string; num?: number; prefix?: string; suffix?: string }[] = [
-  { k: "City network", v: "500+", sub: "independently organized", num: 500, suffix: "+" },
+  { k: "City network", v: "400+", sub: "independently organized", num: 400, suffix: "+" },
   { k: "Countries", v: "100+", sub: "active chapters", num: 100, suffix: "+" },
   { k: "Annual attendance", v: "20,000+", sub: "real-world participants", num: 20000, suffix: "+" },
   { k: "Repeat collaborators", v: "60+", sub: "brands, year over year", num: 60, suffix: "+" },
