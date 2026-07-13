@@ -341,7 +341,7 @@ const PartnersPage = () => {
                 </span>
               </h2>
               <p className="font-serif mt-5 max-w-[34ch] text-[15px] leading-[1.6] text-cream/65 md:text-base">
-                We come back with a brief, a city list, and a number, usually within a week. No deck required.
+                We'll come back with a brief, a city list, and a number, usually within a week.
               </p>
               <p className="ui mt-5 text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/35">
                 Or email partnerships@pizzadao.org directly
