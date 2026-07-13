@@ -538,7 +538,7 @@ const About = () => {
               </h2>
 
               <p className="font-serif mt-10 max-w-[44ch] text-lg leading-[1.55] text-ink/70 md:mt-14 md:text-2xl md:leading-[1.4]">
-                Familiar, affordable, understood almost anywhere.
+                Familiar, affordable, understood almost everywhere.
               </p>
             </div>
 
