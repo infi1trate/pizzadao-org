@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import logoLight from "@/assets/logo-light.svg";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import { identifyByEmail, track } from "@/lib/analytics/posthog";
+import { EVT } from "@/lib/analytics/events";
 
 const cols = [
   { title: "More", items: ["About", "Global Pizza Party", { label: "Partners", href: "/partners" }, "Journal", "Join"] as Array<string | { label: string; href: string }> },
   { title: "Press", items: [{ label: "Brand System", href: "https://pizzadao.xyz/brand" }, { label: "Contact", href: "/contact" }, "Inquiries"] as Array<string | { label: string; href: string }> },
-  { title: "Elsewhere", items: [{ label: "Instagram", href: "https://www.instagram.com/Pizza_DAO/" }, { label: "X / Twitter", href: "https://x.com/Pizza_DAO" }, { label: "YouTube", href: "https://www.youtube.com/@PizzaDAO" }, { label: "Newsletter", href: "/#newsletter" }] as Array<string | { label: string; href: string }> },
+  { title: "Elsewhere", items: [{ label: "Instagram", href: "https://www.instagram.com/Pizza_DAO/" }, { label: "X / Twitter", href: "https://x.com/Pizza_DAO" }, { label: "YouTube", href: "https://www.youtube.com/@PizzaDAO" }] as Array<string | { label: string; href: string }> },
 ];
 
 const PHRASES = [
@@ -45,6 +49,75 @@ const RotatingTagline = () => {
   );
 };
 
+const NewsletterSignup = () => {
+  const { toast } = useToast();
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = email.trim();
+    if (!trimmed || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed) || trimmed.length > 320) {
+      track(EVT.NEWSLETTER_FAILED, { source: "footer", reason: "validation" });
+      toast({ title: "Check your email", description: "Please enter a valid email address.", variant: "destructive" });
+      return;
+    }
+    setStatus("loading");
+    try {
+      const { data, error } = await supabase.functions.invoke("subscribe-newsletter", {
+        body: { email: trimmed, source: "footer" },
+      });
+      if (error || !data?.ok) throw error ?? new Error("Subscribe failed");
+      void identifyByEmail(trimmed, { newsletter_source: "footer" });
+      track(EVT.NEWSLETTER_SUBMITTED, { source: "footer", already: Boolean(data.already) });
+      if (data.already) {
+        toast({ title: "You're already on the list", description: "Thanks for being here." });
+      } else {
+        toast({ title: "You're in", description: "We'll be in touch when the next issue lands." });
+      }
+      setStatus("success");
+      setEmail("");
+      setTimeout(() => setStatus("idle"), 4000);
+    } catch (err) {
+      console.error(err);
+      track(EVT.NEWSLETTER_FAILED, {
+        source: "footer",
+        reason: err instanceof Error ? err.message : "unknown",
+      });
+      toast({ title: "Something went wrong", description: "Please try again in a moment.", variant: "destructive" });
+      setStatus("idle");
+    }
+  };
+
+  return (
+    <div className="mt-8 max-w-sm">
+      <p className="ui text-[9.5px] font-medium uppercase tracking-[0.24em] text-cream/40">
+        Newsletter
+      </p>
+      <form onSubmit={handleSubmit} className="mt-3 flex items-center gap-2 border-b border-cream/25 pb-2 focus-within:border-butter/70">
+        <input
+          type="email"
+          required
+          maxLength={320}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@somewhere.com"
+          aria-label="Email address"
+          className="font-serif flex-1 bg-transparent text-[14px] text-cream placeholder:text-cream/35 focus:outline-none"
+          disabled={status === "loading"}
+        />
+        <button
+          type="submit"
+          disabled={status === "loading"}
+          className="ui text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/70 transition-colors hover:text-butter disabled:opacity-50 whitespace-nowrap"
+        >
+          {status === "loading" ? "…" : status === "success" ? "Thanks" : "Subscribe →"}
+        </button>
+      </form>
+    </div>
+  );
+};
+
 const Footer = () => {
   return (
     <footer className="paper-soft paper-soft-dark paper-drift relative overflow-hidden bg-ink text-cream">
@@ -74,6 +147,7 @@ const Footer = () => {
             <p className="font-serif mt-5 max-w-sm text-[15px] leading-[1.6] text-cream/60">
               A global community built around pizza, generosity, and the people who show up.
             </p>
+            <NewsletterSignup />
             <div className="mt-8 flex items-baseline gap-3">
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-tomato/70" />
               <RotatingTagline />
