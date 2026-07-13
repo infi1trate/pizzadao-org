@@ -214,7 +214,7 @@ const Transmission = () => {
             </div>
             <figcaption className="ui mt-4 flex flex-col items-start justify-between gap-1.5 text-[11px] uppercase tracking-[0.22em] text-ink/65 md:flex-row md:items-center">
               <span>Fig. 01, {reel.caption}</span>
-              <span className="text-ink/45">500+ cities · 100+ countries · one slice at a time</span>
+              <span className="text-ink/45">400+ cities · 100+ countries · one slice at a time</span>
             </figcaption>
           </figure>
         </div>

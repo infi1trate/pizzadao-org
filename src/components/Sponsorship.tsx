@@ -35,7 +35,7 @@ const VALUE_PROPS = [
 ];
 
 const PROOF: { k: string; v: string; sub?: string; num?: number; prefix?: string; suffix?: string }[] = [
-  { k: "City network", v: "500+", sub: "independently organized", num: 500, suffix: "+" },
+  { k: "City network", v: "400+", sub: "independently organized", num: 400, suffix: "+" },
   { k: "Countries", v: "100+", sub: "active chapters", num: 100, suffix: "+" },
   { k: "Annual attendance", v: "20,000+", sub: "real-world participants", num: 20000, suffix: "+" },
   { k: "Repeat collaborators", v: "60+", sub: "brands, year over year", num: 60, suffix: "+" },
@@ -146,7 +146,7 @@ const Sponsorship = () => {
                 Trust, coordinated globally. Built city by city, by the people who already live there.
               </p>
               <p className="mt-2 text-[15px] leading-[1.6] text-ink/65">
-                PizzaDAO is a 500-city network of independently organized
+                PizzaDAO is a 400-city network of independently organized
                 chapters. Brands plug into a real, repeating, IRL community -
                 not a list, not a mailshot, not a pop-up.
               </p>
@@ -312,13 +312,14 @@ const Sponsorship = () => {
               {
                 k: "Global Moments",
                 v: "Large-scale activations across hundreds of cities, built to create shared global experiences. One brief, one weekend, hundreds of independent chapters showing up in parallel.",
-                note: "500+ cities, one weekend",
+                note: "400+ cities, one weekend",
                 accent: "global",
                 stamp: "WORLDWIDE",
                 tilt: "-rotate-[1.2deg]",
                 featured: true,
                 stats: [
-                  { k: "Cities", v: "500+" },
+                  { k: "Cities", v: "400+" },
+
                   { k: "Continents", v: "6" },
                   { k: "Lead time", v: "8 wks" },
                 ],
