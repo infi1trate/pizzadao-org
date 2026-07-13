@@ -114,7 +114,7 @@ const PartnersPage = () => {
                   brands into experiences people actually show up for.
                 </p>
                 <p className="ui mt-3 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-ink/45">
-                  Trusted globally · since 2020
+                  Trusted globally · since 2021
                 </p>
               </div>
 
