@@ -337,7 +337,7 @@ const About = () => {
                   of pizza. Some last all night.
 
                 </p>
-                <p className="text-cream">People keep coming back anyway.</p>
+                
               </div>
             </div>
           </div>
