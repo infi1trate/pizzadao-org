@@ -213,7 +213,7 @@ const Journal = () => {
       </div>
 
       {/* Substack subscribe band */}
-      <div className="mt-20 bg-cream pb-20 md:mt-28 md:pb-32">
+      <div id="newsletter" className="mt-20 bg-cream pb-20 md:mt-28 md:pb-32 scroll-mt-24">
         <div className="container border-t border-ink/15 pt-16 md:pt-20">
           <div className="grid grid-cols-12 items-end gap-x-6 gap-y-8">
             <div className="col-span-12 md:col-span-7">
