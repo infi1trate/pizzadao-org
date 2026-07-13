@@ -80,9 +80,14 @@ const SiteNav = ({ solid = false }: Props) => {
           >
             Member login
           </a>
-          <Link
-            to="/get-your-mafia-name"
-            onClick={() => track(EVT.MAFIA_INTENT_CLICKED, { label: "Join", surface: "site_nav_desktop" })}
+          <a
+            href="https://app.pizzadao.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              track(EVT.MAFIA_INTENT_CLICKED, { label: "Join", surface: "site_nav_desktop" });
+              trackOutbound("Join", "https://app.pizzadao.org", { surface: "desktop" });
+            }}
             className={`btn-pill ${
               onRed
                 ? "bg-cream text-ink hover:bg-butter"
@@ -90,7 +95,8 @@ const SiteNav = ({ solid = false }: Props) => {
             }`}
           >
             Join
-          </Link>
+          </a>
+
 
         </div>
 
