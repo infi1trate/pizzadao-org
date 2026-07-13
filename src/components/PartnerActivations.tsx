@@ -120,11 +120,8 @@ const PartnerActivations = () => {
                     {f.ref}
                   </span>
                 </div>
-                {/* Compact metadata - city · year · type, single line, never wraps */}
+                {/* Compact metadata - year · type, single line, never wraps */}
                 <figcaption className="mt-2 flex items-baseline gap-2 whitespace-nowrap overflow-hidden">
-                  <span className="font-serif text-[11.5px] font-semibold leading-tight text-ink/85">
-                    {f.city}
-                  </span>
                   <span className="ui text-[9px] font-medium uppercase tracking-[0.22em] text-ink/40">
                     {f.year}
                   </span>
