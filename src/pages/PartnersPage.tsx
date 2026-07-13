@@ -138,7 +138,7 @@ const PartnersPage = () => {
               </span>
               <dl className="grid grid-cols-2 gap-x-8 gap-y-5 md:grid-cols-4 md:gap-x-12">
                 {[
-                  { k: "Cities", v: "500+" },
+                  { k: "Cities", v: "400+" },
                   { k: "Countries", v: "100+" },
                   { k: "Attendees", v: "20,000+" },
                   { k: "Years running", v: "6" },
