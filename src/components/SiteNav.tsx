@@ -80,9 +80,14 @@ const SiteNav = ({ solid = false }: Props) => {
           >
             Member login
           </a>
-          <Link
-            to="/get-your-mafia-name"
-            onClick={() => track(EVT.MAFIA_INTENT_CLICKED, { label: "Join", surface: "site_nav_desktop" })}
+          <a
+            href="https://app.pizzadao.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              track(EVT.MAFIA_INTENT_CLICKED, { label: "Join", surface: "site_nav_desktop" });
+              trackOutbound("Join", "https://app.pizzadao.org", { surface: "desktop" });
+            }}
             className={`btn-pill ${
               onRed
                 ? "bg-cream text-ink hover:bg-butter"
@@ -90,7 +95,8 @@ const SiteNav = ({ solid = false }: Props) => {
             }`}
           >
             Join
-          </Link>
+          </a>
+
 
         </div>
 
@@ -154,16 +160,20 @@ const SiteNav = ({ solid = false }: Props) => {
             >
               Member login
             </a>
-            <Link
-              to="/get-your-mafia-name"
+            <a
+              href="https://app.pizzadao.org"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => {
                 track(EVT.MAFIA_INTENT_CLICKED, { label: "Join the Pizza Mafia", surface: "site_nav_mobile" });
+                trackOutbound("Join the Pizza Mafia", "https://app.pizzadao.org", { surface: "mobile" });
                 setOpen(false);
               }}
               className="btn-pill-lg bg-tomato text-cream text-center hover:bg-ink"
             >
               Join the Pizza Mafia →
-            </Link>
+            </a>
+
 
             <div className="mt-4 flex items-center justify-between border-t border-rule-warm/50 pt-4">
               <span className="ui text-[10px] font-medium uppercase tracking-[0.24em] text-ink/45">
