@@ -146,7 +146,7 @@ const Sponsorship = () => {
                 Trust, coordinated globally. Built city by city, by the people who already live there.
               </p>
               <p className="mt-2 text-[15px] leading-[1.6] text-ink/65">
-                PizzaDAO is a 500-city network of independently organized
+                PizzaDAO is a 400-city network of independently organized
                 chapters. Brands plug into a real, repeating, IRL community -
                 not a list, not a mailshot, not a pop-up.
               </p>
